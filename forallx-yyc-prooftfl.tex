@@ -2042,10 +2042,13 @@ description={两个语句共有的性质，当且仅当存在一个推导，可�
 
 
 \begin{sidewaystable}\small
-\tabulinesep=1ex
-\begin{tabu}{X[.5,c,m] ||X[1,l,m] |X[1,l,m]}
+\begin{tblr}[expand=\tmptable]{
+  width=\textwidth,
+  colspec={Q[0.5,c,m]||Q[1,l,m]|Q[1,l,m]},
+  row{1-Z}={abovesep=1ex,belowsep=1ex},
+}
 \tmptable
-\end{tabu}
+\end{tblr}
 \caption{定义逻辑概念的两种方式。}
 \label{table:truth_tables_or_derivations}
 \end{sidewaystable}
@@ -2102,10 +2105,13 @@ description={一个逻辑系统具有的性质，当且仅当 $\entails $ 蕴涵
 
 
 \begin{table}\small
-\tabulinesep=1ex
-\begin{tabu}{X[.7,c,m] ||X[1,l,m] |X[1,l,m]}
+\begin{tblr}[expand=\tmptable]{
+  width=\textwidth,
+  colspec={Q[0.7,c,m]||Q[1,l,m]|Q[1,l,m]},
+  row{1-Z}={abovesep=1ex,belowsep=1ex},
+}
 \tmptable
-\end{tabu}
+\end{tblr}
 \caption{何时提供真值表，何时提供证明。}
 \label{table.ProofOrModel}
 \end{table}
