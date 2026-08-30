@@ -1,80 +1,90 @@
 %!TEX root = forallxyyc.tex
-\part{Natural deduction for FOL}
+\part{一阶逻辑的自然演绎}
 \label{ch.NDFOL}
 \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
 
-\chapter{Basic rules for FOL}\label{s:BasicFOL}
+\chapter{一阶逻辑的基本规则}\label{s:BasicFOL}
 
-The language of FOL makes use of all of the connectives of TFL. So proofs in FOL will use all of the basic and derived rules from \cref{ch.NDTFL}. We will also use the proof-theoretic notions (particularly, the symbol `$\proves$') introduced there. However, we will also need some new basic rules to govern the quantifiers, and to govern the identity sign.
+一阶逻辑的语言使用了真值函项逻辑的所有联结词。因此，一阶逻辑中的证明也将使用 \cref{ch.NDTFL} 中的所有基本规则和派生规则。我们也将沿用那里引入的证明论概念（特别是符号“$\proves$”）。不过，我们还需要一些新的基本规则来约束量词以及等号。
 
+\section{全称消去}\label{s:forallElim}
 
-\section{Universal elimination}\label{s:forallElim}
+从“所有东西都是~$F$”这一主张，你可以推断任何特定的对象都是~$F$。你随便指一个，它就是~$F$。所以下面这个推导应该是有效的：
 
-From the claim that everything is~$F$, you can infer that any particular thing is~$F$. You name it; it's~$F$. So the following should be fine:
 \begin{fitchproof}
 	\hypo{a}{\forall x\,\atom{R}{x,x,d}}\PR
 	\have{c}{\atom{R}{a,a,d}} \Ae{a}
 \end{fitchproof}
-We obtained line~$2$ by dropping the universal quantifier and replacing every instance of `$x$' with `$a$'. Equally, the following should be allowed:
+
+我们通过去掉全称量词并把所有“$x$”的出现都替换为“$a$”得到了第~$2$行。同样地，下面的推导也应该被允许：
+
 \begin{fitchproof}
 	\hypo{a}{\forall x\,\atom{R}{x,x,d}}\PR
 	\have{c}{\atom{R}{d,d,d}} \Ae{a}
 \end{fitchproof}
-We obtained line~$2$ here by dropping the universal quantifier and replacing every instance of `$x$' with~`$d$'. We could have done the same with any other name we wanted.
 
-This motivates the universal elimination rule ($\forall$E):
+我们这里通过去掉全称量词并把所有“$x$”的出现都替换为“$d$”得到了第~$2$行。我们也可以用任何其他名称做同样的替换。
+
+这就引出了全称消去规则（$\forall$E）：
 
 \factoidbox{
+
+
 \begin{fitchproof}
 	\have[m]{a}{\forall \metav{x}\,\metav{A}(\ldots \metav{x} \ldots \metav{x}\ldots)}
 	\have[\ ]{c}{\metav{A}(\ldots \metav{c} \ldots \metav{c}\ldots)} \Ae{a}
-\end{fitchproof}}
+\end{fitchproof}
 
-The notation here was introduced in \cref{s:TruthFOL}. The point is
-that you can obtain any \emph{substitution instance} of a universally
-quantified formula: replace every free occurrence of the quantified
-variable with any name you like.
+}
 
-We should emphasize that (as with every elimination rule) you can only apply the $\forall$E rule when the universal quantifier is the main logical operator. So the following is \emph{banned}:
+此处记法在\cref{s:TruthFOL}中引入。关键在于，你可以得到全称量化公式的任何\emph{代入实例}：把被量化变元的每一个自由出现都替换为任何一个名称。
+
+我们必须强调，（与所有消去规则一样）只有当全称量词是主逻辑算子时，你才能应用 $\forall$E 规则。因此下面这种操作是\emph{被禁止的}：
+
 \begin{fitchproof}
 	\hypo{a}{\forall x\,\atom{B}{x} \eif \atom{B}{k}}\PR
-	\have{c}{\atom{B}{b} \eif \atom{B}{k}}\by{naughy attempt to invoke $\forall$E}{a}
+	\have{c}{\atom{B}{b} \eif \atom{B}{k}}\by{试图调用 $\forall$E 的错误尝试}{a}
 \end{fitchproof}
-This is illegitimate, since `$\forall x$' is not the main logical operator in line~$1$. (If you need a reminder as to why this sort of inference should be banned, reread \cref{s:MoreMonadic}.)
 
-\section{Existential introduction}\label{s:existsIntro}
+这是不合法的，因为“$\forall x$”不是第~$1$行的主逻辑算子。（如果你需要复习为什么这类推理应该被禁止，请重读 \cref{s:MoreMonadic}。）
 
-From the claim that some particular thing is~$F$, you can infer that something is~$F$. So we ought to allow:
+\section{存在引入}\label{s:existsIntro}
+
+从“某个特定的东西是~$F$”这一主张，你可以推出有东西是~$F$。所以我们应该允许：
+
 \begin{fitchproof}
 	\hypo{a}{\atom{R}{a,a,d}}\PR
 	\have{b}{\exists x\, \atom{R}{a,a,x}} \Ei{a}
 \end{fitchproof}
-Here, we have replaced the name `$d$' with a variable `$x$', and then existentially quantified over it. Equally, we would have allowed:
+
+这里，我们把名称“$d$”替换为变元“$x$”，然后对其进行存在量化。同样地，我们也应该允许：
+
 \begin{fitchproof}
 	\hypo{a}{\atom{R}{a,a,d}}\PR
 	\have{c}{\exists x\, \atom{R}{x,x,d}} \Ei{a}
 \end{fitchproof}
-Here we have replaced both instances of the name `$a$' with a variable, and then existentially generalized. But we do not need to replace \emph{both} instances of a name with a variable: if Narcissus loves himself, then there is someone who loves Narcissus. So we also allow:
+
+这里我们把名称“$a$”的\emph{所有}出现都替换为变元，然后进行了存在概括。但我们并不需要把名称的\emph{所有}出现都替换为变元：如果 Narcissus 爱他自己，那么存在某个爱 Narcissus 的人。所以我们也允许：
+
 \begin{fitchproof}
 	\hypo{a}{\atom{R}{a,a,d}}\PR
 	\have{d}{\exists x\, \atom{R}{x,a,d}} \Ei{a}
 \end{fitchproof}
-Here we have replaced \emph{one} instance of the name `$a$' with a variable, and then existentially generalized. These observations motivate our introduction rule, although to explain it, we will need to introduce some new notation.
 
-Where $\metav{A}$ is a sentence containing the name $\metav{c}$, we
-can emphasize this by writing `$\metav{A}(\ldots \metav{c} \ldots
-\metav{c}\ldots)$'. We will write `$\metav{A}(\ldots \metav{x} \ldots
-\metav{c}\ldots)$' to indicate any formula obtained by replacing
-\emph{some or all} of the instances of the name \metav{c} with the
-variable~\metav{x} (provided~$\metav{c}$, wherever it is
-replaced, does not occur in the scope of a quantifier
-binding~$\metav{x}$). Armed with this, our introduction rule
-$\exists$I is:
+这里我们先把名称“$a$”的\emph{一个}出现替换为变元，然后进行了存在概括。这些观察引出了我们的引入规则，不过为了解释它，我们需要引入一些新的记法。
+
+当公式 $\metav{A}$ 包含名称 $\metav{c}$ 时，我们可以通过写作“$\metav{A}(\ldots \metav{c} \ldots
+\metav{c}\ldots)$”来强调这一点。我们将用“$\metav{A}(\ldots \metav{x} \ldots
+\metav{c}\ldots)$”来表示通过将名称 \metav{c} 的\emph{部分或全部}出现替换为变元~\metav{x} 而得到的任何公式（前提是，无论在何处替换，$\metav{c}$ 都不出现在绑定~$\metav{x}$ 的量词的辖域内）。有了这个准备，我们的引入规则 $\exists$I 是：
 \factoidbox{
+
+
 \begin{fitchproof}
 	\have[m]{a}{\metav{A}(\ldots \metav{c} \ldots \metav{c}\ldots)}
 	\have[\ ]{c}{\exists \metav{x}\,\metav{A}(\ldots \metav{x} \ldots \metav{c}\ldots)} \Ei{a}
 \end{fitchproof}
+
+
 %\metav{x} must not occur in $\metav{A}(\ldots \metav{c} \ldots
 %\metav{c}\ldots)$
 }
@@ -92,98 +102,97 @@ $\exists$I is:
 % \end{fitchproof}
 % since the expression on line~3 contains clashing variables, and so is not a sentence of FOL.
 
-\section{Empty domains}
-The following proof combines our two new rules for quantifiers:
-	\begin{fitchproof}
+\section{空论域}
+下面的证明结合了我们关于量词的两条新规则：
+
+
+\begin{fitchproof}
 		\hypo{a}{\forall x\, \atom{F}{x}}\PR
 		\have{in}{\atom{F}{a}}\Ae{a}
 		\have{e}{\exists x\, \atom{F}{x}}\Ei{in}
 	\end{fitchproof}
-Could this be a bad proof? If anything exists at all, then certainly we can infer that something is~$F$, from the fact that everything is~$F$. But what if \emph{nothing} exists at all? Then it is surely vacuously true that everything is~$F$; however, it does not following that something is~$F$, for there is nothing to \emph{be}~$F$. So if we claim that, as a matter of logic alone, `$\exists x\,\atom{F}{x}$' follows from `$\forall x\,\atom{F}{x}$', then we are claiming that, as a matter of \emph{logic alone}, there is something rather than nothing. This might strike us as a bit odd.
 
-Actually, we are already committed to this oddity. In \cref{s:FOLBuildingBlocks}, we stipulated that domains in FOL must have at least one member. We then defined a validity (of FOL) as a sentence which is true in every interpretation. Since `$\exists x\, x=x$' will be true in every interpretation, this \emph{also} had the effect of stipulating that it is a matter of logic that there is something rather than nothing.
+这会是一个有缺陷的证明吗？如果确实有东西存在，那么我们当然可以从“所有东西都是$F$”这一事实，推断出“有东西是$F$”。但如果 \emph{根本没有任何} 东西存在呢？那么，“所有东西都是$F$”就显然是\emph{空真}的；然而，这并不能推出“有东西是$F$”，因为没有什么东西可以去 \emph{成为} $F$。所以，如果我们声称，仅凭逻辑，“$\exists x\,\atom{F}{x}$”就从“$\forall x\,\atom{F}{x}$”得出，那么我们就是在声称，仅凭\emph{逻辑}，就存在某物而非无物。这可能会让我们觉得有点奇怪。
 
-Since it is far from clear that logic should tell us that there must be something rather than nothing, we might well be cheating a bit here.
+事实上，我们已经默认了这个奇怪的前提。在\cref{s:FOLBuildingBlocks}中，我们规定，一阶逻辑中的论域必须至少有一个成员。然后，我们把（一阶逻辑的）有效性定义为一个在所有解释下都为真的语句。由于“$\exists x\, x=x$”将在每个解释下都为真，这\emph{同样}起到了规定作用：逻辑本身决定了存在某物而非无物。
 
-If we refuse to cheat, though, then we pay a high cost. Here are three things that we want to hold on to:
-	\begin{compactlist}
-		\item $\forall x\,\atom{F}{x} \proves \atom{F}{a}$: after all, that was $\forall$E.
-		\item $\atom{F}{a} \proves \exists x\,\atom{F}{x}$: after all, that was $\exists$I.
-		\item the ability to copy-and-paste proofs together: after all, reasoning works by putting lots of little steps together into rather big chains.
+既然逻辑是否应该告诉我们“必须有某物而非无物”这一点远非显而易见，我们在这里可能确实有点作弊的嫌疑。
+
+然而，如果我们拒绝作弊，代价就很高。下面是我们想坚持的三个特性：
+
+\begin{compactlist}
+		\item $\forall x\,\atom{F}{x} \proves \atom{F}{a}$：毕竟，那就是 $\forall$E。
+		\item $\atom{F}{a} \proves \exists x\,\atom{F}{x}$：毕竟，那就是 $\exists$I。
+		\item 将证明复制粘贴以组合起来的能力：毕竟，推理就是通过将许多小步骤组合成相当长的链条来进行的。
 	\end{compactlist}
-If we get what we want on all three counts, then we have to countenance that $\forall x\,\atom{F}{x} \proves \exists x\,\atom{F}{x}$. So, if we get what we want on all three counts, the proof system alone tells us that there is something rather than nothing. And if we refuse to accept that, then we have to surrender one of the three things that we want to hold on to!
 
-Before we start thinking about which to surrender, we might want to ask how \emph{much} of a cheat this is. Granted, it may make it harder to engage in theological debates about why there is something rather than nothing. But the rest of the time, we will get along just fine. So maybe we should just regard our proof system (and FOL, more generally) as having a very slightly limited purview. If we ever want to allow for the possibility of \emph{nothing}, then we will have to cast around for a more complicated proof system. But for as long as we are content to ignore that possibility, our proof system is perfectly in order. (As, similarly, is the stipulation that every domain must contain at least one object.)
+如果我们在上述三个方面都如愿以偿，那么我们就必须承认$\forall x\,\atom{F}{x} \proves \exists x\,\atom{F}{x}$。因此，如果我们想要这三个特性，证明系统本身就告诉我们存在某物而非无物。而如果我们拒绝接受这一点，那么我们就得放弃我们想要坚持的三个特性之一！
 
-\section{Universal introduction}\label{s:forallIntro}
+在我们开始考虑放弃哪一个之前，我们不妨问问这个“作弊”究竟有多严重。诚然，它可能会使我们更难参与关于“为何存在某物而非无物”的神学辩论。但除此之外的大部分时间里，它都运行良好。所以，也许我们只需把我们的证明系统（以及更广义的一阶逻辑）看作具有一个非常略微受限的适用范围。如果我们将来想要允许\emph{无物存在}的可能性，那我们就不得不寻找一个更复杂的证明系统。但只要我们愿意忽略这种可能性，我们的证明系统就完全没问题。（同样，每个论域必须包含至少一个对象的规定也是如此。）
 
-Suppose you had shown of each particular thing that it is F (and that there are no other things to consider). Then you would be justified in claiming that everything is F. This would motivate the following proof rule. If you had established each and every single substitution instance of `$\forall x\,\atom{F}{x}$', then you can infer `$\forall x\,\atom{F}{x}$'.
+\section{全称引入}\label{s:forallIntro}
 
-Unfortunately, that rule would be utterly unusable. To establish each and every single substitution instance would require proving `$\atom{F}{a}$', `$\atom{F}{b}$', \dots, `$\atom{F}{j_2}$', \dots, `$\atom{F}{r_{79002}}$', \ldots, and so on. Indeed, since there are infinitely many names in FOL, this process would never come to an end. So we could never apply that rule. We need to be a bit more cunning in coming up with our rule for introducing universal quantification.
+假设你已经证明了每一个特定的东西都是 F（并且没有其他东西需要考虑）。那么，你就有理由声称所有东西都是 F。这会启发我们得到以下证明规则。如果你已经建立了“$\forall x\,\atom{F}{x}$”的每一个代入实例，那么你就可以推断出“$\forall x\,\atom{F}{x}$”。
 
-A solution will be inspired by considering:
+不幸的是，这条规则将完全无法使用。要建立每一个代入实例，就需要证明“$\atom{F}{a}$”、“$\atom{F}{b}$”、……“$\atom{F}{j_2}$”、……、“$\atom{F}{r_{79002}}$”、……，如此等等。事实上，由于一阶逻辑中有无穷多个名称，这个过程永无止境。所以我们永远无法应用那条规则。我们需要更巧妙一点，来制定我们的全称引入规则。
+
+考虑下面这个论证会带给我们启发：
 $$\forall x\,\atom{F}{x} \therefore \forall y\,\atom{F}{y}$$
-This argument should \emph{obviously} be valid. After all, alphabetical variation ought to be a matter of taste, and of no logical consequence. But how might our proof system reflect this? Suppose we begin a proof thus:
+这个论证应该是\emph{显然}有效的。毕竟，字母的选择应是随意的，不产生逻辑影响。但是我们的证明系统如何体现这一点呢？假设我们这样开始一个证明：
+
+
 \begin{fitchproof}
 	\hypo{x}{\forall x\, \atom{F}{x}} \PR
 	\have{a}{\atom{F}{a}} \Ae{x}
 \end{fitchproof}
-We have proved `$\atom{F}{a}$'. And, of course, nothing stops us from using the same justification to prove `$\atom{F}{b}$', `$\atom{F}{c}$', \ldots, `$\atom{F}{j_2}$', \ldots, `$\atom{F}{r_{79002}}$, \dots, and so on until we run out of space, time, or patience. But reflecting on this, we see that there is a way to prove $\atom{F}{\metav{c}}$, for any name~\metav{c}. And if we can do it for \emph{any} thing, we should surely be able to say that `$F$' is true of \emph{everything}. This therefore justifies us in inferring `$\forall y\,\atom{F}{y}$', thus:
+
+
+我们已经证明了“$\atom{F}{a}$”。当然，没有什么能阻止我们用同样的理由去证明“$\atom{F}{b}$”、“$\atom{F}{c}$”、……、“$\atom{F}{j_2}$”、……、“$\atom{F}{r_{79002}}$”……直到我们耗尽空间、时间或耐心。但仔细想想，我们发现，对于任何名称~\metav{c}，我们都有办法证明 $\atom{F}{\metav{c}}$。如果我们能对\emph{任何}东西做到这一点，我们当然应该说“$F$”对\emph{所有}东西都成立。因此，这证明了我们可以推断出“$\forall y\,\atom{F}{y}$”，像这样：
+
+
 \begin{fitchproof}
 	\hypo{x}{\forall x\, \atom{F}{x}}\PR
 	\have{a}{\atom{F}{a}} \Ae{x}
 	\have{y}{\forall y\, \atom{F}{y}} \Ai{a}
 \end{fitchproof}
-The crucial thought here is that `$a$' was just some \emph{arbitrary} name. There was nothing special about it---we might have chosen any other name---and still the proof would be fine. And this crucial thought motivates the universal introduction rule ($\forall$I):
+
+
+这里的关键想法是，“$a$”只是一个\emph{任意}的名称。它没有什么特别的——我们本可以选择任何其他名称——而且证明依然成立。这个关键想法构成了全称引入规则（$\forall$I）的动机：
 \factoidbox{
+
 \begin{fitchproof}
 	\have[m]{a}{\metav{A}(\ldots \metav{c} \ldots \metav{c}\ldots)}
 	\have[\ ]{c}{\forall \metav{x}\,\metav{A}(\ldots \metav{x} \ldots \metav{x}\ldots)} \Ai{a}
 \end{fitchproof}
-where the name \metav{c} must not occur in a premise or an undischarged
-assumption.%\\ 
+其中，名称 \metav{c} 不得出现在任何前提或未解除的假设中。%\\
 %\metav{x} must not occur in $\metav{A}(\ldots \metav{c} \ldots
 %\metav{c}\ldots)$
 }
 
-In \cref{s:MainLogicalOperatorQuantifier}, we introduced a convention
-for indicating \emph{substitution instances}: We said that if
-$\metav{A}(\ldots \metav{x} \ldots \metav{x}\ldots)$ is a formula,
-then $\metav{A}(\ldots \metav{c} \ldots \metav{c}\ldots)$ is the
-result of replacing \emph{every} free occurrence of $\metav{x}$ in
-$\metav{A}$ by~$\metav{c}$. To state our $\forall$I rule, we are using
-the same convention, except in the other direction: If
-$\metav{A}(\ldots \metav{c} \ldots \metav{c}\ldots)$ is a formula,
-then $\metav{A}(\ldots \metav{x} \ldots \metav{x}\ldots)$ is the
-result of replacing \emph{every} occurrence of~$\metav{c}$ in it
-by~$\metav{x}$. (This is only allowed as long as $\metav{c}$ does not
-occur in the scope of a quantifier binding~$\metav{x}$ in~$\metav{A}$.)
+在\cref{s:MainLogicalOperatorQuantifier}中，我们引入了一个用于指示\emph{代入实例}的约定：我们说，如果
+$\metav{A}(\ldots \metav{x} \ldots \metav{x}\ldots)$ 是一个公式，那么 $\metav{A}(\ldots \metav{c} \ldots \metav{c}\ldots)$ 就是将所有 $\metav{x}$ 在 $\metav{A}$ 中的\emph{每一个}自由出现都替换为~$\metav{c}$ 的结果。为陈述 $\forall$I 规则，我们使用相同的约定，但方向相反：如果 $\metav{A}(\ldots \metav{c} \ldots \metav{c}\ldots)$ 是一个公式，那么 $\metav{A}(\ldots \metav{x} \ldots \metav{x}\ldots)$ 就是将其中\emph{每一个}~$\metav{c}$ 的出现都替换为~$\metav{x}$ 的结果。（仅当 $\metav{c}$ 在 $\metav{A}$ 中未出现于任何约束~$\metav{x}$ 的量词的辖域内时，才允许这样做。）
 
-There are a two important things to watch out for in applying the
-$\forall$I rule. If we are not careful with the choice of
-name~$\metav{c}$ and its replacement by~$\metav{x}$ we are at risk of
-making some incorrect inferences.
+应用 $\forall$I 规则时有两点需要特别注意。若在选择名称~$\metav{c}$ 及将其替换为~$\metav{x}$ 时不加小心，则可能做出不正确的推理。
 
-The constraint on the $\forall$I rule requires that \metav{c} must not
-occur in a premise or an undischarged assumption. This constraint
-ensures that we are always reasoning at a sufficiently general level.
-%\footnote{Recall from \cref{s:BasicTFL} that we are treating `$\ered$' as a canonical contradiction. But if it were the canonical contradiction as involving some \emph{constant}, it might interfere with the constraint mentioned here. To avoid such problems, we will treat `$\ered$' as a canonical contradiction \emph{that involves no particular names}.} 
-To see the constraint in action, consider this terrible argument:
-	\begin{earg}
-		\item Everyone loves Kylie Minogue.
-		\item[\texttherefore] Everyone loves themselves.
+$\forall$I 规则的约束要求 \metav{c} 不得出现在任何前提或未解除的假设中。此约束确保我们总是在一个足够一般的层面上进行推理。%\footnote{Recall from \cref{s:BasicTFL} that we are treating “$\ered$” as a canonical contradiction. But if it were the canonical contradiction as involving some \emph{constant}, it might interfere with the constraint mentioned here. To avoid such problems, we will treat “$\ered$” as a canonical contradiction \emph{that involves no particular names}.}
+为说明此约束的作用，考虑以下糟糕的论证：
+
+
+\begin{earg}
+		\item 人人都爱凯莉·米洛。
+		\item[\texttherefore] 人人都爱他们自己。
 	\end{earg}
-We might symbolize this obviously invalid inference pattern as:
+我们可将这一明显无效的推理模式符号化为：
 $$\forall x\,\atom{L}{x,k} \therefore \forall x\,\atom{L}{x,x}$$
-Now, suppose we tried to offer a proof that vindicates this argument:
+假设我们试图给出一个证明以确证此论证：
 \begin{fitchproof}
 	\hypo{x}{\forall x\, \atom{L}{x,k}}\PR
 	\have{a}{\atom{L}{k,k}} \Ae{x}
-	\have{y}{\forall x\, \atom{L}{x,x}} \by{naughty attempt to invoke $\forall$I}{a}
+	\have{y}{\forall x\, \atom{L}{x,x}} \by{不当尝试应用 $\forall$I}{a}
 \end{fitchproof}
-This is not allowed, because `$k$' occurred already in a premise, namely, on line~$1$. The crucial point is that, if we have made any assumptions about the object we are working with, then we are not reasoning generally enough to license $\forall$I.
+这是不允许的，因为 “$k$’ 已出现在一个前提中（即第 $1$ 行）。关键在于，若我们对将要被概括的名称（其所指的对象）做出了任何（额外的）假设，则我们的推理就不足以一般到允许应用 $\forall$I。
 
-Although the name may not occur in any \emph{undischarged} assumption, it may occur in a \emph{discharged} assumption. That is, it may occur in a subproof that we have already closed. For example, this is just fine:
+虽然名称不得出现在任何\emph{未解除的}假设中，但它可以出现在\emph{已解除的}假设中，即它可以出现在一个已关闭的子证明内。例如，以下证明完全正确：
 \begin{fitchproof}
 	\open
 		\hypo{f1}{\atom{G}{d}}\AS
@@ -192,35 +201,36 @@ Although the name may not occur in any \emph{undischarged} assumption, it may oc
 	\have{ff}{\atom{G}{d} \eif \atom{G}{d}}\ci{f1-f2}
 	\have{zz}{\forall z(\atom{G}{z} \eif \atom{G}{z})}\Ai{ff}
 \end{fitchproof}
-This tells us that `$\forall z (\atom{G}{z} \eif \atom{G}{z})$' is a \emph{theorem}. And that is as it should be.
+这表明“$\forall z (\atom{G}{z} \eif \atom{G}{z})$”是一个\emph{定理}。而这正是应有的结果。
 
-If we only replace \emph{some} names and not others, we end up
-`proving' silly things. For example, consider the argument:
-	\begin{earg}
-	\item Everyone is as old as themselves.
-	\item[\texttherefore] Everyone is as old as Judi Dench.
+若我们只替换\emph{某些}名称而非全部，则会“证明”出荒谬的结论。例如，考虑以下论证：
+
+
+\begin{earg}
+	\item 每个人都和他们自己一样老。
+	\item[\texttherefore] 每个人都和朱迪·丹奇一样老。
 	\end{earg}
-We might symbolize this as follows:
+我们可将其符号化为：
 $$\forall x\,\atom{O}{x,x} \therefore \forall x\,\atom{O}{x,d}$$
-But now suppose we tried to vindicate this terrible argument with the following:
+现假设我们试图用以下证明来确证这个糟糕的论证：
 \begin{fitchproof}
 	\hypo{x}{\forall x\, \atom{O}{x,x}}\PR
 	\have{a}{\atom{O}{d,d}}\Ae{x}
-	\have{y}{\forall x\, \atom{O}{x,d}}\by{naughty attempt to invoke $\forall$I}{a}
+	\have{y}{\forall x\, \atom{O}{x,d}}\by{不当尝试应用 $\forall$I}{a}
 \end{fitchproof}
-Fortunately, our rules do not allow us to do this: the attempted proof
-is banned, since it doesn't replace \emph{every} occurrence of `$d$'
-in line $2$ with an~`$x$'.
+幸运的是，我们的规则不允许这样做：此证明尝试是禁止的，因为它并未将第 $2$ 行中\emph{每一个} “$d$’ 的出现都替换为 ”$x$’。
 
-\section{Existential elimination}\label{s:existsElim}
+\section{存在消去}\label{s:existsElim}
 
-Suppose we know that \emph{something} is~$F$. The problem is that simply knowing this does not tell us which thing is~$F$. So it would seem that from `$\exists x\,\atom{F}{x}$' we cannot immediately conclude `$\atom{F}{a}$', `$\atom{F}{e_{23}}$', or any other substitution instance of the sentence. What can we do?
+假设我们知道\emph{某物}是~$F$。问题在于，仅知道这一点并未告诉我们哪个东西是~$F$。因此，从 “$\exists x\,\atom{F}{x}$” 出发，似乎不能直接推出 “$\atom{F}{a}$”、“$\atom{F}{e_{23}}$” 或该语句的任何其他代入实例。我们该如何做呢？
 
-Suppose we know that something is~$F$, and that everything which is~$F$ is also~$G$. In (almost) natural English, we might reason thus:
-	\begin{quote}
-		Since something is $F$, there is some particular thing which is an~$F$. We do not know anything about it, other than that it's an~$F$, but for convenience, let's call it `Becky'. So: Becky is $F$. Since everything which is $F$ is~$G$, it follows that Becky is~$G$. But since Becky is~$G$, it follows that something is~$G$. And nothing depended on which object, exactly, Becky was. So, something is~$G$.
+假设我们知道某物是~$F$，并且所有是~$F$ 的东西也都是~$G$。用（近乎）自然的英语，我们可以这样推理：
+
+
+\begin{quote}
+		既然有某物是 $F$，那么就存在某个特定的 $F$。我们除了知道它是 $F$ 外，对其一无所知，但为方便起见，不妨称它为“贝姬”。因此：贝姬是 $F$。由于所有是 $F$ 的东西都是~$G$，故贝姬是~$G$。既然贝姬是~$G$，则说明有某物是~$G$。并且此结论不依赖于贝姬具体是哪个对象。所以，有某物是~$G$。
 	\end{quote}
-We might try to capture this reasoning pattern in a proof as follows:
+我们可尝试在证明中如下刻画这一推理模式：
 \begin{fitchproof}
 	\hypo{es}{\exists x\, \atom{F}{x}}\PR
 	\hypo{ast}{\forall x(\atom{F}{x} \eif \atom{G}{x})}\PR
@@ -231,31 +241,36 @@ We might try to capture this reasoning pattern in a proof as follows:
 		\have{et1}{\exists x\, \atom{G}{x}}\Ei{t}
 	\close
 	\have{et2}{\exists x\, \atom{G}{x}}\Ee{es,s-et1}
-\end{fitchproof}\noindent
-Breaking this down: we started by writing down our assumptions. At line~$3$, we made an additional assumption: `$\atom{F}{b}$'. This was just a substitution instance of `$\exists x\,\atom{F}{x}$'. On this assumption, we established `$\exists x\,\atom{G}{x}$'. Note that we had made no \emph{special} assumptions about the object named by `$b$'; we had \emph{only} assumed that it satisfies `$\atom{F}{x}$'. So nothing depends upon which object it is. And line~$1$ told us that \emph{something} satisfies `$\atom{F}{x}$', so our reasoning pattern was perfectly general. We can discharge the specific assumption `$\atom{F}{b}$', and simply infer `$\exists x\,\atom{G}{x}$' on its own.
+\end{fitchproof}
 
-Putting this together, we obtain the existential elimination rule ($\exists$E):
+\noindent
+分解来看：我们首先写下假设。在第 $3$ 行，我们增加了一个额外假设：“$\atom{F}{b}$”。这只是 “$\exists x\,\atom{F}{x}$” 的一个代入实例。基于此假设，我们推出了 “$\exists x\,\atom{G}{x}$”。注意，对于名称 “$b$’ 所指的对象，我们并未做出任何\emph{特殊}假设；我们\emph{只}假设了它满足 ”$\atom{F}{x}$”。因此，推理不依赖于具体是哪个对象。而第 $1$ 行告诉我们\emph{有东西}满足 “$\atom{F}{x}$”，故我们的推理模式是完全一般的。我们可以解除具体的假设 “$\atom{F}{b}$”，而单独推出 “$\exists x\,\atom{G}{x}$”。
+
+综上所述，我们得到存在消去规则 ($\exists$E)：
 \factoidbox{
 \begin{fitchproof}
 	\have[m]{a}{\exists \metav{x}\,\metav{A}(\ldots \metav{x} \ldots \metav{x}\ldots)}
-	\open	
+	\open
 		\hypo[i]{b}{\metav{A}(\ldots \metav{c} \ldots \metav{c}\ldots)}\AS
 		\have[j]{c}{\metav{B}}
 	\close
 	\have[\ ]{d}{\metav{B}} \Ee{a,b-c}
 \end{fitchproof}
-\metav{c} must not occur in any assumption undischarged before line $i$\\
-\metav{c} must not occur in $\exists \metav{x}\,\metav{A}(\ldots \metav{x} \ldots \metav{x}\ldots)$\\
-\metav{c} must not occur in \metav{B}}
-As with universal introduction, the constraints are extremely important. To see why, consider the following terrible argument:
-	\begin{earg}
-		\item Tim Button is a lecturer. 
-		\item Someone is not a lecturer. 
-		\item[\texttherefore] Tim Button is both a lecturer and not a lecturer.
+
+\metav{c} 不得出现在第 $i$ 行之前任何未解除的假设中\\
+\metav{c} 不得出现在 $\exists \metav{x}\,\metav{A}(\ldots \metav{x} \ldots \metav{x}\ldots)$ 中\\
+\metav{c} 不得出现在 \metav{B} 中}
+与全称引入规则一样，这些约束条件至关重要。为理解其重要性，考虑以下糟糕的论证：
+
+
+\begin{earg}
+		\item Tim Button 是讲师。
+		\item 有人不是讲师。
+		\item[\texttherefore] Tim Button 既是讲师又不是讲师。
 	\end{earg}
-We might symbolize this obviously invalid inference pattern as follows:
+我们可将此明显无效的推理模式符号化如下：
 $$\atom{L}{b}, \exists x\, \enot\atom{L}{x} \therefore \atom{L}{b} \eand \enot \atom{L}{b}$$
-Now, suppose we tried to offer a proof that vindicates this argument:
+现假设我们试图给出一个证明来确证此论证：
 \begin{fitchproof}
 	\hypo{f}{\atom{L}{b}}\PR
 	\hypo{nf}{\exists x\, \enot \atom{L}{x}}\PR
@@ -264,153 +279,115 @@ Now, suppose we tried to offer a proof that vindicates this argument:
 		\have{con}{\atom{L}{b} \eand \enot \atom{L}{b}}\ai{f, na}
 	\close
 \ifHTMLtarget
-	\have{econ1}{\atom{L}{b} \eand \enot \atom{L}{b}}\by{naughty attempt
-	to invoke $\exists$E }{nf, na-con}
+	\have{econ1}{\atom{L}{b} \eand \enot \atom{L}{b}}\by{不当尝试调用 $\exists$E }{nf, na-con}
 \else
-	\have{econ1}{\atom{L}{b} \eand \enot \atom{L}{b}}\by{naughty attempt}{}
-	\have[\ ]{x}{}\by{to invoke $\exists$E }{nf, na-con}
+	\have{econ1}{\atom{L}{b} \eand \enot \atom{L}{b}}\by{不当尝试}{}
+	\have[\ ]{x}{}\by{调用 $\exists$E }{nf, na-con}
 \fi
 \end{fitchproof}
-The last line of the proof is not allowed. The name that we used in our substitution instance for `$\exists x\, \enot \atom{L}{x}$' on line~$3$, namely `$b$', occurs in line~$4$. This would be no better:
+此证明的最后一行是不允许的。我们在第 $3$ 行为 “$\exists x\, \enot \atom{L}{x}$” 所用代入实例中的名称 “$b$’，出现在了第 $4$ 行中。下述尝试同样无效：
 \begin{fitchproof}
 	\hypo{f}{\atom{L}{b}}\PR
 	\hypo{nf}{\exists x\, \enot \atom{L}{x}}\PR
 	\open
 		\hypo{na}{\enot \atom{L}{b}}\AS
 		\have{con}{\atom{L}{b} \eand \enot \atom{L}{b}}\ai{f, na}
-		\have{con1}{\exists x (\atom{L}{x} \eand \enot \atom{L}{x})}\Ei{con}		
+		\have{con1}{\exists x (\atom{L}{x} \eand \enot \atom{L}{x})}\Ei{con}
 	\close
 \ifHTMLtarget
 	\have{econ1}{\exists x (\atom{L}{x} \eand \enot
-	\atom{L}{x})}\by{naughty attempt to invoke $\exists$E }{nf, na-con1}
+	\atom{L}{x})}\by{不当尝试调用 $\exists$E }{nf, na-con1}
 \else
-	\have{econ1}{\exists x (\atom{L}{x} \eand \enot \atom{L}{x})}\by{naughty attempt}{}
-	\have[\ ]{x}{}\by{to invoke $\exists$E }{nf, na-con1}
+	\have{econ1}{\exists x (\atom{L}{x} \eand \enot \atom{L}{x})}\by{不当尝试}{}
+	\have[\ ]{x}{}\by{调用 $\exists$E }{nf, na-con1}
 \fi
 \end{fitchproof}
-The last line is still not allowed. For the name that we used in our substitution instance for `$\exists x\, \enot \atom{L}{x}$', namely `$b$', occurs in an undischarged assumption, namely line~$1$.
+最后一行仍然不允许。因为用于 “$\exists x\, \enot \atom{L}{x}$” 的代入实例中的名称 “$b$’，出现在了一个未解除的假设中（即第 $1$ 行）。
 
-Finally, consider this `proof':
+最后，考虑以下“证明”：
 \begin{fitchproof}
 	\hypo{nf}{\exists x\, \atom{L}{a, x}}\PR
 	\open
 		\hypo{na}{\atom{L}{a, a}}\AS
-		\have{con1}{\exists x\,\atom{L}{x,x}}\Ei{na}		
+		\have{con1}{\exists x\,\atom{L}{x,x}}\Ei{na}
 	\close
 \ifHTMLtarget
-	\have{econ1}{\exists x\,\atom{L}{x,x}}\by{naughty attempt to invoke $\exists$E }{nf, na-con1}
+	\have{econ1}{\exists x\,\atom{L}{x,x}}\by{不当尝试调用 $\exists$E }{nf, na-con1}
 \else
-	\have{econ1}{\exists x\,\atom{L}{x,x}}\by{naughty attempt}{}
-	\have[\ ]{x}{}\by{to invoke $\exists$E }{nf, na-con1}
+	\have{econ1}{\exists x\,\atom{L}{x,x}}\by{不当尝试}{}
+	\have[\ ]{x}{}\by{调用 $\exists$E }{nf, na-con1}
 \fi
 \end{fitchproof}
-Here the name `$a$' violates the second condition of the $\exists$E
-rule: it occurs in `$\exists x\, \atom{L}{a, x}$' on line~$1$. And we
-have to prevent this from being a proof, since it is invalid: `Someone
-likes themselves' does not follow from `Alex likes someone'.
+此处名称 “$a$’ 违反了 $\exists$E 规则的第二个条件：它出现在 ”$\exists x\, \atom{L}{a, x}$”（即第 $1$ 行）中。我们必须阻止这成为一个有效的证明，因为它是无效的：“有人喜欢自己”并不从“Alex喜欢某人”推出。
 
-The moral of the story is this. \emph{If you want to squeeze information out of an existential quantifier, choose a new name for your substitution instance.} That way, you can guarantee that you meet all the constraints on the rule for $\exists$E.
+由此得出的要点是：\emph{若要从一个存在量词中提取信息，请为你的代入实例选择一个新的名称。}这样才能确保满足 $\exists$E 规则的所有约束。
 
-\section{Quantifier rules and vacuous quantification}
+\section{量词规则与空量化}
 
-There is a subtle issue in our quantifier rules that has to do with an
-aspect of the way we have specified the rules of our syntax, namely
-the possibility of \emph{vacuous quantification} (see the end of
-\cref{s:FreeVars}). In \cref{s:forallElim,s:existsElim} we made use of
-the substitution notation of \cref{s:TruthFOL}: $\metav{A}(\ldots
-\metav{c} \ldots \metav{c} \ldots)$ is the formula obtained by
-replacing every \emph{free} occurrence of $\metav{x}$ in $\metav{A}$
-with~$\metav{c}$. Here, we emphasize the `free' for a reason. It means
-you cannot always replace \emph{every} occurrence of~$\metav{x}$. For
-instance, this would be incorrect:
+我们的量词规则中有一个微妙之处，这与我们语法规则的一个方面有关，即\emph{空量化}的可能性（见 \cref{s:FreeVars} 末尾）。在 \cref{s:forallElim,s:existsElim} 中，我们使用了 \cref{s:TruthFOL} 的替换记号：$\metav{A}(\ldots
+\metav{c} \ldots \metav{c} \ldots)$ 是将 $\metav{A}$ 中 $\metav{x}$ 的所有\emph{自由}出现替换为~$\metav{c}$ 后得到的公式。此处我们强调“自由”是有原因的。它意味着你不能总是替换\emph{每一个}~$\metav{x}$ 的出现。例如，下述替换就是错误的：
+
 \begin{fitchproof}
 	\hypo{a}{\forall x(\atom{F}{x} \land \exists x\,\atom{G}{x})}\PR
 	\ifHTMLtarget
-	\have{e}{\atom{F}{a} \land \exists x\,\atom{G}{a}}\by{naughty attempt to invoke $\forall$E}{a}
+	\have{e}{\atom{F}{a} \land \exists x\,\atom{G}{a}}\by{不当的尝试：意图应用 $\forall$E}{a}
 \else
-	\have{e}{\atom{F}{a} \land \exists x\,\atom{G}{a}}\by{naughty attempt}{}
-	\have[\ ]{x}{}\by{to invoke $\forall$E}{a}
+	\have{e}{\atom{F}{a} \land \exists x\,\atom{G}{a}}\by{不当的尝试}{}
+	\have[\ ]{x}{}\by{意图应用 $\forall$E}{a}
 \fi
 \end{fitchproof}
-On line $2$, we have formed the substitution instance incorrectly: we
-replaced the `$x$' in both `$\atom{F}{x}$' and in `$\atom{G}{x}$'
-by~`$a$', but only the first one is a free occurrence---the other one
-is bound by~`$\exists x$'. Not only would this violate a restriction
-on substitution, it would allow us to `prove' an invalid argument.
-Since `$\exists x\,\atom{G}{a}$' is a case of vacuous quantification,
-it is equivalent to just `$\atom{G}{a}$'. Furthermore, line~$1$ is
-equivalent to `$\forall x(\atom{F}{x} \land \exists y\,\atom{G}{y})$'.
-It should be easy to see that this does not entail `$\atom{F}{a} \land
-\atom{G}{a}$'. You're unlikely to encounter such a case (unless you
-have a devious instructor): your exercises will likely only involve
-sentences like `$\forall x(\atom{F}{x} \land \exists
-y\,\atom{G}{y})$', with variables nicely kept separate.
 
 
-In \cref{s:existsIntro}, we said that we use `$\metav{A}(\ldots
-\metav{x} \ldots \metav{c}\ldots)$' to indicate any formula obtained
-by replacing \emph{some or all} of the instances of the name \metav{c}
-with the variable~\metav{x} \emph{provided~$\metav{c}$,
-wherever it is replaced, does not occur in the scope of a quantifier
-binding~$\metav{x}$}. The emphasized restriction prohibiting the
-replacement of $\metav{c}$ in some cases is somewhat subtle. You
-probably will never find yourself in a situation where you run the
-risk of violating it. But it is needed to make the rule correct.
-Since we allow vacuous quantification, for instance, `$\exists
-x\forall x\,\atom{L}{x,x}$' is a legal sentence of FOL. It's just that
-in it, the first `$\exists x$' doesn't do any work, and the sentence
-is equivalent to just `$\forall x\,\atom{L}{x,x}$'. Now, `$\forall
-x\,\atom{L}{x,x}$' \emph{could} be obtained from `$\forall
-x\,\atom{L}{a,x}$' by replacing the name~`$a$' by the variable~`$x$'
-if we weren't careful and overlooked that here `$a$' \emph{does} occur
-in the scope of~`$\forall x$'. Without the restriction, the following
-would then be allowed:
+在第 $2$ 行，我们错误地构造了代入实例：我们把 “$\atom{F}{x}$” 和 “$\atom{G}{x}$” 中的 “$x$” 都替换成了 “$a$”，但只有前一个 “$x$” 是自由出现---后一个被 “$\exists x$” 约束着。这不仅违反了关于替换的一条限制，还会使我们能够“证明”一个无效论证。由于 “$\exists x\,\atom{G}{a}$” 是一个空量化的例子，它等价于 “$\atom{G}{a}$”。此外，第 $1$ 行等价于 “$\forall x(\atom{F}{x} \land \exists y\,\atom{G}{y})$”。
+不难看出，它不蕴涵 “$\atom{F}{a} \land
+\atom{G}{a}$'。你不太可能遇到这样的情况（除非你的出题者别有用心）：你的练习题很可能只涉及像 “$\forall x(\atom{F}{x} \land \exists
+y\,\atom{G}{y})$' 这样的句子，其中的变元被清晰地区分开。
+
+在 \cref{s:existsIntro} 中，我们说过，用 “$\metav{A}(\ldots
+\metav{x} \ldots \metav{c}\ldots)$' 表示通过以下方式得到的任何公式：将名称 \metav{c} 的一个或多个出现替换为变元~\metav{x}，\emph{前提是：$\metav{c}$ 在被替换的任何位置，都不位于一个约束着 $\metav{x}$ 的量词的辖域内}。这句强调的条件在某些情况下禁止替换 $\metav{c}$，这一点有些微妙。在实践中，你可能永远不会面临违反它的风险。但这一限制是保证规则正确性所必需的。例如，由于我们允许空量化，“$\exists
+x\forall x\,\atom{L}{x,x}$' 是一阶逻辑的一个合式语句。只不过，其中的第一个 “$\exists x$” 并不起实际作用，该语句等价于 “$\forall x\,\atom{L}{x,x}$”。现在，“$\forall
+x\,\atom{L}{x,x}$' \emph{本可以} 通过将名称~“$a$” 替换为变元~“$x$” 从 “$\forall
+x\,\atom{L}{a,x}$' 得到，如果我们不仔细，忽略了 “$a$” \emph{确实} 位于 “$\forall x$” 的辖域内这一事实的话。如果没有上述限制，那么下面的推导就会被允许：
+
+
 \begin{fitchproof}
 		\hypo{a}{\forall x\, \atom{L}{a,x}}\PR
 		\ifHTMLtarget
-		\have{e}{\exists x\, \forall x\, \atom{L}{x,x}}\by{naughty attempt to invoke $\exists$I}{a}
+		\have{e}{\exists x\, \forall x\, \atom{L}{x,x}}\by{不当的尝试：意图应用 $\exists$I}{a}
 	\else
-		\have{e}{\exists x\, \forall x\, \atom{L}{x,x}}\by{naughty attempt}{}
-		\have[\ ]{x}{}\by{to invoke $\exists$I}{a}
+		\have{e}{\exists x\, \forall x\, \atom{L}{x,x}}\by{不当的尝试}{}
+		\have[\ ]{x}{}\by{意图应用 $\exists$I}{a}
 	\fi\end{fitchproof}
-But since `$\exists x\, \forall x\, \atom{L}{x,x}$' is equivalent to
-just `$\forall x\, \atom{L}{x,x}$', this would be an invalid inference.
-To see why, read `$L$' as `likes': From `Alex likes everyone' it does
-not follow that everyone likes everyone.
 
-Similarly, in \cref{s:forallIntro}, we said that $\metav{A}(\ldots
-\metav{x} \ldots \metav{x}\ldots)$ is the result of replacing
-\emph{every} occurrence of~$\metav{c}$ in $\metav{A}(\ldots \metav{c}
-\ldots \metav{c}\ldots)$ by~$\metav{x}$, but that \emph{this is only
-allowed as long as $\metav{c}$ does not occur in the scope of a
-quantifier binding~$\metav{x}$ in~$\metav{A}$}. Like the constraint
-involved in the statement of the $\exists$I rule, it does not often
-happen that you'd risk violating it in practice. But here's why it's
-important. Again, since we allow vacuous quantification, `$\forall
-x\exists x\,\atom{L}{x,x}$' is a legal sentence of FOL. However,
-`$\forall x\exists x\,\atom{L}{x,x}$' can be obtained from `$\forall
-x\,\atom{L}{a,x}$' by replacing the name~`$a$' by the variable~`$x$'
-everywhere. This violates the restriction we included, though: `$a$'
-does occur in the scope of~`$\forall x$' in this case. Without the
-restriction, the following would be allowed:
+
+但由于 “$\exists x\, \forall x\, \atom{L}{x,x}$” 等价于 “$\forall x\, \atom{L}{x,x}$”，这将是一个无效的推理。为了明白为何如此，不妨把 “$L$” 解读为“喜欢”：从“Alex 喜欢每个人”并不能推出“每个人都喜欢每个人”。
+
+类似地，在 \cref{s:forallIntro} 中，我们说过，$\metav{A}(\ldots
+\metav{x} \ldots \metav{x}\ldots)$ 是将 $\metav{A}(\ldots \metav{c}
+\ldots \metav{c}\ldots)$ 中 $\metav{c}$ 的\emph{每一个}出现替换为 $\metav{x}$ 的结果，但\emph{仅当 $\metav{c}$ 在 $\metav{A}$ 中不位于一个约束着 $\metav{x}$ 的量词的辖域内时才允许这样做}。如同 $\exists$I 规则陈述中包含的限制一样，在实践中你很少会面临违反它的风险。但这就是它为何重要。再次，由于我们允许空量化，“$\forall
+x\exists x\,\atom{L}{x,x}$' 是一阶逻辑的一个合式语句。然而，“$\forall x\exists x\,\atom{L}{x,x}$” 可以通过将名称~“$a$” 处处替换为变元~“$x$” 从 “$\forall
+x\,\atom{L}{a,x}$' 得到。这违反了我们所纳入的限制：在此例中，“$a$” 确实位于 “$\forall x$” 的辖域内。如果没有这个限制，下面的推导就会被允许：
+
+
 \begin{fitchproof}
 	\hypo{p}{\forall y\exists x\,\atom{L}{y,x}}\PR
 	\have{a}{\exists x\, \atom{L}{a,x}}\Ae{p}
 \ifHTMLtarget
-	\have{e}{\forall x\, \exists x\, \atom{L}{x,x}}\by{naughty attempt to invoke $\forall$I}{a}
+	\have{e}{\forall x\, \exists x\, \atom{L}{x,x}}\by{不当的尝试：意图应用 $\forall$I}{a}
 \else
-\have{e}{\forall x\, \exists x\, \atom{L}{x,x}}\by{naughty attempt}{}
-	\have[\ ]{x}{}\by{to invoke $\forall$I}{a}
+\have{e}{\forall x\, \exists x\, \atom{L}{x,x}}\by{不当的尝试}{}
+	\have[\ ]{x}{}\by{意图应用 $\forall$I}{a}
 \fi
 \end{fitchproof}
-But since `$\forall x\, \exists x\, \atom{L}{x,x}$' is equivalent to
-just `$\exists x\, \atom{L}{x,x}$', this would be an invalid
-inference: `Someone likes themselves' does not follow from `Everyone
-likes someone'.
+
+
+但由于 “$\forall x\, \exists x\, \atom{L}{x,x}$” 等价于 “$\exists x\, \atom{L}{x,x}$”，这将是一个无效的推理：“有人喜欢他们自己”不能从“每个人都喜欢某个人”推出。
 
 \practiceproblems
 \problempart
-Explain why these two `proofs' are \emph{incorrect}. Also, provide interpretations which would invalidate the fallacious argument forms the `proofs' enshrine:
+解释为什么下面这两个“证明”是\emph{错误的}。同时，提供能证明这些“证明”所体现的谬误论证形式无效的解释：
+
+
 \begin{multicols}{2}
 	\begin{fitchproof}
 		\hypo{Rxx}{\forall x\, \atom{R}{x,x}}\PR
@@ -429,9 +406,10 @@ Explain why these two `proofs' are \emph{incorrect}. Also, provide interpretatio
 	\end{fitchproof}
 \end{multicols}
 
-\problempart 
+\problempart
 \label{pr.justifyFOLproof}
-The following three proofs are missing their citations (rule and line numbers). Add them, to turn them into bona fide proofs.
+下面的三个证明缺少引用（规则和行号）。请补充它们，使其成为完整的证明。
+
 \begin{compactlist}
 \item \begin{fitchproof}
 \hypo{p1}{\forall x\exists y(\atom{R}{x,y} \eor \atom{R}{y,x})}
@@ -465,13 +443,13 @@ The following three proofs are missing their citations (rule and line numbers). 
 \hypo{b}{\exists x\,\forall y\, \atom{L}{x,y}}
 \hypo{c}{\forall x\, \atom{J}{x}}
 \open
-	\hypo{2}{\forall y\, \atom{L}{a,y}}
-	\have{3}{\atom{L}{a,a}}{}
-	\have{d}{\atom{J}{a}}{}
-	\have{e}{\atom{J}{a} \eif \atom{K}{a}}{}
-	\have{f}{\atom{K}{a}}{}
-	\have{4}{\atom{K}{a} \eand \atom{L}{a,a}}{}
-	\have{5}{\exists x(\atom{K}{x} \eand \atom{L}{x,x})}{}
+\hypo{2}{\forall y\, \atom{L}{a,y}}
+\have{3}{\atom{L}{a,a}}{}
+\have{d}{\atom{J}{a}}{}
+\have{e}{\atom{J}{a} \eif \atom{K}{a}}{}
+\have{f}{\atom{K}{a}}{}
+\have{4}{\atom{K}{a} \eand \atom{L}{a,a}}{}
+\have{5}{\exists x(\atom{K}{x} \eand \atom{L}{x,x})}{}
 \close
 \have{j}{\exists x(\atom{K}{x} \eand \atom{L}{x,x})}{}
 \end{fitchproof}
@@ -479,33 +457,28 @@ The following three proofs are missing their citations (rule and line numbers). 
 
 \problempart
 \label{pr.BarbaraEtc.proof1}
-In \hyperref[pr.BarbaraEtc]{exercise \ref*{s:MoreMonadic}A}, we
-considered fifteen syllogistic figures of Aristotelian logic. Provide
-proofs for each of the argument forms. NB: You will find it
-\emph{much} easier if you symbolize (for example) `No F is G' as
-`$\forall x (\atom{F}{x} \eif \enot \atom{G}{x})$'.
-
-\
+在\hyperref[pr.BarbaraEtc]{练习 \ref*{s:MoreMonadic}A}中，我们考察了亚里士多德逻辑的十五个三段论形式。请为每一种论证形式提供证明。注意：如果你将（例如）“没有F是G”符号化为“$\forall x (\atom{F}{x} \eif \enot \atom{G}{x})$”，你会发现证明要\emph{容易得多}。
 
 \problempart
 \label{pr.BarbaraEtc.proof2}
-Aristotle and his successors identified other syllogistic forms which depended upon `existential import'. Symbolize each of these argument forms in FOL and offer proofs.
+亚里士多德及其后继者还识别出其他一些依赖于“存在引入”的三段论形式。请用一阶逻辑符号化下述每一种论证形式，并给出证明。
+
 \begin{compactlist}
-	\item \textbf{Barbari.} Something is H. All G are F. All H are G. So: Some H is F.
-	\item \textbf{Celaront.} Something is H. No G are F. All H are G. So: Some H is not F.
-	\item \textbf{Cesaro.} Something is H. No F are G. All H are G. So: Some H is not F.
-	\item \textbf{Camestros.} Something is H. All F are G. No H are G. So: Some H is not F.
-	\item \textbf{Felapton.} Something is G. No G are F. All G are H. So: Some H is not F.
-	\item \textbf{Darapti.} Something is G. All G are F. All G are H. So: Some H is F.
-	\item \textbf{Calemos.} Something is H. All F are G. No G are H. So: Some H is not F.
-	\item \textbf{Fesapo.} Something is G. No F is G. All G are H. So: Some H is not F.
-	\item \textbf{Bamalip.} Something is F. All F are G. All G are H. So: Some H are F.
+	\item \textbf{Barbari.} 有H。所有G都是F。所有H都是G。所以：有H是F。
+	\item \textbf{Celaront.} 有H。没有G是F。所有H都是G。所以：有H不是F。
+	\item \textbf{Cesaro.} 有H。没有F是G。所有H都是G。所以：有H不是F。
+	\item \textbf{Camestros.} 有H。所有F都是G。没有H都是G。所以：有H不是F。
+	\item \textbf{Felapton.} 有G。没有G是F。所有G都是H。所以：有H不是F。
+	\item \textbf{Darapti.} 有G。所有G都是F。所有G都是H。所以：有H是F。
+	\item \textbf{Calemos.} 有H。所有F都是G。没有G是H。所以：有H不是F。
+	\item \textbf{Fesapo.} 有G。没有F是G。所有G都是H。所以：有H不是F。
+	\item \textbf{Bamalip.} 有F。所有F都是G。所有G都是H。所以：有H是F。
 \end{compactlist}
 
 \problempart
 \label{pr.someFOLproofs}
-For each of the following claims, provide an FOL proof that shows it
-is true.
+对于下列各断言，请提供一个一阶逻辑证明以表明其为真。
+
 \begin{compactlist}
 \item $\proves \forall x\,\atom{F}{x} \eif \forall y(\atom{F}{y} \eand \atom{F}{y})$
 \item $\forall x(\atom{A}{x}\eif \atom{B}{x}), \exists x\,\atom{A}{x} \proves \exists x\,\atom{B}{x}$
@@ -521,16 +494,16 @@ is true.
 \solutions
 \problempart
 \label{pr.likes}
-Write a symbolization key for the following argument, symbolize it, and prove it:
+为以下论证写一套符号化约定，将其符号化，并证明它：
+
 \begin{earg}
-\item There is someone who likes everyone who likes everyone that she
-likes. 
-\item[\texttherefore] There is someone who likes herself.
+\item 有这样一个人，她喜欢所有喜欢每一个她所喜欢的人的人。
+\item[\texttherefore] 有这样一个人，她喜欢她自己。
 \end{earg}
 
-
 \problempart
-Show that each pair of sentences is interderivable.
+证明下列各对语句是可互推的。
+
 \begin{compactlist}
 \item $\forall x (\atom{A}{x}\eif \enot \atom{B}{x})$, $\enot\exists x(\atom{A}{x} \eand \atom{B}{x})$
 \item $\forall x (\enot\atom{A}{x}\eif \atom{B}{d})$, $\forall x\,\atom{A}{x} \eor \atom{B}{d}$
@@ -540,7 +513,8 @@ Show that each pair of sentences is interderivable.
 \solutions
 \problempart
 \label{pr.FOLequivornot}
-For each of the following pairs of sentences: If they are interderivable, give proofs to show this. If they are not, construct an interpretation to show that they are not logically equivalent.
+对于下列各对语句：如果它们可互推，请给出证明以表明这一点。如果它们不可互推，请构造一个解释以表明它们在逻辑上不等价。
+
 \begin{compactlist}
 \item $\forall x\,\atom{P}{x} \eif \atom{Q}{c}, \forall x (\atom{P}{x} \eif \atom{Q}{c})$
 \item $\forall x\,\forall y\, \forall z\,\atom{B}{x,y,z}, \forall x\,\atom{B}{x,x,x}$
@@ -552,7 +526,8 @@ For each of the following pairs of sentences: If they are interderivable, give p
 \solutions
 \problempart
 \label{pr.FOLvalidornot}
-For each of the following arguments: If it is valid in FOL, give a proof. If it is invalid, construct an interpretation to show that it is invalid.
+对于下列各论证：如果它在一阶逻辑中有效，请给出证明。如果它无效，请构造一个解释以表明其无效。
+
 \begin{compactlist}
 \item $\exists y\,\forall x\,\atom{R}{x,y} \therefore \forall x\,\exists y\,\atom{R}{x,y}$
 \item $\forall x\,\exists y\,\atom{R}{x,y} \therefore  \exists y\,\forall x\,\atom{R}{x,y}$
@@ -566,36 +541,34 @@ For each of the following arguments: If it is valid in FOL, give a proof. If it 
 \item $\exists x\,\atom{M}{x} \eif \exists x\,\atom{N}{x}$, $\enot \exists x\,\atom{N}{x}\therefore  \forall x\, \enot \atom{M}{x}$
 \end{compactlist}
 
-\chapter{Proofs with quantifiers}
+\chapter{量词的证明}
 
-In \cref{s:stratTFL} we discussed strategies for constructing proofs
-using the basic rules of natural deduction for TFL. The same
-principles apply to the rules for the quantifiers. If we want to prove
-a quantifier sentence $\forall \metav{x}\,
-\atom{\metav{A}}{\metav{x}}$ or $\exists \metav{x}\,
-\atom{\metav{A}}{\metav{x}}$, we can work backward by justifying the
-sentence we want by $\forall$I or $\exists$I and trying to find a
-proof of the corresponding premise of that rule. And to work forward
-from a quantified sentence, we apply $\forall$E or $\exists$E, as the
-case may be.
+在\cref{s:stratTFL}中，我们讨论了使用真值函项逻辑的自然演绎基本规则来构造证明的策略。同样的原则也适用于量词规则。如果我们想证明一个量化句子$\forall \metav{x}\,
+\atom{\metav{A}}{\metav{x}}$或$\exists \metav{x}\,
+\atom{\metav{A}}{\metav{x}}$，我们可以进行逆向推理：试图通过$\forall$I或$\exists$I来证明目标句子，并尝试找到该规则对应前提的证明。而要从一个量化句子进行正向推理，我们则根据情况应用$\forall$E或$\exists$E。
 
-Specifically, suppose you want to prove $\forall \metav{x}\, \atom{\metav{A}}{\metav{x}}$. To do so using $\forall$I, we would need a proof of $\atom{\metav{A}}{\metav{c}}$ for some name~$\metav{c}$ which does not occur in any undischarged assumption. To apply the corresponding strategy, i.e., to construct a proof of $\forall \metav{x}\, \atom{\metav{A}}{\metav{x}}$ by working backward, is thus to write $\atom{\metav{A}}{\metav{c}}$ above it and then to continue to try to find a proof of that sentence.
+具体来说，假设你想证明$\forall \metav{x}\, \atom{\metav{A}}{\metav{x}}$。要使用$\forall$I来证明，我们需要对某个名称~$\metav{c}$证明$\atom{\metav{A}}{\metav{c}}$，且该名称不能出现在任何未解除的假设中。应用相应的策略，即通过逆向推理构造$\forall \metav{x}\, \atom{\metav{A}}{\metav{x}}$的证明，做法是在其上方写下$\atom{\metav{A}}{\metav{c}}$，然后继续尝试寻找该句子的证明。
+
 \begin{fitchproof}
 	\ellipsesline
 	\have[n]{n}{\atom{\metav{A}}{\metav{c}}}
 	\have{m}{\forall \metav{x}\, \atom{\metav{A}}{\metav{x}}}\Ai{n}
 \end{fitchproof}
-$\atom{\metav{A}}{\metav{c}}$ is obtained from $\atom{\metav{A}}{\metav{x}}$ by replacing every free occurrence of $\metav{x}$ in $\atom{\metav{A}}{\metav{x}}$ by~$\metav{c}$. For this to work, $\metav{c}$ must satisfy the special condition. We can ensure that it does by always picking a name that does not already occur in the proof constructed so far. (Of course, it will occur in the proof we end up constructing---just not in an assumption that is undischarged at line~$n+1$.)
 
-To work backward from a sentence $\exists \metav{x}\, \atom{\metav{A}}{\metav{x}}$ we similarly write a sentence above it that can serve as a justification for an application of the $\exists$I rule, i.e., a sentence of the form $\atom{\metav{A}}{\metav{c}}$.
+$\atom{\metav{A}}{\metav{c}}$是通过将$\atom{\metav{A}}{\metav{x}}$中$\metav{x}$的每个自由出现替换为~$\metav{c}$而从$\atom{\metav{A}}{\metav{x}}$得到的。为此，$\metav{c}$必须满足特殊条件。我们可以通过总是选择一个尚未在到目前为止已构造的证明中出现的名称来确保这一点。（当然，它最终会出现在我们构造的证明中——只是不在第~$n+1$行未解除的假设中。）
+
+要从句子$\exists \metav{x}\, \atom{\metav{A}}{\metav{x}}$逆向推理，我们类似地在它上方写下一个句子，该句子可以作为$\exists$I规则应用的依据，即一个形式为$\atom{\metav{A}}{\metav{c}}$的句子。
+
 \begin{fitchproof}
 	\ellipsesline
 	\have[n]{n}{\atom{\metav{A}}{\metav{c}}}
 	\have{m}{\exists \metav{x}\, \atom{\metav{A}}{\metav{x}}}\Ei{n}
 \end{fitchproof}
-This looks just like what we would do if we were working backward from a universally quantified sentence. The difference is that whereas for $\forall$I we have to pick a name~$\metav{c}$ which does not occur in the proof (so far), for $\exists$I we may and in general must pick a name~$\metav{c}$ which already occurs in the proof.  Just like in the case of $\eor$I, it is often not clear which $\metav{c}$ will work out, and so to avoid having to backtrack you should work backward from existentially quantified sentences only when all other strategies have been applied.
 
-By contrast, working \emph{forward} from sentences $\exists \metav{x}\, \atom{\metav{A}}{\metav{x}}$ generally always works and you won't have to backtrack. Working forward from an existentially quantified sentence takes into account not just $\exists \metav{x}\, \atom{\metav{A}}{\metav{x}}$ but also whatever sentence $\metav{B}$ you would like to prove. It requires that you set up a subproof above $\metav{B}$, wherein $\metav{B}$ is the last line, and a substitution instance $\atom{\metav{A}}{\metav{c}}$ of $\exists \metav{x}\, \atom{\metav{A}}{\metav{x}}$ as the assumption.  In order to ensure that the condition on $\metav{c}$ that governs $\exists$E is satisfied, chose a name $\metav{c}$ which does not already occur in the proof.
+这看起来就像我们从全称量化句子逆向推理时所做的。区别在于，对于$\forall$I，我们必须选择一个尚未在证明中（到目前为止）出现的名称~$\metav{c}$；而对于$\exists$I，我们可以且通常必须选择一个已经在证明中出现的名称~$\metav{c}$。就像在$\eor$I的情况下一样，通常不清楚哪个$\metav{c}$会奏效，因此为了避免不得不回溯，你应该只在所有其他策略都已应用后，才从存在量化句子进行逆向推理。
+
+相比之下，从句子$\exists \metav{x}\, \atom{\metav{A}}{\metav{x}}$进行\emph{正向推理}通常总是有效的，且你无需回溯。从存在量化句子进行正向推理，不仅要考虑$\exists \metav{x}\, \atom{\metav{A}}{\metav{x}}$，还要考虑你希望证明的任何句子$\metav{B}$。它要求你在$\metav{B}$的上方设立一个子证明，其中$\metav{B}$是最后一行，并以$\exists \metav{x}\, \atom{\metav{A}}{\metav{x}}$的一个代入实例$\atom{\metav{A}}{\metav{c}}$作为假设。为了确保满足$\exists$E关于$\metav{c}$的条件，应选择一个尚未在证明中出现的名称$\metav{c}$。
+
 \begin{fitchproof}
 	\ellipsesline
 	\have[m]{m}{\exists \metav{x}\, \atom{\metav{A}}{\metav{x}}}
@@ -607,17 +580,21 @@ By contrast, working \emph{forward} from sentences $\exists \metav{x}\, \atom{\m
 	\close
 	\have{e}{\metav{B}}\Ee{m,n-k}
 \end{fitchproof}
-You'll then continue with the goal of proving $\metav{B}$, but now inside a subproof in which you have an additional sentence to work with, namely~$\atom{\metav{A}}{\metav{c}}$.
 
-Lastly, working forward from $\forall \metav{x}\, \atom{\metav{A}}{\metav{x}}$ means that you can always write down $\atom{\metav{A}}{\metav{c}}$ and justify it using $\forall$E, for any name~$\metav{c}$. Of course, you wouldn't want to do that willy-nilly. Only certain names $\metav{c}$ will help in your task of proving whatever goal sentence you are working on. So, like working backward from $\exists \metav{x}\, \atom{\metav{A}}{\metav{x}}$, you should work forward from $\forall \metav{x}\, \atom{\metav{A}}{\metav{x}}$ only after all other strategies have been applied.
+随后你将继续以证明$\metav{B}$为目标，但现在是在一个子证明中，你有一个额外的句子可以运用，即~$\atom{\metav{A}}{\metav{c}}$。
 
-Let's consider as an example the argument $\forall x(\atom{A}{x} \eif B) \therefore \exists x\,\atom{A}{x} \eif B$. To start constructing a proof, we write the premise at the top and the conclusion at the bottom.
+最后，从$\forall \metav{x}\, \atom{\metav{A}}{\metav{x}}$进行正向推理意味着，对于任何名称~$\metav{c}$，你总是可以写下$\atom{\metav{A}}{\metav{c}}$并用$\forall$E证明它。当然，你不会想不加选择地这样做。只有某些名称$\metav{c}$会有助于你证明当前正在处理的目标句子。因此，就像从$\exists \metav{x}\, \atom{\metav{A}}{\metav{x}}$逆向推理一样，你应该只在所有其他策略都已应用后，才从$\forall \metav{x}\, \atom{\metav{A}}{\metav{x}}$进行正向推理。
+
+让我们以论证$\forall x(\atom{A}{x} \eif B) \therefore \exists x\,\atom{A}{x} \eif B$为例。开始构造证明时，我们将前提写在顶部，结论写在底部。
+
 \begin{fitchproof}
 \hypo{1}{\forall x(\atom{A}{x} \eif B)}\PR
 \ellipsesline
 \have[n]{7}{\exists x\,\atom{A}{x} \eif B}
 \end{fitchproof}
-The strategies for connectives of TFL still apply, and you should apply them in the same order: first work backward from conditionals, negated sentences, conjunctions, and now also universal quantifiers, then forward from disjunctions and now existential quantifiers, and only then try to apply $\eif$E, $\enot$E, $\lor$I, $\forall$E, or $\exists$I. In our case, that means, working backward from the conclusion:
+
+真值函项逻辑中联结词的策略仍然适用，你应该以同样的顺序应用它们：首先从条件句、否定句、合取句以及（现在的）全称量化句逆向推理；然后从析取句以及（现在的）存在量化句正向推理；只有在这之后，才尝试应用$\eif$E、$\enot$E、$\lor$I、$\forall$E或$\exists$I。在我们的例子中，这意味着从结论逆向推理：
+
 \begin{fitchproof}
 	\hypo{1}{\forall x(\atom{A}{x} \eif B)}\PR
 	\open
@@ -627,7 +604,9 @@ The strategies for connectives of TFL still apply, and you should apply them in 
 	\close
 	\have[n]{7}{\exists x\,\atom{A}{x} \eif B}\ci{2-(6)}
 \end{fitchproof}
-Our next step should be to work forward from $\exists x\,\atom{A}{x}$ on line~$2$. For that, we have to pick a name not already in our proof. Since no names appear, we can pick any name, say~`$d$'
+
+我们的下一步应该是从第$2$行的$\exists x\,\atom{A}{x}$进行正向推理。为此，我们必须选择一个尚未出现在证明中的名称。既然还没有任何名称出现，我们可以选任意一个，比方说“$d$”。
+
 \begin{fitchproof}
 	\hypo{1}{\forall x(\atom{A}{x} \eif B)}\PR
 	\open
@@ -641,7 +620,9 @@ Our next step should be to work forward from $\exists x\,\atom{A}{x}$ on line~$2
 	\close
 	\have[n]{7}{\exists x\,\atom{A}{x} \eif B}\ci{2-(6)}
 \end{fitchproof}
-Now we've exhausted our primary strategies, and it is time to work forward from the premise $\forall x(\atom{A}{x} \eif B)$. Applying $\forall$E means we can justify any instance of $A(\metav{c}) \eif B$, regardless of what $\metav{c}$ we choose. Of course, we'll do well to choose $d$, since that will give us $\atom{A}{d} \eif B$. Then we can apply $\eif$E to justify~$B$, finishing the proof.
+
+现在我们已用完了主要策略，应该从前提$\forall x(\atom{A}{x} \eif B)$进行正向推理了。应用$\forall$E意味着我们可以为$A(\metav{c}) \eif B$的任意实例提供证成，无论选择哪个$\metav{c}$。当然，选择$d$是明智的，因为这将给出$\atom{A}{d} \eif B$。然后我们就可以应用$\eif$E来证成$B$，从而完成证明。
+
 \begin{fitchproof}
 	\hypo{1}{\forall x(\atom{A}{x} \eif B)}\PR
 	\open
@@ -656,20 +637,27 @@ Now we've exhausted our primary strategies, and it is time to work forward from 
 	\have{7}{\exists x\,\atom{A}{x} \eif B}\ci{2-6}
 \end{fitchproof}
 
-Now let's construct a proof of the converse. We begin with
+现在让我们来构造其逆命题的证明。我们以
+
 \begin{fitchproof}
 	\hypo{1}{\exists x\,\atom{A}{x} \eif B}\PR
 	\ellipsesline
 	\have[n]{7}{\forall x(\atom{A}{x} \eif B)}
 \end{fitchproof}
-Note that the premise is a conditional, not an existentially quantified sentence, so we should not (yet) work forward from it. Working backward from the conclusion, $\forall x(\atom{A}{x} \eif B)$, leads us to look for a proof of $\atom{A}{d} \eif B$:
+
+开始。
+
+注意，前提是一个条件句，而不是一个存在量化句子，因此我们（暂时）还不应该从它进行正向推理。从结论$\forall x(\atom{A}{x} \eif B)$逆向推理，引导我们去寻找$\atom{A}{d} \eif B$的证明：
+
 \begin{fitchproof}
 	\hypo{1}{\exists x\,\atom{A}{x} \eif B}\PR
 	\ellipsesline
 	\have[n][-1]{6}{\atom{A}{d} \eif B}
 	\have[n]{7}{\forall x(\atom{A}{x} \eif B)}\Ai{6}
 \end{fitchproof}
-And working backward from $\atom{A}{d} \eif B$ means we should set up a subproof with $\atom{A}{d}$ as an assumption and $B$ as the last line:
+
+而从$\atom{A}{d} \eif B$逆向推理，意味着我们应该建立一个以$\atom{A}{d}$为假设、以$B$为最后一行的子证明：
+
 \begin{fitchproof}
 	\hypo{1}{\exists x\,\atom{A}{x} \eif B}\PR
 	\open
@@ -680,7 +668,9 @@ And working backward from $\atom{A}{d} \eif B$ means we should set up a subproof
 	\have[n][-1]{6}{\atom{A}{d} \eif B}\ci{2-(5)}
 	\have[n]{7}{\forall x(\atom{A}{x} \eif B)}\Ai{6}
 \end{fitchproof}
-Now we can work forward from the premise on line~$1$. That's a conditional, and its consequent happens to be the sentence~$B$ we are trying to justify. So we should look for a proof of its antecedent, $\exists x\,\atom{A}{x}$. Of course, that is now readily available, by $\exists$I from line~$2$, and we're done:
+
+现在我们可以从第$1$行的前提进行正向推理了。那是一个条件句，而它的后件恰好就是我们想要证成的句子$B$。所以我们应该寻找一个对其前件$\exists x\,\atom{A}{x}$的证明。当然，这现在是现成的，通过第$2$行的$\exists$I就能得到。这样我们就完成了：
+
 \begin{fitchproof}
 	\hypo{1}{\exists x\,\atom{A}{x} \eif B}\PR
 	\open
@@ -695,7 +685,8 @@ Now we can work forward from the premise on line~$1$. That's a conditional, and 
 \practiceproblems
 
 \problempart
-Use the strategies to find proofs for each of the following arguments and theorems:
+运用策略为以下每一个论证和定理寻找证明：
+
 \begin{compactlist}
 \item $A \eif \forall x\,\atom{B}{x} \therefore \forall x(A \eif \atom{B}{x})$
 \item $\exists x(A \eif \atom{B}{x}) \therefore A \eif \exists x\, \atom{B}{x}$
@@ -706,10 +697,12 @@ Use the strategies to find proofs for each of the following arguments and theore
 \item $\exists x(\atom{A}{x} \eif B) \therefore \forall x\,\atom{A}{x} \eif B$
 \item $\forall x(\atom{A}{x} \eif \exists y\,\atom{A}{y})$
 \end{compactlist}
-Use only the basic rules of TFL in addition to the basic quantifier rules.
+
+除基本量词规则外，仅使用真值函项逻辑的基本规则。
 
 \problempart
-Use the strategies to find proofs for each of the following arguments and theorems:
+运用策略为以下每一个论证和定理寻找证明：
+
 \begin{compactlist}
 \item $\forall x\,\atom{R}{x,x} \therefore \forall x\,\exists y\,\atom{R}{x,y}$
 \item $\forall x\,\forall y\,\forall z[(\atom{R}{x,y} \eand \atom{R}{y,z}) \eif \atom{R}{x,z}]$ \\
@@ -720,7 +713,8 @@ $\therefore \forall x\,\forall y[\atom{R}{x,y} \eif \forall z(\atom{R}{y,z} \eif
 \end{compactlist}
 
 \problempart
-Use the strategies to find proofs for each of the following arguments and theorems:
+运用策略为以下每一个论证和定理寻找证明：
+
 \begin{compactlist}
 \item $\forall x\,\atom{A}{x} \eif B \therefore \exists x(\atom{A}{x} \eif B)$
 \item $A \eif \exists x\, \atom{B}{x} \therefore \exists x(A \eif \atom{B}{x})$
@@ -728,40 +722,54 @@ Use the strategies to find proofs for each of the following arguments and theore
 \item $\exists x(\atom{A}{x} \eif \forall y\,\atom{A}{y})$
 \item $\exists x(\exists y\,\atom{A}{y} \eif \atom{A}{x})$
 \end{compactlist}
-These require the use of IP. Use only the basic rules of TFL in addition to the basic quantifier rules.
 
-\chapter{Conversion of quantifiers}\label{s:CQ}
+这些证明需要使用间接证明。除基本量词规则外，仅使用真值函项逻辑的基本规则。
 
-In this section, we will add some additional rules to the basic rules of the previous section. These govern the interaction of quantifiers and negation.
- 
-In \cref{s:FOLBuildingBlocks}, we noted that $\enot\exists x\metav{A}$ is logically equivalent to $\forall x\, \enot\metav{A}$. We will add some rules to our proof system that govern this. In particular, we add:
+\chapter{量词的转换}\label{s:CQ}
+
+在这一节，我们将在前一节基本规则的基础上增加一些补充规则。这些规则管辖量词和否定之间的互动。
+
+在\cref{s:FOLBuildingBlocks}中，我们注意到$\enot\exists x\metav{A}$逻辑等价于$\forall x\, \enot\metav{A}$。我们将在证明系统中加入一些规则来管辖这一点。具体来说，我们增加：
 	\factoidbox{
-	\begin{fitchproof}
+
+\begin{fitchproof}
 		\have[m]{a}{\forall \metav{x}\, \enot\metav{A}}
 		\have[\ ]{con}{\enot \exists \metav{x}\, \metav{A}}\cq{a}
-	\end{fitchproof}}
-and
+	\end{fitchproof}
+
+}
+以及
 \factoidbox{
-	\begin{fitchproof}
+
+\begin{fitchproof}
 		\have[m]{a}{ \enot \exists \metav{x}\, \metav{A}}
-		\have[\ ]{con}{\forall \metav{x}\, \enot \metav{A}}\cq{a}
-	\end{fitchproof}}
-Equally, we add:
+		\have[\ ]{con}{\forall \metav{x}\, \enot\metav{A}}\cq{a}
+	\end{fitchproof}
+
+}
+同样，我们增加：
 \factoidbox{
-	\begin{fitchproof}
-		\have[m]{a}{\exists \metav{x}\, \enot \metav{A}}
+
+\begin{fitchproof}
+		\have[m]{a}{\exists \metav{x}\, \enot\metav{A}}
 		\have[\ ]{con}{\enot \forall \metav{x}\, \metav{A}}\cq{a}
-	\end{fitchproof}}
-and
+	\end{fitchproof}
+
+}
+以及
 \factoidbox{
-	\begin{fitchproof}
+
+\begin{fitchproof}
 		\have[m]{a}{\enot \forall \metav{x}\, \metav{A}}
-		\have[\ ]{con}{\exists \metav{x}\, \enot \metav{A}}\cq{a}
-	\end{fitchproof}}
+		\have[\ ]{con}{\exists \metav{x}\, \enot\metav{A}}\cq{a}
+	\end{fitchproof}
+
+}
 
 \practiceproblems
 \problempart
-Show in each case that the sentences are inconsistent:
+证明下列各组句子是不一致的：
+
 \begin{compactlist}
 \item $\atom{S}{a}\eif \atom{T}{m}, \atom{T}{m} \eif \atom{S}{a}, \atom{T}{m} \eand \enot \atom{S}{a}$
 \item $\enot\exists x\,\atom{R}{x,a}, \forall x\, \forall y\,\atom{R}{y,x}$
@@ -770,14 +778,16 @@ Show in each case that the sentences are inconsistent:
 \end{compactlist}
 
 \problempart
-Show that each pair of sentences is interderivable:
+证明下列每对句子是可互推的：
+
 \begin{compactlist}
 \item $\forall x (\atom{A}{x}\eif \enot \atom{B}{x}), \enot\exists x(\atom{A}{x} \eand \atom{B}{x})$
 \item $\forall x (\enot\atom{A}{x}\eif \atom{B}{d}), \forall x\,\atom{A}{x} \eor \atom{B}{d}$
 \end{compactlist}
 
 \problempart
-In \cref{s:MoreMonadic}, we considered what happens when we move quantifiers `across' various logical operators. Show that each pair of sentences is interderivable:
+在 \cref{s:MoreMonadic} 中，我们考虑了将量词“移过”各种逻辑算子时会发生什么。证明下列每对句子是可互推的：
+
 \begin{compactlist}
 \item $\forall x(\atom{F}{x} \eand \atom{G}{a}), \forall x\,\atom{F}{x} \eand \atom{G}{a}$
 \item $\exists x(\atom{F}{x} \eor \atom{G}{a}), \exists x\,\atom{F}{x} \eor \atom{G}{a}$
@@ -786,36 +796,50 @@ In \cref{s:MoreMonadic}, we considered what happens when we move quantifiers `ac
 \item $\exists x(\atom{G}{a} \eif \atom{F}{x}), \atom{G}{a} \eif \exists x\,\atom{F}{x}$
 \item $\exists x(\atom{F}{x} \eif \atom{G}{a}), \forall x\,\atom{F}{x} \eif \atom{G}{a}$
 \end{compactlist}
-NB: the variable `$x$' does not occur in `$\atom{G}{a}$'. When all the quantifiers occur at the beginning of a sentence, that sentence is said to be in \emph{prenex normal form}. These equivalences are sometimes called \emph{prenexing rules}, since they give us a means for putting any sentence into prenex normal form.
 
+注意：变元 “$x$” 在 “$\atom{G}{a}$” 中不出现。当一个句子的所有量词都出现在句首时，这个句子被称为处于 \emph{前束范式中}。这些等价式有时也被称为 \emph{前束化规则}，因为它们为我们提供了将任何句子化为前束范式的方法。
 
-\chapter{Rules for identity}
-In \cref{s:Interpretations}, we mentioned the philosophically contentious thesis of the \emph{identity of indiscernibles}. This is the claim that objects which are indiscernible in every way are, in fact, identical to each other. It was also mentioned that we will not subscribe to this thesis. It follows that, no matter how much you learn about two objects, we cannot prove that they are identical. That is unless, of course, you learn that the two objects are, in fact, identical, but then the proof will hardly be very illuminating.
+\chapter{同一性规则}
+在 \cref{s:Interpretations} 中，我们提到了在哲学上有争议的论点，即\emph{不可分辨者的同一性}。它主张在所有方面都不可分辨的对象实际上是同一的。我们也提到，我们不会采纳这一论点。这意味着，无论你如何了解两个对象，都无法证明它们是同一的。当然，除非你本来就知道两者确实是同一的，但那样证明就没什么启发性了。
 
-The general point, though, is that \emph{no sentences} which do not already contain the identity predicate could justify an inference to `$a=b$'. So our identity introduction rule cannot allow us to infer to an identity claim containing two \emph{different} names.
+但核心要点是：\emph{任何}不含同一性谓词的句子，都无法证成“$a=b$”的推论。因此，我们的同一性引入规则不能允许我们推出包含两个\emph{不同}名称的同一性陈述。
 
-However, every object is identical to itself. No premises, then, are required in order to conclude that something is identical to itself. So this will be the identity introduction rule:
+然而，每个对象都与其自身同一。要断定某物与自身同一，无需任何前提。所以，同一性引入规则如下：
 \factoidbox{
+
+
 \begin{fitchproof}
 	\have[\ \,\,\,]{x}{\metav{c}=\metav{c}} \by{=I}{}
-\end{fitchproof}}
-Notice that this rule does not require referring to any prior lines of the proof. For any name \metav{c}, you can write $\metav{c}=\metav{c}$ on any line, with only the {=}I rule as justification.
+\end{fitchproof}
 
-Our elimination rule is more fun. If you have established `$a=b$', then anything that is true of the object named by `$a$' must also be true of the object named by `$b$'. For any sentence with `$a$' in it, you can replace some or all of the occurrences of `$a$' with `$b$' and produce an equivalent sentence. For example, from `$\atom{R}{a,a}$' and `$a = b$', you are justified in inferring `$\atom{R}{a,b}$', `$\atom{R}{b,a}$' or `$\atom{R}{b,b}$'. More generally:
-\factoidbox{\begin{fitchproof}
+}
+注意，这条规则无需引用证明中任何先前的行。对于任何名称 \metav{c}，你都可以在任何一行写下 $\metav{c}=\metav{c}$，并以 {=}I 规则作为唯一理据。
+
+我们的消去规则则更有趣。如果你已确立“$a=b$”，那么任何对于以“$a$”命名的对象为真的东西，也必定对以“$b$”命名的对象为真。对于任何包含“$a$”的句子，你可以将其中的部分或全部“$a$”替换为“$b$”，从而得到一个等价的句子。例如，从“$\atom{R}{a,a}$”和“$a = b$”，你有理由推出“$\atom{R}{a,b}$”、“$\atom{R}{b,a}$”或“$\atom{R}{b,b}$”。更一般地：
+\factoidbox{
+
+\begin{fitchproof}
 	\have[m]{e}{\metav{a}=\metav{b}}
 	\have[n]{a}{\metav{A}(\ldots \metav{a} \ldots \metav{a}\ldots)}
 	\have[\ ]{ea1}{\metav{A}(\ldots \metav{b} \ldots \metav{a}\ldots)} \by{=E}{e,a}
-\end{fitchproof}}
-The notation here is as for $\exists$I. So $\metav{A}(\ldots \metav{a} \ldots \metav{a}\ldots)$ is a formula containing the name $\metav{a}$, and $\metav{A}(\ldots \metav{b} \ldots \metav{a}\ldots)$ is a formula obtained by replacing one or more instances of the name $\metav{a}$ with the name $\metav{b}$. Lines $m$ and $n$ can occur in either order, and do not need to be adjacent, but we always cite the statement of identity first. Symmetrically, we allow:
-\factoidbox{\begin{fitchproof}
+\end{fitchproof}
+
+}
+这里的记法与 $\exists$I 规则类似。因此，$\metav{A}(\ldots \metav{a} \ldots \metav{a}\ldots)$ 是包含名称 $\metav{a}$ 的公式，而 $\metav{A}(\ldots \metav{b} \ldots \metav{a}\ldots)$ 则是通过将该公式中的一个或多个 $\metav{a}$ 实例替换为名称 $\metav{b}$ 而得到的公式。第 $m$ 行和第 $n$ 行出现的顺序不限，也不需相邻，但我们总是先引用同一性陈述。对称地，我们允许：
+\factoidbox{
+
+\begin{fitchproof}
 	\have[m]{e}{\metav{a}=\metav{b}}
 	\have[n]{a}{\metav{A}(\ldots \metav{b} \ldots \metav{b}\ldots)}
 	\have[\ ]{ea2}{\metav{A}(\ldots \metav{a} \ldots \metav{b}\ldots)} \by{=E}{e,a}
-\end{fitchproof}}
-This rule is sometimes called \emph{Leibniz's Law}, after Gottfried Leibniz.
+\end{fitchproof}
 
-To see the rules in action, we will prove some quick results. First, we will prove that identity is \emph{symmetric}:
+}
+这条规则有时以 Gottfried Leibniz（戈特弗里德·莱布尼茨）之名，称为 \emph{Leibniz 律}。
+
+为了演示这些规则，我们将证明几个简单的结果。首先，我们证明同一性是\emph{对称的}：
+
+
 \begin{fitchproof}
 	\open
 		\hypo{ab}{a = b}\AS
@@ -826,9 +850,13 @@ To see the rules in action, we will prove some quick results. First, we will pro
 	\have{ayya}{\forall y (a = y \eif y = a)}\Ai{abba}
 	\have{xyyx}{\forall x\, \forall y (x = y \eif y = x)}\Ai{ayya}
 \end{fitchproof}
-We obtain line~$3$ by replacing one instance of `$a$' in line~$2$ with an instance of~`$b$'; this is justified given `$a= b$'.
 
-Second, we will prove that identity is \emph{transitive}:
+
+我们通过将第 $2$ 行中的一个“$a$”实例替换为“$b$”而得到第 $3$ 行；这是根据“$a= b$”而获得理据的。
+
+其次，我们证明同一性是\emph{传递的}：
+
+
 \begin{fitchproof}
 	\open
 		\hypo{abc}{a = b \eand b = c}\AS
@@ -841,13 +869,14 @@ Second, we will prove that identity is \emph{transitive}:
 	\have{cony}{\forall y\,\forall z((a = y \eand y = z) \eif a = z)}\Ai{conz}
 	\have{conx}{\forall x\,\forall y \forall z((x = y \eand y = z) \eif x = z)}\Ai{cony}
 \end{fitchproof}
-We obtain line~$4$ by replacing `$b$' in line~$3$ with `$a$'; this is justified given `$a= b$'.
+
+
+我们通过将第 $3$ 行中的“$b$”替换为“$a$”而得到第 $4$ 行；这是根据“$a= b$”而获得理据的。
 
 \practiceproblems
 \problempart
 \label{pr.identity}
-For each of the following claims, provide an FOL proof that shows it
-is true.
+为以下每个断言，提供一阶逻辑证明以表明其成立。
 \begin{compactlist}
 \item $\atom{P}{a} \eor \atom{Q}{b}, \atom{Q}{b} \eif b=c, \enot\atom{P}{a} \proves \atom{Q}{c}$
 \item $m=n \eor n=o, \atom{A}{n} \proves \atom{A}{m} \eor \atom{A}{o}$
@@ -862,42 +891,38 @@ is true.
 \end{compactlist}
 
 \problempart
-Show that the following are interderivable:
+证明以下公式是可互推的：
 \begin{itemize}
 \item $\exists x \bigl([\atom{F}{x} \eand \forall y (\atom{F}{y} \eif x = y)] \eand x = n\bigr)$
 \item $\atom{F}{n} \eand \forall y (\atom{F}{y} \eif n= y)$
 \end{itemize}
-And hence that both have a decent claim to symbolize the English sentence `Nick is the~$F$'.\\
+从而说明两者都有充分的理由用于符号化英语句子“Nick 是那个～$F$”。\\
 
 \problempart
-In \cref{sec.identity}, we claimed that the following are logically equivalent symbolizations of the English sentence `there is exactly one $F$':
+在\cref{sec.identity}中，我们声称以下公式都是英语句子“恰好存在一个 $F$”的逻辑等价符号化：
 \begin{itemize}
 \item $\exists x\,\atom{F}{x} \eand \forall x\, \forall y \bigl[(\atom{F}{x} \eand \atom{F}{y}) \eif x = y\bigr]$
 \item $\exists x \bigl[\atom{F}{x} \eand \forall y (\atom{F}{y} \eif x = y)\bigr]$
 \item $\exists x\, \forall y (\atom{F}{y} \eiff x = y)$
 \end{itemize}
-Show that they are all interderivable. (\emph{Hint}: to show that three claims are interderivable, it suffices to show that the first proves the second, the second proves the third and the third proves the first; think about why.)
-
+证明它们都是可互推的。（\emph{提示}：要证明三个断言可互推，只需证明第一个可推出第二个、第二个可推出第三个、第三个可推出第一个即可；想想这是为什么吧。）
 
 \
 \problempart
-Symbolize the following argument
-	\begin{earg}
-		\item There is exactly one $F$. 
-		\item There is exactly one $G$. 
-		\item Nothing is both $F$ and~$G$. 
-		\item[\texttherefore] There are exactly two things that are either~$F$ or~$G$.
+将以下论证符号化：
+\begin{earg}
+		\item 恰好存在一个 $F$。
+		\item 恰好存在一个 $G$。
+		\item 没有东西既是 $F$ 又是 $G$。
+		\item[\texttherefore] 恰好存在两个东西是 $F$ 或 $G$。
 	\end{earg}
-And offer a proof of it.
+并为其提供一个证明。
 %\begin{itemize}
 %\item  $\exists x \bigl[\atom{F}{x} \eand \forall y (\atom{F}{y} \eif x = y)\bigr], \exists x \bigl[\atom{G}{x} \eand \forall y (\atom{G}{y} \eif x = y)\bigr], \forall x (\enot\atom{F}{x} \eor \enot \atom{G}{x}) \proves \exists x\, \exists y \bigl[\enot\, {x = y} \eand \forall z ((\atom{F}{z} \eor \atom{G}{z}) \eif (x = y \eor x = z))\bigr]$
 %\end{itemize}
 
-
-
-
-\chapter{Derived rules}\label{s:DerivedFOL}
-As in the case of TFL, we first introduced some rules for FOL as basic (in \cref{s:BasicFOL}), and then added some further rules for conversion of quantifiers (in \cref{s:CQ}). In fact, the CQ rules should be regarded as \emph{derived} rules, for they can be derived from the  \emph{basic} rules of \cref{s:BasicFOL}. (The point here is as in \cref{s:Derived}.) Here is a justification for the first CQ rule:
+\chapter{派生规则}\label{s:DerivedFOL}
+与真值函项逻辑的情况一样，我们首先将一阶逻辑的某些规则作为基本规则引入（在\cref{s:BasicFOL}中），然后又为量词转换添加了一些进一步规则（在\cref{s:CQ}中）。事实上，量词转换规则应被视为\emph{派生}规则，因为它们可以从\cref{s:BasicFOL}的\emph{基本}规则中推导出来。（这里的要点与\cref{s:Derived}相同。）以下是第一条量词转换规则的论证：
 \begin{fitchproof}
 	\have[m]{An}{\forall x\, \enot \atom{A}{x}}
 	\open
@@ -911,8 +936,8 @@ As in the case of TFL, we first introduced some rules for FOL as basic (in \cref
 	\close
 	\have[m+6]{dada}{\enot \exists x\, \atom{A}{x}}\ni{(E)-(red2)}
 \end{fitchproof}
-%You will note that on line 3 I have written `for $\exists$E'. This is not technically a part of the proof. It is just a reminder---to me and to you---of why I have bothered to introduce `$\enot \atom{A}{c}$' out of the blue. You might find it helpful to add similar annotations to assumptions when performing proofs. But do not add annotations on lines other than assumptions: the proof requires its own citation, and your annotations will clutter it.
-Here is a justification of the third CQ rule:
+%You will note that on line 3 I have written “for $\exists$E'. This is not technically a part of the proof. It is just a reminder---to me and to you---of why I have bothered to introduce ”$\enot \atom{A}{c}$” out of the blue. You might find it helpful to add similar annotations to assumptions when performing proofs. But do not add annotations on lines other than assumptions: the proof requires its own citation, and your annotations will clutter it.
+以下是第三条量词转换规则的论证：
 \begin{fitchproof}
 	\have[m]{nEna}{\exists x\, \enot \atom{A}{x}}
 	\open
@@ -926,89 +951,91 @@ Here is a justification of the third CQ rule:
 	\close
 	\have[m+6]{dada}{\enot \forall x\, \atom{A}{x}}\ni{(Aa)-(con1)}
 \end{fitchproof}
-This explains why the CQ rules can be treated as derived. Similar justifications can be offered for the other two CQ rules.
+这就解释了为什么量词转换规则可作为派生规则使用。对于另外两条量词转换规则，也可给出类似论证。
 
 \practiceproblems
-
 \problempart
-Offer proofs which justify the addition of the second and fourth CQ rules as derived rules.
+提供证明，以论证将第二条和第四条量词转换规则作为派生规则加入的合理性。
 
-
-
-\chapter{Proofs and semantics}
-We have used two different turnstiles in this book.  This:
+\chapter{证明与语义}
+我们在本书中使用了两种不同的断定符。这个：
 $$\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n \proves \metav{C}$$
-means that there is some proof which ends with $\metav{C}$ and whose only undischarged assumptions are among $\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n$. This is a \emph{proof-theoretic notion}. By contrast, this: 
+意味着存在一个以 $\metav{C}$ 结尾的证明，且其所有未被解除的假设都在$\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n$之中。这是一个\emph{证明论概念}。与此相对，这个：
 $$\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n \entails \metav{C}$$
-means that no valuation (or interpretation) makes all of $\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n$ true and~$\metav{C}$ false. This concerns assignments of truth and falsity to sentences. It is a \emph{semantic notion}.
+意味着没有哪个赋值（或解释）能使$\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n$全部为真而 $\metav{C}$ 为假。这关乎对语句的真值指派。它是一个\emph{语义概念}。
 
-It cannot be emphasized enough that these are different notions. But we can emphasize it a bit more: \emph{They are different notions.}
+无论怎样强调这两个概念是不同的，都不过分。但我们还可以再强调一下：\emph{它们是不同的概念。}
 
-Once you have internalised this point, continue reading.
+一旦你内化了这一点，请继续往下读。
 
-Although our semantic and proof-theoretic notions are different, there is a deep connection between them. To explain this connection,we will start by considering the relationship between validities and theorems.
+尽管我们的语义概念和证明论概念不同，但两者之间存在深刻的联系。为解释这种联系，我们将从思考有效式与定理的关系入手。
 
-To show that a sentence is a theorem, you need only produce a proof. Granted, it may be hard to produce a twenty line proof, but it is not so hard to check each line of the proof and confirm that it is legitimate; and if each line of the proof individually is legitimate, then the whole proof is legitimate. Showing that a sentence is a validity, though, requires reasoning about all possible interpretations. Given a choice between showing that a sentence is a theorem and showing that it is a validity, it would be easier to show that it is a theorem.
+要证明一个语句是定理，只需构造一个证明。诚然，构造一个二十行的证明可能很难，但检查证明的每一行并确认其合法性却没那么难；如果证明的每一行本身都合法，那么整个证明就是合法的。然而，要证明一个语句是有效式，则需考虑所有可能的解释。在证明一个语句是定理和证明它是有效式之间，前者更容易。
 
-Contrawise, to show that a sentence is \emph{not} a theorem is hard. We would need to reason about all (possible) proofs. That is very difficult. However, to show that a sentence is not a validity, you need only construct an interpretation in which the sentence is false. Granted, it may be hard to come up with the interpretation; but once you have done so, it is relatively straightforward to check what truth value it assigns to a sentence. Given a choice between showing that a sentence is not a theorem and showing that it is not a validity, it would be easier to show that it is not a validity.
+反过来，要证明一个语句\emph{不是}定理则很难。我们需要考虑所有（可能）的证明。这非常困难。然而，要证明一个语句不是有效式，只需构造一个使其为假的解释。诚然，想出这样的解释可能很难；但一旦做到，检查它给语句指派了什么真值就相对直接了。在证明一个语句不是定理和证明它不是有效式之间，后者更容易。
 
-Fortunately, \emph{a sentence is a theorem if and only if it is a validity}. As a result, if we provide a proof of $\metav{A}$ on no assumptions, and thus show that $\metav{A}$ is a theorem, i.e., ${}\proves \metav{A}$, we can legitimately infer that $\metav{A}$ is a validity, i.e., $\entails\metav{A}$. Similarly, if we construct an interpretation in which \metav{A} is false and thus show that it is not a validity, i.e., $\nentails \metav{A}$, it follows that \metav{A} is not a theorem, i.e.,  $\nproves \metav{A}$.
+幸运的是，\emph{一个语句是定理当且仅当它是逻辑有效式}。因此，如果我们给出了一个不依赖任何假设的 $\metav{A}$ 的证明，从而表明 $\metav{A}$ 是定理，即 ${}\proves \metav{A}$，我们便可以合理地推断 $\metav{A}$ 是逻辑有效式，即 $\entails\metav{A}$。类似地，如果我们构造了一个使 \metav{A} 为假的解释，从而表明它不是逻辑有效式，即 $\nentails \metav{A}$，那么就可得出 \metav{A} 不是定理，即 $\nproves \metav{A}$。
 
-More generally, we have the following powerful result:
+更一般地说，我们有以下强有力的结果：
 \factoidbox{$\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n
 \proves\metav{B}$ \textbf{\ifeff} $\metav{A}_1, \metav{A}_2, \ldots,
 \metav{A}_n \entails\metav{B}$}
-This shows that, whilst provability and entailment are \emph{different} notions, they are extensionally equivalent. As such:
-	\factoidbox{\begin{factoiditems}
-		\item An argument is \emph{valid} \ifeff{} \emph{the conclusion can be proved from the premises}.
-		\item A sentence is a \emph{validity} \ifeff{} it is a \emph{theorem}.
-		\item Two sentences are \emph{equivalent} \ifeff{} they are
-		\emph{interderivable}.
-		\item Sentences are \emph{jointly satisfiable} \ifeff{} they are
-		\emph{jointly consistent}.
-	\end{factoiditems}}
-For this reason, you can pick and choose when to think in terms of proofs and when to think in terms of valuations/interpretations, doing whichever is easier for a given task. The table on the next page summarizes which is (usually) easier.
+这表明，尽管可证性和语义蕴涵是\emph{不同的}概念，但它们在外延上是等价的。因此：
+	\factoidbox{
 
-It is intuitive that provability and semantic entailment should agree. But---let us repeat this---do not be fooled by the similarity of the symbols `$\entails$' and `$\proves$'. These two symbols have very different meanings. The fact that provability and semantic entailment agree is not an easy result to come by.
+\begin{factoiditems}
+		\item 一个论证是\emph{有效的} \ifeff{} \emph{结论可以从前提中证明出来}。
+		\item 一个语句是\emph{逻辑有效式} \ifeff{} 它是\emph{定理}。
+		\item 两个语句是\emph{等价的} \ifeff{} 它们是\emph{可互推的}。
+		\item 一组语句是\emph{共同可满足的} \ifeff{} 它们是\emph{共同一致的}。
+	\end{factoiditems}
 
-In fact, demonstrating that provability and semantic entailment agree is, very decisively, the point at which introductory logic becomes intermediate logic.
+}
+基于这个原因，你可以根据需要选择何时从证明的角度思考，何时从赋值/解释的角度思考，哪个方法对当前任务更容易就使用哪个。下一页的表格总结了哪种方法（通常）更容易。
+
+可证性与语义蕴涵应当一致是直觉上合理的。但是——让我们再强调一遍——不要被符号“$\entails$”和“$\proves$”的相似性所蒙蔽。这两个符号的含义非常不同。可证性与语义蕴涵一致这一事实并非能轻易得到。
+
+事实上，证明可证性与语义蕴涵相一致，非常明确地标志着一个关键转折点：从这里开始，入门逻辑进入了中级逻辑的范畴。
 
 \ifHTMLtarget
+
+
 \begin{table}
 \else
 \begin{sidewaystable}\small
 \fi
 	\begin{center}
 \begin{tabular*}{\textwidth}{p{.25\textheight}p{.325\textheight}p{.325\textheight}}
- & \textbf{Yes}  & \textbf{No}\\
+ & \textbf{是}  & \textbf{否}\\
 \\
-Is \metav{A} a \textbf{validity}? 
-& give a proof which shows $\proves\metav{A}$ 
-& give an interpretation in which \metav{A} is false\\
+语句\metav{A}是否为\textbf{逻辑有效式}？
+& 给出表明 $\proves\metav{A}$ 的证明
+& 给出一个使 \metav{A} 为假的解释\\
 \\
-Is \metav{A} a \textbf{contradiction}? &
-give a proof which shows $\metav{A} \proves \ered$ & 
-give an interpretation in which \metav{A} is true\\
+语句\metav{A}是否为\textbf{矛盾式}？ &
+给出表明 $\metav{A} \proves \ered$ 的证明 &
+给出一个使 \metav{A} 为真的解释\\
 \\
-%Is \metav{A} contingent? & 
+%Is \metav{A} contingent? &
 %give two interpretations, one in which \metav{A} is true and another in which \metav{A} is false & give a proof which either shows $\proves\metav{A}$ or $\proves\enot\metav{A}$\\
 %\\
-Are \metav{A} and \metav{B} \textbf{equivalent}? &
-give two proofs, one for $\metav{A}\proves\metav{B}$ and one for $\metav{B}\proves\metav{A}$  
-& give an interpretation in which \metav{A} and \metav{B} have different truth values\\
+语句 \metav{A} 和 \metav{B} 是否\textbf{等价}？ &
+给出两个证明，一个证明 $\metav{A}\proves\metav{B}$，另一个证明 $\metav{B}\proves\metav{A}$
+& 给出一个使 \metav{A} 和 \metav{B} 取不同真值的解释\\
 \\
-Are $\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n$ \textbf{jointly satisfiable}? 
-& give an interpretation in which all of $\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n$ are true 
-& prove a contradiction from assumptions $\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n$\\
+语句集 $\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n$ 是否\textbf{共同可满足}？
+& 给出一个使所有 $\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n$ 为真的解释
+& 从假设 $\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n$ 出发证明一个矛盾\\
 \\
-Is $\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n \therefore \metav{C}$ \textbf{valid}? 
-& give a proof with assumptions $\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n$ and concluding with \metav{C}
-& give an interpretation in which each of $\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n$ is true and \metav{C} is false\\
+论证 $\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n \therefore \metav{C}$ 是否\textbf{有效}？
+& 给出一个以 $\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n$ 为前提、以 \metav{C} 为结论的证明
+& 给出一个使每个 $\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n$ 为真而 \metav{C} 为假的解释\\
 \end{tabular*}
 \end{center}
 \ifHTMLtarget
 \end{table}
+
+
 \else
 \end{sidewaystable}
 \fi
-

@@ -7,7 +7,8 @@
 \def\forallxshortversion{F25}
 
 \RequirePackage{amssymb,amsmath,pifont,rotating}
-\usepackage[cal=boondoxo]{mathalfa}
+% 中译本的正文与数学字体由 forallxyyc-style.sty 中的 fontsetup 统一设置为
+% New Computer Modern；不再用 mathalfa 单独覆盖花体字母。
 \usepackage[german,english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{latexml}
@@ -17,7 +18,24 @@
 % References using cleveref
 
 \RequirePackage[nameinlink]{cleveref}
-\crefname{enumi}{sentence}{sentences}
+\crefname{enumi}{语句}{语句}
+\Crefname{enumi}{语句}{语句}
+\crefname{part}{部分}{部分}
+\Crefname{part}{部分}{部分}
+\crefname{chapter}{章}{章}
+\Crefname{chapter}{章}{章}
+\crefname{section}{节}{节}
+\Crefname{section}{节}{节}
+\crefname{page}{页}{页}
+\Crefname{page}{页}{页}
+\AtBeginDocument{%
+  \renewcommand{\contentsname}{目录}%
+  \renewcommand{\glossaryname}{术语表}%
+  \renewcommand{\crefrangeconjunction}{至}%
+  \renewcommand{\crefpairconjunction}{和}%
+  \renewcommand{\crefmiddleconjunction}{、}%
+  \renewcommand{\creflastconjunction}{和}%
+}
 
 % \ifHTMLtarget -- for conditional code depending on whether we're
 % compiling to HTML or to PDF. To be used for anything that would also
@@ -55,18 +73,22 @@
 \iflatexml
 \def\texttherefore{∴}
 \else
-\let\texttherefore\therefore
+% 列表标签会在文本模式下展开。直接使用 unicode-math 的 \therefore
+% 会在部分列表页被文本字体接管而报告 U+2234 缺字；用三个数学点构造
+% 同形标签，避免把逻辑符号送入正文 New CM 字体。
+\DeclareRobustCommand{\texttherefore}{%
+  \ensuremath{\mathrel{\substack{\cdot\ \cdot\\[-.7ex]\cdot}}}}
 \fi
 % disjunction
 \def\eor{\ensuremath{\vee}}
-% conjunction: 
+% conjunction:
 % {\,^{_{_{_{_{\mbox{\footnotesize\textbullet}}}}}}} gives the dot
 \def\eand{\ensuremath{\wedge}}
 % conditional: \supset gives the horseshoe
 \def\eif{\ensuremath{\rightarrow}}
 % biconditional: \equiv gives the triple bar
 \def\eiff{\ensuremath{\leftrightarrow}}
-% negation: {\sim} gives the swung dash 
+% negation: {\sim} gives the swung dash
 \def\enot{\ensuremath{\neg}}
 \def\ered{\ensuremath{\bot}}% TB: added to give an absurdity sign
 \newcommand*{\ebox}{\ensuremath{\Box}}
@@ -135,7 +157,7 @@
   % replace < and > in the commands below with \langle and \rangle
 \newcommand*{\openntuple}{\langle}
 \newcommand*{\closentuple}{\rangle}
-\newcommand*{\ntuple}[1]{\ensuremath{\mathopen{\openntuple}}#1\ensuremath{\mathclose{\closentuple}}} 
+\newcommand*{\ntuple}[1]{\ensuremath{\mathopen{\openntuple}}#1\ensuremath{\mathclose{\closentuple}}}
 % definitions
 \newcommand*{\define}[1]{\textsc{\lowercase{\color{dkleadbeater}#1}}}
 
@@ -309,10 +331,10 @@
 %    ****************************************
 % TB: I use diagrams in a few places, always using Tikz.
 %   A. To illustrate an argument for the truth table of the material conditional
-%   B. To draw graphs illustrating small finite interpretations. 
+%   B. To draw graphs illustrating small finite interpretations.
 % All these drawings are done using tikz
 \usepackage{tikz}
-\usetikzlibrary{arrows,positioning,shapes} 
+\usetikzlibrary{arrows,positioning,shapes}
 
 \tikzset{phantom_shape/.style={thick, fill=none, minimum width=30pt, minimum height=30pt}, % TB: renders the shape invisible
 		grey_shape/.style={thick, fill=black!20, draw, minimum width=30pt, minimum height=30pt}, % TB: renders a light grey shape with a black outline
@@ -365,7 +387,7 @@
 
 \setcounter{tocdepth}{0} %TB: only chapters and sections to appear
 
-\setlength{\columnsep}{2em} % Sets 2em space between columns when calling multicol 
+\setlength{\columnsep}{2em} % Sets 2em space between columns when calling multicol
 
 \newcommand\myanswer[1]{\textcolor{dkleadbeater}{#1}} % TB: puts model answers in blue
 

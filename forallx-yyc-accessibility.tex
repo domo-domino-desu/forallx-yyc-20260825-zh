@@ -1,113 +1,43 @@
 %!TEX root = forallxyyc.tex
 
-\chapter{Notes on accessibility}
+\chapter{关于可访问性的说明}
 
-Special attention has been paid to make this HTML version as
-accessible as possible, especially to readers using Assistive
-Technology (AT), such as screen readers like
-\href{https://www.nvaccess.org/download/}{NVDA}
-and
-\href{https://www.freedomscientific.com/products/software/jaws/}{JAWS}.
-Screen readers are software designed to enable users with low or no
-vision to access and navigate web pages like this book. Some sighted
-users also sometimes prefer text-to-speech (TTS) software to read web
-pages aloud. TTS software has fewer features than screen readers
-designed for non-sighted users and may not convert everything in this
-book to audio.
+我们特别关注了如何使这个 HTML 版本尽可能易于访问，尤其是对于使用辅助技术（AT）的读者，例如像 \href{https://www.nvaccess.org/download/}{NVDA} 和 \href{https://www.freedomscientific.com/products/software/jaws/}{JAWS} 这样的屏幕阅读器。屏幕阅读器是一种软件，旨在帮助视力低下或失明的用户访问和导航像本书这样的网页。一些视力正常的用户有时也喜欢使用文本转语音（TTS）软件来朗读网页。与为非视力用户设计的屏幕阅读器相比，TTS 软件功能较少，可能无法将本书中的所有内容都转换为音频。
 
-If you are using the HTML version of this book with a screen reader or
-Braille terminal, or are helping a student who relies on such tools
-(e.g., as instructor or accessibility advisor), and you have feedback
-please \href{mailto:rzach@ucalgary.ca}{get in touch}!
+如果您正在使用本书的 HTML 版本，并且使用屏幕阅读器或盲文终端，或者正在帮助依赖此类工具的学生（例如，作为教师或可访问性顾问），并且有反馈意见，请\href{mailto:rzach@ucalgary.ca}{与我们联系}！
 
-\paragraph{Navigation and styles} We have adopted the HTML style
-provided by \href{https://vlmantova.github.io/bookml/}{BookML},
-developed for the Leeds mathematics department by
-\href{https://eps.leeds.ac.uk/maths/staff/4058/dr-vincenzo-l-mantova}{Vincenzo
-Mantova}. It provides a collapsible navigation menu, buttons at the
-top of each page to select the font size, switch between serif and
-sans-serif font, and black-on-white, dark-on-sepia, or light-on-dark
-display options.
+\paragraph{导航与样式} 我们采用了由 \href{https://vlmantova.github.io/bookml/}{BookML} 提供的 HTML 样式，该样式由 \href{https://eps.leeds.ac.uk/maths/staff/4058/dr-vincenzo-l-mantova}{Vincenzo Mantova} 为利兹大学数学系开发。它提供了可折叠的导航菜单，以及位于每页顶部的按钮，用于选择字体大小、在衬线字体和无衬线字体之间切换，以及选择白底黑字、羊皮纸底色深色字或黑底浅色字等显示选项。
 
-The body of the page starts with an invisible link to skip to the
-beginning of the content, past the navigation sidebar and style
-buttons. The buttons are, in order: 
+页面正文的开头是一个不可见的链接，用于跳过导航侧边栏和样式按钮，直接跳转到内容开始处。这些按钮依次是：
 \begin{itemize}
-  \item ``toggle sidebar'' to turn the navigation bar on or off;
-  \item ``font settings'' for font size, serif or sans serif font, and
-    light, sepia, or dark modes; 
-  \item ``download'' for links to download the PDF versions; and 
-  \item ``information about the toolbar'' for a popup that shows
-    keyboard shortcuts for navigation.
+  \item “切换侧边栏”，用于打开或关闭导航栏；
+  \item “字体设置”，用于设置字体大小、衬线或无衬线字体，以及浅色、羊皮纸色或深色模式；
+  \item “下载”，提供下载 PDF 版本的链接；以及
+  \item “关于工具栏的信息”，用于弹出一个显示导航键盘快捷键的窗口。
 \end{itemize}
-Those keyboard shortcuts are: left and right arrow for moving to the
-previous and the next page, and `s' to toggle the navigation sidebar.
+这些键盘快捷键是：左右箭头键用于跳转到上一页和下一页，按 “s” 键可切换导航侧边栏。
 
-\paragraph{Symbols and formulas} 
+\paragraph{符号与公式}
+本书中的逻辑符号和公式被转换为 \href{https://www.w3.org/Math/}{MathML}，并使用 \href{https://www.mathjax.org/}{MathJax} 显示。MathJax 为公式提供了额外的\href{https://docs.mathjax.org/en/latest/basic/accessibility.html}{可访问性功能}，这些功能位于 MathJax 上下文菜单中。使用鼠标时，可以在任何公式上点击右键来激活它。屏幕阅读器会提示公式可以被激活（例如，NVDA 在每个公式前会说“应用程序可点击”以表明存在 MathJax 菜单。）如果您的屏幕阅读器不朗读诸如 $\forall x(A(x) \land B(x))$ 这样的公式，您可能需要在 MathJax 可访问性菜单的 Speech 子菜单中激活 Speech Output，然后重新加载页面。
 
-Logical symbols and formulas in this book are converted to
-\href{https://www.w3.org/Math/}{MathML} and displayed using
-\href{https://www.mathjax.org/}{MathJax}. MathJax provides additional
-\href{https://docs.mathjax.org/en/latest/basic/accessibility.html}{accessibility
-features} for formulas, which are found in the MathJax context menu.
-With a mouse, you can right click on any formula to activate it.
-Screen readers will announce that formulas can be activated (e.g.,
-NVDA says ``application clickable'' before every formula to indicate
-the presence of the MathJax menu.) If your screen reader does not read
-out formulas such as $\forall x(A(x) \land B(x))$ you may need to
-activate Speech Output in the Speech submenu of the MathJax
-Accessibility menu and reload the page.
-
-Here are some of the more common symbols. Different screen readers and
-TTS applications will pronouce them differently, and sometimes not at
-all. After each symbol, we provide the customary pronounciation used
-by logicians.
+以下是一些更常见的符号。不同的屏幕阅读器和 TTS 应用程序对它们的发音方式不同，有时甚至完全不发音。在每个符号后面，我们提供了逻辑学家通常使用的发音方式。
 \begin{itemize}
-  \item Uppercase and lowercase italic letters like $A$ (``upper A'')
-  and $x$ (``lower x'')
-  \item Uppercase and lowercase script letters like $\metav{A}$
-  (``script upper A'') and $\metav{x}$ (``script lower x'')
-  \item Logical connectives: $\enot$ (``not''), $\eor$ (``or''),
-  $\eand$ (``and''), $\eif$ (``only if''), $\eiff$ (``if and only if''), $\ered$ (``contradiction'')
-  \item Quantifiers: $\forall$ (``for all''), $\exists$ (``there exists'')
-  \item Metatheoretical symbols: $\therefore$ (``therefore''),
-  $\proves$ (``proves''), $\nproves$ (``does not prove''), $\entails$ (``entails''), $\nentails$ (``does not entail'')
-  \item Modal operators: $\ebox$ (``box''), $\ediamond$ (``diamond'')
+  \item 大写和小写斜体字母，如 $A$（“大写 A”）和 $x$（“小写 x”）
+  \item 大写和小写花体字母，如 $\metav{A}$（“花体大写 A”）和 $\metav{x}$（“花体小写 x”）
+  \item 逻辑联结词：$\enot$（“not”）、$\eor$（“or”）、$\eand$（“and”）、$\eif$（“only if”）、$\eiff$（“if and only if”）、$\ered$（“contradiction”）
+  \item 量词：$\forall$（“for all”）、$\exists$（“there exists”）
+  \item 元理论符号：$\therefore$（“therefore”）、$\proves$（“proves”）、$\nproves$（“does not prove”）、$\entails$（“entails”）、$\nentails$（“does not entail”）
+  \item 模态算子：$\ebox$（“box”）、$\ediamond$（“diamond”）
 \end{itemize}
+屏幕阅读器应该能读出下标，尽管它们可能不会明确指出那是下标。公式 $A_2$ 可能会被读作“upper A sub 2”或仅仅是“A2”。
 
-Subscripts should be pronounced by screen readers, although
-they may not indicate that they are subscripts. The formula $A_2$ may
-be read out as ``upper A sub 2'' or just as ``A2''.
+表达式 “\blank{}” 和 “\ifeff”（带有两个‘f’的‘if’）在教材中贯穿始终。在 HTML 版本中，“\blank{}” 包含一个不可见的、拼写出来的单词 “blank”，屏幕阅读器应该会将其大声读出来。缩写 “\ifeff” 是 “if and only if” 的简写。在 HTML 版本中，它使用了一个不可见的零宽度词连接符进行编码，这使得屏幕阅读器应将 “\ifeff” 发音为 “if-eff” 或 “aye-eff-eff”。
 
-The expressions `\blank{}' and `\ifeff' (`if' with two `f's) are used
-throughout the textbook. In the HTML version, `\blank{}' includes an
-invisible spelled-out word `blank' which screen readers should read
-out loud. The abbreviation `\ifeff' is short for `if and only if'. In
-the HTML version it is coded using an invisible zero-space word joiner
-character which should make screen readers pronounce `\ifeff' as
-`if-eff' or `aye-eff-eff'.
+\paragraph{证明} \cref{ch.NDTFL,ch.NDFOL,ch.ML}中的自然演绎证明使用垂直线来指示子证明在何处开始和结束。这些垂直线从子证明的假设行延伸到它的最后一行，并显示在任意给定行的行号与公式之间。这使得证明对于低视力或完全失明的用户来说是一个特殊的挑战。
 
-\paragraph{Proofs} The natural deduction proofs in
-\cref{ch.NDTFL,ch.NDFOL,ch.ML} use vertical lines to indicate where
-subproofs start and end. Such vertical lines extend from the
-assumption line of the subproof to its last line and are displayed
-between the line numbers and the formulas in any given line. This
-makes proofs a special challenge for users with low vision or complete
-loss of vision.
+为了在此 HTML 版本中使这些证明易于访问，证明被编码为表格。表格的每一行有四列：行号、子证明层级指示器、公式以及理由。子证明层级指示器是一个数字，记录了当前行包含在多少层嵌套的子证明中。如果该行不包含在子证明中，则为0；如果在一层子证明中，则为1；如果在一个嵌套于另一个子证明内的子证明中，则为2，依此类推。在读出子证明层级指示器时，屏幕阅读器还应宣布前一行是否刚结束一个子证明，以及新子证明何时开始。表格的表头行和子证明层级指示器被隐藏，以便证明在视觉上与印刷文本保持一致。
 
-To make these proofs accessible in this HTML version, proofs are coded
-as tables. Each table line has four columns: the line number, a
-subproof level indicator, a formula, and a justification. The subproof
-level indicator is a number recording how many nested subproofs the
-current line is contained in. It is 0 if the line is not contained in
-a subproof, 1 if it is in a subproof, 2 if it is in a subproof nested
-within another subproof, and so on. When reading out a subproof level
-indicator, screen readers should also announce if a subproof has just
-been closed on the previous line, and when a new subproof starts. The
-table header rows and subproof level indicators are hidden so that
-proofs visually appear as in the printed text.
-
-Here is an example of such a proof:
+以下是一个此类证明的示例：
 \begin{fitchproof}
 \hypo{wxyz}{(W \eor X) \eor (Y \eor Z)}\PR
 \hypo{xy}{X \eif Y}\PR
@@ -132,25 +62,12 @@ Here is an example of such a proof:
 \close
 \have{wy4}{W \eor Y}\oe{wxyz, wx-wy3, yz-wy}
 \end{fitchproof}
-It has 14 lines, with 3 premises, 2 levels of subproof nesting, and
-two pairs of adjacent subproofs. For instance, the subproof beginning
-on line 5 ends at line 6, and line 7 starts another subproof. So the
-subproof levels of lines 6 and 7 is the same, but lines 6 and 7 are in
-different subproofs. If you cannot see the subproof lines, you have to
-pay special attention to how the subproof level numbers change
-\emph{and} when a formula is an assumption. A screen reader should
-read line 7 approximately as: ``7, close subproof, 2, open subproof,
-upper X, AS.'' The abbreviations `\PR' (for `Premise') and `\AS' (for
-`Assumption') are coded in the HTML version using the `\verb|abbr|'
-tag.
+它有14行，包含3个前提、2层子证明嵌套和两对相邻的子证明。例如，从第5行开始的子证明在第6行结束，而第7行开始了另一个子证明。因此，第6行和第7行的子证明层级数相同，但第6行和第7行位于不同的子证明中。如果你看不到子证明线，就必须特别注意子证明层级数如何变化\emph{以及}一个公式何时是假设。屏幕阅读器对第7行的播报应大致如下：“7, close subproof, 2, open subproof, upper X, AS.” 缩写 “\PR”（代表 “Premise”（前提））和 “\AS”（代表 “Assumption”（假设））在 HTML 版本中使用 “\verb|abbr|” 标签进行编码。
 
-Note that simple text-to-speech applications may not read out complex
-tables such as the ones containing proofs or truth tables at all.
+请注意，简单的文本转语音应用程序可能完全无法读出包含证明或真值表的复杂表格。
 
-\paragraph{Diagrams}
-
-The text also contains a few diagrams. In the HTML version, these are
-provided with image descriptions, e.g.,
+\paragraph{图表}
+文中也包含少量图表。在 HTML 版本中，这些图表配有图像描述，例如：
 \begin{center}
 \begin{tikzpicture}
 	\node[circle, grey_shape] (cat1) {A};
@@ -158,43 +75,29 @@ provided with image descriptions, e.g.,
 	\node[right=10pt of cat2, circle, white_shape] (cat3)  {C} ;
 	\node[right=10pt of cat3, white_shape] (cat4)  {D};
 \end{tikzpicture}
-\bmlDescription{There are three shapes: the first shape is a grey
-circle labelled A, some empty space, the second shape is a white
-circle labelled C, and the fourth a white square labelled D.}
+\bmlDescription{共有三个形状：第一个是一个标有 A 的灰色圆形，一些空白，第二个是一个标有 C 的白色圆形，第四个是一个标有 D 的白色方形。}
 \end{center}
-The image description here should read: ``There are three shapes: the
-first shape is a grey circle labelled A, some empty space, the second
-shape is a white circle labelled C, and the fourth a white square
-labelled~D.''
+此处的图像描述应读作：“共有三个形状：第一个是一个标有 A 的灰色圆形，一些空白，第二个是一个标有 C 的白色圆形，第四个是一个标有 D 的白色方形。”
 
-\paragraph{Table of symbols}
-
-What follows is a table of all the symbols used in the text, how they
-are most likely to be pronounced by screen readers, and what they are
-called in the text. In the rightmost column we provide a suggested way
-to enter them using ASCII characters, if inserting special symbols (in
-a homework assignment or email to your instructor, say) is not an
-option.
-
+\paragraph{符号表}
+接下来是一个表格，列出了文中使用的所有符号、屏幕阅读器最可能的发音方式、以及它们在文中的含义。在最右侧一列，我们提供了使用 ASCII 字符输入这些符号的建议方法，以防（例如在作业或给老师的电子邮件中）无法输入特殊符号。
 \begin{tabular}{lllll}
-  \lxBeginTableHead{}Symbol\lxTableColumnHead{} & Pronounciation\lxTableColumnHead{} & Meaning\lxTableColumnHead{} & ASCII equivalent\lxTableColumnHead{}\\
+  \lxBeginTableHead{}符号\lxTableColumnHead{} & 发音\lxTableColumnHead{} & 含义\lxTableColumnHead{} & ASCII 等效表示\lxTableColumnHead{}\\
   \hline\lxEndTableHead
-  $\enot$ & not sign & logical not & \verb+~+ or \verb+-+\\
-  $\eor$ & or & logical or & \verb+\/+\\
-  $\eand$ & and & logical and & \verb+/\+ or \verb+&+\\
-  $\eif$ & right arrow & conditional & \verb+->+ or \verb+>+\\
-  $\eiff$ & left right arrow & biconditional & \verb+<->+ or \verb+<>+\\ 
-  $\ered$ & up tack & contradiction & \verb+_|_+ or \verb+!?+\\
-  $\forall$ & for all & universal quantifier & \verb|A| or \verb|@|\\
-  $\exists$ & there exists & existential quantifier & \verb|E| or \verb|3|\\
-  $\therefore$ & therefore & therefore & \verb|:.|\\
-  $\proves$ & right tack & proves & \verb+|-+\\
-  $\nproves$ & does not prove & does not prove & \verb+|/-+\\
-  $\entails$ & true & entails & \verb+|=+\\
-  $\nentails$ & not true & does not entail & \verb+|/=+\\
-  $\ebox$ & white square & necessary & \verb+[]+\\
-  $\ediamond$ & white diamond & possible & \verb+<>+
+  $\enot$ & not sign & 逻辑否定 & \verb+~+ or \verb+-+\\
+  $\eor$ & or & 逻辑析取 & \verb+\/+\\
+  $\eand$ & and & 逻辑合取 & \verb+/\+ or \verb+&+\\
+  $\eif$ & right arrow & 条件 & \verb+->+ or \verb+>+\\
+  $\eiff$ & left right arrow & 双条件 & \verb+<->+ or \verb+<>+\\
+  $\ered$ & up tack & 矛盾 & \verb+_|_+ or \verb+!?+\\
+  $\forall$ & for all & 全称量词 & \verb|A| or \verb|@|\\
+  $\exists$ & there exists & 存在量词 & \verb|E| or \verb|3|\\
+  $\therefore$ & therefore & 所以 & \verb|:.|\\
+  $\proves$ & right tack & 证明 & \verb+|-+\\
+  $\nproves$ & does not prove & 不证明 & \verb+|/-+\\
+  $\entails$ & true & 蕴涵 & \verb+|=+\\
+  $\nentails$ & not true & 不蕴涵 & \verb+|/=+\\
+  $\ebox$ & white square & 必然 & \verb+[]+\\
+  $\ediamond$ & white diamond & 可能 & \verb+<>+
 \end{tabular}
-
-Subscripts can be represented by an underline, e.g., $A_2$ as
-\verb|A_2|.
+下标可用下划线表示，例如，$A_2$ 可写为 \verb|A_2|。

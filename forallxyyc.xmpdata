@@ -1,11 +1,11 @@
-\Title{forall x: Calgary. An Introduction to Formal Logic}
-\Author{P. D. Magnus\sep Tim Button\sep \sep Rob Trueman\sep Richard Zach}
-\Subject{An open access introductory textbook in formal logic}
-\Language{en-US}
-\Keywords{logic\sep truth-functional logic\sep propositional logic\sep predicate logic\sep first-order logic\sep natural deduction\sep Fitch}
+\Title{forall x：卡尔加里——形式逻辑导论}
+\Author{P. D. Magnus\sep Tim Button\sep J. Robert Loftis\sep Robert Trueman\sep Aaron Thomas-Bolduc\sep Richard Zach}
+\Subject{开放获取的形式逻辑导论教材}
+\Language{zh-CN}
+\Keywords{逻辑\sep 真值函项逻辑\sep 命题逻辑\sep 谓词逻辑\sep 一阶逻辑\sep 自然演绎\sep Fitch}
 \Copyright{CC BY 4.0}
 \CopyrightURL{https://forallx.openlogicproject.org/}
 \PublicationType{book}
-\Source{https://github.com/rzach/forallx-yyc}
+\Source{https://github.com/domo-domino-desu/forallx-yyc-20260825-zh}
 \URLlink{https://forallx.openlogicproject.org/}
 \Publisher{Open Logic Project}

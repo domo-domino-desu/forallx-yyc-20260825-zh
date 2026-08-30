@@ -1,27 +1,28 @@
 %!TEX root = forallxyyc.tex
-\part{Metatheory}
+\part{元理论}
 \label{ch.normalform}
 \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
 
-\chapter{Normal forms}\label{c:NormalForms}
+\chapter{范式}\label{c:NormalForms}
 
+\section{析取范式}\label{s:DNFDefined}
 
-\section{Disjunctive normal form}\label{s:DNFDefined}
+有时，考虑形式特别简单的语句是很有用的。例如，我们可以考虑那些 $\enot$ 只出现在原子语句之前的语句，或者那些只用 $\eand$ 将原子语句和带否定的原子语句组合起来的语句。一种相对通用但仍保持简单的形式是：一个语句是若干原子语句或带否定的原子语句的合取式的析取。当构造这样一个语句时，我们从原子语句开始，然后（可能）附加否定，接着（可能）用 $\eand$ 组合，最后（可能）用 $\eor$ 组合。
 
-Sometimes it is useful to consider sentences of a particularly simple form. For instance, we might consider sentences in which $\enot$ only attaches to atomic sentences, or those which are combinations of atomic sentences and negated atomic sentences using only $\eand$.  A relatively general but still simple form is that where a sentence is a disjunction of conjunctions of atomic or negated atomic sentences.  When such a sentence is constructed, we start with atomic sentences, then (perhaps) attach negations, then (perhaps) combine using $\eand$, and finally (perhaps) combine using~$\eor$.
+我们说一个语句是 \define{析取范式（disjunctive normal form）} \emph{\ifeff} 它满足以下所有条件：
 
-Let's say that a sentence is in \define{disjunctive normal form} \emph{\ifeff} it meets all of the following conditions:
-	\begin{compactlist}
-		\item[(\textsc{dnf1})] No connectives occur in the sentence other than negations, conjunctions and disjunctions;
-		\item[(\textsc{dnf2})] Every occurrence of negation has minimal scope (i.e., any `$\enot$' is immediately followed by an atomic sentence);
-		\item[(\textsc{dnf3})] No disjunction occurs within the scope of any conjunction.
+\begin{compactlist}
+		\item[(\textsc{dnf1})] 除了否定、合取和析取外，语句中不出现其他联结词；
+		\item[(\textsc{dnf2})] 每个否定的出现都具有最小辖域（即，任何“$\enot$”都紧跟着一个原子语句）；
+		\item[(\textsc{dnf3})] 任何析取的辖域内都不出现合取。
 	\end{compactlist}
+
 \newglossaryentry{disjunctive normal form}{
-  name = disjunctive normal form (DNF),
-  text = disjunctive normal form,
-  description = {A sentence which is a disjunction of conjunctions of atomic sentences or negated atomic sentences}
+  name = 析取范式,
+  text = 析取范式,
+  description = {一种语句，它是若干原子语句或带否定的原子语句的合取式的析取}
 }
-So, here are are some sentences in disjunctive normal form:
+所以，以下是一些属于析取范式的语句：
 \begin{align*}
   & A \\
   & (A \eand \lnot B \eand C)\\
@@ -29,22 +30,20 @@ So, here are are some sentences in disjunctive normal form:
   & (A \eand B) \eor (A \eand  B \eand C \eand \enot D \eand \enot E)\\
   & A \eor (C \eand \enot P_{234} \eand P_{233} \eand Q) \eor \enot B
 \end{align*}
-Note that we have here broken one of the maxims of this book and \emph{temporarily} allowed ourselves to employ the relaxed bracketing-conventions that allow conjunctions and disjunctions to be of arbitrary length. These conventions make it easier to see when a sentence is in disjunctive normal form. We will continue to help ourselves to these relaxed conventions, without further comment.
+注意，我们这里暂时打破了本书的一项原则，\emph{临时}允许自己采用宽松的括号约定，允许合取式和析取式具有任意长度。这些约定使得判断一个语句是否属于析取范式变得更加容易。后续我们将继续采用这些宽松约定，不再另行说明。
 
-To further illustrate the idea of disjunctive normal form, we will introduce some more notation. We write `$\pm\metav{A}$' to indicate that $\metav{A}$ is an atomic sentence which may or may not be prefaced with an occurrence of negation. Then a sentence in disjunctive normal form has the following shape:
+为了进一步阐明析取范式的概念，我们将引入更多记号。我们用“$\pm\metav{A}$”表示 $\metav{A}$ 是一个原子语句，它前面可能带有一个否定符号，也可能没有。那么，一个属于析取范式的语句具有以下形状：
 	$$(\pm \metav{A}_1 \land \ldots \land \pm \metav{A}_i) \lor (\pm \metav{A}_{i+1} \land \ldots \land \pm\metav{A}_j) \lor \ldots \lor (\pm\metav{A}_{m+1} \land \ldots \land \pm \metav{A}_n)$$
-We now know what it is for a sentence to be in disjunctive normal form. The result that we are aiming at is:
-	\factoidbox{\label{thm:dnf}\textbf{Disjunctive Normal Form Theorem.} For any sentence, there is an equivalent sentence in disjunctive normal form.
+我们现在知道了什么是属于析取范式的语句。我们旨在证明的结果是：
+	\factoidbox{\label{thm:dnf}\textbf{析取范式定理。} 对任意语句，都存在一个与之逻辑等价的、属于析取范式的语句。
 	}
-Henceforth, we will abbreviate `Disjunctive Normal Form' by `DNF'.
-
-
-\section{Proof of DNF Theorem via truth tables}
+\section{通过真值表证明析取范式定理}
 \label{s:DNFTruthTable}
 
-Our first proof of the DNF Theorem employs truth tables. We will first illustrate the technique for finding an equivalent sentence in DNF, and then turn this illustration into a rigorous proof.
+我们对析取范式定理的第一个证明使用了真值表。我们将首先举例说明如何找出等价的析取范式语句，然后再将这一示例转化为严格的证明。
 
-Let's suppose we have some sentence, $\metav{S}$, which contains three atomic sentences, `$A$', `$B$' and `$C$'. The very first thing to do is fill out a complete truth table for~$\metav{S}$. Maybe we end up with this:
+假设我们有一个语句 $\metav{S}$，它包含三个原子语句“$A$”、“$B$” 和 “$C$”。首先要做的是为 $\metav{S}$ 画出一张完整的真值表。结果可能如下：
+
 \begin{center}
 \begin{tabular}{c c c | c}
 $A$ & $B$ & $C$ & $\metav{S}$\\
@@ -59,92 +58,94 @@ $A$ & $B$ & $C$ & $\metav{S}$\\
  F & F & F & T
 \end{tabular}
 \end{center}
+
 %Now, consider a sentence, whose only connectives are negations and conjunctions, where no connective occurs within the scope of any negation, e.g.:
 %	$$A \eand \enot B \eand C$$
-%This sentence is true when, and only when, `$A$' is true, `$B$' is false and `$C$' is true. Similarly, the sentence:
+%This sentence is true when, and only when, “$A$” is true, “$B$” is false and “$C$” is true. Similarly, the sentence:
 %	$$\enot A \eand \enot B \eand C$$
-%this is true when, and only when, `$A$' is false, `$B$' is false and `$C$' is true.
+%this is true when, and only when, “$A$” is false, “$B$” is false and “$C$” is true.
 %
 %A disjunction is true when, and only when, at least one of the disjuncts is true. So if we write down a disjunction of sentences of the above form, perhaps
 %	$$(A \eand \enot B \eand C) \eor (\enot A \eand \enot B \eand C)$$
-%then it will be true on exactly \emph{two} lines of the truth table which describes all possible valuations of `$A$', `$B$' and `$C$'.
+%then it will be true on exactly \emph{two} lines of the truth table which describes all possible valuations of “$A$”, “$B$” and “$C$”.
 %
-As it happens, $\metav{S}$ is true on four lines of its truth table, namely lines 1, 3, 7 and~8. Corresponding to each of those lines, we will write down four sentences, whose only connectives are negations and conjunctions, where every negation has minimal scope:
-	\begin{compactlist}
-		\item  `$A \eand B \eand C$'\hfill which is true on line 1 (and only then)
-		\item `$A \eand \enot B \eand C$' \hfill which is true on line 3 (and only then)
-		\item `$\enot A \eand \enot B \eand C$' \hfill which is true on line 7 (and only then)
-		\item `$\enot A \eand \enot B \eand \enot C$' \hfill which is true on line 8 (and only then)
+恰巧，$\metav{S}$ 在其真值表的四行上为真，即第 1、3、7 和 8 行。对应于每一行，我们将写下四个只包含否定和合取作为联结词的语句，并且其中每个否定的辖域都保持最小：
+
+\begin{compactlist}
+		\item  “$A \eand B \eand C$”\hfill 该式在第 1 行为真（且仅当该行）
+		\item “$A \eand \enot B \eand C$” \hfill 该式在第 3 行为真（且仅当该行）
+		\item “$\enot A \eand \enot B \eand C$” \hfill 该式在第 7 行为真（且仅当该行）
+		\item “$\enot A \eand \enot B \eand \enot C$” \hfill 该式在第 8 行为真（且仅当该行）
 	\end{compactlist}
-We now combine all of these conjunctions using~$\eor$, like so:
+
+现在我们用 $\eor$ 将所有合取式组合起来：
 $$(A \eand B \eand C) \eor (A \eand \enot B \eand C) \eor (\enot A \eand \enot B \eand C) \eor (\enot A \eand \enot B \eand \enot C)$$\label{longDNF}
-This gives us a sentence in DNF which is true on exactly those lines where one of the disjuncts is true, i.e., it is true on (and only on) lines 1, 3, 7, and 8. So this sentence has exactly the same truth table as $\metav{S}$. So we have a sentence in DNF that is logically equivalent to $\metav{S}$, which is exactly what we wanted!
+这样就得到了一个析取范式语句，它恰好在那些至少有一个析取支为真的行上为真，即在（且仅在）第 1、3、7 和 8 行为真。因此，这个语句与 $\metav{S}$ 具有完全相同的真值表。于是我们得到了一个与 $\metav{S}$ 逻辑等价的析取范式语句，这正是我们想要的！
 
-Now, the strategy that we just adopted did not depend on the specifics of $\metav{S}$; it is perfectly general. Consequently, we can use it to obtain a simple proof of the DNF Theorem.
+我们刚才采用的策略并不依赖于 $\metav{S}$ 的具体细节；它是完全通用的。因此，我们可以利用它来给出析取范式定理的一个简单证明。
 
-Pick any arbitrary sentence, $\metav{S}$, and let $\metav{A}_1, \ldots, \metav{A}_n$ be the atomic sentences that occur in $\metav{S}$. To obtain a sentence in DNF that is logically equivalent $\metav{S}$, we consider $\metav{S}$'s truth table. There are two cases to consider:
-	\begin{numberlist}
-		\item \emph{$\metav{S}$ is false on every line of its truth table.} Then, $\metav{S}$ is a contradiction. In that case, the contradiction $(\metav{A}_1 \eand \enot \metav{A}_1)$ is in DNF and logically equivalent to~$\metav{S}$.
-	
-		\item \emph{$\metav{S}$ is true on at least one line of its truth table.}
-		For each line $i$ of the truth table, let $\metav{B}_i$ be a conjunction of the form 
+任选一个语句 $\metav{S}$，并令 $\metav{A}_1, \ldots, \metav{A}_n$ 为出现在 $\metav{S}$ 中的所有原子语句。为得到一个逻辑等价于 $\metav{S}$ 的析取范式语句，我们需要考察 $\metav{S}$ 的真值表。有两种情况需要考虑：
+
+\begin{numberlist}
+		\item \emph{$\metav{S}$ 在其真值表的每一行上均为假。} 那么 $\metav{S}$ 是一个矛盾式。在这种情况下，矛盾式 $(\metav{A}_1 \eand \enot \metav{A}_1)$ 是一个析取范式语句，且逻辑等价于 $\metav{S}$。
+		\item \emph{$\metav{S}$ 在其真值表的至少一行上为真。}
+		对于真值表的每一行 $i$，令 $\metav{B}_i$ 为一个形如
 		$$(\pm\metav{A}_1 \land \ldots \land \pm\metav{A}_n)$$
-		where the following rules determine whether or not to include a negation in front of each atomic sentence:
+		的合取式，其中决定是否在每一个原子语句前添加否定的规则如下：
 			\begin{itemize}
-				\item
-				$\metav{A}_m$ is a conjunct of $\metav{B}_i$ \emph{\ifeff}
-				$\metav{A}_m$ is true on line~$i$.
-				\item $\enot\metav{A}_m$ is a conjunct of $\metav{B}_i$
-				\emph{\ifeff} $\metav{A}_m$ is false on line~$i$.
+				\item $\metav{A}_m$ 是 $\metav{B}_i$ 的一个合取支 \emph{\ifeff} $\metav{A}_m$ 在第 $i$ 行为真。
+				\item $\enot\metav{A}_m$ 是 $\metav{B}_i$ 的一个合取支 \emph{\ifeff} $\metav{A}_m$ 在第 $i$ 行为假。
 			\end{itemize}
-		Given these rules, $\metav{B_i}$ is true on (and only on) line~$i$ of the truth table which considers all possible valuations of $\metav{A}_1$, \ldots, $\metav{A}_n$ (i.e., $\metav{S}$'s truth table).
-		
-		Next, let $i_1$, $i_2$, \dots, $i_m$ be the numbers of the lines of the truth table where $\metav{S}$ is \emph{true}. Now let $\metav{D}$ be the sentence:
+		根据这些规则，$\metav{B_i}$ 在且仅在真值表考虑 $\metav{A}_1$, \ldots, $\metav{A}_n$ 所有可能赋值（即 $\metav{S}$ 的真值表）的第 $i$ 行上为真。
+
+		接下来，令 $i_1$, $i_2$, \dots, $i_m$ 为真值表中 $\metav{S}$ \emph{为真} 的那些行的编号。现在令 $\metav{D}$ 为如下语句：
 		$$\metav{B}_{i_1} \eor \metav{B}_{i_2} \eor \ldots \eor \metav{B}_{i_m}$$
-		Since $\metav{S}$ is true on at least one line of its truth table, $\metav{D}$ is indeed well-defined; and in the limiting case where $\metav{S}$ is true on exactly one line of its truth table, $\metav{D}$ is just $\metav{B}_{i_1}$, for some $i_1$.
-		
-		By construction, $\metav{D}$ is in DNF. Moreover, by construction, for each line~$i$ of the truth table: $\metav{S}$ is true on line $i$ of the truth table \emph{\ifeff} one of $\metav{D}$'s disjuncts (namely, $\metav{B_i}$) is true on, and only on, line $i$. Hence $\metav{S}$ and $\metav{D}$ have the same truth table, and so are logically equivalent.
+		既然 $\metav{S}$ 在其真值表的至少一行上为真，那么 $\metav{D}$ 就是良定义的；在极限情况下，即 $\metav{S}$ 在其真值表上恰好只在一行上为真时，$\metav{D}$ 就直接是某个 $\metav{B}_{i_1}$。
+
+		根据构造，$\metav{D}$ 是析取范式语句。此外，根据构造，对于真值表的每一行 $i$：$\metav{S}$ 在该行上为真 \emph{\ifeff} $\metav{D}$ 的某个析取支（即 $\metav{B_i}$）在且仅在该行上为真。因此，$\metav{S}$ 和 $\metav{D}$ 具有相同的真值表，从而逻辑等价。
 	\end{numberlist}
-	These two cases are exhaustive and, either way, we have a sentence in DNF that is logically equivalent to $\metav{S}$.
 
-So we have proved the DNF Theorem. Before we say any more, though, we should immediately flag that we are hereby returning to the austere definition of a (TFL) sentence, according to which we can assume that any conjunction has exactly two conjuncts, and any disjunction has exactly two disjuncts.
+	这两种情况已穷尽所有可能，无论如何，我们都得到了一个逻辑等价于 $\metav{S}$ 的析取范式语句。
 
+于是我们证明了析取范式定理。不过，在我们进一步讨论之前，应当立即指出，我们因此回到了对（真值函项逻辑）语句的严格定义，根据该定义，可以假定任一合取式恰有两个合取支，任一个析取式恰有两个析取支。
 
-\section{Conjunctive normal form}
+\section{合取范式}
 \label{s:CNF}
 
-So far in this chapter, we have discussed \emph{disjunctive} normal form. It may not come as a surprise to hear that there is also such a thing as \emph{conjunctive normal form} (CNF).
+本章至此我们讨论的是\emph{析取}范式。存在所谓的\emph{合取范式}，可能并不令人意外。
 
-The definition of CNF is exactly analogous to the definition of DNF. So, a sentence is in CNF \emph{\ifeff} it meets all of the following conditions:
-	\begin{compactlist}
-		\item[(\textsc{cnf1})] No connectives occur in the sentence other than negations, conjunctions and disjunctions;
-		\item[(\textsc{cnf2})] Every occurrence of negation has minimal scope;
-		\item[(\textsc{cnf3})] No conjunction occurs within the scope of any disjunction.
+合取范式 的定义与析取范式的定义完全类似。确切地说，一个语句是合取范式语句 \emph{\ifeff} 它满足以下所有条件：
+
+\begin{compactlist}
+		\item[(\textsc{cnf1})] 除了否定、合取和析取之外，该语句中不出现任何其他联结词；
+		\item[(\textsc{cnf2})] 每个否定的出现都具有最小辖域；
+		\item[(\textsc{cnf3})] 任何合取的辖域内都不出现析取。
 	\end{compactlist}
+
 \newglossaryentry{conjunctive normal form}{
-  name = conjunctive normal form (DNF),
-  text = conjunctive normal form,
-  description = {A sentence which is a conjunction of disjunctions of atomic sentences or negated atomic sentences}
+  name = 合取范式,
+  text = 合取范式,
+  description = {一种语句，它是若干原子语句或带否定的原子语句的析取式的合取}
 }
-Generally, then, a sentence in CNF looks like this
+一般而言，一个合取范式语句形如
 	$$(\pm \metav{A}_1 \lor \ldots \lor \pm \metav{A}_i) \land (\pm \metav{A}_{i+1} \lor \ldots \lor \pm\metav{A}_j) \land \ldots \land (\pm\metav{A}_{m+1} \lor\ldots \lor \pm \metav{A}_n)$$
-where each $\metav{A}_k$ is an atomic sentence.
+其中每个 $\metav{A}_k$ 都是一个原子语句。
 
-We can now prove another normal form theorem:
-	\factoidbox{\label{thm:cnf}\textbf{Conjunctive Normal Form Theorem.} For any sentence, there is an equivalent sentence in conjunctive normal form.}
+我们现在可以证明另一个范式定理：
+	\factoidbox{\label{thm:cnf}\textbf{合取范式定理。} 对于任一语句，都存在一个与其逻辑等价的合取范式语句。}
 
-        
-	Given a TFL sentence, $\metav{S}$, we begin by writing down the complete truth table for $\metav{S}$.
-	
-	If $\metav{S}$ is \emph{true} on every line of the truth table, then $\metav{S}$ and $(\metav{A}_1 \eor \enot \metav{A}_1)$ are logically equivalent.
-	
-	If $\metav{S}$ is \emph{false} on at least one line of the truth table then, for every line on the truth table where $\metav{S}$ is false, write down a disjunction $(\pm\metav{A}_1 \eor \ldots \eor \pm\metav{A}_n)$ which is \emph{false} on (and only on) that line. Let $\metav{C}$ be the conjunction of all of these disjuncts; by construction, $\metav{C}$ is in CNF and $\metav{S}$ and $\metav{C}$ are logically equivalent.
+	给定一个真值函项逻辑语句 $\metav{S}$，我们首先写下 $\metav{S}$ 的完整真值表。
+
+	如果 $\metav{S}$ 在真值表的\emph{每一行}上都为真，那么 $\metav{S}$ 与 $(\metav{A}_1 \eor \enot \metav{A}_1)$ 逻辑等价。
+
+	如果 $\metav{S}$ 在真值表的\emph{至少一行}上为假，那么，对于真值表中 $\metav{S}$ 为假的每一行，写下在该行上（且仅在该行上）为\emph{假}的析取式 $(\pm\metav{A}_1 \eor \ldots \eor \pm\metav{A}_n)$。令 $\metav{C}$ 为所有这些析取式的合取；根据构造，$\metav{C}$ 是合取范式语句，并且 $\metav{S}$ 与 $\metav{C}$ 逻辑等价。
 
 \practiceproblems
 \problempart
 \label{pr.DNF}
-Consider the following sentences:
-	\begin{compactlist}
+考虑以下语句：
+
+\begin{compactlist}
 		\item $(A \eif \enot B)$
 		\item $\enot (A \eiff B)$
 		\item $(\enot A \eor \enot (A \eand B))$
@@ -152,11 +153,13 @@ Consider the following sentences:
 		\item $(\enot (A \eor B) \eiff ((\enot C \eand \enot A) \eif \enot B))$
 		\item $((\enot (A \eand \enot B) \eif C) \eand \enot (A \eand D))$
 	\end{compactlist}
-        For each sentence, find an equivalent sentence in DNF and one in CNF.
 
-\chapter{Functional completeness}\label{c:FunctionalCompleteness}
+        对每一个语句，分别找出一个逻辑等价的析取范式语句和一个逻辑等价的合取范式语句。
 
-Of our connectives, $\enot$ attaches to a single sentence, and the others all combine exactly two sentences. We may also introduce the idea of an $n$-place connective. For example, we could consider a three-place connective, `$\heartsuit$', and stipulate that it is to have the following characteristic truth table:
+\chapter{功能完全性}\label{c:FunctionalCompleteness}
+
+在我们的联结词中，$\enot$ 仅作用于一个句子，其他联结词都恰好组合两个句子。我们也可以引入 $n$ 元联结词的概念。例如，我们可以考虑一个三元联结词 “$\heartsuit$”，并规定它具有以下特征真值表：
+
 \begin{center}
 \begin{tabular}{c c c | c}
 $A$ & $B$ & $C$ & $\heartsuit(A,B,C)$\\
@@ -171,63 +174,62 @@ $A$ & $B$ & $C$ & $\heartsuit(A,B,C)$\\
  F & F & F & F
 \end{tabular}
 \end{center}
-Probably this new connective would not correspond with any natural English expression (at least not in the way that `$\eand$' corresponds with `and'). But a question arises: if we wanted to employ a connective with this characteristic truth table, must we add a \emph{new} connective to TFL? Or can we get by with the connectives we \emph{already have} (as we can for the connective `neither\dots nor' for instance)?
 
-Let us make this question more precise. Say that some connectives are \define{jointly functionally complete} \emph{\ifeff}, for any possible truth table, there is a sentence containing only those connectives with that truth table.
+可能这个新联结词不对应任何自然的英语表达式（至少不像 “$\eand$” 对应“and”那样）。但问题随之产生：如果我们想使用具有这个特征真值表的联结词，是否必须在真值函项逻辑中添加一个\emph{新}联结词？还是说我们可以用\emph{已有}的联结词来达到目的（就像我们可以用已有联结词表达“既不……也不……”那样）？
+
+让我们更精确地表述这个问题。我们说一组联结词是\define{联合功能完备的} \emph{\ifeff}，对于任何可能的真值表，都存在一个只包含这些联结词的句子具有该真值表。
 
 \newglossaryentry{functionally complete}{
-  name = {functional completeness},
-  text = {functionally complete},
-  description = {Property of a collection of connectives which holds \ifeff{} every possible truth table is the truth table of a sentence involving only those connectives}}
+  name = {功能完备性},
+  text = {功能完备的},
+  description = {联结词集合的一个性质，该性质成立 \ifeff{} 每个可能的真值表都是某个仅包含那些联结词的句子的真值表}}
 
-The general point is, when we are armed with some jointly functionally complete connectives, no characteristic truth table lies beyond our grasp. And in fact, we are in luck.
-	\factoidbox{\label{thm:ExpressiveAdequacy}\textbf{Functional Completeness Theorem.}
-The connectives of TFL are jointly functionally complete. Indeed, the following pairs of connectives are jointly functionally complete:
+一般要点是，当我们掌握了一些联合功能完备的联结词，就没有哪个特征真值表是我们无法把握的。事实上，我们很幸运。
+	\factoidbox{\label{thm:ExpressiveAdequacy}\textbf{功能完备性定理。}
+真值函项逻辑的联结词是联合功能完备的。事实上，以下几对联结词都是联合功能完备的：
+
 \begin{compactlist}
-\item\label{expressive:eor} `$\enot$' and `$\eor$'
-\item\label{expressive:eand} `$\enot$' and `$\eand$'
-\item\label{expressive:eif} `$\enot$' and `$\eif$'
-\end{compactlist}}
+\item\label{expressive:eor} “$\enot$” 和 “$\eor$”
+\item\label{expressive:eand} “$\enot$” 和 “$\eand$”
+\item\label{expressive:eif} “$\enot$” 和 “$\eif$”
+\end{compactlist}
+}
 
-Given any truth table, we can use the method of proving the DNF Theorem (or the CNF Theorem) via truth tables from \cref{c:NormalForms}, to write down a scheme which has the same truth table. For example, employing the truth table method for proving the DNF Theorem, we find that the following scheme has the same characteristic truth table as $\heartsuit(A,B,C)$, above:
-		$$(A \eand B \eand \enot C) \eor (A \eand \enot B \eand C) \eor (\enot A \eand B \eand \enot C)$$			
-It follows that the connectives of TFL are jointly functionally complete. We now prove each of the subsidiary results.
-	
-\emph{Subsidiary Result 1: functional completeness of `$\enot$' and `$\eor$'.} Observe that the scheme that we generate, using the truth table method of proving the DNF Theorem, will only contain the connectives `$\enot$', `$\eand$' and `$\eor$'. So it suffices to show that there is an equivalent scheme which contains only `$\enot$' and `$\eor$'. To demonstrate this, we simply consider that
+给定任何真值表，我们可以使用\cref{c:NormalForms}中通过真值表证明析取范式定理（或合取范式定理）的方法，写下一个具有相同真值表的模式。例如，运用证明析取范式定理的真值表方法，我们发现以下模式具有与上面$\heartsuit(A,B,C)$相同的特征真值表：
+		$$(A \eand B \eand \enot C) \eor (A \eand \enot B \eand C) \eor (\enot A \eand B \eand \enot C)$$
+由此可见，真值函项逻辑的联结词是联合功能完备的。我们现在证明每一个辅助结果。
+
+\emph{辅助结果1：“$\enot$”和“$\eor$”的功能完备性。}注意，使用证明析取范式定理的真值表方法生成的模式将只包含联结词“$\enot$”、“$\eand$”和“$\eor$”。因此，只需证明存在一个只包含“$\enot$”和“$\eor$”的等价模式即可。为达此目的，我们只需注意到：
 		\begin{align*}
 		(\metav{A} \eand \metav{B}) & \Leftrightarrow \enot(\enot \metav{A} \eor\enot \metav{B})
 		\end{align*}
-		are logically equivalent.\footnote{We're here using the convention
-		that to say that $\metav{A}$ and $\metav{B}$ are equivalent can be
-		abbreviated as $\metav{A} \Leftrightarrow \metav{B}$. Note that
-		`$\Leftrightarrow$' is \emph{not} a connective like~`\eiff', but a
-		metalinguistic symbol just like~`$\entails$'; compare the discussion
-		of `$\entails$' and `$\eiff$' in \cref{entails-v-iff}.}
+		是逻辑等价的。\footnote{这里我们采用一个约定：称$\metav{A}$和$\metav{B}$等价可缩写为$\metav{A} \Leftrightarrow \metav{B}$。注意“$\Leftrightarrow$” \emph{不是}像“$\eiff$”那样的联结词，而是像“$\entails$”一样的元语言符号；比较\cref{entails-v-iff}中对“$\entails$”和“$\eiff$”的讨论。}
 
-\emph{Subsidiary Result 2: functional completeness of `$\enot$' and `$\eand$'.} Exactly as in Subsidiary Result~1, making use of the fact that
+\emph{辅助结果2：“$\enot$”和“$\eand$”的功能完备性。}与辅助结果1完全相同，利用以下事实：
 		\begin{align*}
 		(\metav{A} \eor \metav{B}) & \Leftrightarrow \enot(\enot \metav{A} \eand\enot \metav{B})
 		\end{align*}
-are logically equivalent.
+		是逻辑等价的。
 
-\emph{Subsidiary Result 3: functional completeness of `$\enot$' and `$\eif$'.} Exactly as in Subsidiary Result~1, making use of these equivalences instead:
+\emph{辅助结果3：“$\enot$”和“$\eif$”的功能完备性。}与辅助结果1完全相同，但改用以下等价式：
 		\begin{align*}
 		(\metav{A} \eor \metav{B}) &\Leftrightarrow (\enot \metav{A} \eif \metav{B})\\
 		(\metav{A} \eand \metav{B}) &\Leftrightarrow \enot(\metav{A} \eif \enot\metav{B})
 		\end{align*}
-Alternatively, we could simply rely upon one of the other two subsidiary results, and (repeatedly) invoke only one of these two equivalences.
+或者，我们可以直接依赖另外两个辅助结果之一，并且（反复地）只调用这两个等价式中的一个。
 
-In short, there is never any \emph{need} to add new connectives to TFL. Indeed, there is already some redundancy among the connectives we have: we could have made do with just two connectives, if we had been feeling really austere.
+总之，我们\emph{从不必须}在真值函项逻辑中添加新的联结词。事实上，我们已有的联结词中已经存在冗余：如果我们当初真的力求精简，本可以只用两个联结词就够了。
 
 \ifHTMLtarget
-\section{Individually functionally complete connectives}
+\section{单独功能完备的联结词}
 \else
-\section[Individually functionally complete connectives][Functionally complete connectives]{Individually functionally complete connectives}
+\section[单独功能完备的联结词][功能完备的联结词]{单独功能完备的联结词}
 \fi
 
-In fact, some two-place connectives are \emph{individually} functionally complete. These connectives are not standardly included in TFL, since they are rather cumbersome to use. But their existence shows that, if we had wanted to, we could have defined a truth-functional language that was functionally complete, which contained only a single primitive connective.
+事实上，一些二元联结词是\emph{单独}功能完备的。这些联结词通常不包含在真值函项逻辑中，因为它们使用起来相当繁琐。但它们的存在表明，倘若我们愿意，本可以定义一种功能完备的真值函项语言，它仅包含一个初始联结词。
 
-The first such connective we will consider is `$\uparrow$', which has the following characteristic truth table.
+我们将考虑的第一个此类联结词是 “$\uparrow$”，它具有以下特征真值表。
+
 \begin{center}
 \begin{tabular}{c c | c}
 $\metav{A}$ & $\metav{B}$ & $\metav{A} \mathrel{\uparrow} \metav{B}$\\
@@ -238,33 +240,18 @@ $\metav{A}$ & $\metav{B}$ & $\metav{A} \mathrel{\uparrow} \metav{B}$\\
  F & F & T
 \end{tabular}
 \end{center}
- This is often called `the Sheffer stroke', after Henry Sheffer, who
- used it to show how to reduce the number of logical connectives in
- Russell and Whitehead's \textit{Principia
- Mathematica}.\footnote{Sheffer, ``A set of five independent
- postulates for Boolean algebras, with application to logical
- constants'', \textit{Transactions of the American Mathematical
- Society}~14 (1913), pp.~481--488} (In fact, Charles Sanders Peirce
- had anticipated Sheffer by about 30 years, but never published his
- results, and the Polish philosopher Edward Stamm published the same
- result two years before Sheffer.)\footnote{See Peirce's ``A Boolian
- algebra with one constant'', which dates to c.~1880, in Peirce's
- \textit{Collected Papers}, vol.~4, pp.~264--5, and Edward Stamm,
- ``\foreignlanguage{german}{Beitrag zur Algebra der Logik}'',
- \foreignlanguage{german}{\textit{Monatshefte für Mathematik und
- Physik}}~22 (1911), pp.~137--49.} It is quite common, as well, to
- call it `nand', since its characteristic truth table is the negation
- of the truth table for `$\eand$'.
-\factoidbox{\label{prop:upexpressive}`$\uparrow$' is functionally complete all by itself.}
 
-The Functional Completeness Theorem tells us that `$\enot$' and `$\eor$' are jointly functionally complete. So it suffices to show that, given any scheme which contains only those two connectives, we can rewrite it as an equivalent scheme which contains only `$\uparrow$'. As in the proof of the subsidiary cases of the Functional Completeness Theorem, then, we simply apply the following equivalences:
+这通常被称为“谢弗竖线”，得名于亨利·谢弗，他曾用它来展示如何减少 Russell 和 Alfred North Whitehead（阿尔弗雷德·诺思·怀特海）《数学原理》中的逻辑联结词数量。\footnote{Sheffer, “”A set of five independent postulates for Boolean algebras, with application to logical constants'', \textit{Transactions of the American Mathematical Society}~14 (1913), pp. 481--488}（实际上，查尔斯·桑德斯·皮尔士比谢弗早了大约30年就预见到了这一点，但他从未发表其结果；而波兰哲学家爱德华·斯塔姆则比谢弗早两年发表了同样的结果。）\footnote{参见皮尔士约1880年的文章“A Boolian algebra with one constant”，收录于Peirce's \textit{Collected Papers}, vol. 4, pp. 264--5；以及爱德华·斯塔姆，“”\foreignlanguage{german}{Beitrag zur Algebra der Logik}'', \foreignlanguage{german}{\textit{Monatshefte für Mathematik und Physik}}~22 (1911), pp. 137--49。}它也常被称为“与非”，因为它的特征真值表正是“$\eand$”的真值表的否定。
+\factoidbox{\label{prop:upexpressive}“$\uparrow$” 自身就是功能完备的。}
+
+功能完备性定理告诉我们，“$\enot$”和“$\eor$”是联合功能完备的。因此，只需证明：给定任何一个只包含这两个联结词的图式，我们都能将其重写为一个只包含“$\uparrow$”的等价图式。于是，与功能完备性定理辅助结果的证明类似，我们只需对辅助结果~\ref*{expressive:eor} 应用以下等价式：
 		\begin{align*}
 			\enot \metav{A} &\Leftrightarrow (\metav{A} \uparrow \metav{A})\\
 			(\metav{A} \eor \metav{B}) & \Leftrightarrow ((\metav{A} \uparrow \metav{A}) \uparrow (\metav{B} \uparrow \metav{B}))
 		\end{align*}
-to the Subsidiary Result~\ref*{expressive:eor}.
 
-Similarly, we can consider the connective `$\downarrow$':
+类似地，我们可以考虑联结词“$\downarrow$”：
+
 \begin{center}
 \begin{tabular}{c c | c}
 $\metav{A}$ & $\metav{B}$ & $\metav{A} \mathrel{\downarrow} \metav{B}$\\
@@ -275,26 +262,27 @@ $\metav{A}$ & $\metav{B}$ & $\metav{A} \mathrel{\downarrow} \metav{B}$\\
  F & F & T
 \end{tabular}
 \end{center}
-This is sometimes called the `Peirce arrow' (Peirce himself called it `ampheck'). More often, though, it is called `nor', since its characteristic truth table is the negation of `$\eor$', that is, of `neither \dots{} nor \dots'.
-	\factoidbox{
-	`$\downarrow$' is functionally complete all by itself. }
 
-As in the previous result for $\uparrow$, although invoking the equivalences:
+这有时被称为“皮尔斯箭头”（皮尔士本人称其为“ampheck”）。不过，更常见的名称是“或非”，因为它的特征真值表是“$\eor$”的否定，即表示“既不……也不……”。
+	\factoidbox{
+	“$\downarrow$” 自身就是功能完备的。}
+
+与前面关于 $\uparrow$ 的结果证明类似，只不过这里应用的是以下等价式：
 		\begin{align*}
 			\enot \metav{A} &\Leftrightarrow (\metav{A} \downarrow \metav{A})\\
 			(\metav{A} \eand \metav{B}) & \Leftrightarrow ((\metav{A} \downarrow \metav{A}) \downarrow (\metav{B} \downarrow \metav{B}))
 		\end{align*}
-and Subsidiary Result~\ref*{expressive:eand}.
+以及辅助结果~\ref*{expressive:eand}。
 
+\section{功能不完备的情况}
 
-\section{Failures of functional completeness}
+实际上，\emph{仅有的}两种自身功能完备的二元联结词是“$\uparrow$”和“$\downarrow$”。但我们如何证明这一点呢？更一般地说，我们如何证明某些联结词\emph{并非}联合功能完备？
 
-In fact, the \emph{only} two-place connectives which are individually functionally complete are `$\uparrow$' and `$\downarrow$'. But how would we show this? More generally, how can we show that some connectives are \emph{not} jointly functionally complete? 
- 
-The obvious thing to do is to try to find some truth table which we \emph{cannot} express, using just the given connectives. But there is a bit of an art to this.
+显然，我们需要尝试找出某个真值表，它\emph{无法}仅用给定的联结词来表达。但这需要一些技巧。
 
-To make this concrete, let's consider the question of whether `$\eor$' is functionally complete all by itself. After a little reflection, it should be clear that it is not. In particular, it should be clear that any scheme which only contains disjunctions cannot have the same truth table as negation, i.e.:
-				\begin{center}
+为具体起见，让我们考虑“$\eor$”是否自身功能完备的问题。稍加思考便会清楚，并非如此。具体来说，任何仅包含析取的图式，其真值表都不可能和否定式相同，即：
+
+\begin{center}
 				\begin{tabular}{c | c}
 				$\metav{A}$ & $\enot \metav{A}$\\
 				\hline
@@ -302,66 +290,54 @@ To make this concrete, let's consider the question of whether `$\eor$' is functi
 				 F & T
 				\end{tabular}
 				\end{center}
-The intuitive reason, why this should be so, is simple: the top line of the desired truth table needs to have the value False; but the top line of any truth table for a scheme which \emph{only} contains $\eor$ will always be True. The same is true for $\eand$, $\eif$, and $\eiff$.
+
+其直观原因很简单：目标真值表的首行需要取值为假；但任何\emph{仅}包含$\eor$的图式的真值表，其首行总是为真。对于$\eand$、$\eif$和$\eiff$，情况同样如此。
  	\factoidbox{
-		`$\eor$', `$\eand$', `$\eif$', and `$\eiff$' are not functionally complete by themselves.}
+		“$\eor$”、“$\eand$”、“$\eif$”和“$\eiff$”自身都不是功能完备的。}
 
-In fact, the following is true:
-        
-\factoidbox{The \emph{only} two-place connectives that are functionally complete by themselves are `$\uparrow$' and `$\downarrow$'. }
+事实上，以下结论成立：
 
-This is of course harder to prove than for the primitive connectives. For instance, the ``exclusive or'' connective does not have a T in the first line of its characteristic truth table, and so the method used above no longer suffices to show that it cannot express all truth tables.  It is also harder to show that, e.g., `$\eiff$' and `$\enot$' \emph{together} are not functionally complete.
+\factoidbox{自身功能完备的\emph{仅有的}二元联结词是“$\uparrow$”和“$\downarrow$”。}
 
-\chapter{Proving equivalences}\label{ch:equivalences}
+当然，这比针对原始联结词的证明要困难。例如，“排斥或”联结词的特征真值表首行并非T，因此上述方法不足以证明它不能表达所有真值表。要证明诸如“$\eiff$”和“$\enot$”\emph{联合}起来也非功能完备，同样更为困难。
 
-\section{Substitutability of equivalents}
+\chapter{证明等值式}\label{ch:equivalences}
 
-Recall from \cref{sec:equivalent} that $\metav{P}$ and $\metav{Q}$ are equivalent (in TFL) iff, for every valuation, their truth values agree.  We have seen many examples of this and used both truth tables and natural deduction proofs to establish such equivalences.  In \cref{c:NormalForms} we've even proved that every sentence of TFL is equivalent to one in conjunctive and one in disjunctive normal form.  If $\metav{P}$ and~$\metav{Q}$ are equivalent, they always have the same truth value, either one entails the other, and from either one you can prove the other.
+\section{等值式的可替换性}
 
-Equivalent sentences are not the same, of course: the sentences $\enot\enot A$ and~$A$ may always have the same truth value, but the first starts with the `$\enot$' symbol while the second doesn't.  But you may wonder if it's always true that we can replace one of a pair of equivalent sentences by the other, and the results will be equivalent, too.  For instance, consider $\enot\enot A \eif B$ and $A \eif B$.  The second results from the first by replacing `$\enot\enot A$' by~`$A$'.  And these two sentences are also equivalent.
+回忆一下，从\cref{sec:equivalent}可知，$\metav{P}$ 和 $\metav{Q}$（在真值函项逻辑中）是等价的 \ifeff{} 对每个赋值而言，它们的真值都相同。我们已经见过很多这样的例子，并且用真值表和自然演绎证明来确立这种等价关系。在\cref{c:NormalForms}中，我们甚至证明了每个真值函项逻辑语句都等价于一个合取范式语句和一个析取范式语句。如果 $\metav{P}$ 和~$\metav{Q}$ 等价，那么它们总是具有相同的真值，任意一个都蕴涵另一个，并且从任意一个出发都可以证明另一个。
 
-This is a general fact, and it is not hard to see why it is true.  In
-any valuation, we compute the truth value of a sentence ``from the
-inside out.'' So when it comes to determining the truth value of
-`$\enot\enot A \eif B$', we first compute the truth value of
-`$\enot\enot A$', and the truth value of the overall sentence then
-just depends on that truth value (true or false, as the case may be)
-and the rest of the sentence (the truth value of~`$B$' and the truth
-table for~`$\eif$'). But since `$\enot\enot A$' and~`$A$' are equivalent,
-they always have the same truth value in a given valuation---hence,
-replacing `$\enot\enot A$' by~`$A$' cannot change the truth value of
-the overall sentence.  The same of course is true for any other
-sentence equivalent to `$\enot\enot A$', say, `$A \eand (A \eor A)$'.
+当然，等价的语句并非同一个语句：语句 $\enot\enot A$ 和~$A$ 可能总是有相同的真值，但第一个以 “$\enot$” 符号开头，而第二个则不然。不过你可能会想，是否总是能用一对等价语句中的一个替换另一个，并且得到的结果也是等价的呢？例如，考虑 $\enot\enot A \eif B$ 和 $A \eif B$。第二个语句正是将第一个语句中的 “$\enot\enot A$” 替换为~“$A$” 得到的。而这两个语句也确实等价。
 
-To state the result in general, let's use the notation $\metav{R}(\metav{P})$ to mean a sentence which contains the sentence $\metav{P}$ as a part. Then by $\metav{R}(\metav{Q})$ we mean the result of replacing the occurrence of $\metav{P}$ by the sentence~$\metav{Q}$.  For instance, if $\metav{P}$ is the sentence letter~`$A$', $\metav{Q}$ is the sentence~`$\enot\enot A$', and $\metav{R}(\metav{P})$ is `$A \eif B$', then $\metav{R}(\metav{Q})$ is `$\enot\enot A \eif B$'.
+这是一个普遍事实，并且不难理解原因。在任何赋值下，我们“从内到外”计算一个语句的真值。所以，当要决定 “$\enot\enot A \eif B$” 的真值时，我们首先计算 “$\enot\enot A$” 的真值，整个语句的真值随后就只取决于这个真值（可能是真或假）和语句的其余部分（即~“$B$” 的真值和 “$\eif$” 的真值表）。但是，由于 “$\enot\enot A$” 和~“$A$” 等价，在给定的赋值下它们总是具有相同的真值——因此，用~“$A$” 替换 “$\enot\enot A$” 不会改变整个语句的真值。当然，对于任何其他与 “$\enot\enot A$” 等价的语句，比如 “$A \eand (A \eor A)$”，情况也是如此。
 
-\factoidbox{If $\metav{P}$ and $\metav{Q}$ are equivalent, then so are $\metav{R}(\metav{P})$ and $\metav{R}(\metav{Q})$.}
+为了一般性地陈述这个结果，我们使用记号 $\metav{R}(\metav{P})$ 来表示一个包含语句 $\metav{P}$ 作为其组成部分的语句。那么 $\metav{R}(\metav{Q})$ 就表示将 $\metav{P}$ 的出现替换为语句~$\metav{Q}$ 后得到的结果。例如，如果 $\metav{P}$ 是语句字母~“$A$”，$\metav{Q}$ 是语句~“$\enot\enot A$”，而 $\metav{R}(\metav{P})$ 是 “$A \eif B$”，那么 $\metav{R}(\metav{Q})$ 就是 “$\enot\enot A \eif B$”。
 
-It follows from this fact that any sentence of the form $\metav{R}(\metav{P}) \eiff \metav{R}(\metav{Q})$, where $\metav{P}$ and $\metav{Q}$ are equivalent, is a tautology. However, the proofs in natural deduction will be wildly different for different~$\metav{R}$. (As an exercise, give proofs that show that 
-\begin{align*}
-	& \vdash (\enot\enot P \eif Q) \eiff (P \eif Q)  \text{ and}\\
+\factoidbox{如果 $\metav{P}$ 和 $\metav{Q}$ 是等价的，那么 $\metav{R}(\metav{P})$ 和 $\metav{R}(\metav{Q})$ 也是等价的。}
+
+由此事实可知，任何形如 $\metav{R}(\metav{P}) \eiff \metav{R}(\metav{Q})$ 的语句（其中 $\metav{P}$ 和 $\metav{Q}$ 等价）都是重言式。然而，对于不同的~$\metav{R}$，其自然演绎证明将会有很大差异。（作为练习，请给出证明以表明 \begin{align*}
+	& \vdash (\enot\enot P \eif Q) \eiff (P \eif Q)  \text{ 和}\\
 	& \vdash (\enot\enot P \eand Q) \eiff (P \eand Q)
-\end{align*}
-and compare the two.)
+\end{align*} 是重言式，并比较这两个证明。）
 
-Here is another fact: if two sentences $\metav{P}$ and~$\metav{Q}$ are equivalent, and you replace some sentence letter in both $\metav{P}$ and $\metav{Q}$ by the same sentence~$\metav{R}$, the results are also equivalent.  For instance, if you replace `$A$' in both `$A \land B$' and `$B \land A$' by, say, `$\enot C$', you get `$\enot C \land B$' and `$B \land \enot C$', and those are equivalent. We can record this, too:
+还有另一个事实：如果两个语句 $\metav{P}$ 和~$\metav{Q}$ 是等价的，并且你在 $\metav{P}$ 和 $\metav{Q}$ 中用同一个语句~$\metav{R}$ 替换了某个相同的语句字母，那么得到的结果也是等价的。例如，如果你在 “$A \land B$” 和 “$B \land A$” 两者中都把 “$A$” 替换为，比方说，“$\enot C$”，你会得到 “$\enot C \land B$” 和 “$B \land \enot C$”，而这两者是等价的。我们也可以记录下这一点：
 
-\factoidbox{Equivalence is preserved under replacement of sentence letters, i.e., if $\metav{P}(A)$ and $\metav{Q}(A)$ both contain the sentence letter~`$A$' and are equivalent, then the sentences $\metav{P}(\metav{R})$ and $\metav{Q}(\metav{R})$ (resulting by replacing `$A$' by $\metav{R}$ in both) are also equivalent.}
+\factoidbox{等价关系在语句字母替换下保持不变，即，如果 $\metav{P}(A)$ 和 $\metav{Q}(A)$ 都包含语句字母~“$A$” 并且是等价的，那么语句 $\metav{P}(\metav{R})$ 和 $\metav{Q}(\metav{R})$（通过在两者中将 “$A$” 替换为 $\metav{R}$ 得到）也是等价的。}
 
-This means that once we have shown that two sentence are equivalent (e.g., `$\enot\enot A$' and `$A$', or `$A \land B$' and `$B \land A$') we know that all their common ``instances'' are also equivalent.  Note that we do not immediately get this from a truth table or a natural deduction proof. E.g., a truth table that shows that `$\enot\enot A$' and~`$A$' are equivalent does \emph{not} also show that `$\enot\enot(B \eif C)$' and `$B \eif C$' are equivalent: the former needs just 2 lines, the latter~4.
+这意味着，一旦我们证明了两条语句是等价的（例如，“$\enot\enot A$” 和 “$A$”，或 “$A \land B$” 和 “$B \land A$”），我们就知道它们所有共同的“实例”也都是等价的。请注意，我们从真值表或自然演绎证明中并不能直接得到这一点。例如，用于证明 “$\enot\enot A$” 和~“$A$” 等价的真值表，并\emph{不}能同时证明 “$\enot\enot(B \eif C)$” 和 “$B \eif C$” 是等价的：前者只需要 2 行，而后者需要~4 行。
 
-\section{Chains of equivalences}
+\section{等价链}
 
-When you want to verify that two sentences are equivalent, you can of course do a truth table, or look for a formal proof.  But there is a simpler method, based on the principle of substitutability of equivalents we just discussed: Armed with a small catalog of simple equivalences, replace parts of your first sentence by equivalent parts, and repeat until you reach your second sentence.
+当你想验证两个语句等价时，当然可以做真值表，或者寻找形式证明。但还有一种更简单的方法，它基于我们刚刚讨论的等价替换原则：依据一个由简单等价关系构成的小型目录，将第一个语句中的部分替换为等价的部分，并不断重复此过程，直到得到第二个语句。
 
-This method of showing sentences equivalent is underwritten by the two facts from the previous section. The first fact tells us that \emph{if}, say, $\enot\enot \metav{P}$ and $\metav{P}$ are equivalent (for any sentence~$\metav{P}$), then replacing $\enot\enot\metav{P}$ in a sentence by~$\metav{P}$ results in an equivalent sentence. The second fact tells us \emph{that} $\enot\enot \metav{P}$ and~$\metav{P}$ are always equivalent, for any sentence~$\metav{P}$. (A simple truth table shows that `$\enot\enot A$' and~`$A$' are equivalent.) By the second fact we know that whenever we replace `$A$' in both `$\enot\enot A$' and~`$A$' by some sentence~$\metav{P}$, we get equivalent results. In other words, from the fact that `$\enot\enot A$' and~`$A$' are equivalent and the second fact, we can conclude that, for any sentence~$\metav{P}$, $\enot\enot \metav{P}$ and~$\metav{P}$ are equivalent.
+这种证明语句等价的方法是由前一节的两个事实所支撑的。第一个事实告诉我们，\emph{如果}，比如说，$\enot\enot \metav{P}$ 和 $\metav{P}$ 是等价的（对于任意语句 $\metav{P}$），那么在一个语句中用 $\metav{P}$ 替换 $\enot\enot\metav{P}$ 会产生一个等价的语句。第二个事实告诉我们，对于任意语句 $\metav{P}$，$\enot\enot \metav{P}$ 和 $\metav{P}$ \emph{总是}等价的。（一个简单的真值表就能表明 “$\enot\enot A$” 和 “$A$” 是等价的。）根据第二个事实我们知道，无论何时我们将 “$\enot\enot A$” 和 “$A$” 中的 “$A$” 替换为某个语句 $\metav{P}$，得到的两个语句都是等价的。换句话说，从 “$\enot\enot A$” 和 “$A$” 等价以及第二个事实，我们可以得出结论：对于任意语句 $\metav{P}$，$\enot\enot \metav{P}$ 和 $\metav{P}$ 是等价的。
 
-Let's give an example. By De Morgan's Laws, the following pairs of sentences are equivalent:
+我们来看一个例子。根据德摩根律，下列成对的语句是等价的：
 \begin{align*}
 	\enot (A \eand B) & \Leftrightarrow (\enot A \eor \enot B)\\
 	\enot (A \eor B) & \Leftrightarrow (\enot A \eand \enot B)
 \end{align*}
-This can be verified by constructing two truth tables, or four natural deduction proofs that show:
+这可以通过构造两个真值表来验证，或通过四个自然演绎证明来表明：
 \begin{align*}
 	\enot (A \eand B) & \vdash (\enot A \eor \enot B)\\
 	(\enot A \eor \enot B) & \vdash \enot (A \eand B)\\
@@ -369,21 +345,21 @@ This can be verified by constructing two truth tables, or four natural deduction
 	(\enot A \eand \enot B) & \vdash \enot (A \eor B)
 \end{align*}
 
-By the second fact, \emph{any} pairs of sentences of the following forms are equivalent:
+根据第二个事实，\emph{任何}具有下列形式的语句对都是等价的：
 \begin{align*}
 	\enot (\metav{P} \eand \metav{Q}) & \Leftrightarrow (\enot \metav{P} \eor \enot \metav{Q})\\
 	\enot (\metav{P} \eor \metav{Q}) & \Leftrightarrow (\enot \metav{P} \eand \enot \metav{Q})
 \end{align*}
-Now consider the sentence `$\enot(R \eor (S \eand T))$'. We will find an equivalent sentence in which all `$\enot$' signs attach directly to sentence letters. In the first step, we consider this as a sentence of the form $\enot(\metav{P} \eor \metav{Q})$---then $\metav{P}$ is the sentence~`$R$' and $\metav{Q}$ is `$(S \eand T)$'. Since $\enot(\metav{P} \eor \metav{Q})$ is equivalent to $(\enot \metav{P} \eand \enot \metav{Q})$ (by the second of De Morgan's Laws) we can replace the entire sentence by $(\enot \metav{P} \eand \enot \metav{Q})$. In this case (where $\metav{P}$ is~`$R$' and $\metav{Q}$ is~`$(S \eand T)$') we obtain `$(\enot R \eand \enot (S \eand T))$'. This new sentence contains as a part the sentence `$\enot (S \eand T)$'. It is of the form $\enot(\metav{P} \eand \metav{Q})$, except now $\metav{P}$ is the sentence letter~`$S$' and $\metav{Q}$ is~`$T$'. By De Morgan's Law (the first one this time), this is equivalent to $(\enot\metav{P} \eor \enot\metav{Q})$, or in this specific case, to `$(\enot S \eor \enot T)$'. So we can replace the part `$\enot (S \eand T)$' by `$(\enot S \eor \enot T)$'. This now results in the sentence `$(\enot R \eand (\enot S \eor \enot T))$', in which the `$\enot$' symbols all attach directly to sentence letters. We've ``pushed'' the negations inwards as far as possible.  We can record such a chain of equivalences by listing the individual steps, and recording, just as we do in natural deduction, which basic equivalence we use in each case:
+现在考虑语句 “$\enot(R \eor (S \eand T))$”。我们将找到一个等价语句，其中所有的 “$\enot$” 符号都直接作用于语句字母。第一步，我们把它看作形式为$\enot(\metav{P} \eor \metav{Q})$的语句——那么 $\metav{P}$ 就是语句 “$R$”，而 $\metav{Q}$ 是 “$(S \eand T)$”。由于$\enot(\metav{P} \eor \metav{Q})$等价于$(\enot \metav{P} \eand \enot \metav{Q})$（根据德摩根律的第二条），我们可以将整个语句替换为$(\enot \metav{P} \eand \enot \metav{Q})$。在这个例子中（其中 $\metav{P}$ 是 “$R$”，$\metav{Q}$ 是 “$(S \eand T)$”）我们得到 “$(\enot R \eand \enot (S \eand T))$”。这个新语句包含 “$\enot (S \eand T)$” 作为一个部分。它属于$\enot(\metav{P} \eand \metav{Q})$这种形式，只不过现在 $\metav{P}$ 是语句字母 “$S$”，$\metav{Q}$ 是 “$T$”。根据德摩根律（这次是第一条），它等价于$(\enot\metav{P} \eor \enot\metav{Q})$，或者在这个具体例子中，等价于 “$(\enot S \eor \enot T)$”。于是我们可以用 “$(\enot S \eor \enot T)$” 替换 “$\enot (S \eand T)$” 这个部分。这样就得到了语句 “$(\enot R \eand (\enot S \eor \enot T))$”，其中所有的 “$\enot$” 符号都直接作用于语句字母。我们已经尽可能地将否定符号“向内推”了。我们可以通过列出各个步骤来记录这样一条等价链，就像在自然演绎中一样，记录每一步使用了哪个基本等价关系：
 \begin{align*}
 	& \fbox{\enot(\fbox{$R$} \eor \fbox{$(S \eand T)$})} \\
 	& \fbox{(\enot(\fbox{$R$} \eand \enot\fbox{$(S \eand T)$})} && \text{DeM}\\
 	& (\enot(R \eand \fbox{$\enot(\fbox{$S$} \eand \fbox{$T$})$}) \\
 	& (\enot(R \eand \fbox{$(\enot \fbox{$S$} \eor \enot \fbox{$T$})$}) && \text{DeM}
 \end{align*}
-We've highlighted the sentence replaced, and those matching the $\metav{P}$ and~$\metav{Q}$ in De Morgan's Laws for clarity, but this is not necessary, and we won't keep doing it.
+为了清晰起见，我们标出了被替换的语句以及那些与德摩根律中的 $\metav{P}$ 和~$\metav{Q}$ 相匹配的部分，但这并非必要，后文也不会一直这样做。
 
-In \cref{tab:equivalences} we've given a list of basic equivalences you can use for such chains of equivalences. The labels abbreviate the customary name for the respective logical laws: double negation (DN), De Morgan (DeM), commutativity (Comm), distributivity (Dist), associativity (Assoc), idempotence (Id), and absorption (Abs).
+在\cref{tab:equivalences}中，我们给出了一份基本等价关系列表，可用于构建这样的等价链。其标签缩写自相应逻辑定律的习惯名称：双重否定（DN）、德摩根（DeM）、交换律（Comm）、分配律（Dist）、结合律（Assoc）、幂等律（Id）和吸收律（Abs）。
 
 \begin{table}
 	\begin{align*}
@@ -412,50 +388,53 @@ In \cref{tab:equivalences} we've given a list of basic equivalences you can use 
 (\metav{P} \lor (\metav{Q} \lor \lnot\metav{Q})) & \Leftrightarrow (\metav{Q} \lor \lnot\metav{Q}) \\
 (\metav{P} \land (\metav{Q} \land \lnot\metav{Q})) & \Leftrightarrow (\metav{Q} \land \lnot\metav{Q})
 \end{align*}
-\caption{Basic equivalences}
+\caption{基本等价关系}
 \label{tab:equivalences}
 \end{table}
 
-\section{Finding equivalent normal forms}
+\section{寻找等价范式}
 
-In \cref{c:NormalForms} we showed that every sentence of TFL is equivalent to one in disjunctive normal form (DNF) and to one in conjunctive normal form (CNF).  We did this by giving a method to construct a sentences in DNF or CNF equivalent to the original sentence by first constructing a truth table, and then ``reading off'' a sentence in DNF or CNF from the truth table.  This method has two drawbacks. The first one is that the resulting sentences in DNF or CNF are not always the shortest ones.  The second one is that the method itself becomes hard to apply when the sentence you start with contains more than a handful of sentence letters (since the truth table for a sentence with $n$ sentence letters has $2^n$ lines).
+在\cref{c:NormalForms}中我们证明了，真值函项逻辑的每个语句都等价于一个析取范式语句和一个合取范式语句。我们当时提供了一种方法：先构造真值表，然后从真值表中“读出”一个等价于原语句的析取范式或合取范式语句。这种方法有两个缺点。第一个是得到的析取范式或合取范式语句并不总是最短的。第二个是当初始语句包含超过少数几个语句字母时，该方法本身就变得难以应用（因为包含 $n$ 个语句字母的语句，其真值表有 $2^n$ 行）。
 
-We can use chains of equivalences as an alternative method: To find a sentence in~DNF, we can successively apply basic equivalences until we have found an equivalent sentence that is in~DNF. Recall the conditions a sentence in DNF must satisfy:
+我们可以将等价链用作另一种方法：为了找到析取范式语句，我们可以连续应用基本等价关系，直到找到一个等价的、且是析取范式的语句。回想一下析取范式语句必须满足的条件：
+
 \begin{compactlist}
-	\item[(\textsc{dnf1})] No connectives occur in the sentence other than negations, conjunctions and disjunctions;
-	\item[(\textsc{dnf2})] Every occurrence of negation has minimal scope (i.e., any `$\enot$' is immediately followed by an atomic sentence);
-	\item[(\textsc{dnf3})] No disjunction occurs within the scope of any conjunction.
+	\item[(\textsc{dnf1})] 语句中出现的联结词仅限于否定、合取和析取；
+	\item[(\textsc{dnf2})] 每个否定符号的辖域都是极小的（即，任何 “$\enot$” 后面都紧跟着一个原子语句）；
+	\item[(\textsc{dnf3})] 任何合取的辖域内部都不出现析取。
 \end{compactlist}
-Condition (\textsc{dnf1}) says that we must remove all `$\eif$' and~`$\eiff$' symbols from a sentence.  This is what the basic equivalences (Cond) and (Bicond) are good for.  For instance, suppose we start with the sentence
+
+条件 (\textsc{dnf1}) 要求我们从语句中消除所有 “$\eif$” 和～“$\eiff$” 符号。这就要用到基本等价规则 (Cond) 和 (Bicond)。例如，假设我们从语句
 \begin{align*}
 	& \enot(A \eand \enot C) \land (\enot A\eif \enot B).
-\intertext{We can get rid of the `$\eif$' by using (Cond). In this case $\metav{P}$ is `$\enot A$' and $\metav{Q}$ is `$\enot{B}$'. We get:}
+\intertext{开始。我们可以使用 (Cond) 规则消去 “$\eif$”。这里 $\metav{P}$ 是 “$\enot A$”，$\metav{Q}$ 是 “$\enot{B}$”。于是得到：}
 & \enot(A \eand \enot C) \land (\enot\enot A \eor \enot B) && \text{Cond}
-\intertext{The double negation can be removed, since `$\enot\enot A$' is equivalent to~`$A$':}
+\intertext{双重否定可以消去，因为 “$\enot\enot A$” 等价于～“$A$”：}
 & \enot(A \eand \enot C) \land (A \eor \enot B) && \text{DN}
-\intertext{Now condition (\textsc{dnf1}) is satisfied: our sentence contains only `$\enot$', `$\eand$', and `$\eor$'. Condition (\textsc{dnf2}) says that we must find a way to have all `$\enot$'s apply immediately to sentence letters. But in the first conjunct it doesn't.  To ensure (\textsc{dnf2}) is satisfied, we use De Morgan's Laws and the double negation (DN) law as many times as needed.}
+\intertext{现在条件 (\textsc{dnf1}) 已满足：我们的语句只包含 “$\enot$”、“$\eand$” 和 “$\eor$”。条件 (\textsc{dnf2}) 要求所有 “$\enot$” 都直接作用于语句字母。但第一个合取支尚未满足此条件。为确保满足 (\textsc{dnf2})，我们根据需要多次使用德摩根律和双重否定 (DN) 律。}
 & (\enot A \eor \enot\enot C) \land (A \eor \enot B) && \text{DeM}\\
 & (\enot A \eor C) \land (A \eor \enot B) && \text{DN}
-\intertext{The resulting sentence is now in CNF---it is a conjunction of disjunctions of sentence letters and negated sentence letters. But we want a sentence in DNF, i.e., a sentence in which (\textsc{dnf3}) is satisfied: no `$\eor$' occurs in the scope of an~`$\eand$'.  We use the distributive laws (Dist) to ensure this. The last sentence is of the form $\metav{P} \land (\metav{Q} \lor \metav{R})$, where $\metav{P}$ is `$(\enot A \eor C)$', $\metav{Q}$ is `$A$', and $\metav{R}$ is `$\enot B$'. By applying (Dist) once we get:}
+\intertext{得到的语句现在处于合取范式——它是语句字母及其否定的析取的合取。但我们需要的是析取范式，即满足 (\textsc{dnf3}) 的语句：没有 “$\eor$” 出现在 “$\eand$” 的辖域内。我们使用分配律 (Dist) 来达成这一点。最后一个语句形如 $\metav{P} \land (\metav{Q} \lor \metav{R})$，其中 $\metav{P}$ 是 “$(\enot A \eor C)$”，$\metav{Q}$ 是 “$A$”，$\metav{R}$ 是 “$\enot B$”。应用一次 (Dist) 得到：}
 & ((\enot A \eor C) \eand A)) \eor ((\enot A \eor C) \eand \enot B) && \text{Dist}
-\intertext{This looks worse, but if we keep going, it's going to look better! The two disjuncts almost look like we can apply (Dist) again, except the `$\eor$' is on the wrong side. This is what commutativity (Comm) is good for. let's apply it to `$(\enot A \eor C) \eand A$':}
+\intertext{虽然看起来更复杂了，但只要继续做下去就会好转！这两个析取支看起来几乎可以再次应用 (Dist)，只是 “$\eor$” 所在的位置不对。这时就需要用到交换律 (Comm)。我们将其应用于 “$(\enot A \eor C) \eand A$”：}
 & (A \eand (\enot A \eor C)) \eor ((\enot A \eor C) \eand \enot B) && \text{Comm}
-\intertext{We can apply (Dist) again to the resulting part, `$A \eand (\enot A \eor C)$':}
+\intertext{我们可以对结果部分 “$A \eand (\enot A \eor C)$” 再次应用 (Dist)：}
 & ((A \eand \enot A) \eor (A \eand C)) \eor ((\enot A \eor C) \eand \enot B) && \text{Dist}
-\intertext{Now in the left half, no `$\eor$' is in the scope of an `$\eand$'. Let's apply the same principles to the right half:}
+\intertext{现在左半部分没有 “$\eor$” 出现在 “$\eand$” 的辖域内。让我们对右半部分应用相同的原理：}
 & ((A \eand \enot A) \eor (A \eand C)) \eor (\enot B \eand (\enot A \eor C)) && \text{Comm}\\
 & ((A \eand \enot A) \eor (A \eand C)) \eor ((\enot B \eand \enot A) \eor (\enot B \eand C)) && \text{Dist}
-\intertext{Our sentence is now in DNF! But we can simplify it a bit: `$(A \eand \enot A)$' is a contradiction in TFL, i.e., it is always false. And if you combine something that's always false using `$\eor$' with a sentence~$\metav{P}$, you get something equivalent to just~$\metav{P}$.  This is the second of the simplification (Simp) rules.}
+\intertext{我们的语句现在已经是析取范式了！但我们还可以稍作简化：“$(A \eand \enot A)$” 在真值函项逻辑中是一个矛盾式，即它总是假的。而将一个总是假的公式通过 “$\eor$” 与任意语句 $\metav{P}$ 结合，所得结果等价于 $\metav{P}$ 本身。这正是简化规则 (Simp) 的第二条。}
 & ((A \eand C) \eor (A \eand \enot A)) \eor ((\enot B \eand \enot A) \eor (\enot B \eand C)) && \text{Comm}\\
 & (A \eand C) \eor ((\enot B \eand \enot A) \eor (\enot B \eand C)) && \text{Simp}
 \end{align*}
-The final result is still in DNF, but a bit simpler still.  It is also much simpler than the DNF we would have obtained by the method of \cref{c:NormalForms}. In fact, the sentence we started with could have been the $\metav{S}$ of \cref{s:DNFTruthTable}---it has exactly the truth table used as an example there. The DNF we found there (\ifHTMLtarget in section~\cref{s:DNFTruthTable}\else on p.~\pageref{longDNF}\fi), was (with all necessary brackets):
+最终结果仍是析取范式，并且更简洁了一些。它也远比我们通过 \cref{c:NormalForms} 中方法得到的析取范式简单。事实上，我们起始的语句可能就是 \cref{s:DNFTruthTable} 中的 $\metav{S}$——它恰好具有那里用作示例的真值表。我们在那里找到的析取范式（\ifHTMLtarget 在 ~\cref{s:DNFTruthTable} 节\else 见第 ~\pageref{longDNF} 页\fi）是（带有所有必需的括号）：
 $$((((A \eand B) \eand C) \eor ((A \eand \enot B) \eand C)) \eor ((\enot A \eand \enot B) \eand C)) \eor ((\enot A \eand \enot B) \eand \enot C)$$
 
 \practiceproblems
 \problempart
 \label{pr.DNF2}
-Consider the following sentences:
+考虑以下语句：
+
 \begin{compactlist}
 	\item $(A \eif \enot B)$
 	\item $\enot (A \eiff B)$
@@ -464,22 +443,25 @@ Consider the following sentences:
 	\item $(\enot (A \eor B) \eiff ((\enot C \eand \enot A) \eif \enot B))$
 	\item $((\enot (A \eand \enot B) \eif C) \eand \enot (A \eand D))$
 \end{compactlist}
-For each sentence, find an equivalent sentence in DNF and one in CNF by giving a chain of equivalences. Use (Id), (Abs), and (Simp) to simplify your sentences as much as possible.
 
-\chapter{Soundness}\label{ch:Soundness}
+对每个语句，通过给出一系列等价变换，分别找到一个等价的析取范式语句和一个等价的合取范式语句。使用 (Id)、(Abs) 和 (Simp) 规则尽可能简化你的语句。
 
-In this chapter we relate TFL's semantics to its natural deduction \emph{proof system} (as defined in \cref{ch.NDTFL}). We will prove that the formal proof system is safe: you can only prove sentences from premises from which they actually follow.
-Intuitively, a formal proof system is sound \ifeff{} it does not allow you to prove any invalid arguments. This is obviously a highly desirable property. It tells us that our proof system will never lead us astray. Indeed, if our proof system were not sound, then we would not be able to trust our proofs. The aim of this chapter is to prove that our proof system is sound.
+\chapter{可靠性}\label{ch:Soundness}
 
-Let's make the idea more precise. We'll abbreviate a list of sentences using the Greek letter $\Gamma$ (`gamma'). A formal proof system is \define{sound} (relative to a given semantics) \emph{\ifeff}, whenever there is a formal proof of $\metav{C}$ from assumptions among $\Gamma$, then $\Gamma$ genuinely entails $\metav{C}$ (given that semantics). Otherwise put, to prove that TFL's proof system is sound, we need to prove the following
+在本章中，我们将真值函项逻辑的语义与其自然演绎 \emph{证明系统}（如 \cref{ch.NDTFL} 所定义）联系起来。我们将证明这个形式证明系统是安全的：你只能从一组前提 $\Gamma$ 出发，证明那些真正被 $\Gamma$ 所蕴涵的结论。
+直观上，一个形式证明系统是可靠的 \ifeff{} 它不允许你证明任何无效论证。这显然是一个极其理想的性质。它告诉我们，我们的证明系统永远不会将我们引入歧途。事实上，如果我们的证明系统不可靠，那么我们就无法信任我们的任何证明。本章的目标正是证明我们的证明系统是可靠的。
 
-\begin{factoidboxe}\textbf{Soundness Theorem.} For any sentences $\Gamma$ and $\metav{C}$: if $\Gamma\proves\metav{C}$, then $\Gamma \entails\metav{C}$
+我们来更精确地阐述这个想法。我们将使用希腊字母 $\Gamma$（gamma）来缩写一个语句的集合。一个形式证明系统是 \define{可靠的}（相对于给定的语义）\emph{\ifeff}，只要存在以 $\Gamma$ 中语句为（未解除的）假设而推导出 $\metav{C}$ 的形式证明，那么 $\Gamma$ 就真正蕴涵 $\metav{C}$（根据该语义）。换言之，要证明真值函项逻辑的证明系统是可靠的，我们需要证明下述定理：
+
+\begin{factoidboxe}\textbf{可靠性定理。} 对于任意语句集 $\Gamma$ 和语句 $\metav{C}$：若 $\Gamma\proves\metav{C}$，则 $\Gamma \entails\metav{C}$。
 \end{factoidboxe}
 
-To prove this, we will check each of the rules of TFL's proof system individually. We want to show that no application of those rules ever leads us astray. Since a proof just involves repeated application of those rules, this will show that no proof ever leads us astray. Or at least, that is the general idea.
+为证明此定理，我们将逐一检视真值函项逻辑证明系统中的每条规则。我们希望表明，这些规则的任何应用都不会将我们引入歧途。既然一个证明仅仅是这些规则的重复应用，那么任何证明也就都不会将我们引入歧途。至少，这是大体的思路。
 
-To begin with, we must make the idea of `leading us astray' more precise. Say that a line of a proof is \define{shiny} \ifeff{} the assumptions on which that line depends entail the sentence on that line.\footnote{The word `shiny' is not standard among logicians.} To illustrate the idea, consider the following:
-	\begin{fitchproof}
+首先，我们必须更精确地界定何谓“引入歧途”。我们称证明中的某一行是 \define{闪亮的} \ifeff{} 该行所依赖的假设蕴涵了该行上的语句。\footnote{“闪亮”一词并非逻辑学家的标准术语。} 为说明此概念，考虑如下证明：
+
+
+\begin{fitchproof}
 		\hypo{fgh}{F\eif(G\eand H)}\PR
 		\open
 			\hypo{f}{F}\AS
@@ -487,118 +469,89 @@ To begin with, we must make the idea of `leading us astray' more precise. Say th
 			\have{g}{G}\ae{gh}
 		\close
 		\have{fg}{F \eif G}\ci{f-g}
-	\end{fitchproof}\noindent\noindent
-Line $1$ is shiny \ifeff{} $F \eif (G \eand H) \entails F \eif (G \eand H)$. You should be easily convinced that line $1$ is, indeed, shiny! Similarly, line $4$ is shiny \ifeff{} $F \eif (G \eand H), F \entails G$. Again, it is easy to check that line~$4$ is shiny. As is every line in this TFL-proof. We want to show that this is no coincidence. That is, we want to prove:
-	\begin{factoidboxe}\textbf{Shininess Lemma.}
-		Every line of every TFL-proof is shiny.
-	\end{factoidboxe}\noindent
-Then we will know that we have never gone astray, on any line of a proof. Indeed, given the Shininess Lemma, it will be easy to prove the Soundness Theorem:
+	\end{fitchproof}
 
-\emph{Proof.} Suppose $\Gamma \proves \metav{C}$. Then there is a TFL-proof, with $\metav{C}$ appearing on its last line, whose only undischarged assumptions are among $\Gamma$. The Shininess Lemma tells us that every line on every TFL-proof is shiny. So this last line is shiny, i.e., $\Gamma \entails \metav{C}$. QED
+\noindent\noindent
+第 $1$ 行是闪亮的 \ifeff{} $F \eif (G \eand H) \entails F \eif (G \eand H)$。你应当能轻易信服，第 $1$ 行的确是闪亮的！类似地，第 $4$ 行是闪亮的 \ifeff{} $F \eif (G \eand H), F \entails G$。同样容易验证第 $4$ 行是闪亮的。事实上，该真值函项逻辑证明中的每一行都是如此。我们希望证明这并非巧合。也就是说，我们希望证明：
 
-It remains to prove the Shininess Lemma.
 
-To do this, we observe that every line of any TFL-proof is either a
-premise or an assumption, or it is obtained by applying some rule.
-Premises are automatically shiny: if $\metav{A}$ is a premise, then it
-is among the sentences in~$\Gamma$, and $\Gamma \entails \metav{A}$
-trivially. Assumptions are also shiny, since the any assumption
-$\metav{A}$ depends on itself, and $\metav{A} \entails \metav{A}$. So
-what we want to show is that no application of a rule of TFL's proof
-system will lead us astray. More precisely, say that a rule of
-inference is \define{rule-sound} \emph{\ifeff} for all TFL-proofs, if
-we obtain a line on a TFL-proof by applying that rule, and every
-earlier line in the TFL-proof is shiny, then our new line is also
-shiny. What we need to show is that \emph{every} rule in TFL's proof
-system is rule-sound.
+\begin{factoidboxe}\textbf{闪亮引理。}
+		每个真值函项逻辑证明中的每一行都是闪亮的。
+	\end{factoidboxe}
 
-We will do this below. But having demonstrated the rule-soundness of every rule, the Shininess Lemma will follow immediately:
+\noindent
+由此我们将知道，在证明的任何一行我们都未曾走入歧途。事实上，基于闪亮引理，可靠性定理的证明将很简单：
 
-\emph{Proof.} Start with line~$1$ of any TFL proof. It must be either
-a premise or an assumption, and those are all shiny, as we've seen
-above. Take the next line, $2$. If it is a premise or assumption, it
-is shiny. If not, it is obtained from line~$1$ using an inference
-which is rule-sound. Since line~$1$ is shiny, line~$2$ is also shiny.
-Take the next line, $3$. If it is a premise or assumption, it
-is shiny. If not, it is obtained from a previous line using an inference
-which is rule-sound, and we've established that all previous lines are
-shiny. Thus, line~$3$ is also shiny.
-And so on. In general, the sentence written on line $n$ must either be
-a premise or assumption (which is shiny) or be obtained using a formal
-inference rule which is rule-sound. Since every earlier line is shiny,
-line~$n$ itself is shiny. We can simply go through this
-reasoning, for any TFL proof, starting with line~$1$ and continuing to
-the last line, and get that every line of every TFL-proof is shiny.
-QED
+\emph{证明。} 假设 $\Gamma \proves \metav{C}$。则存在一个真值函项逻辑证明，其中 $\metav{C}$ 出现在最后一行，且其所有未解除的假设均属于 $\Gamma$。闪亮引理断言每个真值函项逻辑证明的每一行都是闪亮的。故这最后一行是闪亮的，即 $\Gamma \entails \metav{C}$。证毕。
 
-It remains to show that every rule is rule-sound. This is not
-difficult, but it is time-consuming, since we need to check each rule
-individually, and TFL's proof system has plenty of rules! To speed up
-the process marginally, we will introduce a convenient abbreviation:
-`$\Delta_i$' (`delta') will abbreviate the assumptions (if any) on
-which line~$i$ depends in our TFL-proof (context will indicate which
-TFL-proof we have in mind). This includes all premises of our proof,
-and all assumptions of subproofs which are still open at line~$i$.
-Let's first record our observation about premises and assumptions from above.
+现在剩下的任务是证明闪亮引理。
+
+为此，我们注意到任何真值函项逻辑证明中的每一行，要么是前提或假设，要么是通过应用某条规则得到的。前提天然是闪亮的：若 $\metav{A}$ 是前提，则它属于 $\Gamma$ 中的语句，显然有 $\Gamma \entails \metav{A}$。假设也是闪亮的，因为假设 $\metav{A}$ 仅依赖于其自身，而 $\metav{A}$ 显然蕴涵 $\metav{A}$。所以我们需要证明的是，应用真值函项逻辑证明系统中的任何规则都不会导致我们出错。更精确地说，我们称一条推理规则是 \define{规则可靠的} \emph{\ifeff} 对于所有真值函项逻辑证明，如果我们通过应用该规则在证明中得到一行，并且该证明中所有先前的行都是闪亮的，那么我们的新行也是闪亮的。我们需要证明，真值函项逻辑证明系统中的\emph{每一条}规则都是规则可靠的。
+
+我们将在下文完成此事。但一旦证明了每条规则都是规则可靠的，闪亮引理便立刻可得：
+
+\emph{证明。} 任取一个真值函项逻辑证明，从第 $1$ 行开始。它必是前提或假设，而如上所述，这些都是闪亮的。考虑第 $2$ 行。若它是前提或假设，则它是闪亮的。否则，它是由第 $1$ 行应用一条规则可靠的推理规则得到的。既然第 $1$ 行闪亮，第 $2$ 行也闪亮。接着考虑第 $3$ 行。若它是前提或假设，则它是闪亮的。否则，它是由某个（或某些）先前行应用一条规则可靠的推理规则得到的，而我们已经确定所有先前行都是闪亮的。因此，第 $3$ 行也是闪亮的。
+依此类推。一般地，第 $n$ 行上的语句要么是前提或假设（因而是闪亮的），要么是通过应用一条规则可靠的形式推理规则从某些闪亮的行得到的。由于所有先前的行都是闪亮的，故第 $n$ 行本身也是闪亮的。对任意真值函项逻辑证明，我们均可按此推理，从第 $1$ 行迭代至最后一行，从而证明该证明的每一行都是闪亮的。证毕。
+
+剩下的便是证明每条规则都是规则可靠的。这并不困难，但相当耗时，因为我们需要逐一检查每条规则，而真值函项逻辑的证明系统包含大量规则！为略微加快进程，我们引入一个方便的缩写：用 “$\Delta_i$” (“delta”) 表示在当前考虑的真值函项逻辑证明中，第 $i$ 行所依赖的那些假设的集合（上下文会指明是哪个证明）。这包括该证明的所有前提，以及在第 $i$ 行时仍未解除的所有子证明假设。我们首先将上述关于前提和假设的观察记录如下。
 
 \begin{factoidboxe}
-	Premises and assumptions in TFL proofs are shiny.
+	真值函项逻辑证明中的前提和假设是闪亮的。
 \end{factoidboxe}
 
-If $\metav{A}$ is a premise on line~$n$, then it is among $\Delta_n$
-as that includes all premises of the proof. If it is introduced as an
-assumption of a subproof on line~$n$, then everything in the subproof
-(including line~$n$, i.e., $\metav{A}$ itself) depends on~$\metav{A}$,
-and so $\metav{A}$ is among~$\Delta_n$. In either case, $\Delta_n
-\entails \metav{A}$.
+如果 $\metav{A}$ 是第 $n$ 行的前提，那么它属于 $\Delta_n$，因为 $\Delta_n$ 包含了该证明的所有前提。如果它是在第 $n$ 行作为子证明的假设引入的，那么子证明中的所有内容（包括第 $n$ 行，即 $\metav{A}$ 本身）都依赖于 $\metav{A}$，因此 $\metav{A}$ 属于 $\Delta_n$。无论哪种情况，都有 $\Delta_n \entails \metav{A}$。
 
-Now let's proceed to show that all the inference rules are rule-sound.
+接下来，我们证明所有推理规则都是规则可靠的。
 
-\begin{factoidboxe}$\eand$I is rule-sound.
+\begin{factoidboxe}
+$\eand$I 是规则可靠的。
 \end{factoidboxe}
 
-\emph{Proof.} Consider any application of $\eand$I in any TFL-proof, i.e., something like:
+\emph{证明.} 考虑任意真值函项逻辑证明中任意一次 $\eand$I 的应用，即类似于以下的形式：
 \begin{fitchproof}
 	\have[i]{a}{\metav{A}}
 	\have[j]{b}{\metav{B}}
 	\have[n]{c}{\metav{A}\eand\metav{B}} \ai{a, b}
-\end{fitchproof}\noindent
-To show that $\eand$I is rule-sound, we assume that every line before line $n$ is shiny; and we aim to show that line $n$ is shiny, i.e., that $\Delta_n \entails \metav{A} \eand \metav{B}$.
+\end{fitchproof}
+\noindent
+为了证明 $\eand$I 是规则可靠的，我们假设第 $n$ 行之前的每一行都是闪亮的；我们的目标是证明第 $n$ 行也是闪亮的，即 $\Delta_n \entails \metav{A} \eand \metav{B}$。
 
-So, let $v$ be any valuation that makes all of $\Delta_{n}$ true.
+因此，设 $v$ 为任意使得 $\Delta_{n}$ 中所有语句都为真的赋值。
 
-We first show that $v$ makes $\metav{A}$ true. To prove this, note that all of $\Delta_i$ are among $\Delta_{n}$. By hypothesis, line $i$ is shiny. So any valuation that makes all of $\Delta_i$ true makes $\metav{A}$ true. Since $v$ makes all of $\Delta_i$ true, it makes $\metav{A}$ true too.
+我们首先证明 $v$ 使 $\metav{A}$ 为真。为此，注意 $\Delta_i$ 中的所有语句都属于 $\Delta_{n}$。根据假设，第 $i$ 行是闪亮的。所以，任何使得 $\Delta_i$ 中所有语句为真的赋值都使 $\metav{A}$ 为真。由于 $v$ 确实使得 $\Delta_i$ 中所有语句为真，因此 $v$ 也使 $\metav{A}$ 为真。
 
-We can similarly see that $v$ makes $\metav{B}$ true.
+类似地，我们可以知道 $v$ 使 $\metav{B}$ 为真。
 
-So $v$ makes $\metav{A}$ true and $v$ makes $\metav{B}$ true. Consequently, $v$ makes $\metav{A}\eand\metav{B}$ true. So any valuation that makes all sentences among $\Delta_{n}$ true also makes $\metav{A} \eand \metav{B}$ true. That is: line $n$ is shiny. QED
+因此，$v$ 使 $\metav{A}$ 为真且 $v$ 使 $\metav{B}$ 为真。于是，$v$ 使 $\metav{A}\eand\metav{B}$ 为真。所以，任何使得 $\Delta_{n}$ 中所有语句为真的赋值也都使 $\metav{A} \eand \metav{B}$ 为真。也就是说：第 $n$ 行是闪亮的。\textsc{QED}
 
+接下来建立规则可靠性的所有引理，实质上都将具有与此相同的基本结构。
 
-All of the remaining lemmas establishing rule-soundness will have, essentially, the same structure as this one did.
-
-\begin{factoidboxe}$\eand$E is rule-sound.
+\begin{factoidboxe}
+$\eand$E 是规则可靠的。
 \end{factoidboxe}
 
-\emph{Proof.}
-	Assume that every line before line $n$ on some TFL-proof is shiny, and that $\eand$E is used on line $n$. So the situation is:
-		   \begin{fitchproof}
+\emph{证明.}
+假设在某个真值函项逻辑证明中，第 $n$ 行之前的每一行都是闪亮的，并且第 $n$ 行使用了 $\eand$E。那么情况如下：
+\begin{fitchproof}
 			   \have[i]{ab}{\metav{A}\eand\metav{B}}
 			   \have[n]{a}{\metav{A}} \ae{ab}
-		   \end{fitchproof}\noindent
-(or perhaps with $\metav{B}$ on line $n$ instead; but similar reasoning will apply in that case). Let $v$ be any valuation that makes all of $\Delta_{n}$ true. Note that all of $\Delta_i$ are among $\Delta_{n}$. By hypothesis, line $i$ is shiny. So any valuation that makes all of $\Delta_i$ true makes $\metav{A}\eand\metav{B}$ true. So $v$ makes $\metav{A}\eand\metav{B}$ true, and hence makes $\metav{A}$ true. So $\Delta_{n} \entails \metav{A}$. QED
+		   \end{fitchproof}
+\noindent
+（也可能在第 $n$ 行得到的是 $\metav{B}$；但类似的推理同样适用）。设 $v$ 为任意使得 $\Delta_{n}$ 中所有语句都为真的赋值。注意 $\Delta_i$ 中的所有语句都属于 $\Delta_{n}$。根据假设，第 $i$ 行是闪亮的。所以，任何使得 $\Delta_i$ 中所有语句为真的赋值都使 $\metav{A}\eand\metav{B}$ 为真。因此，$v$ 使 $\metav{A}\eand\metav{B}$ 为真，从而 $v$ 使 $\metav{A}$ 为真。所以 $\Delta_{n} \entails \metav{A}$。\textsc{QED}
 
-
-\begin{factoidboxe}$\eor$I is rule-sound.
+\begin{factoidboxe}
+$\eor$I 是规则可靠的。
 \end{factoidboxe}
 
-We leave this as an exercise.
+我们将其留作练习。
 
-\begin{factoidboxe}$\eor$E is rule-sound.
+\begin{factoidboxe}
+$\eor$E 是规则可靠的。
 \end{factoidboxe}
 
-\emph{Proof.}
-	Assume that every line before line $n$ on some TFL-proof is shiny, and that $\eand$E is used on line $n$. So the situation is:
-   \begin{fitchproof}
+\emph{证明.}
+假设在某个真值函项逻辑证明中，第 $n$ 行之前的每一行都是闪亮的，并且第 $n$ 行使用了 $\eor$E。那么情况如下：
+\begin{fitchproof}
 	   \have[m]{aob}{\metav{A}\eor\metav{B}}
 	   \open
 		   \hypo[i]{a}{\metav{A}}\AS %\by{want \metav{C}}{}
@@ -609,87 +562,79 @@ We leave this as an exercise.
 		   \have[l]{c2}{\metav{C}}
 	   \close
 	   \have[n]{ab}{\metav{C}}\oe{aob, a-c1,b-c2}
-   \end{fitchproof}\noindent
-Let $v$ be any valuation that makes all of $\Delta_{n}$ true. Note that all of $\Delta_m$ are among $\Delta_{n}$. By hypothesis, line $m$ is shiny. So any valuation that makes $\Delta_{n}$ true makes $\metav{A} \eor \metav{B}$ true. So in particular, $v$ makes $\metav{A} \eor \metav{B}$ true, and hence either $v$ makes $\metav{A}$ true, or $v$ makes $\metav{B}$ true. We now reason through these two cases:
-   \begin{numberlist}
-	   \item \emph{$v$ makes $\metav{A}$ true.} All of $\Delta_i$ are among $\Delta_{n}$, with the possible exception of $\metav{A}$. Since $v$ makes all of $\Delta_{n}$ true, and also makes $\metav{A}$ true,  $v$ makes all of $\Delta_i$ true. Now, by assumption, line $j$ is shiny; so $\Delta_{j} \entails \metav{C}$. But the sentences $\Delta_i$ are just the sentences $\Delta_{j}$, so $\Delta_i \entails \metav{C}$. So, any valuation that makes all of $\Delta_i$ true makes $\metav{C}$ true. But $v$ is just such a valuation. So $v$ makes $\metav{C}$ true.
-	   \item \emph{$v$ makes $\metav{B}$ true.} Reasoning in exactly the same way, considering lines $k$ and~$l$, $v$ makes $\metav{C}$ true.
-	   \end{numberlist}
-Either way, $v$ makes $\metav{C}$ true. So $\Delta_n \entails \metav{C}$.
-QED
-
+   \end{fitchproof}
+\noindent
+设 $v$ 为任意使得 $\Delta_{n}$ 中所有语句都为真的赋值。注意 $\Delta_m$ 中的所有语句都属于 $\Delta_{n}$。根据假设，第 $m$ 行是闪亮的。所以任何使得 $\Delta_{n}$ 中所有语句为真的赋值都使 $\metav{A} \eor \metav{B}$ 为真。特别地，$v$ 使 $\metav{A} \eor \metav{B}$ 为真，因此要么 $v$ 使 $\metav{A}$ 为真，要么 $v$ 使 $\metav{B}$ 为真。我们现在分两种情况讨论：
+\begin{numberlist}
+	   \item \emph{$v$ 使 $\metav{A}$ 为真。} $\Delta_i$ 中的所有语句都属于 $\Delta_{n}$，但可能不包含 $\metav{A}$。由于 $v$ 使得 $\Delta_{n}$ 中所有语句为真，并且也使 $\metav{A}$ 为真，所以 $v$ 使得 $\Delta_i$ 中所有语句为真。现在，根据假设，第 $j$ 行是闪亮的；所以 $\Delta_{j} \entails \metav{C}$。但 $\Delta_i$ 正好就是 $\Delta_{j}$，因此 $\Delta_i \entails \metav{C}$。所以，任何使得 $\Delta_i$ 中所有语句为真的赋值都使 $\metav{C}$ 为真。而 $v$ 正是这样一个赋值。因此 $v$ 使 $\metav{C}$ 为真。
+	   \item \emph{$v$ 使 $\metav{B}$ 为真。} 用完全相同的方式推理，考虑第 $k$ 行和第 $l$ 行，$v$ 使 $\metav{C}$ 为真。
+\end{numberlist}
+无论哪种情况，$v$ 都使 $\metav{C}$ 为真。所以 $\Delta_n \entails \metav{C}$。
+\textsc{QED}
 
 \begin{factoidboxe}
-	$\enot$E is rule-sound.
+	$\enot$E 是规则可靠的。
 \end{factoidboxe}
 
-\emph{Proof.}
-	Assume that every line before line $n$ on some TFL-proof is shiny, and that $\enot$E is used on line $n$. So the situation is:
+\emph{证明.}
+假设在某个真值函项逻辑证明中，第 $n$ 行之前的每一行都是闪亮的，并且第 $n$ 行使用了 $\enot$E。那么情况如下：
 \begin{fitchproof}
-   \have[i]{i}{\metav{A}} 
+   \have[i]{i}{\metav{A}}
    \have[j]{j}{\enot\metav{A}}
    \have[n]{nb}{\ered}\ri{i, j}
-\end{fitchproof}\noindent
-Note that all of $\Delta_i$ and all of $\Delta_j$ are among $\Delta_{n}$. By hypothesis, lines $i$ and $j$ are shiny. So any valuation which makes all of $\Delta_{n}$ true would have to make both $\metav{A}$ and $\enot\metav{A}$ true. But no valuation can do that. So no valuation makes all of $\Delta_{n}$ true. So $\Delta_{n} \entails \ered$, vacuously.
-QED
+\end{fitchproof}
+\noindent
+注意：所有 $\Delta_i$ 和所有 $\Delta_j$ 都在 $\Delta_{n}$ 之中。根据假设，第 $i$ 行和第 $j$ 行都是闪亮的。因此，任何使 $\Delta_{n}$ 中所有语句为真的赋值都必定会使 $\metav{A}$ 和 $\enot\metav{A}$ 同时为真。但没有任何赋值能做到这一点。所以，没有赋值能使 $\Delta_{n}$ 中所有语句为真。于是，$\Delta_{n} \entails \ered$（空乏地成立）。\textsc{QED}
 
 \begin{factoidboxe}
-	X is rule-sound.
+	X 是规则可靠的。
 \end{factoidboxe}
 
-We leave this as an exercise.
+我们将其留作练习。
 
 \begin{factoidboxe}
-	$\enot$I is rule-sound.
+	$\enot$I 是规则可靠的。
 \end{factoidboxe}
 
-\emph{Proof.}
-	Assume that every line before line $n$ on some TFL-proof is shiny, and that $\enot$I is used on line $n$. So the situation is:
+\emph{证明.}
+假设在某个真值函项逻辑证明中，第 $n$ 行之前的每一行都是闪亮的，并且第 $n$ 行使用了 $\enot$I。那么情况如下：
 \begin{fitchproof}
    \open
 	   \hypo[i]{a}{\metav{A}}\AS
 	   \have[j]{b}{\ered}
    \close
    \have[n]{na}{\enot\metav{A}}\ni{a-b}
-\end{fitchproof}\noindent
-Let $v$ be any valuation that makes all of $\Delta_{n}$ true. Note that all of $\Delta_{n}$ are among $\Delta_i$, with the possible exception of $\metav{A}$ itself. By hypothesis, line $j$ is shiny. But no valuation can make `$\ered$' true, so no valuation can make all of $\Delta_{j}$ true. Since the sentences $\Delta_i$ are just the sentences $\Delta_{j}$, no valuation can make all of $\Delta_i$ true. Since $v$ makes all of $\Delta_{n}$ true, it must therefore make $\metav{A}$ false, and so make $\enot \metav{A}$ true. So $\Delta_n \entails \enot \metav{A}$.
-QED
+\end{fitchproof}
+\noindent
+令 $v$ 为任意使 $\Delta_{n}$ 中所有语句为真的赋值。注意，所有 $\Delta_{n}$ 中的语句都在 $\Delta_i$ 之中，可能的例外是 $\metav{A}$ 本身。根据假设，第 $j$ 行是闪亮的。但没有任何赋值能使 “$\ered$” 为真，因此也没有任何赋值能使 $\Delta_{j}$ 中所有语句为真。由于语句集 $\Delta_i$ 就是语句集 $\Delta_{j}$，所以没有赋值能使 $\Delta_i$ 中所有语句为真。既然 $v$ 使 $\Delta_{n}$ 中所有语句为真，那么它必然使 $\metav{A}$ 为假，从而使 $\enot \metav{A}$ 为真。因此，$\Delta_n \entails \enot \metav{A}$。\textsc{QED}
 
-
-\begin{factoidboxe}\label{lem:LastRuleSound} IP, $\eif$I,  $\eif$E, $\eiff$I, and $\eiff$E are all rule-sound.
+\begin{factoidboxe}\label{lem:LastRuleSound} IP、$\eif$I、$\eif$E、$\eiff$I 和 $\eiff$E 都是规则可靠的。
 \end{factoidboxe}
 
-We leave these as exercises.
+我们将这些留作练习。
 
-This establishes that all the basic rules of our proof system are rule-sound. Finally, we show:
+至此，我们已确立证明系统中所有基本规则都是规则可靠的。最后，我们证明：
 
-\begin{factoidboxe}All of the derived rules of our proof system are rule-sound.
+\begin{factoidboxe}
+证明系统中的所有派生规则都是规则可靠的。
 \end{factoidboxe}
 
-\emph{Proof.}
-	Suppose that we used a derived rule to obtain some sentence, $\metav{A}$, on line $n$ of some TFL-proof, and that every earlier line is shiny. Every use of a derived rule can be replaced (at the cost of long-windedness) with multiple uses of basic rules. That is to say, we could have used basic rules to write $\metav{A}$ on some line $n + k$, without introducing any further assumptions. So, applying our individual results that all basic rules are rule-sound several times ($k + 1$ times, in fact), we can see that line $n+k$ is shiny. Hence the derived rule is rule-sound.
-QED
-	
+\emph{证明.}
+假设我们在某个真值函项逻辑证明的第 $n$ 行使用了一个派生规则得到了某个语句 $\metav{A}$，并且所有先前的行都是闪亮的。任何对派生规则的使用都可以（以冗长为代价）用多次使用基本规则来替代。也就是说，我们本可以使用基本规则在某个行 $n + k$ 上写下 $\metav{A}$，而不引入任何额外的假设。因此，通过多次应用我们已有的结果——所有基本规则都是规则可靠的（实际上是 $k + 1$ 次）——我们可以看出第 $n+k$ 行是闪亮的。因此，该派生规则是规则可靠的。\textsc{QED}
 
-And that's that! We have shown that every rule---basic or otherwise---is rule-sound, which is all that we required to establish the Shininess Lemma, and hence the Soundness Theorem.
+就是这样！我们已经证明了每条规则——无论是基本的还是派生的——都是规则可靠的，而这正是我们建立闪亮引理，进而建立可靠性定理所需要的全部。
 
-But it might help to round off this chapter if we repeat my informal
-explanation of what we have done. A formal proof is just a
-sequence---of arbitrary length---of applications of rules. We have
-shown that any application of any rule will not lead you astray. It
-follows that no formal proof will lead you astray.
-That is: our proof system is sound.
+不过，如果在本章末尾再次非正式地解释一下我们所做的事情，或许会有所帮助。一个形式证明只是一系列——任意长度的——规则应用。我们已经表明，任何规则的任何应用都不会误导你。由此可见，没有任何形式证明会误导你。也就是说：我们的证明系统是可靠的。
 
 \practiceproblems
 
 \problempart
 \label{pr.Soundness}
-Complete the Lemmas left as exercises in this chapter. That is, show that the following are rule-sound:
-	\begin{compactlist}
-		\item $\eor$I. (\emph{Hint}: this is  similar to the case of $\eand$E.)
-		\item X. (\emph{Hint}: this is similar to the case of $\enot$E.)
-		\item $\eif$I. (\emph{Hint}: this is similar to $\eor$E.)
-		\item $\eif$E.
-		\item IP. (\emph{Hint}: this is similar to the case of $\enot$I.)
+完成本章留作练习的引理。也就是说，证明以下规则是规则可靠的：
+\begin{compactlist}
+		\item $\eor$I。（\emph{提示}：与 $\eand$E 的情况类似。）
+		\item X。（\emph{提示}：与 $\enot$E 的情况类似。）
+		\item $\eif$I。（\emph{提示}：与 $\eor$E 的情况类似。）
+		\item $\eif$E。
+		\item IP。（\emph{提示}：与 $\enot$I 的情况类似。）
 	\end{compactlist}
-

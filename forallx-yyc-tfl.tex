@@ -1,727 +1,804 @@
 %!TEX root = forallxyyc.tex
-\part{Truth-functional logic}
+\part{真值函项逻辑}
 \label{ch.TFL}
 \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
 
-\chapter{First steps to symbolization}
+\chapter{迈向符号化的第一步}
 
-\section{Validity in virtue of form}\label{s:ValidityInVirtueOfForm}
-Consider this argument:
-	\begin{earg}
-		\item[] It is raining outside.
-		\item[] If it is raining outside, then Jenny is miserable.
-		\item[\texttherefore] Jenny is miserable.
+\section{基于形式的有效性}\label{s:ValidityInVirtueOfForm}
+考虑这个论证：
+
+
+\begin{earg}
+		\item[] 外面正在下雨。
+		\item[] 如果外面正在下雨，那么 Jenny 很痛苦。
+		\item[\texttherefore] Jenny 很痛苦。
 	\end{earg}
-and another argument:
-	\begin{earg}
-		\item[] Jenny is an anarcho-syndicalist.
-		\item[] If Jenny is an anarcho-syndicalist, then Dipan is an avid reader of Tolstoy.
-		\item[\texttherefore] Dipan is an avid reader of Tolstoy.
+
+
+再看另一个论证：
+
+
+\begin{earg}
+		\item[] Jenny 是一名无政府工团主义者。
+		\item[] 如果 Jenny 是一名无政府工团主义者，那么 Dipan 是 Tolstoy 的忠实读者。
+		\item[\texttherefore] Dipan 是 Tolstoy 的忠实读者。
 	\end{earg}
-Both arguments are valid, and there is a straightforward sense in which we can say that they share a common structure. We might express the structure thus:
-	\begin{earg}
+
+
+这两个论证都是有效的，并且我们可以直截了当地说，它们共享一个共同的结构。我们可以将这个结构表达如下：
+
+
+\begin{earg}
 		\item[] $A$
-		\item[] If $A$, then $C$
+		\item[] 如果 $A$，那么 $C$
 		\item[\texttherefore] $C$
 	\end{earg}
-This looks like an excellent argument \emph{structure}. Indeed, surely any argument with this structure will be valid. And this is not the only good argument structure. Consider an argument like:
-	\begin{earg}
-		\item[] Jenny is either happy or sad.
-		\item[] Jenny is not happy.
-		\item[\texttherefore] Jenny is sad.
+
+
+这看起来是一个出色的论证\emph{结构}。确实，任何具有这种结构的论证无疑都是有效的。但这并非唯一的良好论证结构。考虑如下论证：
+
+
+\begin{earg}
+		\item[] Jenny 要么开心要么难过。
+		\item[] Jenny 不开心。
+		\item[\texttherefore] Jenny 很难过。
 	\end{earg}
-Again, this is a valid argument. The structure here is something like:
-	\begin{earg}
-		\item[] $A$ or $B$
-		\item[] not-$A$
+
+
+同样，这是一个有效论证。其结构大致如下：
+
+
+\begin{earg}
+		\item[] $A$ 或 $B$
+		\item[] 非 $A$
 		\item[\texttherefore] $B$
 	\end{earg}
-A superb structure! Here is another example:
-	\begin{earg}
-		\item[] It's not the case that Jim both studied hard and acted in lots of plays.
-		\item[] Jim studied hard.
-		\item[\texttherefore] Jim did not act in lots of plays.
+
+
+一个绝佳的结构！这里还有另一个例子：
+
+
+\begin{earg}
+		\item[] Jim 并非既努力学习又参演了许多戏剧。
+		\item[] Jim 努力学习。
+		\item[\texttherefore] Jim 没有参演许多戏剧。
 	\end{earg}
-This valid argument has a structure which we might represent thus:
-	\begin{earg}
-		\item[] not-($A$ and $B$)
+
+
+这个有效论证的结构或许可以这样表示：
+
+
+\begin{earg}
+		\item[] 非($A$ 和 $B$)
 		\item[] $A$
-		\item[\texttherefore] not-$B$
+		\item[\texttherefore] 非 $B$
 	\end{earg}
-These examples illustrate an important idea, which we might describe as \emph{validity in virtue of form}. The validity of the arguments just considered has nothing very much to do with the meanings of English expressions like `Jenny is miserable', `Dipan is an avid reader of Tolstoy', or `Jim acted in lots of plays'. If it has to do with meanings at all, it is with the meanings of phrases like `and', `or', `not,' and `if \ldots, then \ldots'.
 
-In \crefrange{ch.TFL}{ch.NDTFL}, we are going to develop a formal
-language which allows us to symbolize many arguments in such a way as
-to show that they are valid in virtue of their form. This will be the
-language of \emph{truth-functional logic}, or
-TFL.\footnote{Truth-functional logic is also often called (classical)
-``propositional'' or ``sentential'' logic.}
 
-\section{Validity for special reasons}
+这些例子阐明了一个重要的思想，我们可以称之为\emph{基于形式的有效性}。我们刚才所考虑论证的有效性，与“Jenny 很痛苦”、“Dipan 是 Tolstoy 的忠实读者”或“Jim 参演了许多戏剧”这类英语表达式的意义几乎毫无关系。如果说它与意义有关，那也仅仅是与“和”、“或”、“非”以及“如果……那么……”这类短语的意义有关。
 
-In \cref{s:FormalValidity}, we first introduced the notion of formal
-validity, and contrasted it with other kinds of validity related to
-what kinds of counterexamples we consider. It bears repeating that
-there are plenty of arguments that are valid, but not for reasons
-relating to their form. Take an example:
-	\begin{earg}
-		\item[] Juanita is a vixen.
-		\item[\texttherefore] Juanita is a fox.
+在 \crefrange{ch.TFL}{ch.NDTFL} 中，我们将发展一种形式语言，它允许我们以某种方式符号化许多论证，从而展示它们是基于其形式而有效的。这就是\emph{真值函项逻辑}的语言。\footnote{真值函项逻辑也常被称为（经典）“命题逻辑”或“语句逻辑”。}
+
+\section{基于特殊原因的有效性}
+
+在 \cref{s:FormalValidity}，我们首次介绍了形式有效性的概念，并将其与因所考虑反例的种类不同而产生的其他有效性进行了对比。值得重申的是，存在大量虽然有效但其有效性并非源于形式的论证。举个例子：
+
+
+\begin{earg}
+		\item[] Juanita 是一只雌狐。
+		\item[\texttherefore] Juanita 是一只狐狸。
 	\end{earg}
-It is impossible for the premise to be true and the conclusion false,
-since `vixen' just means `female fox'. So the argument is
-(conceptually) valid. The validity is not explained by the form of the
-argument. To see this, we can give an invalid argument with the same
-form, e.g.:
-	\begin{earg}
-		\item[] Juanita is a vixen.
-		\item[\texttherefore] Juanita is a cathedral.
+
+
+这个前提为真而结论为假是不可能的，因为“雌狐”（vixen）意思就是“雌性狐狸”（female fox）。因此，该论证是（概念上）有效的。这种有效性无法由该论证的形式来解释。为了看清这一点，我们可以给出一个形式相同但无效的论证，例如：
+
+
+\begin{earg}
+		\item[] Juanita 是一只雌狐。
+		\item[\texttherefore] Juanita 是一座大教堂。
 	\end{earg}
-Equally, consider the argument:
-	\begin{earg}
-		\item[] The sculpture is green all over.
-		\item[\texttherefore] The sculpture is not red all over.
+
+
+同样，考虑如下论证：
+
+
+\begin{earg}
+		\item[] 这座雕塑通体为绿色。
+		\item[\texttherefore] 这座雕塑并非通体为红色。
 	\end{earg}
-Again, it seems there can be no case where the premise is true and the
-conclusion false, for nothing can be both green all over and red all
-over. So the argument is valid, but here is an invalid argument with
-the same form:
-	\begin{earg}
-		\item[] The sculpture is green all over.
-		\item[\texttherefore] The sculpture is not shiny all over.
+
+
+同样，似乎不可能存在前提为真而结论为假的情况，因为没有任何事物可以同时通体为绿又通体为红。所以这个论证是有效的，但这里有一个形式相同却无效的论证：
+
+
+\begin{earg}
+		\item[] 这座雕塑通体为绿色。
+		\item[\texttherefore] 这座雕塑并非通体闪亮。
 	\end{earg}
-This argument is invalid, since it is possible to be green all over
-and shiny all over. (One might paint the sculpture with an elegant
-shiny green varnish.) Plausibly, the validity of the first argument is
-keyed to the way that colours (or colour-words) interact, but, whether
-or not that is right, it is not simply the \emph{form} of the
-argument alone that makes it valid.
 
-The important moral can be stated as follows. \emph{At best, TFL will help us to understand arguments that are valid due to their form.}
 
-\section{Atomic sentences}
+这个论证是无效的，因为完全有可能同时通体为绿色且通体闪亮。（人们可以用优雅的闪亮绿色清漆来涂刷这座雕塑。）第一个论证的有效性很可能源于颜色（或颜色词）的相互作用方式；但无论是否如此，使其有效的并不仅仅是论证的\emph{形式}。
 
-We started isolating the form of an argument, in \cref{s:ValidityInVirtueOfForm}, by replacing \emph{subsentences} of sentences with individual letters. Thus in the first example of this section, `it is raining outside' is a subsentence of `If it is raining outside, then Jenny is miserable', and we replaced this subsentence with `$A$'.
+我们可以总结出以下重要启示：\emph{真值函项逻辑至多能帮助我们理解那些因其形式而有效的论证。}
 
-The artificial language of TFL pursues this idea absolutely
-ruthlessly. We start with some \emph{sentence letters}. These will be
-the basic building blocks out of which more complex sentences are
-built (they are the ``atomic'' sentences of TFL). We will use single
-uppercase letters as sentence letters of TFL. There are only
-twenty-six letters of the alphabet, but there is no limit to the
-number of sentence letters that we might want to consider. By adding
-subscripts to letters, we obtain new sentence letters. So, here are
-five different sentence letters of TFL:
+\section{原子语句}
+
+在 \cref{s:ValidityInVirtueOfForm} 中，我们通过用单个字母替换句子中的\emph{组成部分}来开始分离论证的形式。因此，在本节的第一个例子中，“外面正在下雨”是“如果外面正在下雨，那么 Jenny 很痛苦”的一个组成部分，我们将这个组成部分替换为“$A$”。
+
+真值函项逻辑的人工语言将这一思路彻底贯彻。我们从一些 \emph{语句字母} 开始。它们将是构造更复杂语句的基本构件（它们是真值函项逻辑的“原子”语句）。我们将使用单个大写字母作为真值函项逻辑的语句字母。字母表虽然只有二十六个字母，但我们可能需要考虑的语句字母数量却没有限制。通过给字母添加下标，我们可以获得新的语句字母。因此，以下是五个不同的真值函项逻辑语句字母：
 	$$A, P, P_1, P_2, A_{234}$$
-We will use sentence letters to represent, or \emph{symbolize}, certain English sentences. To do this, we provide a \define{symbolization key}, such as the following:
-	\begin{ekey}
-		\item[A] It is raining outside
-		\item[C] Jenny is miserable
+
+我们将使用语句字母来表示，或者说\emph{符号化}，某些英语句子。为此，我们提供一个 \define{符号化约定}，例如：
+
+
+\begin{ekey}
+		\item[A] 外面正在下雨
+		\item[C] Jenny 很痛苦
 	\end{ekey}
-In doing this, we are not fixing this symbolization \emph{once and for all}. We are just saying that, for the time being, we will think of the sentence letter of TFL, `$A$', as symbolizing the English sentence `It is raining outside', and the sentence letter of TFL, `$C$', as symbolizing the English sentence `Jenny is miserable'. Later, when we are dealing with different sentences or different arguments, we can provide a new symbolization key; as it might be:
-	\begin{ekey}
-		\item[A] Jenny is an anarcho-syndicalist
-		\item[C] Dipan is an avid reader of Tolstoy
+
+
+这样做，并非要将这一符号化关系\emph{一劳永逸地}固定下来。我们只是说，在当下，我们将把真值函项逻辑的语句字母“$A$”视为对英语句子“外面正在下雨”的符号化，并把真值函项逻辑的语句字母“$C$”视为对英语句子“Jenny 很痛苦”的符号化。之后，当我们处理不同的句子或不同的论证时，完全可以提供一个新的符号化约定；比如说：
+
+
+\begin{ekey}
+		\item[A] Jenny 是一名无政府工团主义者
+		\item[C] Dipan 是 Tolstoy 的忠实读者
 	\end{ekey}
-It is important to understand that whatever structure an English sentence might have is lost when it is symbolized by a sentence letter of TFL. From the point of view of TFL, a sentence letter is just a letter. It can be used to build more complex sentences, but it cannot be taken apart.
+
+
+重要的是要理解：一个英语句子可能具有的任何结构，在用真值函项逻辑的语句字母将其符号化后都会丢失。从真值函项逻辑的角度看，一个语句字母就只是一个字母。它可以用来构建更复杂的语句，但它本身不能被分解。
 
 \newglossaryentry{sentence letter}
 {
-name=sentence letter,
-description={An letter used to represent a basic sentence in TFL}
+name=语句字母,
+description={用于表示真值函项逻辑中基本语句的字母}
 }
 \newglossaryentry{atomic sentence}
 {
-name=atomic sentence,
-description={An expression used to represent a basic sentence; a sentence letter in TFL, or a predicate symbol followed by names in FOL}
+name=原子语句,
+description={用于表示基本语句的表达式；在真值函项逻辑中是语句字母，在一阶逻辑中是后接名称的谓词符号}
 }
 
 \newglossaryentry{symbolization key}
 {
-name=symbolization key,
-description={A list that shows which English sentences are represented by which \glspl{sentence letter} in TFL}
+name=符号化约定,
+description={显示真值函项逻辑中哪些自然语言句子由哪些\glspl{sentence letter}表示的列表}
 }
 
-\chapter{Connectives}
+\chapter{联结词}
 \label{s:TFLConnectives}
 
-In the previous chapter, we considered symbolizing fairly basic English sentences with sentence letters of TFL. This leaves us wanting to deal with the English expressions `and', `or', `not', and so forth. These are \emph{connectives}---they can be used to form new sentences out of old ones. In TFL, we will make use of logical connectives to build complex sentences from atomic components. There are five logical connectives in TFL. This table summarizes them, and they are explained throughout this section.
+在上一章中，我们探讨了如何用真值函项逻辑的语句字母来符号化相当基本的自然语言句子。这引出了对“and”、“or”、“not”等英语表达式的处理需求。这些就是\emph{联结词}——它们可以用来从旧句子构成新句子。在真值函项逻辑中，我们将使用逻辑联结词从原子构件构建复杂语句。真值函项逻辑中有五个逻辑联结词。下表总结了它们，并将在本章节中加以解释。
 
 \newglossaryentry{connective}
 {
-name=connective,
-description={A logical operator in TFL used to combine \glspl{sentence letter} into larger sentences}
+name=联结词,
+description={真值函项逻辑中用于将\glspl{sentence letter}组合成更大语句的逻辑算子}
 }
-	\begin{table}[h]
+
+
+\begin{table}[h]
 	\center
 	\begin{tabular}{l l l}
-	
-	\textbf{symbol}&\textbf{what it is called}&\textbf{rough meaning}\\
+
+	\textbf{符号}&\textbf{名称}&\textbf{粗略含义}\\
 	\hline
-	\enot&negation&`It is not the case that$\ldots$'\\
-	\eand&conjunction&`Both$\ldots$\ and $\ldots$'\\
-	\eor&disjunction&`Either$\ldots$\ or $\ldots$'\\
-	\eif&conditional&`If $\ldots$\ then $\ldots$'\\
-	\eiff&biconditional&`$\ldots$ if and only if $\ldots$'\\
-	
+	\enot&否定&“并非……”\\
+	\eand&合取&“既……又……”\\
+	\eor&析取&“或者……或者……”\\
+	\eif&条件&“如果……那么……”\\
+	\eiff&双条件&“……当且仅当……”\\
+
 	\end{tabular}
 	\end{table}
 
-These are not the only connectives of English of interest. Others are, e.g., `unless', `neither \dots{} nor \dots', and `because'. We will see that the first two can be expressed by the connectives we will discuss, while the last cannot. `Because', in contrast to the others, is not \emph{truth functional}.
+这些并非英语中令人感兴趣的全部联结词。其他还有例如“unless”、“neither \dots{} nor \dots”和“because”。我们将看到，前两者可以用我们将讨论的联结词来表达，而最后一个则不行。“because”与其他联结词不同，它不是\emph{真值函项的}。
 
-        
-\section{Negation}
 
-Consider how we might symbolize these sentences:
-	\begin{enumerate}
-	\item\label{not1} Mary is in Barcelona.
-	\item\label{not2} It is not the case that Mary is in Barcelona.
-	\item\label{not3} Mary is not in Barcelona.
+\section{否定}
+
+考虑如何符号化以下句子：
+
+
+\begin{enumerate}
+	\item\label{not1} 玛丽在巴塞罗那。
+	\item\label{not2} 并非玛丽在巴塞罗那。
+	\item\label{not3} 玛丽不在巴塞罗那。
 	\end{enumerate}
-In order to symbolize \cref*{not1}, we will need a sentence letter. We might offer this symbolization key:
-	\begin{ekey}
-		\item[B] Mary is in Barcelona.
-	\end{ekey}
-Since \cref*{not2} is obviously related to \cref*{not1}, we will not want to symbolize it with a completely different sentence letter. Roughly, \cref*{not2} means something like `It is not the case that~$B$'. In order to symbolize this, we need a symbol for negation. We will use~`\enot'. Now we can symbolize \cref*{not2} with~`$\enot B$'.
 
-\Cref*{not3} also contains the word `not', and it is obviously equivalent to \cref*{not2}. As such, we can also symbolize it with~`$\enot B$'.
+
+为了符号化 \cref*{not1}，我们需要一个语句字母。可以提供如下符号化约定：
+
+
+\begin{ekey}
+		\item[B] 玛丽在巴塞罗那。
+	\end{ekey}
+
+
+由于 \cref*{not2} 显然与 \cref*{not1} 相关，我们不会想用一个完全不同的语句字母来符号化它。粗略地说，\cref*{not2}的意思就类似于“并非$B$”。为了符号化它，我们需要一个否定符号。我们将使用“\enot”。现在，我们可以用“$\enot B$”来符号化 \cref*{not2}。
+
+\Cref*{not3} 也含有“不”这个词，并且它显然等价于 \cref*{not2}。因此，我们也可以用 “$\enot B$” 来符号化它。
 \factoidbox{
-A sentence can be symbolized as $\enot\metav{A}$ if it can be paraphrased in English as `It is not the case that\ldots'.
+	如果一个句子能用英语改述为“并非……”，那么它可以符号化为 $\enot\metav{A}$。
 }
-It will help to offer a few more examples:
-	\begin{enumerate}
-		\item\label{not4} The widget can be replaced.
-		\item\label{not5} The widget is irreplaceable.
-		\item\label{not5b} The widget is not irreplaceable.
+再多举几个例子会有帮助：
+
+
+\begin{enumerate}
+		\item\label{not4} 这个小部件可以被替换。
+		\item\label{not5} 这个小部件是不可替代的。
+		\item\label{not5b} 这个小部件不是不可替代的。
 	\end{enumerate}
-Let us use the following representation key:
-	\begin{ekey}
-		\item[R] The widget is replaceable
+
+
+让我们使用下面的符号化约定：
+
+
+\begin{ekey}
+		\item[R] 这个小部件是可替代的。
 	\end{ekey}
-\Cref*{not4} can now be symbolized by `$R$'. Moving on to \cref*{not5}: saying the widget is irreplaceable means that it is not the case that the widget is replaceable. So even though \cref*{not5} does not contain the word `not', we will symbolize it as follows:~`$\enot R$'.
 
-\Cref*{not5b} can be paraphrased as `It is not the case that the widget is irreplaceable.' Which can again be paraphrased as `It is not the case that it is not the case that the widget is replaceable'. So we might symbolize this English sentence with the TFL sentence~`$\enot\enot R$'.
 
-But some care is needed when handling negations. Consider:
-	\begin{enumerate}
-		\item\label{not6} Jane is happy.
-		\item\label{not7} Jane is unhappy.
+现在，\Cref*{not4} 可以符号化为 “$R$”。再看 \cref*{not5}：说这个小部件不可替代，意思就是“并非这个小部件是可替代的”。所以，即便 \cref*{not5} 不包含“不”这个词，我们也将它符号化为：“$\enot R$”。
+
+\Cref*{not5b} 可以改述为“并非这个小部件是不可替代的”。而这又可以改述为“并非‘并非这个小部件是可替代的’”。因此，我们可以用真值函项逻辑语句 “$\enot\enot R$” 来符号化这个英语句子。
+
+但是，在处理否定时需要特别小心。考虑：
+
+
+\begin{enumerate}
+		\item\label{not6} 简是快乐的。
+		\item\label{not7} 简是不快乐的。
 	\end{enumerate}
-If we let the TFL-sentence `$H$' symbolize  `Jane is happy', then we can symbolize \cref*{not6} as `$H$'. However, it would be a mistake to symbolize \cref*{not7} with `$\enot{H}$'. If Jane is unhappy, then she is not happy; but \cref*{not7} does not mean the same thing as `It is not the case that Jane is happy'. Jane might be neither happy nor unhappy; she might be in a state of blank indifference. In order to symbolize \cref*{not7}, then, we would need a new sentence letter of TFL.
+
+
+如果我们用真值函项逻辑语句 “$H$” 来符号化“简是快乐的”，那么我们可以把 \cref*{not6} 符号化为 “$H$”。然而，将 \cref*{not7} 符号化为 “$\enot{H}$” 将是一个错误。如果简是不快乐的，那么她确实不快乐；但 \cref*{not7} 的意思并不等同于“并非简是快乐的”。简可能既不快乐也非不快乐；她可能处于一种漠不关心的状态。因此，为了符号化 \cref*{not7}，我们就需要一个全新的真值函项逻辑语句字母。
 \newglossaryentry{negation}
 {
-name=negation,
-description={The symbol \enot, used to represent words and phrases that function like the English word ``not''}
+name=否定,
+description={符号 \enot，用于表示在功能上类似于英语单词“not”的词语和短语}
 }
 
-\section{Conjunction}
+\section{合取}
 \label{s:ConnectiveConjunction}
 
-Consider these sentences:
-	\begin{enumerate}
-		\item\label{and1}Adam is athletic.
-		\item\label{and2}Barbara is athletic.
-		\item\label{and3}Adam is athletic, and also Barbara is athletic.
+考虑下面这些句子：
+
+
+\begin{enumerate}
+		\item\label{and1} 亚当是健壮的。
+		\item\label{and2} 芭芭拉是健壮的。
+		\item\label{and3} 亚当是健壮的，并且芭芭拉也是健壮的。
 	\end{enumerate}
-We will need separate sentence letters of TFL to symbolize \cref*{and1,and2}; perhaps
-	\begin{ekey}
-		\item[A] Adam is athletic.
-		\item[B] Barbara is athletic.
+
+
+我们需要用不同的真值函项逻辑语句字母来符号化 \cref*{and1,and2}；可以这样设定：
+
+
+\begin{ekey}
+		\item[A] 亚当是健壮的。
+		\item[B] 芭芭拉是健壮的。
 	\end{ekey}
-\Cref*{and1} can now be symbolized as `$A$', and \cref*{and2} can be symbolized as `$B$'. \Cref*{and3} roughly says `A and B'. We need another symbol, to deal with `and'. We will use `\eand'. Thus we will symbolize it as `$(A\eand B)$'. This connective is called \define{conjunction}. We also say that `$A$' and `$B$' are the two \define{conjuncts} of the conjunction `$(A \eand B)$'.
+
+
+现在，\cref*{and1} 可以符号化为“$A$”，而 \cref*{and2} 可以符号化为“$B$”。\Cref*{and3} 大致说了“A 并且 B”。我们需要另一个符号来处理“并且”。我们将使用“$\eand$”。因此，我们将其符号化为“$(A\eand B)$”。这个联结词叫做 \define{合取}。我们也将“$A$”和“$B$”称为合取式“$(A \eand B)$”的两个 \define{合取支}。
 \newglossaryentry{conjunction}
 {
-name=conjunction,
-description={The symbol \eand, used to represent words and phrases that function like the English word ``and''; or a sentence formed using that symbol}
+name=合取,
+description={符号 \eand，用于表示在功能上类似于英语单词“and”的词语和短语；或是使用该符号构成的语句}
 }
 
 \newglossaryentry{conjunct}
 {
-name=conjunct,
-description={A sentence joined to another by a \gls{conjunction}}
+name=合取支,
+description={通过\gls{conjunction}与另一个语句连接在一起的语句}
 }
 
+注意，我们并不打算符号化 \cref*{and3} 中的“也”这个词。像“都”和“也”这类词的功能是提醒我们注意两个事物正在被合取。它们也许影响句子的强调意味，但在真值函项逻辑中，我们不会（也不能）符号化这类东西。
 
-Notice that we make no attempt to symbolize the word `also' in \cref*{and3}. Words like `both' and `also' function to draw our attention to the fact that two things are being conjoined. Maybe they affect the emphasis of a sentence, but we will not (and cannot) symbolize such things in TFL.
+更多的例子将阐明这一点：
 
-Some more examples will bring out this point:
-	\begin{enumerate}
-		\item\label{and4}Barbara is athletic and energetic.
-		\item\label{and5}Barbara and Adam are both athletic.
-		\item\label{and6}Although Barbara is energetic, she is not athletic.
-	\item\label{and7}Adam is athletic, but Barbara is more athletic than him.
-	\end{enumerate}
-\Cref*{and4} is obviously a conjunction. The sentence says two things (about Barbara). In English, it is permissible to refer to Barbara only once. It \emph{might} be tempting to think that we need to symbolize \cref*{and4} with something along the lines of `$B$ and energetic'. This would be a mistake. Once we symbolize part of a sentence as `$B$', any further structure is lost, as `$B$' is a sentence letter of TFL. Conversely, `energetic' is not an English sentence at all. What we are aiming for is something like `$B$ and Barbara is energetic'. So we need to add another sentence letter to the symbolization key. Let `$E$' symbolize `Barbara is energetic'. Now the entire sentence can be symbolized as `$(B\eand E)$'.
 
-\Cref*{and5} says one thing about two different subjects. It says of both Barbara and Adam that they are athletic, even though in English we use the word `athletic' only once. The sentence can be paraphrased as `Barbara is athletic, and Adam is athletic'. We can symbolize this in TFL as `$(B\eand A)$', using the same symbolization key that we have been using.
-
-\Cref{and6} is slightly more complicated. The word `although' sets up a contrast between the first part of the sentence and the second part. Nevertheless, the sentence tells us both that Barbara is energetic and that she is not athletic. In order to make each of the conjuncts a sentence letter, we need to replace `she' with `Barbara'. So we can rewrite \cref*{and6} as, `\emph{Both} Barbara is energetic, \emph{and} Barbara is not athletic'. The second conjunct contains a negation, so we paraphrase further: `\emph{Both} Barbara is energetic \emph{and} \emph{it is not the case that} Barbara is athletic'. Now we can symbolize this with the TFL sentence `$(E\eand\enot B)$'. Note that we have lost all sorts of nuance in this symbolization. There is a distinct difference in tone between \cref*{and6} and `Both Barbara is energetic and it is not the case that Barbara is athletic'. TFL does not (and cannot) preserve these nuances.
-
-\Cref{and7} raises similar issues. The word `but' suggests a contrast
-or difference, but this is not something that TFL can deal with. All
-we can do is paraphrase the sentence as `\emph{Both} Adam is athletic,
-\emph{and} Barbara is more athletic than Adam'. (Notice that we once
-again replace the pronoun `him' with `Adam'.) How should we deal with
-the second conjunct? We already have the sentence letter `$A$', which
-is being used to symbolize `Adam is athletic', and the sentence `$B$'
-which is being used to symbolize `Barbara is athletic'; but neither of
-these concerns their relative athleticity. So, to symbolize the entire
-sentence, we need a new sentence letter. Let the TFL sentence `$R$'
-symbolize the English sentence `Barbara is more athletic than Adam'.
-Now we can symbolize \cref*{and7} by `$(A \eand R)$'. 
-\factoidbox{A
-sentence can be symbolized as $(\metav{A}\eand\metav{B})$ if it can be
-paraphrased in English as `Both\ldots, and\ldots', or as `\ldots, but
-\ldots', or as `although \ldots, \ldots'.} 
-
-We noted above that the contrast suggested by `but' cannot be captured
-in TFL, and that we simply ignore it. A phenomenon that cannot simply
-be ignored is temporal order. E.g., consider:
 \begin{enumerate}
-	\item\label{stoodfirst} Harry stood up and objected to the proposal.
-	\item\label{stoodsecond} Harry objected to the proposal and stood up.
+		\item\label{and4} 芭芭拉是健壮且有活力的。
+		\item\label{and5} 芭芭拉和亚当都是健壮的。
+		\item\label{and6} 虽然芭芭拉有活力，但她并不健壮。
+	\item\label{and7} 亚当是健壮的，但芭芭拉比他更健壮。
+	\end{enumerate}
+
+
+\Cref*{and4} 显然是一个合取。这句话说了（关于芭芭拉的）两件事。在英语中，只提及一次芭芭拉是被允许的。我们\emph{可能}会忍不住想用类似于“”$B$” and energetic”这样的东西来符号化 \cref*{and4}。这会是一个错误。一旦我们将句子的一部分符号化为 “$B$”，任何进一步的结构就都丢失了，因为 “$B$” 是一个真值函项逻辑的语句字母。反过来说，“energetic”本身根本不是一个英语句子。我们的目标应该是像“”$B$” 并且芭芭拉是有活力的”这样的东西。所以我们需要向符号化约定中再添加一个语句字母。让 “$E$” 符号化“芭芭拉是有活力的”。现在，整个句子就可以符号化为 “$(B\eand E)$”。
+
+\Cref*{and5} 对两个不同的主体说了同一件事。它声称芭芭拉和亚当都是健壮的，尽管在英语中“健壮的”这个词只用了一次。这个句子可以改述为“芭芭拉是健壮的，并且亚当是健壮的”。利用我们一直在使用的同一套符号化约定，我们可以用真值函项逻辑将其符号化为 “$(B\eand A)$”。
+
+\Cref{and6} 略微复杂一些。 “although”这个词在句子的第一部分和第二部分之间建立了一种对比。尽管如此，这句话同时告诉我们芭芭拉精力充沛，而且她并不健壮。为了把每个合取支都变成一个语句字母，我们需要把“she”替换成“芭芭拉”。因此，我们可以将 \cref*{and6}  改写为：“\emph{既}芭芭拉精力充沛，\emph{又}芭芭拉不健壮”。第二个合取支包含一个否定，所以我们进一步改述：“\emph{既}芭芭拉精力充沛，\emph{又}\emph{并非}芭芭拉是健壮的”。现在我们可以用真值函项逻辑语句“$(E\eand\enot B)$”来符号化它。注意，在这个符号化过程中我们丢失了各种各样的细微之处。\cref*{and6} 和“既芭芭拉精力充沛，又并非芭芭拉是健壮的”在语气上有明显的不同。真值函项逻辑不能（也无法）保留这些细微差别。
+
+\Cref{and7} 提出了类似的问题。
+“but”这个词暗示了一种对比或差异，但这是真值函项逻辑无法处理的。我们只能把这个句子改述为“\emph{既}亚当是健壮的，\emph{又}芭芭拉比亚当更健壮”。（注意我们又一次把代词“him”替换成了“亚当”。）我们该如何处理第二个合取支呢？我们已经有语句字母“$A$”，它用来符号化“亚当是健壮的”，还有语句“$B$”用来符号化“芭芭拉是健壮的”；但这二者都不涉及他们的相对健壮程度。因此，为了符号化整个句子，我们需要一个新的语句字母。令真值函项逻辑语句“$R$”符号化英语句子“芭芭拉比亚当更健壮”。现在我们可以用“$(A \eand R)$”来符号化 \cref*{and7}。
+\factoidbox{一个句子如果可以改述为“既……，又……”，或“……，但是……”，或“虽然……，……”，那么它就可以符号化为$(\metav{A}\eand\metav{B})$。}
+
+我们之前提到，“but”所暗示的对比在真值函项逻辑中无法被捕捉，我们直接忽略它。一个不能简单忽略的现象是时间顺序。例如，考虑：
+
+\begin{enumerate}
+	\item\label{stoodfirst} Harry 站起来并反对该提议。
+	\item\label{stoodsecond} Harry 反对该提议并站起来。
 \end{enumerate}
-If Harry stood up \emph{after} he objected, \cref*{stoodsecond} is true
-but \cref*{stoodfirst} is false---the use of `and' here is
-\emph{asymmetric}. The symbol `\eand' of TFL, however, is always
-symmetric (or ``commutative'' as logicians say). TFL cannot deal with
-asymmetric `and'. We'll assume for all our examples and exercises
-that `and' is symmetric.\footnote{On symmetric and asymmetric
-conjunction in linguistics, see, e.g., Robin Lakoff, ``If's,
-and's, and but's about conjunction'', in: C. J. Fillmore and D. T.
-Langendoen (eds.), \textit{Studies in Linguistic Semantics}, 
-Holt, Rinehart \& Winston, 1971, and Susan Schmerling, ``Asymmetric
-conjunction and rules of conversation'', in: P. Cole and J. L.
-Morgan (eds.), \textit{Speech Acts}, Brill, 1975, pp.~211--31.}
 
-You might be wondering why
-we put brackets around the conjunctions. The reason can be brought out
-by thinking about how negation interacts with conjunction. Consider:
-	\begin{enumerate}
-		\item\label{negcon1} It's not the case that you will get both soup and salad.
-		\item\label{negcon2} You will not get soup but you will get salad.
+如果 Harry 在反对\emph{之后}才站起来，那么 \cref*{stoodsecond} 为真而 \cref*{stoodfirst} 为假——这里“and”的使用是\emph{不对称的}。然而，真值函项逻辑的符号“\eand”总是对称的（或者像逻辑学家说的，满足“交换律”）。真值函项逻辑无法处理不对称的“and”。在本书所有的例子和练习中，我们都将假设“and”是对称的。\footnote{关于语言学中对称和不对称的合取，参见，例如，Robin Lakoff, “”If's, and's, and but's about conjunction'', 载于：C. J. Fillmore 和 D. T. Langendoen (编), \textit{Studies in Linguistic Semantics}, 霍尔特、莱因哈特与温斯顿出版社, 1971, 以及 Susan Schmerling, “”Asymmetric conjunction and rules of conversation'', 载于：P. Cole 和 J. L. Morgan (编), \textit{Speech Acts}, Brill, 1975, 第 211--31 页。}
+
+你可能想知道为什么我们要在合取式周围加上括号。通过思考否定如何与合取交互，可以揭示其原因。考虑：
+
+\begin{enumerate}
+		\item\label{negcon1} 并非你既能得到汤又能得到沙拉。
+		\item\label{negcon2} 你不会得到汤，但你会得到沙拉。
 	\end{enumerate}
-\Cref*{negcon1} can be paraphrased as `It is not the case that: both you will get soup and you will get salad'. Using this symbolization key:
-	\begin{ekey}
-		\item[\ensuremath{S_1}] You will get soup.
-		\item[\ensuremath{S_2}] You will get salad.
+
+\Cref*{negcon1} 可以改述为“并非：你既会得到汤又会得到沙拉”。使用以下符号化约定：
+
+\begin{ekey}
+		\item[\ensuremath{S_1}] 你会得到汤。
+		\item[\ensuremath{S_2}] 你会得到沙拉。
 	\end{ekey}
-we would symbolize `both you will get soup and you will get salad' as `$(S_1 \eand S_2)$'. To symbolize \cref*{negcon1}, then, we simply negate the whole sentence, thus: `$\enot (S_1 \eand S_2)$'.
 
-\Cref*{negcon2} is a conjunction: you \emph{will not} get soup, and you \emph{will} get salad. `You will not get soup' is symbolized by `$\enot S_1$'. So to symbolize \cref*{negcon2} itself, we offer `$(\enot S_1 \eand S_2)$'.
+我们会把“你既会得到汤又会得到沙拉”符号化为“$(S_1 \eand S_2)$”。那么，为了符号化 \Cref*{negcon1}，我们只需否定整个句子，即：“$\enot (S_1 \eand S_2)$”。
 
-These English sentences are very different, and their symbolizations differ accordingly. In one of them, the entire conjunction is negated. In the other, just one conjunct is negated. Brackets help us to keep track of things like the \emph{scope} of the negation.
+\Cref*{negcon2} 是一个合取式：你\emph{不会}得到汤，并且你\emph{会}得到沙拉。“你不会得到汤”被符号化为“$\enot S_1$”。因此，为了符号化 \Cref*{negcon2} 本身，我们给出“$(\enot S_1 \eand S_2)$”。
 
-\section{Disjunction}
+这些英语句子非常不同，它们的符号化也因此不同。在其中一个句子中，整个合取式被否定。在另一个中，只有一个合取支被否定。括号帮助我们厘清诸如否定的\emph{辖域}之类的东西。
 
-Consider these sentences:
-	\begin{enumerate}
-		\item\label{or1}Either Fatima will play videogames, or she will watch movies.
-		\item\label{or2}Either Fatima or Omar will play videogames.
+\section{析取}
+
+考虑以下句子：
+
+\begin{enumerate}
+		\item\label{or1}要么 Fatima 玩电子游戏，要么她看电影。
+		\item\label{or2}要么 Fatima 要么 Omar 会玩电子游戏。
 	\end{enumerate}
-For these sentences we can use this symbolization key:
-	\begin{ekey}
-		\item[F] Fatima will play videogames
-		\item[O] Omar will play videogames
-		\item[M] Fatima will watch movies
+
+对于这些句子，我们可以使用以下符号化约定：
+
+\begin{ekey}
+		\item[F] Fatima 会玩电子游戏
+		\item[O] Omar 会玩电子游戏
+		\item[M] Fatima 会看电影
 	\end{ekey}
-However, we will again need to introduce a new symbol. \Cref*{or1} is symbolized by `$(F \eor M)$'. The connective is called \define{disjunction}. We also say that `$F$' and `$M$' are the \define{disjuncts} of the disjunction `$(F \eor M)$'.
+
+然而，我们需要再次引入一个新符号。\Cref*{or1} 被符号化为“$(F \eor M)$”。这个联结词叫做 \define{析取（disjunction）}。我们也可以说，“$F$”和“$M$”是析取式“$(F \eor M)$”的 \define{析取支（disjuncts）}。
 
 \newglossaryentry{disjunction}
 {
-name=disjunction,
-description={The connective \eor, used to represent words and phrases that function like the English word ``or'' in its inclusive sense; or a sentence formed by using this connective}
+name=析取,
+description={联结词 \eor，用于表示功能类似于英语中“or”一词在相容意义上的词语和短语；或者指使用这个联结词构成的语句}
 }
 
 \newglossaryentry{disjunct}
 {
-name=disjunct,
-description={A sentence joined to another by a \gls{disjunction}}
+name=析取支,
+description={通过\gls{disjunction}联结到另一个语句的语句}
 }
 
-\Cref*{or2} is only slightly more complicated. There are two subjects, but the English sentence only gives the verb once. However, we can paraphrase \cref*{or2} as `Either Fatima will play videogames, or Omar will play videogames'. Now we can obviously symbolize it by `$(F \eor O)$' again.
+\Cref*{or2} 只是稍微复杂一点。它有两个主语，但原英语句子只给了一次动词。不过，我们可以将 \cref*{or2} 改述为：“要么 Fatima 会玩电子游戏，要么 Omar 会玩电子游戏”。现在我们显然可以再次将其符号化为“$(F \eor O)$”。
 	\factoidbox{
-		A sentence can be symbolized as $(\metav{A}\eor\metav{B})$ if it can be paraphrased in English as `Either\ldots, or\ldots.'
+		如果一个句子可以用英语改述为“要么……，要么……”，那么它可以符号化为 $(\metav{A}\eor\metav{B})$。
 	}
-Sometimes in English, the word `or' is used in a way that excludes the possibility that both disjuncts are true. This is called an \define{exclusive or}.  An \emph{exclusive or} is clearly intended when it says, on a restaurant menu, `Entrees come with either soup or salad': you may have soup; you may have salad; but, if you want \emph{both} soup \emph{and} salad, then you have to pay extra.
+有时在英语中，“or”一词的用法会排除两个析取支都为真的可能性。这叫做 \define{排斥或（exclusive or）}。当餐厅菜单上写着“主菜配汤或沙拉”时，显然就是指\emph{排斥或}：你可以要汤；你可以要沙拉；但如果你\emph{同时}想要汤\emph{和}沙拉，你就得额外付钱。
 
-At other times, the word `or' allows for the possibility that both disjuncts might be true. This is probably the case with \cref{or2}, above. Fatima might play videogames alone, Omar might play videogames alone, or they might both play. \Cref*{or2} merely says that \emph{at least} one of them plays videogames. This is an \define{inclusive or}. The TFL symbol `\eor' always symbolizes an \emph{inclusive or}.
+其他时候，“or”一词允许两个析取支可能都为真。上文中的 \cref{or2} 很可能就是这种情况。Fatima 可能独自玩电子游戏，Omar 可能独自玩电子游戏，或者他们可能一起玩。\Cref*{or2} 只不过是在说，\emph{至少}他们中有一个人会玩电子游戏。这是一种 \define{相容或（inclusive or）}。真值函项逻辑符号“\eor”总是符号化\emph{相容或}。
 
-It will also help to see how negation interacts with disjunction. Consider: 
-	\begin{enumerate}
-		\item\label{or3} Either you will not get soup, or you will not get salad.
-		\item\label{or4} You will get neither soup nor salad.
-		\item\label{or.xor} You get either soup or salad, but not both.
-	\end{enumerate}
-Using the same symbolization key as before, \cref*{or3} can be paraphrased in this way: `\emph{Either} it is not the case that you get soup, \emph{or} it is not the case that you get salad'. To symbolize this in TFL, we need both disjunction and negation. `It is not the case that you get soup' is symbolized by `$\enot S_1$'. `It is not the case that you get salad' is symbolized by `$\enot S_2$'. So \cref*{or3} itself is symbolized by `$(\enot S_1 \eor \enot S_2)$'.
+观察否定如何与析取相互作用也会有所帮助。考虑以下句子：
 
-\Cref{or4} also requires negation. It can be paraphrased as, `\emph{It is not the case that:} either you get soup or you get salad'. Since this negates the entire disjunction, we symbolize \cref*{or4} with `$\enot (S_1 \eor S_2)$'.
+\begin{enumerate}
+		\item \label{or3} 要么你不会得到汤，要么你不会得到沙拉。
+		\item \label{or4} 你既不会得到汤也不会得到沙拉。
+		\item \label{or.xor} 你会得到汤或沙拉，但不会两者都得。
+\end{enumerate}
 
-\Cref{or.xor} is an \emph{exclusive or}. We can break the sentence into two parts. The first part says that you get one or the other. We symbolize this as `$(S_1 \eor S_2)$'. The second part says that you do not get both. We can paraphrase this as: `It is not the case both that you get soup and that you get salad'. Using both negation and conjunction, we symbolize this with `$\enot(S_1 \eand S_2)$'. Now we just need to put the two parts together. As we saw above, `but' can usually be symbolized with `$\eand$'. So \cref*{or.xor} can be symbolized as `$((S_1 \eor S_2) \eand \enot(S_1 \eand S_2))$'.
+使用与之前相同的符号化约定，\cref*{or3} 可以这样改述：“\emph{要么}你不会得到汤，\emph{要么}你不会得到沙拉”。为了在真值函项逻辑中符号化这一点，我们需要析取和否定。“你不会得到汤”被符号化为“$\enot S_1$”。“你不会得到沙拉”被符号化为“$\enot S_2$”。因此 \cref*{or3} 本身被符号化为“$(\enot S_1 \eor \enot S_2)$”。
 
-This last example shows something important. Although the TFL symbol `\eor' always symbolizes \emph{inclusive or}, we can symbolize an \emph{exclusive or} in {TFL}. We just have to use a few other symbols as well.
+\Cref{or4} 也需要否定。它可以改述为：“\emph{并非：}你得到汤或你得到沙拉”。由于这否定了整个析取式，我们用“$\enot (S_1 \eor S_2)$”来符号化 \cref*{or4}。
 
-\section{Conditional}
-Consider these sentences:
-	\begin{enumerate}
-		\item\label{if1} If Jean is in Paris, then Jean is in France.
-		\item\label{if2} Jean is in France only if Jean is in Paris.
-	\end{enumerate}
-Let's use the following symbolization key:
-	\begin{ekey}
-		\item[P] Jean is in Paris
-		\item[F] Jean is in France
-	\end{ekey}
-\Cref*{if1} is roughly of this form: `if $P$, then $F$'. We will use
-the symbol `\eif' to symbolize this `if\ldots, then\ldots' structure.
-So we symbolize \cref*{if1} by `$(P\eif F)$'. The connective is called
-the \define{conditional}. Here, `$P$' is called the
-\define{antecedent} of the conditional `$(P \eif F)$', and `$F$' is
-called the \define{consequent}.
+\Cref{or.xor} 是一个\emph{排斥或}。我们可以把这个句子分成两部分。第一部分说你会得到其中之一。我们用“$(S_1 \eor S_2)$”来符号化这部分。第二部分说你不会两者都得。我们可以将其改述为：“并非你既得到汤又得到沙拉”。使用否定和合取，我们用“$\enot(S_1 \eand S_2)$”来符号化这部分。现在只需要把两部分结合起来。如上所述，“but”通常可以用“$\eand$”符号化。所以 \cref*{or.xor} 可以符号化为“$((S_1 \eor S_2) \eand \enot(S_1 \eand S_2))$”。
+
+这最后一个例子表明了一些重要的东西。尽管真值函项逻辑符号“\eor”总是符号化\emph{相容或}，但我们可以在{真值函项逻辑}中符号化\emph{排斥或}。我们只需要额外使用几个其他符号。
+
+\section{条件}
+考虑这些句子：
+
+\begin{enumerate}
+		\item \label{if1} 如果 Jean 在巴黎，那么 Jean 在法国。
+		\item \label{if2} Jean 在法国仅当 Jean 在巴黎。
+\end{enumerate}
+
+让我们使用以下符号化约定：
+
+\begin{ekey}
+		\item[P] Jean 在巴黎
+		\item[F] Jean 在法国
+\end{ekey}
+
+\Cref*{if1} 大致是这种形式：“如果 $P$，那么 $F$”。我们将使用符号“\eif”来符号化这种“如果……，那么……”的结构。因此我们将 \cref*{if1} 符号化为“$(P\eif F)$”。这个联结词叫做 \define{条件（conditional）}。这里，“$P$”叫做条件式“$(P \eif F)$”的 \define{前件（antecedent）}，“$F$”叫做 \define{后件（consequent）}。
 
 \newglossaryentry{conditional}
 {
-name=conditional,
-description={The symbol \eif, used to represent words and phrases that function like the English phrase ``if \dots{} then \dots''; a sentence formed by using this symbol}
+name=条件,
+description={符号 \eif，用于表示功能类似于英语短语“如果……那么……”的词语和短语；或指使用这个符号构成的语句}
 }
 
 \newglossaryentry{antecedent}
 {
-name=antecedent,
-description={The sentence on the left side of a \gls{conditional}}
+name=前件,
+description={\gls{conditional}左边的句子}
 }
-
 
 \newglossaryentry{consequent}
 {
-name=consequent,
-description={The sentence on the right side of a \gls{conditional}}
+name=后件,
+description={\gls{conditional}右边的句子}
 }
 
-\Cref{if2} is also a conditional. Since the word `if' appears in the second half of the sentence, it might be tempting to symbolize this in the same way as \cref*{if1}. That would be a mistake. Your knowledge of geography tells you that \cref*{if1} is unproblematically true: there is no way for Jean to be in Paris that doesn't involve Jean being in France. But \cref*{if2} is not so straightforward: were  Jean in Dieppe, Lyon, or Toulouse, Jean would be in France without being in Paris, thereby rendering \cref*{if2} false. Since geography alone dictates the truth of \cref*{if1}, whereas travel plans (say) are needed to know the truth of \cref*{if2}, they must mean different things.
+\Cref{if2} 也是一个条件句。由于“if”这个词出现在句子的后半部分，可能会诱使人想用和 \cref*{if1} 同样的方式把它符号化。但这是错误的。你的地理知识告诉你 \cref*{if1} 显然是成立的：Jean 不可能在巴黎却不在法国。但 \cref*{if2} 就没这么显然了：如果 Jean 在迪耶普、里昂或者图卢兹，那么她虽然在法国却不在巴黎，这就会让 \cref*{if2} 为假。既然单靠地理知识就能决定 \cref*{if1} 的真假，而要判断 \cref*{if2} 的真假却需要（比方说）了解旅行计划，那么这两个句子的意思肯定不一样。
 
-In fact, \cref*{if2} can be paraphrased as `If Jean is in France, then Jean is in Paris'. So we can symbolize it by `$(F \eif P)$'.
+事实上，\cref*{if2} 可以改述为“如果 Jean 在法国，那么 Jean 在巴黎”。因此我们可以用 “$(F \eif P)$” 来符号化它。
 	\factoidbox{
-		A sentence can be symbolized as $(\metav{A} \eif \metav{B})$ if it can be paraphrased in English as `If A, then B' or `A only if B'.
+		如果一个句子可以用英语改述为“如果 A，那么 B”或“A 仅当 B”，那么它可以符号化为 $(\metav{A} \eif \metav{B})$。
 	}
-\noindent In fact, the conditional can represent many English expressions. Consider: 	\begin{enumerate}
-		\item\label{ifnec1} For Jean to be in Paris, it is necessary that Jean be in France.
-		\item\label{ifnec2} It is a necessary condition on Jean's being in Paris that she be in France.
-		\item\label{ifsuf1} For Jean to be in France, it is sufficient that Jean be in Paris.
-		\item\label{ifsuf2} It is a sufficient condition on Jean's being in France that she be in Paris.
-	\end{enumerate}
-If we think about it, all four of these sentences mean the same as  `If Jean is in Paris, then Jean is in France'. So they can all be symbolized by `$(P \eif F)$'.
+\noindent 事实上，条件句可以表示很多英语表达。考虑下面的句子：
 
-It is important to bear in mind that the connective `\eif' tells us only that, if the antecedent is true, then the consequent is true. It says nothing about a \emph{causal} connection between two events (for example). In fact, we lose a huge amount when we use `$\eif$' to symbolize English conditionals. We will return to this in \cref{s:IndicativeSubjunctive} and~\cref{s:ParadoxesOfMaterialConditional}.
+\begin{enumerate}
+		\item \label{ifnec1} Jean 要在巴黎，一个必要条件是她在法国。
+		\item \label{ifnec2} Jean 在巴黎的必要条件是她身在法国。
+		\item \label{ifsuf1} 要让 Jean 在法国，只要她在巴黎就足够了。
+		\item \label{ifsuf2} Jean 在法国的充分条件是她身在巴黎。
+\end{enumerate}
 
-\section{Biconditional}
-Consider these sentences:
-	\begin{enumerate}
-		\item\label{iff1} Laika is a dog only if she is a mammal.
-		\item\label{iff2} Laika is a dog if she is a mammal.
-		\item\label{iff3} Laika is a dog if and only if she is a mammal.
-	\end{enumerate}
-We will use the following symbolization key:
-	\begin{ekey}
-		\item[D] Laika is a dog
-		\item[M] Laika is a mammal
-	\end{ekey}
-For reasons discussed above, \cref*{iff1} can be symbolized by `$(D \eif M)$'.
+想一想就会发现，所有这四个句子的意思都和“如果 Jean 在巴黎，那么 Jean 在法国”一样。所以它们都可以符号化为 “$(P \eif F)$”。
 
+要记住一点，联结词 “\eif” 只告诉我们：如果前件为真，那么后件也为真。它没有表达出两个事件之间（比方说）任何\emph{因果}联系。事实上，我们用 “$\eif$” 来符号化英语条件句时，会丢失大量信息。我们将在 \cref{s:IndicativeSubjunctive} 和~\cref{s:ParadoxesOfMaterialConditional} 中再讨论这个问题。
 
-\Cref*{iff3} says something stronger than either \cref*{iff1} or \cref*{iff2}. It can be paraphrased as `Laika is a dog if Laika is a mammal, and Laika is a dog only if Laika is a mammal'. This is just the conjunction of \cref*{iff1,iff2}. So we can symbolize it as `$(D \eif M) \eand (M \eif D)$'. We call this a \define{biconditional}, because it amounts to stating both directions of the conditional.
+\section{双条件}
+考虑下面这几个句子：
+
+\begin{enumerate}
+		\item \label{iff1} 只有当莱卡是哺乳动物时，它才是狗。
+		\item \label{iff2} 只要莱卡是哺乳动物，它就是狗。
+		\item \label{iff3} 莱卡是狗，当且仅当它是哺乳动物。
+\end{enumerate}
+
+我们将使用下面的符号化约定：
+
+\begin{ekey}
+		\item[D] 莱卡是狗
+		\item[M] 莱卡是哺乳动物
+\end{ekey}
+
+根据前面讨论的理由，\cref*{iff1} 可以符号化为 “$(D \eif M)$”。
+
+\Cref*{iff3} 表达的断言比 \cref*{iff1} 或 \cref*{iff2} 都要强。它可以改述为“如果莱卡是哺乳动物，那么莱卡是狗；并且，只有当莱卡是哺乳动物时，莱卡才是狗”。而这正是 \cref*{iff1,iff2} 的合取。因此我们可以把它符号化为 “$(D \eif M) \eand (M \eif D)$”。我们把它叫作\define{双条件（biconditional）}，因为它就是同时陈述了条件句的两个方向。
 
 \newglossaryentry{biconditional}
 {
-name=biconditional,
-description={The symbol \eiff, used to represent words and phrases that function like the English phrase ``if and only if''; or a sentence formed using this connective}
+name=双条件,
+description={符号 \eiff，用于表示功能类似于英语短语“当且仅当”的词语和短语；或者由这个联结词构成的句子}
 }
 
-We could treat every biconditional this way. So, just as we do not need a new TFL symbol to deal with \emph{exclusive or}, we do not really need a new TFL symbol to deal with biconditionals. Because the biconditional occurs so often, however, we will use the symbol `\eiff' for it. We can then symbolize \cref*{iff3} with the TFL sentence `$(D \eiff M)$'.
+我们本可以用这种方式来处理所有双条件句。所以，就像我们不需要一个新的真值函项逻辑符号来处理\emph{排斥或}一样，我们其实也并非真的需要一个新符号来处理双条件句。只是因为双条件句出现得太频繁了，我们才决定使用符号 “\eiff”。这样，我们就可以用真值函项逻辑语句 “$(D \eiff M)$” 来符号化 \cref*{iff3}。
 
-The expression `if and only if' occurs a lot especially in philosophy, mathematics, and logic. For brevity, we can abbreviate it with the snappier word `iff'. We will follow this practice. So `if' with only \emph{one} `f' is the English conditional. But `iff' with \emph{two} `f's is the English biconditional. Armed with this we can say:
+“当且仅当”这个表达在哲学、数学和逻辑学中尤其常见。为简洁起见，其英文原文“if and only if”常被缩写为“iff”。我们会遵循这个习惯。所以，一个“f”的“if”是英语的条件句。但两个“f”的“iff”是英语的双条件句。明确这一点后，我们就可以说：
 	\factoidbox{
-		A sentence can be symbolized as $(\metav{A} \eiff \metav{B})$ if it can be paraphrased in English as `A \ifeff{} B'; that is, as `A if and only if B'.
+		如果一个句子可以用英语改述为“A \ifeff{} B”，即“A 当且仅当 B”，那么它可以符号化为 $(\metav{A} \eiff \metav{B})$。
 	}
-A word of caution. Ordinary speakers of English often use `if \ldots, then\ldots' when they really mean to use something more like `\ldots if and only if \ldots'. Perhaps your parents told you, when you were a child: `if you don't eat your greens, you won't get any dessert'. Suppose you ate your greens, but that your parents refused to give you any dessert, on the grounds that they were only committed to the \emph{conditional} (roughly `if you get dessert, then you will have eaten your greens'), rather than the biconditional (roughly, `you get dessert \ifeff{} you eat your greens'). Well, a tantrum would rightly ensue. So, be aware of this when interpreting people; but in your own writing, make sure you use the biconditional \ifeff{} you mean to.
+有一点要小心。日常说英语的人经常用“如果……，那么……”来表达他们真正想说的、更像是“……当且仅当……”的意思。也许在你小时候，你的父母对你说过：“如果你不吃掉青菜，你就没有甜点吃”。假设你吃掉了青菜，但你的父母却拒绝给你甜点，理由是：他们只承诺了那个\emph{条件句}（大致是“如果你吃了甜点，那你就肯定吃了青菜”），而不是双条件句（大致是“你吃到甜点，当且仅当你吃了青菜”）。那么，一场脾气发作恐怕就难免了。所以，在解读别人的话时要意识到这一点；但在你自己写作时，一定要确保只在你想表达\ifeff{}的双向意思时才使用双条件句。
 
-\section{Unless}
-We have now introduced all of the connectives of TFL. We can use them together to symbolize many kinds of sentences. An especially difficult case is when we use the English-language connective `unless':
+\section{除非}
+目前，我们已经介绍了真值函项逻辑的所有联结词。我们可以将它们结合起来，以符号化多种句子。一个特别困难的情形是使用英语联结词“unless”的时候：
 
 \begin{enumerate}
-\item\label{unless1} Unless you wear a jacket, you will catch a cold.
-\item\label{unless2} You will catch a cold unless you wear a jacket.
+\item\label{unless1} 除非你穿夹克，否则你会感冒。
+\item\label{unless2} 你会感冒，除非你穿夹克。
 \end{enumerate}
-These two sentences are clearly equivalent. To symbolize them, we will use the symbolization key:
-	\begin{ekey}
-		\item[J] You will wear a jacket
-		\item[D] You will catch a cold
+
+这两个句子显然是等价的。为了符号化它们，我们使用以下符号化约定：
+
+
+\begin{ekey}
+		\item[J] 你会穿夹克
+		\item[D] 你会感冒
 	\end{ekey}
-Both sentences mean that if you do not wear a jacket, then you will catch a cold. With this in mind, we might symbolize them as `$(\enot J \eif D)$'.
 
-Equally, both sentences mean that if you do not catch a cold, then you must have worn a jacket. With this in mind, we might symbolize them as `$(\enot D \eif J)$'.
+这两个句子都意味着：如果你不穿夹克，那么你就会感冒。据此，我们可以将它们符号化为 “$(\enot J \eif D)$”。
 
-Equally, both sentences mean that either you will wear a jacket or you will catch a cold. With this in mind, we might symbolize them as `$(J \eor D)$'.
+同样，这两个句子也都意味着：如果你没有感冒，那么你一定穿了夹克。因此，我们可以将它们符号化为 “$(\enot D \eif J)$”。
 
-All three are correct symbolizations. Indeed, in \cref{s:SemanticConcepts} we will see that all three symbolizations are equivalent in TFL.
+同样，这两个句子也都意味着：你要么会穿夹克，要么就会感冒。基于此，我们可以将它们符号化为 “$(J \eor D)$”。
+
+这三种符号化都是正确的。事实上，在\cref{s:SemanticConcepts}中我们将会看到，在真值函项逻辑中，这三种符号化是等价的。
 % TODO: it might be useful to reference exercise 11.F.3 explicitly
 % here, since the point is not discussed in the main text
 	\factoidbox{
-		If a sentence can be paraphrased as `Unless $A$, $B$,' then it can
-		be symbolized as `$(\enot\metav{A}\eif\metav{B})$'
-		or `$(\metav{A}\eor\metav{B})$'.
+		如果一个句子可以改述为“除非 $A$，否则 $B$”，那么它可以符号化为 “$(\enot\metav{A}\eif\metav{B})$” 或 “$(\metav{A}\eor\metav{B})$”。
 	}
-Again, though, there is a little complication. `Unless' can be symbolized as a conditional; but as we said above, people often use the conditional (on its own) when they mean to use the biconditional. Equally, `unless' can be symbolized as a disjunction; but there are two kinds of disjunction (exclusive and inclusive). So it will not surprise you to discover that ordinary speakers of English often use `unless' to mean something more like the biconditional, or like exclusive disjunction. Suppose someone says: `I will go running unless it rains'. They probably mean something like `I will go running \ifeff{} it does not rain' (i.e., the biconditional), or  `either I will go running or it will rain, but not both' (i.e., exclusive disjunction). Again: be aware of this when interpreting what other people have said, but be precise in your writing.
+不过，这里也有一点复杂之处。“除非”可以被符号化为一个条件句；但正如我们之前所说，人们经常在单独使用条件句时，想要表达的是双条件句。同样，“除非”也可以被符号化为一个析取句；但析取有两种（排斥析取和相容析取）。所以，日常说英语的人常常用“除非”来表示更接近双条件句或排斥析取的意思，这或许不会令你感到意外。假设有人说：“I will go running unless it rains”。他们的意思很可能是“当且仅当不下雨时，我才会去跑步”（即双条件句），或者“我要么去跑步，要么天会下雨，但两者不会同时成立”（即排斥析取）。再次提醒：解释他人的话语时需注意这一点，但你自己写作时应力求精确。
 
 \practiceproblems
 \solutions
-\problempart Using the symbolization key given, symbolize each English sentence in TFL.\label{pr.monkeysuits}
-	\begin{ekey}
-		\item[M] Those creatures are men in suits
-		\item[C] Those creatures are chimpanzees
-		\item[G] Those creatures are gorillas
+\problempart 使用给定的符号化约定，将下列每个英语句子符号化为真值函项逻辑语句。\label{pr.monkeysuits}
+
+
+\begin{ekey}
+		\item[M] 那些生物是穿着西装的人
+		\item[C] 那些生物是黑猩猩
+		\item[G] 那些生物是大猩猩
 	\end{ekey}
+
 \begin{compactlist}
-\item Those creatures are not men in suits.
-\item Those creatures are men in suits, or they are not.
-\item Those creatures are either gorillas or chimpanzees.
-\item Those creatures are neither gorillas nor chimpanzees.
-\item If those creatures are chimpanzees, then they are neither gorillas nor men in suits.
-\item Unless those creatures are men in suits, they are either chimpanzees or they are gorillas.
+\item 那些生物不是穿着西装的人。
+\item 那些生物是穿着西装的人，或者他们不是。
+\item 那些生物要么是大猩猩，要么是黑猩猩。
+\item 那些生物既不是大猩猩也不是黑猩猩。
+\item 如果那些生物是黑猩猩，那么它们既不是大猩猩也不是穿着西装的人。
+\item 除非那些生物是穿着西装的人，否则它们要么是黑猩猩，要么是大猩猩。
 \end{compactlist}
 
-\problempart Using the symbolization key given, symbolize each English sentence in TFL.
+\problempart 使用给定的符号化约定，将下列每个英语句子符号化为真值函项逻辑语句。
+
+
 \begin{ekey}
-\item[A] Mister Ace was murdered
-\item[B] The butler did it
-\item[C] The cook did it
-\item[D] The Duchess is lying
-\item[E] Mister Edge was murdered
-\item[F] The murder weapon was a frying pan
+\item[A] Ace 先生被谋杀了
+\item[B] 管家干的
+\item[C] 厨师干的
+\item[D] 公爵夫人在撒谎
+\item[E] Edge 先生被谋杀了
+\item[F] 凶器是一个煎锅
 \end{ekey}
+
 \begin{compactlist}
-\item Either Mister Ace or Mister Edge was murdered.
-\item If Mister Ace was murdered, then the cook did it.
-\item If Mister Edge was murdered, then the cook did not do it.
-\item Either the butler did it, or the Duchess is lying.
-\item The cook did it only if the Duchess is lying.
-\item If the murder weapon was a frying pan, then the culprit must have been the cook.
-\item If the murder weapon was not a frying pan, then the culprit was either the cook or the butler.
-\item Mister Ace was murdered if and only if Mister Edge was not murdered.
-\item The Duchess is lying, unless it was Mister Edge who was murdered.
-\item If Mister Ace was murdered, he was done in with a frying pan.
-\item Since the cook did it, the butler did not.
-\item Of course the Duchess is lying!
+\item 要么 Ace 先生，要么 Edge 先生被谋杀了。
+\item 如果 Ace 先生被谋杀，那么是厨师干的。
+\item 如果 Edge 先生被谋杀，那么不是厨师干的。
+\item 要么是管家干的，要么公爵夫人在撒谎。
+\item 只有在公爵夫人撒谎的情况下，才是厨师干的。
+\item 如果凶器是一个煎锅，那么罪犯一定是厨师。
+\item 如果凶器不是一个煎锅，那么罪犯要么是厨师，要么是管家。
+\item Ace 先生被谋杀，当且仅当 Edge 先生没有被谋杀。
+\item 公爵夫人在撒谎，除非被杀的是 Edge 先生。
+\item 如果 Ace 先生被谋杀，他是被煎锅干掉的。
+\item 既然厨师是凶手，那么管家就不是。
+\item 公爵夫人当然在撒谎！
 \end{compactlist}
+
+
 \solutions
 
-\problempart Using the symbolization key given, symbolize each English sentence in TFL.\label{pr.avacareer}
-	\begin{ekey}
-		\item[\ensuremath{E_1}] Ava is an electrician
-		\item[\ensuremath{E_2}] Harrison is an electrician
-		\item[\ensuremath{F_1}] Ava is a firefighter
-		\item[\ensuremath{F_2}] Harrison is a firefighter
-		\item[\ensuremath{S_1}] Ava is satisfied with her career
-		\item[\ensuremath{S_2}] Harrison is satisfied with his career
+\problempart 使用给定的符号化约定，将下列每个英语句子符号化为真值函项逻辑语句。\label{pr.avacareer}
+
+
+\begin{ekey}
+		\item[\ensuremath{E_1}] Ava 是一名电工
+		\item[\ensuremath{E_2}] Harrison 是一名电工
+		\item[\ensuremath{F_1}] Ava 是一名消防员
+		\item[\ensuremath{F_2}] Harrison 是一名消防员
+		\item[\ensuremath{S_1}] Ava 对她的职业很满意
+		\item[\ensuremath{S_2}] Harrison 对他的职业很满意
 	\end{ekey}
+
 \begin{compactlist}
-\item Ava and Harrison are both electricians.
-\item If Ava is a firefighter, then she is satisfied with her career.
-\item Ava is a firefighter, unless she is an electrician.
-\item Harrison is an unsatisfied electrician.
-\item Neither Ava nor Harrison is an electrician.
-\item Both Ava and Harrison are electricians, but neither of them find it satisfying.
-\item Harrison is satisfied only if he is a firefighter.
-\item If Ava is not an electrician, then neither is Harrison, but if she is, then he is too.
-\item Ava is satisfied with her career if and only if Harrison is not satisfied with his.
-\item If Harrison is both an electrician and a firefighter, then he must be satisfied with his work.
-\item It cannot be that Harrison is both an electrician and a firefighter.
-\item Harrison and Ava are both firefighters if and only if neither of them is an electrician.
+\item Ava 和 Harrison 都是电工。
+\item 如果 Ava 是消防员，那么她对自己的职业感到满意。
+\item Ava 是消防员，除非她是电工。
+\item Harrison 是一个不满意的电工。
+\item Ava 和 Harrison 都不是电工。
+\item Ava 和 Harrison 都是电工，但他们都对其不满意。
+\item Harrison 感到满意仅当他是消防员。
+\item 如果 Ava 不是电工，那么 Harrison 也不是；但如果她是，那么他也是。
+\item Ava 对自己的职业感到满意当且仅当 Harrison 对自己的职业不满意。
+\item 如果 Harrison 既是电工又是消防员，那么他必定对自己的工作感到满意。
+\item Harrison 不可能既是电工又是消防员。
+\item Harrison 和 Ava 都是消防员当且仅当他们俩都不是电工。
 \end{compactlist}
 
 \problempart
-Using the symbolization key given, symbolize each English-language sentence in TFL.
+使用给出的符号化约定，将下列每个自然语言句子用真值函项逻辑符号化。
 \label{pr.jazzinstruments}
+
 \begin{ekey}
-\item[\ensuremath{J_1}] John Coltrane played tenor sax
-\item[\ensuremath{J_2}] John Coltrane played soprano sax
-\item[\ensuremath{J_3}] John Coltrane played tuba
-\item[\ensuremath{M_1}] Miles Davis played trumpet
-\item[\ensuremath{M_2}] Miles Davis played tuba
+\item[\ensuremath{J_1}] John Coltrane 演奏了次中音萨克斯
+\item[\ensuremath{J_2}] John Coltrane 演奏了高音萨克斯
+\item[\ensuremath{J_3}] John Coltrane 演奏了大号
+\item[\ensuremath{M_1}] Miles Davis 演奏了小号
+\item[\ensuremath{M_2}] Miles Davis 演奏了大号
 \end{ekey}
 
 \begin{compactlist}
-\item John Coltrane played tenor and soprano sax. %{\color{red} $J_1 \eand J_2$} \vspace{1ex}
-\item Neither Miles Davis nor John Coltrane played tuba. %{\color{red} $\enot(M_2 \eor J_3)$ or $\enot M_2 \eand \enot J_3$} \vspace{1ex}
-\item John Coltrane did not play both tenor sax and tuba.  %{\color{red} $\enot(J_1 \eand J_3)$ or $\enot J_1 \eor \enotJ_3$} \vspace{1ex}
-\item John Coltrane did not play tenor sax unless he also played soprano sax. %{\color{red} $\enot J_1 \eor J_2$} \vspace{1ex}
-\item John Coltrane did not play tuba, but Miles Davis did. %{\color{red} $\enotJ_3 \eand M_2$} \vspace{1ex}
-\item Miles Davis played trumpet only if he also played tuba. %{\color{red} $M_1 \eiff M_2$} \vspace{1ex}
-\item If Miles Davis played trumpet, then John Coltrane played at least one of these three instruments: tenor sax, soprano sax, or tuba. %{\color{red} $M_1 \eif (J_1 \eor (J_2 \eor J_3))&} \vspace{1ex}
-\item If John Coltrane played tuba then Miles Davis played neither trumpet nor tuba. %{\color{red} $J_3 \eif \enot(M_1 \eor M_2)$ or $J_3 \eif (\enot M_1 \eand \enot M_2)$  } \vspace{1ex}
-\item Miles Davis and John Coltrane both played tuba if and only if Coltrane did not play tenor sax and Miles Davis did not play trumpet. %{\color{red} $(J_3 \eand M_2) \eiff \enotJ_1 & \enot M_1)$ or $(J_3 \eand M_2) \eiff \enot (J_1 \eor M_1)$} \vspace{1ex}
+\item John Coltrane 演奏了次中音萨克斯和高音萨克斯。%{\color{red} $J_1 \eand J_2$} \vspace{1ex}
+\item Miles Davis 和 John Coltrane 都没有演奏大号。%{\color{red} $\enot(M_2 \eor J_3)$ or $\enot M_2 \eand \enot J_3$} \vspace{1ex}
+\item John Coltrane 没有同时演奏次中音萨克斯和大号。%{\color{red} $\enot(J_1 \eand J_3)$ or $\enot J_1 \eor \enotJ_3$} \vspace{1ex}
+\item John Coltrane 没有演奏次中音萨克斯，除非他也演奏了高音萨克斯。%{\color{red} $\enot J_1 \eor J_2$} \vspace{1ex}
+\item John Coltrane 没有演奏大号，但 Miles Davis 演奏了。%{\color{red} $\enotJ_3 \eand M_2$} \vspace{1ex}
+\item Miles Davis 演奏小号仅当他也演奏大号。%{\color{red} $M_1 \eiff M_2$} \vspace{1ex}
+\item 如果 Miles Davis 演奏了小号，那么 John Coltrane 至少演奏了这三种乐器中的一种：次中音萨克斯、高音萨克斯或大号。%{\color{red} $M_1 \eif (J_1 \eor (J_2 \eor J_3))&} \vspace{1ex}
+\item 如果 John Coltrane 演奏了大号，那么 Miles Davis 既没有演奏小号也没有演奏大号。%{\color{red} $J_3 \eif \enot(M_1 \eor M_2)$ or $J_3 \eif (\enot M_1 \eand \enot M_2)$  } \vspace{1ex}
+\item Miles Davis 和 John Coltrane 都演奏了大号当且仅当 Coltrane 没有演奏次中音萨克斯且 Miles Davis 没有演奏小号。%{\color{red} $(J_3 \eand M_2) \eiff \enotJ_1 & \enot M_1)$ or $(J_3 \eand M_2) \eiff \enot (J_1 \eor M_1)$} \vspace{1ex}
 \end{compactlist}
 
 \solutions
 \problempart
 \label{pr.spies}
-Give a symbolization key and symbolize the following English sentences in TFL.
+给出一套符号化约定，并用真值函项逻辑将下列自然语言句子符号化。
+
 \begin{compactlist}
-\item Alice and Bob are both spies.
-\item If either Alice or Bob is a spy, then the code has been broken.
-\item If neither Alice nor Bob is a spy, then the code remains unbroken.
-\item The German embassy will be in an uproar, unless someone has broken the code.
-\item Either the code has been broken or it has not, but the German embassy will be in an uproar regardless.
-\item Either Alice or Bob is a spy, but not both.
+\item Alice 和 Bob 都是间谍。
+\item 如果 Alice 或 Bob 是间谍，那么密码被破解了。
+\item 如果 Alice 和 Bob 都不是间谍，那么密码未被破解。
+\item 德国大使馆将陷入混乱，除非有人破解了密码。
+\item 要么密码被破解了，要么没有，但无论如何德国大使馆都会陷入混乱。
+\item Alice 或 Bob 是间谍，但并非两人都是。
 \end{compactlist}
 
 \solutions
-\problempart Give a symbolization key and symbolize the following English sentences in TFL.
+\problempart
+给出一套符号化约定，并用真值函项逻辑将下列自然语言句子符号化。
+
 \begin{compactlist}
-\item If there is food to be found in the pridelands, then Rafiki will talk about squashed bananas.
-\item Rafiki will talk about squashed bananas unless Simba is alive.
-\item Rafiki will either talk about squashed bananas or he won't, but there is food to be found in the pridelands regardless.
-\item Scar will remain as king if and only if there is food to be found in the pridelands.
-\item If Simba is alive, then Scar will not remain as king.
+\item 如果荣耀王国能找到食物，那么 Rafiki 会谈论压扁的香蕉。
+\item Rafiki 会谈论压扁的香蕉，除非 Simba 还活着。
+\item 要么 Rafiki 会谈论压扁的香蕉，要么不会，但无论如何荣耀王国都能找到食物。
+\item Scar 将继续当国王当且仅当荣耀王国能找到食物。
+\item 如果 Simba 还活着，那么 Scar 将不会继续当国王。
 \end{compactlist}
 
 \problempart
-For each argument, write a symbolization key and symbolize all of the sentences of the argument in TFL.
+对于每个论证，写出一套符号化约定，并用真值函项逻辑将论证中的所有句子符号化。
+
 \begin{compactlist}
-\item If Dorothy plays the piano in the morning, then Roger wakes up cranky. Dorothy plays piano in the morning unless she is distracted. So if Roger does not wake up cranky, then Dorothy must be distracted.
-\item It will either rain or snow on Tuesday. If it rains, Neville will be sad. If it snows, Neville will be cold. Therefore, Neville will either be sad or cold on Tuesday.
-\item If Zoog remembered to do his chores, then things are clean but not neat. If he forgot, then things are neat but not clean. Therefore, things are either neat or clean; but not both.
+\item 如果 Dorothy 在早上弹钢琴，那么 Roger 醒来时会脾气暴躁。Dorothy 在早上弹钢琴，除非她分心。所以，如果 Roger 醒来时没有脾气暴躁，那么 Dorothy 一定是分心了。
+\item 星期二要么下雨要么下雪。如果下雨，Neville 会难过。如果下雪，Neville 会觉得冷。因此，星期二 Neville 要么难过要么觉得冷。
+\item 如果 Zoog 记得做家务，那么房间是干净的但不整洁。如果他忘记了，那么房间是整洁的但不干净。因此，房间要么整洁要么干净，但不会同时既整洁又干净。
 \end{compactlist}
 
 \problempart
-For each argument, write a symbolization key and symbolize the argument as well as possible in TFL. The part of the passage in italics is there to provide context for the argument, and doesn't need to be symbolized.
+对于每个论证，写出一套符号化约定，并尽可能用真值函项逻辑将论证符号化。段落中\emph{斜体字部分}是为论证提供语境，不需要符号化。
+
 \begin{compactlist}
-\item It is going to rain soon. I know because my leg is hurting, and my leg hurts if it's going to rain.
+\item 很快就会下雨。我知道是因为我的腿在疼，而如果要下雨的话，我的腿就会疼。
 
-\item  \emph{Spider-man tries to figure out the bad guy's plan.} If Doctor Octopus gets the uranium, he will blackmail the city. I am certain of this because if Doctor Octopus gets the uranium, he can make a dirty bomb, and if he can make a dirty bomb, he will blackmail the city.
+\item  \emph{蜘蛛侠试图搞清楚坏蛋的计划。}如果章鱼博士得到了铀，他就会勒索这座城市。我对此确信无疑，因为如果章鱼博士得到了铀，他就能造出脏弹；而如果他造出了脏弹，他就会勒索这座城市。
 
-\item \emph{A westerner tries to predict the policies of the Chinese government.} If the Chinese government cannot solve the water shortages in Beijing, they will have to move the capital. They don't want to move the capital. Therefore they must solve the water shortage. But the only way to solve the water shortage is to divert almost all the water from the Yangzi river northward. Therefore the Chinese government will go with the project to divert water from the south to the north.       
+\item \emph{一位西方人试图预测中国政府的政策。}如果中国政府不能解决北京的水资源短缺问题，他们将不得不迁都。他们不想迁都。因此他们必须解决水资源短缺问题。但解决水资源短缺的唯一方法是从长江调走几乎全部的水资源北上。因此中国政府会继续进行南水北调工程。
 
 \end{compactlist}
 
-
 \problempart
-We symbolized an \emph{exclusive or} using `$\eor$', `$\eand$', and `$\enot$'. How could you symbolize an \emph{exclusive or} using only two connectives? Is there any way to symbolize an \emph{exclusive or} using only one connective?
+我们曾使用“$\eor$”、“$\eand$”和“$\enot$”来符号化一个\emph{排斥或}。你能否只用两个联结词来符号化一个\emph{排斥或}？有没有可能只用唯一一个联结词来符号化一个\emph{排斥或}呢？
 
+\chapter{真值函项逻辑的语句}\label{s:TFLSentences}
+“要么苹果是红色的，要么浆果是蓝色的”是一个英语句子，而“$(A\eor B)$”是一个真值函项逻辑语句。虽然我们在遇到英语句子时能够认出它们，但我们并没有对“英语句子”下一个形式定义。然而，在这一章中，我们将精确定义什么才算是一个真值函项逻辑语句。这就是像真值函项逻辑这样的形式语言比像英语这样的自然语言更精确的一个方面。
 
-\chapter{Sentences of TFL}\label{s:TFLSentences}
-The sentence `either apples are red, or berries are blue' is a sentence of English, and the sentence `$(A\eor B)$' is a sentence of TFL. Although we can identify sentences of English when we encounter them, we do not have a formal definition of `sentence of English'. But in this chapter, we will \emph{define} exactly what will count as a sentence of TFL. This is one respect in which a formal language like TFL is more precise than a natural language like English.
+\section{表达式}
 
+我们已经看到，真值函项逻辑中有三种符号：
 
-\section{Expressions}
-
-We have seen that there are three kinds of symbols in TFL:
 \begin{center}
 \begin{tabular}{l l}
-Atomic sentences & $A,B,C,\ldots,Z,\ldots$\\
-with subscripts, as needed & $A_1, B_1,Z_1,A_2,A_{25},J_{375},\ldots$\\
+语句字母 & $A,B,C,\ldots,Z,\ldots$ \\
+（可根据需要加下标） & $A_1, B_1,Z_1,A_2,A_{25},J_{375},\ldots$ \\
 \\
-Connectives & $\enot,\eand,\eor,\eif,\eiff$\\
+联结词 & $\enot,\eand,\eor,\eif,\eiff$ \\
 \\
-Brackets &( , )\\
+括号 &( , ) \\
 \end{tabular}
 \end{center}
-Define an \define{expression of TFL} as any string of symbols of TFL.
-So: write down any sequence of symbols of TFL, in any order, and you
-have an expression of TFL.\footnote{In \cref{sec:contradiction}, we
-will introduce the symbol~`$\ered$', which will also count as an
-atomic sentence.}
 
-\section{Sentences}\label{s:Sentences}
-Given what we just said, `$(A \eand B)$' is an expression of TFL, and so is `$\lnot)(\eor()\eand(\enot\enot())((B$'. But the former is a \emph{sentence}, and the latter is \emph{gibberish}. We want some rules to tell us which TFL expressions are sentences.
+定义一个\define{真值函项逻辑表达式}为任意一串真值函项逻辑的符号。
+所以：以任何顺序写下真值函项逻辑的任意符号序列，你就得到了一个真值函项逻辑表达式。\footnote{在\cref{sec:contradiction}中，我们将引入符号“$\ered$”，它也将被视为一个原子语句。}
 
-Obviously, individual sentence letters like `$A$' and `$G_{13}$' should count as sentences. (We'll also call them \define{atomic} sentences.) We can form further sentences out of these by using the various connectives. Using negation, we can get `$\enot A$' and `$\enot G_{13}$'. Using conjunction, we can get `$(A \eand G_{13})$', `$(G_{13} \eand A)$', `$(A \eand A)$', and `$(G_{13} \eand G_{13})$'. We could also apply negation repeatedly to get sentences like `$\enot \enot A$' or apply negation along with conjunction to get sentences like `$\enot(A \eand G_{13})$' and `$\enot(G_{13} \eand \enot G_{13})$'. The possible combinations are endless, even starting with just these two sentence letters, and there are infinitely many sentence letters. So there is no point in trying to list all the sentences one by one.
+\section{语句}\label{s:Sentences}
+根据我们刚刚所说的，“$(A \eand B)$”是一个真值函项逻辑表达式，“$\lnot)(\eor()\eand(\enot\enot())((B$”同样也是。但前者是一个\emph{语句}，而后者只是\emph{乱码}。我们需要一些规则来告诉我们哪些真值函项逻辑表达式是语句。
 
-Instead, we will describe the process by which sentences can be \emph{constructed}. Consider negation: Given any sentence \metav{A} of TFL, $\enot\metav{A}$ is a sentence of TFL. (Why the funny fonts? We return to this in \cref{s:Metavariables}.)
+显然，单个的语句字母如“$A$”和“$G_{13}$”应该算作语句。（我们也称它们为\define{原子}语句。）我们可以使用各种联结词，由这些原子语句构成更多的语句。利用否定，我们可以得到“$\enot A$”和“$\enot G_{13}$”。利用合取，我们可以得到“$(A \eand G_{13})$”、“$(G_{13} \eand A)$”、“$(A \eand A)$”和“$(G_{13} \eand G_{13})$”。我们也可以通过重复运用否定得到像“$\enot \enot A$”这样的语句，或者将否定与合取结合得到像“$\enot(A \eand G_{13})$”和“$\enot(G_{13} \eand \enot G_{13})$”这样的语句。可能的组合是无穷无尽的，即便我们只从这两个语句字母开始；并且语句字母本身就有无穷多个。因此，试图逐个列举出所有语句是毫无意义的。
 
-We can say similar things for each of the other connectives. For instance, if \metav{A} and \metav{B} are sentences of TFL, then $(\metav{A}\eand\metav{B})$ is a sentence of TFL. Providing clauses like this for all of the connectives, we arrive at the following formal definition for a \define{sentence of TFL}:
+相反，我们将描述语句可以被\emph{构造}出来的过程。考虑否定：对于任意给定的真值函项逻辑语句\metav{A}，$\enot\metav{A}$ 都是真值函项逻辑的一个语句。（为什么使用这种特殊的字体？我们将在\cref{s:Metavariables}中回到这个问题。）
+
+我们可以对其余每一个联结词给出类似的说明。例如，如果 \metav{A} 和 \metav{B} 是真值函项逻辑的语句，那么$(\metav{A}\eand\metav{B})$就是一个真值函项逻辑的语句。为所有联结词提供这样的条款后，我们得到了下面关于\define{真值函项逻辑语句}的形式定义：
 	\factoidbox{\label{TFLsentences}
-	\begin{numberlist}[labelindent=0pt,leftmargin=*]
-		\item Every sentence letter is a sentence.
-		\item If \metav{A} is a sentence, then $\enot\metav{A}$ is a sentence.
-		\item If \metav{A} and \metav{B} are sentences, then $(\metav{A}\eand\metav{B})$ is a sentence.
-		\item If \metav{A} and \metav{B} are sentences, then $(\metav{A}\eor\metav{B})$ is a sentence.
-		\item If \metav{A} and \metav{B} are sentences, then $(\metav{A}\eif\metav{B})$ is a sentence.
-		\item If \metav{A} and \metav{B} are sentences, then $(\metav{A}\eiff\metav{B})$ is a sentence.
-		\item Nothing else is a sentence.
+
+
+\begin{numberlist}[labelindent=0pt,leftmargin=*]
+		\item 每一个语句字母都是一个语句。
+		\item 如果 \metav{A} 是一个语句，那么 $\enot\metav{A}$ 就是一个语句。
+		\item 如果 \metav{A} 和 \metav{B} 是语句，那么$(\metav{A}\eand\metav{B})$ 就是一个语句。
+		\item 如果 \metav{A} 和 \metav{B} 是语句，那么$(\metav{A}\eor\metav{B})$ 就是一个语句。
+		\item 如果 \metav{A} 和 \metav{B} 是语句，那么$(\metav{A}\eif\metav{B})$ 就是一个语句。
+		\item 如果 \metav{A} 和 \metav{B} 是语句，那么$(\metav{A}\eiff\metav{B})$ 就是一个语句。
+		\item 除此之外，没有别的东西是语句。
 	\end{numberlist}
-	}
+
+}
 \newglossaryentry{sentence of TFL}
 {
-name=sentence (of TFL),
-text = sentence of TFL,
-plural = sentences of TFL,
-description={A string of symbols in TFL that can be built up according to the inductive rules given \ifHTMLtarget in \cref{s:Sentences}\else on p.~\pageref{TFLsentences}\fi}
+name=真值函项逻辑语句,
+text = 真值函项逻辑语句,
+plural = 真值函项逻辑语句,
+description={一个依据\ifHTMLtarget \cref{s:Sentences}\else 第~\pageref{TFLsentences}页\fi 给出的归纳规则构建起来的真值函项逻辑符号串}
 }
 
-Definitions like this are called \define{inductive}. Inductive definitions begin with some specifiable base elements, and then present ways to generate indefinitely many more elements by compounding together previously established ones. To give you a better idea of what an inductive definition is, we can give an inductive definition of the idea of \emph{an ancestor of mine}. We specify a base clause:
-	\begin{itemize}
-		\item My parents are ancestors of mine.
-	\end{itemize}
-and then offer further clauses like:
-	\begin{itemize}
-		\item If $x$ is an ancestor of mine, then $x$'s parents are ancestors of mine.
-	\end{itemize}
-Finally, we stipulate that \emph{only} what the base and inductive
-clauses say are ancestors of mine will count as such.
-	\begin{itemize}
-		\item Nothing else is an ancestor of mine.
-	\end{itemize}
-Using this definition, we can easily check to see whether someone is my ancestor: just check whether she is the parent of the parent of\ldots one of my parents. And the same is true for our inductive definition of sentences of TFL. Just as the inductive definition allows complex sentences to be built up from simpler parts, the definition allows us to decompose sentences into their simpler parts. Once we get down to sentence letters, then we know we are ok.
+这类定义被称为\define{归纳的}。归纳定义首先指明一些可明确的基本元素，然后提供一些方法，通过组合先前已确立的元素，来生成无限多的新元素。为了让你更好地理解什么是归纳定义，我们可以为\emph{我的祖先}这个概念本身给出一个归纳定义。我们先给出一个基始条款：
 
-Let's consider some examples.
 
-Suppose we want to know whether or not `$\enot \enot \enot D$' is a sentence of TFL. Looking at the second clause of the definition, we know that `$\enot \enot \enot D$' is a sentence \emph{if} `$\enot \enot D$' is a sentence. So now we need to ask whether or not `$\enot \enot D$' is a sentence. Again looking at the second clause of the definition, `$\enot \enot D$' is a sentence \emph{if} `$\enot D$' is. So, `$\enot D$' is a sentence \emph{if} `$D$' is a sentence. Now `$D$' is a sentence letter of TFL, so we know that `$D$' is a sentence by the first clause of the definition. So for a compound sentence like `$\enot \enot \enot D$', we must apply the definition repeatedly. Eventually we arrive at the sentence letters from which the sentence is built up.
-
-Next, consider the example `$\enot (P \eand \enot (\enot Q \eor R))$'. Looking at the second clause of the definition, this is a sentence if `$(P \eand \enot (\enot Q \eor R))$' is, and this is a sentence if \emph{both} `$P$' \emph{and} `$\enot (\enot Q \eor R)$' are sentences. The former is a sentence letter, and the latter is a sentence if `$(\enot Q \eor R)$' is a sentence. It is. Looking at the fourth clause of the definition, this is a sentence if both `$\enot Q$' and `$R$' are sentences, and both are!
-
-Ultimately, every sentence is constructed nicely out of sentence letters. When we are dealing with a \emph{sentence} other than a sentence letter, we can see that there must be some sentential connective that was introduced \emph{last}, when constructing the sentence. We call that connective the \define{main logical operator} of the sentence. In the case of `$\enot\enot\enot D$', the main logical operator is the very first `$\enot$' sign. In the case of `$(P \eand \enot (\enot Q \eor R))$', the main logical operator is `$\eand$'. In the case of `$((\enot E \eor F) \eif \enot\enot G)$', the main logical operator is `$\eif$'.
-
-As a general rule, you can find the main logical operator for a sentence by using the following method:
 \begin{itemize}
-	\item If the first symbol in the sentence is `$\enot$', then that is the main logical operator
-	\item Otherwise, start counting the brackets. For each open-bracket, i.e., `(', add $1$; for each closing-bracket, i.e., `$)$', subtract $1$. When your count is at exactly $1$, the first operator you hit (\emph{apart} from a `$\enot$') is the main logical operator.
+		\item 我的父母是我的祖先。
+	\end{itemize}
+
+
+然后我们再给出进一步的条款，例如：
+
+
+\begin{itemize}
+		\item 如果 $x$ 是我的祖先，那么 $x$ 的父母也是我的祖先。
+	\end{itemize}
+
+
+最后，我们规定，\emph{只有}基始条款和归纳条款所说的才算是我的祖先。
+
+
+\begin{itemize}
+		\item 其他任何东西都不是我的祖先。
+	\end{itemize}
+
+
+使用这个定义，我们可以很容易地判断某人是否是我的祖先：只要检查她是否是我父母的……父母的父母就行了。对于我们给出的真值函项逻辑语句的归纳定义，情况也是一样。正如这个归纳定义允许复杂语句从较简单的部分构建起来一样，这个定义也允许我们把语句分解成更简单的部分。一旦我们分解到语句字母，分解过程就完成了。
+
+让我们来看几个例子。
+
+假设我们想知道 “$\enot \enot \enot D$” 是不是一个真值函项逻辑语句。根据定义的第二条款，如果 “$\enot \enot D$” 是一个语句，那么 “$\enot \enot \enot D$” 就是一个语句。所以现在我们需要问，“$\enot \enot D$” 是不是一个语句。再次查看定义的第二条款，如果 “$\enot D$” 是一个语句，那么 “$\enot \enot D$” 就是一个语句。同样，如果 “$D$” 是一个语句，那么 “$\enot D$” 就是一个语句。现在，“$D$” 是一个真值函项逻辑的语句字母，所以我们根据定义的第一条款知道“$D$”是一个语句。因此，对于像 “$\enot \enot \enot D$” 这样的复合语句，我们必须反复应用定义。最终我们会追溯到构建该语句所用的那些语句字母。
+
+接下来，考虑例子 “$\enot (P \eand \enot (\enot Q \eor R))$”。根据定义的第二条款，如果“$(P \eand \enot (\enot Q \eor R))$”是一个语句，那么它就是语句；而如果\emph{既}有“$P$”\emph{又有}“$\enot (\enot Q \eor R)$”是语句，那么“$(P \eand \enot (\enot Q \eor R))$”就是一个语句。前者是一个语句字母，而后者若想成为语句，需要“$(\enot Q \eor R)$”是语句。它确实是。根据定义的第四条款，这又需要“$\enot Q$”和“$R$”都是语句，而它们的确都是！
+
+归根结底，每个语句都是由语句字母规规矩矩地构造出来的。当我们处理\emph{除语句字母之外的语句}时，我们可以看到，在构造该语句时，必定有某个句子联结词是\emph{最后}被引入的。我们称这个联结词为该语句的\define{主逻辑算子}。就“$\enot\enot\enot D$”而言，主逻辑算子是最左边的那个“$\enot$”符号。就“$(P \eand \enot (\enot Q \eor R))$”而言，主逻辑算子是“$\eand$”。就“$((\enot E \eor F) \eif \enot\enot G)$”而言，主逻辑算子是“$\eif$”。
+
+一般来说，你可以使用以下方法来找到一个语句的主逻辑算子：
+
+
+\begin{itemize}
+	\item 如果语句的第一个符号是“$\enot$”，那么它就是主逻辑算子。
+	\item 否则，开始数括号。每遇到一个开括号“$($”就加 $1$；每遇到一个闭括号“$)$”就减 $1$。当你的计数恰好为 $1$ 时，你遇到的第一个算子（\emph{除了}“$\enot$”以外）就是主逻辑算子。
 \end{itemize}
 
-(Note: if you do use this method, then make sure to include \emph{all} the brackets in the sentence, rather than omitting some as per the conventions of \cref{TFLconventions}!)
+（注意：如果你使用这个方法，请确保包含语句中的\emph{所有}括号，而不是像\cref{TFLconventions}中约定的那样省略一些！）
 
-The inductive structure of sentences in TFL will be important when we consider the circumstances under which a particular sentence would be true or false. The sentence `$\enot \enot \enot D$' is true if and only if the sentence `$\enot \enot D$' is false, and so on through the structure of the sentence, until we arrive at the atomic components. We will return to this point in \cref{ch.TruthTables}.
+真值函项逻辑语句的归纳结构，在我们考虑一个特定语句在什么情况下为真或为假时，将是重要的。语句“$\enot \enot \enot D$”为真，当且仅当语句“$\enot \enot D$”为假，如此顺着语句的结构继续分析，直到我们抵达其原子组成部分。我们将在\cref{ch.TruthTables}中回到这一点。
 
-The inductive structure of sentences in TFL also allows us to give a formal definition of the \emph{scope} of a negation (mentioned in \cref{s:ConnectiveConjunction}). The scope of a `$\enot$' is the subsentence for which `$\enot$' is the main logical operator. Consider a sentence like:
+利用真值函项逻辑中语句的归纳结构，我们也可以给出否定\emph{辖域}的形式定义（见于\cref{s:ConnectiveConjunction}）。一个“$\enot$”的辖域就是该“$\enot$”作为主逻辑算子的子句。考虑如下语句：
 $$(P \eand (\enot (R \eand B) \eiff Q))$$
-which was constructed by conjoining `$P$' with `$ (\enot (R \eand B) \eiff Q)$'. This last sentence was constructed by placing a biconditional between `$\enot (R \eand B)$' and `$Q$'. The former of these sentences---a subsentence of our original sentence---is a sentence for which `$\enot$' is the main logical operator. So the scope of the negation is just `$\enot(R \eand B)$'. More generally:
-	\factoidbox{The \define{scope} of a connective (in a sentence) is the subsentence for which that connective is the main logical operator.}
+该语句由将“$P$”与“$ (\enot (R \eand B) \eiff Q)$”进行合取而构成。后面这个语句则是通过在“$\enot (R \eand B)$”与“$Q$”之间放置双条件词构成的。前者——原语句的一个子句——是一个以“$\enot$”为主逻辑算子的语句。因此，该否定的辖域就是“$\enot(R \eand B)$”。更一般地说：
+	\factoidbox{联结词（在一个语句中）的 \define{辖域（scope）} 就是该联结词作为主逻辑算子的子句。}
 
-
-\section{Bracketing conventions}
+\section{括号约定}
 \label{TFLconventions}
-Strictly speaking, the brackets in `$(Q \eand R)$' are an indispensable part of the sentence. Part of this is because we might use `$(Q \eand R)$' as a subsentence in a more complicated sentence. For example, we might want to negate `$(Q \eand R)$', obtaining `$\enot(Q \eand R)$'. If we just had `$Q \eand R$' without the brackets and put a negation in front of it, we would have `$\enot Q \eand R$'. It is most natural to read this as meaning the same thing as `$(\enot Q \eand R)$', but as we saw in  \cref{s:ConnectiveConjunction}, this is very different from `$\enot(Q\eand R)$'.
+严格来说，“$(Q \eand R)$”中的括号是该语句不可或缺的一部分。部分原因在于，我们可能会将“$(Q \eand R)$”用作一个更复杂语句中的子句。例如，我们可能想要否定“$(Q \eand R)$”，从而得到“$\enot(Q \eand R)$”。如果我们只有不带括号的“$Q \eand R$”并在其前添加否定符号，就会得到“$\enot Q \eand R$”。我们很自然地会将其理解为与“$(\enot Q \eand R)$”意思相同，但正如我们在\cref{s:ConnectiveConjunction}中所见，这与“$\enot(Q\eand R)$”截然不同。
 
-Strictly speaking, then, `$Q \eand R$' is \emph{not} a sentence. It is a mere \emph{expression}.
+因此，严格地说，“$Q \eand R$”\emph{不是}一个语句。它仅是一个\emph{表达式}。
 
-When working with TFL, however, it will make our lives easier if we are sometimes a little less than strict. So, here are some convenient conventions.
+然而，在使用真值函项逻辑时，若我们偶尔不那么严格，可以使我们处理起来更方便。为此，我们采用以下一些便利约定。
 
-First,  we allow ourselves to omit the \emph{outermost} brackets of a sentence. Thus we allow ourselves to write `$Q \eand R$' instead of the sentence `$(Q \eand R)$'. However, we must remember to put the brackets back in, when we want to embed the sentence into a more complicated sentence!
+首先，我们允许省略语句的\emph{最外层}括号。因此，我们允许用“$Q \eand R$”来代替语句“$(Q \eand R)$”。但必须记住，当我们要将该语句嵌入一个更复杂的语句时，需要把括号加回去！
 
-Second, it can be a bit painful to stare at long sentences with many nested pairs of brackets. To make things a bit easier on the eyes, we will allow ourselves to use square brackets, `[' and~`]', instead of rounded ones. So there is no logical difference between `$(P\eor Q)$' and `$[P\eor Q]$', for example.
+其次，阅读带有大量嵌套括号的长句可能令人困扰。为使观感更轻松，我们允许使用方括号“[”和“]”来代替圆括号。例如，“$(P\eor Q)$”和“$[P\eor Q]$”在逻辑上没有区别。
 
-Combining these two conventions, we can rewrite the unwieldy sentence
+结合这两条约定，我们可以将冗赘的语句
 $$(((H \eif I) \eor (I \eif H)) \eand (J \eor K))$$
-rather more clearly as follows:
+更清晰地改写如下：
 $$\bigl[(H \eif I) \eor (I \eif H)\bigr] \eand (J \eor K)$$
-The scope of each connective is now much easier to pick out.
+现在，每个联结词的辖域就容易辨别得多了。
 
 \practiceproblems
 
 \solutions
 \problempart
 \label{pr.wiffTFL}
-For each of the following: (a) Is it a sentence of TFL, strictly speaking? (b) Is it a sentence of TFL, allowing for our relaxed bracketing conventions?
+对以下各项：(a) 严格来说，它是真值函项逻辑的语句吗？(b) 按照我们放宽的括号约定，它是真值函项逻辑的语句吗？
+
+
 \begin{compactlist}
 \item $(A)$
 \item $J_{374} \eor \enot J_{374}$
@@ -734,226 +811,279 @@ For each of the following: (a) Is it a sentence of TFL, strictly speaking? (b) I
 \end{compactlist}
 
 \problempart
-Are there any sentences of TFL that contain no sentence letters? Explain your answer.\\
+是否存在不包含任何语句字母的真值函项逻辑语句？解释你的答案。\\
 
 \problempart
-What is the scope of each connective in the sentence
+该语句中每个联结词的辖域是什么？
 $$\bigl[(H \eif I) \eor (I \eif H)\bigr] \eand (J \eor K)$$
 
-\chapter{Ambiguity}\label{s:AmbiguityTFL}
+\chapter{歧义性}\label{s:AmbiguityTFL}
 
-In English, sentences can be \define{ambiguous}, i.e., they can have more than one meaning.  There are many sources of ambiguity. One is \emph{lexical ambiguity:} a sentence can contain words which have more than one meaning.  For instance, `bank' can mean the bank of a river, or a financial institution. So I might say that `I went to the bank' when I took a stroll along the river, or when I went to deposit a check.  Depending on the situation, a different meaning of `bank' is intended, and so the sentence, when uttered in these different contexts, expresses different meanings.
+在英语中，句子可能是 \define{歧义的（ambiguous）}，即它们可以具有多种含义。歧义有很多来源。一种是 \emph{词汇歧义：} 句子中包含具有多种含义的词语。例如，“bank”既可指河岸，也可指金融机构。因此，当我说“I went to the bank”时，可能意指我在河边散步，也可能意指我去存支票。根据不同的情境，“bank”一词的意图不同，因此该句子在不同的语境中说出口时，表达了不同的含义。
 
-A different kind of ambiguity is \emph{structural ambiguity}.  This arises when a sentence can be interpreted in different ways, and depending on the interpretation, a different meaning is selected.  A famous example due to Noam Chomsky is the following:
+另一种歧义是 \emph{结构歧义}。当一个句子可以被不同方式解读时，便会产生这种歧义，且不同的解读对应不同的含义。诺姆·乔姆斯基的一个著名例子如下：
+
 \begin{enumerate}
 	\item[] Flying planes can be dangerous.
 \end{enumerate}
-There is one reading in which `flying' is used as an adjective which modifies `planes'. In this sense, what's claimed to be dangerous are airplanes which are in the process of flying.  In another reading, `flying' is a gerund: what's claimed to be dangerous is the act of flying a plane.  In the first case, you might use the sentence to warn someone who's about to launch a hot air baloon.  In the second case, you might use it to counsel someone against becoming a pilot.
 
-When the sentence is uttered, usually only one meaning is intended. Which of the possible meanings an utterance of a sentence intends is determined by context, or sometimes by how it is uttered (which parts of the sentence are stressed, for instance). Often one interpretation is much more likely to be intended, and in that case it will even be difficult to ``see'' the unintended reading.  This is often the reason why a joke works, as in this example from Groucho Marx:
+一种解读是将“flying”用作修饰“planes”的形容词。在这种意义上，被断定为危险的是正在飞行中的飞机。在另一种解读中，“flying”是动名词：被断定为危险的是驾驶飞机的行为。在第一种情形下，你可能用这个句子来警告一个即将放飞热气球的人。在第二种情形下，你可能用它来劝某人不要当飞行员。
+
+当句子被说出时，通常只有一种含义是说话者意图表达的。一个句子在具体说出时意图表达哪种可能含义，取决于语境，有时也取决于说话方式（例如，句子的哪些部分被重读）。通常，一种解读被意图的可能性远大于其他，以至于甚至很难“看出”那非意图的解读。这通常是笑话之所以好笑的原因，正如格劳乔·马克思的这个例子：
+
 \begin{compactlist}
-	\item[] One morning I shot an elephant in my pajamas.
-	\item[] How he got in my pajamas, I don't know.
+	\item[] 一天早晨，我穿着睡衣射杀了一头大象。
+	\item[] 至于它怎么跑到我睡衣里的，我就不知道了。
 \end{compactlist}
 
-Ambiguity is related to, but not the same as, vagueness. An adjective, for instance `rich' or `tall,' is \define{vague} when it is not always possible to determine if it applies or not.  For instance, a person who's 6~ft 4~in (1.9~m) tall is pretty clearly tall, but a building that size is tiny.  Here, context has a role to play in determining what the clear cases and clear non-cases are (`tall for a person,' `tall for a basketball player,' `tall for a building'). Even when the context is clear, however, there will still be cases that fall in a middle range.
+歧义性与模糊性相关，但并不相同。一个形容词，如“富有”或“高”，当无法总是判定它是否适用时，便是 \define{模糊的（vague）}。例如，一个身高 6~英尺 4~英寸（1.9~米）的人显然很高，但同样高度的建筑物却很矮小。在这里，语境对于判定哪些是明确适用、哪些是明确不适用的例子起着作用（“对人而言高”、“对篮球运动员而言高”、“对建筑物而言高”）。然而，即使语境明确，仍会存在处于中间区域的例子。
 
-In TFL, we generally aim to avoid ambiguity. We will try to give our symbolization keys in such a way that they do not use ambiguous words or  disambiguate them if a word has different meanings. So, e.g., your symbolization key will need two different sentence letters for `Rebecca went to the (money) bank' and `Rebecca went to the (river) bank.' Vagueness is harder to avoid. Since we have stipulated that every case (and later, every valuation) must make every basic sentence (or sentence letter) either true or false and nothing in between, we cannot accommodate borderline cases in TFL.
+在真值函项逻辑中，我们通常力求避免歧义。我们会设法以不使用歧义词的方式给出符号化约定，或者，若一个词有多个含义，则消除其歧义。因此，例如，你的符号化约定需要为“丽贝卡去了（金融）银行”和“丽贝卡去了（河）岸”分配两个不同的语句字母。模糊性则更难避免。由于我们已经规定，在任何情况（以及后续，在任何赋值）下，每个基本语句（或语句字母）都必须为真或为假，不能处于中间状态，因此我们无法在真值函项逻辑中容纳边界情形。
 
-It is an important feature of sentences of TFL that they \emph{cannot} be structurally ambiguous. Every sentence of TFL can be read in one, and only one, way. This feature of TFL is also a strength. If an English sentence is ambiguous, TFL can help us make clear what the different meanings are.  Although we are pretty good at dealing with ambiguity in everyday conversation, avoiding it can sometimes be terribly important. Logic can then be usefully applied: it helps philosophers express their thoughts clearly, mathematicians to state their theorems rigorously, and software engineers to specify loop conditions, database queries, or verification criteria unambiguously.
+真值函项逻辑语句的一个重要特征是它们\emph{不可能}是结构歧义的。每个真值函项逻辑语句都只能以一种，且仅此一种方式解读。真值函项逻辑的这一特性也是一个优点。若一个英语句子有歧义，真值函项逻辑能帮助我们澄明其不同的含义。尽管我们在日常对话中相当擅长处理歧义，但有时避免歧义至关重要。此时逻辑便能发挥有效作用：它帮助哲学家清晰表达思想，帮助数学家严谨陈述定理，帮助软件工程师明确地指定循环条件、数据库查询或验证标准。
 
-Stating things without ambiguity is of crucial importance in the law as well. Here, ambiguity can, without exaggeration, be a matter of life and death. Here is a famous example of where a death sentence hinged on the interpretation of an ambiguity in the law. Roger Casement (1864--1916) was a British diplomat who was famous in his time for publicizing human-rights violations in the Congo and Peru (for which he was knighted in 1911). He was also an Irish nationalist. In 1914--16, Casement secretly travelled to Germany, with which Britain was at war at the time, and tried to recruit Irish prisoners of war to fight against Britain and for Irish independence. Upon his return to Ireland, he was captured by the British and tried for high treason.
+在法律中，无歧义地陈述事项也至关重要。在此，毫不夸张地说，歧义可能关乎生死。以下是一个著名案例，其死刑判决取决于对法律中一处歧义的解释。罗杰·凯斯门特（1864--1916）是一位英国外交官，他因揭露刚果和秘鲁的侵犯人权行为而闻名于世（并因此在 1911 年被封为爵士）。他也是一位爱尔兰民族主义者。1914 至 1916 年间，凯斯门特秘密前往当时与英国交战的德国，试图招募爱尔兰战俘为爱尔兰独立而与英国作战。返回爱尔兰后，他被英国当局抓获，并以叛国罪受审。
 
-The law under which Casement was tried is the \textit{Treason Act of 1351}. That act specifies what counts as treason, and so the prosecution had to establish at trial that Casement's actions met the criteria set forth in the Treason Act. The relevant passage stipulated that someone is guilty of treason
+审判凯斯门特所依据的法律是\textit{《1351 年叛国法》}。该法规定了何谓叛国罪，因此控方必须在审判中证明凯斯门特的行为符合《叛国法》所列的标准。相关段落规定，若某人
+
 \begin{quote}
-	if a man is adherent to the King's enemies in his
-realm, giving to them aid and comfort in the realm, or elsewhere.
+	在王国内，依附于国王的敌人，在王国内给予他们援助与慰藉，或在其他地方。
 \end{quote}
-Casement's defense hinged on the last comma in this sentence, which is not present in the original French text of the law from 1351.  It was not under dispute that Casement had been `adherent to the King's enemies', but the question was whether being adherent to the King's enemies constituted treason only when it was done in the realm, or also when it was done abroad. The defense argued that the law was ambiguous. The claimed ambiguity hinged on whether `or elsewhere' attaches only to `giving aid and comfort to the King's enemies' (the natural reading without the comma), or to both `being adherent to the King's enemies' and `giving aid and comfort to the King's enemies' (the natural reading with the comma).  Although the former interpretation might seem far fetched, the argument in its favor was actually not unpersuasive. Nevertheless, the court decided that the passage should be read with the comma, so Casement's antics in Germany were treasonous, and he was sentenced to death. Casement himself wrote that he was `hanged by a comma'.
 
-We can use TFL to symbolize both readings of the passage, and thus to provide a disambiguiation. First, we need a symbolization key:
+则犯有叛国罪。
+
+凯斯门特辩护的关键在于该句中的最后一个逗号，该逗号在 1351 年法律的原始法文文本中并不存在。凯斯门特“依附于国王的敌人”这一点并无争议，但问题在于，这种依附是否仅当发生在国内时才构成叛国，在国外发生是否也算叛国。辩方主张该法律条文存在歧义。其声称的歧义在于：“或在其他地方”是仅修饰“给予他们援助与慰藉”（无逗号时的自然解读），还是同时修饰“依附于国王的敌人”和“给予他们援助与慰藉”（有逗号时的自然解读）。尽管前一种解读可能显得牵强，但支持它的论证实际上并非没有说服力。然而，法庭最终裁定应按照有逗号的方式解读该段落，因此凯斯门特在德国的所作所为构成叛国，他被判处死刑。凯斯门特本人写道，他是“被一个逗号绞死的”。
+
+我们可用真值函项逻辑对这一段落的不同解读进行符号化，借此消除歧义。首先，我们需要一套符号化约定：
+
 \begin{ekey}
-	\item[A] Casement was adherent to the King's enemies in the realm
-	\item[G] Casement gave aid and comfort to the King's enemies in the realm
-	\item[B] Casement was adherent to the King's enemies abroad
-	\item[H] Casement gave aid and comfort to the King's enemies abroad
+	\item[A] Casement 在国内支持国王的敌人
+	\item[G] Casement 在国内给予国王的敌人援助和慰藉
+	\item[B] Casement 在国外支持国王的敌人
+	\item[H] Casement 在国外给予国王的敌人援助和慰藉
 \end{ekey}
-The interpretation according to which Casement's behavior was not treasonous is this:
+
+认为 Casement 行为不构成叛国的解读是：
 \[A \lor (G \lor H)\]
-The interpretation which got him executed, on the other hand, can be symbolized by:
+而使他被定罪的解读则可以符号化为：
 \[(A \lor B) \lor (G \lor H)\]
-Remember that in the case we're dealing with, Casement was adherent to the King's enemies abroad ($B$~is true), but not in the realm, and he did not give the King's enemies aid or comfort in or outside the realm ($A$, $G$, and~$H$ are false).
+请记住，在我们讨论的这个案例中，Casement 在国外支持国王的敌人（$B$~为真），但在国内不支持，并且他无论国内国外均未给予国王的敌人援助或慰藉（$A$, $G$, 和~$H$ 均为假）。
 
-One common source of structural ambiguity in English arises from its lack of parentheses. For instance, if I say `I like movies that are not long and boring', you will most likely think that what I dislike are movies that are long and boring. A less likely, but possible, interpretation is that I like movies that are both (a) not long and (b) boring. The first reading is more likely because who likes boring movies? But what about `I like dishes that are not sweet and flavorful'? Here, the more likely interpretation is that I like savory, flavorful dishes.  (Of course, I could have said that better, e.g., `I like dishes that are not sweet, yet flavorful'.) Similar ambiguities result from the interaction of `and' with `or'. For instance, suppose I ask you to send me a picture of a small and dangerous or stealthy animal.  Would a leopard count? It's stealthy, but not small. So it depends whether I'm looking for small animals that are dangerous or stealthy (leopard doesn't count), or whether I'm after either a small, dangerous animal or a stealthy animal (of any size).
+英语中一种常见的结构歧义源于其缺少括号。例如，如果我说“我喜欢不又长又无聊的电影”，你很可能会认为我讨厌的是那些又长又无聊的电影。一种不太可能但逻辑上成立的解读是，我喜欢那些既（a）不长又（b）无聊的电影。第一种解读可能性更大，因为谁喜欢无聊的电影呢？但对于“我喜欢不甜而可口的菜肴”呢？在这里，更可能的解读是，我喜欢咸鲜可口的菜肴。（当然，我本可以表达得更清楚些，例如，“我喜欢不甜却可口的菜肴”。）类似的歧义也源于“且”与“或”的相互作用。例如，假设我请你给我发一张小而危险或隐秘的动物的照片。猎豹算吗？它很隐秘，但并不小。所以这取决于我是在找既小又危险或隐秘的动物（猎豹不算），还是在找要么小而危险的动物，要么是隐秘的动物（任意体型皆可）。
 
-These kinds of ambiguities are called \emph{scope ambiguities}, since they depend on whether or not a connective is in the scope of another. For instance, the sentence, `\textit{Avengers: Endgame} is not long and boring' is ambiguous between:
+这类歧义被称为 \emph{辖域歧义}，因为它们取决于一个联结词是否在另一个联结词的辖域之内。例如，句子“《复仇者联盟：终局之战》不又长又无聊”，在以下两种解读之间是歧义的：
 \begin{enumerate}
-	\item\label{scamb1} \textit{Avengers: Endgame} is not: both long and boring.
-	\item\label{scamb2} \textit{Avengers: Endgame} is both: not long and boring.
+	\item\label{scamb1} 《复仇者联盟：终局之战》并非：既长又无聊。
+	\item\label{scamb2} 《复仇者联盟：终局之战》既是：不长，又无聊。
 \end{enumerate}
-\Cref*{scamb2} is certainly false, since \textit{Avengers: Endgame} is over three hours long. Whether you think~\cref*{scamb1} is true depends on if you think it is boring or not. We can use the symbolization key:
-\begin{ekey}
-	\item[B] \textit{Avengers: Endgame} is boring
-	\item[L] \textit{Avengers: Endgame} is long
-\end{ekey}
-\Cref*{scamb1} can now be symbolized as `$\enot(L \eand B)$', whereas \cref*{scamb2} would be `$\enot L \eand B$'. In the first case, the `\eand' is in the scope of `\enot', in the second case `\enot' is in the scope of `\eand'.
 
-The sentence `Tai Lung is small and dangerous or stealthy' is ambiguous between:
-\begin{enumerate}
-	\item\label{scamb3} Tai Lung is either both small and dangerous or stealthy.
-	\item\label{scamb4} Tai Lung is both small and either dangerous or stealthy.
-\end{enumerate}
-We can use the following symbolization key:
+\Cref*{scamb2} 显然是假的，因为《复仇者联盟：终局之战》长达三个多小时。至于~\cref*{scamb1} 是否为真，则取决于这部电影是否无聊。我们可以使用以下符号化约定：
 \begin{ekey}
-	\item[D] Tai Lung is dangerous
-	\item[S] Tai Lung is small
-	\item[T] Tai Lung is stealthy
+	\item[B] 《复仇者联盟：终局之战》很无聊
+	\item[L] 《复仇者联盟：终局之战》很长
 \end{ekey}
-The symbolization of \cref*{scamb3} is `$(S \eand D) \eor T$' and that of \cref*{scamb4} is `$S \eand (D \eor T)$'. In the first, `\eand' is in the scope of `\eor', and in the second `\eor' is in the scope of `\eand'.
+
+现在，\Cref*{scamb1} 可以符号化为 “$\enot(L \eand B)$”，而 \cref*{scamb2} 则是 “$\enot L \eand B$”。在第一种情况下，“\eand”在“\enot”的辖域内；在第二种情况下，“\enot”在“\eand”的辖域内。
+
+句子“太郎既小又危险或隐秘”在以下两种解读之间是歧义的：
+\begin{enumerate}
+	\item\label{scamb3} 太郎要么既小又危险，要么是隐秘的。
+	\item\label{scamb4} 太郎既小，而且要么危险要么隐秘。
+\end{enumerate}
+
+我们可以使用以下符号化约定：
+\begin{ekey}
+	\item[D] 太郎是危险的
+	\item[S] 太郎是小的
+	\item[T] 太郎是隐秘的
+\end{ekey}
+
+\Cref*{scamb3} 的符号化是 “$(S \eand D) \eor T$”，而 \cref*{scamb4} 的符号化是 “$S \eand (D \eor T)$”。在第一种情况下，“\eand”在“\eor”的辖域内；在第二种情况下，“\eor”在“\eand”的辖域内。
 
 \practiceproblems
 \solutions
-\problempart The following sentences are ambiguous. Give symbolization keys for each and symbolize the different readings.
+\problempart 以下句子是有歧义的。为每个句子提供符号化约定，并对不同解读进行符号化。
 \begin{compactlist}
-	\item Haskell is a birder and enjoys watching cranes.
-	\item The zoo has lions or tigers and bears.
-	\item The flower is not red or fragrant.
+	\item Haskell 是一位观鸟者并且喜欢观看鹤。
+	\item 动物园里有狮子或老虎和熊。
+	\item 这花不红或香。
 \end{compactlist}
 
-\chapter{Use and mention}\label{s:UseMention}
-In this Part, we have talked a lot \emph{about} sentences. So we should pause to explain an important, and very general, point.
+\chapter{使用与提及}\label{s:UseMention}
+在这部分，我们花了很多篇幅来\emph{讨论}语句。因此我们应该停下来解释一个重要且非常普遍的观点。
 
-\section{Quotation conventions}
-Consider these two sentences:
-	\begin{itemize}
-		\item Aristotle is the founding father of logic.
-		\item The expression `Aristotle' is composed of one uppercase letter and eight lowercase letters.
+\section{引述约定}
+考虑下面两个句子：
+\begin{itemize}
+		\item 亚里士多德是逻辑学的奠基人。
+		\item 表达式“亚里士多德”由一个拉丁大写字母和八个拉丁小写字母组成。
 	\end{itemize}
-When we want to talk about the founding father of logic, we \emph{use}
-his name. When we want to talk about the name of the founding father
-of logic, we \emph{mention} that name, which we do by putting it in
-quotation marks.
 
-There is a general point here. When we want to talk about things in the world, we just \emph{use} words. When we want to talk about words, we typically have to \emph{mention} those words. We need to indicate that we are mentioning them, rather than using them. To do this, some convention is needed. We can put them in quotation marks, or display them centrally in the page (say). So this sentence:
-	\begin{itemize}
-		\item `Aristotle' was an ancient Greek philosopher.
+当我们想要谈论逻辑学的奠基人时，我们\emph{使用}他的名字。当我们想要谈论逻辑学奠基人的名字本身时，我们\emph{提及}那个名字，具体做法是将其放在引号内。
+
+这里有一个一般性的要点。当我们想要谈论世界中的事物时，我们只是直接\emph{使用}词语。当我们想要谈论词语本身时，我们通常必须\emph{提及}这些词语。我们需要表明我们是在提及它们，而不是在使用它们。为此，我们需要一些约定。我们可以给它们加上引号，或者将它们居中显示（比如说）。所以下面这个句子：
+
+
+\begin{itemize}
+		\item “亚里士多德”是一位古希腊哲学家。
 	\end{itemize}
-says that some \emph{expression} was an ancient Greek philosopher.
-That's false. The \emph{man} was a Greek philosopher; his \emph{name} wasn't. Conversely,
-this sentence:
-	\begin{itemize}
-		\item Aristotle is composed of one uppercase letter and eight lowercase letters.
+
+
+说的是某个\emph{表达式}是一位古希腊哲学家。
+这是假的。那个\emph{人}是一名希腊哲学家；他的\emph{名字}不是。相反，
+下面这个句子：
+
+
+\begin{itemize}
+		\item 亚里士多德由一个大写字母和八个小写字母组成。
 	\end{itemize}
-also says something false: Aristotle is a man (or was when he was alive), made of flesh rather than letters. One final example:
-	\begin{itemize}
-		\item ``\,`Aristotle'\,'' is the name of `Aristotle'.
-	\end{itemize} 
-On the left-hand-side, here, we have the name of a name. On the right hand side, we have a name. Perhaps this kind of sentence only occurs in logic textbooks, but it is true nonetheless.
-
-Those are just general rules for quotation, and you should observe them carefully in all your work! To be clear, the quotation-marks here do not indicate reported speech. They indicate that you are moving from talking about an object, to talking about a name of that object.
 
 
-\section{Object language and metalanguage}
-These general quotation conventions are very important for us. After all, we are describing a formal language here, TFL, and so we must often \emph{mention} expressions from TFL.
+也说了假的东西：亚里士多德是一个人（或者说在他活着的时候是），由血肉而非字母构成。最后一个例子：
 
-When we talk about a language, the language that we are talking about is called the \define{object language}. The language that we use to talk about the object language is called the \define{metalanguage}.
+
+\begin{itemize}
+		\item “‘Aristotle’”是 Aristotle 的名称。
+	\end{itemize}
+
+
+这里，在左边，我们有一个名称的名称。在右边，我们有一个名称。也许这种句子只出现在逻辑教科书中，但它确实是真的。
+
+这些只是一般的引用规则，你应该在所有作业中仔细遵守！需要明确的是，这里的引号不表示间接引语。它们表示你从谈论一个对象，转向谈论该对象的名称。
+
+\section{对象语言与元语言}
+这些一般的引用规则对我们来说非常重要。毕竟，我们在这里描述一种形式语言，即真值函项逻辑，所以我们必须经常\emph{提及}真值函项逻辑中的表达式。
+
+当我们谈论一种语言时，我们正在谈论的那种语言被称为\define{对象语言}。我们用来谈论对象语言的语言被称为\define{元语言}。
 \label{def.metalanguage}
 \newglossaryentry{object language}
 {
-name=object language,
-description={A language that is constructed and studied by logicians. In this textbook,
- the object languages are TFL and FOL}
+name=对象语言,
+description={逻辑学家构造和研究的语言。在本教材中，对象语言是真值函项逻辑和一阶逻辑}
 }
 
 \newglossaryentry{metalanguage}
 {
-name=metalanguage,
-description={The language logicians use to talk about the object language. In this textbook, the metalanguage is English, supplemented by certain symbols like metavariables and technical terms like ``valid''}
+name=元语言,
+description={逻辑学家用来谈论对象语言的语言。在本教材中，元语言是英语，辅以某些符号（如元变元）和术语（如“有效的”）}
 }
 
-For the most part, the object language in this chapter has been the formal language that we have been developing: TFL. The metalanguage is English. Not conversational English exactly, but English supplemented with some additional vocabulary to help us get along.
+在本章大部分情况下，对象语言一直是我们正在构建的形式语言：真值函项逻辑。元语言是英语。不完全是日常会话的英语，而是补充了一些额外词汇以方便我们行文的英语。
 
-Now, we have used uppercase letters as sentence letters of TFL:
+现在，我们使用大写字母作为真值函项逻辑的语句字母：
 	$$A, B, C, Z, A_1, B_4, A_{25}, J_{375},\ldots$$
-These are sentences of the object language (TFL). They are not sentences of English. So we must not say, for example:
-	\begin{itemize}
-		\item $D$ is a sentence letter of TFL.
-	\end{itemize}
-Obviously, we are trying to come out with an English sentence that says something about the object language (TFL), but `$D$' is a sentence of TFL, and not part of English. So the preceding is gibberish, just like:
-	\begin{itemize}
-		\item \foreignlanguage{german}{Schnee ist weiß} is a German sentence.
-	\end{itemize}
-What we surely meant to say, in this case, is:
-	\begin{itemize}
-		\item `\foreignlanguage{german}{Schnee ist weiß}' is a German sentence.
-	\end{itemize}
-Equally, what we meant to say above is just:
-	\begin{itemize}
-		\item `$D$' is a sentence letter of TFL.
-	\end{itemize}
-The general point is that, whenever we want to talk in English about some specific expression of TFL, we need to indicate that we are \emph{mentioning} the expression, rather than \emph{using} it. We can either deploy quotation marks, or we can adopt some similar convention, such as  placing it centrally in the page.
+这些是对象语言（真值函项逻辑）的语句。它们不是英语句子。因此我们绝不能这样说，例如：
 
 
-\section{Metavariables}\label{s:Metavariables}
-However, we do not just want to talk about \emph{specific} expressions of TFL. We also want to be able to talk about \emph{any arbitrary} sentence of TFL. Indeed, we had to do this in \cref{s:Sentences}, when we presented the inductive definition of a sentence of TFL. We used uppercase script letters to do this, namely:
+\begin{itemize}
+		\item $D$ 是真值函项逻辑的一个语句字母。
+	\end{itemize}
+
+
+显然，我们试图用英语句子来谈论对象语言（真值函项逻辑），但“$D$”是真值函项逻辑的一个语句，而不是英语的一部分。因此，上述说法是胡言乱语，就像：
+
+
+\begin{itemize}
+		\item Schnee ist weiß 是一个德语句子。
+	\end{itemize}
+
+
+在这种情况下，我们真正想说的是：
+
+
+\begin{itemize}
+		\item “Schnee ist weiß”是一个德语句子。
+	\end{itemize}
+
+
+同样，我们上面真正想说的只是：
+
+
+\begin{itemize}
+		\item “$D$”是真值函项逻辑的一个语句字母。
+	\end{itemize}
+
+
+一般要点是，每当我们想用英语谈论真值函项逻辑中的某个特定表达式时，我们需要表明我们是在\emph{提及}这个表达式，而不是\emph{使用}它。我们可以使用引号，或者采用一些类似的约定，例如将其放在页面中央。
+
+\section{元变元}\label{s:Metavariables}
+然而，我们不仅仅想谈论真值函项逻辑的\emph{特定}表达式。我们还希望能够谈论真值函项逻辑的\emph{任意}语句。事实上，我们在\cref{s:Sentences}中已经这样做了，当时我们给出了真值函项逻辑语句的归纳定义。我们使用大写花体字母来做到这一点，即：
 	$$\metav{A}, \metav{B}, \metav{C}, \metav{D}, \ldots$$
-These symbols do not belong to TFL. Rather, they are part of our (augmented) metalanguage that we use to talk about \emph{any} expression of TFL. To explain why we need them, recall the second clause of the recursive definition of a sentence of TFL:
-	\begin{compactlist}
-		\item[2.] If $\metav{A}$ is a sentence, then $\enot \metav{A}$ is a sentence.
+这些符号本身并非真值函项逻辑的一部分。相反，它们是我们用来谈论真值函项逻辑\emph{任意}表达式的（扩充后的）元语言的一部分。为了解释为什么我们需要它们，回忆一下真值函项逻辑语句归纳定义的第二条：
+
+
+\begin{compactlist}
+		\item[2.] 如果 $\metav{A}$ 是一个语句，那么 $\enot \metav{A}$ 是一个语句。
 	\end{compactlist}
-This talks about \emph{arbitrary} sentences. If we had instead offered:
-	\begin{compactlist}
-		\item[2$'$.] If `$A$' is a sentence, then `$\enot A$' is a sentence.
+
+
+这里谈论的是\emph{任意}语句。如果我们改为：
+
+
+\begin{compactlist}
+		\item[2$'$.] 如果 “$A$” 是一个语句，那么 “$\enot A$” 是一个语句。
 	\end{compactlist}
-this would not have allowed us to determine whether `$\enot B$' is a sentence. To emphasize:
+
+这就没法让我们判断“$\enot B$”是不是一个语句。需要强调的是：
 	\factoidbox{
-	  `$\metav{A}$' is a symbol (called a \define{metavariable}) in augmented English, which we use to talk about expressions of TFL. 	`$A$' is a particular sentence letter of TFL.}
+	  “$\metav{A}$”是扩充英语中的一个符号（称为\define{元变元（metavariable）}），我们用它来谈论真值函项逻辑的表达式。	“$A$”是真值函项逻辑中的一个特定的语句字母。}
 
         \newglossaryentry{metavariables}
 {
-name=metavariables,
-description={A variable in the metalanguage that can represent any sentence in the object language}
+name=元变元,
+description={元语言中的一个变元，可以代表对象语言中的任意语句}
 }
-But this last example raises a further complication, concerning quotation conventions. We did not include any quotation marks in the second clause of our inductive definition. Should we have done so?
+但这最后一个例子引出了一个进一步的复杂性，涉及引用约定。在我们归纳定义的第二条中，我们完全没有使用任何引号。我们本应该用吗？
 
-The problem is that the expression on the right-hand-side of this rule, i.e., `$\enot\metav{A}$', is not a sentence of English, since it contains~`$\enot$'. So we might try to write:
-	\begin{numberlist}
-		\item[2$''$.] If \metav{A} is a sentence, then `$\enot \metav{A}$' is a sentence.
-	\end{numberlist}
-But this is no good: `$\enot \metav{A}$' is not a TFL sentence, since `$\metav{A}$' is a symbol of (augmented) English rather than a symbol of TFL.
+问题在于，这条规则右边的表达式，即“$\enot\metav{A}$”，并不是一个英语句子，因为它包含了“$\enot$”。所以我们或许可以尝试写：
 
-What we really want to say is something like this:
-	\begin{numberlist}
-		\item[2$'''$.] If \metav{A} is a sentence, then the result of concatenating the symbol `$\enot$' with the sentence \metav{A} is a sentence.
+
+\begin{numberlist}
+		\item[2$''$.] 如果 \metav{A} 是一个语句，那么“$\enot \metav{A}$”就是一个语句。
 	\end{numberlist}
-This is impeccable, but rather long-winded. %Quine introduced a convention that speeds things up here. In place of (2$''$), he suggested:
+
+
+但这并不正确：“$\enot \metav{A}$”并不是真值函项逻辑语句，因为“$\metav{A}$”是（扩充）英语的符号，而不是真值函项逻辑的符号。
+
+我们真正想说的是：
+
+
+\begin{numberlist}
+		\item[2$'''$.] 如果 \metav{A} 是一个语句，那么把符号“$\enot$”和语句 \metav{A} 拼接起来的结果就是一个语句。
+	\end{numberlist}
+
+
+这完全正确，但相当冗长。%Quine introduced a convention that speeds things up here. In place of (2$''$), he suggested:
 %	\begin{numberlist}
 %		\item[2$'''$.] If \metav{A} and \metav{B} are sentences, then $\ulcorner (\metav{A}\eand\metav{B})\urcorner$ is a sentence
 %	\end{numberlist}
-%The rectangular quote-marks are sometimes called `Quine quotes', after Quine. The general interpretation of an expression like `$\ulcorner (\metav{A}\eand\metav{B})\urcorner$' is in terms of rules for concatenation.
-But we can avoid long-windedness by creating our own conventions. We can perfectly well stipulate that an expression like `$\enot \metav{A}$' should simply be read \emph{directly} in terms of rules for concatenation. So, \emph{officially}, the metalanguage expression `$\enot \metav{A}$'
-simply abbreviates:
+%The rectangular quote-marks are sometimes called “Quine quotes', after Quine. The general interpretation of an expression like ”$\ulcorner (\metav{A}\eand\metav{B})\urcorner$” is in terms of rules for concatenation.
+但我们可以通过建立自己的约定来避免冗长。我们完全可以规定，像“$\enot \metav{A}$”这样的表达式就应该\emph{直接}依据拼接规则来理解。所以，\emph{正式说来}，元语言表达式“$\enot \metav{A}$”
+是下面这个说法的简写：
+
+
 \begin{quote}
-	the result of concatenating the symbol `$\enot$' with the sentence \metav{A}
+	把符号“$\enot$”和语句 \metav{A} 拼接起来的结果
 \end{quote}
-and similarly, for expressions like `$(\metav{A} \eand \metav{B})$', `$(\metav{A} \eor \metav{B})$', etc.
 
 
-\section{Quotation conventions for arguments}
-One of our main purposes for using TFL is to study arguments, and that will be our concern in \cref{ch.TruthTables}. In English, the premises of an argument are often expressed by individual sentences, and the conclusion by a further sentence. Since we can symbolize English sentences, we can symbolize English arguments using TFL.
+类似地，对于“$(\metav{A} \eand \metav{B})$”、“$(\metav{A} \eor \metav{B})$”等表达式也是如此。
 
-Or rather, we can use TFL to symbolize each of the \emph{sentences} used in an English argument. However, TFL itself has no way to flag some of them as the \emph{premises} and another as the \emph{conclusion} of an argument.  (Contrast this with natural English, which uses words like `so', `therefore', etc., to mark that a sentence is the \emph{conclusion} of an argument.)
+\section{论证的引用约定}
+我们使用真值函项逻辑的主要目的之一就是研究论证，这将是\cref{ch.TruthTables}中要讨论的内容。在英语中，一个论证的前提通常由若干个独立的句子表达，结论则由另一个句子表达。既然我们可以符号化英语句子，我们也就能用真值函项逻辑来符号化英语论证。
 
-%So, if we want to symbolize an \emph{argument} in TFL, what are we to do? 
+或者更准确地说，我们可以用真值函项逻辑来符号化一个英语论证中使用的每一个\emph{语句}。然而，真值函项逻辑本身没有办法标明其中哪些语句是\emph{前提}，哪个是论证的\emph{结论}。（这与自然英语形成对比，英语会用“所以”、“因此”等词语来标记一个句子是论证的\emph{结论}。）
 
-%An obvious thought would be to add a new symbol to the \emph{object} language of TFL itself, which we could use to separate the premises from the conclusion of an argument. However, adding a new symbol to our object language would add significant complexity to that language, since that symbol would require an official syntax.\footnote{\emph{The following footnote should be read only after you have finished the entire book!} And it would require a semantics. Here, there are deep barriers concerning the semantics. First: an object-language symbol which adequately expressed `therefore' for TFL would not be truth-functional. (\emph{Exercise}: why?) Second: a paradox known as `validity Curry' shows that FOL itself \emph{cannot} be augmented with an adequate, object-language `therefore'.} 
+%So, if we want to symbolize an \emph{argument} in TFL, what are we to do?
 
-So, we need another bit of notation. Suppose we want to symbolize the premises of an argument with $\metav{A}_1$, \dots,~$\metav{A}_n$ and the conclusion with $\metav{C}$. Then we will write:
+%An obvious thought would be to add a new symbol to the \emph{object} language of TFL itself, which we could use to separate the premises from the conclusion of an argument. However, adding a new symbol to our object language would add significant complexity to that language, since that symbol would require an official syntax.\footnote{\emph{The following footnote should be read only after you have finished the entire book!} And it would require a semantics. Here, there are deep barriers concerning the semantics. First: an object-language symbol which adequately expressed “therefore' for TFL would not be truth-functional. (\emph{Exercise}: why?) Second: a paradox known as ”validity Curry' shows that FOL itself \emph{cannot} be augmented with an adequate, object-language “therefore'.}
+
+因此，我们需要再引入一点记号。假设我们要用 $\metav{A}_1$、……、$\metav{A}_n$ 来符号化一个论证的前提，用 $\metav{C}$ 来符号化其结论。那么我们就写作：
 $$\metav{A}_1, \ldots, \metav{A}_n \therefore \metav{C}$$
-The role of the symbol `$\therefore$' is simply to indicate which sentences are the premises and which is the conclusion.
+符号“$\therefore$”的作用仅仅是标明哪些语句是前提，哪个是结论。
 
 %Strictly, this extra notation is \emph{unnecessary}. After all, we could always just write things down long-hand, saying: the premises of the argument are well symbolized by $\metav{A}_1, \ldots \metav{A}_n$, and the conclusion of the argument is well symbolized by $\metav{C}$. But having some convention will save us some time. Equally, the particular convention we chose was fairly \emph{arbitrary}. After all, an equally good convention would have been to underline the conclusion of the argument. Still, this is the convention we will use.
 
-Strictly, the symbol `$\therefore$' will not be a part of the object language, but of the \emph{metalanguage}. As such, one might think that we would need to put quote-marks around the TFL-sentences which flank it. That is a sensible thought, but adding these quote-marks would make things harder to read. Moreover---and as above---recall that \emph{we} are stipulating some new conventions. So, we can simply stipulate that these quote-marks are unnecessary. That is, we can simply write:
+严格说来，符号“$\therefore$”并不属于对象语言，而是属于\emph{元语言}。因此，有人可能会认为，我们需要在它两侧的真值函项逻辑语句周围加上引号。这个想法是合理的，但加上这些引号会使文本更难阅读。而且——与上文一样——别忘了是\emph{我们}在规定一些新约定。所以，我们完全可以规定这些引号是不必要的。也就是说，我们可以直接写作：
 $$A, A \eif B \therefore B$$
-\emph{without any quotation marks}, to indicate an argument whose premises are (symbolized by) `$A$' and `$A \eif B$' and whose conclusion is (symbolized by)~`$B$'.
+\emph{不加任何引号}，来表示一个其前提是（由）“$A$”和“$A \eif B$”符号化、结论是（由）“$B$”符号化的论证。

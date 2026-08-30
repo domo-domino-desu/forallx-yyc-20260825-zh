@@ -2,44 +2,48 @@
 % Chapter on modal logic. Original author: Rob Trueman, York
 % University, http://www.rtrueman.com/
 
-\part{Modal logic}
+\part{模态逻辑}
 \label{ch.ML}
 \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
 
-\chapter{Introducing modal logic}
+\chapter{模态逻辑导论}
 \label{Intro}
 
-Modal logic (ML) is the logic of \emph{modalities}, ways in which a statement can be true. \emph{Necessity} and \emph{possibility} are two such modalities: a statement can be true, but it can also be necessarily true (true no matter how the world might have been). For instance, logical truths are not just true because of some accidental feature of the world, but true come what may. A possible statement may not actually be true, but it might have been true. We use $\ebox$ to express necessity, and $\ediamond$ to express possibility. So you can read $\ebox \metav{A}$ as \emph{It is necessarily the case that} $\metav{A}$, and $\ediamond \metav{A}$ as \emph{It is possibly the case that} $\metav{A}$.
+模态逻辑是研究\emph{模态性}的逻辑，即一个陈述得以成真的不同方式。\emph{必然性}与\emph{可能性}便是两种这样的模态性：一个陈述可以是真的，但它也可以是必然真的（即无论世界可能是何种模样，它都为真）。例如，逻辑真理并非仅仅因为世界的某些偶然特征而为真，而是无论如何都为真。一个可能的陈述实际上可能不为真，但它本可以为真。我们使用 $\ebox$ 来表示必然性，使用 $\ediamond$ 来表示可能性。因此，你可将 $\ebox \metav{A}$ 读作\emph{必然地，$\metav{A}$}，将 $\ediamond \metav{A}$ 读作\emph{可能地，$\metav{A}$}。
 
-There are lots of different kinds of necessity. It is \emph{humanly impossible} for me to run at 100mph. Given the sorts of creatures that we are, no human can do that. But still, it isn't \emph{physically impossible} for me to run that fast. We haven't got the technology to do it yet, but it is surely physically possible to swap my biological legs for robotic ones which could run at 100mph. By contrast, it is physically impossible for me to run faster than the speed of light. The laws of physics forbid any object from accelerating up to that speed. But even that isn't \emph{logically} impossible. It isn't a contradiction to imagine that the laws of physics might have been different, and that they might have allowed objects to move faster than light.
+存在着许多不同种类的必然性。对我来说，以每小时100英里的速度奔跑是\emph{人力不可及的}。鉴于我们这类生物的特性，没有人能做到这一点。但这仍非\emph{物理上不可及的}。我们尚未掌握实现此目标的技术，但将我的生物腿替换为能以100英里时速奔跑的机械腿，这在物理上无疑是可能的。相比之下，以超光速奔跑对我来说则是物理上不可能的。物理定律禁止任何物体加速到该速度。但即便如此，这也不是\emph{逻辑上}不可能的。设想物理定律可能有所不同，从而允许物体的运动速度超过光速，这并不构成矛盾。
 
-Which kind of modality does ML deal with? \emph{All of them!} ML is a very flexible tool. We start with a basic set of rules that govern $\ebox$ and $\ediamond$, and then add more rules to fit whatever kind of modality we are interested in. In fact, ML is so flexible that we do not even have to think of $\ebox$ and $\ediamond$ as expressing \emph{necessity} and \emph{possibility}. We might instead read $\ebox$ as expressing \emph{provability}, so that $\ebox\metav{A}$ means \emph{It is provable that} $\metav{A}$, and $\ediamond\metav{A}$ means \emph{It is not refutable that} $\metav{A}$. Similarly, we can interpret $\ebox$ to mean $S$ \emph{knows that $\metav{A}$} or $S$ \emph{believes that $\metav{A}$}. Or we might read $\ebox$ as expressing \emph{moral obligation}, so that $\ebox \metav{A}$ means \emph{It is morally obligatory that} $\metav{A}$, and $\ediamond \metav{A}$ means \emph{It is morally permissible that} $\metav{A}$. All we would need to do is cook up the right rules for these different readings of $\ebox$ and $\ediamond$.
+模态逻辑处理的是哪一种模态性呢？\emph{全部可以！}模态逻辑是一个非常灵活的工具。我们从一组支配 $\ebox$ 和 $\ediamond$ 的基本规则出发，然后添加上更多规则，以适应我们感兴趣的任何一种模态性。事实上，模态逻辑如此灵活，以至于我们甚至不必把 $\ebox$ 和 $\ediamond$ 理解为表达\emph{必然性}和\emph{可能性}。我们也可以将 $\ebox$ 读作表达\emph{可证性}，于是 $\ebox\metav{A}$ 意味着\emph{$\metav{A}$ 是可证的}，而 $\ediamond\metav{A}$ 意味着\emph{$\metav{A}$ 是不可驳倒的}。类似地，我们可以将 $\ebox$ 解释为“$S$ 知道 $\metav{A}$”或“$S$ 相信 $\metav{A}$”。或者，我们也可以将 $\ebox$ 读作表达\emph{道德义务}，于是 $\ebox \metav{A}$ 意味着\emph{$\metav{A}$ 在道德上是必须的}，而 $\ediamond\metav{A}$ 意味着\emph{$\metav{A}$ 在道德上是允许的}。我们所需做的，仅仅是为 $\ebox$ 和 $\ediamond$ 的这些不同读法构思出恰当的规则。
 
-A modal formula is one that includes modal operators such as $\ebox$ and $\ediamond$. Depending on the interpretation we assign to $\ebox$ and $\ediamond$, different modal formulas will be provable or valid. For instance, $\ebox \metav{A} \eif \metav{A}$ might say that ``if $\metav{A}$ is necessary, it is true'', if $\ebox$ is interpreted as necessity. It might express ``if $\metav{A}$ is known, then it is true'', if $\ebox$ expresses known truth. Under both these interpretations, $\ebox\metav{A} \eif \metav{A}$ is valid: All necessary propositions are true come what may, so are true in the actual world. And if a proposition is known to be true, it must be true (one can't know something that's false). However, when $\ebox$ is interpreted as ``it is believed that'' or ``it ought to be the case that'', $\ebox\metav{A} \eif \metav{A}$ is not valid: We can believe false propositions. Not every proposition that ought to be true is in fact true, e.g., ``Every murderer will be brought to justice.'' This \emph{ought} to be true, but it isn't.
+模态公式是包含诸如 $\ebox$ 和 $\ediamond$ 这类模态算子的公式。根据我们赋予 $\ebox$ 和 $\ediamond$ 的解释，不同的模态公式将是可证的或有效的。例如，若将 $\ebox$ 解释为必然性，则 $\ebox \metav{A} \eif \metav{A}$ 可以表达“如果 $\metav{A}$ 是必然的，那么它是真的”。若 $\ebox$ 表达已知为真，则它可以表达“如果 $\metav{A}$ 是已知的，那么它是真的”。在这两种解释下，$\ebox\metav{A} \eif \metav{A}$ 都是有效的：所有必然命题都是无论如何都为真的，故它们在现实世界中也为真；并且，若一个命题已知为真，则它必为真（人们无法知道假的东西）。然而，当 $\ebox$ 被解释为“被相信为……”或“应当成立的是……”时，$\ebox\metav{A} \eif \metav{A}$ 便不是有效的：我们可能相信假的命题。并非每个应当为真的命题事实上都为真，例如，“每个凶手都将被绳之以法。”这\emph{应当}为真，但它并不为真。
 
-We will consider different kinds of systems of ML. They differ in the rules of proof allowed, and in the semantics we use to define our logical notions. The different systems we'll consider are called \mlK, \mlT, \mlSfour, and \mlSfive. \mlK{} is the basic system; everything that is valid or provable in \mlK{} is also provable in the others. But there are some things that \mlK{} does not prove, such as the formula $\ebox A \eif A$ for sentence letter~$A$. So \mlK{} is not an appropriate modal logic for necessity and possibility (where $\ebox\metav{A} \eif \metav{A}$ should be provable). This is provable in the system \mlT, so \mlT{} is more appropriate when dealing with necessity and possibiliity, but less appropriate when dealing with belief or obligation, since then $\ebox\metav{A} \eif \metav{A}$ should \emph{not} (always) be provable. The perhaps best system of ML for necessity and possibility, and in any case the most widely accepted, is the strongest of the systems we consider, \mlSfive.
+我们将考察模态逻辑的不同系统。它们之间的区别在于所允许的证明规则不同，也在于我们用以定义逻辑概念时所采用的语义不同。我们将要考察的不同系统称为 \mlK、\mlT、\mlSfour 和 \mlSfive。\mlK{} 是最基本的系统；任何在 \mlK{} 中有效或可证的东西，在其他系统中同样可证。但存在一些 \mlK{} 无法证明的公式，例如对于语句字母~$A$，公式 $\ebox A \eif A$。因此，对于必然性和可能性而言，\mlK{} 并非一个合适的模态逻辑（此时 $\ebox\metav{A} \eif \metav{A}$ 应当是可证的）。该公式在系统 \mlT 中可证，故当处理必然性和可能性时，\mlT{} 更为合适，而在处理信念或义务时则不那么合适，因为此时 $\ebox\metav{A} \eif \metav{A}$ \emph{不}应当（总是）可证。对于必然性和可能性来说，或许最合适的模态逻辑系统，同时也是我们考察的系统中最强大、最被广泛接受的，是 \mlSfive。
 
-\section{The Language of ML}
+\section{模态逻辑的语言}
 \label{TFLtoML}
 
-In order to do modal logic, we have to do two things. First, we want to learn how to prove things in ML. Second, we want to see how to construct interpretations for ML. But before we can do either of these things, we need to explain how to construct sentences in ML.
+为了进行模态逻辑的研究，我们需要做两件事。首先，我们要学习如何在模态逻辑中证明定理。其次，我们要了解如何为模态逻辑构造解释。但在我们能够做这两件事之前，需要先说明如何在模态逻辑中构造语句。
 
-The language of ML is an extension of TFL. We could have started with FOL, which would have given us Quantified Modal Logic (QML). QML is much more powerful than ML, but it is also much, much more complicated. So we are going to keep things simple, and start with TFL.
+模态逻辑的语言是真值函项逻辑的扩展。我们本可以一阶逻辑为起点，那样将得到量化模态逻辑。量化模态逻辑比模态逻辑强大得多，但也复杂得多。因此，为求简化，我们从真值函项逻辑开始。
 
-Just like TFL, ML starts with an infinite stock of \emph{atoms}. These are written as capital letters, with or without numerical subscripts: $A$, $B$, \dots  $A_1$, $B_1$, \dots  We then take all of the rules about how to make sentences from TFL, and add two more for $\ebox$ and~$\ediamond$:
+与真值函项逻辑一样，模态逻辑也从无穷多的\emph{原子}开始。它们写作大写字母，可以带或不带数字下标：$A$, $B$, \dots  $A_1$, $B_1$, \dots 随后，我们采纳所有从真值函项逻辑中关于如何构造语句的规则，并为 $\ebox$ 和~$\ediamond$ 额外增添两条规则：
 \factoidbox{
+
+
 \begin{compactlist}[labelindent=0pt,leftmargin=*]
-	\item Every atom of ML is a sentence of ML.
-	\item If $\metav{A}$ is a sentence of ML, then $\enot\metav{A}$ is a sentence of ML.
-	\item If $\metav{A}$ and $\metav{B}$ are sentences of ML, then $(\metav{A}\eand\metav{B})$ is a sentence of ML.
-	\item If $\metav{A}$ and $\metav{B}$ are sentences of ML, then $(\metav{A}\eor\metav{B})$ is a sentence of ML.
-	\item If $\metav{A}$ and $\metav{B}$ are sentences of ML, then $(\metav{A}\eif\metav{B})$ is a sentence of ML.
-	\item If $\metav{A}$ and $\metav{B}$ are sentences of ML, then $(\metav{A}\eiff\metav{B})$ is a sentence of ML.
-	\item If $\metav{A}$ is a sentence of ML, then $\ebox\metav{A}$ is a sentence of ML.
-	\item If $\metav{A}$ is a sentence of ML, then $\ediamond\metav{A}$ is a sentence of ML.
-	\item Nothing else is a sentence of ML.
-\end{compactlist}}
-Here are some examples of ML sentences:
+	\item 模态逻辑的每个原子都是模态逻辑的一个语句。
+	\item 如果 $\metav{A}$ 是模态逻辑的一个语句，那么 $\enot\metav{A}$ 是模态逻辑的一个语句。
+	\item 如果 $\metav{A}$ 和 $\metav{B}$ 是模态逻辑的语句，那么 $(\metav{A}\eand\metav{B})$ 是模态逻辑的一个语句。
+	\item 如果 $\metav{A}$ 和 $\metav{B}$ 是模态逻辑的语句，那么 $(\metav{A}\eor\metav{B})$ 是模态逻辑的一个语句。
+	\item 如果 $\metav{A}$ 和 $\metav{B}$ 是模态逻辑的语句，那么 $(\metav{A}\eif\metav{B})$ 是模态逻辑的一个语句。
+	\item 如果 $\metav{A}$ 和 $\metav{B}$ 是模态逻辑的语句，那么 $(\metav{A}\eiff\metav{B})$ 是模态逻辑的一个语句。
+	\item 如果 $\metav{A}$ 是模态逻辑的一个语句，那么 $\ebox\metav{A}$ 是模态逻辑的一个语句。
+	\item 如果 $\metav{A}$ 是模态逻辑的一个语句，那么 $\ediamond\metav{A}$ 是模态逻辑的一个语句。
+	\item 除此之外，没有别的东西是模态逻辑的语句。
+\end{compactlist}
+
+}
+以下是模态逻辑语句的一些例子：
 \begin{align*}
 	& A\\
 	& P\eor Q\\
@@ -49,21 +53,23 @@ Here are some examples of ML sentences:
 	& \ebox\ediamond (S\eand (Z\eiff (\ebox W \eor \ediamond Q)))
 \end{align*}
 
-\chapter{Natural deduction for ML}
+\chapter{模态逻辑的自然演绎}
 \label{Proof}
 
-Now that we know how to make sentences in ML, we can look at how to \emph{prove} things in ML. We will use $\proves$ to express provability.  So $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n \proves \metav{C}$ means that $\metav{C}$ can be proven from $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n$. However, we will be looking at a number of different systems of ML, and so it will be useful to add a subscript to indicate which system we are working with. So for example, if we want to say that we can prove $\metav{C}$ from $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n$ \emph{in system}~\mlK, we will write: $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n \proves_\mlK \metav{C}$.
+既然现在我们知道如何在模态逻辑中构造语句，接下来就可以考察如何在模态逻辑中\emph{证明}定理了。我们将用 $\proves$ 来表示可证性。因此，$\metav{A}_1,\metav{A}_2, \dots \metav{A}_n \proves \metav{C}$ 意味着 $\metav{C}$ 可以从 $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n$ 得到证明。然而，我们将会考察若干个不同的模态逻辑系统，因此添加一个下标来指明我们正在使用哪个系统是有用的。例如，如果我们想说我们\emph{在系统~\mlK 中}可以从 $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n$ 证明 $\metav{C}$，我们会写：$\metav{A}_1,\metav{A}_2, \dots \metav{A}_n \proves_\mlK \metav{C}$。
 
-\section{System \mlK}
+\section{系统 \mlK}
 \label{K}
 
-We start with a particularly simple system called \mlK, in honour of the philosopher and logician Saul Kripke. \mlK{} includes all of the natural deduction rules from TFL, including the derived rules as well as the basic ones. \mlK{} then adds a special kind of subproof, plus two new basic rules for \ebox.
+我们从一个特别简单的系统开始，该系统称为 \mlK，以纪念哲学家兼逻辑学家 Saul Kripke。\mlK{} 包含了来自真值函项逻辑的所有自然演绎规则，既包括基本规则，也包括派生规则。此外，\mlK{} 增加了一种特殊的子证明，以及两条关于 \ebox 的新基本规则。
 
-The special kind of subproof looks like an ordinary subproof, except it has a~\ebox in its assumption line instead of a formula. We call them \emph{strict subproofs}---they allow as to reason and prove things about alternate possibilities. What we can prove inside a strict subproof holds in any alternate possibility, in particular, in alternate possibilities where the assumptions in force in our proof may not hold. In a strict subproof, all assumptions are disregarded, and we are not allowed to appeal to any lines outside the strict subproof (except as allowed by the modal rules given below).
+这种特殊的子证明看起来像一个普通子证明，只是其假设行中不是一个公式，而是符号~\ebox。我们称它们为\emph{严格子证明}——它们允许我们对其他可能性进行推理和证明。我们在一个严格子证明内部所能证明的东西，在任一其他可能性中都成立，尤其是在那些我们证明中生效的假设可能并不成立的可能性中。在严格子证明内，所有（外部）假设均被搁置，并且我们不得援引严格子证明之外的任何一行（除非得到下述模态规则允许）。
 
-The \ebox I rule allows us to derive a formula $\ebox \metav{A}$ if we can derive $\metav{A}$ inside a strict subproof.  It is our fundamental method of introducing \ebox{} into proofs. The basic idea is simple enough: if $\metav{A}$ is a theorem, then $\ebox \metav{A}$ should be a theorem too. (Remember that to call $\metav{A}$ a theorem is to say that we can prove $\metav{A}$ without relying on any undischarged assumptions.)
+\ebox I 规则允许我们在能够于严格子证明内推导出 $\metav{A}$ 的情况下，推导出公式 $\ebox \metav{A}$。这是我们在证明中引入 \ebox{} 的根本方法。其基本思想相当简单：如果 $\metav{A}$ 是一个定理，那么 $\ebox \metav{A}$ 也应当是一个定理。（记住，称 $\metav{A}$ 为定理，即意味着我们可以不依赖任何未解除的假设来证明 $\metav{A}$。）
 
-Suppose we wanted to prove $\ebox(A\eif A)$. The first thing we need to do is prove that $A\eif A$ is a theorem. You already know how to do that using TFL. You simply present a proof of $A\eif A$ which doesn't start with any premises, like this:
+假设我们想要证明 $\ebox(A\eif A)$。我们需要做的第一件事是证明 $A\eif A$ 是一个定理。你已知道如何用真值函项逻辑来证明它。你只需给出一个 $A\eif A$ 的证明，它不以任何前提开始，如下所示：
+
+
 \begin{fitchproof}
 		\open
 		\hypo{1}{A}\AS
@@ -71,7 +77,11 @@ Suppose we wanted to prove $\ebox(A\eif A)$. The first thing we need to do is pr
 		\close
 		\have{3}{A\eif A}\ci{1-2}
 \end{fitchproof}
-But to apply \ebox I, we need to have proven the formula inside a strict subproof.  Since our proof of $A \eif A$ makes use of no assumptions at all, this is possible.
+
+
+但要应用 \ebox I，我们需要在严格子证明内部证明该公式。由于我们对 $A \eif A$ 的证明根本没有使用任何假设，这是可行的。
+
+
 \begin{fitchproof}
 		\open
 		\hypo{1}{\ebox}\AS
@@ -85,51 +95,63 @@ But to apply \ebox I, we need to have proven the formula inside a strict subproo
 \end{fitchproof}
 
 \factoidbox{
-	\begin{fitchproof}
+
+
+\begin{fitchproof}
 			\open
 			\hypo[m]{m}{\ebox}\AS
 			\have[n]{n}{\metav{A}}
 			\close
 			\have[\,]{o}{\ebox\metav{A}}\boxi{m-n}
 	\end{fitchproof}
-	No line above line $m$ may be cited by any rule within the strict subproof begun at line $m$ unless the rule explicitly allows it.
+
+在严格子证明内部，任何规则都不得引用该子证明起始行 $m$ 之前的行，除非该规则明确允许。
 }
-It is essential to emphasize that in strict subproof you cannot use any rule which appeals to anything you proved outside of the strict subproof. There are exceptions, e.g., the \ebox E rule below. These rules will explicitly state that they can be used inside strict subproofs and cite lines outside the strict subproof. This restriction is essential, otherwise we would get terrible results. For example, we could provide the following proof to vindicate $A\therefore \ebox A$:
+必须强调的是，在严格子证明中，你不能使用任何依赖于你在该子证明外部所证明内容的规则。当然存在例外，例如下面将要介绍的 \ebox E 规则。这些例外规则会明确指出，它们可以在严格子证明内部使用，并且可以引用严格子证明外部的行。这条限制至关重要，否则我们将得到糟糕的结果。例如，我们可能会给出下面这个“证明”来证实 $A\therefore \ebox A$：
+
 \begin{fitchproof}
 		\hypo{1}{A}\PR
 		\open
 		\hypo{2}{\ebox}\AS
-		\have{3}{A}\by{incorrect use of R}{1}
+		\have{3}{A}\by{错误地使用了 R 规则}{1}
 		\close
 		\have{4}{\ebox A}\boxi{2-3}
 \end{fitchproof}
-This is not a legitimate proof, because at line 3 we appealed to line 1, even though line 1 comes before the beginning of the strict subproof at line 2.
 
-We said above that a strict subproof allows us to reason about arbitrary alternate possible situations. What can be proved in a strict subproof holds in all alternate possible situtations, and so is necessary. This is the idea behind the \ebox I rule. On the other hand, if we've assumed that something is necessary, we have therewith assumed that it is true in all alternate possbile situations.  Hence, we have the rule \ebox E:
+这并非一个合法的证明，因为它在第 3 行引用了第 1 行，尽管第 1 行位于第 2 行开始的严格子证明之前。
+
+我们之前说过，严格子证明允许我们对任意的其他可能情形进行推理。在严格子证明中能够证明的东西，在所有其他可能情形中都成立，因而是必然的。这就是 \ebox I 规则背后的思想。另一方面，如果我们已经假设某物是必然的，也就随之假设了它在所有其他可能情形中为真。因此，我们有了 \ebox E 规则：
 
 \factoidbox{
-	\begin{fitchproof}
+
+
+\begin{fitchproof}
 			\have[m]{m}{\ebox\metav{A}}
 			\open
 			\hypo[\ ]{o}{\ebox}\AS
 			\have[n]{n}{\metav{A}}\boxe{m}
 			\close
 		\end{fitchproof}
-		\ebox E can only be applied if line $m$ (containing $\ebox A$) lies \emph{outside} of the strict subproof in which line $n$ falls, and this strict subproof is not itself part of a strict subproof not containing~$m$.
+
+
+		只有当第 $m$ 行（包含 $\ebox A$）位于包含第 $n$ 行的严格子证明\emph{之外}，并且，这个严格子证明本身不得嵌套在某个\emph{不包含}第~$m$ 行的严格子证明之中时，才能应用 \ebox E 规则。
 		}
-\ebox E allows you to assert $\metav{A}$ inside a strict subproof if you have $\ebox \metav{A}$ outside the strict subproof. The restriction means that you can only do this in the first strict subproof, you cannot apply the \ebox E rule inside a nested strict subproof. So the following is not allowed:
+如果你在严格子证明外部有 $\ebox \metav{A}$，那么 \ebox E 规则允许你在严格子证明内部断言 $\metav{A}$。上述限制意味着，你只能在\emph{第一个}严格子证明中这样做，而不能在嵌套的严格子证明内部应用 \ebox E 规则。因此，下面这种做法是不允许的：
+
 \begin{fitchproof}
 	\have{1}{\ebox\metav{A}}
 	\open
 	\hypo{2}{\ebox}\AS
 	\open
 	\hypo{3}{\ebox}\AS
-	\have{4}{\metav{A}}\by{incorrect use of \ebox E}{1}
+	\have{4}{\metav{A}}\by{错误地使用了 \ebox E}{1}
 \close\close
 \end{fitchproof}
-The incorrect use of \ebox E on line~$4$ violates the condition, because although line~$1$ lies outside the strict subproof in which line~$4$ falls, the strict subproof containing line~$4$ lies inside the strict subproof beginning on line~$2$ which does not contain line~$1$.
 
-Let's begin with an example.
+第~4 行上对 \ebox E 的错误使用违反了应用条件，因为尽管第~1 行位于包含第~4 行的严格子证明之外，但包含第~4 行的严格子证明本身却嵌套在始于第~2 行的严格子证明内部，而后者并不包含第~1 行。
+
+让我们从一个正确的例子开始。
+
 \begin{fitchproof}
 		\hypo{1}{\ebox A}\PR
 		\hypo{2}{\ebox B}\PR
@@ -141,7 +163,9 @@ Let's begin with an example.
 		\close
 		\have{6}{\ebox(A \land B)}\boxi{3-6}
 \end{fitchproof}
-We can also mix regular subproofs and strict subproofs:
+
+我们也可以混合使用常规子证明和严格子证明：
+
 \begin{fitchproof}
 		\hypo{1}{\ebox (A \eif B)}\PR
 		\open
@@ -156,75 +180,91 @@ We can also mix regular subproofs and strict subproofs:
 		\close
 		\have{8}{\ebox A \eif \ebox B} \ci{2-7}
 \end{fitchproof}
-This is called the \emph{Distribution Rule}, because it tells us that $\ebox$ `distributes' over $\eif$.
 
-The rules \ebox I and \ebox E look simple enough, and indeed \mlK{} is a very simple system! But \mlK{} is more powerful than you might have thought. You can prove a fair few things in it.
+这个结论被称为\emph{分配律}，因为它告诉我们 $\ebox$ 对 $\eif$ 具有分配性。
 
-\section{Possibility}
+规则 \ebox I 和 \ebox E 看起来相当简单，确实，系统 K 是一个非常简单的系统！但系统 K 的表达能力可能比你以为的要强。你可以在其中证明相当多的东西。
+
+\section{可能性}
 \label{possibility}
 
-In the last subsection, we looked at all of the basic rules for \mlK. But you might have noticed that all of these rules were about necessity, $\ebox$, and none of them were about possibility, $\ediamond$. That's because we can \emph{define} possibility in terms of necessity:
+在上一小节，我们查看了系统 K 的所有基本规则。但你或许已经注意到，所有这些规则都是关于必然性 $\ebox$ 的，没有一条是关于可能性 $\ediamond$ 的。这是因为我们可以依据必然性来\emph{定义}可能性：
 \factoidbox{
 $\ediamond\metav{A}=_{df} \enot \ebox\enot \metav{A}$
 }
-In other words, to say that $\metav{A}$ is \emph{possibly true}, is to say that $\metav{A}$ is \emph{not necessarily false}. As a result, it isn't really essential to add a $\ediamond$, a special symbol for possibility, into system \mlK. Still, the system will be \emph{much} easier to use if we do, and so we will add the following definitional rules:
+换句话说，说 $\metav{A}$ \emph{可能为真}，就是说 $\metav{A}$ \emph{不必然为假}。因此，在系统 K 中加入一个表示可能性的特殊符号 $\ediamond$ 并非真的必要。不过，如果加入它，系统会\emph{容易得多}，所以我们将增加以下定义性规则：
 \factoidbox{
-	\begin{fitchproof}
+
+
+\begin{fitchproof}
 			\have[m]{m}{\enot\ebox\enot \metav{A}}
 			\have[\, ]{n}{\ediamond \metav{A}}\diadf{m}
 	\end{fitchproof}
-	\begin{fitchproof}
+
+\begin{fitchproof}
 			\have[m]{m}{\ediamond \metav{A}}
 			\have[\, ]{n}{\enot\ebox\enot \metav{A}}\diadf{m}
 	\end{fitchproof}
-}
-Importantly, you should not think of these rules as any real addition to \mlK: they just record the way that $\ediamond$ is defined in terms of $\ebox$.
 
-If we wanted, we could leave our rules for \mlK{} here. But it will be helpful to add some \emph{Modal Conversion} rules, which give us some more ways of flipping between $\ebox$ and $\ediamond$:
+
+}
+重要的是，你不应将这些规则视为对系统 K 的真正扩充：它们仅仅是记录了用 $\ebox$ 定义 $\ediamond$ 的方式。
+
+如果我们愿意，可以在此结束对系统 K 规则的介绍。但是，增加一些\emph{模态转换规则}将会很有帮助，它们能提供更多在 $\ebox$ 和 $\ediamond$ 之间转换的方法：
 \factoidbox{
-	\begin{fitchproof}
+
+\begin{fitchproof}
 			\have[m]{m}{\enot\ebox \metav{A}}
 			\have[\, ]{n}{\ediamond \enot\metav{A}}\mc{m}
 	\end{fitchproof}
-	\begin{fitchproof}
+
+\begin{fitchproof}
 			\have[m]{m}{\ediamond \enot \metav{A}}
 			\have[\, ]{n}{\enot\ebox \metav{A}}\mc{m}
 	\end{fitchproof}
-	\begin{fitchproof}
+
+\begin{fitchproof}
 			\have[m]{m}{\enot\ediamond \metav{A}}
 			\have[\, ]{n}{\ebox \enot\metav{A}}\mc{m}
 	\end{fitchproof}
-	\begin{fitchproof}
+
+\begin{fitchproof}
 			\have[m]{m}{\ebox\enot \metav{A}}
 			\have[\, ]{n}{\enot\ediamond\metav{A}}\mc{m}
 	\end{fitchproof}
+
+
 }
-These Modal Conversion Rules are also no addition to the power of \mlK, because they can be derived from the basic rules, along with the definition of $\ediamond$.
+这些模态转换规则同样不会给系统 K 增加任何额外的能力，因为它们可以从基本规则以及 $\ediamond$ 的定义中推导出来。
 
-In system \mlK, using Def\ediamond{} (or the modal conversion rules), one can prove $\ediamond A \eiff \enot\ebox\enot A$. When laying out system \mlK, we started with $\ebox$ as our primitive modal symbol, and then defined $\ediamond$ in terms of it. But if we had preferred, we could have started with $\ediamond$ as our primitive, and then defined $\ebox$ as follows: $\ebox\metav{A} =_{df} \enot \ediamond \enot \metav{A}$. There is, then, no sense in which necessity is somehow more \emph{fundamental} than possibility. Necessity and possibility are exactly as fundamental as each other.
+在系统 K 中，利用 $\ediamond$ 的定义（或模态转换规则），可以证明 $\ediamond A \eiff \enot\ebox\enot A$。在构建系统 K 时，我们把 $\ebox$ 作为初始模态符号，然后用它来定义 $\ediamond$。但如果我们愿意的话，也可以把 $\ediamond$ 作为初始符号，然后如下定义 $\ebox$：$\ebox\metav{A} =_{df} \enot \ediamond \enot \metav{A}$。因此，说必然性在某种意义上比可能性更\emph{基本}是毫无道理的。必然性和可能性在根本上完全是对等的。
 
-\section{System \mlT}
+\section{系统 T}
 \label{T}
 
-So far we have focussed on \mlK, which is a very simple modal system. \mlK{} is so weak that it will not even let you prove $\metav{A}$ from $\ebox\metav{A}$. But if we are thinking of $\ebox$ as expressing \emph{necessity}, then we will want to be able to make this inference: if $\metav{A}$ is \emph{necessarily true}, then it must surely be \emph{true}!
+到目前为止，我们一直专注于系统 K，这是一个非常简单的模态系统。系统 K 非常弱，它甚至不允许你从 $\ebox\metav{A}$ 推出 $\metav{A}$。但是，如果我们把 $\ebox$ 理解为表达\emph{必然性}，那么我们就会希望能够进行这个推理：如果 $\metav{A}$ \emph{必然为真}，那么它肯定也应该是\emph{真的}！
 
-This leads us to a new system,  \mlT, which we get by adding the following rule to \mlK:
+这将我们引向一个新的系统，即系统 T，我们通过向系统 K 添加以下规则来得到它：
 \factoidbox{
-	\begin{fitchproof}
+
+
+\begin{fitchproof}
 			\have[m]{m}{\ebox \metav{A}}
 			\have[n]{n}{\metav{A}}\rt{m}
 	\end{fitchproof}
-	The line $n$ on which rule R\mlT{} is applied must \emph{not} lie in a strict subproof that begins after line~$m$.
+
+应用规则 T 的行 $n$，必须 \emph{不能} 位于一个开始于行 $m$ 之后的严格子证明中。
 }
 
-The restriction on rule \mlT{} is in a way the opposite of the restriction on \ebox E: you can \emph{only} use \ebox E in a nested strict subproof, but you cannot use \mlT{} in a nested strict subproof.
+规则 T 的限制在某种意义上与规则 \ebox E 的限制正好相反：你 \emph{只能} 在嵌套的严格子证明中使用 \ebox E，但你却不能在嵌套的严格子证明中使用规则 T。
 
-We can prove things in \mlT{} which we could not prove in \mlK, e.g., $\ebox A \eif A$.
+我们可以在系统 T 中证明一些在系统 K 中无法证明的东西，例如 $\ebox A \eif A$。
 
-\section{System \mlSfour}
+\section{系统 \mlSfour}
 \label{S4}
 
-\mlT{} allows you to strip away the necessity boxes: from $\ebox \metav{A}$, you may infer $\metav{A}$. But what if we wanted to add extra boxes? That is, what if we wanted to go from $\ebox\metav{A}$ to $\ebox\ebox\metav{A}$? Well, that would be no problem, if we had proved $\ebox\metav{A}$ by applying \ebox I to a strict subproof of $\metav{A}$ which itself does not use \ebox E. In that case, $\metav{A}$ is a tautology, and by nesting the strict subproof inside another strict subproof and applying \ebox I again, we can prove $\ebox\ebox \metav{A}$. For example, we could prove $\ebox\ebox (P\eif P)$ like this:
+系统 T 允许你剥掉必然性盒子：从 $\ebox \metav{A}$，你可以推出 $\metav{A}$。但是如果我们想增加额外的盒子呢？也就是说，如果我们想从 $\ebox\metav{A}$ 得到 $\ebox\ebox\metav{A}$，会怎样？那么，如果我们是通过对 $\metav{A}$ 的一个严格子证明应用 \ebox I 来证明 $\ebox\metav{A}$，并且该子证明本身没有使用 \ebox E，这不会有问题。在这种情况下，$\metav{A}$ 是一个重言式，通过将那个严格子证明嵌套进另一个严格子证明并再次应用 \ebox I，我们就能证明 $\ebox\ebox \metav{A}$。例如，我们可以这样证明 $\ebox\ebox (P\eif P)$：
+
 \begin{fitchproof}
 		\open
 		\hypo{1}{\ebox}\AS
@@ -240,23 +280,28 @@ We can prove things in \mlT{} which we could not prove in \mlK, e.g., $\ebox A \
 		\close
 		\have{7}{\ebox\ebox(P\eif P)}\boxi{1-6}
 \end{fitchproof}
-But what if we didn't prove $\ebox\metav{A}$ in this restricted way, but used \ebox E inside the strict subproof of $\metav{A}$. If we put that strict subproof inside another strict subproof, the requirement of rule \ebox E to not cite a line containing $\ebox\metav{A}$ which lies in another strict subproof that has not yet concluded, is violated.  Or what if $\ebox\metav{A}$ were just an assumption we started our proof with? Could we infer $\ebox\ebox\metav{A}$ then? Not in  \mlT, we couldn't. And this might well strike you as a limitation of  \mlT, at least if we are reading $\ebox$ as expressing \emph{necessity}. It seems intuitive that if $\metav{A}$ is necessarily true, then it couldn't have \emph{failed} to be necessarily true.
 
-This leads us to another new system, \mlSfour, which we get by adding the following rule to~\mlT:
+但是，如果我们不是以这种受限制的方式证明 $\ebox\metav{A}$，而是在 $\metav{A}$ 的严格子证明中使用了 \ebox E，那会怎样？如果我们把那个严格子证明放进另一个严格子证明，就会违反规则 \ebox E 的要求——不能引用一个包含 $\ebox\metav{A}$ 且位于另一个尚未结束的严格子证明中的行。或者，如果 $\ebox\metav{A}$ 只是我们开始证明时的一个假设呢？那么我们还能推出 $\ebox\ebox\metav{A}$ 吗？在系统 T 中，我们不能。而这很可能让你觉得是系统 T 的一个局限，至少当我们将 $\ebox$ 读作表达\emph{必然性}时是如此。直觉上似乎，如果 $\metav{A}$ 是必然真的，那么它不可能\emph{不}是必然真的。
+
+这引导我们得到另一个新系统，系统 S4，它是通过给系统 T 添加以下规则得到的：
 \factoidbox{
-	\begin{fitchproof}
+
+
+\begin{fitchproof}
 			\have[m]{m}{\ebox\metav{A}}
 			\open
 			\hypo[\ ]{k}{\ebox}\AS
 			\have[n]{n}{\ebox\metav{A}}\rfour{m}
 			\close
 	\end{fitchproof}
-	Note that R$\mathbf{4}$ can only be applied if line $m$ (containing $\ebox A$) lies outside of the strict subproof in which line $n$ falls, and this strict subproof is not itself part of a strict subproof not containing~$m$.
+
+注意，只有满足以下条件时才能应用规则 R$\mathbf{4}$：第 $m$ 行（包含 $\ebox A$）位于第 $n$ 行所在的严格子证明之外，并且该严格子证明本身不能是某个不包含第 $m$ 行的严格子证明的一部分。
 }
 
-Rule R$\mathbf{4}$ looks just like {\ebox}E, except that instead of yielding $\metav{A}$ from $\ebox\metav{A}$ it yields $\ebox\metav{A}$ inside a strict subproof. The restriction is the same, however: R$\mathbf{4}$ allows us to ``import'' $\ebox \metav{A}$ into a strict subproof, but not into a strict subproof itself nested inside a strict subproof. However, if that is necessary, an additional application of R$\mathbf{4}$ would have the same result.
+规则 R$\mathbf{4}$ 看起来和 {\ebox}E 规则很像，区别在于它不是在拿到 $\ebox\metav{A}$ 后直接推出 $\metav{A}$，而是在一个严格子证明内推出 $\ebox\metav{A}$。但是，它的限制条件是相同的：R$\mathbf{4}$ 允许我们将 $\ebox \metav{A}$ “导入”一个严格子证明，但不能导入到一个本身嵌套在另一个严格子证明内的严格子证明中。不过，如果确实需要这样做，额外应用一次 R$\mathbf{4}$ 规则也能达到同样的效果。
 
-Now we can prove even more results. For instance:
+现在我们能证明更多结论了。例如：
+
 \begin{fitchproof}
 	\open
 	\hypo{1}{\ebox A}\AS
@@ -268,26 +313,31 @@ Now we can prove even more results. For instance:
 	\close
 	\have{5}{\ebox A \eif \ebox\ebox A}\ci{1-6}
 \end{fitchproof}
-Similarly, we can prove $\ediamond\ediamond A \eif \ediamond A$. This shows us that as well as letting us \emph{add} extra \emph{boxes}, \mlSfour{} lets us \emph{delete} extra \emph{diamonds}: from $\ediamond\ediamond \metav{A}$, you can always infer $\ediamond\metav{A}$.
 
-\section{System \mlSfive}
+类似地，我们可以证明 $\ediamond\ediamond A \eif \ediamond A$。这表明，模态逻辑系统 \mlSfour 不仅能让我们\emph{添加}额外的\emph{方框}，也能让我们\emph{删除}额外的\emph{钻石}：从 $\ediamond\ediamond \metav{A}$，你总是可以推出 $\ediamond\metav{A}$。
+
+\section{系统 \mlSfive}
 \label{S5}
 
-In \mlSfour, we can always add a box in front of another box. But \mlSfour{} does not automatically let us add a box in front of a \emph{diamond}. That is, \mlSfour{} does not generally permit the inference from $\ediamond\metav{A}$ to $\ebox\ediamond\metav{A}$. But again, that might strike you as a shortcoming, at least if you are reading $\ebox$ and $\ediamond$ as expressing \emph{necessity} and \emph{possibility}. It seems intuitive that if $\metav{A}$ is possibly true, then it couldn't have \emph{failed} to be possibly true.
+在模态逻辑系统 \mlSfour 中，我们总能在另一个方框前面添加一个方框。但 \mlSfour 并不能自动地让我们在\emph{钻石}前面添加一个方框。也就是说，\mlSfour 通常不允许从 $\ediamond\metav{A}$ 推出 $\ebox\ediamond\metav{A}$。但是，这同样可能让你觉得是一个缺陷，至少在你把 $\ebox$ 和 $\ediamond$ 解读为表达\emph{必然性}与\emph{可能性}时是如此。直觉上，如果 $\metav{A}$ 可能为真，那么它\emph{不可能}偏偏不是可能为真的。
 
-This leads us to our final modal system, \mlSfive, which we get by adding the following rule to \mlSfour:
+这引出了我们最终的模态逻辑系统 \mlSfive，我们将通过向 \mlSfour 添加以下规则来得到它：
 \factoidbox{
-	\begin{fitchproof}
+
+
+\begin{fitchproof}
 			\have[m]{m}{\enot \ebox\metav{A}}
 			\open
 			\hypo[\ ]{k}{\ebox}\AS
 			\have[n]{n}{\enot\ebox\metav{A}}\rfive{m}
 			\close
 	\end{fitchproof}
-	Rule R$\mathbf{5}$ can only be applied if line $m$ (containing $\enot \ebox\metav{A}$) lies outside of the strict subproof in which line $n$ falls, and this strict subproof is not itself part of a strict subproof not containing line~$m$.
+
+	只有满足以下条件时才能应用规则 R$\mathbf{5}$：第 $m$ 行（包含 $\enot \ebox\metav{A}$）位于第 $n$ 行所在的严格子证明之外，并且该严格子证明本身不能是某个不包含第 $m$ 行的严格子证明的一部分。
 }
 
-This rule allows us to show, for instance, that $\ediamond\ebox A\proves_\mlSfive  \ebox A$:
+例如，这条规则允许我们证明 $\ediamond\ebox A\proves_\mlSfive  \ebox A$：
+
 \begin{fitchproof}
 	\hypo{1}{\ediamond\ebox A}\PR
 	\have{2}{\enot\ebox\enot\ebox A}\by{Def\ediamond}{1}
@@ -303,15 +353,10 @@ This rule allows us to show, for instance, that $\ediamond\ebox A\proves_\mlSfiv
 	\have{8}{\ebox A}\by{IP}{3-7}
 \end{fitchproof}
 
-So, as well as adding boxes in front of diamonds, we can also delete diamonds in front of boxes.
+所以，除了可以在钻石前面添加方框，我们还能在方框前面删除钻石。
 
-We got \mlSfive{} by adding the rule~R$\mathbf{5}$ to~\mlSfour. In
-fact, we could have added rule~R$\mathbf{5}$ to \mlT{}, left out
-rule~R$\mathbf{4}$, and obtained an equivalent system. That's because
-everything we can prove using rule~R$\mathbf{4}$ can also be proved
-using R\mlT{} together with~R$\mathbf{5}$. For instance, here is a
-proof that shows $\ebox A \proves_\mlSfive \ebox\ebox A$ without
-using~R$\mathbf{4}$:
+我们通过将规则 R$\mathbf{5}$ 添加到 \mlSfour 中得到了 \mlSfive。事实上，我们本可以将规则 R$\mathbf{5}$ 添加到 \mlT{} 中，省去规则 R$\mathbf{4}$，从而得到一个等价的系统。这是因为，所有能用规则 R$\mathbf{4}$ 证明的东西，也能用 \mlT{} 的规则加上 R$\mathbf{5}$ 来证明。例如，下面是一个不使用规则 R$\mathbf{4}$ 来证明 $\ebox A \proves_\mlSfive \ebox\ebox A$ 的推导：
+
 \begin{fitchproof}
 	\hypo{1}{\ebox A}\PR
 	\open
@@ -336,14 +381,16 @@ using~R$\mathbf{4}$:
 	\close
 	\have{14}{\ebox\ebox A}\boxi{6-13}
 \end{fitchproof}
-\mlSfive{} is \emph{strictly stronger} than \mlSfour: there are things which can be proved in \mlSfive, but not in \mlSfour{} (e.g., $\ediamond\ebox A \eif \ebox A$).
 
-The important point about \mlSfive{} can be put like this: if you have a long string of boxes and diamonds, in any combination whatsoever, you can delete all but the last of them. So for example, $\ediamond\ebox\ediamond\ediamond\ebox\ebox\ediamond\ebox A$ can be simplified down to just $\ebox A$.
+\mlSfive{} \emph{严格强于} \mlSfour：有些命题在 \mlSfive 中可证，但在 \mlSfour 中不可证（例如 $\ediamond\ebox A \eif \ebox A$）。
+
+关于 \mlSfive 的重要一点可以这样表述：如果你有一长串任意组合的方框和钻石，你可以删除除了最后一个之外的所有算子。例如，$\ediamond\ebox\ediamond\ediamond\ebox\ebox\ediamond\ebox A$ 可以简化到只剩 $\ebox A$。
 
 \practiceproblems
 
 \problempart
-Provide proofs for the following:
+请为以下各式提供推导：
+
 \begin{compactlist}
 	\item $\ebox (A\eand B)\proves_\mlK\ebox A \eand \ebox B$
 	\item $\ebox A\eand\ebox B\proves_\mlK\ebox( A \eand  B)$
@@ -352,7 +399,8 @@ Provide proofs for the following:
 \end{compactlist}
 
 \problempart
-Provide proofs for the following (without using Modal Conversion!):
+请为以下各式提供推导（不得使用模态转换！）：
+
 \begin{compactlist}
 	\item $\enot\ebox A\proves_\mlK \ediamond \enot A$
 	\item $\ediamond\enot A\proves_\mlK\enot \ebox A$
@@ -361,7 +409,8 @@ Provide proofs for the following (without using Modal Conversion!):
 \end{compactlist}
 
 \problempart
-Provide proofs of the following (and now feel free to use Modal Conversion!):
+为以下公式提供证明（现在可以自由使用模态转换了！）：
+
 \begin{compactlist}
 	\item $\ebox(A\eif B), \ediamond A \proves_\mlK \ediamond B$
 	\item $\ebox A \proves_\mlK \enot\ediamond\enot A$
@@ -369,76 +418,84 @@ Provide proofs of the following (and now feel free to use Modal Conversion!):
 \end{compactlist}
 
 \problempart
-Provide proofs for the following:
+为以下公式提供证明：
+
 \begin{compactlist}
 	\item $P\proves_\mlT\ediamond P$
 	\item $\proves_\mlT (A\eand B)\eor(\enot \ebox A\eor\enot\ebox B)$
 \end{compactlist}
 
 \problempart
-Provide proofs for the following:
+为以下公式提供证明：
+
 \begin{compactlist}
 	\item $\ebox(\ebox A\eif B), \ebox (\ebox B\eif C), \ebox A \proves_\mlSfour \ebox\ebox C$
 	\item $\ebox A \proves_\mlSfour \ebox(\ebox A \eor B)$
 	\item $\ediamond \ediamond A \proves_\mlSfour \ediamond A$
 \end{compactlist}
 
-
 \problempart
-Provide proofs in \mlSfive{} for the following:
+在 \mlSfive{} 中为以下公式提供证明：
+
 \begin{compactlist}
 	\item $\enot\ebox\enot A, \ediamond B\proves_\mlSfive \ebox(\ediamond A \eand \ediamond B)$
 	\item $A \proves_\mlSfive  \ebox\ediamond A$
 	\item $\ediamond\ediamond A\proves_\mlSfive  \ediamond A$
 \end{compactlist}
 
-
-\chapter{Semantics for ML}
+\chapter{模态逻辑的语义学}
 \label{Semantics}
 
-So far, we have focussed on laying out various systems of Natural Deduction for ML. Now we will look at the \emph{semantics} for ML. A semantics for a language is a method for assigning truth-values to the sentences in that language. So a semantics for ML is a method for assigning truth-values to the sentences of ML.
+目前为止，我们的重点一直放在为模态逻辑建立各种自然演绎系统上。现在我们将来看模态逻辑的\emph{语义学}。一种语言的语义学，就是给该语言中的语句指派真值的方法。所以，模态逻辑的语义学就是给模态逻辑的语句指派真值的方法。
 
-\section{Interpretations of ML}
+\section{模态逻辑的解释}
 
-The big idea behind the semantics for ML is this. In ML, sentences are not just true or false, full stop. A sentence is true or false \emph{at a given possible world}, and a single sentence may well be true at some worlds and false at others. We then say that $\ebox \metav{A}$ is true \ifeff{} $\metav{A}$ is true at \emph{every} world, and $\ediamond\metav{A}$ is true \ifeff{} $\metav{A}$ is true at \emph{some} world.
+模态逻辑语义学背后的核心思想是这样的。在模态逻辑中，语句不是简单地真或假。一个语句是\emph{在一个给定的可能世界中}真或假，而且同一个语句完全可以在一些世界中为真，在另一些世界中为假。然后我们说，$\ebox \metav{A}$ 为真 \ifeff{} $\metav{A}$ 在\emph{所有}世界中为真；$\ediamond\metav{A}$ 为真 \ifeff{} $\metav{A}$ 在\emph{某个}世界中为真。
 
-That's the big idea, but we need to refine it and make it more precise. To do this, we need to introduce the idea of an \emph{interpretation} of ML. The first thing you need to include in an interpretation is a collection of \emph{possible worlds}. Now, at this point you might well want to ask: What exactly is a possible world? The intuitive idea is that a possible world is another way that this world could have been. But what exactly does that mean? This is an excellent philosophical question, and we will look at it in a lot of detail later. But we do not need to worry too much about it right now. As far as the formal logic goes, possible worlds can be anything you like. All that matters is that you supply each interpretation with a non-empty collection of things labelled \define{possible worlds}.
+这就是核心思想，但我们需要完善它，使之更精确。为此，我们需要引入模态逻辑\emph{解释}的概念。构建一个解释时，首先需要包含一个\emph{可能世界}的集合。现在，说到这里你可能很想问：究竟什么是可能世界？直观的想法是，可能世界是这个世界本可以是的另一种样子。但这到底是什么意思呢？这是一个极好的哲学问题，我们后面会详细探讨。但眼下我们不需要为此过分担心。就形式逻辑而言，可能世界可以是你喜欢的任何东西。唯一重要的是，每个解释都需要包含一个非空的、其元素被称为\define{可能世界}的集合。
 
-Once you have chosen your collection of possible worlds, you need to find some way of determining which sentences of ML are true at which possible worlds. To do that, we need to introduce the notion of a \emph{valuation function}. Those of you who have studied some maths will already be familiar with the general idea of a function. But for those of you who haven't, a function is a mathematical entity which maps arguments to values. That might sound a little bit abstract, but some familiar examples will help. Take the function $x+1$. This is a function which takes in a number as argument, and then spits out the next number as value. So if you feed in the number $1$ as an argument, the function $x+1$ will spit out the number $2$ as a value; if you feed in $2$, it will spit out $3$; if you feed in $3$, it will spit out $4$ \dots  Or here is another example: the function $x+y$. This time, you have to feed two arguments into this function if you want it to return a value: if you feed in $2$ and $3$ as your arguments, it spits out $5$; if you feed in $1003$ and $2005$, it spits out $3008$; and so on.
+一旦选定了可能世界的集合，就需要找到某种方法来确定哪些模态逻辑语句在哪些可能世界中为真。为此，我们需要引入\emph{赋值函数}的概念。学过一些数学的人已经熟悉函数的一般概念。但对于没学过的人，函数是一个将自变量映射到值的数学实体。这听起来可能有点抽象，但一些熟悉的例子会有帮助。以函数 $x+1$ 为例。这是一个以数字为自变量，并以该数字的下一个数字为值的函数。因此，如果你输入数字 $1$ 作为自变量，函数 $x+1$ 就会输出数字 $2$ 作为值；如果你输入 $2$，它就输出 $3$；如果你输入 $3$，它就输出 $4$，依此类推。或者看另一个例子：函数 $x+y$。这次，如果你想让它返回值，你必须向这个函数输入两个自变量：如果你输入 $2$ 和 $3$，它输出 $5$；如果你输入 $1003$ 和 $2005$，它输出 $3008$；等等。
 
-A valuation function for ML takes in a sentence and a world as its arguments, and then returns a truth-value as its value. So if $\nu$ is a valuation function and $w$ is a possible world, $\nu_w(\metav{A})$ is whatever truth-value $\nu$ maps $\metav{A}$ and $w$ to: if $\nu_w(\metav{A})=F$, then $\metav{A}$ is false at world $w$ on valuation $\nu$; if $\nu_w(\metav{A})=T$, then $\metav{A}$ is true at world $w$ on valuation $\nu$.
+模态逻辑的赋值函数以一个语句和一个世界作为其自变量，然后返回一个真值作为其值。所以，如果 $\nu$ 是一个赋值函数而 $w$ 是一个可能世界，那么 $\nu_w(\metav{A})$ 就是 $\nu$ 将 $\metav{A}$ 和 $w$ 映射到的那个真值：如果 $\nu_w(\metav{A})=F$，那么根据赋值 $\nu$，$\metav{A}$ 在世界 $w$ 上为假；如果 $\nu_w(\metav{A})=T$，那么根据赋值 $\nu$，$\metav{A}$ 在世界 $w$ 上为真。
 
-These valuation functions are allowed to map any \emph{atomic} sentence to any truth-value at any world. But there are rules about which truth-values more complex sentences get assigned at a world. Here are the rules for the connectives from TFL:
+这些赋值函数允许将任何\emph{原子}语句在任何世界中映射到任何真值。但是，更复杂的语句在一个世界中被指派什么真值是有规则的。以下是关于从真值函项逻辑引入的联结词的规则：
+
 \begin{compactlist}
 	\item $\nu_w(\enot\metav{A})=T$ \ifeff{} $\nu_w(\metav{A})=F$
-	\item $\nu_w(\metav{A}\eand\metav{B})=T$ \ifeff{} $\nu_w(\metav{A})=T$ and $\nu_w(\metav{B})=T$
-	\item $\nu_w(\metav{A}\eor\metav{B})=T$ \ifeff{} $\nu_w(\metav{A})=T$ or $\nu_w(\metav{B})=T$, or both
-	\item $\nu_w(\metav{A}\eif\metav{B})=T$ \ifeff{} $\nu_w(\metav{A})=F$ or $\nu_w(\metav{B})=T$, or both
-	\item $\nu_w(\metav{A}\eiff\metav{B})=T$ \ifeff{} $\nu_w(\metav{A})=T$ and $\nu_w(\metav{B})=T$, or $\nu_w(\metav{A})=F$ and $\nu_w(\metav{B})=F$
+	\item $\nu_w(\metav{A}\eand\metav{B})=T$ \ifeff{} $\nu_w(\metav{A})=T$ 并且 $\nu_w(\metav{B})=T$
+	\item $\nu_w(\metav{A}\eor\metav{B})=T$ \ifeff{} $\nu_w(\metav{A})=T$ 或者 $\nu_w(\metav{B})=T$，或者两者都成立
+	\item $\nu_w(\metav{A}\eif\metav{B})=T$ \ifeff{} $\nu_w(\metav{A})=F$ 或者 $\nu_w(\metav{B})=T$，或者两者都成立
+	\item $\nu_w(\metav{A}\eiff\metav{B})=T$ \ifeff{} $\nu_w(\metav{A})=T$ 并且 $\nu_w(\metav{B})=T$，或者 $\nu_w(\metav{A})=F$ 并且 $\nu_w(\metav{B})=F$
 \end{compactlist}
-So far, these rules should all look very familiar. Essentially, they all work exactly like the truth-tables for TFL. The only difference is that these truth-table rules have to be applied over and over again, to one world at a time.
 
-But what are the rules for the new modal operators, $\ebox$ and $\ediamond$? The most obvious idea would be to give rules like these:
+到目前为止，这些规则看起来应该都很熟悉。本质上，它们的工作方式完全类似于真值函项逻辑的真值表。唯一的区别是，这些真值表规则必须反复应用，并且每次只针对一个世界应用。
+
+但是，新模态算子 $\ebox$ 和 $\ediamond$ 的规则是什么呢？最自然的想法是给出如下规则：
+
 \begin{itemize}
 	\item $\nu_w(\ebox \metav{A})=T$ \ifeff{} $\forall w' (\nu_{w'}(\metav{A})=T)$
 	\item $\nu_w(\ediamond \metav{A})=T$ \ifeff{} $\exists w' (\nu_{w'}(\metav{A})=T)$
 \end{itemize}
-This is just the fancy formal way of writing out the idea that $\ebox\metav{A}$ is true at $w$ just in case $\metav{A}$ is true at \emph{every} world, and $\ediamond\metav{A}$ is true at $w$ just in case $\metav{A}$ is true at \emph{some} world.
 
-However, while these rules are nice and simple, they turn out not to be quite as useful as we would like. As we mentioned, ML is meant to be a very flexible tool. It is meant to be a general framework for dealing with lots of different kinds of necessity. As a result, we want our semantic rules for $\ebox$ and $\ediamond$ to be a bit less rigid. We can do this by introducing another new idea: \emph{accessibility relations}.
+这只是将以下想法用一种形式化的方式表述出来：$\ebox\metav{A}$ 在世界 $w$ 中为真，当且仅当 $\metav{A}$ 在\emph{每个}世界中为真；而 $\ediamond\metav{A}$ 在世界 $w$ 中为真，当且仅当 $\metav{A}$ 在\emph{某个}世界中为真。
 
-An accessibility relation, $R$, is a relation between possible worlds. Roughly, to say that $Rw_1w_2$ (in English: world $w_1$ \emph{accesses} world $w_2$) is to say that $w_2$ is possible \emph{relative to} $w_1$. In other words, by introducing accessibility relations, we open up the idea that a given world might be possible relative to some worlds but not others. This turns out to be a \emph{very} fruitful idea when studying modal systems. We can now give the following semantic rules for $\ebox$ and $\ediamond$:
+然而，尽管这些规则简洁明了，但它们最终并不像我们希望的那样有用。正如我们提到的，模态逻辑旨在成为一个非常灵活的工具，一个用于处理多种不同必然性的一般框架。因此，我们希望 $\ebox$ 和 $\ediamond$ 的语义规则能稍微不那么严格。为此，我们可以引入另一个新概念：\emph{可及关系}。
+
+可及关系 $R$ 是可能世界之间的一种关系。粗略地说，$Rw_1w_2$（即：世界 $w_1$ \emph{可及}世界 $w_2$）意味着 $w_2$ 相对于 $w_1$ 是可能的。换句话说，通过引入可及关系，我们提出了这样一种可能性：某个给定的世界可能相对于某些世界是可能的，但相对于另一些世界则不然。在研究模态系统时，这被证明是一个\emph{非常}富有成果的想法。现在我们可以为 $\ebox$ 和 $\ediamond$ 给出如下语义规则：
+
 \begin{compactlist}[resume]
 	\item $\nu_{w_1}(\ebox \metav{A})=T$ \ifeff{} $\forall w_2 (Rw_1w_2\eif \nu_{w_2}(\metav{A})=T)$
 	\item $\nu_{w_1}(\ediamond \metav{A})=T$ \ifeff{} $\exists w_2 (Rw_1w_2\eand \nu_{w_2}(\metav{A})=T)$
 \end{compactlist}
-Or in plain English: $\ebox\metav{A}$ is true in world $w_1$ \ifeff{} $\metav{A}$ is true in every world that is possible relative to $w_1$; and $\ediamond\metav{A}$ is true in world $w_1$ \ifeff{} $\metav{A}$ is true in some world that is possible relative to $w_1$.
 
-So, there we have it. An interpretation for ML consists of three things: a collection of possible worlds, $W$; an accessibility relation, $R$; and a valuation function, $\nu$. The collection of `possible worlds' can really be a collection of anything you like. It really doesn't matter, so long as $W$ isn't empty. (For many purposes, it is helpful just to take a collection of numbers to be your collection of worlds.) And for now, at least, $R$ can be any relation between the worlds in $W$ that you like. It could be a relation which every world in $W$ bears to every world in $W$, or one which no world bears to any world, or anything in between. And lastly, $\nu$ can map any atomic sentence of ML to any truth-value at any world. All that matters is that it follows the rules (1)--(7) when it comes to the more complex sentences.
+换言之：$\ebox\metav{A}$ 在世界 $w_1$ 中为真 \ifeff{} $\metav{A}$ 在每一个相对于 $w_1$ 可能的世界中都为真；而 $\ediamond\metav{A}$ 在世界 $w_1$ 中为真 \ifeff{} $\metav{A}$ 在某个相对于 $w_1$ 可能的世界中为真。
 
-Let's look at an example. It is often helpful to present interpretations of ML as diagrams, like this:
+这样，我们就得到了模态逻辑的解释。它由三部分组成：一个可能世界的集合 $W$；一个可及关系 $R$；以及一个赋值函数 $\nu$。可能世界的集合 $W$ 实际上可以由任意元素构成。只要 $W$ 非空，其具体内容无关紧要。（对于许多目的，直接取一组数字作为世界集合就很方便。）至少就目前而言，$R$ 可以是 $W$ 中世界间的任意二元关系。它可以是 $W$ 中每个世界都与所有世界相关的关系，也可以是没有世界与任何世界相关的关系，或介于两者之间的任何关系。最后，$\nu$ 可以将模态逻辑的任何原子语句在任何世界中映射为任何真值。关键在于，当涉及更复杂的语句时，它必须遵循规则 (1)--(7)。
+
+让我们看一个例子。通常用图表来呈现模态逻辑的解释会很有帮助，像这样：
+
 \begin{center}
-	\begin{arialabel}{The numbers 1 and 2 are connected by arrows. There are arrows from 1 to itself, and from 2 to 1. Node 1 is labelled by A and not-B. Node 2 is labelled by not-A and B.}
+	\begin{arialabel}{数字 1 和 2 通过箭头连接。有从 1 指向自身的箭头，以及从 2 指向 1 的箭头。节点 1 标为 A 且非 B。节点 2 标为非 A 且 B。}
 	\begin{tikzpicture}
 		\node (atom1) at (0,1) {1};
 		\node (atom2) at (3,1) {2};
@@ -447,56 +504,64 @@ Let's look at an example. It is often helpful to present interpretations of ML a
 		\node (atom5) at (-0.25,-0.7) {$\enot B$};
 		\node (atom6) at (3,-0.7) {$B$};
 		\draw[->, thick] (atom1)+(-0.15,0.15) arc (-330:-30:.3);
-		%\draw[->, thick] (atom2)+(0.15,-0.15) arc (-150:150:.3); 
+		%\draw[->, thick] (atom2)+(0.15,-0.15) arc (-150:150:.3);
 		\draw[<-, thick] (atom1) -- (atom2);
 		\draw (-0.8,-1.2) rectangle (0.4,0.5);
 		\draw (2.4,-1.2) rectangle (3.6,0.5);
 	\end{tikzpicture}
-\end{arialabel}
+	\end{arialabel}
 \end{center}
-Here is how to read the interpretation off from this diagram. It contains just two worlds, 1 and 2. The arrows between the worlds indicate the accessibility relation. So 1 and 2 both access 1, but neither 1 nor 2 accesses 2. The boxes at each world let us know which atomic sentences are true at each world: $A$ is true at 1 but false at 2; $B$ is false at 1 but true at 2. You may only write an atomic sentence or the negation of an atomic sentence into one of these boxes. We can figure out what truth-values the more complex sentences get at each world from that. For example, on this interpretation all of the following sentences are true at $w_1$:
+
+以下是如何从该图中读取此解释。它只包含两个世界，1 和 2。世界之间的箭头表示可及关系。因此，1 和 2 都可及 1，但 1 和 2 都不可及 2。每个世界旁的方框标明哪些原子语句在该世界中为真：$A$ 在 1 中为真但在 2 中为假；$B$ 在 1 中为假但在 2 中为真。你只能在这些方框中写入一个原子语句或其否定。据此，我们可以推算出更复杂的语句在每个世界中的真值。例如，在此解释下，以下所有语句在 $w_1$ 中都为真：
 \[
 A\eand\enot B,\qquad B\eif A,\qquad \ediamond A,\qquad \ebox\enot B
 \]
-If you don't like thinking diagrammatically, then you can also present an interpretation like this:
+如果你不喜欢图示的方式，也可以像这样呈现一个解释：
+
 \begin{ekey}
 	\item[W]$1,2$
 	\item[R]$\langle 1,1\rangle, \langle 2,1\rangle$
 	\item[\nu]$\nu_{1}(A)=T, \nu_{1}(B)=F, \nu_{2}(A)=F, \nu_{2}(B)=T$
 \end{ekey}
-You will get the chance to cook up some interpretations of your own shortly, when we start looking at \emph{counter-interpretations}.
 
-\section{A Semantics for System \mlK}
+稍后，当我们开始考察\emph{反解释}时，你将有机会自己构造一些解释。
+
+\section{系统 \mlK 的语义}
 \label{SemanticsK}
 
-We can now extend all of the semantic concepts of TFL to cover ML:
+现在我们可以将真值函项逻辑的所有语义概念扩展到模态逻辑：
 \factoidbox{
-	\begin{factoiditems}
+
+
+\begin{factoiditems}
 		\item $\metav{A}_1,\metav{A}_2, \dots
-		\metav{A}_n\therefore\metav{C}$ is \define{modally valid} \ifeff{}
-		there is no world in any interpretation at which
-		$\metav{A}_1,\metav{A}_2, \dots \metav{A}_n$ are all true and
-		$\metav{C}$ is false.
+		\metav{A}_n\therefore\metav{C}$ 是\define{模态有效的}\ifeff{}
+		不存在一个解释及其中一个世界，使得
+		$\metav{A}_1,\metav{A}_2, \dots \metav{A}_n$ 全部为真而
+		$\metav{C}$ 为假。
 
-		\item $\metav{A}$ is a \define{modal truth} \ifeff{} $\metav{A}$
-		is true at every world in every interpretation.
+		\item $\metav{A}$ 是\define{模态真值}\ifeff{} $\metav{A}$
+		在所有解释的所有世界中都为真。
 
-		\item $\metav{A}$ is a \define{modal contradiction} \ifeff{}
-		$\metav{A}$ is false at every world in every interpretation.
+		\item $\metav{A}$ 是\define{模态矛盾式}\ifeff{}
+		$\metav{A}$ 在所有解释的所有世界中都为假。
 
-		\item $\metav{A}$ is \define{modally satisfiable} \ifeff{}
-		$\metav{A}$ is true at some world in some interpretation.
+		\item $\metav{A}$ 是\define{模态可满足的}\ifeff{}
+		$\metav{A}$ 在某个解释的某个世界中为真。
 	\end{factoiditems}
-		}
-(From now on we will drop the explicit `modal' qualifications, since they can be taken as read.)
 
-We can also extend our use of $\entails$. However, we need to add subscripts again, just as we did with $\proves$. So, when we want to say that $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\therefore\metav{C}$ is valid, we will write: $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlK\metav{C}$.
+}
+（从现在起，我们将省略显式的“模态”限定词，其含义已不言自明。）
 
-Let's get more of a feel for this semantics by presenting some counter-interpretations. Consider the following (false) claim:
+我们也可以扩展 $\entails$ 的使用。但正如我们对 $\proves$ 所做的那样，需要再次添加下标。所以，当我们要说 $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\therefore\metav{C}$ 有效时，我们将写作：$\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlK\metav{C}$。
+
+让我们通过给出一些反解释来更好地理解这些语义。考虑以下（错误的）主张：
 \[\enot A\entails_\mlK \enot \ediamond A\]
-In order to present a counter-interpretation to this claim, we need to cook up an interpretation which makes $\enot A$ true at some world $w$, and $\enot\ediamond A$ false at $w$. Here is one such interpretation, presented diagrammatically:
+为了给出此主张的一个反解释，我们需要构造一个解释，使得 $\enot A$ 在某个世界 $w$ 上为真，而 $\enot\ediamond A$ 在 $w$ 上为假。下图以图表形式给出了这样一个解释：
+
+
 \begin{center}
-\begin{arialabel}{The numbers 1 and 2 are connected by an arrow from 1 to 2. Node 1 is labelled not-A and node 2 is labelled A.}
+\begin{arialabel}{数字 1 和 2 由从 1 指向 2 的箭头连接。节点 1 标为 not-A，节点 2 标为 A。}
 	\begin{tikzpicture}
 		\node (atom1) at (0,1) {1};
 		\node (atom2) at (3,1) {2};
@@ -508,123 +573,147 @@ In order to present a counter-interpretation to this claim, we need to cook up a
 	\end{tikzpicture}
 \end{arialabel}
 \end{center}
-It is easy to see that this will work as a counter-interpretation for our claim. First, $\enot A$ is true at world $1$. And second, $\enot\ediamond A$ is false at $1$: $A$ is true at $2$, and $2$ is accessible from $1$. So there is some world in this interpretation where $\enot A$ is true and $\enot\ediamond A$ is false, so it is not the case that $\enot A\entails_\mlK\enot\ediamond A$.
 
-Why did we choose the subscript \mlK? Well, it turns out that there is an important relationship between system \mlK{} and the definition of validity we have just given. In particular, we have the following two results:
+
+容易看出，这构成了我们主张的一个反解释。首先，$\enot A$ 在世界 $1$ 上为真。其次，$\enot\ediamond A$ 在 $1$ 上为假：因为 $A$ 在 $2$ 上为真，且 $2$ 可从 $1$ 访问。所以，在此解释中存在一个世界（世界 $1$），其中 $\enot A$ 为真而 $\enot\ediamond A$ 为假，因此并非 $\enot A\entails_\mlK\enot\ediamond A$。
+
+为什么我们选择下标 \mlK？事实证明，系统 \mlK 与我们刚刚给出的有效性定义之间存在一个重要关联。具体如下：
+
+
 \begin{compactlist}
-	\item If $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\proves_\mlK\metav{C}$, then $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlK\metav{C}$
-	\item If $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlK\metav{C}$, then $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\proves_\mlK\metav{C}$
+	\item 如果 $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\proves_\mlK\metav{C}$，那么 $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlK\metav{C}$
+	\item 如果 $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlK\metav{C}$，那么 $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\proves_\mlK\metav{C}$
 \end{compactlist}
-The first result is known as a \emph{soundness} result, since it tells us that the rules of \mlK{} are good, sound rules: if you can vindicate an argument by giving a proof for it using system \mlK, then that argument really is valid. The second result is known as a \emph{completeness} result, since it tells us that the rules of \mlK{} are broad enough to capture all of the valid arguments: if an argument is valid, then it will be possible to offer a proof in \mlK{} which vindicates it.
 
-Now, it is one thing to state these results, quite another to prove them. However, we will not try to prove them here. But the idea behind the proof of soundness will perhaps make clearer how strict subproofs work.
 
-In a strict subproof, we are not allowed to make use of any information from outside the strict subproof, except what we import into the strict subproof using \ebox E. If we've assumed or proved $\ebox \metav{A}$, by \ebox E, we can used $\metav{A}$ inside a strict subproof. And in \mlK, that is the only way to import a formula into a strict subproof. So everything that can be proved inside a strict subproof must follow from formulas $\metav{A}$ where outside the strict subproof we have $\ebox \metav{A}$. Let's imagine that we are reasoning about what's true in a possible world in some interpretation. If we know that $\ebox\metav{A}$ is true in that possible world, we know that $\metav{A}$ is true in all accessible worlds. So, everything proved inside a strict subproof is true in all accessible possible worlds. That is why \ebox I is a sound rule.
+第一个结果被称为\emph{可靠性}结果，因为它表明系统 \mlK 的规则是稳健可靠的：如果你能通过系统 \mlK 中的证明来证实一个论证，那么该论证确实是有效的。第二个结果被称为\emph{完备性}结果，因为它表明系统 \mlK 的规则足够强大，能捕获所有有效论证：如果一个论证是有效的，那么必然可以在系统 \mlK 中给出一个证明来证实它。
 
-\section{A Semantics for System \mlT}
+当然，陈述这些结果是一回事，证明它们又是另一回事。我们不会在此尝试证明。但可靠性证明背后的思路，或许能使严格子证明的工作机制更清晰。
+
+在严格子证明中，我们不能使用子证明之外的任何信息，除非通过 \ebox E 规则将其引入。如果我们已在外部假设或证明了 $\ebox \metav{A}$，则可凭借 \ebox E 在严格子证明内使用 $\metav{A}$。在系统 \mlK 中，这是将公式引入严格子证明的唯一方式。因此，严格子证明内能证明的一切，都必须从某些公式 $\metav{A}$ 推导而来，而这些 $\metav{A}$ 在子证明外部有 $\ebox \metav{A}$ 成立。设想我们正在推理某个解释中一个可能世界上的真值。如果我们知道 $\ebox\metav{A}$ 在该世界上为真，我们就知道 $\metav{A}$ 在所有可及世界上都为真。所以，严格子证明内证明的一切在所有可及可能世界上都为真。这就是 \ebox I 是一条可靠规则的原因。
+
+\section{系统 \mlT 的语义}
 \label{SemanticsT}
 
-A few moments ago, we said that system \mlK{} is sound and complete. Where does that leave the other modal systems we looked at, namely  \mlT, \mlSfour{} and \mlSfive? Well, they are all \emph{unsound}, relative to the definition of validity we gave above. For example, all of these systems allow us to infer $A$ from $\ebox A$, even though $\ebox A\nentails_\mlK A$.
+刚才我们提到系统 \mlK 是可靠且完备的。那么我们考察的其他模态系统，即系统 \mlT、\mlSfour 和 \mlSfive，情况如何呢？实际上，相对于我们上面给出的有效性定义，它们都是\emph{不可靠的}。例如，所有这些系统都允许我们从 $\ebox A$ 推出 $A$，尽管 $\ebox A\nentails_\mlK A$。
 
-Does that mean that these systems are a waste of time? Not at all! These systems are only unsound \emph{relative to the definition of validity we gave above}. (Or to use symbols, they are unsound relative to $\entails_\mlK$.) So when we are dealing with these stronger modal systems, we just need to modify our definition of validity to fit. This is where accessibility relations come in really handy.
+这是否意味着这些系统毫无价值？绝非如此！这些系统仅仅是\emph{相对于我们上面给出的有效性定义}不可靠。（或用符号表示，它们相对于 $\entails_\mlK$ 不可靠。）因此，当处理这些更强的模态系统时，我们只需调整有效性定义以适应它们。这正是可及关系真正发挥作用的地方。
 
-When we introduced the idea of an accessibility relation, we said that it could be any relation between worlds that you like: you could have it relating every world to every world, no world to any world, or anything in between. That is how we were thinking of accessibility relations in our definition of $\entails_\mlK$. But if we wanted, we could start putting some restrictions on the accessibility relation. In particular, we might insist that it has to be \emph{reflexive}:
+当我们引入可及关系这个概念时，我们说它可以是任意我们想要的世界间关系：可以让每个世界都可达每个世界，也可以让没有世界可达任何世界，或是介于二者之间的任何关系。这就是我们在定义 $\entails_\mlK$ 时所设想的可及关系。但如果我们愿意，可以开始对可及关系施加一些限制。具体来说，我们可以要求它必须是 \emph{自反的}：
 \[\forall w\, Rww\]
-In English: every world accesses itself. Or in terms of relative possibility: every world is possible relative to itself. If we imposed this restriction, we could introduce a new consequence relation, $\entails_\mlT$, as follows:
+用自然语言说：每个世界都可达自身。或用相对可能性的话来说：每个世界相对于自身都是可能的。如果我们施加这一限制，就可以引入一个新的后承关系 $\entails_\mlT$，定义如下：
 \factoidbox{
-	$\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlT \metav{C}$ \ifeff{} there is no world in any interpretation \emph{which has a reflexive accessibility relation}, at which $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n$ are all true and $\metav{C}$ is false
+	$\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlT \metav{C}$ \ifeff{} 在任何\emph{具有自反可及关系的}解释中，都不存在一个世界，使得 $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n$ 全部为真而 $\metav{C}$ 为假
 }
-We have attached the \mlT{} subscript to $\entails$ because it turns out that system \mlT{} is sound and complete relative to this new definition of validity:
+我们在 $\entails$ 上加了下标 \mlT{}，因为系统 \mlT{} 相对于这个新的有效性定义是可靠且完备的：
+
 \begin{compactlist}
-	\item If $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\proves_\mlT\metav{C}$, then $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlT\metav{C}$
-	\item If $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlT\metav{C}$, then $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\proves_\mlT\metav{C}$
+	\item 如果 $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\proves_\mlT\metav{C}$，那么 $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlT\metav{C}$
+	\item 如果 $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlT\metav{C}$，那么 $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\proves_\mlT\metav{C}$
 \end{compactlist}
-As before, we will not try to prove these soundness and completeness results. However, it is relatively easy to see how insisting that the accessibility relation must be reflexive will vindicate the R\mlT{} rule:
+
+同前，我们不会尝试证明这些可靠性与完备性结果。不过，我们很容易看出，要求可及关系必须是自反的，将如何验证 RT 规则：
 \factoidbox{
-	\begin{fitchproof}
+
+
+\begin{fitchproof}
 			\have[m]{m}{\ebox \metav{A}}
 			\have[\, ]{n}{\metav{A}}\rt{m}
 	\end{fitchproof}
+
+
 }
-To see this, just imagine trying to cook up a counter-interpretation to this claim:
+为了看清这一点，只需设想为以下主张构造一个反解释：
 \[
 	\ebox \metav{A}\entails_\mlT \metav{A}
 \]
-We would need to construct a world, $w$, at which $\ebox \metav{A}$ was true, but $\metav{A}$ was false. Now, if $\ebox \metav{A}$ is true at $w$, then $\metav{A}$ must be true at every world $w$ accesses. But since the accessibility relation is reflexive, $w$ accesses $w$. So $\metav{A}$ must be true at $w$. But now $\metav{A}$ must be true \emph{and} false at $w$. Contradiction!
+我们需要构造一个世界 $w$，使得在 $w$ 上 $\ebox \metav{A}$ 为真，但 $\metav{A}$ 为假。现在，如果 $\ebox \metav{A}$ 在 $w$ 上为真，那么 $\metav{A}$ 必须在 $w$ 可达的每一个世界上为真。但由于可及关系是自反的，$w$ 可达 $w$。所以 $\metav{A}$ 必须在 $w$ 上为真。于是 $\metav{A}$ 在 $w$ 上既\emph{为真}又\emph{为假}。矛盾！
 
-\section{A Semantics for \mlSfour}
+\section{\mlSfour 的语义}
 \label{SemanticsS4}
 
-How else might we tweak our definition of validity? Well, we might also stipulate that the accessibility relation has to be \emph{transitive}:
+我们还能如何调整有效性的定义呢？我们也可以规定可及关系必须是 \emph{传递的}：
 \[\forall w_1\forall w_2\forall w_3 ((Rw_1w_2 \eand Rw_2w_3)\eif Rw_1w_3)\]
-In English: if $w_1$ accesses $w_2$, and $w_2$ accesses $w_3$, then $w_1$ accesses $w_3$. Or in terms of relative possibility: if $w_3$ is possible relative to $w_2$, and $w_2$ is possible relative to $w_1$, then $w_3$ is possible relative to $w_1$. If we added this restriction on our accessibility relation, we could introduce a new consequence relation, $\entails_\mlSfour$, as follows:
+用自然语言说：如果 $w_1$ 可达 $w_2$，且 $w_2$ 可达 $w_3$，那么 $w_1$ 可达 $w_3$。或用相对可能性的话来说：如果 $w_3$ 相对于 $w_2$ 是可能的，且 $w_2$ 相对于 $w_1$ 是可能的，那么 $w_3$ 相对于 $w_1$ 是可能的。如果我们对可及关系加上这一限制，就可以引入一个新的后承关系 $\entails_\mlSfour$，定义如下：
 \factoidbox{
-	$\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlSfour \metav{C}$ \ifeff{} there is no world in any interpretation \emph{which has a reflexive and transitive accessibility relation}, at which $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n$ are all true and $\metav{C}$ is false
+	$\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlSfour \metav{C}$ \ifeff{} 在任何\emph{具有自反且传递的可及关系的}解释中，都不存在一个世界，使得 $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n$ 全部为真而 $\metav{C}$ 为假
 }
-We have attached the \mlSfour{} subscript to $\entails$ because it turns out that system \mlSfour{} is sound and complete relative to this new definition of validity:
+我们在 $\entails$ 上加了下标 \mlSfour{}，因为系统 \mlSfour{} 相对于这个新的有效性定义是可靠且完备的：
+
 \begin{compactlist}
-	\item If $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\proves_\mlSfour\metav{C}$, then $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlSfour\metav{C}$
-	\item If $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlSfour\metav{C}$, then $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\proves_\mlSfour\metav{C}$
+	\item 如果 $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\proves_\mlSfour\metav{C}$，那么 $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlSfour\metav{C}$
+	\item 如果 $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlSfour\metav{C}$，那么 $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\proves_\mlSfour\metav{C}$
 \end{compactlist}
-As before, we will not try to prove these soundness and completeness results. However, it is relatively easy to see how insisting that the accessibility relation must be transitive will vindicate the \mlSfour{} rule:
+
+同前，我们不会尝试证明这些可靠性与完备性结果。不过，我们很容易看出，要求可及关系必须是传递的，将如何验证 \mlSfour{} 规则：
 \factoidbox{
-	\begin{fitchproof}
+
+
+\begin{fitchproof}
 			\have[m]{m}{\ebox\metav{A}}
 			\open
 			\hypo[\ ]{k}{\ebox}\AS
 			\have[\ ]{n}{\ebox\metav{A}}\rfour{m}
 	\end{fitchproof}
+
 }
-The idea behind strict subproofs, remember, is that they are ways to prove things that must be true in all accessible worlds. So the R$\mathbf{4}$ rule means that whenever $\ebox \metav{A}$ is true, $\ebox \metav{A}$ must also be true in every accessible world. In other words, we must have $\ebox\metav{A} \entails_\mlSfour \ebox\ebox\metav{A}$.
+回想一下，严格子证明背后的思想是，它们是用来证明某些在所有可达世界中必然为真的东西的方法。所以 R$\mathbf{4}$ 规则意味着，只要 $\ebox \metav{A}$ 为真，那么 $\ebox \metav{A}$ 在每一个可达世界中也必然为真。换言之，我们必有 $\ebox\metav{A} \entails_\mlSfour \ebox\ebox\metav{A}$。
 
-To see this, just imagine trying to cook up a counter-interpretation to this claim:
+为了看清这一点，只需设想为以下主张构造一个反解释：
 \[\ebox\metav{A} \entails_\mlSfour \ebox \ebox \metav{A}\]
-We would need to construct a world, $w_1$, at which $\ebox\metav{A}$ was true, but $\ebox \ebox \metav{A}$ was false. Now, if $\ebox \ebox \metav{A}$ is false at $w_1$, then $w_1$ must access some world, $w_2$, at which $\ebox\metav{A}$ is false. Equally, if $\ebox \metav{A}$ is false at $w_2$, then $w_2$ must access some world, $w_3$, at which $\metav{A}$ is false. We just said that $w_1$ accesses $w_2$, and $w_2$ accesses $w_3$. So since we are now insisting that the accessibility relation be transitive, $w_1$ must access $w_3$. And as $\ebox\metav{A}$ is true at $w_1$, and $w_3$ is accessible from $w_1$, it follows that $\metav{A}$ must be true at $w_3$. So $\metav{A}$ is true \emph{and} false at $w_3$. Contradiction!
+我们需要构造一个世界 $w_1$，使得 $\ebox\metav{A}$ 在 $w_1$ 上为真，但 $\ebox \ebox \metav{A}$ 在 $w_1$ 上为假。现在，如果 $\ebox \ebox \metav{A}$ 在 $w_1$ 上为假，那么 $w_1$ 必须可达某个世界 $w_2$，使得 $\ebox\metav{A}$ 在 $w_2$ 上为假。同样，如果 $\ebox \metav{A}$ 在 $w_2$ 上为假，那么 $w_2$ 必须可达某个世界 $w_3$，使得 $\metav{A}$ 在 $w_3$ 上为假。我们刚说过 $w_1$ 可达 $w_2$，且 $w_2$ 可达 $w_3$。因此，由于我们现在要求可及关系是传递的，$w_1$ 必须可达 $w_3$。又因为 $\ebox\metav{A}$ 在 $w_1$ 上为真，且 $w_3$ 是从 $w_1$ 可达的，所以 $\metav{A}$ 在 $w_3$ 上必为真。于是 $\metav{A}$ 在 $w_3$ 上既为真\emph{又}为假。矛盾！
 
-\section{A Semantics for \mlSfive}
+\section{\mlSfive 的语义}
 \label{SemanticsS5}
 
-Let's put one more restriction on the accessibility relation. This time, let's insist that it must also be \emph{symmetric}:
+让我们对可及关系再施加一条限制。这次，我们要求它还必须是对称的：
 \[\forall w_1\forall w_2(Rw_1w_2 \eif Rw_2w_1)\]
-In English: if $w_1$ accesses $w_2$, then $w_2$ accesses $w_1$. Or in terms of relative possibility: if $w_2$ is possible relative to $w_1$, then $w_1$ is possible relative to $w_2$. Logicians call a relation that is reflexive, symmetric, and transitive an \emph{equivalence} relation. We can now define a new consequence relation, $\entails_\mlSfive $, as follows:
+用自然语言说：如果 $w_1$ 可达 $w_2$，那么 $w_2$ 可达 $w_1$。或用相对可能性的话来说：如果 $w_2$ 相对于 $w_1$ 是可能的，那么 $w_1$ 相对于 $w_2$ 也是可能的。逻辑学家称一个既自反、又对称、又传递的关系为\emph{等价关系}。我们现在可以定义一个新的后承关系 $\entails_\mlSfive $，如下：
 \factoidbox{
-	$\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlSfive  \metav{C}$ \ifeff{} there is no world in any interpretation \emph{whose accessibility relation is an equivalence relation}, at which $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n$ are all true and $\metav{C}$ is false
+	$\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlSfive  \metav{C}$ \ifeff{} 不存在任何\emph{可及关系是等价关系的}解释中的世界，使得 $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n$ 全部为真而 $\metav{C}$ 为假
 }
-We have attached the \mlSfive{} subscript to $\entails$ because it turns out that system \mlSfive{} is sound and complete relative to this new definition of validity:
+我们在 $\entails$ 上加了下标 \mlSfive{}，因为系统 \mlSfive{} 相对于这个新的有效性定义是可靠且完备的：
+
 \begin{compactlist}
-	\item If $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\proves_\mlSfive \metav{C}$, then $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlSfive \metav{C}$
-	\item If $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlSfive \metav{C}$, then $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\proves_\mlSfive \metav{C}$
+	\item 如果 $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\proves_\mlSfive \metav{C}$，那么 $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlSfive \metav{C}$
+	\item 如果 $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlSfive \metav{C}$，那么 $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\proves_\mlSfive \metav{C}$
 \end{compactlist}
-As before, we will not try to prove these soundness and completeness results here. However, it is relatively easy to see how insisting that the accessibility relation must be an equivalence relation will vindicate the R$\mathbf{5}$ rule:
+
+同前，我们不会在此尝试证明这些可靠性与完备性结果。然而，很容易看出，要求可及关系必须是等价关系，将如何验证 R$\mathbf{5}$ 规则：
 \factoidbox{
-	\begin{fitchproof}
+
+
+\begin{fitchproof}
 			\have[m]{m}{\enot\ebox \metav{A}}
 			\open
 			\hypo[\ ]{k}{\ebox}\AS
 			\have[\, ]{n}{\enot\ebox\metav{A}}\rfive{m}
 	\end{fitchproof}
-}
-The rule says that if $\metav{A}$ is not necessary, i.e., false in some accessible world, it is also not necessary in any accessible possible world, i.e., we have $\enot\ebox \metav{A} \proves_\mlSfive  \ebox\enot\ebox \metav{A}$.
 
-To see this, just imagine trying to cook up a counter-interpretation to this claim:
+}
+这条规则是说，如果 $\metav{A}$ 不是必然的，即在某个可达世界中为假，那么它在任何可达的可能世界中也不是必然的，即我们有 $\enot\ebox \metav{A} \proves_\mlSfive  \ebox\enot\ebox \metav{A}$。
+
+为了看清这一点，只需设想为以下主张构造一个反解释：
 \[
 	\enot\ebox\metav{A} \entails_\mlSfive  \ebox \enot\ebox \metav{A}
 \]
-We would need to construct a world, $w_1$, at which $\enot\ebox\metav{A}$ was true, but $\ebox \enot\ebox \metav{A}$ was false.
-Now, if $\enot\ebox\metav{A}$ is true at $w_1$, then $w_1$ must access some world, $w_2$, at which $\metav{A}$ is false. Equally, if $\ebox \enot\ebox \metav{A}$ is false at $w_1$, then $w_1$ must access some world, $w_3$, at which $\enot\ebox \metav{A}$ is false. Since we are now insisting that the accessibility relation is an equivalence relation, and hence symmetric, we can infer that $w_3$ accesses $w_1$. Thus, $w_3$ accesses $w_1$, and $w_1$ accesses $w_2$. Again, since we are now insisting that the accessibility relation is an equivalence relation, and hence transitive, we can infer that $w_3$ accesses $w_2$. But earlier we said that $\enot\ebox \metav{A}$ is false at $w_3$, which implies that $\metav{A}$ is true at every world which $w_3$ accesses. So $\metav{A}$ is true \emph{and} false at $w_2$. Contradiction!
+我们需要构造一个世界 $w_1$，使得 $\enot\ebox\metav{A}$ 在 $w_1$ 上为真，但 $\ebox \enot\ebox \metav{A}$ 在 $w_1$ 上为假。
+现在，如果 $\enot\ebox\metav{A}$ 在 $w_1$ 上为真，那么 $w_1$ 必须可达某个世界 $w_2$，使得 $\metav{A}$ 在 $w_2$ 上为假。同样，如果 $\ebox \enot\ebox \metav{A}$ 在 $w_1$ 上为假，那么 $w_1$ 必须可达某个世界 $w_3$，使得 $\enot\ebox \metav{A}$ 在 $w_3$ 上为假。既然我们要求可及关系是等价关系，因而是对称的，我们可以推断 $w_3$ 可达 $w_1$。这样，$w_3$ 可达 $w_1$，且 $w_1$ 可达 $w_2$。再次利用我们要求可及关系是等价关系（因而是传递的）这一点，我们可以推断 $w_3$ 可达 $w_2$。但我们之前说过，$\enot\ebox \metav{A}$ 在 $w_3$ 上为假，这意味着 $\metav{A}$ 在 $w_3$ 可达的每一个世界上都为真。所以 $\metav{A}$ 在 $w_2$ 上既为真\emph{又}为假。矛盾！
 
-In the definition of $\entails_\mlSfive $, we stipulated that the accessibility relation must be an equivalence relation. But it turns out that there is another way of getting a notion of validity fit for \mlSfive. Rather than stipulating that the accessibility relation be an equivalence relation, we can instead stipulate that it be a \emph{universal} relation:
+在 $\entails_\mlSfive $ 的定义中，我们规定了可及关系必须是等价关系。但事实证明，还有另一种方法可以获得适合 \mlSfive 的有效性概念。我们不必规定可及关系是等价关系，而是可以规定它是一种\emph{普遍}关系：
 \[\forall w_1\forall w_2\, Rw_1w_2\]
-In English: every world accesses every world. Or in terms of relative possibility: every world is possible relative to every world. Using this restriction on the accessibility relation, we could have defined $\entails_\mlSfive $ like this:
+用自然语言说：每个世界可达每个世界。或用相对可能性的话来说：每个世界相对于每个世界都是可能的。利用对可及关系的这种限制，我们可以如下定义 $\entails_\mlSfive $：
 \factoidbox{
-	$\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlSfive  \metav{C}$ \ifeff{} there is no world in any interpretation \emph{which has a universal accessibility relation}, at which $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n$ are all true and $\metav{C}$ is false.
+	$\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlSfive  \metav{C}$ \ifeff{} 不存在任何\emph{具有普遍可及关系的}解释中的世界，使得 $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n$ 全部为真而 $\metav{C}$ 为假。
 }
-If we defined $\entails_\mlSfive $ like this, we would still get the same soundness and completeness results for \mlSfive. What does this tell us? Well, it means that if we are dealing with a notion of necessity according to which \emph{every} world is possible relative to \emph{every} world, then we should use \mlSfive. What is more, most philosophers assume that the notions of necessity that they are most concerned with, like \emph{logical necessity} and \emph{metaphysical necessity}, are of exactly this kind. So \mlSfive{} is the modal system that most philosophers use most of the time.
+如果我们这样定义 $\entails_\mlSfive $，对于 \mlSfive 我们仍会得到相同的可靠性与完备性结果。这说明了什么？这说明，如果我们处理的是那样一种必然性概念，它认为\emph{每一个}世界都相对于\emph{每一个}世界是可能的，那么我们就应该使用 \mlSfive。更进一步说，大多数哲学家都假设，他们最为关心的那些必然性概念（例如\emph{逻辑必然性}和\emph{形而上学必然性}）恰恰就是这种类型。因此，\mlSfive 是大多数哲学家在大多数时候所使用的模态系统。
 
 \practiceproblems
 
 \problempart
-Present counter-interpretations to the following false claims:
+为下列错误主张构造反解释：
+
+
 \begin{compactlist}
 	\item $\enot P \entails_\mlK \enot\ediamond P$
 	\item $\ebox(P \eor Q)\entails_\mlK \ebox P \eor \ebox Q$
@@ -633,30 +722,31 @@ Present counter-interpretations to the following false claims:
 \end{compactlist}
 
 \problempart
-Present counter-interpretations to the following false claims:
+为下列错误主张构造反解释：
+
+
 \begin{compactlist}
 	\item $\ediamond A\entails_\mlSfour \ebox\ediamond A$
 	\item $\ediamond A, \ebox (\ediamond A \eif B)\entails_\mlSfour\ebox B$
 \end{compactlist}
 
 \problempart
-Present counter-interpretations to the following false claims:
+为下列错误主张构造反解释：
+
+
 \begin{compactlist}
 	\item $\ebox (M\eif O),\ediamond M\entails_\mlT O$
 	\item $\ebox A\entails_\mlT \ebox \ebox A$
 \end{compactlist}
 
-\section*{Further reading}
+\section*{延伸阅读}
 
-Modal logic is a large subfield of logic. We have only scratched the surface. If you want to learn more about modal logic, here are some textbooks you might consult.
+模态逻辑是逻辑学中一个庞大的子领域。我们仅触及了皮毛。如果你想了解更多关于模态逻辑的知识，可以参考以下教科书：
 
 \begin{itemize}
-	\item George E. Hughes and Max J. Cresswell, \textit{A New Introduction
-	to Modal Logic}, Oxford: Routledge, 1996.
-	\item Graham Priest, \textit{An Introduction to Non-Classical Logic},
-	2nd ed., Cambridge: Cambridge University Press, 2008.
-	\item James W. Garson, \textit{Modal Logic for Philosophers}, 2nd
-	ed., Cambridge: Cambridge University Press, 2013.
+	\item George E. Hughes 与 Max J. Cresswell 合著，《模态逻辑新导论》（\textit{A New Introduction to Modal Logic}），牛津：Routledge 出版社，1996年。
+	\item Graham Priest 著，《非经典逻辑导论》（\textit{An Introduction to Non-Classical Logic}），第二版，剑桥：剑桥大学出版社，2008年。
+	\item James W. Garson 著，《面向哲学家的模态逻辑》（\textit{Modal Logic for Philosophers}），第二版，剑桥：剑桥大学出版社，2013年。
 \end{itemize}
 
-None of these authors formulate their modal proof systems in quite the way we did, but the closest formulation is given by Garson.
+这些作者都没有完全按照我们的方式来构建他们的模态证明系统，但与我们的构建方式最为接近的是 Garson 给出的系统。

@@ -1,11 +1,10 @@
 %!TEX root = forallxyyc.tex
 
-\chapter{Alternative proof systems}
-In formulating our natural deduction system, we treated certain rules of natural deduction as \emph{basic}, and others as \emph{derived}. However, we could equally well have taken various different rules as basic or derived. We will illustrate this point by considering some alternative treatments of disjunction, negation, and the quantifiers. We will also explain why we have made the choices that we have.
+\chapter{替代的证明系统}
+在构建我们的自然演绎系统时，我们将某些自然演绎规则视为\emph{基本规则}，而将其他规则视为\emph{派生规则}。然而，我们同样可以选择各种不同的规则作为基本规则或派生规则。我们将通过考察对析取、否定和量词的几种替代处理方式来说明这一点。同时，我们也会解释为何做出目前的选择。
 
-
-\section{Alternative disjunction elimination}
-Some systems take DS as their basic rule for disjunction elimination. Such systems can then treat the $\eor$E rule as a derived rule. For they might offer the following proof scheme: 
+\section{替代的析取消去规则}
+有些系统以 DS 作为析取消去的基本规则。这类系统便可以将 $\eor$E 规则视为一条派生规则。因为它们可以提供如下的证明方案：
 \begin{fitchproof}
   \have[m]{ab}{\metav{A}\eor\metav{B}}
   \open
@@ -32,11 +31,10 @@ Some systems take DS as their basic rule for disjunction elimination. Such syste
   \close
   \have{con}{\metav{C}}\ip{nc-bot2}
 \end{fitchproof}
-So why did we choose to take $\eor$E as basic, rather than DS?\footnote{P.~D.\ Magnus's original version of this book went the other way.} Our reasoning is that DS involves the use of `$\enot$' in the statement of the rule. It is in some sense `cleaner' for our disjunction elimination rule to avoid mentioning \emph{other} connectives.
+那么，为什么我们选择将 $\eor$E 作为基本规则，而不是 DS 呢？\footnote{P.~D.\ Magnus 的本书原版选择了另一条路。}我们的理由是，DS 在规则的陈述中涉及了“$\enot$”的使用。从某种意义上说，让我们的析取消去规则避免提及\emph{其他}联结词会显得更“干净”。
 
-
-\section{Alternative negation rules}
-Some systems take the following rule as their basic negation introduction rule:
+\section{替代的否定规则}
+有些系统将以下规则作为它们的基本否定引入规则：
 \begin{fitchproof}
 	\open
 		\hypo[m]{a}{\metav{A}}\AS
@@ -45,7 +43,7 @@ Some systems take the following rule as their basic negation introduction rule:
 	\close
 	\have[\ ]{}{\enot\metav{A}}\by{$\enot$I*}{a-nb}
 \end{fitchproof}
-and a corresponding version of the rule we called IP as their basic negation elimination rule:
+并将我们称为 IP 的规则的一个对应版本作为它们的基本否定消去规则：
 \begin{fitchproof}
 	\open
 		\hypo[m]{na}{\enot\metav{A}} \AS
@@ -54,29 +52,27 @@ and a corresponding version of the rule we called IP as their basic negation eli
 	\close
 	\have[\ ]{a}{\metav{A}}\by{$\enot$E*}{na-nb}
 \end{fitchproof}
-Using these two rules, we could we could have avoided all use of the symbol `$\ered$' altogether.\footnote{Again, P.~D.\ Magnus's original version of this book went the other way.} The resulting system would have had fewer rules than ours.
+使用这两条规则，我们本可以完全避免使用符号“$\ered$”。\footnote{再次说明，P.~D.\ Magnus 的本书原版选择了另一条路。}由此得到的系统将比我们的系统拥有更少的规则。
 
-Another way to deal with negation is to use either LEM or DNE as a basic rule and introduce IP as a derived rule. Typically, in such a system the rules are given different names, too. E.g., sometimes what we call $\enot$E is called $\ered$I, and what we call X is called $\ered$E.\footnote{The version of this book due to Tim Button goes this route and replaces IP with LEM, which he calls TND, for ``tertium non datur.''}
+处理否定的另一种方式是，将 LEM 或 DNE 作为基本规则，并将 IP 作为派生规则引入。通常，在这类系统中，规则也被赋予了不同的名称。例如，有时我们称为 $\enot$E 的规则被称为 $\ered$I，而我们称为 X 的规则被称为 $\ered$E。\footnote{Tim Button 负责的本书版本走了这条路，并用 LEM（他称之为 TND，即“排中律”）取代了 IP。}
 
-So why did we chose our rules for negation and contradiction? 
+那么，我们为何选择了现有的否定和矛盾规则呢？
 
-Our first reason is that adding the symbol `$\ered$' to our natural deduction system makes proofs considerably easier to work with. For instance, in our system it's always clear what the conclusion of a subproof is: the sentence on the last line, e.g.,\ $\ered$ in IP or $\enot$I. In $\enot$I* and $\enot$E*, subproofs have two conclusions, so you can't check at one glance if an application of them is correct.
+我们的第一个理由是，在自然演绎系统中加入符号“$\ered$”使得证明的构建容易得多。例如，在我们的系统中，子证明的结论总是明确的：就是最后一行的语句，例如 IP 或 $\enot$I 中的 $\ered$。而在 $\enot$I* 和 $\enot$E* 中，子证明有两个结论，因此无法一目了然地检查对它们的应用是否正确。
 
-Our second reason is that a lot of fascinating philosophical discussion has focussed on the acceptability or otherwise of indirect proof IP (equivalently, excluded middle, i.e.,\ LEM, or double negation elimination DNE) and explosion (i.e.,\ X). By treating these as separate rules in the proof system, you will be  in a better position to engage with that philosophical discussion. In particular: having invoked these rules explicitly, it would be much easier for us to know what a system which lacked these rules would look like.
+我们的第二个理由是，大量引人入胜的哲学讨论都聚焦于间接证明 IP（等价于排中律 LEM 或双重否定消去 DNE）和爆炸律 X 的可接受性（或不可接受性）。通过在证明系统中将这些规则作为独立的规则来处理，你将能更好地参与这些哲学讨论。特别地，由于我们明确地援引了这些规则，要设想一个缺少这些规则的系统的样貌就会容易得多。
 
-This discussion, and in fact the vast majority of mathematical study on applications of natural deduction proofs beyond introductory courses, makes reference to a different version of natural deduction. This version was invented by Gerhard Gentzen in 1935 as refined by Dag Prawitz in 1965. Our set of basic rules coincides with theirs. In other words, the rules we use are those that are standard in philosophical and mathematical discussion of natural deduction proofs outside of introductory courses.
+这一讨论，事实上也包括入门课程之外关于自然演绎证明应用的绝大多数数学研究，都指向了一个不同版本的自然演绎系统。该版本由 Gerhard Gentzen 于 1935 年提出，并经 Dag Prawitz 于 1965 年改进。我们的基本规则集与他们的规则是一致的。换句话说，我们所使用的规则，正是哲学和数学领域中，在入门课程之外讨论自然演绎证明时所采用的标准规则。
 
+\section{替代的量词规则}
+处理量词的另一种方式，是把来自 \cref{s:BasicFOL} 的 $\forall$I 和 $\forall$E 的规则，以及两条允许我们从 $\forall \metav{x}\, \enot \metav{A}$ 推出 $\enot \exists \metav{x}\, \metav{A}$ 及反向推出的 CQ 规则，都作为基本规则。\footnote{Warren Goldfarb 在 \textit{Deductive Logic}（2003, Hackett Publishing Co.）中采用了这一思路。}
 
-
-\section{Alternative quantification rules}
-An alternative approach to the quantifiers is to take as basic the rules for $\forall$I and $\forall$E from \cref{s:BasicFOL}, and also two CQ rules which allow us to move from $\forall \metav{x}\, \enot \metav{A}$ to $\enot \exists \metav{x}\, \metav{A}$ and vice versa.\footnote{Warren Goldfarb follows this line in \textit{Deductive Logic}, 2003, Hackett Publishing Co.}  
-
-Taking only these rules as basic, we could have derived the  $\exists$I and $\exists$E rules provided in \cref{s:BasicFOL}. To derive the $\exists$I rule is fairly simple. Suppose $\metav{A}$ contains the name $\metav{c}$, and contains no instances of the variable $\metav{x}$, and that we want to do the following:
+如果只把这些规则作为基本规则，我们就可以推导出 \cref{s:BasicFOL} 所提供的 $\exists$I 和 $\exists$E 规则。推导 $\exists$I 规则相当简单。假设 $\metav{A}$ 包含名称 $\metav{c}$ 且不包含变元 $\metav{x}$ 的实例，而我们想要进行如下推演：
 \begin{fitchproof}
 	\have[m]{a}{\metav{A}(\ldots \metav{c} \ldots \metav{c}\ldots)}
 	\have[k]{c}{\exists \metav{x}\, \metav{A}(\ldots \metav{x} \ldots \metav{c}\ldots)}
 \end{fitchproof}
-This is not yet permitted, since in this new system, we do not have the $\exists$I rule. We can, however, offer the following:
+这在新系统中是不允许的，因为我们没有 $\exists$I 这条基本规则。但是，我们可以给出如下推导：
 \begin{fitchproof}
 	\have[m]{a}{\metav{A}(\ldots \metav{c} \ldots \metav{c}\ldots)}
 	\open
@@ -87,7 +83,7 @@ This is not yet permitted, since in this new system, we do not have the $\exists
 	\close
 	\have{nnEa}{\exists \metav{x}\, \metav{A}(\ldots \metav{x} \ldots \metav{c}\ldots)}\ip{nEna-red}
 \end{fitchproof}\noindent
-To derive the $\exists$E rule is rather more subtle. This is because the $\exists$E rule has an important constraint (as, indeed, does the $\forall$I rule), and we need to make sure that we are respecting it. So, suppose we are in a situation where we \emph{want} to do the following:
+推导 $\exists$E 规则则要更巧妙一些。这是因为 $\exists$E 规则有一个重要的约束条件（实际上，$\forall$I 规则也有），我们需要确保自己遵守了它。假设我们处于如下情况，并且\emph{想要}进行如下推演：
 \begin{fitchproof}
 	\have[m]{ExA}{\exists \metav{x}\, \metav{A}(\ldots \metav{x} \ldots \metav{x}\ldots)}
 	\open
@@ -96,8 +92,7 @@ To derive the $\exists$E rule is rather more subtle. This is because the $\exist
 	\close
 	\have[k]{end}{\metav{B}}
 \end{fitchproof}\noindent
- where $\metav{c}$ does not occur in any undischarged assumptions, or in $\metav{B}$, or in $\exists \metav{x}\, \metav{A}(\ldots \metav{x} \ldots \metav{x}\ldots)$. Ordinarily, we would be allowed to use the $\exists$E rule; but we are not here assuming that we have access to this rule as a basic rule. Nevertheless, we could offer the following, more complicated derivation:
- 
+其中 $\metav{c}$ 不出现在任何未解除的假设中，也不出现在 $\metav{B}$ 或 $\exists \metav{x}\, \metav{A}(\ldots \metav{x} \ldots \metav{x}\ldots)$ 中。通常情况下，我们可以使用 $\exists$E 规则；但在这里，我们并不假定这条规则是我们可以直接使用的基本规则。尽管如此，我们可以给出下面这个更复杂的推导：
 \begin{fitchproof}
 	\have[m]{ExA}{\exists \metav{x}\, \metav{A}(\ldots \metav{x} \ldots \metav{x}\ldots)}
 	\open
@@ -106,7 +101,7 @@ To derive the $\exists$E rule is rather more subtle. This is because the $\exist
 	\close
 	\have[k]{condi}{\metav{A}(\ldots \metav{c} \ldots \metav{c}\ldots) \eif \metav{B}}\ci{Ac-B}
 	\open
-		\hypo{nB}{\enot \metav{B}}\AS
+		\hypo[n]{nB}{\enot \metav{B}}\AS
 		\have{nAc}{\enot \metav{A}(\ldots \metav{c} \ldots \metav{c}\ldots)}\mt{condi, nB}
 		\have{AxnA}{\forall \metav{x} \enot \metav{A}(\ldots \metav{x} \ldots \metav{x}\ldots)}\Ai{nAc}
 		\have{nEA}{\enot \exists \metav{x} \metav{A}(\ldots \metav{x} \ldots \metav{x}\ldots)}\cq{AxnA}
@@ -114,12 +109,12 @@ To derive the $\exists$E rule is rather more subtle. This is because the $\exist
 	\close
 	\have{nnB}{\metav{B}}\ip{nB-red2}
 \end{fitchproof}\noindent
-We are permitted to use $\forall$I on line $k+3$ because $\metav{c}$ does not occur in any  undischarged assumptions or in $\metav{B}$. The entries on lines $k+4$ and $k+1$ contradict each other, because $\metav{c}$ does not occur in $\exists \metav{x}\, \metav{A}(\ldots \metav{x} \ldots \metav{x} \ldots)$.
+我们之所以可以在第 $k+3$ 行使用 $\forall$I，是因为 $\metav{c}$ 不出现在任何未解除的假设或 $\metav{B}$ 中。第 $k+4$ 行和第 $k+1$ 行是矛盾的，因为 $\metav{c}$ 不出现在 $\exists \metav{x}\, \metav{A}(\ldots \metav{x} \ldots \metav{x} \ldots)$ 中。
 
-Armed with these derived rules, we could now go on to derive the two remaining CQ rules, exactly as in \cref{s:DerivedFOL}.
+有了这些派生规则之后，我们现在就可以像 \cref{s:DerivedFOL} 中那样，继续推导出剩下的两条 CQ 规则。
 
-So, why did we start with all of the quantifier rules as basic, and then derive the CQ rules? 
+那么，为什么我们一开始要把所有量词规则都作为基本规则，然后再推导出 CQ 规则呢？
 
-Our first reason is that it seems more intuitive to treat the quantifiers as on a par with one another, giving them their own basic rules for introduction and elimination.
+我们的第一个理由是，将量词彼此平等对待，为它们各自提供引入和消去的基本规则，这似乎更符合直觉。
 
-Our second reason relates to the discussion of alternative negation rules. In the derivations of the rules of $\exists$I and $\exists$E that we have offered in this section, we invoked~IP.  But, as we mentioned earlier, IP is a contentious rule. So, if we want to move to a system which abandons IP, but which still allows us to use existential quantifiers, we will want to take the introduction and elimination rules for the quantifiers as basic, and take the CQ rules as derived. (Indeed, in a system without IP, LEM, and DNE, we will be \emph{unable} to derive the CQ rule which moves from $\enot \forall \metav{x}\, \metav{A}$ to $\exists \metav{x}\, \enot \metav{A}$.)
+我们的第二个理由与关于替代否定规则的讨论有关。在本节所提供的 $\exists$I 和 $\exists$E 规则的推导中，我们调用了 IP 规则。但是，正如我们之前提到的，IP 是一条有争议的规则。因此，如果我们想要转向一个放弃 IP 但仍允许使用存在量词的系统，我们就会希望把量词的引入和消去规则作为基本规则，而把 CQ 规则作为派生规则。（事实上，在一个没有 IP、LEM 和 DNE 的系统中，我们将\emph{无法}推导出那条从 $\enot \forall \metav{x}\, \metav{A}$ 推出 $\exists \metav{x}\, \enot \metav{A}$ 的 CQ 规则。）

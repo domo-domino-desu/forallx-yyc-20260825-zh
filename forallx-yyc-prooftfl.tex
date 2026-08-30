@@ -1,50 +1,58 @@
 %!TEX root = forallxyyc.tex
-\part{Natural deduction for TFL}
+\part{真值函项逻辑的自然演绎}
 \label{ch.NDTFL}
 \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
 
-\chapter{The very idea of natural deduction}\label{s:NDVeryIdea}
+\chapter{自然演绎的基本思想}\label{s:NDVeryIdea}
 
-Way back in \cref{s:Valid}, we said that an argument is valid \ifeff{} there is no case in which all of the premises are true and the conclusion is false.
+早在 \cref{s:Valid} 中，我们就说过，一个论证是有效的 \ifeff{} 不存在所有前提都为真而结论为假的情形。
 
-In the case of TFL, this led us to develop truth tables. Each line of a complete truth table corresponds to a valuation. So, when faced with a TFL argument, we have a very direct way to assess whether there is a valuation on which the premises are true and the conclusion is false: just thrash through the truth table.
+在真值函项逻辑中，这引导我们发展出真值表。一个完整真值表的每一行都对应一个赋值。因此，面对一个真值函项逻辑论证时，要判断是否存在某个赋值使得所有前提为真而结论为假，我们有一个非常直接的方法：只需完整地构造真值表即可。
 
-However, truth tables may not give us much \emph{insight}. Consider two arguments in TFL:
+然而，真值表可能无法提供多少\emph{洞见}。考虑真值函项逻辑中的两个论证：
 \begin{align*}
 P \eor Q, \enot P & \therefore Q\\
 P \eif Q, P & \therefore Q
 \end{align*}
-Clearly, these are valid arguments. You can confirm that they are valid by constructing four-line truth tables, but we might say that they make use of different \emph{forms} of reasoning. It might be nice to keep track of these different forms of inference.
+显然，这些都是有效论证。你可以通过构造四行真值表来确认这一点，但我们或许会说，它们利用了不同的\emph{推理形式}。若能跟踪这些不同的推理形式，会很有帮助。
 
-One aim of a \emph{natural deduction system} is to show that particular arguments are valid, in a way that allows us to understand the reasoning that the arguments might involve. We begin with very basic rules of inference. These rules can be combined to offer more complicated arguments. Indeed, with just a small starter pack of rules of inference, we hope to capture all valid arguments.
+\emph{自然演绎系统}的目标之一，就在于以能够让我们理解论证所涉推理过程的方式，来表明特定论证是有效的。我们从非常基本的推理规则开始。这些规则可以组合起来，以构建更复杂的论证。事实上，我们希望仅用一小套初始的推理规则，就能刻画所有有效论证。
 
-\emph{This is a very different way of thinking about arguments.} 
+\emph{这是思考论证的一种非常不同的方式。}
 
-With truth tables, we directly consider different ways to make sentences true or false. With natural deduction systems, we manipulate sentences in accordance with rules that we have set down as good rules. The latter promises to give us a better insight---or at least, a different insight---into how arguments work.
+使用真值表时，我们直接考虑使语句为真或为假的各种方式。使用自然演绎系统时，我们则依据我们认定为良好的规则来操作语句。后者预示着能让我们更深入地理解——或者至少是提供一种不同的视角来理解——论证是如何运作的。
 
-The move to natural deduction might be motivated by more than the search for insight. It might also be motivated by \emph{necessity}. Consider:
+转向自然演绎的动机，可能不仅源于寻求洞见，也可能是出于\emph{必要性}。考虑：
 \ifHTMLtarget
+
+
 \begin{earg}
 	\item $A_1 \eif C_1$
-	\item[\texttherefore] $(A_1 \eand (A_2 \eand (A_3 \eand (A_4 \eand A_5)))) \eif 
+	\item[\texttherefore] $(A_1 \eand (A_2 \eand (A_3 \eand (A_4 \eand A_5)))) \eif
 	((((C_1 \eor C_2) \eor C_3) \eor C_4) \eor C_5)$
 \end{earg}
+
+
 \else
 \begin{align*}
 	& A_1 \eif C_1 \\
-	\therefore\, & (A_1 \eand (A_2 \eand (A_3 \eand (A_4 \eand A_5)))) \eif {}\\ 
+	\therefore\, & (A_1 \eand (A_2 \eand (A_3 \eand (A_4 \eand A_5)))) \eif {}\\
 	& \qquad ((((C_1 \eor C_2) \eor C_3) \eor C_4) \eor C_5)
 \end{align*}
 \fi
-To test this argument for validity, you might use a 1{,}024-line truth table. If you do it correctly, then you will see that there is no line on which all the premises are true and on which the conclusion is false. So you will know that the argument is valid. (But, as just mentioned, there is a sense in which you will not know \emph{why} the argument is valid.) But now consider:
+要检验这个论证是否有效，你可能需要构造一个 1{,}024 行的真值表。如果你正确地完成了它，会发现没有一行是所有前提为真而结论为假的。因此你会知道这个论证是有效的。（但如前所述，在某种意义上你并不知道\emph{为什么}这个论证有效。）但现在考虑：
 \ifHTMLtarget
+
+
 \begin{earg}
 \item $A_1 \eif C_1$
-\item[\texttherefore] $(A_1 \eand (A_2 \eand (A_3 \eand (A_4 \eand (A_5 \eand 
- (A_6 \eand (A_7 \eand (A_8 \eand (A_9 \eand A_{10}))))))))) \eif 
+\item[\texttherefore] $(A_1 \eand (A_2 \eand (A_3 \eand (A_4 \eand (A_5 \eand
+ (A_6 \eand (A_7 \eand (A_8 \eand (A_9 \eand A_{10}))))))))) \eif
  (((((((((C_1 \eor C_2) \eor C_3) \eor C_4) \eor C_5) \eor  C_6) \eor
  C_7) \eor C_8) \eor C_9) \eor C_{10})$
 \end{earg}
+
+
 \else
 \begin{align*}
 & A_1 \eif C_1 \\
@@ -54,161 +62,179 @@ To test this argument for validity, you might use a 1{,}024-line truth table. If
 & \qquad C_6) \eor C_7) \eor C_8) \eor C_9) \eor C_{10})
 \end{align*}
 \fi
-This argument is also valid---as you can probably tell---but to test it requires a truth table with $2^{20} = 1{,}048{,}576$ lines. In principle, we can set a machine to grind through truth tables and report back when it is finished. In practice, complicated arguments in TFL can become \emph{intractable} if we use truth tables.
+这个论证（你或许能看出来）也是有效的——但要检验它需要一个包含 $2^{20} = 1{,}048{,}576$ 行的真值表。原则上，我们可以让机器机械地检查真值表，完成后再报告结果。但实际上，如果使用真值表，真值函项逻辑中的复杂论证会变得\emph{难以处理}。
 
-When we get to first-order logic (FOL) (beginning in \cref{s:FOLBuildingBlocks}), though, the problem gets dramatically worse. There is nothing like the truth table test for FOL. To assess whether or not an argument is valid, we have to reason about \emph{all} interpretations, but, as we will see, there are infinitely many possible interpretations. We cannot even in principle set a machine to grind through infinitely many possible interpretations and report back when it is finished: it will \emph{never} finish. We either need to come up with some more efficient way of reasoning about all interpretations, or we need to look for something different.
+然而，当我们进入一阶逻辑（从 \cref{s:FOLBuildingBlocks} 开始）时，问题会急剧恶化。一阶逻辑没有类似真值表的测试方法。要评估一个论证是否有效，我们必须对\emph{所有}解释进行推理，但正如我们将要看到的，可能的解释有无穷多个。我们甚至在原则上也无法让一台机器遍历所有无穷多个可能的解释并在完成后报告结果：它\emph{永远}无法完成。我们或者需要找到一种更高效的方法来对所有解释进行推理，或者必须寻找其他途径。
 
-There are, indeed, systems that codify ways to reason about all possible interpretations. They were developed in the 1950s by Evert Beth and Jaakko Hintikka, but we will not follow this path. We will, instead, look to natural deduction.
+确实存在一些系统，能够将关于所有可能解释的推理方法规范化。它们由 Evert Beth 和 Jaakko Hintikka 在 20 世纪 50 年代提出，但我们不会遵循这条路径。相反，我们将着眼于自然演绎。
 
-Rather than reasoning directly about all valuations (in the case of TFL), we will try to select a few basic rules of inference. Some of these will govern the behaviour of the sentential connectives. Others will govern the behaviour of the quantifiers and identity that are the hallmarks of FOL. The resulting system of rules will give us a new way to think about the validity of arguments.
-The modern development of natural deduction dates from simultaneous and unrelated papers by Gerhard Gentzen and Stanis\l{}aw Ja\'{s}kowski (1934). However, the natural deduction system that we will consider is based largely around work by Frederic Fitch (first published in 1952).
+我们将不再直接对所有赋值（在真值函项逻辑的情况下）进行推理，而是试图选取一些基本的推理规则。其中一些规则将支配语句联结词的行为。另一些则支配构成一阶逻辑特色的量词和等词的行为。由此产生的规则系统将为我们提供一种思考论证有效性的新方式。
+现代自然演绎的发展源于 Gerhard Gentzen 和 Stanis\l{}aw Ja\'{s}kowski 同时且不相关的论文（1934）。不过，我们将要考察的自然演绎系统主要基于 Frederic Fitch 的工作（首次发表于 1952 年）。
 
+\chapter{真值函项逻辑的基本规则}\label{s:BasicTFL}
+我们将建立一个 \define{自然演绎} 系统。对于每个联结词，都有一套 \define{引入规则}（允许我们证明以该联结词为主逻辑算子的语句）和 \define{消除规则}（允许我们从以该联结词为主逻辑算子的语句出发证明某些东西）。
 
+\section{形式推导的概念}
+一个 \emph{形式推导} 或 \emph{形式证明} 是一个语句序列，其中某些语句被标记为初始假设（或前提）。形式推导的最后一行是结论。（此后，我们将简称为“推导”或“证明”，但请注意，也存在\emph{非形式推导}。）
 
-\chapter{Basic rules for TFL}\label{s:BasicTFL}
-We will develop a \define{natural deduction} system. For each connective, there will be \define{introduction} rules, that allow us to prove a sentence that has that connective as the main logical operator, and \define{elimination} rules, that allow us to prove something given a sentence that has that connective as the main logical operator.
-
-\section{The idea of a formal proof}
-A \emph{formal proof} or \emph{derivation} is a sequence of sentences,
-some of which are marked as being initial assumptions (or premises).
-The last line of the formal proof is the conclusion. (Henceforth, we
-will simply call these `proofs' or `derivations', but be aware that
-there are \emph{informal proofs} too.)
-
-As an illustration, consider:
+举例来说，考虑：
 	$$\enot (A \eor B) \therefore \enot A \eand \enot B$$
-We will start a proof by writing the premise:
+我们首先写下前提来开始推导：
+
 \begin{fitchproof}
 	\hypo{a1}{\enot (A \eor B)}\PR
 \end{fitchproof}
-Note that we have numbered the premise, since we will want to refer back to it. Indeed, every line of the proof is numbered, so that we can refer back to it.
 
-Note also that we have drawn a line underneath the premise. Everything written above the line is an \emph{assumption}. Everything written below the line will either be something which follows from the assumptions, or it will be some new assumption. We are hoping to conclude `$\enot A \eand \enot B$'; so we are hoping ultimately to conclude our proof with
+注意，我们为这个前提编了号，因为后面可能需要引用它。实际上，推导的每一行都有编号，以便我们能够回指。
+
+还要注意，我们在前提下面划了一条线。线上方所写的都是\emph{假设}。线下方所写的，要么是从假设推出的结果，要么是某个新的假设。我们期望最终得到结论“$\enot A \eand \enot B$”；因此我们希望推导最终以下面这样一行结束：
+
 \begin{fitchproof}
 	\have[n]{con}{\enot A \eand \enot B}
 \end{fitchproof}
-for some number $n$. It doesn't matter what line number we end on, but we would obviously prefer a short proof to a long one.
 
-Similarly, suppose we wanted to consider:
+其中 $n$ 是某个行号。具体在哪一行结束并不重要，但我们显然希望推导越短越好。
+
+类似地，假设我们想考虑：
 $$A\eor B, \enot (A\eand C), \enot (B \eand \enot D) \therefore \enot C\eor D$$
-The argument has three premises, so we start by writing them all down, numbered, and drawing a line under them:
+这个论证有三个前提，所以一开始我们把它们全部写下来、编号，并在下方划线：
+
 \begin{fitchproof}
 	\hypo{a1}{A \eor B}\PR
 	\hypo{a2}{\enot (A\eand C)}\PR
 	\hypo{a3}{\enot (B \eand \enot D)}\PR
 \end{fitchproof}
-and we are hoping to conclude with some line:
+
+我们希望最终得到某一行：
+
 \begin{fitchproof}
 	\have[n]{con}{\enot C \eor D}
 \end{fitchproof}
-All that remains to do is to explain each of the rules that we can use along the way from premises to conclusion. The rules are broken down by our logical connectives.
 
-\section{Reiteration}
-The very first rule is so breathtakingly obvious that it is surprising we bother with it at all.
+剩下的工作，就是要解释在从前提到结论的过程中我们可以使用的每一条规则。这些规则依照逻辑联结词来分类。
 
-If you already have shown something in the course of a proof, the \emph{reiteration rule} allows you to repeat it on a new line. For example:
+\section{复述规则}
+第一条规则如此显而易见，以至于我们竟然要专门说明它，这都令人惊讶。
+
+如果你已经在一个推导中得到了某个语句，\emph{复述规则}允许你在新的一行上重复它。例如：
+
 \begin{fitchproof}
 	\have[4]{a1}{A \eand B}
 	\ellipsesline
 	\have[10]{a2}{A \eand B} \by{R}{a1}
 \end{fitchproof}
-This indicates that we have written `$A \eand B$' on line~$4$. Now, at some later line---line~$10$, for example---we have decided that we want to repeat this. So we write it down again. We also add a citation which justifies what we have written. In this case, we write `R', to indicate that we are using the reiteration rule, and we write `$4$', to indicate that we have applied it to line $4$.
 
-Here is a general expression of the rule:
+这表明我们在第 $4$ 行写出了“$A \eand B$”。现在，在某个后续行——例如第 $10$ 行——我们决定要重复它。因此我们再次写出它。我们还需添加一个引用来证成我们写下的内容。这里，我们写“R”表示我们使用了复述规则，写“$4$”表示我们将其应用于第 $4$ 行。
+
+以下是该规则的一般表述：
 \factoidbox{
+
+
 \begin{fitchproof}
 	\have[m]{a}{\metav{A}}
 	\have[\ ]{c}{\metav{A}} \by{R}{a}
-\end{fitchproof}}
-The point is that, if any sentence $\metav{A}$ occurs on some line,
-then we can repeat $\metav{A}$ on later lines. Each line of our proof
-must have a justification, and here we have~`R $m$'. This means:
-Reiteration, applied to line~$m$.
+\end{fitchproof}
 
-Two things need emphasizing. First `$\metav{A}$' is not a sentence of
-TFL. Rather, it is a symbol in the metalanguage, which we use when we
-want to talk about any sentence of TFL (see \cref{s:UseMention}).
-Second, and similarly, `$m$' is not a symbol that will appear on a
-proof. Rather, it is a symbol in the metalanguage, which we use when
-we want to talk about any line number of a proof. In an actual proof,
-the lines are numbered `$1$', `$2$', `$3$', and so forth. But when we
-define the rule, we use variables like `$m$' to underscore the point
-that the rule may be applied at any point.
+}
+要点在于，如果某个语句 $\metav{A}$ 出现在某一行，那么我们可以在后续行重复 $\metav{A}$。我们证明的每一行都必须有一个证成，此处证成是“R $m$”。这表示：复述，应用于第 $m$ 行。
 
-\section{Conjunction}
-Suppose we want to show that Ludwig is both reactionary and libertarian. One obvious way to do this would be as follows: first we show that Ludwig is reactionary; then we show that Ludwig is libertarian; then we put these two demonstrations together, to obtain the conjunction.
+有两点需要强调。第一，“$\metav{A}$”不是真值函项逻辑的语句。它是元语言中的一个符号，用于代表任意一个真值函项逻辑语句（参见 \cref{s:UseMention}）。
+第二，类似地，“$m$”也不是会出现在证明中的符号。它是元语言中的一个符号，用于指代证明中的任意一个行号。在实际的证明中，行号是“$1$”、“$2$”、“$3$”等等。但在定义规则时，我们使用像“$m$”这样的变量来强调这条规则可以在任意点应用。
 
-Our natural deduction system will capture this thought straightforwardly. In the example given, we might adopt the following symbolization key:
-	\begin{ekey}
-		\item[R] Ludwig is reactionary
-		\item[L] Ludwig is libertarian
+\section{合取}
+假设我们想证明 Ludwig 既是反动派又是自由意志主义者。一种显而易见的做法如下：首先证明 Ludwig 是反动派；然后证明 Ludwig 是自由意志主义者；接着将这两个证明结合起来，得到合取式。
+
+我们的自然演绎系统将直接把握这一思路。在上述例子中，我们可以采用如下符号化约定：
+
+\begin{ekey}
+		\item[R] Ludwig 是反动派
+		\item[L] Ludwig 是自由意志主义者
 	\end{ekey}
-Perhaps we are working through a proof, and we have obtained `$R$' on
-line~$8$ and `$L$' on line~$15$. Then on any subsequent line we can
-obtain `$R \eand L$' thus:
+
+假设我们正在进行一个推导，并且已经在第 $8$ 行得到了“$R$”，在第 $15$ 行得到了“$L$”。那么，在任意后续行，我们可以这样得到“$R \eand L$”：
+
 \begin{fitchproof}
 	\have[8]{a}{R}
 	\have[15]{b}{L}
 	\have[\ ]{c}{R \eand L} \ai{a, b}
 \end{fitchproof}
-Note that every line of our proof must either be an assumption, or
-must be justified by some rule. We cite `$\eand$I $8$, $15$' here to
-indicate that the line is obtained by the rule of conjunction
-introduction ($\eand$I) applied to lines $8$ and~$15$. We could
-equally well obtain:
+
+注意，我们证明中的每一行要么是一个假设，要么必须由某条规则证成。这里我们引用“$\eand$I $8$, $15$”表明该行是通过将合取引入规则（$\eand$I）应用于第 $8$ 行和第 $15$ 行而得到的。我们同样可以得到：
+
+
 \begin{fitchproof}
 	\have[8]{a}{R}
 	\have[15]{b}{L}
 	\have[\ ]{c}{L \eand R} \ai{b, a}
 \end{fitchproof}
-with the citation reversed, to reflect the order of the conjuncts. More generally, here is our conjunction introduction rule:
+
+
+其中的引用顺序是颠倒的，以反映合取支的顺序。更一般地说，以下是我们的合取引入规则：
 \factoidbox{
+
+
 \begin{fitchproof}
 	\have[m]{a}{\metav{A}}
 	\have[n]{b}{\metav{B}}
 	\have[\ ]{c}{\metav{A}\eand\metav{B}} \ai{a, b}
-\end{fitchproof}}
+\end{fitchproof}
 
-Again, this statement of the rule is \emph{schematic}. It is not
-itself a proof. `$\metav{A}$' and `$\metav{B}$' are metavariables
-standing for arbitrary sentence of TFL. Similarly, `$m$' and `$n$' are
-not letters that will appear in any actual proof, but symbols we use
-to talk about any line number of any proof. We use such metavariables to
-emphasize that the rule may be applied at any point. The rule requires
-only that we have both conjuncts available to us somewhere earlier in
-the proof. They can be separated from one another, and they can appear
-in any order.
+}
 
-The rule is called `conjunction \emph{introduction}' because it introduces the symbol `$\eand$' into our proof where it may have been absent. Correspondingly, we have a rule that \emph{eliminates} that symbol.  Suppose you have shown that Ludwig is both reactionary and libertarian. You are entitled to conclude that Ludwig is reactionary. Equally, you are entitled to conclude that Ludwig is libertarian. Putting this together, we obtain our conjunction elimination rule(s):
+再次提醒，这个规则的陈述是\emph{图式性}的。它本身不是一个证明。“$\metav{A}$”和“$\metav{B}$”是代表真值函项逻辑中任意语句的元变元。类似地，“$m$”和“$n$”不是会在任何实际证明中出现的数字，而是我们用来指称任意证明中任意行号的符号。我们使用这类元变元来强调该规则可以在任何地方应用。规则只要求两个合取支在证明中更早的某个地方可为我们所用。它们可以彼此分离，也可以以任何顺序出现。
+
+这条规则被称为“合取\emph{引入}”规则，因为它将符号“$\eand$”引入我们的证明，而此前该符号可能并不存在。相应地，我们有一条\emph{消去}该符号的规则。假设你已证明路德维希既是反动派又是自由意志主义者。那么你可以合理得出结论：路德维希是反动派。同样，你也可以得出结论：路德维希是自由意志主义者。结合起来，我们便得到合取消去规则：
 \factoidbox{
+
+
 \begin{fitchproof}
 	\have[m]{ab}{\metav{A}\eand\metav{B}}
 	\have[\ ]{a}{\metav{A}} \ae{ab}
-\end{fitchproof}}
-and equally:
+\end{fitchproof}
+
+}
+同样地：
 \factoidbox{
+
+
 \begin{fitchproof}
 	\have[m]{ab}{\metav{A}\eand\metav{B}}
 	\have[\ ]{b}{\metav{B}} \ae{ab}
-\end{fitchproof}}
-The point is simply that, when you have a conjunction on some line of a proof, you can obtain either of the conjuncts by~{\eand}E. One point is worth emphasising: you can only apply this rule when conjunction is the main logical operator. So you cannot infer `$D$' just from `$C \eor (D \eand E)$'!
+\end{fitchproof}
 
-Even with just these two rules, we can start to see some of the power of our formal proof system. Consider:
+}
+其要点很简单：当你在证明的某一行有一个合取式时，你可以使用 $\eand$E 规则得到其中任何一个合取支。有一点值得强调：你只能在合取式的主逻辑算子是“$\eand$”时应用此规则。因此，你不能仅从“$C \eor (D \eand E)$”就推出“$D$”！
+
+即便只有这两条规则，我们也已能初步领略形式证明系统的威力。考虑如下论证：
+
+
 \begin{earg}
 \item[] $[(A\eor B)\eif(C\eor D)] \eand [(E \eor F) \eif (G\eor H)]$
 \item[\texttherefore] $[(E \eor F) \eif (G\eor H)] \eand [(A\eor B)\eif(C\eor D)]$
 \end{earg}
-The main logical operator in both the premise and conclusion of this argument is `$\eand$'. In order to provide a proof, we begin by writing down the premise, which is our assumption. We draw a line below this: everything after this line must follow from our assumptions by (repeated applications of) our rules of inference. So the beginning of the proof looks like this:
+
+
+此论证前提和结论的主逻辑算子都是“$\eand$”。为构造证明，我们首先写下作为假设的前提，并在其下方画一条横线：此线之后的所有内容都必须（通过反复应用推理规则）从我们的假设中推出。因此证明的开头如下：
+
+
 \begin{fitchproof}
 	\hypo{ab}{{[}(A\eor B)\eif(C\eor D){]} \eand {[}(E \eor F) \eif (G\eor H){]}}\PR
 \end{fitchproof}
-From the premise, we can get each of the conjuncts by {\eand}E. The proof now looks like this:
+
+
+从前提出发，我们可运用 $\eand$E 得到每一个合取支。此时证明如下：
+
+
 \begin{fitchproof}
 	\hypo{ab}{{[}(A\eor B)\eif(C\eor D){]} \eand {[}(E \eor F) \eif (G\eor H){]}}\PR
 	\have{a}{{[}(A\eor B)\eif(C\eor D){]}} \ae{ab}
 	\have{b}{{[}(E \eor F) \eif (G\eor H){]}} \ae{ab}
 \end{fitchproof}
-So by applying the {\eand}I rule to lines 3 and 2 (in that order), we arrive at the desired conclusion. The finished proof looks like this:
+
+
+于是，通过将 $\eand$I 规则应用于第 3 行和第 2 行（按此顺序），我们便得到所需结论。完整的证明如下：
+
+
 \begin{fitchproof}
 	\hypo{ab}{{[}(A\eor B)\eif(C\eor D){]} \eand {[}(E \eor F) \eif (G\eor H){]}}\PR
 
@@ -216,15 +242,23 @@ So by applying the {\eand}I rule to lines 3 and 2 (in that order), we arrive at 
 	\have{b}{{[}(E \eor F) \eif (G\eor H){]}} \ae{ab}
 	\have{ba}{{[}(E \eor F) \eif (G\eor H){]} \eand {[}(A\eor B)\eif(C\eor D){]}} \ai{b,a}
 \end{fitchproof}
-This is a very simple proof, but it shows how we can chain rules of proof together into longer proofs. In passing, note that investigating this argument with a truth table would have required 256 lines; our formal proof required only four lines.
 
-It is worth giving another example. Back in \cref{s:MoreBracketingConventions}, we noted that this argument is valid:
+
+这是一个非常简单的证明，但它展示了如何将证明规则链接起来构成更长的证明。顺便指出，若用真值表检验此论证需要 256 行；而我们的形式证明仅需四行。
+
+值得再举一例。回顾 \cref{s:MoreBracketingConventions}，我们曾指出以下论证是有效的：
 	$$A \eand (B \eand C) \therefore (A \eand B) \eand C$$
-To provide a proof corresponding to this argument, we start by writing:
+为给出相应证明，我们首先写下：
+
+
 \begin{fitchproof}
 	\hypo{ab}{A \eand (B \eand C)}\PR
 \end{fitchproof}
-From the premise, we can get each of the conjuncts by applying~$\eand$E twice. We can then apply $\eand$E twice more, so our proof looks like:
+
+
+从前提出发，通过两次应用 $\eand$E，可得到每个合取支。接着可再应用两次 $\eand$E，证明如下：
+
+
 \begin{fitchproof}
 	\hypo{ab}{A \eand (B \eand C)}\PR
 	\have{a}{A} \ae{ab}
@@ -232,7 +266,11 @@ From the premise, we can get each of the conjuncts by applying~$\eand$E twice. W
 	\have{b}{B} \ae{bc}
 	\have{c}{C} \ae{bc}
 \end{fitchproof}
-But now we can merrily reintroduce conjunctions in the order we wanted them, so that our final proof is:
+
+
+现在，我们可以按所需顺序顺利地重新引入合取，从而得到最终证明：
+
+
 \begin{fitchproof}
 	\hypo{abc}{A \eand (B \eand C)}\PR
 	\have{a}{A} \ae{abc}
@@ -242,67 +280,86 @@ But now we can merrily reintroduce conjunctions in the order we wanted them, so 
 	\have{ab}{A \eand B}\ai{a, b}
 	\have{con}{(A \eand B) \eand C}\ai{ab, c}
 \end{fitchproof}
-Recall that our official definition of sentences in TFL only allowed conjunctions with two conjuncts. The proof just given suggests that we could drop inner brackets in all of our proofs. However, this is not standard, and we will not do this. Instead, we will maintain our more austere bracketing conventions. (Though we will still allow ourselves to drop outermost brackets, for legibility.)
 
-Let's give one final illustration. When using the $\eand$I rule, there is no requirement to apply it to different sentences. So, if we want, we can formally prove `$A \eand A$' from `$A$' thus:
+
+回想一下，真值函项逻辑中语句的正式定义只允许包含两个合取支的合取式。上述证明似乎暗示我们可以在所有证明中省略内部括号。然而，这并非标准做法，我们也不这样做。相反，我们将保持更为简洁的括号约定（尽管为了可读性，我们仍允许省略最外层括号）。
+
+最后再举一例。运用 $\eand$I 规则时，并不要求将其应用于不同的语句。因此，若我们愿意，可以从“$A$”形式地证明“$A \eand A$”如下：
+
+
 \begin{fitchproof}
 	\hypo{a}{A}\PR
 	\have{aa}{A \eand A}\ai{a, a}
 \end{fitchproof}
-Simple, but effective.
 
-\section{Conditional}
-Consider the following argument:
+
+简单而有效。
+
+\section{条件句}
+考虑以下论证：
+
+
 \begin{earg}
-		\item[] If Jane is smart then she is fast.
-		\item[] Jane is smart.
-		\item[\texttherefore] Jane is fast.
+		\item[] 如果简聪明，那么她敏捷。
+		\item[] 简聪明。
+		\item[\texttherefore] 简敏捷。
 \end{earg}
-This argument is certainly valid, and it suggests a straightforward conditional elimination rule ($\eif$E):
+
+
+此论证显然是有效的，它直接提示了条件消去规则（$\eif$E）：
 \factoidbox{
+
+
 \begin{fitchproof}
 	\have[m]{ab}{\metav{A}\eif\metav{B}}
 	\have[n]{a}{\metav{A}}
 	\have[\ ]{b}{\metav{B}} \ce{ab,a}
-\end{fitchproof}}
-This rule is also sometimes called \emph{modus ponens}. Again, this is
-an elimination rule, because it allows us to obtain a sentence that
-may not contain `$\eif$', having started with a sentence that did
-contain `$\eif$'. Note that the conditional $\metav{A}\eif\metav{B}$
-and the antecedent~$\metav{A}$ can be separated from one another in
-the proof, and they can appear in any order. It is conventional to
-cite the line number containing the conditional
-$\metav{A}\eif\metav{B}$ first.
+\end{fitchproof}
 
-The rule for conditional introduction is also quite easy to motivate. The following argument should be valid:
-	\begin{earg}
-		\item Ludwig is reactionary. 
-		\item[\texttherefore] If Ludwig is libertarian, then Ludwig is both reactionary \emph{and} libertarian.
+}
+此规则有时亦称为\emph{肯定前件式（modus ponens）}。同样，这是一条消去规则，因为它允许我们从包含“$\eif$”的语句出发，得到一个可能不包含“$\eif$”的语句。注意，条件式 $\metav{A}\eif\metav{B}$ 与其前件 $\metav{A}$ 在证明中可以彼此分离，且可以任何顺序出现。惯例是先引用包含条件式 $\metav{A}\eif\metav{B}$ 的行号。
+
+条件引入规则的动机也相当直接。下述论证应是有效的：
+
+
+\begin{earg}
+		\item 路德维希是反动派。
+		\item[\texttherefore] 如果路德维希是自由意志主义者，那么路德维希既是反动派\emph{又}是自由意志主义者。
 	\end{earg}
-If someone doubted that this was valid, we might try to convince them otherwise by explaining ourselves as follows:
-	\begin{quote}
-		Assume that Ludwig is reactionary. Now, \emph{additionally} assume that Ludwig is libertarian. Then by conjunction introduction---which we just discussed---Ludwig is both reactionary and libertarian. Of course, that's conditional on the assumption that Ludwig is libertarian. But this just means that, if Ludwig is libertarian, then he is both reactionary and libertarian.
+
+
+若有人质疑其有效性，我们或可如下解释以说服对方：
+
+
+\begin{quote}
+		假设路德维希是反动派。现在，\emph{额外再}假设路德维希是自由意志主义者。那么根据刚才讨论的合取引入规则，路德维希既是反动派又是自由意志主义者。当然，这依赖于“路德维希是自由意志主义者”这一假设。但这恰恰意味着：如果路德维希是自由意志主义者，那么他既是反动派又是自由意志主义者。
 	\end{quote}
-Transferred into natural deduction format, here is the pattern of reasoning that we just used. We started with one premise, `Ludwig is reactionary', thus:
-	\begin{fitchproof}
+
+
+转换为自然演绎格式，我们刚才使用的推理模式如下。我们从单一前提“路德维希是反动派”开始：
+
+
+\begin{fitchproof}
 		\hypo{r}{R}\PR
 	\end{fitchproof}
-The next thing we did is to make an \emph{additional} assumption (`Ludwig is libertarian'), for the sake of argument. To indicate that we are no longer dealing \emph{merely} with our original premise (`$R$'), but with some additional assumption, we continue our proof as follows:
-	\begin{fitchproof}
+
+
+接下来，为了论证，我们做一个\emph{额外的}假设（“路德维希是自由意志主义者”）。为了表明我们不再仅仅处理原始前提（“$R$”），而是处理一个额外假设，我们继续证明如下：
+
+
+\begin{fitchproof}
 		\hypo{r}{R}\PR
 		\open
 			\hypo{l}{L}\AS
 	\end{fitchproof}
-Note that we are \emph{not} claiming, on line~$2$, to have proved
-`$L$' from line~$1$, so we do not write in any justification for the
-additional assumption on line~$2$. We do, however, need to mark that
-it is an additional assumption. We do this by drawing a line under it
-(to indicate that it is an assumption) and by indenting it with a
-further vertical line (to indicate that it is additional).
 
-With this extra assumption in place, we are in a position to
-use~$\eand$I. So we can continue our proof:
-	\begin{fitchproof}
+
+注意，在第 $2$ 行我们\emph{并非}声称从第 $1$ 行证明了“$L$”，因此没有为该额外假设标注任何证立依据。但我们需要标明这是一个额外假设：我们在其下方画一横线（表示它是一个假设），并用一条额外的垂直线使其缩进（表示它是额外的）。
+
+有了这个额外假设，我们便可使用 $\eand$I。于是可以继续证明：
+
+
+\begin{fitchproof}
 		\hypo{r}{R}\PR
 		\open
 			\hypo{l}{L}\AS
@@ -310,8 +367,12 @@ use~$\eand$I. So we can continue our proof:
 %			\close
 %		\have{con}{L \eif (R \eand L)}\ci{l-rl}
 	\end{fitchproof}
-So we have now shown that, on the additional assumption, `$L$', we can obtain `$R \eand L$'. We can therefore conclude that, if `$L$' obtains, then so does `$R \eand L$'. Or, to put it more briefly, we can conclude `$L \eif (R \eand L)$':
-	\begin{fitchproof}
+
+
+这样，我们已表明在额外假设“$L$”下，可以得到“$R \eand L$”。因此我们可以得出结论：若“$L$”成立，则“$R \eand L$”也成立。或者更简洁地说，我们可以得到“$L \eif (R \eand L)$”：
+
+
+\begin{fitchproof}
 		\hypo{r}{R}\PR
 		\open
 			\hypo{l}{L}\AS
@@ -319,23 +380,30 @@ So we have now shown that, on the additional assumption, `$L$', we can obtain `$
 			\close
 		\have{con}{L \eif (R \eand L)}\ci{l-rl}
 	\end{fitchproof}
-Observe that we have dropped back to using one vertical line on the left.  We have \emph{discharged} the additional assumption, `$L$', since the conditional itself follows just from our original assumption,~`$R$'.
 
-The general pattern at work here is the following. We first make an additional assumption, $\metav{A}$; and from that additional assumption, we prove~$\metav{B}$. In that case, we know the following: If~$\metav{A}$ is true, then~$\metav{B}$ is true. This is wrapped up in the rule for conditional introduction:
+
+注意，左侧已恢复为单条垂直线。我们已\emph{解除}了额外假设“$L$”，因为条件句本身仅从原始前提“$R$”即可得出。
+
+这里运作的一般模式如下。我们先做出一个附加假设 $\metav{A}$；然后从那个附加假设出发，证明 $\metav{B}$。这样一来，我们就知道了下面这一点：如果 $\metav{A}$ 为真，那么 $\metav{B}$ 为真。这被总结为条件引入规则：
 \factoidbox{
-	\begin{fitchproof}
+
+
+\begin{fitchproof}
 		\open
 			\hypo[i]{a}{\metav{A}}\AS
 			\have[j]{b}{\metav{B}}
 		\close
 		\have[\ ]{ab}{\metav{A}\eif\metav{B}}\ci{a-b}
-\end{fitchproof}}
-There can be as many or as few lines as you like between lines $i$
-and~$j$.
+\end{fitchproof}
 
-It will help to offer a second  illustration of $\eif$I in action. Suppose we want to consider the following:
+}
+在 $i$ 行和 $j$ 行之间，你可以使用任意多行。
+
+再举一个 $\eif$I 规则的实际例子会很有帮助。假设我们想考虑以下论证：
 	$$P \eif Q, Q \eif R \therefore P \eif R$$
-We start by listing \emph{both} of our premises. Then, since we want to arrive at a conditional (namely, `$P \eif R$'), we additionally assume the antecedent to that conditional. Thus our main proof starts:
+我们首先列出\emph{全部}两个前提。接着，因为我们的目标是得到一个条件式（即 “$P \eif R$”），所以我们额外假设那个条件式的前件。于是，我们的主证明这样开始：
+
+
 \begin{fitchproof}
 	\hypo{pq}{P \eif Q}\PR
 	\hypo{qr}{Q \eif R}\PR
@@ -343,8 +411,12 @@ We start by listing \emph{both} of our premises. Then, since we want to arrive a
 		\hypo{p}{P}\AS
 	\close
 \end{fitchproof}
-Note that we have made `$P$' available, by treating it as an additional assumption, but now, we can use {\eif}E on the first premise. This will yield `$Q$'. We can then use {\eif}E on the second premise. So, by assuming `$P$' we were able to prove `$R$', so we apply the {\eif}I rule---discharging `$P$'---and finish the proof. Putting all this together, we have:
+
+
+注意，我们通过将 “$P$” 作为一个附加假设，使之可用。据此，我们可以对第一个前提使用 {\eif}E 规则，得到 “$Q$”。接着，我们可以对第二个前提使用 {\eif}E 规则。所以，通过假设 “$P$” 我们得以证明 “$R$”，于是我们应用 {\eif}I 规则——解除 “$P$” 这一假设——并完成证明。把所有这些放在一起，我们得到：
 \label{HSproof}
+
+
 \begin{fitchproof}
 	\hypo{pq}{P \eif Q}\PR
 	\hypo{qr}{Q \eif R}\PR
@@ -356,9 +428,10 @@ Note that we have made `$P$' available, by treating it as an additional assumpti
 	\have{pr}{P \eif R}\ci{p-r}
 \end{fitchproof}
 
+\section{附加假设与子证明}
+$\eif$I 规则运用了做出附加假设的思想。这些假设需要小心处理。考虑这个证明：
 
-\section{Additional assumptions and subproofs}
-The rule $\eif$I invoked the idea of making additional assumptions. These need to be handled with some care. Consider this proof:
+
 \begin{fitchproof}
 	\hypo{a}{A}\PR
 	\open
@@ -367,9 +440,11 @@ The rule $\eif$I invoked the idea of making additional assumptions. These need t
 	\close
 	\have{con}{B \eif B}\ci{b1-b2}
 \end{fitchproof}
-This is perfectly in keeping with the rules we have laid down already, and it should not seem particularly strange. Since `$B \eif B$' is a tautology, no particular premises should be required to prove it.
 
-But suppose we now tried to continue the proof as follows:
+这完全符合我们已经制定的规则，而且不应该显得特别奇怪。既然 “$B \eif B$” 是一个重言式，证明它自然不需要任何特定的前提。
+
+但假设我们现在试图如下继续这个证明：
+
 \begin{fitchproof}
 	\hypo{a}{A}\PR
 	\open
@@ -378,32 +453,36 @@ But suppose we now tried to continue the proof as follows:
 	\close
 	\have{con}{B \eif B}\ci{b1-b2}
 \ifHTMLtarget
-	\have{b}{B} \by{naughty attempt to invoke $\eif$E}{con, b2}
+	\have{b}{B} \by{不当的尝试以应用$\eif$E}{con, b2}
 \else
-	\have{b}{B} \by{naughty attempt}{}
-	\have [\ ]{x}{} \by{to invoke $\eif$E}{con, b2}
+	\have{b}{B} \by{不当的尝试}{}
+	\have [\ ]{x}{} \by{以应用$\eif$E}{con, b2}
 \fi
 \end{fitchproof}
-If we were allowed to do this, it would be a disaster. It would allow us to prove any sentence letter from any other sentence letter. However, if you tell me that Anne is fast (symbolized by `$A$'), we shouldn't be able to conclude that Queen Boudica stood twenty-feet tall (symbolized by `$B$')! We must be prohibited from doing this, but how are we to implement the prohibition?
 
-We can describe the process of making an additional assumption as one of performing a \emph{subproof}: a subsidiary proof within the main proof. When we start a subproof, we draw another vertical line to indicate that we are no longer in the main proof. Then we write in the assumption upon which the subproof will be based. A subproof can be thought of as essentially posing this question: \emph{what could we show, if we also make this additional assumption?}
+如果我们被允许这样做，那将是一场灾难。那将允许我们由任一语句字母推导出任何其他语句字母。然而，如果你告诉我安妮很快（用 “$A$” 符号化），我们不应该能够得出结论说布狄卡女王身高二十英尺（用 “$B$” 符号化）！我们必须禁止这样做，但我们如何实施这一禁止呢？
 
-When we are working within the subproof, we can refer to the additional assumption that we made in introducing the subproof, and to anything that we obtained from our original assumptions. (After all, those original assumptions are still in effect.) At some point though, we will want to stop working with the additional assumption: we will want to return from the subproof to the main proof. To indicate that we have returned to the main proof, the vertical line for the subproof comes to an end. At this point, we say that the subproof is \define{closed}. Having closed a subproof, we have set aside the additional assumption, so it will be illegitimate to draw upon anything that depends upon that additional assumption. Thus we stipulate:
-\factoidbox{To cite an individual line when applying a rule:
+我们可以把引入额外假设的过程描述为进行一次\emph{子证明}：即主证明内部的一个辅助证明。开始子证明时，我们会另画一条竖线，表示我们不再处于主证明中。然后，我们写下该子证明所基于的假设。实质上，我们可以把子证明看作是在提出这样一个问题：\emph{如果我们也做出这个额外假设，那么我们可以证明什么？}
+
+在子证明内部进行推导时，我们可以引用引入该子证明时所引入的额外假设，也可以引用从我们最初的那些假设得出的任何结果。（毕竟，那些最初的假设仍然有效。）然而，在某个时刻，我们会希望停止使用这个额外假设：我们希望从子证明返回到主证明。为了表明我们已经返回到主证明，子证明的竖线到此终止。此时，我们说该子证明是\define{闭合的（closed）}。当我们闭合一个子证明时，我们就解除了那个额外假设，因此再依赖任何依赖于该额外假设的东西都是不合法的。于是我们规定：
+\factoidbox{在应用规则时，若要引用某一行：
+
 \begin{compactlist}
-\item the line must come before the line where the rule is applied, but 
-\item not occur within a subproof that has been closed before the line where the rule is applied.
-\end{compactlist}}
-This stipulation rules out the disastrous attempted proof above. The application of rule $\eif$E on line~$5$ requires that we cite two individual lines from earlier in the proof. One of these lines (namely, line~$3$) occurs within a subproof (lines $2$--$3$). By line $5$, where we have to cite line $3$, the subproof has been closed. This is illegitimate: we are not allowed to cite line $3$ on line $5$.
+\item 该行必须出现在应用规则的那一行之前，但是
+\item 不能出现在一个在应用规则的那一行之前就已经闭合的子证明之内。
+\end{compactlist}
 
-Closing a subproof is called \define{discharging} the assumptions of
-that subproof. So we can put the point this way: \emph{you cannot
-refer back to anything that was obtained using a discharged
-assumption}.
+}
+这条规定排除了上面那个灾难性的证明尝试。在第5行应用规则$\eif$E要求我们引用证明中更早出现的两个独立行。其中一行（即第3行）出现在一个子证明（第2-3行）内部。到我们必须引用第3行的第5行时，那个子证明已经闭合了。这是不合法的：我们不能在第5行引用第3行。
 
-Subproofs, then, allow us to think about what we could show, if we made additional assumptions. The point to take away from this is not surprising---in the course of a proof, we have to keep very careful track of what assumptions we are making, at any given moment. Our proof system does this very graphically. (Indeed, that's precisely why we have chosen to use \emph{this} proof system.)
+闭合一个子证明被称为\define{解除}该子证明的假设。
+因此我们可以这样概括要点：\emph{你不可以回头引用任何依赖于已解除假设所得到的东西}。
 
-Once we have started thinking about what we can show by making additional assumptions, nothing stops us from posing the question of what we could show if we were to make \emph{even more} assumptions? This might motivate us to introduce a subproof within a subproof. Here is an example using only the rules which we have considered so far: 
+那么，子证明让我们能够思考，如果作出额外假设，我们能证明什么。从这里得出的要点并不令人惊讶——在证明过程中，我们必须非常仔细地记录在任一给定时刻我们作了哪些假设。我们的证明系统以非常图示化的方式做到这一点。（确实，这正是我们选择使用\emph{这个}证明系统的原因。）
+
+一旦我们开始思考通过增加假设能证明什么，就没有什么能阻止我们提出这个问题：如果我们作出\emph{更多}假设，我们能证明什么？这可能促使我们在一个子证明内部再引入一个子证明。以下是一个仅使用我们目前考虑过的规则的例子：
+
+
 \begin{fitchproof}
 \hypo{a}{A}\PR
 \open
@@ -416,12 +495,13 @@ Once we have started thinking about what we can show by making additional assump
 \close
 \have{bcab}{B \eif (C \eif (A \eand B))}\ci{b-cab}
 \end{fitchproof}
-Notice that the citation on line~$4$ refers back to the initial
-assumption (on line~$1$) and an assumption of a subproof (on
-line~$2$). This is perfectly in order, since neither assumption has
-been discharged at the time (i.e., by line~$4$).
 
-Again, though, we need to keep careful track of what we are assuming at any given moment. Suppose we tried to continue the proof as follows:
+
+注意第4行的引用回溯到了初始假设（第1行）和一个子证明的假设（第2行）。这完全符合规则，因为至该行（即第4行）为止，两个假设都尚未被解除。
+
+不过，我们再次需要仔细记录在任一给定时刻我们所作的假设。假设我们试图如下继续这个证明：
+
+
 \begin{fitchproof}
 \hypo{a}{A}\PR
 \open
@@ -434,20 +514,21 @@ Again, though, we need to keep careful track of what we are assuming at any give
 \close
 \have{bcab}{B \eif(C \eif (A \eand B))}\ci{b-cab}
 \ifHTMLtarget
-	\have{bcab}{C \eif (A \eand B)}\by{naughty attempt to invoke $\eif$I}{c-ab}
+	\have{bcab}{C \eif (A \eand B)}\by{不当的尝试以应用 $\eif$I}{c-ab}
 \else
-	\have{bcab}{C \eif (A \eand B)}\by{naughty attempt}{}
-	\have [\ ]{x}{} \by{to invoke $\eif$I}{c-ab}
+	\have{bcab}{C \eif (A \eand B)}\by{不当的尝试}{}
+	\have [\ ]{x}{} \by{以应用 $\eif$I}{c-ab}
 \fi
 \end{fitchproof}
-This would be awful. If we tell you that Anne is smart, you should not
-be able to infer that, if Cath is smart (symbolized by `$C$') then
-\emph{both} Anne is smart and Queen Boudica stood 20~feet tall! But
-this is just what such a proof would suggest, if it were permissible.
 
-The essential problem is that the subproof that began with the assumption~`$C$' depended crucially on the fact that we had assumed `$B$' on line~$2$. By line~$6$, we have \emph{discharged} the assumption~`$B$': we have stopped asking ourselves what we could show, if we also assumed `$B$'. So it is simply cheating, to try to help ourselves (on line~$7$) to the subproof that began with the assumption~`$C$'. Thus we stipulate, much as before, that a subproof can only be cited on a line if it does not occur within some other subproof which is already closed at that line. The attempted disastrous proof violates this stipulation. The subproof of lines $3$--$4$ occurs within a subproof that ends on line~$5$. So it cannot be invoked on line~$7$.
 
-Here is one further case we have to exclude:
+那就太糟糕了。如果我们告诉你 Anne 是聪明的，你不应该能推断出：如果 Cath 是聪明的（用 “$C$” 符号化），那么\emph{既} Anne 是聪明的\emph{又} Queen Boudica 身高 20 英尺！但如果这种证明是允许的，那它恰恰就会暗示这样的结论。
+
+核心问题在于，以假设 “$C$” 开始的子证明关键依赖于我们在第 2 行已经假设了 “$B$”。到第 6 行，我们已经\emph{解除}了假设 “$B$”：我们已经不再追问如果也假设 “$B$” 我们能证明什么了。因此，试图（在第 7 行）利用以假设 “$C$” 开始的子证明，这纯属作弊。于是我们规定，就像之前一样：一个子证明只有在它不位于某个在该行已经闭合了的其他子证明内部时，才能在该行被引用。那个灾难性的证明尝试违反了这条规定。第 3–4 行的子证明位于一个在第 5 行结束的子证明内部。因此它不能在第 7 行被引用。
+
+这是我们必须排除的另一种情况：
+
+
 \begin{fitchproof}
 \hypo{a}{A}\PR
 \open
@@ -459,22 +540,28 @@ Here is one further case we have to exclude:
 	\close
 \close
 \ifHTMLtarget
-\have{bcab}{B \eif C}\by{naughty attempt to invoke $\eif$I}{b-c2}
+\have{bcab}{B \eif C}\by{不当的尝试以应用 $\eif$I}{b-c2}
 \else
-\have{bcab}{B \eif C}\by{naughty attempt}{}
-\have [\ ]{x}{} \by{to invoke $\eif$I}{b-c2}
+\have{bcab}{B \eif C}\by{不当的尝试}{}
+	\have [\ ]{x}{} \by{以应用 $\eif$I}{b-c2}
 \fi
 \end{fitchproof}
-Here we are trying to cite a subproof that begins on line~$2$ and ends on line~$5$---but the sentence on line~$5$ depends not only on the assumption on line~$2$, but also on one another assumption (line~$3$) which we have not discharged at the end of the subproof. The subproof started on line~$3$ is still open at line~$5$. But $\eif$I requires that the last line of the subproof \emph{only} relies on the assumption of the subproof being cited, i.e., the subproof beginning on line~$2$ (and anything before it), and not on assumptions of any subproofs within it. In particular, the last line of the subproof cited must not itself lie within a nested subproof.
 
-\factoidbox{To cite a subproof when applying a rule:
-\begin{compactlist} 
-\item the cited subproof must come entirely before the application of the rule where it is cited, 
-\item the cited subproof must not lie within some other closed subproof which is closed at the line it is cited, and 
-\item the last line of the cited subproof must not occur inside a nested subproof.
-\end{compactlist}}
 
-One last point to emphasize how rules can be applied: where a rule requires you to cite an individual line, you cannot cite a subproof instead; and where it requires you to cite a subproof, you cannot cite an individual line instead. So for instance, this is incorrect:
+这里我们试图引用一个从第 2 行开始到第 5 行结束的子证明——但第 5 行的语句不仅依赖于第 2 行的假设，还依赖于另一个我们在子证明结束时尚未解除的假设（第 3 行）。第 3 行开始的子证明在第 5 行时仍然是开放的。但是 $\eif$I 要求，被引用的子证明（即从第 2 行开始的子证明）的最后一行\emph{只能}依赖于该子证明本身的假设（以及它之前的任何东西），而不能依赖于它内部任何子证明的假设。具体来说，被引用的子证明的最后一行本身不能位于一个嵌套的子证明内部。
+
+\factoidbox{在应用规则时引用一个子证明：
+
+\begin{compactlist}
+\item 被引用的子证明必须完整地位于应用该规则的那一步之前，
+\item 被引用的子证明不能位于某个其他已关闭的子证明内部，且该子证明在引用行处已经关闭，并且
+\item 被引用的子证明的最后一行不能出现在一个嵌套的子证明内部。
+\end{compactlist}
+
+}
+
+最后一点用以强调规则的应用方式：如果一条规则要求引用单一行，就不能用子证明来替代；如果它要求引用子证明，也不能用单一行来替代。例如，下面这个证明是错误的：
+
 \begin{fitchproof}
 \hypo{a}{A}\PR
 \open
@@ -485,49 +572,28 @@ One last point to emphasize how rules can be applied: where a rule requires you 
 	\have{c2}{C}\ae{bc}
 	\close
 \ifHTMLtarget
-	\have{c3}{C}\by{naughty attempt to invoke R}{c-c2}
+	\have{c3}{C}\by{不当尝试以调用 R}{c-c2}
 \else
-\have{c3}{C}\by{naughty attempt}{}
-\have [\ ]{x}{} \by{to invoke R}{c-c2}
+\have{c3}{C}\by{不当尝试}{}
+\have [\ ]{x}{} \by{以调用 R}{c-c2}
 \fi
 \close
 \have[7]{bcab}{B \eif C}\ci{b-c3}
 \end{fitchproof}
-Here, we have tried to justify $C$ on line~$6$ by the reiteration
-rule, but we have cited the subproof on lines $3$--$5$ with it. That
-subproof is closed and can in principle be cited on line~$6$. (For
-instance, we could use it to justify $C \eif C$ by $\eif$I.) But the
-reiteration rule~R requires you to cite an individual line, so citing
-the entire subproof is inadmissible (even if that subproof contains
-the sentence~$C$ we want to reiterate). Citing the individual lines
-containing~$C$ ($3$ or $5$) on line~$6$ is of course also inadmissible,
-since these lie in a subproof closed before line~$6$.
+
+这里，我们试图在第6行通过重述规则R来证明$C$，但却引用了第3–5行的子证明。该子证明已经关闭，原则上可以在第6行引用它。（例如，我们可以用它通过$\eif$I来证明$C \eif C$。）但是重述规则R要求引用单一行，因此引用整个子证明是不允许的（即使该子证明包含我们想要重述的语句$C$）。在第6行引用包含$C$的单行（第3行或第5行）当然也不允许，因为这些行位于在第6行之前已经关闭的子证明中。
+
+总是可以用任何假设开启一个子证明。然而，选择有用的假设需要一些策略。以一个任意的、古怪的假设开启子证明只会浪费证明的行数。例如，为了通过{\eif}I得到一个条件句，你必须在子证明中假设该条件句的前件。
+
+同样，任何时候都可以关闭一个子证明（并解除其假设）。然而，在你得到有用结论之前，这样做并无帮助。一旦子证明关闭，在后续证明中只能引用整个子证明。反过来，那些要求引用子证明的规则，也要求子证明的最后一行是某种特定形式的语句。例如，只有当你所要证明的行的形式是$\metav{A} \eif \metav{B}$，且$\metav{A}$是你的子证明的假设，$\metav{B}$是你的子证明的最后一行时，才允许引用该子证明来应用~$\eif$I规则。
+
+\section{双条件}
+
+双条件的规则类似于条件规则的双重版本。
+
+例如，为了证明“$F \eiff G$”，你必须能够在假设“$F$”下证明“$G$”\emph{并且}在假设“$G$”下证明“$F$”。因此，双条件引入规则（{\eiff}I）需要两个子证明。该规则的示意图如下： \factoidbox{
 
 
-It is always permissible to open a subproof with any assumption. However, there is some strategy involved in picking a useful assumption. Starting a subproof with an arbitrary, wacky assumption would just waste lines of the proof. In order to obtain a conditional by {\eif}I, for instance, you must assume the antecedent of the conditional in a subproof.
-
-Equally, it is always permissible to close a subproof (and discharge
-its assumptions). However, it will not be helpful to do so until you
-have reached something useful. Once the subproof is closed, you can
-only cite the entire subproof in any justification. Those rules that
-call for a subproof or subproofs, in turn, require that the last line
-of the subproof is a sentence of some form or other. For instance, you
-are only allowed to cite a subproof for~$\eif$I if the line you are
-justifying is of the form $\metav{A} \eif \metav{B}$, $\metav{A}$ is
-the assumption of your subproof, and $\metav{B}$ is the last line of
-your subproof.
-
-
-\section{Biconditional}
-
-The rules for the biconditional will be like double-barrelled versions
-of the rules for the conditional.
-
-In order to prove `$F \eiff G$', for instance, you must be able to
-prove `$G$' on the assumption `$F$' \emph{and} prove `$F$' on the
-assumption~`$G$'. The biconditional introduction rule ({\eiff}I)
-therefore requires two subproofs. Schematically, the rule works like
-this: \factoidbox{
 \begin{fitchproof}
 	\open
 		\hypo[i]{a1}{\metav{A}}\AS
@@ -538,54 +604,71 @@ this: \factoidbox{
 		\have[l]{a2}{\metav{A}}
 	\close
 	\have[\ ]{ab}{\metav{A}\eiff\metav{B}}\bi{a1-b1,b2-a2}
-\end{fitchproof}}
-There can be as many lines as you like between $i$ and $j$, and as many lines as you like between $k$ and $l$. Moreover, the subproofs can come in any order, and the second subproof does not need to come immediately after the first.
+\end{fitchproof}
 
-The biconditional elimination rule ({\eiff}E) lets you do a bit more than the conditional rule. If you have the left-hand subsentence of the biconditional, you can obtain the right-hand subsentence. If you have the right-hand subsentence, you can obtain the left-hand subsentence. So we allow:
-\factoidbox{
+}
+在$i$和$j$之间可以有任意多行，在$k$和$l$之间也可以有任意多行。而且，子证明可以按任意顺序出现，第二个子证明不必紧接在第一个之后。
+
+双条件消去规则（{\eiff}E）允许你做比条件规则更多一点的操作。如果你有双条件句的左侧子句，你可以得到右侧子句。如果你有右侧子句，你可以得到左侧子句。因此我们允许：\factoidbox{
+
+
 \begin{fitchproof}
 	\have[m]{ab}{\metav{A}\eiff\metav{B}}
 	\have[n]{a}{\metav{A}}
 	\have[\ ]{b}{\metav{B}} \be{ab,a}
-\end{fitchproof}}
-and equally:
-\factoidbox{\begin{fitchproof}
+\end{fitchproof}
+
+}
+同样：\factoidbox{
+
+\begin{fitchproof}
 	\have[m]{ab}{\metav{A}\eiff\metav{B}}
 	\have[n]{a}{\metav{B}}
 	\have[\ ]{b}{\metav{A}} \be{ab,a}
-\end{fitchproof}}
-Note that the biconditional, and the right or left half, can be
-separated from one another, and they can appear in any order. However,
-in the citation for~$\eiff$E, it is good practice to cite the
-biconditional first.
+\end{fitchproof}
 
-\section{Disjunction}
-Suppose Ludwig is reactionary. Then Ludwig is either reactionary or libertarian. After all, to say that Ludwig is either reactionary or libertarian is to say something weaker than to say that Ludwig is reactionary.
+}
+注意，双条件式与其右半部分或左半部分可以分开引用，并且它们可以按任意顺序出现。然而，在引用~$\eiff$E 规则时，通常最好先引用双条件式本身。
 
-Let's emphasize this point. Suppose Ludwig is reactionary. It follows that Ludwig is \emph{either} reactionary \emph{or} a kumquat. Equally, it follows that \emph{either} Ludwig is reactionary \emph{or} kumquats are the only fruit.  Equally, it follows that \emph{either} Ludwig is reactionary \emph{or}  God is dead. Many of these are strange inferences to draw, but there is nothing \emph{logically} wrong with them (even if they maybe violate all sorts of implicit conversational norms).
+\section{析取}
+假设 Ludwig 是反动派。那么 Ludwig 要么是反动派，要么是自由意志主义者。毕竟，说 Ludwig 要么是反动派要么是自由意志主义者，比直接说 Ludwig 是反动派断定的内容更弱。
 
-Armed with all this, we present the disjunction introduction rule(s):
-\factoidbox{\begin{fitchproof}
+让我们强调一下这一点。假设 Ludwig 是反动派。由此可以推出，Ludwig \emph{要么}是反动派，\emph{要么}是一个金橘。同样，可以推出，\emph{要么} Ludwig 是反动派，\emph{要么}金橘是唯一的水果。同样，可以推出，\emph{要么} Ludwig 是反动派，\emph{要么}上帝死了。得出的许多结论听起来都很奇怪，但它们在\emph{逻辑上}没有问题（即使它们可能违反了各种隐含的会话准则）。
+
+有了这些认识，我们给出析取引入规则：
+\factoidbox{
+
+\begin{fitchproof}
 	\have[m]{a}{\metav{A}}
 	\have[\ ]{ab}{\metav{A}\eor\metav{B}}\oi{a}
-\end{fitchproof}}
-and
-\factoidbox{\begin{fitchproof}
+\end{fitchproof}
+
+}
+以及
+\factoidbox{
+
+\begin{fitchproof}
 	\have[m]{a}{\metav{A}}
 	\have[\ ]{ba}{\metav{B}\eor\metav{A}}\oi{a}
-\end{fitchproof}}
-Notice that \metav{B} can be \emph{any} sentence whatsoever, so the following is a perfectly acceptable proof:
+\end{fitchproof}
+
+}
+注意，这里的 \metav{B} 可以是\emph{任何}语句，因此下面这个证明完全可接受：
+
 \begin{fitchproof}
 	\hypo{m}{M}\PR
 	\have{mmm}{M \eor ([(A\eiff B) \eif (C \eand D)] \eiff [E \eand F])}\oi{m}
 \end{fitchproof}
-Using a truth table to show this would have taken 128 lines.
 
-The disjunction elimination rule is slightly trickier. Suppose that either Ludwig is reactionary or he is libertarian. What can you conclude? Not that Ludwig is reactionary; it might be that he is libertarian instead. Equally, not that Ludwig is libertarian; for he might merely be reactionary. Disjunctions, just by themselves, are hard to work with.
+如果要用真值表来验证这一点，将需要 128 行。
 
-But suppose that we could somehow show both of the following: first, that Ludwig's being reactionary entails that he is an Austrian economist; second, that Ludwig's being libertarian entails that he is an Austrian economist. Then if we know that Ludwig is either reactionary or libertarian, then we know that, whichever he is, Ludwig is an Austrian economist. This insight can be expressed in the following rule, which is our disjunction elimination ($\eor$E) rule:
+析取消去规则则稍微复杂一点。假设 Ludwig 要么是反动派，要么是自由意志主义者。你能得出什么结论？不能得出 Ludwig 是反动派；因为他也可能是自由意志主义者。同样，也不能得出 Ludwig 是自由意志主义者；因为他可能仅仅是反动派。单凭析取式本身，是难以直接用于有效推理的。
+
+但是，假设我们能够以某种方式同时证明以下两点：第一，Ludwig 是反动派蕴涵着他是一位奥地利经济学家；第二，Ludwig 是自由意志主义者蕴涵着他是一位奥地利经济学家。那么，如果我们知道 Ludwig 要么是反动派要么是自由意志主义者，那么我们就知道，无论他是哪一种，Ludwig 都是一位奥地利经济学家。这一洞见可以表述为以下规则，即我们的析取消去（$\eor$E）规则：
 \factoidbox{
-	\begin{fitchproof}
+
+
+\begin{fitchproof}
 		\have[m]{ab}{\metav{A}\eor\metav{B}}
 		\open
 			\hypo[i]{a}{\metav{A}} \AS
@@ -596,13 +679,17 @@ But suppose that we could somehow show both of the following: first, that Ludwig
 			\have[l]{c2}{\metav{C}}
 		\close
 		\have[ ]{c}{\metav{C}}\oe{ab, a-c1,b-c2}
-	\end{fitchproof}}
-This is obviously a bit clunkier to write down than our previous rules, but the point is fairly simple. Suppose we have some disjunction, $\metav{A} \eor \metav{B}$. Suppose we have two subproofs, showing us that $\metav{C}$ follows from the assumption that~$\metav{A}$, and that $\metav{C}$ follows from the assumption that~$\metav{B}$. Then we can infer $\metav{C}$ itself. As usual, there can be as many lines as you like between $i$ and $j$, and as many lines as you like between $k$ and $l$. Moreover, the subproofs and the disjunction can come in any order, and do not have to be adjacent.
+	\end{fitchproof}
 
-Some examples might help illustrate this. Consider this argument:
+}
+显然，这比我们之前的规则写起来要稍微繁复一点，但原理相当简单。假设我们有一个析取式 $\metav{A} \eor \metav{B}$。假设我们有两个子证明，分别表明从假设~$\metav{A}$ 可以推出 $\metav{C}$，以及从假设~$\metav{B}$ 可以推出 $\metav{C}$。那么我们就可以推出 $\metav{C}$。和往常一样，在 $i$ 和 $j$ 之间、$k$ 和 $l$ 之间可以有很多行。此外，子证明和析取式可以以任何顺序出现，且不必相邻。
+
+一些例子可能有助于说明这一点。考虑这个论证：
 $$(P \eand Q) \eor (P \eand R) \therefore P$$
-An example proof might run thus:
-	\begin{fitchproof}
+一个证明示例如下：
+
+
+\begin{fitchproof}
 		\hypo{prem}{(P \eand Q) \eor (P \eand R) }\PR
 			\open
 				\hypo{pq}{P \eand Q}\AS
@@ -614,10 +701,14 @@ An example proof might run thus:
 			\close
 		\have{con}{P}\oe{prem, pq-p1, pr-p2}
 	\end{fitchproof}
-Here is a slightly harder example. Consider:
+
+
+下面是一个稍复杂一点的例子。考虑：
 	$$ A \eand (B \eor C) \therefore (A \eand B) \eor (A \eand C)$$
-Here is a proof corresponding to this argument:
-	\begin{fitchproof}
+以下是这个论证对应的一个证明：
+
+
+\begin{fitchproof}
 		\hypo{aboc}{A \eand (B \eor C)}\PR
 		\have{a}{A}\ae{aboc}
 		\have{boc}{B \eor C}\ae{aboc}
@@ -633,102 +724,108 @@ Here is a proof corresponding to this argument:
 		\close
 	\have{con}{(A \eand B) \eor (A \eand C)}\oe{boc, b-abo, c-aco}
 	\end{fitchproof}
-Don't be alarmed if you think that you wouldn't have been able to come up with this proof yourself. The ability to come up with novel proofs comes with practice, and we'll cover some strategies for finding proofs in \cref{s:stratTFL}. The key question at this stage is whether, looking at the proof, you can see that it conforms to the rules that we have laid down. That just involves checking every line, and making sure that it is justified in accordance with the rules we have laid down.
 
 
-\section{Contradiction and negation}\label{sec:contradiction}
+如果你一时难以自行构想出这个证明，也无需气馁。构造新颖证明的能力来源于练习，我们将在 \cref{s:stratTFL} 中介绍一些寻找证明的策略。现阶段的关键问题是，面对这个证明，你能否看出它符合我们制定的规则。这只需逐行检查，并确保每一行的证明依据都符合我们已确立的规则。
 
-We have only one connective left to deal with: negation. But to tackle it, we must connect negation with \emph{contradiction}.
+\section{矛盾与否定}\label{sec:contradiction}
 
-An effective form of argument is to argue your opponent into contradicting themselves. At that point, you have them on the ropes. They have to give up at least one of their assumptions. We are going to make use of this idea in our proof system, by adding a new symbol, `$\ered$', to our proofs. This should be read as something like `contradiction!'\ or `reductio!'\ or `but that's absurd!'  The rule for introducing this symbol is that we can use it whenever we explicitly contradict ourselves, i.e., whenever we find both a sentence and its negation appearing in our proof:
+我们只剩下一个联结词需要处理：否定。但要处理它，我们必须将否定与\emph{矛盾}联系起来。
+
+一种有效的论证方法是使你的对手陷入自相矛盾。那时，你就使他们处于困境。他们必须放弃至少一个假设。我们将在证明系统中利用这一想法，通过添加一个新符号 “$\ered$” 到我们的证明中。这个符号应该读作类似“矛盾！”或“归谬！”或“但这太荒谬了！”。引入这个符号的规则是，每当我们明确地自相矛盾时，即每当我们在证明中发现一个语句及其否定同时出现时，就可以使用它：
 \factoidbox{
 \begin{fitchproof}
   \have[m]{na}{\enot\metav{A}}
   \have[n]{a}{\metav{A}}
   \have[ ]{bot}{\ered}\ne{na, a}
-\end{fitchproof}}
-It does not matter what order the sentence and its negation appear in,
-and they do not need to appear on adjacent lines. It is conventional
-to cite the line number of the negation first, followed by that of the
-sentence it is a negation of.
+\end{fitchproof}
+}
+语句及其否定以何种顺序出现并不重要，它们也不必出现在相邻行上。按照惯例，先引用否定所在的行号，然后是它所否定的语句所在的行号。
 
-There is obviously a tight link between contradiction and negation.
-The rule $\enot$E lets us proceed from two contradictory sentences---$\metav{A}$ and its negation $\enot \metav{A}$---to an explicit contradiction~$\ered$. We choose the label for a reason: it is the most basic rule that lets us proceed from a premise containing a negation, i.e., $\enot\metav{A}$, to a sentence not containing it, i.e., $\ered$. So it is a rule that \emph{eliminates}~$\enot$.
+显然，矛盾与否定之间联系紧密。规则 $\enot$E 让我们能从两个相互矛盾的语句——$\metav{A}$ 及其否定 $\enot \metav{A}$——进行到一个显式的矛盾 $\ered$。我们选择这个标签是有原因的：它是最基本的规则，让我们能从包含否定的前提（即 $\enot\metav{A}$）进行到一个不包含它的语句（即 $\ered$）。所以这是一条\emph{消除} $\enot$ 的规则。
 
-We have said that `$\ered$' should be read as something like `contradiction!' but this does not tell us much about the symbol. There are, roughly, three ways to approach the symbol.
-	\begin{compactlist}
-		\item We might regard `$\ered$' as a new atomic sentence of TFL, but one which can only ever have the truth value False.
-		\item We might regard `$\ered$' as an abbreviation for some canonical contradiction, such as `$A \eand \enot A$'. This will have the same effect as the above---obviously, `$A \eand \enot A$' only ever has the truth value False---but it means that, officially, we do not need to add a new symbol to TFL.
-		\item We might regard `$\ered$', not as a symbol of TFL, but as something more like a \emph{punctuation mark} that appears in our proofs. (It is on a par with the line numbers and the vertical lines, say.)
-	\end{compactlist}
-There is something very philosophically attractive about the third option, but here we will \emph{officially} adopt the first. `$\ered$' is to be read as a sentence letter that is always false. This means that we can manipulate it, in our proofs, just like any other sentence.
+我们说过 “$\ered$” 应该读作类似“矛盾！”的东西，但这并没有告诉我们太多关于这个符号本身的信息。大致有三种处理这个符号的方式：
+\begin{compactlist}
+    \item 我们可以把 “$\ered$” 看作真值函项逻辑的一个新的原子语句，但它只能取假值。
+    \item 我们可以把 “$\ered$” 看作某个特定矛盾（例如 “$A \eand \enot A$”）的缩写。这将产生与上一种方式相同的效果——显然，“$A \eand \enot A$” 也只能取假值——但这意味着正式来说，我们不需要向真值函项逻辑添加新符号。
+    \item 我们可以不把 “$\ered$” 看作真值函项逻辑的符号，而更像是我们证明中出现的一种\emph{标点符号}。（可以说，它与行号和竖线属于同一类。）
+\end{compactlist}
 
-We still have to state a rule for negation introduction. The rule is very simple: if assuming something leads you to a contradiction, then the assumption must be wrong. This thought motivates the following rule:
-\factoidbox{\begin{fitchproof}
+第三种选择在哲学上非常吸引人，但在这里我们将\emph{正式}采用第一种。“$\ered$” 将被视为一个总为假的语句字母。这意味着我们可以在证明中像操作任何其他语句一样操作它。
+
+我们仍然需要陈述否定引入的规则。规则非常简单：如果假设某事会导致矛盾，那么该假设必定是错误的。这一想法激发了以下规则：
+\factoidbox{
+\begin{fitchproof}
 \open
-	\hypo[i]{a}{\metav{A}}\AS
-	\have[j]{nb}{\ered}
+    \hypo[i]{a}{\metav{A}}\AS
+    \have[j]{nb}{\ered}
 \close
 \have[\ ]{na}{\enot\metav{A}}\ni{a-nb}
-\end{fitchproof}}
-There can be as many lines between $i$ and $j$ as you like. To see this in practice, and interacting with negation, consider this proof:
-	\begin{fitchproof}
-		\hypo{d}{D}\AS
-		\open
-			\hypo{nd}{\enot D}\AS
-			\have{ndr}{\ered}\ne{nd, d}
-		\close
-		\have{con}{\enot\enot D}\ni{nd-ndr}
-	\end{fitchproof}
+\end{fitchproof}
+}
+在 $i$ 行和 $j$ 行之间可以有你想要的任意多行。为了在实践中看到这一点，并观察其与否定的互动，考虑以下证明：
+\begin{fitchproof}
+    \hypo{d}{D}\AS
+    \open
+        \hypo{nd}{\enot D}\AS
+        \have{ndr}{\ered}\ne{nd, d}
+    \close
+    \have{con}{\enot\enot D}\ni{nd-ndr}
+\end{fitchproof}
 
-If the assumption that $\metav{A}$ is true leads to a contradiction, $\metav{A}$ cannot be true, i.e., it must be false, i.e., $\enot\metav{A}$ must be true. Of course, if the assumption that $\metav{A}$ is false (i.e., the assumption that $\enot\metav{A}$ is true) leads to a contradiction, then $\metav{A}$ cannot be false, i.e., $\metav{A}$ must be true. So we can consider the following rule:
-\factoidbox{\begin{fitchproof}
+如果假设 $\metav{A}$ 为真会导致矛盾，那么 $\metav{A}$ 不可能为真，即它必定为假，也就是说 $\enot\metav{A}$ 必定为真。当然，如果假设 $\metav{A}$ 为假（即假设 $\enot\metav{A}$ 为真）会导致矛盾，那么 $\metav{A}$ 不可能为假，即 $\metav{A}$ 必定为真。因此我们可以考虑以下规则：
+\factoidbox{
+\begin{fitchproof}
 \open
-	\hypo[i]{a}{\enot\metav{A}}\AS
-	\have[j]{nb}{\ered}
+    \hypo[i]{a}{\enot\metav{A}}\AS
+    \have[j]{nb}{\ered}
 \close
 \have[\ ]{na}{\metav{A}}\ip{a-nb}
-\end{fitchproof}}
-This rule is called \emph{indirect proof}, since it allows us to prove $\metav{A}$ indirectly, by assuming its negation. Formally, the rule is very similar to $\enot$I, but $\metav{A}$ and $\enot\metav{A}$ have changed places. Since $\enot\metav{A}$ is not the conclusion of the rule, we are not introducing~$\enot$, so IP is not a rule that introduces any connective. It also doesn't eliminate a connective, since it has no free-standing premises which contain~$\enot$, only a subproof with an assumption of the form~$\enot\metav{A}$. By contrast, $\enot$E does have a premise of the form $\enot\metav{A}$: that's why $\enot$E eliminates~$\enot$, but IP does not.\footnote{There are logicians who have qualms about IP, but not about $\enot$E. They are called ``intuitionists.'' Intuitionists don't buy our basic assumption that every sentence has one of two truth values, true or false. They also think that $\enot$ works differently---for them, a proof of $\ered$ from $\metav{A}$ guarantees $\enot \metav{A}$, but a proof of $\ered$ from $\enot\metav{A}$ does not guarantee that~$\metav{A}$, but only $\enot\enot\metav{A}$. So, for them, $\metav{A}$ and $\enot\enot\metav{A}$ are not equivalent.}
+\end{fitchproof}
+}
+这条规则称为 \emph{间接证明}，因为它允许我们通过假设 $\metav{A}$ 的否定来间接地证明 $\metav{A}$。从形式上看，这条规则与 $\enot$I 非常相似，只是 $\metav{A}$ 和 $\enot\metav{A}$ 在假设与结论的位置上互换了。由于 $\enot\metav{A}$ 并非该规则的结论，我们并不是在引入 $\enot$，因此间接证明并不是一条引入任何联结词的规则。它也不是一条消去联结词的规则，因为它没有以 $\enot\metav{A}$ 为形式的独立前提，只有一个假设了 $\enot\metav{A}$ 这一形式的子证明。相比之下，$\enot$E 确实有一个形式为 $\enot\metav{A}$ 的前提：这就是为什么 $\enot$E 能消去 $\enot$，而间接证明却不能。\footnote{有些逻辑学家对间接证明心存疑虑，但对 $\enot$E 则没有异议。他们被称为“直觉主义者”。直觉主义者并不认同我们“每个语句要么为真要么为假”这一基本假设。他们认为 $\enot$ 的运作方式有所不同——对他们而言，从 $\metav{A}$ 推出 $\ered$ 能保证得到 $\enot \metav{A}$，但从 $\enot\metav{A}$ 推出 $\ered$ 并不能保证得到 $\metav{A}$，而只能得到 $\enot\enot\metav{A}$。因此，对他们来说，$\metav{A}$ 和 $\enot\enot\metav{A}$ 并不等价。}
 
-Using $\enot$I, we were able to give a proof of $\enot\enot\metav{D}$ from $\metav{D}$. Using IP, we can go the other direction (with essentially the same proof).
-	\begin{fitchproof}
-		\hypo{d}{\enot\enot D}\PR
-		\open
-			\hypo{nd}{\enot D}\AS
-			\have{ndr}{\ered}\ne{d, nd}
-		\close
-		\have{con}{D}\ip{nd-ndr}
-	\end{fitchproof}
+利用 $\enot$I，我们能够从 $\metav{D}$ 给出 $\enot\enot\metav{D}$ 的证明。利用间接证明，我们可以反过来（用本质上相同的证明）进行推导。
+\begin{fitchproof}
+    \hypo{d}{\enot\enot D}\PR
+    \open
+        \hypo{nd}{\enot D}\AS
+        \have{ndr}{\ered}\ne{d, nd}
+    \close
+    \have{con}{D}\ip{nd-ndr}
+\end{fitchproof}
 
-We need one last rule. It is a kind of elimination rule for `$\ered$', and known as \emph{explosion}.\footnote{The Latin name for this principle is \emph{ex contradictione quodlibet}, ``from contradiction, anything.''} If we obtain a contradiction, symbolized by `$\ered$', then we can infer whatever we like. How can this be motivated, as a rule of argumentation? Well, consider the English rhetorical device `\ldots and if \emph{that's} true, I'll eat my hat'. Since contradictions simply cannot be true, if one \emph{is} true then not only will I eat my hat, I'll have it too. Here is the formal rule:
-\factoidbox{\begin{fitchproof}
+我们还需要最后一条规则。它是“$\ered$”的一种消去规则，称为 \emph{爆炸原理}。\footnote{这一原理的拉丁文名称是 \emph{ex contradictione quodlibet}，意为“从矛盾可推出任何命题”。} 如果我们得到了一个用“$\ered$”表示的矛盾，那么我们就可以推出任何我们想要的语句。作为一种论证规则，这如何能得到辩护呢？嗯，考虑一下英语中的一种修辞手法“……要是\emph{这}为真，我就吃了这顶帽子”。既然矛盾根本不可能是真的，那么如果有一个矛盾\emph{真的}为真，我不仅会吃掉我的帽子，我还会把它也吃掉。以下是该规则的形式表述：
+\factoidbox{
+\begin{fitchproof}
 \have[m]{bot}{\ered}
 \have[ ]{}{\metav{A}}\re{bot}
-\end{fitchproof}}
-Note that \metav{A} can be \emph{any} sentence whatsoever.
+\end{fitchproof}
+}
+注意，\metav{A} 可以是\emph{任意}语句。
 
-The explosion rule is a bit odd. It looks like \metav{A} arrives in our proof like a bunny out of a hat. When trying to find proofs, it is very tempting to try to use it everywhere, since it seems so powerful. Resist this temptation: you can only apply it when you already have~$\ered$!  And you get $\ered$ only when your assumptions are contradictory.
+爆炸规则有点特别。看起来，\metav{A} 像魔术师从帽中取出兔子般凭空出现在我们的证明中。在寻找证明时，由于它看起来非常强大，我们很容易忍不住到处应用它。请克制住这种冲动：你\emph{只有已经得到}~$\ered$ 时才能应用它！而只有当你的假设导致矛盾时，你才能得到 $\ered$。
 
-Still, isn't it odd that from a contradiction anything whatsoever should follow? Not according to our notion of entailment and validity. For \metav{A} entails \metav{B} \ifeff{} there is no valuation of the sentence letters which makes \metav{A} true and \metav{B} false at the same time. Now $\ered$ is a contradiction---it is never true, whatever the valuation of the sentence letters. Since there is no valuation which makes $\ered$ true, there of course is also no valuation that makes $\ered$ true and \metav{B} false! So according to our definition of entailment, $\ered \entails \metav{B}$, whatever \metav{B} is. A contradiction entails anything.\footnote{There are some logicians who don't buy this. They think that if \metav{A} entails \metav{B}, there must be some \emph{relevant connection} between \metav{A} and \metav{B}---and there isn't one between $\ered$ and some arbitrary sentence~\metav{B}. So these logicians develop other, ``relevant'' logics in which you aren't allowed the explosion rule.}
+不过，从矛盾竟然能推出任何东西，这难道不奇怪吗？根据我们的蕴涵和有效性概念，并不奇怪。因为 \metav{A} 蕴涵 \metav{B} \ifeff{} 不存在任何对语句字母的赋值，能同时让 \metav{A} 为真且 \metav{B} 为假。而 $\ered$ 是一个矛盾——无论语句字母如何赋值，它都永远不会为真。既然没有任何赋值能使 $\ered$ 为真，当然也就没有任何赋值能使 $\ered$ 为真且 \metav{B} 为假！因此，根据我们的蕴涵定义，$\ered \entails \metav{B}$，无论 \metav{B} 是什么。矛盾蕴涵一切。\footnote{有些逻辑学家不接受这种观点。他们认为，如果 \metav{A} 蕴涵 \metav{B}，那么 \metav{A} 和 \metav{B} 之间必须有某种\emph{相关联系}——而 $\ered$ 和一个任意的句子~\metav{B} 之间并没有。因此，这些逻辑学家发展出其他“相关”逻辑，在那些逻辑里不允许使用爆炸规则。}
 
-\emph{These are all of the basic rules for the proof system for TFL.}
+\emph{以上就是真值函项逻辑证明系统的所有基本规则。}
 
 \practiceproblems
 
 \problempart
-The following two `proofs' are \emph{incorrect}. Explain the mistakes they make.
+下面两个“证明”是\emph{错误的}。请解释它们各自犯了什么错误。
+
 \begin{fitchproof}
 \hypo{abc}{(\enot L \eand A) \eor L}\PR
 \open
 \hypo{nla}{\enot L \eand A}\AS
 \have{nl}{\enot L}\ae{nl}
-	\have{a}{A}\ae{abc}
+    \have{a}{A}\ae{abc}
 \close
 \open
-	\hypo{l}{L}\AS
-	\have{red}{\ered}\ne{nl, l}
-	\have{a2}{A}\re{red}
+    \hypo{l}{L}\AS
+    \have{red}{\ered}\ne{nl, l}
+    \have{a2}{A}\re{red}
 \close
 \have{con}{A}\oe{abc, nla-a, l-a2}
 \end{fitchproof}
@@ -742,7 +839,8 @@ The following two `proofs' are \emph{incorrect}. Explain the mistakes they make.
 \end{fitchproof}
 
 \problempart
-The following three proofs are missing their citations (rule and line numbers). Add them, to turn them into \emph{bona fide} proofs. Additionally, write down the argument that corresponds to each proof.
+下面三个证明缺少引用（规则和行号）。请补充引用，将它们变成\emph{名副其实}的证明。此外，请写出每个证明对应的论证。
+
 \begin{multicols}{2}
 \begin{fitchproof}
 \hypo{ps}{P \eand S}
@@ -785,7 +883,9 @@ The following three proofs are missing their citations (rule and line numbers). 
 \solutions
 \problempart
 \label{pr.solvedTFLproofs}
-Give a proof for each of the following arguments:
+为以下每个论证各给出一个证明：
+
+
 \begin{compactlist}
 \item $J\eif\enot J \therefore \enot J$
 \item $Q\eif(Q\eand\enot Q) \therefore \enot Q$
@@ -801,155 +901,186 @@ Give a proof for each of the following arguments:
 \item $\enot (P \eif Q) \therefore P$
 \end{compactlist}
 
+\chapter{构造证明}\label{s:stratTFL}
 
-\chapter{Constructing proofs}\label{s:stratTFL}
+寻找证明并没有简单的诀窍，也没有什么可以替代练习。不过，这里有一些经验法则和策略可供参考。
 
-There is no simple recipe for finding proofs, and there is no substitute for practice. Here, though, are some rules of thumb and strategies to keep in mind.
+\section{从目标倒推}
 
-\section{Working backward from what we want}
+假设你正在尝试寻找某个结论~$\metav{C}$ 的证明，它将是证明的最后一行。首先要做的是观察~$\metav{C}$ 并思考其主逻辑算子的引入规则是什么。这能让你大致了解证明最后一行\emph{之前}应该是什么。该引入规则要求最后一行之前出现一个或两个其他语句，或者一个或两个子证明。此外，从~$\metav{C}$ 本身可以看出这些语句是什么，或者子证明的假设和结论是什么。然后，你就可以在最后一行之上写下那些语句，或者勾勒出子证明的框架，并将其作为新的目标。
 
-So you're trying to find a proof of some conclusion~$\metav{C}$, which will be the last line of your proof. The first thing you do is look at~$\metav{C}$ and ask what the introduction rule is for its main logical operator. This gives you an idea of what should happen \emph{before} the last line of the proof. The justifications for the introduction rule require one or two other sentences above the last line, or one or two subproofs. Moreover, you can tell from~$\metav{C}$ what those sentences are, or what the assumptions and conclusions of the subproof(s) are. Then you can write down those sentence or outline the subproof(s) above the last line, and treat those as your new goals.
+例如：如果你的结论是一个条件句 $\metav{A}\eif\metav{B}$，就应该计划使用 {\eif}I 规则。这需要开启一个子证明，在其中假设~$\metav{A}$。该子证明应以~$\metav{B}$ 结束。接着，继续思考如何在该子证明内得到 $\metav{B}$，以及如何利用假设~$\metav{A}$。
 
-For example: If your conclusion is a conditional $\metav{A}\eif\metav{B}$, plan to use the {\eif}I rule. This requires starting a subproof in which you assume~\metav{A}. The subproof ought to end with~\metav{B}. Then, continue by thinking about what you should do to get $\metav{B}$ inside that subproof, and how you can use the assumption~$\metav{A}$.
+如果你的目标是一个合取式、条件句或否定句，就应该以这种方式开始从目标倒推。接下来我们将详细描述在这几种情况下需要做什么。
 
-If your goal is a conjunction, conditional, or negated sentence, you should start by working backward in this way. We'll describe what you have to do in each of these cases in detail.
+\subsection*{从合取式倒推}
 
-\subsection*{Working backward from a conjunction}
+如果我们想证明 $\metav{A} \eand \metav{B}$，倒推意味着我们应在证明底部写下 $\metav{A} \eand \metav{B}$，并尝试用 $\eand$I 来证明它。在顶部，我们会写出证明的前提（如果有的话）。然后，在底部写下待证的语句。如果它是合取式，我们就用 $\eand$I 来证明。
 
-If we want to prove $\metav{A} \eand \metav{B}$, working backward means we should write $\metav{A} \eand \metav{B}$ at the bottom of our proof, and try to prove it using $\eand$I. At the top, we'll write out the premises of the proof, if there are any. Then, at the bottom, we write the sentence we want to prove. If it is a conjunction, we'll prove it using $\eand$I.
-  \begin{fitchproof}
+
+\begin{fitchproof}
 	\hypo{1}{\metav{P}_1}\PR
-	\ellipsesline 
+	\ellipsesline
 	\hypo[k]{k}{\metav{P}_k}\PR
 \ellipsesline
-    \have[n]{n}{\metav{A}}{} 
-    \ellipsesline 
+    \have[n]{n}{\metav{A}}{}
+    \ellipsesline
 	\have[m]{m}{\metav{B}}
     \have{4}{\metav{A} \eand \metav{B}}\ai{n,m}
   \end{fitchproof}
-For $\eand$I, we need to prove $\metav{A}$ first, then prove
-$\metav{B}$. For the last line, we have to cite the lines where we
-(will have) proved $\metav{A}$ and  $\metav{B}$, and use~$\eand$I. The
-parts of the proof labelled by the vertical $\cdots$ have to still be filled in.
-We'll mark the line numbers $m$, $n$ for now. When the proof is
-complete, these placeholders can be replaced by actual numbers.
 
-\subsection*{Working backward from a conditional}
 
-If our goal is to prove a conditional $\metav{A} \eif \metav{B}$, we'll have to use $\eif$I. This requires a subproof starting with $\metav{A}$ and ending with~$\metav{B}$. We'll set up our proof as follows:
+对于 $\eand$I，我们需要先证明 $\metav{A}$，再证明
+$\metav{B}$。在最后一行，我们必须引用证明 $\metav{A}$ 和  $\metav{B}$ 的那些行（将来会填上），并使用~$\eand$I。
+由垂直的 $\cdots$ 标出的部分仍有待填充。
+我们暂用 $m$, $n$ 来标记这些行号。当证明完成时，这些占位符可被实际数字取代。
+
+\subsection*{从条件句倒推}
+
+如果目标是证明条件句 $\metav{A} \eif \metav{B}$，我们需要使用 $\eif$I。这要求一个以 $\metav{A}$ 开始、以~$\metav{B}$ 结束的子证明。我们这样来设置证明：
+
+
 \begin{fitchproof}
 \open
 \hypo[n]{2}{\metav{A}}
-\ellipsesline 
+\ellipsesline
 \have[m]{3}{\metav{B}}
 \close
 \have{4}{\metav{A} \eif \metav{B}}\ci{2-3}
-\end{fitchproof} 
-Again we'll leave placeholders in the line number slots. We'll record the last inference as $\eif$I, citing the subproof.
+\end{fitchproof}
 
-\subsection*{Working backward from a negated sentence}
 
-If we want to prove $\enot \metav{A}$, we'll have to use $\enot$I.
+同样，我们会在行号处留下占位符。我们将最后一次推理记录为 $\eif$I，并引用该子证明。
+
+\subsection*{从否定句倒推}
+
+如果想证明 $\enot \metav{A}$，我们需要使用 $\enot$I。
+
+
 \begin{fitchproof}
 \open
 \hypo[n]{2}{\metav{A}}
-\ellipsesline 
+\ellipsesline
 \have[m]{3}{\ered}
 \close
 \have{4}{\enot \metav{A}}\ni{2-3}
-\end{fitchproof} 
-For $\enot$I, we have to start a subproof with assumption $\metav{A}$; the last line of the subproof has to be $\ered$.  We'll cite the subproof, and use~$\enot$I as the rule.
+\end{fitchproof}
 
-When working backward, continue to do so as long as you can. So if you're working backward to prove $\metav{A} \eif \metav{B}$ and have set up a subproof in which you want to prove $\metav{B}$. Now look at~$\metav{B}$. If, say, it is a conjunction, work backward from it, and write down the two conjuncts inside your subproof. Etc.
 
-\subsection*{Working backward from a disjunction}
+对于 $\enot$I，必须开启一个以 $\metav{A}$ 为假设的子证明；该子证明的最后一行必须是 $\ered$。我们将引用这个子证明，并应用~$\enot$I 规则。
 
-Of course, you can also work backward from a disjunction $\metav{A} \eor \metav{B}$, if that is your goal.
-The $\eor$I rule requires that you have one of the disjuncts in order to infer $\metav{A} \eor \metav{B}$.
-So to work backward, you pick a disjunct, infer $\metav{A} \eor \metav{B}$ from it, and then continue to look for a proof of the disjunct you picked:
+在倒推时，应尽可能持续进行。所以，如果你为了证明 $\metav{A} \eif \metav{B}$ 而倒推，并已建立了一个要证明 $\metav{B}$ 的子证明，现在来看 $\metav{B}$。如果，比如说，它是一个合取式，就从它开始倒推，并将两个合取支写在子证明内。依此类推。
+
+\subsection*{从析取式倒推}
+
+当然，如果你的目标是析取式 $\metav{A} \eor \metav{B}$，也可以从它开始倒推。
+$\eor$I 规则要求你拥有一个析取支，才能推出 $\metav{A} \eor \metav{B}$。
+因此，倒推时，先选择一个析取支，从它（通过 $\eor$I 规则）推出 $\metav{A} \eor \metav{B}$，然后继续尝试证明你所选的析取支：
+
+
 \begin{fitchproof}
 	\ellipsesline
-	\have[n]{2}{\metav{A}} 
+	\have[n]{2}{\metav{A}}
 	\have{3}{\metav{A} \eor \metav{B}}\oi{2}
 \end{fitchproof}
-However, you may not be able to prove the disjunct you picked. In that
-case you have to backtrack. When you can't fill in the part labelled
-by the vertical $\cdots$,
-delete everything, and try with the other disjunct:
+
+
+然而，你可能无法证明所选的那个析取支。此时就必须回溯。当你无法填满由垂直 $\cdots$ 标示的部分时，删除所有内容，尝试另一个析取支：
+
+
 \begin{fitchproof}
-	\ellipsesline 
-	\have[n]{2}{\metav{B}} 
+	\ellipsesline
+	\have[n]{2}{\metav{B}}
 	\have{3}{\metav{A} \eor \metav{B}}\oi{2}
 \end{fitchproof}
-Obviously, deleting everything and starting over is frustrating, so you should avoid it. If your goal is a disjunction, therefore, you should \emph{not start} by working backward: try working forward first, and apply the $\eor$I strategy only when working forward (and working backward using $\eand$I, $\eif$I, and $\enot$I) no longer work.
 
-\section{Working forward from what we have}
 
-Your proof may have premises. And if you've worked backward in order to prove a conditional or a negated sentence, you will have set up subproofs with an assumption, and be looking to prove a final sentence in the subproof. These premises and assumptions are sentences you can work forward from in order to fill in the missing steps in your proof. That means applying elimination rules for the main operators of these sentences. The form of the rules will tell you what you'll have to do.
+显然，全部删除并重新开始令人沮丧，应尽量避免。因此，如果你的目标是析取式，就\emph{不应}从倒推开始：应先尝试向前工作，仅当向前工作（以及使用 $\eand$I、$\eif$I 和 $\enot$I 的倒推）都无法进行时，才运用 $\eor$I 策略。
 
-\subsection*{Working forward from a conjunction}
+\section{向前工作}
 
-To work forward from a sentence of the form $\metav{A} \eand \metav{B}$, we use $\eand$E. That rule allows us to do two things: infer $\metav{A}$, and infer $\metav{B}$. So in a proof where we have $\metav{A} \eand \metav{B}$, we can work forward by writing $\metav{A}$ and/or $\metav{B}$ immediately below the conjunction:
+你的证明可能包含前提。而且，如果你曾为证明一个条件句或否定句而进行过倒推，那么你已经建立了带有假设的子证明，并寻求在子证明中证明某个最终语句。这些前提和假设是你进行前向推理以填补证明中缺失步骤的出发点。这意味着要应用这些语句主算子的消去规则。规则的形式会告诉你该做什么。
+
+\subsection*{从合取式向前工作}
+
+要从形如 $\metav{A} \eand \metav{B}$ 的语句向前工作，我们使用 $\eand$E。该规则允许我们做两件事：推出 $\metav{A}$，以及推出 $\metav{B}$。因此，在已有 $\metav{A} \eand \metav{B}$ 的证明中，可通过在合取式下方紧接着写出 $\metav{A}$ 和/或 $\metav{B}$ 来进行向前工作：
+
+
 \begin{fitchproof}
   \have[n]{1}{\metav{A} \eand \metav{B}}
   \have{2}{\metav{A}}\ae{1}
   \have{3}{\metav{B}}\ae{1}
 \end{fitchproof}
-Usually it will be clear in the particular situation you're in which one of \metav{A} or \metav{B} you'll need. It doesn't hurt, however, to write them both down.
 
-\subsection*{Working forward from a disjunction}
 
-Working forward from a disjunction works a bit differently. To use a disjunction, we use the $\eor$E rule. In order to apply that rule, it is not enough to know what the disjuncts of the disjunction are that we want to use. We must also keep in mind what we want to prove. Suppose we want to prove~$\metav{C}$, and we have $\metav{A} \eor B$ to work with. (That $\metav{A} \eor B$ may be a premise of the proof, an assumption of a subproof, or something already proved.) In order to be able to apply the $\eor$E rule, we'll have to set up two subproofs:
+通常在你所处的具体情境中，需要 $\metav{A}$ 和 $\metav{B}$ 中的哪一个是很清楚的。不过，把两者都写下来也无妨。
+
+\subsection*{从析取式向前工作}
+
+从析取式向前工作方式略有不同。要使用析取式，需运用 $\eor$E 规则。要应用此规则，仅知道待使用的析取式 $\metav{A} \eor \metav{B}$ 的析取支是什么是不够的，还必须牢记要证明什么。假设要证明~$\metav{C}$，且有 $\metav{A} \eor B$ 可用（该析取式可能是证明的前提、子证明的假设，或是已证的结论）。为应用 $\eor$E 规则，必须建立两个子证明：
+
+
 \begin{fitchproof}
 	\have[n]{1}{\metav{A} \eor \metav{B}}
 	\open
-	\hypo{2}{\metav{A}} 
-	\ellipsesline 
+	\hypo{2}{\metav{A}}
+	\ellipsesline
 	\have[m]{3}{\metav{C}}
-	\close 
+	\close
 	\open
 	\hypo{4}{\metav{B}}
 	\ellipsesline
 	\have[k]{5}{\metav{C}}
 	\close
-	\have{6}{\metav{C}}\oe{1,(2)-3,(4)-5} 
-\end{fitchproof} 
-The first subproof starts with the first disjunct, $\metav{A}$, and ends with the sentence we're looking for, $\metav{C}$. The second subproof starts with the other disjunct, $\metav{B}$, and also ends with the goal sentence~$\metav{C}$. Each of these subproofs have to be filled in further. We can then justify the goal sentence $\metav{C}$ by using $\eor$E, citing the line with $\metav{A} \eor \metav{B}$ and the two subproofs.
+	\have{6}{\metav{C}}\oe{1,(2)-3,(4)-5}
+\end{fitchproof}
 
-\subsection*{Working forward from a conditional}
 
-In order to use a conditional $\metav{A} \eif \metav{B}$, you also need the antecedent $\metav{A}$ in order to apply~$\eif$E. So to work forward from a conditional, you will derive $\metav{B}$, justify it by $\eif$E, and set up $\metav{A}$ as a new subgoal.
+第一个子证明以第一个析取支 $\metav{A}$ 开始，以目标语句 $\metav{C}$ 结束。第二个子证明以另一个析取支 $\metav{B}$ 开始，同样以目标语句 $\metav{C}$ 结束。每个子证明都需进一步填充。然后，可以通过 $\eor$E 来证成目标语句 $\metav{C}$，并引用包含 $\metav{A} \eor \metav{B}$ 的行以及两个子证明。
+
+\subsection*{从条件句向前工作}
+
+要使用条件句 $\metav{A} \eif \metav{B}$，还需要前件 $\metav{A}$ 才能应用~$\eif$E。因此，从条件句向前工作时，将推出 $\metav{B}$，用 $\eif$E 证成它，并将 $\metav{A}$ 设为一个新的子目标：
+
+
 \begin{fitchproof}
 	\have[n]{1}{\metav{A} \eif \metav{B}}
-	\ellipsesline 
+	\ellipsesline
 	\have[m]{2}{\metav{A}}
-	\have{3}{\metav{B}}\ce{1,2} 
+	\have{3}{\metav{B}}\ce{1,2}
 \end{fitchproof}
 
-\subsection*{Working forward from a negated sentence}
+\subsection*{从否定式向前工作}
 
-Finally, to use a negated sentence $\enot \metav{A}$, you would apply $\enot$E. It requires, in addition to $\enot \metav{A}$, also the corresponding sentence~$\metav{A}$ without the negation. The sentence you'll get is always the same: $\ered$. So working forward from a negated sentence works especially well inside a subproof that you'll want to use for $\enot$I (or IP). You work forward from $\enot \metav{A}$ if you already have $\enot \metav{A}$ and you want to prove~$\ered$. To do it, you set up $\metav{A}$ as a new subgoal.
+最后，要使用一个否定式 $\enot \metav{A}$，你会应用 $\enot$E 规则。该规则除了需要 $\enot \metav{A}$，还需要对应的不带否定的语句~$\metav{A}$。由此得到的语句总是 $\ered$。因此，从否定式出发进行正向推理，在你打算用于 $\enot$I（或 IP）规则的子证明中尤为有效。当你已拥有 $\enot \metav{A}$ 并想要证明 $\ered$ 时，便可以从 $\enot \metav{A}$ 出发进行正向推理。做法是将 $\metav{A}$ 设为一个新的子目标。
+
 \begin{fitchproof}
 	\have[n]{1}{\enot \metav{A}}
-	\ellipsesline 
+	\ellipsesline
 	\have[m]{2}{\metav{A}}
-	\have{3}{\ered}\ne{1,2} 
+	\have{3}{\ered}\ne{1,2}
 \end{fitchproof}
 
-\section{Strategies at work}
+\section{策略实战}
 
-Suppose we want to show that the argument $(A \eand B) \eor (A \eand C) \therefore A \eand (B \eor C)$ is valid. We start the proof by writing the premise and conclusion down. (On a piece of paper, you would want as much space as possible between them, so write the premises at the top of the sheet and the conclusion at the bottom.)
+假设我们想要证明论证 $(A \eand B) \eor (A \eand C) \therefore A \eand (B \eor C)$ 是有效的。我们通过写下前提和结论来开始证明。（在纸上，你应在两者之间留出尽可能多的空间，例如将前提写在页面上方，结论写在页面下方。）
+
+
 \begin{fitchproof}
    \hypo{1}{(A \eand B) \eor (A \eand C)}\PR
 \ellipsesline
   \have[n]{2}{A \eand (B \eor C)}
 \end{fitchproof}
-We now have two options: either work backward from the conclusion, or work forward from the premise. We'll pick the second strategy: we use the disjunction on line~$1$, and set up the subproofs we need for $\eor$E. The disjunction on line~$1$ has two disjuncts, $A \eand B$ and $A \eand C$. The goal sentence you want to prove is $A \eand (B \eor C)$. So in this case you have to set up two subproofs, one with assumption $A \eand B$ and last line $A \eand (B \eor C)$, the other with assumption $A \eand C$ and last line $A \eand (B \eor C)$. The justification for the conclusion on line~$n$ will be $\eor$E, citing the disjunction on line~$1$ and the two subproofs. So your proof now looks like this:
+
+
+我们现在有两个选择：要么从结论出发进行反向推理，要么从前提出发进行正向推理。我们选取第二种策略：利用第 $1$ 行的析取式，并为 $\eor$E 规则建立所需的子证明。第 $1$ 行的析取式有两个析取支：$A \eand B$ 和 $A \eand C$。要证明的目标语句是 $A \eand (B \eor C)$。因此，这里需要建立两个子证明：一个以 $A \eand B$ 为假设，以 $A \eand (B \eor C)$ 为最后一行；另一个以 $A \eand C$ 为假设，也以 $A \eand (B \eor C)$ 为最后一行。第 $n$ 行结论的证明将基于 $\eor$E 规则，引用第 $1$ 行的析取式和这两个子证明。此时证明框架如下：
+
+
 \begin{fitchproof}
 	\hypo{1}{(A \eand B) \eor (A \eand C)}\PR
 	\open
 	\hypo{2}{A \eand B}\AS
-	\ellipsesline 
+	\ellipsesline
 	\have[n]{6}{A \eand (B \eor C)}
 	\close
 	\open
@@ -959,7 +1090,11 @@ We now have two options: either work backward from the conclusion, or work forwa
 	\close
 	\have{12}{A \eand (B \eor C)}\oe{1,2-6,(7)-11}
 \end{fitchproof}
-You now have two separate tasks, namely to fill in each of the two subproofs. In the first subproof, we now work backward from the conclusion $A \eand (B \eor C)$. That is a conjunction, so inside the first subproof, you will have two separate subgoals: proving $A$, and proving $B \eor C$. These subgoals will let you justify line~$n$ using~$\eand$I. Your proof now looks like this:
+
+
+现在你面临两个独立的任务：分别完成这两个子证明。在第一个子证明中，我们从结论 $A \eand (B \eor C)$ 出发进行反向推理。这是一个合取式，因此在子证明内部，我们有两个独立的子目标：证明 $A$ 和证明 $B \eor C$。达成这些子目标后，就能通过 $\eand$I 规则证明第 $n$ 行。此时证明框架变为：
+
+
 \begin{fitchproof}
 	\hypo{1}{(A \eand B) \eor (A \eand C)}\PR
 	\open
@@ -977,7 +1112,11 @@ You now have two separate tasks, namely to fill in each of the two subproofs. In
 	\close
 	\have{12}{A \eand (B \eor C)}\oe{1,2-6,(7)-11}
 \end{fitchproof}
-We immediately see that we can get line $i$ from line~$2$ by $\eand$E. So line~$i$ is actually line~$3$, and can be justified with $\eand$E from line~$2$. The other subgoal $B \eor C$ is a disjunction. We'll apply the strategy for working backward from a disjunctions to line $n-1$. We have a choice of which disjunct to pick as a subgoal, $B$ or~$C$. Picking $C$ wouldn't work and we'd end up having to backtrack. And you can already see that if you pick $B$ as a subgoal, you could get that by working forward again from the conjunction $A \eand B$ on line~$2$. So we can complete the first subproof as follows:
+
+
+我们立刻可以看到，由第 $2$ 行通过 $\eand$E 规则即可得到第 $i$ 行。因此第 $i$ 行实际就是第 $3$ 行，可由第 $2$ 行根据 $\eand$E 规则证明。另一个子目标 $B \eor C$ 是一个析取式。我们将对第 $n-1$ 行运用“从析取式出发进行反向推理”的策略。我们需选择 $B$ 或 $C$ 其中之一作为子目标。选择 $C$ 行不通，最终将导致回溯。而若选择 $B$ 作为子目标，我们便可以通过对第 $2$ 行的合取式 $A \eand B$ 进行正向推理来得到它。因此，我们可以如下完成第一个子证明：
+
+
 \begin{fitchproof}
 	\hypo{1}{(A \eand B) \eor (A \eand C)}\PR
 	\open
@@ -994,11 +1133,14 @@ We immediately see that we can get line $i$ from line~$2$ by $\eand$E. So line~$
 	\close
 	\have{12}{A \eand (B \eor C)}\oe{1,2-6,7-11}
 \end{fitchproof}
-Like line~$3$, we get line $4$ from $2$ by $\eand$E. Line~$5$ is justified by $\eor$I from line~$4$, since we were working backward from a disjunction there.
 
-That's it for the first subproof. The second subproof is almost exactly the same. We'll leave it as an exercise.
 
-Remember that when we started, we had the option of working forward from the premise, or working backward from the conclusion, and we picked the first option. The second option also leads to a proof, but it will look different.  The first steps would be to work backward from the conclusion and set up two subgoals, $A$ and $B \eor C$, and then work forward from the premise to prove them, e.g.,
+与第 $3$ 行类似，我们由第 $2$ 行通过 $\eand$E 规则得到第 $4$ 行。第 $5$ 行由第 $4$ 行根据 $\eor$I 规则证明，因为我们当时正在对一个析取式进行反向推理。
+
+第一个子证明至此完成。第二个子证明几乎完全相同，我们将其留作练习。
+
+请记住，开始时我们有两种选择：从前提出发进行正向推理，或从结论出发进行反向推理，我们选择了第一种。第二种选择也能导出一个证明，但形式会有所不同。最初的步骤应是从结论出发进行反向推理，设定两个子目标 $A$ 和 $B \eor C$，然后从前提出发进行正向推理来证明它们，例如：
+
 \begin{fitchproof}
 	\hypo{1}{(A \eand B) \eor (A \eand C)}\PR
 	\open
@@ -1022,21 +1164,17 @@ Remember that when we started, we had the option of working forward from the pre
 	\ellipsesline
 	\have[m][-1]{10}{B \eor C}
 	\close
-	\have{11}{B \eor C}\oe{1,(7)-8,(9)-(10)}	
+	\have{11}{B \eor C}\oe{1,(7)-8,(9)-(10)}
 	\have{12}{A \eand (B \eor C)}\ai{6,11}
 \end{fitchproof}
-We'll leave you to fill in the missing pieces indicated by~$\vdots$.
 
-Let's give another example to illustrate how to apply the strategies
-to deal with conditionals and negation. The sentence $(A \eif B) \eif
-(\enot B \eif \enot A)$ is a tautology. Let's see if we can find a
-proof of it, from no premises, using the strategies. We first write
-the sentence at the bottom of a sheet of paper. Since working forward
-is not an option (there is nothing to work forward from), we work
-backward, and set up a subproof to establish the sentence we want, $(A
-\eif B) \eif (\enot B \eif \enot A)$, using $\eif$I. Its assumption
-must be the antecedent of the conditional we want to prove, i.e., $A
-\eif B$, and its last line the consequent, $\enot B \eif \enot A$.
+我们将由你补全以 $\vdots$ 标示的缺失部分。
+
+我们再举一例，以说明如何运用策略处理条件句和否定。语句 $(A \eif B) \eif
+(\enot B \eif \enot A)$ 是一个重言式。我们来看看能否在不借助任何前提的情况下，运用策略为它找到一个证明。我们首先在纸页底部写下这个语句。由于正向推理无从着手（没有可作为起点的前提），我们采用反向推理，并为此建立一个子证明，利用 $\eif$I 规则来得到我们想要的语句 $(A
+\eif B) \eif (\enot B \eif \enot A)$。其假设必须是我们想要证明的条件句的前件，即 $A \eif B$，而它的最后一行必须是后件，$\enot B \eif \enot A$。
+
+
 \begin{fitchproof}
 \open
 \hypo{1}{A \eif B}\AS
@@ -1045,7 +1183,11 @@ must be the antecedent of the conditional we want to prove, i.e., $A
 \close
 \have{8}{(A \eif B) \eif (\enot B \eif \enot A)}\ci{1-7}
 \end{fitchproof}
-The new goal, $\enot B \eif \enot A$ is itself a conditional, so working backward we set up another subproof:
+
+
+新目标 $\enot B \eif \enot A$ 本身也是一个条件句，因此我们继续进行反向推理，再建立另一个子证明：
+
+
 \begin{fitchproof}
 	\open
 	\hypo{1}{A \eif B}\AS
@@ -1058,7 +1200,10 @@ The new goal, $\enot B \eif \enot A$ is itself a conditional, so working backwar
 	\close
 	\have{8}{(A \eif B) \eif (\enot B \eif \enot A)}\ci{1-7}
 \end{fitchproof}
-From $\enot A$ we again work backward. To do this, look at the $\enot$I rule. It requires a subproof with~$A$ as assumption, and $\ered$ as its last line. So the proof is now:
+
+对于 $\enot A$，我们再次进行反向推理。为此，我们考虑 $\enot$I 规则。它要求建立一个以 $A$ 为假设、以 $\ered$ 为最后一行的子证明。因此，现在的证明变为：
+
+
 \begin{fitchproof}
 	\open
 	\hypo{1}{A \eif B}\AS
@@ -1074,17 +1219,10 @@ From $\enot A$ we again work backward. To do this, look at the $\enot$I rule. It
 	\close
 	\have{8}{(A \eif B) \eif (\enot B \eif \enot A)}\ci{1-7}
 \end{fitchproof}
-Now our goal is to prove~$\ered$. We said above, when discussing how
-to work forward from a negated sentence, that the $\enot$E rule allows
-you to prove~$\ered$, which is our goal in the innermost subproof. So
-we look for a negated sentence which we can work forward from: that
-would be $\enot B$ on line~$2$. That means we have to derive $B$
-inside the subproof, since $\enot$E requires not just $\enot B$ (which
-we have already), but also~$B$. And $B$, in turn, we get by working
-forward from $A \eif B$, since $\eif$E will allow us to justify the
-consequent of that conditional, $B$, by $\eif$E. The rule $\eif$E also
-requires the antecedent~$A$ of the conditional, but that is also
-already available (on line~$3$). So we finish with:
+
+现在，我们的目标是证明 $\ered$。此前讨论如何从否定式进行正向推理时曾指出：$\enot$E 规则允许你证明 $\ered$，这正是最内层子证明的目标。因此，我们寻找一个可用于正向推理的否定式：即第 $2$ 行的 $\enot B$。这意味着我们需要在该子证明内部推出 $B$，因为 $\enot$E 规则不仅需要 $\enot B$（我们已有），还需要 $B$。而 $B$ 本身，则可以通过对 $A \eif B$ 进行正向推理得到，因为 $\eif$E 规则允许我们证明该条件句的后件 $B$。$\eif$E 规则所需的条件句前件 $A$ 也已具备（位于第 $3$ 行）。于是我们完成证明如下：
+
+
 \begin{fitchproof}
 	\open
 	\hypo{1}{A \eif B}\AS
@@ -1101,56 +1239,63 @@ already available (on line~$3$). So we finish with:
 	\have{8}{(A \eif B) \eif (\enot B \eif \enot A)}\ci{1-7}
 \end{fitchproof}
 
-\section{Working forward from $\ered$}\label{sec:backred}
+\section{从 $\ered$ 正向推理}\label{sec:backred}
 
-When applying the strategies, you will sometimes find yourself in a situation where you can justify~$\ered$. Using the explosion rule, this would allow you to justify \emph{anything}. So $\ered$ works like a wildcard in proofs. For instance, suppose you want to give a proof of the argument $A \eor B, \enot A \therefore B$. You set up your proof, writing the premises $A \eor B$ and $\enot A$ at the top on lines $1$ and $2$, and the conclusion~$B$ at the bottom of the page. $B$ has no main connective, so you can't work backward from it. Instead, you must work forward from $A \eor B$: That requires two subproofs, like so:
+运用这些策略时，你有时会遇到能够证明 $\ered$ 的情形。利用爆炸规则，这允许你证明\emph{任何}语句。因此，$\ered$ 在证明中如同万能牌。例如，假设你想为论证 $A \eor B, \enot A \therefore B$ 提供一个证明。你搭建起证明框架，在页面上方第 $1$ 行和第 $2$ 行写上前提 $A \eor B$ 和 $\enot A$，在页面底部写下结论 $B$。$B$ 没有主逻辑算子，因此无法对其进行反向推理。相反，你必须从 $A \eor B$ 进行正向推理：这需要两个子证明，如下所示：
+
+
 \begin{fitchproof}
 	\hypo{1}{A \eor B}\PR
 	\hypo{7}{\enot A}\PR
 	\open
 	\hypo{2}{A} \AS
-	\ellipsesline 
+	\ellipsesline
 	\have[m]{3}{B}
-	\close 
+	\close
 	\open
 	\hypo{4}{B}\AS
 	\ellipsesline
 	\have[k]{5}{B}
 	\close
-	\have{6}{B}\oe{1,2-3,(4)-5} 
-\end{fitchproof} 
-Notice that you have $\enot A$ on line~$2$ and $A$ as the assumption of your first subproof. That gives you $\ered$ using $\enot$E, and from $\ered$ you get the conclusion~$B$ of the first subproof using~X. Recall that you can repeat a sentence you already have by using the reiteration rule~R. So our proof would be:
+	\have{6}{B}\oe{1,2-3,(4)-5}
+\end{fitchproof}
+
+
+注意，第 $2$ 行有 $\enot A$，而第一个子证明的假设是 $A$。利用 $\enot$E 规则可得到 $\ered$，进而根据 X 规则可由该 $\ered$ 得到第一个子证明的结论 $B$。回想一下，你可以使用重复规则 R 来复述一个已有的语句。因此，我们的证明如下：
+
+
 \begin{fitchproof}
 	\hypo{1}{A \eor B}\PR
 	\hypo{7}{\enot A}\PR
 	\open
 	\hypo{2}{A} \AS
-	\have{8}{\ered}\ne{7,2} 
+	\have{8}{\ered}\ne{7,2}
 	\have{3}{B}\re{8}
-	\close 
+	\close
 	\open
 	\hypo{4}{B}\AS
 	\have{5}{B}\by{R}{4}
 	\close
-	\have{6}{B}\oe{1,2-3,4-5} 
-\end{fitchproof} 
+	\have{6}{B}\oe{1,2-3,4-5}
+\end{fitchproof}
 
-\section{Proceed indirectly}
+\section{进行间接证明}
 
-In very many cases, the strategies of working forward and backward will eventually pan out. But there are cases where they do not work.  If you cannot find a way to show $\metav{A}$ directly using those, use IP instead. To do this, set up a subproof in which you assume $\enot\metav{A}$ and look for a proof of $\ered$ inside that subproof.
+在很多情况下，前推与后拉的策略最终都能成功。但在某些情况下，它们会失效。如果无法用这些方法直接证明 $\metav{A}$，就改用间接证明。为此，需要设立一个子证明，在其中假设 $\enot\metav{A}$，并尝试在该子证明中推出 $\ered$。
 
 \begin{fitchproof}
 \open
 \hypo[n]{2}{\enot \metav{A}}\AS
-\ellipsesline 
+\ellipsesline
 \have[m]{3}{\ered}
 \close
 \have{4}{\metav{A}}\ip{2-3}
 \end{fitchproof}
-Here, we have to start a subproof with assumption $\enot \metav{A}$;
-the last line of the subproof has to be~$\ered$. We'll cite the subproof, and use~IP as the rule.  In the subproof, we now have an additional assumption (on line $n$) to work with.
 
-Suppose we used the indirect proof strategy, or we're in some other situation where we're looking for a proof of $\ered$.  What's a good candidate? Of course the obvious candidate would be to use a negated sentence, since (as we saw above) $\enot$E always yields~$\ered$. If you set up a proof as above, trying to prove \metav{A} using~IP, you will have $\enot \metav{A}$ as the assumption of your subproof---so working forward from it to justify $\ered$ inside your subproof, you would next set up \metav{A} as a goal inside your subproof. If you are using this IP strategy, you will find yourself in the following situation: 
+这里，我们必须以假设 $\enot \metav{A}$ 开启一个子证明；子证明的最后一行必须是 $\ered$。我们将引用该子证明，并应用间接证明规则。在子证明中，我们现在有了一个新的假设（即第 $n$ 行）可供利用。
+
+假设我们使用了间接证明策略，或是处于其他需要推出 $\ered$ 的情境中。有什么好的着手点呢？最明显的候选者当然是使用一个否定句，因为（如上所见）$\enot$E 规则总是能推出 $\ered$。如果按照上述方式设定证明，试图用间接证明来证明 \metav{A}，那么你的子证明就会以 $\enot \metav{A}$ 作为假设——于是，为了在子证明中从前提出发证明 $\ered$，你接下来会以 \metav{A} 作为子证明内的一个目标。如果使用这种间接证明策略，你将会发现自己处于如下情境：
+
 \begin{fitchproof}
 \open
 \hypo[n]{2}{\enot \metav{A}}\AS
@@ -1159,13 +1304,14 @@ Suppose we used the indirect proof strategy, or we're in some other situation wh
 \have{4}{\ered}\ne{2,3}
 \close
 \have{5}{\metav{A}}\ip{2-4}
-\end{fitchproof} 
-This looks weird: We wanted to prove $\metav{A}$ and the strategies failed us; so we used IP as a last resort. And now we find ourselves in the same situation: we are again looking for a proof of~$\metav{A}$. But notice that we are now \emph{inside} a subproof, and in that subproof we have an additional assumption ($\enot \metav{A}$) to work with which we didn't have before. Let's look at an example.
+\end{fitchproof}
 
-\section{Indirect proof of excluded middle}\label{s:proofLEM}
+这看起来有些奇怪：我们原本想证明 $\metav{A}$，但各种策略都失败了；于是我们退而使用间接证明。然而现在我们发现自己陷入了同样的困境：我们再次需要证明 $\metav{A}$。但请注意，我们现在处于一个子证明\emph{内部}，并且在这个子证明中，我们多了一个先前没有的假设（$\enot \metav{A}$）可以利用。让我们来看一个例子。
 
-The sentence $A \eor \enot A$ is a tautology called the \emph{law of
-excluded middle} (LEM), since it encapsulates the idea that \metav{A} may be true or $\enot \metav{A}$ may be true, but there is no middle way where neither is true.\footnote{You may sometimes find logicians or philosophers talking about ``tertium non datur.'' That's the same principle as excluded middle; it means ``no third way.'' Logicians who have qualms about indirect proof also have qualms about LEM.} It should have a proof even without any premises. But working backward fails us: to get $A \eor \enot A$ using $\eor$I we would have to prove either $A$ or $\enot A$---again, from no premises. Neither of these is a tautology, so we won't be able to prove either. Working forward doesn't work either, since there is nothing to work forward from. So, the only option is indirect proof.
+\section{排中律的间接证明}\label{s:proofLEM}
+
+语句 $A \eor \enot A$ 是一个重言式，称为\emph{排中律}（LEM），因为它概括了这样的思想：要么 $\metav{A}$ 为真，要么 $\enot \metav{A}$ 为真，不存在两者皆非的中间情况。\footnote{你有时会遇到逻辑学家或哲学家谈论“tertium non datur”（拉丁语，意为“无第三者”）。这和排中律是同一个原则；意思是“没有第三条路”。对间接证明有疑虑的逻辑学家对排中律也有疑虑。} 它应该可以在没有任何前提的情况下得到证明。但后拉策略失效了：要使用 $\eor$I 得到 $A \eor \enot A$，我们必须证明 $A$ 或 $\enot A$——同样是在没有任何前提的情况下。这两者都不是重言式，所以我们无法证明其中任何一个。前推策略也不起作用，因为没有任何前提可以推进。因此，唯一的选项就是间接证明。
+
 \begin{fitchproof}
 	\open
 	\hypo{2}{\enot (A \eor \enot A)}\AS
@@ -1174,7 +1320,9 @@ excluded middle} (LEM), since it encapsulates the idea that \metav{A} may be tru
 	\close
 	\have{9}{A \eor \enot A}\ip{2-8}
 \end{fitchproof}
-Now we do have something to work forward from: the assumption $\enot(A \eor \enot A)$. To use it, we justify $\ered$ by $\enot$E, citing the assumption on line~$1$, and also the corresponding unnegated sentence $A \eor \enot A$, yet to be proved.
+
+现在我们确实有前提可以推进了：假设 $\enot(A \eor \enot A)$。为了利用它，我们通过 $\enot$E 来推出 $\ered$，这需要引用第 $1$ 行的假设，以及相应的非否定语句 $A \eor \enot A$（而这个语句尚待证明）。
+
 \begin{fitchproof}
 	\open
 	\hypo{2}{\enot (A \eor \enot A)}\AS
@@ -1184,7 +1332,9 @@ Now we do have something to work forward from: the assumption $\enot(A \eor \eno
 	\close
 	\have{9}{A \eor \enot A}\ip{2-8}
 \end{fitchproof}
-At the outset, working backward to prove $A \eor\enot A$ by $\eor$I did not work. But we are now in a different situation: we want to prove $A \eor\enot A$ inside a subproof. In general, when dealing with new goals we should go back and start with the basic strategies. In this case, we should first try to work backward from the disjunction $A \eor \enot A$, i.e., we have to pick a disjunct and try to prove it. Let's pick~$\enot A$. This would let us justify $A \eor \enot A$ on line~$m - 1$ using $\eor$I. Then working backward from $\enot A$, we start another subproof in order to justify $\enot A$ using $\enot$I. That subproof must have $A$ as the assumption and~$\ered$ as its last line.
+
+一开始，通过 $\eor$I 后拉来证明 $A \eor\enot A$ 没有成功。但现在我们处于一个不同的情境：我们需要在子证明内部证明 $A \eor\enot A$。一般来说，当遇到新的目标时，我们应该回过头来从基本策略开始。在这种情况下，我们应首先尝试从析取式 $A \eor \enot A$ 后拉，即我们必须选择一个析取支并尝试证明它。我们选择 $\enot A$。这样我们就能够在第 $m - 1$ 行使用 $\eor$I 来推出 $A \eor \enot A$。然后，为了使用 $\enot$I 从后拉策略证明 $\enot A$，我们开启另一个子证明。该子证明必须以 $A$ 为假设，并以 $\ered$ 为最后一行。
+
 \begin{fitchproof}
 	\open
 	\hypo{2}{\enot (A \eor \enot A)}\AS
@@ -1199,7 +1349,9 @@ At the outset, working backward to prove $A \eor\enot A$ by $\eor$I did not work
 	\close
 	\have{9}{A \eor \enot A}\ip{2-8}
 \end{fitchproof}
-Inside this new subproof, we again need to justify $\ered$. The best way to do this is to work forward from a negated sentence; $\enot(A \eor \enot A)$ on line~$1$ is the only negated sentence we can use. The corresponding unnegated sentence, $A \eor \enot A$, however, directly follows from $A$ (which we have on line~$2$) by $\eor$I. Our complete proof is:
+
+在这个新的子证明内部，我们同样需要为 $\ered$ 提供理由。最好的办法是从一个否定式前推；第 $1$ 行的 $\enot(A \eor \enot A)$ 是我们唯一可用的否定式。然而，相应的非否定语句 $A \eor \enot A$，却可以通过 $\eor$I 直接从 $A$（我们在第 $2$ 行有 $A$）得到。我们完整的证明如下：
+
 \begin{fitchproof}
 	\open
 	\hypo{2}{\enot (A \eor \enot A)}\AS
@@ -1218,7 +1370,9 @@ Inside this new subproof, we again need to justify $\ered$. The best way to do t
 \practiceproblems
 
 \problempart
-Use the strategies to find proofs for each of the following arguments:
+使用策略，为以下每个论证找出证明：
+
+
 \begin{compactlist}
 \item $A \eif B, A \eif C \therefore A \eif (B \eand C)$
 \item $(A \eand B) \eif C \therefore A \eif (B \eif C)$
@@ -1231,10 +1385,12 @@ Use the strategies to find proofs for each of the following arguments:
 \end{compactlist}
 
 \problempart
-Formulate strategies for working backward and forward from $\metav{A} \eiff \metav{B}$.
+制定从 $\metav{A} \eiff \metav{B}$ 出发进行前推与后拉的策略。
 
 \problempart
-Use the strategies to find proofs for each of the following sentences:
+使用策略，为以下每个语句找出证明：
+
+
 \begin{compactlist}
 \item $\enot A \eif (A \eif \ered)$
 \item $\enot(A \eand \enot A)$
@@ -1242,10 +1398,14 @@ Use the strategies to find proofs for each of the following sentences:
 \item $\enot(A \eif B) \eif (A \eand \enot B)$
 \item $(\enot A \eor B) \eif (A \eif B)$
 \end{compactlist}
-Since these should be proofs of sentences from no premises, you will start with the respective sentence at the \emph{bottom} of the proof, which will have no premises.
+
+
+由于这些是在无前提情况下对语句的证明，你将从证明的\emph{底部}——即目标语句本身——开始，且没有前提。
 
 \problempart
-Use the strategies to find proofs for each one of the following arguments and sentences:
+使用策略，为以下每个论证和语句找出证明：
+
+
 \begin{compactlist}
 \item $\enot\enot A \eif A$
 \item $\enot A \eif \enot B \therefore B \eif A$
@@ -1255,10 +1415,12 @@ Use the strategies to find proofs for each one of the following arguments and se
 \item $(A \eif B) \lor (B \eif A)$
 \item $((A \eif B) \eif A) \eif A$
 \end{compactlist}
-These all will require the IP strategy. The last three especially are quite hard!
 
-\chapter{Additional rules for TFL}\label{s:Further}
-In \cref{s:BasicTFL}, we introduced the basic rules of our proof system for TFL. In this section, we will add some additional rules to our system. Our extended proof system is a bit easier to work with. (However, in \cref{s:Derived} we will see that they are not strictly speaking \emph{necessary}.)
+
+这些都将需要使用间接证明策略。尤其是最后三个会相当困难！
+
+\chapter{真值函项逻辑的额外规则}\label{s:Further}
+在\cref{s:BasicTFL}中，我们介绍了真值函项逻辑证明系统的基本规则。在本节中，我们将为系统添加一些额外规则。扩展后的证明系统使用起来会稍微容易一些。（不过，在\cref{s:Derived}中我们会看到，严格来说它们并非\emph{必需}。）
 
 % \section{Reiteration}
 % The first additional rule is \emph{reiteration} (R). This just allows us to repeat ourselves:
@@ -1271,71 +1433,94 @@ In \cref{s:BasicTFL}, we introduced the basic rules of our proof system for TFL.
 % 	\hypo{1}{A \eor B}
 % 	\hypo{7}{\enot A}
 % 	\open
-% 	\hypo{2}{A} 
-% 	\have{8}{\ered}\ne{7,2} 
+% 	\hypo{2}{A}
+% 	\have{8}{\ered}\ne{7,2}
 % 	\have{3}{B}\re{8}
-% 	\close 
+% 	\close
 % 	\open
 % 	\hypo{4}{B}
 % 	\have{5}{B}\by{R}{4}
 % 	\close
-% 	\have{6}{B}\oe{1,2-3,4-5} 
+% 	\have{6}{B}\oe{1,2-3,4-5}
 % \end{fitchproof}
 % This is a fairly typical use of the R rule.
 
-\section{Disjunctive syllogism}
-Here is a very natural argument form.
-	\begin{earg}
-		\item Elizabeth is either in Massachusetts or in DC. 
-		\item She is not in DC. 
-		\item[\texttherefore] She is in Massachusetts.
+\section{析取三段论}
+如下是一个非常自然的论证形式。
+
+
+\begin{earg}
+		\item Elizabeth 要么在马萨诸塞州，要么在华盛顿特区。
+		\item 她不在华盛顿特区。
+		\item[\texttherefore] 她在马萨诸塞州。
 	\end{earg}
-This is called \emph{disjunctive syllogism}. We add it to our proof system as follows:
-\factoidbox{\begin{fitchproof}
+
+
+这被称为\emph{析取三段论}。我们如下将其加入证明系统：
+\factoidbox{
+
+\begin{fitchproof}
 	\have[m]{ab}{\metav{A} \eor \metav{B}}
 	\have[n]{nb}{\enot \metav{A}}
 	\have[\ ]{con}{\metav{B}}\by{DS}{ab, nb}
-\end{fitchproof}}
-and
-\factoidbox{\begin{fitchproof}
+\end{fitchproof}
+
+}
+以及
+\factoidbox{
+
+\begin{fitchproof}
 	\have[m]{ab}{\metav{A} \eor \metav{B}}
 	\have[n]{nb}{\enot \metav{B}}
 	\have[\ ]{con}{\metav{A}}\by{DS}{ab, nb}
-\end{fitchproof}}
-As usual, the disjunction and the negation of one disjunct may occur in either order and need not be adjacent. However, we always cite the disjunction first.
+\end{fitchproof}
 
-\section{Modus tollens}
-Another useful pattern of inference is embodied in the following argument:
-	\begin{earg}
-		\item If Hilary has won the election, then she is in the White
-		House. 
-		\item She is not in the White House. 
-		\item[\texttherefore] She has not won the election.
+}
+通常，析取式和一个析取支的否定可以以任意顺序出现，且不必相邻。不过，我们在引用规则时总是先列出析取式。
+
+\section{拒取式}
+另一个有用的推理模式体现在以下论证中：
+
+\begin{earg}
+		\item 如果 Hilary 赢得了选举，那么她就在白宫。
+		\item 她不在白宫。
+		\item[\texttherefore] 她没有赢得选举。
 	\end{earg}
-This inference pattern is called \emph{modus tollens}. The corresponding rule is:
-\factoidbox{\begin{fitchproof}
+
+这一推理模式称为\emph{拒取式}。对应的规则是：
+\factoidbox{
+
+\begin{fitchproof}
 	\have[m]{ab}{\metav{A}\eif\metav{B}}
 	\have[n]{a}{\enot\metav{B}}
 	\have[\ ]{b}{\enot\metav{A}}\mt{ab,a}
-\end{fitchproof}}
-As usual, the premises may occur in either order, but we always cite the conditional first.
+\end{fitchproof}
 
-\section{Double-negation elimination}
-Another useful rule is \emph{double-negation elimination}. It does exactly what it says on the tin:
-\factoidbox{\begin{fitchproof}
+}
+和往常一样，前提可以以任意顺序出现，但我们在引用规则时总是先列出条件句。
+
+\section{双重否定消除}
+另一个有用的规则是\emph{双重否定消除}。它正如其名：
+\factoidbox{
+
+\begin{fitchproof}
 		\have[m]{dna}{\enot \enot \metav{A}}
 		\have[ ]{a}{\metav{A}}\dne{dna}
-	\end{fitchproof}}
-The justification for this is that, in natural language, double-negations tend to cancel out.
+	\end{fitchproof}
 
-That said, you should be aware that context and emphasis can prevent them from doing so. Consider: `Jane is not \emph{not} happy'. Arguably, one cannot infer `Jane is happy', since the first sentence should be understood as meaning the same as  `Jane is not \emph{un}happy'. This is compatible with `Jane is in a state of profound indifference'. As usual, moving to TFL forces us to sacrifice certain nuances of English expressions.
+}
+如此规定的理由是：在自然语言中，双重否定往往可以相互抵消。
 
-\section{Excluded middle}
+话虽如此，但需要注意，语境和强调有时会阻止它们相互抵消。例如：“Jane is not \emph{not} happy”。有理由认为，我们不能从中推出“Jane is happy”，因为第一句话的意思应该被理解为等同于“Jane is not \emph{un}happy”。这与“Jane 处于一种彻底的漠然状态”是相容的。和往常一样，转向真值函项逻辑迫使我们牺牲了英语表达的某些细微之处。
 
-Suppose that we can show that if it's sunny outside, then Bill will have brought an umbrella (for fear of burning). Suppose we can also show that, if it's not sunny outside, then Bill will have brought an umbrella (for fear of rain). Well, there is no third way for the weather to be. So, \emph{whatever the weather}, Bill will have brought an umbrella.
+\section{排中律}
 
-This line of thinking motivates the following rule:
-\factoidbox{\begin{fitchproof}
+假设我们能够证明：如果外面阳光明媚，那么 Bill 会带伞（以防晒伤）。再假设我们也能够证明：如果外面不是阳光明媚，那么 Bill 也会带伞（以防下雨）。那么，天气并没有第三种可能。所以，\emph{无论天气如何}，Bill 都会带伞。
+
+这种思路促生了如下规则：
+\factoidbox{
+
+\begin{fitchproof}
 		\open
 			\hypo[i]{a}{\metav{A}}\AS
 			\have[j]{c1}{\metav{B}}
@@ -1345,18 +1530,19 @@ This line of thinking motivates the following rule:
 			\have[l]{c2}{\metav{B}}
 		\close
 		\have[\ ]{ab}{\metav{B}}\tnd{a-c1,b-c2}
-	\end{fitchproof}}
-The rule is sometimes called the \emph{rule of excluded middle}. You
-can think of it as $\eor$E applied to $\metav{A} \eor \enot \metav{A}$.
-There can be as many lines as you like between $i$ and $j$, and as
-many lines as you like between $k$ and $l$. Moreover, the subproofs
-can come in any order, and the second subproof does not need to come
-immediately after the first.
+	\end{fitchproof}
 
-To see the rule in action, consider:
+}
+这条规则有时被称为\emph{排中律规则}。你可以将其视为对 $\metav{A} \eor \enot \metav{A}$ 应用 $\eor$E 规则。
+在 $i$ 和 $j$ 之间、以及 $k$ 和 $l$ 之间，可以有任意多行。
+此外，这两个子证明可以以任意顺序出现，第二个子证明无需紧跟在第一个之后。
+
+要看看这条规则的实际应用，考虑一下：
 	$$P \therefore (P \eand D) \eor (P \eand \enot D)$$
-Here is a proof corresponding with the argument:
-	\begin{fitchproof}
+下面是该论证对应的证明：
+
+
+\begin{fitchproof}
 		\hypo{a}{P}\PR
 		\open
 			\hypo{b}{D}\AS
@@ -1370,7 +1556,11 @@ Here is a proof corresponding with the argument:
 		\close
 		\have{con}{(P \eand D) \eor (P \eand \enot D)}\tnd{b-abo, nb-anbo}
 	\end{fitchproof}
-Here is another example:
+
+
+来看另一个例子：
+
+
 \begin{fitchproof}
 	\hypo{ana}{A \eif \enot A}\PR
 	\open
@@ -1384,37 +1574,54 @@ Here is another example:
 	\have{na3}{\enot A}\tnd{a-na, na1-na2}
 \end{fitchproof}
 
+\section{德摩根规则}
+我们最后补充的一组规则被称为德摩根律（以 Augustus De~Morgan 命名）。这些规则的形式从真值表来看应该已经很熟悉了。
 
-\section{De Morgan Rules}
-Our final additional rules are called De~Morgan's Laws (named after Augustus De~Morgan). The shape of the rules should be familiar from truth tables.
+第一条德摩根规则是：
+\factoidbox{
 
-The first De Morgan rule is:
-\factoidbox{\begin{fitchproof}
+\begin{fitchproof}
 	\have[m]{ab}{\enot (\metav{A} \eand \metav{B})}
 	\have[\ ]{dm}{\enot \metav{A} \eor \enot \metav{B}}\dem{ab}
-\end{fitchproof}}
-The second De Morgan is the reverse of the first:
-\factoidbox{\begin{fitchproof}
+\end{fitchproof}
+
+}
+第二条德摩根规则是第一条的逆：
+\factoidbox{
+
+\begin{fitchproof}
 	\have[m]{ab}{\enot \metav{A} \eor \enot \metav{B}}
 	\have[\ ]{dm}{\enot (\metav{A} \eand \metav{B})}\dem{ab}
-\end{fitchproof}}
-The third De Morgan rule is the \emph{dual} of the first:
-\factoidbox{\begin{fitchproof}
+\end{fitchproof}
+
+}
+第三条德摩根规则是第一条的\emph{对偶}：
+\factoidbox{
+
+\begin{fitchproof}
 	\have[m]{ab}{\enot (\metav{A} \eor \metav{B})}
 	\have[\ ]{dm}{\enot \metav{A} \eand \enot \metav{B}}\dem{ab}
-\end{fitchproof}}
-And the fourth is the reverse of the third:
-\factoidbox{\begin{fitchproof}
+\end{fitchproof}
+
+}
+第四条则是第三条的逆：
+\factoidbox{
+
+\begin{fitchproof}
 	\have[m]{ab}{\enot \metav{A} \eand \enot \metav{B}}
 	\have[\ ]{dm}{\enot (\metav{A} \eor \metav{B})}\dem{ab}
-\end{fitchproof}}
-\emph{These are all of the additional rules of our proof system for TFL.}
+\end{fitchproof}
+
+}
+\emph{以上便是我们用于真值函项逻辑的证明系统的所有补充规则。}
 
 \practiceproblems
 \solutions
 \problempart
 \label{pr.justifyTFLproof}
-The following proofs are missing their citations (rule and line numbers). Add them wherever they are required:
+以下证明缺少其标注（规则和行号）。在需要的地方补充它们：
+
+
 \begin{compactlist}
 \item\begin{fitchproof}
 \hypo{1}{W \eif \enot B}
@@ -1461,8 +1668,9 @@ The following proofs are missing their citations (rule and line numbers). Add th
 \end{fitchproof}
 \end{compactlist}
 
-\problempart 
-Give a proof for each of these arguments:
+\problempart
+为下列每个论证提供一个证明：
+
 \begin{compactlist}
 \item $E\eor F$, $F\eor G$, $\enot F \therefore E \eand G$
 \item $M\eor(N\eif M) \therefore \enot M \eif \enot N$
@@ -1470,28 +1678,27 @@ Give a proof for each of these arguments:
 \item $(X\eand Y)\eor(X\eand Z)$, $\enot(X\eand D)$, $D\eor M \therefore M$
 \end{compactlist}
 
+\chapter{证明论概念}\label{s:ProofTheoreticConcepts}
 
-
-\chapter{Proof-theoretic concepts}\label{s:ProofTheoreticConcepts}
-
-In this chapter we will introduce some new vocabulary. The following expression:
+在本章，我们将引入一些新词汇。如下表达式：
 $$\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n \proves \metav{C}$$
-means that there is some proof which ends with $\metav{C}$ whose undischarged assumptions are among $\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n$. When we want to say that it is \emph{not} the case that there is some proof which ends with $\metav{C}$ from $\metav{A}_1$, $\metav{A}_2$, \dots,~$\metav{A}_n$, we write:  $$\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n \nproves \metav{C}$$ 
+表示存在一个以 $\metav{C}$ 结尾的证明，其未被解除的假设是 $\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n$。若我们想说 \emph{不存在} 从 $\metav{A}_1$, $\metav{A}_2$, \dots,~$\metav{A}_n$ 出发且以 $\metav{C}$ 结尾的证明，则写作：$$\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n \nproves \metav{C}$$
 
-The symbol `$\proves$' is called the \emph{single turnstile}. We want to emphasize that this is not the {double turnstile} symbol (`$\entails$') that we introduced in \cref{s:SemanticConcepts} to symbolize entailment. The single turnstile, `$\proves$', concerns the existence of proofs; the double turnstile, `$\entails$', concerns the existence of valuations (or interpretations, when used for FOL). \emph{They are very different notions.}
+符号“$\proves$”称为\emph{单推出符}。需特别注意，这不是我们在 \cref{s:SemanticConcepts} 中引入、用以符号化蕴涵的\emph{双推出符}（“$\entails$”）。单推出符“$\proves$”关乎证明的存在性；双推出符“$\entails$”则关乎赋值（或在一阶逻辑中使用时称为“解释”）的存在性。\emph{它们是两个截然不同的概念。}
 
-Armed with our `$\proves$' symbol, we can introduce some more terminology. To say that there is a proof of $\metav{A}$ with no undischarged assumptions, we write: ${} \proves \metav{A}$. In this case, we say that $\metav{A}$ is a \define{theorem}.
+借助“$\proves$”符号，我们可以引入更多术语。若存在一个没有未被解除假设的、对 $\metav{A}$ 的证明，我们写作：${} \proves \metav{A}$。此时，称 $\metav{A}$ 为\define{定理}。
 	\factoidbox{\label{def:syntactic_tautology_in_sl}
-		$\metav{A}$ is a \define{theorem} \ifeff{} $\proves \metav{A}$
+		$\metav{A}$ 是\define{定理} \ifeff{} $\proves \metav{A}$
 	}
 \newglossaryentry{theorem}
 {
-name=theorem,
-description={A sentence that can be proved without any premises}
+name=定理,
+description={一个可以在没有任何前提的情况下被证明的语句}
 }
 
-To illustrate this, suppose we want to show that `$\enot (A \eand \enot A)$' is a theorem.  So we need a proof of `$\enot(A \eand \enot A)$' which has \emph{no} undischarged assumptions. However, since we want to prove a sentence whose main logical operator is a negation, we will want to start with a \emph{subproof} within which we assume `$A \eand \enot A$', and show that this assumption leads to contradiction. All told, then, the proof looks like this:
-	\begin{fitchproof}
+作为示例，假设我们想证明“$\enot (A \eand \enot A)$”是定理。这意味着我们需要一个\emph{没有}未被解除假设的、对“$\enot(A \eand \enot A)$”的证明。由于欲证语句的主逻辑算子是否定号，我们通常会以一个\emph{子证明}开始：在该子证明中，假设“$A \eand \enot A$”，并导出矛盾。因此，证明如下：
+
+\begin{fitchproof}
 		\open
 			\hypo{con}{A \eand \enot A}\AS
 			\have{a}{A}\ae{con}
@@ -1500,85 +1707,74 @@ To illustrate this, suppose we want to show that `$\enot (A \eand \enot A)$' is 
 		\close
 		\have{lnc}{\enot (A \eand \enot A)}\ni{con-red}
 	\end{fitchproof}
-We have therefore proved `$\enot (A \eand \enot A)$' on no
-(undischarged) assumptions. This particular theorem is an instance of
-what is sometimes called the \emph{law of non-contradiction}.
 
-To show that something is a theorem, you just have to find a suitable proof. It is typically much harder to show that something is \emph{not} a theorem. To do this, you would have to demonstrate, not just that certain proof strategies fail, but that \emph{no} proof is possible. Even if you fail in trying to prove a sentence in a thousand different ways, perhaps the proof is just too long and complex for you to make out. Perhaps you just didn't try hard enough.
+由此，我们在没有（未被解除的）假设的情况下证明了“$\enot (A \eand \enot A)$”。这个特定的定理有时被称为\emph{不矛盾律}的一个实例。
 
-Here is another new bit of terminology:
+要证明某语句是定理，只需找到一个合适的证明。而要证明某语句\emph{不是}定理，则通常困难得多。这要求你不仅证明某些尝试失败了，更要证明\emph{任何}证明都是不可能的。即便你尝试了千百种方法都未能证出该语句，也可能只是证明过长或过于复杂，你未能发现而已。
+
+下面是另一个新术语：
 	\factoidbox{
-		Two sentences \metav{A} and \metav{B} are \define{interderivable} \ifeff{} each can be proved from the other; i.e., both $\metav{A}\proves\metav{B}$ and $\metav{B}\proves\metav{A}$.
+		两个语句 \metav{A} 和 \metav{B} 是\define{可互推的} \ifeff{} 二者均可从对方推出；即，同时满足 $\metav{A}\proves\metav{B}$ 与 $\metav{B}\proves\metav{A}$。
 	}
-        
+
 \newglossaryentry{interderivable}
 {
-  name=interderivability,
-  text = interderivable,
-description={A property held by pairs of statements if and only if there is a derivation which takes you from each one to the other one}
+  name=相互可推导性,
+  text = 相互可推导的,
+description={两个语句共有的性质，当且仅当存在一个推导，可以从其中任一个语句推出另一个}
 }
 
+与证明定理的情形类似，证明两个语句可互推相对容易：只需提供一对推导。证明两个语句\emph{不可}互推则困难得多，这与证明一个语句不是定理同样困难。
 
-As in the case of showing that a sentence is a theorem, it is relatively easy to show that two sentences are interderivable: it just requires a pair of proofs. Showing that sentences are \emph{not} interderivable would be much harder: it is just as hard as showing that a sentence is not a theorem.
-
-Here is a third, related, bit of terminology:
+第三个相关术语如下：
 	\factoidbox{
-	The sentences $\metav{A}_1,\metav{A}_2,\ldots, \metav{A}_n$ are
-	\define{jointly inconsistent} \ifeff{} the contradiction~$\ered$ can be proved from
-	them, i.e., $\metav{A}_1,\metav{A}_2,\ldots, \metav{A}_n \proves
-	\ered$. If they are not \define{inconsistent}, we call them
-	\define{jointly consistent}.
+	语句集 $\metav{A}_1,\metav{A}_2,\ldots, \metav{A}_n$ 是\define{不一致的} \ifeff{} 可以从它们（作为前提）推出矛盾~$\ered$，即 $\metav{A}_1,\metav{A}_2,\ldots, \metav{A}_n \proves
+	\ered$。若它们并非\define{不一致的}，则称之为\define{一致的}。
 	}
-        
+
 \newglossaryentry{inconsistent}
-{    name={inconsistency}, 
-  description={Sentences are inconsistent \ifeff{} the contradiction~$\ered$ can be proved from them},
-    text={inconsistent}
+{    name={不一致性},
+  description={一个语句集是不一致的 \ifeff{} 可以从它们推出矛盾~$\ered$},
+    text={不一致的}
 }
 
 \newglossaryentry{consistent}
-{    name={consistency}, 
-  description={Sentences are jointly consistent \ifeff{} the contradiction~$\ered$ can\emph{not} be proved from them},
-    text={consistent}
+{    name={一致性},
+  description={语句集是一致的 \ifeff{} \emph{无法}从它们推出矛盾~$\ered$},
+    text={一致的}
 }
 
-It is easy to show that some sentences are inconsistent: you just need
-to prove the contradiction~$\ered$, assuming all the sentences as
-premises. Showing that some sentences are \emph{not} inconsistent is much
-harder. It would require more than just providing a proof or two; it
-would require showing that no proof of a certain kind is
-\emph{possible}.
+要证明一组语句不一致很容易：只需以它们为前提，推出矛盾~$\ered$。而要证明一组语句\emph{不是}（即是一致的）则困难得多。这需要的不仅仅是一两个证明；它要求证明某类证明是\emph{不可能}存在的。
 
 \
 \\
-This table summarizes whether one or two proofs suffice, or whether we must reason about all possible proofs.
+下表总结了各类情形：是只需提供一两个证明，还是必须考察所有可能的证明。
 
 \begin{center}
 \begin{tabular}{l l l}
 %\cline{2-3}
- & \textbf{Yes} & \textbf{No}\\
+ & \textbf{是} & \textbf{否}\\
  \hline
 %\cline{2-3}
-theorem? & one proof & all possible proofs\\
-inconsistent? &  one proof  & all possible proofs\\
-equivalent? & two proofs & all possible proofs\\
-consistent? & all possible proofs & one proof\\
+定理？ & 只需一个证明 & 需要所有可能的证明\\
+不一致？ &  只需一个证明  & 需要所有可能的证明\\
+等价？ & 需要两个证明 & 需要所有可能的证明\\
+一致？ & 需要所有可能的证明 & 只需一个证明\\
 \end{tabular}
 \end{center}
 
-
 \practiceproblems
 \problempart
-Show that each of the following sentences is a theorem:
+证明以下各句是定理：
 \begin{compactlist}
 \item $O \eif O$
 \item $N \eor \enot N$
 \item $J \eiff [J\eor (L\eand\enot L)]$
-\item $((A \eif B) \eif A) \eif A$ 
+\item $((A \eif B) \eif A) \eif A$
 \end{compactlist}
 
 \problempart
-Provide proofs to show each of the following:
+提供证明以表明以下各项：
 \begin{compactlist}
 \item $C\eif(E\eand G), \enot C \eif G \proves G$
 \item $M \eand (\enot N \eif \enot M) \proves (N \eand M) \eor \enot M$
@@ -1587,51 +1783,49 @@ Provide proofs to show each of the following:
 \end{compactlist}
 
 \problempart
-Show that each of the following pairs of sentences are interderivable:
+证明以下每对句子都是可互推的：
 \begin{compactlist}
 \item $R \eiff E$, $E \eiff R$
 \item $G$, $\enot\enot\enot\enot G$
 \item $T\eif S$, $\enot S \eif \enot T$
 \item $U \eif I$, $\enot(U \eand \enot I)$
 \item $\enot (C \eif D), C \eand \enot D$
-\item $\enot G \eiff H$, $\enot(G \eiff H)$ 
+\item $\enot G \eiff H$, $\enot(G \eiff H)$
 \end{compactlist}
 
 \problempart
-If you know that $\metav{A}\proves\metav{B}$, what can you say about $(\metav{A}\eand\metav{C})\proves\metav{B}$? What about $(\metav{A}\eor\metav{C})\proves\metav{B}$? Explain your answers.
+如果你知道 $\metav{A}\proves\metav{B}$，那么对于 $(\metav{A}\eand\metav{C})\proves\metav{B}$ 你能说什么？对于 $(\metav{A}\eor\metav{C})\proves\metav{B}$ 呢？请解释你的答案。
 
 \
 
-\problempart In this chapter, we claimed that it is just as hard to show that two sentences are not interderivable, as it is to show that a sentence is not a theorem. Why did we claim this? (\emph{Hint}: think of a sentence that would be a theorem \ifeff{} \metav{A} and \metav{B} were interderivable.)
+\problempart 在本章中，我们声称要证明两个句子不可互推，其难度与证明一个句子不是定理是一样的。我们为何这样声称？ (\emph{提示}：考虑一个句子是定理 \ifeff{} \metav{A} 和 \metav{B} 可互推。)
 
+\chapter{派生规则}\label{s:Derived}
+在本节中，我们将了解为何将证明系统的规则分两批引入。具体来说，我们想要说明 \cref{s:Further} 中介绍的附加规则并非严格必要，它们可以从 \cref{s:BasicTFL} 的基本规则中派生出来。
 
-\chapter{Derived rules}\label{s:Derived}
-In this section, we will see why we introduced the rules of our proof system in two separate batches. In particular, we want to show that the additional rules of \cref{s:Further} are not strictly speaking necessary, but can be derived from the basic rules of \cref{s:BasicTFL}.
-
-\section{Derivation of Reiteration}
-To illustrate what it means to derive a \emph{rule} from other rules, first consider reiteration. It is a basic rule of our system, but it is also not necessary. Suppose you have some sentence on some line of your deduction:
+\section{重述规则的推导}
+为了说明从其他规则“派生”一条规则意味着什么，首先考虑重述规则。它是我们系统中的一条基本规则，但并非不可或缺。假设在你的推导中，某一行上有一个句子：
 \begin{fitchproof}
 	\have[m]{a}{\metav{A}}
 \end{fitchproof}
-You now want to repeat yourself, on some line $k$. You could just invoke the rule~R. But equally well, you can do this with other basic rules of \cref{s:BasicTFL}:
+现在你想在第 $k$ 行重复它。你可以直接调用重述规则（R）。但同样地，你也可以用 \cref{s:BasicTFL} 的其他基本规则来实现：
 \begin{fitchproof}
 	\have[m]{a}{\metav{A}}
 	\have[k]{aa}{\metav{A} \eand \metav{A}}\ai{a, a}
 	\have{a2}{\metav{A}}\ae{aa}
 \end{fitchproof}
-To be clear: this is not a proof. Rather, it is a proof \emph{scheme}. After all, it uses a variable, `$\metav{A}$', rather than a sentence of TFL, but the point is simple: Whatever sentences of TFL we plugged in for `$\metav{A}$', and whatever lines we were working on, we could produce a bona fide proof. So you can think of this as a recipe for producing proofs.
+需要明确的是：这不是一个证明，而是一个证明\emph{图式}。毕竟，它使用的是元变元“$\metav{A}$”而不是真值函项逻辑的一个语句。但要点很简单：不论我们用什么真值函项逻辑语句代入“$\metav{A}$”，也不论我们当时正在处理哪几行，我们都能产生一个真正的证明。因此，你可以将其视为一个生成证明的配方。
 
-Indeed, it is a recipe which shows us the following: anything we can prove using the rule R, we can prove (with one more line) using just the basic rules of \cref{s:BasicTFL} without~R. That is what it means to say that the rule~R can be derived from the other basic rules: anything that can be justified using~R can be justified using only the other basic rules.
+事实上，这个配方告诉我们：任何使用重述规则（R）能证明的东西，我们都可以（多费一行）仅用 \cref{s:BasicTFL} 的其他基本规则（不使用 R）来证明。这就是我们所说“重述规则（R）可从其他基本规则派生”的含义：任何能用 R 论证的内容，都可以只用其他基本规则来论证。
 
-
-\section{Derivation of Disjunctive Syllogism}
-Suppose that you are in a proof, and you have something of this form:
+\section{析取三段论规则的推导}
+假设在一个证明中，你有如下形式的内容：
 \begin{fitchproof}
 	\have[m]{ab}{\metav{A}\eor\metav{B}}
 	\have[n]{na}{\enot \metav{A}}
 \end{fitchproof}
-You now want, on line $k$, to prove $\metav{B}$. You can do this with the rule of DS, introduced in \cref{s:Further}, but equally well, you can do this with the \emph{basic} rules of \cref{s:BasicTFL}:
-	\begin{fitchproof}
+现在你想在第 $k$ 行证明 $\metav{B}$。你可以使用析取三段论（DS）规则（于 \cref{s:Further} 引入）。但同样地，你也可以用 \cref{s:BasicTFL} 的\emph{基本}规则来完成：
+\begin{fitchproof}
 		\have[m]{ab}{\metav{A}\eor\metav{B}}
 		\have[n]{na}{\enot \metav{A}}
 		\open
@@ -1645,15 +1839,15 @@ You now want, on line $k$, to prove $\metav{B}$. You can do this with the rule o
 		\close
 	\have{con}{\metav{B}}\oe{ab, a-b1, b-b2}
 \end{fitchproof}
-So the DS rule, again, can be derived from our more basic rules. Adding it to our system did not make any new proofs possible. Anytime you use the DS rule, you could always take a few extra lines and prove the same thing using only our basic rules. It is a \emph{derived} rule.
+因此，析取三段论（DS）规则同样可以从我们的基本规则中派生出来。将其加入系统并未使任何新的证明成为可能。任何时候你使用 DS 规则，总可以通过额外的几行，仅用我们的基本规则来证明同样的东西。它是一个\emph{派生}规则。
 
-\section{Derivation of Modus Tollens}
-Suppose you have the following in your proof:
+\section{否定后件规则的推导}
+假设你的证明中有如下内容：
 \begin{fitchproof}
 	\have[m]{ab}{\metav{A}\eif\metav{B}}
 	\have[n]{a}{\enot\metav{B}}
 \end{fitchproof}
-You now want, on line $k$, to prove $\enot \metav{A}$. You can do this with the rule of MT, introduced in \cref{s:Further}. Equally well, you can do this with the \emph{basic} rules of \cref{s:BasicTFL}:
+现在你想在第 $k$ 行证明 $\enot \metav{A}$。你可以使用否定后件（MT）规则（于 \cref{s:Further} 引入）。同样地，你也可以用 \cref{s:BasicTFL} 的\emph{基本}规则来完成：
 \begin{fitchproof}
 	\have[m]{ab}{\metav{A}\eif\metav{B}}
 	\have[n]{nb}{\enot\metav{B}}
@@ -1664,11 +1858,11 @@ You now want, on line $k$, to prove $\enot \metav{A}$. You can do this with the 
 		\close
 	\have{no}{\enot\metav{A}}\ni{a-nb1}
 \end{fitchproof}
-Again, the rule of MT can be derived from the \emph{basic} rules of \cref{s:BasicTFL}.
+同样，MT 规则也能从 \cref{s:BasicTFL} 的\emph{基本}规则中推导出来。
 
-\section{Derivation of Double-Negation Elimination}
-Consider the following deduction scheme:
-	\begin{fitchproof}
+\section{双重否定消去规则的推导}
+考虑下面的推导演示：
+\begin{fitchproof}
 	\have[m]{m}{\enot \enot \metav{A}}
 	\open
 		\hypo[k]{a}{\enot\metav{A}}\AS
@@ -1676,10 +1870,10 @@ Consider the following deduction scheme:
 	\close
 	\have{con}{\metav{A}}\ip{a-a1}
 \end{fitchproof}
-Again,  we can derive the DNE rule from the \emph{basic} rules of \cref{s:BasicTFL}.
+同样，我们可以从 \cref{s:BasicTFL} 的\emph{基本}规则推导出双重否定消去（DNE）规则。
 
-\section{Derivation of Excluded Middle}
-Suppose you want to prove something using the LEM rule, i.e., you have in your proof
+\section{排中律的推导}
+假设你想使用排中律（LEM）规则来证明某命题，即你的证明中有如下结构：
 \begin{fitchproof}
   \open
   \hypo[m]{a}{\metav{A}}\AS
@@ -1690,11 +1884,9 @@ Suppose you want to prove something using the LEM rule, i.e., you have in your p
   \have[l]{bbb}{\metav{B}}
   \close
 \end{fitchproof}
-You now want, on line $l+1$, to prove $\metav{B}$. The rule LEM from
-\cref{s:Further} would allow you to do it. But can you do this with
-the \emph{basic} rules of \cref{s:BasicTFL}?
+现在你想在第 $l+1$ 行证明 $\metav{B}$。来自 \cref{s:Further} 的 LEM 规则允许你这样做。但是，你能用 \cref{s:BasicTFL} 的\emph{基本}规则做到这一点吗？
 
-One option is to first prove $\metav{A} \eor \enot\metav{A}$, and then apply $\eor$E, i.e., proof by cases:
+一种选择是先证明 $\metav{A} \eor \enot\metav{A}$，然后应用析取消去规则（$\eor$E），即分情形证明：
 \begin{fitchproof}
   \open
   \hypo[m]{a}{\metav{A}}\AS
@@ -1708,9 +1900,9 @@ One option is to first prove $\metav{A} \eor \enot\metav{A}$, and then apply $\e
   \have[i]{tnd}{\metav{A} \eor \enot \metav{A}}
   \have[i+1]{fin}{\metav{B}}\oe{tnd, a-aaa,b-bbb}
 \end{fitchproof}
-(We gave a proof of $\metav{A} \eor \enot\metav{A}$ using only our basic rules in \cref{s:proofLEM}.)
+（我们在 \cref{s:proofLEM} 中给出了一个仅使用基本规则对 $\metav{A} \eor \enot\metav{A}$ 的证明。）
 
-Here is another way that is a bit more complicated than the ones before. What you have to do is embed your two subproofs inside another subproof. The assumption of the subproof will be $\enot \metav{B}$, and the last line will be $\ered$. Thus, the complete subproof is the kind you need to conclude \metav{B} using IP. Inside the proof, you'd have to do a bit more work to get~$\ered$:
+下面是另一种方法，比前面的方法略显复杂。你需要做的是将原来的两个子证明嵌套在另一个子证明内部。该子证明的假设是 $\enot \metav{B}$，最后一行是 $\ered$。因此，整个子证明正是那种你可以使用间接证明（IP）来推出 $\metav{B}$ 的类型。在证明内部，你需要多做一点工作才能得到 $\ered$：
 \begin{fitchproof}
   \open
   \hypo[m]{nb}{\enot\metav{B}}\AS
@@ -1732,12 +1924,11 @@ Here is another way that is a bit more complicated than the ones before. What yo
   \close
   \have{B}{\metav{B}}\ip{nb-(bot)}
 \end{fitchproof}
-Note that because we add an assumption at the top and additional conclusions inside the subproofs, the line numbers change. You may have to stare at this for a while before you understand what's going on.
+注意，由于我们在顶部增加了一个假设，并且在子证明内部增加了额外的结论，行号发生了变化。你可能需要花点时间理解这个证明的运作方式。
 
-
-\section{Derivation of De Morgan rules}
-Here is a demonstration of how we could derive the first De Morgan rule:
- 	\begin{fitchproof}
+\section{德摩根规则的推导}
+以下是我们如何推导第一条德摩根规则的演示：
+\begin{fitchproof}
 		\have[m]{nab}{\enot (\metav{A} \eand \metav{B})}
 		\open
 			\hypo[k]{a}{\metav{A}}\AS
@@ -1755,8 +1946,8 @@ Here is a demonstration of how we could derive the first De Morgan rule:
 		\close
 		\have{con}{\enot \metav{A} \eor \enot \metav{B}}\tnd{a-(dis), (na1)-(dis1)}
 	\end{fitchproof}
-Here is a demonstration of how we could derive the second De Morgan rule:
- 	\begin{fitchproof}
+以下是我们如何推导第二条德摩根规则的演示：
+\begin{fitchproof}
 		\have[m]{nab}{\enot \metav{A} \eor \enot \metav{B}}
 		\open
 			\hypo[k]{ab}{\metav{A} \eand \metav{B}}\AS
@@ -1774,30 +1965,28 @@ Here is a demonstration of how we could derive the second De Morgan rule:
 		\close
 		\have{nab}{\enot (\metav{A} \eand \metav{B})}\ni{ab-(con2)}
 	\end{fitchproof}
-Similar demonstrations can be offered explaining how we could derive the third and fourth De Morgan rules. These are left as exercises.
-
-
+类似的演示可以用来解释如何推导第三和第四条德摩根规则。这些留作练习。
 
 \practiceproblems
 
 \problempart
-Provide proof schemes that justify the addition of the third and fourth De Morgan rules as derived rules.
+给出证明图式，以证明确立第三和第四条德摩根规则作为派生规则的合理性。
 
 \
 
 \problempart
-The proofs you offered in response to the practice exercises of \crefrange{s:Further}{s:ProofTheoreticConcepts} used derived rules. Replace the use of derived rules, in such proofs, with only basic rules. You will find some `repetition' in the resulting proofs; in such cases, offer a streamlined proof using only basic rules.  (This will give you a sense, both of the power of derived rules, and of how all the rules interact.)
+你在回答 \crefrange{s:Further}{s:ProofTheoreticConcepts} 的练习题时提供的证明使用了派生规则。请在这些证明中，将派生规则的使用替换为仅使用基本规则。你会在得到的结果证明中发现一些“重复”；在这些情况下，请提供一个仅使用基本规则的简化证明。（这将让你体会到派生规则的力量，以及所有规则是如何相互作用的。）
 
 \
 
 \problempart
-Give a proof of $\metav{A} \eor \enot\metav{A}$. Then
-give a proof that \emph{uses only the basic rules}.
+给出 $\metav{A} \eor \enot\metav{A}$ 的一个证明。然后给出一个\emph{仅使用基本规则}的证明。
 
 \
 
 \problempart
-Show that if you had LEM as a basic rule, you could justify IP as a derived rule. That is, suppose you had the proof:
+证明：如果你将排中律（LEM）作为一条基本规则，则可以确立间接证明（IP）规则作为一条派生规则的合理性。也就是说，假设你有如下证明：
+
 \begin{fitchproof}
   \open
   \hypo[m]{a}{\enot\metav{A}}\AS
@@ -1805,215 +1994,157 @@ Show that if you had LEM as a basic rule, you could justify IP as a derived rule
   \have[n]{aaa}{\ered}
   \close
 \end{fitchproof}
-How could you use it to prove \metav{A} without using IP but with using LEM as well as all the other basic rules?
+
+如何在不使用 IP 但使用 LEM 及所有其他基本规则的情况下，利用以上推导结构来证明 \metav{A}？
 
 \
 
 \problempart
-Give a proof of the first De Morgan rule, but using only the basic rules, in particular, \emph{without using LEM}. (Of course, you can combine the proof using LEM with the proof \emph{of}~LEM. Try to find a proof directly.)
+仅使用基本规则证明第一条德摩根律，且\emph{不得使用 LEM}。（当然，你可以将使用 LEM 的证明与 LEM 本身的证明结合起来。请尝试直接给出一个证明。）
 
-\chapter{Soundness and completeness}
+\chapter{可靠性与完备性}
 \label{sec:soundness_and_completeness}
 
-In \cref{s:ProofTheoreticConcepts}, we saw that we could use
-derivations to test for similar things we used truth tables to test
-for. Not only could show that a conclusion is derivable from some
-premises, we could also use them to test if a sentence is a theorem or
-a pair of sentences are interderivable. We also started using the
-single turnstile the same way we used the double turnstile. If we
-could prove that \metav{A} was a tautology using a truth table, we
-wrote $\entails \metav{A}$, and if we could prove it using a
-derivation, we wrote $\proves \metav{A}$.
+在 \cref{s:ProofTheoreticConcepts} 中，我们看到可以利用推导来检验一些原本用真值表检验的性质。我们不仅能证明一个结论可以从某些前提中推导出来，还能用推导来判断一个语句是否为定理，或者两个语句是否可互推。我们也开始以相同的方式使用单竖线（$\proves$）和双竖线（$\entails$）：若能通过真值表证明 \metav{A} 是重言式，则写作 $\entails \metav{A}$；若能通过推导证明 \metav{A} 是定理，则写作 $\proves \metav{A}$。
 
-You may have wondered at that point if the two kinds of turnstiles
-always worked the same way. If you can show that \metav{A} is a
-tautology using truth tables, can you also always show that it is a
-theorem using a derivation? Is the reverse true? Are these things also
-true for valid arguments and pairs of equivalent sentences? As it
-turns out, the answer to all these questions and many more like them
-is yes. We can show this by proving that the concepts based on truth
-tables and the corresponding concepts based on derivations are
-equivalent. That is, we show that, e.g., $\entails \metav{A}$ \ifeff{}
-$\proves \metav{A}$ for any sentence~$\metav{A}$.
+此时你或许会想，这两种竖线是否总以相同的方式运作：若能通过真值表证明 \metav{A} 是重言式，是否也总能通过推导证明它是定理？反之是否亦然？对于有效论证以及逻辑等值的语句对，这些关系是否也成立？事实证明，所有这些及更多类似问题的答案都是肯定的。我们可以通过证明以下这一点来确立它：基于真值表的概念与基于推导的相应概念是等价的。例如，对于任意语句 $\metav{A}$，我们都能证明 $\entails \metav{A}$ \ifeff{} $\proves \metav{A}$。
 
-To begin with, we need to define all of our logical concepts separately for truth tables and derivations. A lot of this work has already been done. We handled all of the truth table definitions in \cref{s:SemanticConcepts}. We have also already given proof-theoretic definitions for theorems and pairs of interderivable sentences. The other definitions follow naturally. For most logical properties we can devise a test using derivations, and those that we cannot test for directly can be defined in terms of the concepts that we can define.
+首先，我们需要分别针对真值表和推导来定义所有的逻辑概念。其中大部分工作已经完成。所有真值表相关的定义均在 \cref{s:SemanticConcepts} 中给出。我们也已经给出了定理以及可互推语句对的证明论定义。其他定义随之自然可得。对于大多数逻辑性质，我们都可以设计使用推导的检验方法；而那些无法直接检验的性质，则可以通过我们已经能定义的概念来定义。
 
-For instance, we defined a theorem as a sentence that can be derived
-without any premises (p.~\pageref{def:syntactic_tautology_in_sl}).
-We can define an \define{inconsistent sentence in TFL}%
-\label{def:syntactic_contradiction_in_sl} as a sentence from which we
-can derive the contradiction~`$\ered$'.\footnote{Note that $\metav{A}
-\proves \ered$ \ifeff{} $\lnot \metav{A}$ is a theorem.} The syntactic
-definition of a contingent sentence is a little different. We don't
-have any practical, finite method for proving that a sentence is
-contingent using derivations, the way we did using truth tables. So we
-have to content ourselves with defining ``contingent sentence''
-negatively. A sentence is \define{{proof-theoretically contingent in
-TFL}} \label{def:syntactically_contingent_in_sl} if it is neither a
-theorem nor an inconsistent sentence.
+例如，我们将定理定义为无需任何前提即可推导出的语句（第~\pageref{def:syntactic_tautology_in_sl} 页）。我们可以将 \define{真值函项逻辑中的不一致语句}\label{def:syntactic_contradiction_in_sl} 定义为可以从中推导出矛盾“$\ered$”的语句。\footnote{注意，$\metav{A} \proves \ered$ \ifeff{} $\lnot \metav{A}$ 是定理。}偶然语句的句法定义则略有不同。我们并不像使用真值表那样，拥有一种实用的、有限的方法来通过推导证明一个语句是偶然的。因此，我们只能通过否定其他概念来定义“偶然语句”：一个语句是 \define{真值函项逻辑中的证明论偶然语句} \label{def:syntactically_contingent_in_sl}，当且仅当它既不是定理也不是不一致语句。
 
-A collection of sentences is \define{inconsistent in TFL}
-\label{def:syntactically_inconsistent_ in_sl} if and only if one can
-derive the contradiction~$\ered$ from them. Consistency, on the other
-hand, is like contingency, in that we do not have a practical finite
-method to test for it directly. So again, we have to define a term
-negatively. A collection of sentences is \define{consistent in TFL}
-\label{def:syntactically consistent in SL} if and only if it is not
-inconsistent.
+一组语句是 \define{真值函项逻辑中的不一致集合}\label{def:syntactically_inconsistent_ in_sl}，当且仅当可以从它们推导出矛盾 $\ered$。另一方面，与偶然性类似，我们也没有一种实用的有限方法来直接检验一致性。因此，我们再次需要通过否定方式定义一个术语：一组语句是 \define{真值函项逻辑中的一致集合}\label{def:syntactically consistent in SL}，当且仅当它不是不一致的。
 
-Finally, an argument is \define{provably valid in TFL} \label{def:syntactically_valid_in_SL} if and only if there is a derivation of its conclusion from its premises. All of these definitions are given in \cref{table:truth_tables_or_derivations}.
+最后，一个论证是 \define{真值函项逻辑中可证有效的} \label{def:syntactically_valid_in_SL}，当且仅当存在一个从其前提推出其结论的推导。所有这些定义均在 \cref{table:truth_tables_or_derivations} 中给出。
 
-\def\tmptable{\textbf{Concepts} 		&	\textbf{Truth table (semantic) definition} 	&	\textbf{Proof-theoretic (syntactic) definition} \\ \hline \hline
-
-Tautology/ theorem   &	A sentence whose truth table only has Ts under the main connective & A sentence that can be derived without any premises.	 \\ \hline
- 
-Contradiction/ inconsistent sentence		&	A sentence whose truth table
-only has Fs under the main connective  &	A sentence from which the
-contradiction~$\ered$ can be derived\\ \hline
-
-Contingent sentence	&	A sentence whose truth table contains both Ts and Fs under the main connective & A sentence that is not a theorem or inconsistent \\ \hline
-
-Equivalent/ interderivable sentences &	The columns under the main connectives are identical.& The sentences can be derived from each other	\\ \hline
-
-Unsatisfiable/ inconsistent sentences	&	Sentences which do not have a single line in their truth table where they are all true.	& Sentences  from which one can derive the contradiction~$\ered$ \\ \hline
-
-Satisfiable/ Consistent sentences	&	Sentences which have at least one
-line in their truth table where they are all true. & Sentences from
-which the contradiction~$\ered$ cannot be derived	\\ \hline
-
-Valid argument		&	An argument whose truth table has no lines where there are all Ts under main connectives for the premises and an F under the main connective for the conclusion.  & An argument where one can derive the conclusion from the premises.}
+\def\tmptable{\textbf{概念} 		&	\textbf{真值表（语义）定义} 	&	\textbf{证明论（句法）定义} \\ \hline \hline
+重言式/定理   &	主逻辑算子下的真值列全为 T 的语句 & 可以不依赖任何前提而推导出的语句。	 \\ \hline
+矛盾式/不一致语句		&	主逻辑算子下的真值列全为 F 的语句  &	可以从中推导出矛盾~$\ered$ 的语句\\ \hline
+偶然语句	&	主逻辑算子下的真值列既包含 T 也包含 F 的语句 & 既不是定理也不是不一致的语句 \\ \hline
+逻辑等价的/可互推的语句 &	主逻辑算子下的真值列完全相同。& 语句之间可以相互推导出来	\\ \hline
+不可满足的/不一致的语句集	&	在真值表中没有一行能使它们全部为真的语句集。	& 可以从中推导出矛盾~$\ered$ 的语句集 \\ \hline
+可满足的/一致的语句集	&	在真值表中至少有一行能使它们全部为真的语句集。 & 无法从中推导出矛盾~$\ered$ 的语句集	\\ \hline
+有效论证		&	在其真值表中，没有这样一行：所有前提的主逻辑算子下为 T 而结论的主逻辑算子下为 F。  & 可以从前提推导出结论的论证。}
 
 \ifHTMLtarget
+
+
 \begin{table}
 \begin{tabularx}{\textwidth}{X||X|X}
 \tmptable
 \end{tabularx}
-\caption{Two ways to define logical concepts.}
+\caption{定义逻辑概念的两种方式。}
 \label{table:truth_tables_or_derivations}
 \end{table}
+
+
 \else
+
+
 \begin{sidewaystable}\small
 \tabulinesep=1ex
 \begin{tabu}{X[.5,c,m] ||X[1,l,m] |X[1,l,m]}
 \tmptable
 \end{tabu}
-\caption{Two ways to define logical concepts.}
+\caption{定义逻辑概念的两种方式。}
 \label{table:truth_tables_or_derivations}
 \end{sidewaystable}
+
+
 \fi
 
-We now have matching pairs of concepts defined once
-semantically (using valuations and truth tables) and once
-proof-theoretically (on the basis of natural deduction). How can we
-establish that these definitions always work the same way? A full
-proof here goes well beyond the scope of this book. However, we can
-sketch what it would be like. We will focus on showing the two notions
-of validity to be equivalent. From that the other concepts will follow
-quickly. The proof will have to go in two directions. First we will
-have to show that things which are proof-theoretically valid will also
-be semantically valid. In other words, everything that we can prove
-using derivations could also be proven using truth tables. Put
-symbolically, we want to show that $\proves$ implies
-$\entails$. Afterwards, we will need to show things in the
-other directions, $\entails$ implies $\proves$
+我们现在有了成对的概念，它们分别从语义（使用赋值和真值表）和证明论（基于自然演绎）的角度各定义了一次。如何确保这两种定义总是一致的？完整的证明远超出本书的范围。不过，我们可以勾勒其大致轮廓。我们将着重证明两个有效性概念是等价的。由此，其他概念的等价性便可迅速得出。证明必须从两个方向进行。首先，我们必须证明在证明论上有效的论证在语义上也是有效的。换句话说，凡是能用推导证明的，也能用真值表证明。用符号表示，即我们要证明 $\proves$ 蕴涵 $\entails$。随后，我们需要证明另一个方向：$\entails$ 蕴涵 $\proves$。
 
 \newglossaryentry{soundness}
 {
-name=soundness,
-description={A property held by logical systems if and only if $\proves $ implies $\entails $}
+name=可靠性,
+description={一个逻辑系统具有的性质，当且仅当 $\proves $ 蕴涵 $\entails $}
 }
 
-This argument from $\proves $ to $\entails $ is the problem of
-\define{\gls{soundness}}.\label{def:soundness} A proof system is
-\define{sound} if there are no derivations of arguments that can be
-shown invalid by truth tables. \label{def_Soundness} Demonstrating
-that the proof system is sound would require showing that \emph{any}
-possible proof is the proof of a valid argument. It would not be
-enough simply to succeed when trying to prove many valid arguments and
-to fail when trying to prove invalid ones. The proof itself requires
-some care. In a nutshell, it involves showing that every inference
-rule preserves the property that its conclusion is entailed by the
-premises of the proof together with whatever assumptions are open. You
-can find the details of this proof worked out in \cref{ch:Soundness}.
+从 $\proves $ 到 $\entails $ 的论证，就是 \define{\gls{soundness}} 问题。\label{def:soundness} 一个证明系统是 \define{可靠的（sound）}，如果不存在这样的论证推导：该论证的真值表可以显示它是无效的。\label{def_Soundness} 要证明该系统是可靠的，就需要证明\emph{任何}可能的证明都是一个有效论证的证明。仅仅在许多有效论证上尝试证明成功，而在无效论证上尝试证明失败是不够的。这个证明本身需要一些细致的考量。简而言之，它需要证明每一条推理规则都保持如下性质：其结论被该证明的前提连同所有开放的假设所蕴涵。你可以在 \cref{ch:Soundness} 找到这个证明的详细过程。
 
-Soundness means that $\metav{A} \proves \metav{B}$ implies $\metav{A}
-\entails \metav{B}.$ What about the other direction, that is, why
-think that \emph{every} argument that can be shown valid using truth
-tables can also be proven using a derivation? 
+可靠性意味着 $\metav{A} \proves \metav{B}$ 蕴涵 $\metav{A}
+\entails \metav{B}.$ 那么另一个方向呢？为什么我们应当认为\emph{所有}能用真值表证明为有效的论证，也都能用推导来证明？
 
 \newglossaryentry{completeness}
 {
-name=completeness,
-description={A property held by logical systems if and only if $\entails $ implies $\proves $}
+name=完备性,
+description={一个逻辑系统具有的性质，当且仅当 $\entails $ 蕴涵 $\proves $}
 }
 
-This is the problem of completeness. A proof system has the property of  \define{\gls{completeness}}\label{def:completeness} if and only if there is a derivation of every semantically valid argument. Proving that a system is complete is generally harder than proving that it is sound. Proving that a system is sound amounts to showing that all of the rules of your proof system work the way they are supposed to. Showing that a system is complete means showing that you have included \emph{all} the rules you need, that you haven't left any out. Showing this is beyond the scope of this book. The important point is that, happily, the proof system for TFL is both sound and complete. This is not the case for all proof systems or all formal languages. Because it is true of TFL, we can choose to give proofs or give truth tables---whichever is easier for the task at hand.
+这就是完备性问题。一个证明系统具有 \define{\gls{completeness}}\label{def:completeness} 性质，当且仅当每个语义上有效的论证都存在一个推导。证明一个系统是完备的，通常比证明它可靠更难。证明一个系统可靠，本质上就是表明证明系统中的所有规则都按预期工作。而证明一个系统完备，则意味着要表明系统中包含了\emph{所有}必需的规则，没有任何遗漏。证明这一点超出了本书的范围。重要的是，幸运的是，真值函项逻辑的证明系统既是可靠的，又是完备的。并非所有的证明系统或形式语言都如此。正因为真值函项逻辑如此，我们可以根据当前任务，选择给出证明或真值表——哪种更容易就用哪种。
 
-Now that we know that the truth table method is interchangeable with the method of derivations, you can chose which method you want to use for any given problem. Students often prefer to use truth tables, because they can be produced purely mechanically, and that seems `easier'. However, we have already seen that truth tables become impossibly large after just a few sentence letters. On the other hand, there are a couple of situations where using proofs simply isn't possible. We syntactically defined a contingent sentence as a sentence that couldn't be proven to be a tautology or a contradiction. There is no practical way to prove this kind of negative statement. We will never know if there isn't some proof out there that a statement is a contradiction and we just haven't found it yet. We have nothing to do in this situation but resort to truth tables. Similarly, we can use derivations to prove two sentences equivalent, but what if we want to prove that they are \emph{not} equivalent? We have no way of proving that we will never find the relevant proof. So we have to fall back on truth tables again.
+既然我们知道真值表方法与推导方法可以互换，你就可以为任意给定问题选择想使用的方法。学生通常更喜欢使用真值表，因为它们可以纯机械地生成，这看起来“更容易”。然而，我们已经看到，真值表仅在涉及几个语句字母后就会变得大得不可思议。另一方面，有些情况下根本无法使用证明。我们在语法上将偶然语句定义为不能被证明是重言式或矛盾式的语句。证明这类否定性陈述没有实际可行的方法。我们永远无法确知，是否存在某个证明能表明一个语句是矛盾式，只是我们尚未找到。这种情况下，我们别无选择，只能诉诸真值表。类似地，我们可以用推导来证明两个语句等价，但如果我们想证明它们\emph{不}等价呢？我们无法证明自己永远找不到相关的推导。于是我们又不得不求助于真值表。
 
-\Cref{table.ProofOrModel} summarizes when it is best to give proofs 
-and when it is best to give truth tables.
+\Cref{table.ProofOrModel} 总结了何时最好给出证明，何时最好给出真值表。
 
-\def\tmptable{\textbf{Logical property} 	&	\textbf{To prove it present} 	&	\textbf{To prove it absent} \\ \hline \hline
-Being a tautology/theorem 		& Derive the sentence  						& Find a false line in the truth table for the sentence \\ \hline
-Being a contradiction 	&  Derive $\ered$ from the sentence  		 & Find a true line in the truth table for the sentence\\ \hline
-Contingency 			& Find a false line and a true line in the truth table for the sentence & Prove the sentence or its negation\\ \hline
-Equivalence 			& Derive each sentence from the other 		 & Find a line in the truth tables for the sentence where they have different values\\ \hline
-Consistency 		& Find a line in truth table for the sentence where they all are true & Derive $\ered$ from the sentences\\ \hline
-Validity 				& Derive the conclusion from the premises & Find a line in the truth table where the premises are true and the conclusion false. \\ }
+\def\tmptable{\textbf{逻辑性质} 	&	\textbf{证明其成立} 	&	\textbf{证明其不成立} \\ \hline \hline
+为重言式或定理 		& 推导该语句  						& 在该语句的真值表中找到一个值为假的赋值行 \\ \hline
+为矛盾式 	&  从该语句推导出 $\ered$  		 & 在该语句的真值表中找到一个值为真的赋值行\\ \hline
+具偶然性 			& 在该语句的真值表中分别找到一个值为假和一个值为真的赋值行 & 推导该语句或其否定\\ \hline
+具等价性 			& 从一个语句推导出另一个（双向推导） 		 & 在两个语句的真值表中找到一个它们真值不同的赋值行\\ \hline
+具一致性 		& 在所有语句的真值表中找到一个它们全部为真的赋值行 & 从这些语句推导出 $\ered$\\ \hline
+具有效性 				& 从前提推导出结论 & 在真值表中找到一个赋值行，使得所有前提为真而结论为假。 \\ }
 
 \ifHTMLtarget
+
+
 \begin{table}
 \begin{tabularx}{\textwidth}{X||X|X}
 \tmptable
 \end{tabularx}
-\caption{When to provide a truth table and when to provide a proof.}
+\caption{何时提供真值表，何时提供证明。}
 \label{table.ProofOrModel}
 \end{table}
+
+
 \else
+
+
 \begin{table}\small
 \tabulinesep=1ex
 \begin{tabu}{X[.7,c,m] ||X[1,l,m] |X[1,l,m]}
 \tmptable
 \end{tabu}
-\caption{When to provide a truth table and when to provide a proof.}
+\caption{何时提供真值表，何时提供证明。}
 \label{table.ProofOrModel}
 \end{table}
+
+
 \fi
 
-
-
 \practiceproblems
-\noindent\problempart Use either a derivation or a truth table for each of the following.
+\noindent\problempart 对下列各项，使用推导或真值表之一完成。
+
+
 \begin{compactlist}%[label=(\arabic*)]
-\item Show that $A \eif [((B \eand C) \eor D) \eif A]$ is a theorem.
-\item Show that $A \eif (A \eif B)$ is not a theorem.
-\item Show that the sentence $A \eif \enot{A}$ is not a contradiction.
-\item Show that the sentence $A \eiff \enot A$ is a contradiction.
-\item Show that the sentence $ \enot (W \eif (J \eor J)) $ is contingent.
-\item Show that the sentence $ \enot(X \eor (Y \eor Z)) \eor (X \eor (Y \eor Z))$ is not contingent.
- \item Show that the sentence $B \eif \enot S$ is equivalent to the sentence $\enot \enot B \eif \enot S$.
-\item Show that the sentence $ \enot (X \eor O) $ is not equivalent to the sentence $X \eand O$.
-\item Show that the sentences $\enot(A \eor B)$, $C$, $C \eif A$  are jointly inconsistent.
-\item Show that the sentences $\enot(A \eor B)$, $\enot{B}$, $B \eif A$ are jointly consistent.
-\item Show that $\enot(A \eor (B \eor C)) $ \therefore $ \enot{C}$ is valid.
-\item Show that $\enot(A \eand (B \eor C))$ \therefore $ \enot{C}$ is invalid.
+\item 证明 $A \eif [((B \eand C) \eor D) \eif A]$ 是一个定理。
+\item 证明 $A \eif (A \eif B)$ 不是定理。
+\item 证明语句 $A \eif \enot{A}$ 不是矛盾式。
+\item 证明语句 $A \eiff \enot A$ 是矛盾式。
+\item 证明语句 $ \enot (W \eif (J \eor J)) $ 是偶然的。
+\item 证明语句 $ \enot(X \eor (Y \eor Z)) \eor (X \eor (Y \eor Z))$ 不是偶然的。
+ \item 证明语句 $B \eif \enot S$ 等价于语句 $\enot \enot B \eif \enot S$。
+\item 证明语句 $ \enot (X \eor O) $ 不等价于语句 $X \eand O$。
+\item 证明语句 $\enot(A \eor B)$, $C$, $C \eif A$ 是不一致的。
+\item 证明语句 $\enot(A \eor B)$, $\enot{B}$, $B \eif A$ 是一致的。
+\item 证明 $\enot(A \eor (B \eor C)) \therefore \enot{C}$ 是有效的。
+\item 证明 $\enot(A \eand (B \eor C)) \therefore \enot{C}$ 是无效的。
 \end{compactlist}
 
+\noindent\problempart 对下列各项，使用推导或真值表之一完成。
 
-\noindent\problempart Use either a derivation or a truth table for each of the following.
 \begin{compactlist}%[label=(\arabic*)]
-\item Show that $A \eif (B \eif A)$ is a theorem.
-\item Show that $\enot (((N \eiff Q) \eor Q) \eor N)$ is not a theorem.
-\item Show that $ Z \eor (\enot Z \eiff Z) $ is contingent.
-\item Show that $ (L \eiff ((N \eif N) \eif L)) \eor H $ is not contingent.
-\item Show that $ (A \eiff A) \eand (B \eand \enot B)$ is a contradiction.
-\item Show that $ (B \eiff (C \eor B)) $ is not a contradiction.
-\item Show that $ ((\enot X \eiff X) \eor X) $ is equivalent to $X$.
-\item Show that $F \eand (K \eand R) $ is not equivalent to $ (F \eiff (K \eiff R)) $.
-\item Show that the sentences $ \enot (W \eif W)$, $(W \eiff W) \eand W$, $E \eor (W \eif \enot (E \eand W))$ are jointly inconsistent.
-\item Show that the sentences  $\enot R \eor C $, $(C \eand R) \eif \enot R$, $(\enot (R \eor C) \eif R) $ are jointly consistent.
-\item Show that $\enot \enot (C \eiff \enot C), ((G \eor C) \eor G) \therefore ((G \eif C) \eand G) $ is valid.
-\item Show that $ \enot \enot L,  (C \eif \enot L) \eif C) \therefore \enot C$ is invalid.
+\item 证明 $A \eif (B \eif A)$ 是定理。
+\item 证明 $\enot (((N \eiff Q) \eor Q) \eor N)$ 不是定理。
+\item 证明 $ Z \eor (\enot Z \eiff Z) $ 是偶然的。
+\item 证明 $ (L \eiff ((N \eif N) \eif L)) \eor H $ 不是偶然的。
+\item 证明 $ (A \eiff A) \eand (B \eand \enot B)$ 是矛盾式。
+\item 证明 $ (B \eiff (C \eor B)) $ 不是矛盾式。
+\item 证明 $ ((\enot X \eiff X) \eor X) $ 与 $X$ 逻辑等价。
+\item 证明 $F \eand (K \eand R) $ 与 $ (F \eiff (K \eiff R)) $ 不逻辑等价。
+\item 证明语句 $ \enot (W \eif W)$、$(W \eiff W) \eand W$、$E \eor (W \eif \enot (E \eand W))$ 是共同不可满足的。
+\item 证明语句  $\enot R \eor C $、$(C \eand R) \eif \enot R$、$(\enot (R \eor C) \eif R) $ 是共同可满足的。
+\item 证明 $\enot \enot (C \eiff \enot C), ((G \eor C) \eor G) \therefore ((G \eif C) \eand G) $ 是有效的。
+\item 证明 $ \enot \enot L,  (C \eif \enot L) \eif C) \therefore \enot C$ 是无效的。
 \end{compactlist}
-

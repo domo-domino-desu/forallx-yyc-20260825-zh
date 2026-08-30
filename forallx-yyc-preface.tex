@@ -1,65 +1,20 @@
-\chapter{Preface}\label{preface}
+\chapter{前言}\label{preface}
 
-\paragraph{About this book}
+\paragraph{关于本书}
+正如书名所示，这是一本关于形式逻辑的教科书。形式逻辑的研究对象是一种特定的语言，它和任何语言一样，可以用来表达事态。它是一种形式语言，即其表达式（例如语句）是形式化定义的。这使得它成为一种非常有用的语言，能够极其精确地描述其语句所表达的事态。特别是在形式逻辑中，不可能出现歧义。对这些语言的研究，核心在于语句之间的蕴涵关系，即哪些语句可以从哪些其他语句得出。蕴涵之所以至关重要，是因为通过更好地理解它，我们就能判断，在某些事态成立时，另一些事态必然也成立。但蕴涵并非唯一重要的概念。我们还将考虑可满足关系，即语句间互不矛盾的关系。这些概念可以从语义角度来定义，即基于对语言的解释来精确定义蕴涵；也可以从证明论角度来定义，即使用形式化的演绎系统。
 
-As the title indicates, this is a textbook on formal logic.  Formal logic concerns the study of a certain kind of language which, like any language, can serve to express states of affairs.  It is a formal language, i.e., its expressions (such as sentences) are defined formally.  This makes it a very useful language for being very precise about the states of affairs its sentences describe. In particular, in formal logic it is impossible to be ambiguous. The study of these languages centres on the relationship of entailment between sentences, i.e., which sentences follow from which other sentences.  Entailment is central because by understanding it better we can tell when some states of affairs must obtain provided some other states of affairs obtain.  But entailment is not the only important notion. We will also consider the relationship of being satisfiable, i.e., of not being mutually contradictory.  These notions can be defined semantically, using precise definitions of entailment based on interpretations of the language---or proof-theoretically, using formal systems of deduction.
+形式逻辑是哲学的一个核心分支学科，其中，前提与结论之间的逻辑关系至关重要。哲学家探究定义和假设的后果，并基于这些后果来评估这些定义和假设本身。形式逻辑在数学和计算机科学中也很重要。在数学中，形式语言被用来描述的不是“日常”事态，而是数学事态。数学家同样关心定义和假设的后果，并且对于他们而言，使用完全精确和严谨的方法来确立这些后果（即所谓的“定理”）也同样重要。形式逻辑提供了这样的方法。在计算机科学中，形式逻辑被应用于描述计算系统（例如电路、程序、数据库等）的状态和行为。形式逻辑的方法同样可以用来确立这类描述的后果，例如电路是否无误、程序是否实现了预期功能、数据库是否保持一致，或者关于其中数据的某个断言是否成立。
 
-Formal logic is of course a central sub-discipline of philosophy, where the logical relationship of assumptions to conclusions reached from them is important.  Philosophers investigate the consequences of definitions and assumptions and evaluate these definitions and assumptions on the basis of their consequences. It is also important in mathematics and computer science. In mathematics, formal languages are used to describe not ``everyday'' states of affairs, but mathematical states of affairs. Mathematicians are also interested in the consequences of definitions and assumptions, and for them it is equally important to establish these consequences (which they call ``theorems'') using completely precise and rigorous methods. Formal logic provides such methods.  In computer science, formal logic is applied to describe the state and behaviours of computational systems, e.g., circuits, programs, databases, etc.  Methods of formal logic can likewise be used to establish consequences of such descriptions, such as whether a circuit is error-free, whether a program does what it's intended to do, whether a database is consistent or if something is true of the data in it.
+本书分为九个部分。\Cref{ch.intro}以非形式化的方式介绍逻辑这一主题及其相关概念，尚未引入形式语言。\Crefrange{ch.TFL}{ch.NDTFL} 讨论真值函项逻辑的语言。在此类语言中，语句通过若干联结词（“或”、“且”、“非”、“如果……那么”）从基本语句构成，这些联结词将语句组合成更复杂的语句。我们用两种方式讨论诸如蕴涵这样的逻辑概念：语义上，使用真值表方法（在\cref{ch.TruthTables}中）；证明论上，使用一个形式推导系统（在\cref{ch.NDTFL}中）。\Crefrange{ch.FOL}{ch.NDFOL} 处理一种更复杂的语言，即一阶逻辑。它除了包含真值函项逻辑的联结词外，还包括名称、谓词、等词以及所谓的量词。语言的这些额外要素使其表达力远超真值函项逻辑的语言，我们将花费相当篇幅探究在其中究竟能表达什么。同样，一阶逻辑语言的逻辑概念可以从语义角度（使用解释）和证明论角度（使用\cref{ch.NDTFL}中介绍的形式推导系统的一个更复杂的变体）来定义。\Cref{ch.ML}讨论对真值函项逻辑的扩展，即引入表达可能性与必然性的非真值函项算子：模态逻辑。\Cref{ch.normalform}涵盖两个高级主题：合取范式与析取范式以及真值函项联结词的功能完备性，以及真值函项逻辑自然演绎的可靠性。
 
-The book is divided into nine parts. \Cref{ch.intro} introduces the topic and notions of logic in an informal way, without introducing a formal language yet.  \Crefrange{ch.TFL}{ch.NDTFL} concern truth-functional languages. In it, sentences are formed from basic sentences using a number of connectives (`or', `and', `not', `if \dots then') which just combine sentences into more complicated ones.  We discuss logical notions such as entailment in two ways: semantically, using the method of truth tables (in \cref{ch.TruthTables}) and proof-theoretically, using a system of formal derivations (in \cref{ch.NDTFL}). \Crefrange{ch.FOL}{ch.NDFOL} deal with a more complicated language, that of first-order logic. It includes, in addition to the connectives of truth-functional logic, also names, predicates, identity, and the so-called quantifiers. These additional elements of the language make it much more expressive than the truth-functional language, and we'll spend a fair amount of time investigating just how much one can express in it.  Again, logical notions for the language of first-order logic are defined semantically, using interpretations, and proof-theoretically, using a more complex version of the formal derivation system introduced in \cref{ch.NDTFL}.  \Cref{ch.ML} discusses the extension of TFL by non-truth-functional operators for possibility and necessity: modal logic. \Cref{ch.normalform} covers two advanced topics: that of conjunctive and disjunctive normal forms and the functional completeness of the truth-functional connectives, and the soundness of natural deduction for TFL.
+在附录中，您将找到关于本书所讨论语言的替代记法、替代推导系统的探讨，以及一份列出了大部分重要规则和定义的速查参考。核心术语列于书末的术语表中。
 
-In the appendices you'll find a discussion of alternative notations for the languages we discuss in this text, of alternative derivation systems, and a quick reference listing most of the important rules and definitions. The central terms are listed in a glossary at the very end.
+\paragraph{版权说明} 本书基于 P.~D. Magnus 撰写、Tim Button 修订和扩充的版本。它还包含了 J.~Robert Loftis 提供的一些材料（主要是练习题）。\cref{ch.ML} 的材料基于 Robert Trueman 的笔记（但已改写为使用 Fitch 原始的模态逻辑自然演绎规则），而 \cref{c:NormalForms,c:FunctionalCompleteness,ch:Soundness} 的材料则基于 Tim Button 的开放教材《元理论》中的两章。Aaron Thomas-Bolduc 和 Richard Zach 将这些文本的内容整合为当前版本，更改了一些术语和例子，重写了一些章节，并加入了他们自己的材料。特别是，Richard Zach 重写了 \cref{s:Arguments,s:Valid}，并增补了 \cref{s:AmbiguityTFL,s:stratTFL,s:ambiguityFOL,ch:PropRelations,ch:equivalences}。截至 2019 年秋季版，关于一阶逻辑的部分采用了更常见于高级教材的语法（例如那些基于 \href{https://openlogicproject.org/}{开放逻辑项目}的教材），即谓词符号的变元置于括号内（例如用 “$R(a,b)$” 代替 “$Rab$”）。这一版本的 \forallx{} 也采用了一阶逻辑的标准语法定义（允许空量化），并使用 Gentzen 的原始自然演绎引入与消去规则（即双重否定消去规则和排中律规则是派生规则，间接证明是唯一的经典规则）。最终文本根据知识共享署名 4.0 许可协议发布。存在 \href{https://github.com/OpenLogicProject/OpenLogic/wiki/Other-Logic-Textbooks}{其他几个} \forallx 的“改编”版本，包括本版本的翻译。
 
-\paragraph{Credits} This book is based on a text originally written by
-P.~D. Magnus in the version revised and expanded by Tim Button. It
-also includes some material (mainly exercises) by J.~Robert Loftis.
-The material in \cref{ch.ML} is based on notes by Robert Trueman (but
-rewritten to use Fitch's original natural deduction rules for modal
-logic), and the material in
-\cref{c:NormalForms,c:FunctionalCompleteness,ch:Soundness} on two
-chapters from Tim Button's open text \textit{Metatheory}. Aaron
-Thomas-Bolduc and Richard Zach have combined elements of these texts
-into the present version, changed some of the terminology and
-examples, rewritten some sections, and added material of their own. In
-particular, Richard Zach rewrote \cref{s:Arguments,s:Valid}, and added
-\cref{s:AmbiguityTFL,s:stratTFL,s:ambiguityFOL,ch:PropRelations,ch:equivalences}.
-As of the Fall 2019 edition, the part on FOL uses the syntax more
-common in advanced texts (such as those based on the
-\href{https://openlogicproject.org/}{Open Logic Project}) where
-arguments to predicate symbols are enclosed in parentheses (i.e.,
-`$R(a,b)$' instead of `$Rab$'). This version of \forallx{} also uses
-the standard definition of syntax for FOL which allows vacuous
-quantification, and Gentzen's original introduction and elimination
-rules for natural deduction (i.e., double negation elimination and
-excluded middle rules are derived rules, and indirect proof is the
-only classical rule). The resulting text is licensed under a Creative
-Commons Attribution 4.0 license. There are
-\href{https://github.com/OpenLogicProject/OpenLogic/wiki/Other-Logic-Textbooks}{several
-other} ``remixes'' of \forallx, including translations of this
-version.
+\paragraph{致教师} 本书内容适合作为一学期的形式逻辑导论课程教材。我曾在 12 周内讲授 \crefrange{ch.intro}{ch.NDFOL} 以及 \cref{c:NormalForms,c:FunctionalCompleteness,ch:equivalences}，但会略去部分真值表与派生推理规则。
 
-\paragraph{Notes for instructors} The material in this book is suitable for a semester-long introduction to formal logic. I cover \crefrange{ch.intro}{ch.NDFOL} plus \cref{c:NormalForms,c:FunctionalCompleteness,ch:equivalences} in 12 weeks, although I leave out partial truth tables and derived inference rules.
+本书最新版本的 PDF 可在 \href{https://forallx.openlogicproject.org}{forallx.openlogicproject.org} 获取，但更新频繁。知识共享署名许可授予您下载和自行分发本书的权利。为确保您授课期间的所有学生使用的是同一版本，建议您将决定使用的 PDF 上传至您的学习管理系统，而不是仅仅提供链接。本书也提供 \href{https://forallx.openlogicproject.org/html/}{HTML 版本}。该版本在\href{https://forallx.openlogicproject.org/html/A4.html}{无障碍访问方面经过了特别考量}，应更适合依赖屏幕阅读器的用户，例如低视力或全盲的学生。您可以下载包含 HTML 和 PDF 版本的 SCORM 资源包，以便上传至您的学习管理系统。您也可以自行联系书店打印 PDF，但有些书店可能可以采购并库存亚马逊上有售的平装本。
 
-The most recent version of this book is available in PDF at
-\href{https://forallx.openlogicproject.org}{forallx.openlogicproject.org},
-but changes frequently.  The CC BY license gives you the right to
-download and distribute the book yourself. In order to ensure that all
-your students have the same version of the book throughout the term
-you're using it, you should do so: upload the PDF you decide to use to
-your LMS rather than merely give your students the link. The book is
-also available in an
-\href{https://forallx.openlogicproject.org/html/}{HTML version}. This
-version has been prepared with
-\href{https://forallx.openlogicproject.org/html/A4.html}{special
-attention to accessibility issues} and should be more suitable for
-users who rely on screen readers, e.g., students with low vision or
-complete loss of vision. You can download a SCORM bundle including the
-HTML and PDF versions for upload to your LMS. You are also free to
-have the PDFs printed by your bookstore, but some bookstores may be
-able to purchase and stock the softcover books available on Amazon.
+请注意，书中许多练习的答案同样可在上述网站获取（面向所有人，包括您的学生）。这些答案（目前）尚未包含在 HTML 版本或 SCORM 资源包中。
 
-Note that solutions to many exercises in the book are available at the
-above site as well (to everyone, including your students). The
-solutions are not (yet) part of the HTML version or the SCORM bundle.
-
-The syntax and proof systems (except those for modal logic) are supported by Graham Leach-Krouse's free, online logic teaching software application \textit{Carnap} (\href{https://carnap.io}{carnap.io}). This allows for submission and automated marking of exercises such as symbolization, truth tables, and natural deduction proofs.  Instructors on carnap.io will be able to find \href{https://carnap.io/shared/rzach@ucalgary.ca/forall%20x:%20Calgary.md}{samples of additional exercises} they may wish to adapt or assign as-is.
+本书的语法与证明系统（模态逻辑部分除外）由 Graham Leach-Krouse 的免费在线逻辑教学软件 \textit{Carnap}（\href{https://carnap.io}{carnap.io}）提供支持。这使得符号化、真值表构造和自然演绎证明等练习的提交与自动批改成为可能。Carnap.io 上的教师可以找到\href{https://carnap.io/shared/rzach@ucalgary.ca/forall%20x:%20Calgary.md}{可供改编或直接布置的附加练习示例}。

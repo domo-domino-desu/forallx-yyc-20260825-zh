@@ -13,17 +13,44 @@
 \RequirePackage{hyperref,ifthen,graphicx,xcolor}
 
 \usepackage[numbered]{bookmark} %TB: added for speedy navigation
-\usepackage[nonumberlist,toc,style=index]{glossaries}
+% xindy 以 UTF-8 处理中文词条；传统 makeindex 会按单个字节生成非法的中文
+% 分组标题，导致 LuaLaTeX 在读入 .gls 时失败。
+\usepackage[xindy,nonumberlist,toc,style=index]{glossaries}
 \makeglossaries
 \usepackage{tabu}
 \usepackage[defaultlines=2,all]{nowidow}
 
-%RZ: typefaces 
+% 中译本使用 LuaLaTeX。原文档类是 memoir（而不是 book），且下文大量使用
+% memoir 专有版式接口，故保留 memoir 并由 ctex 宏包提供中文排版支持。
+% luatexja-compat 会定义 \printglossary，与 memoir 的同名命令冲突；加载 ctex
+% 前暂存并释放 memoir 的定义，之后再恢复。
+\let\forallxmemprintglossary\printglossary
+\let\printglossary\undefined
+\RequirePackage[fontset=fandol]{ctex}
+\let\printglossary\forallxmemprintglossary
+\renewcommand{\contentsname}{目录}
+\renewcommand{\glossaryname}{术语表}
 
-\usepackage{helvet}
-\usepackage[osf]{Baskervaldx} % oldstyle figures
-\RequirePackage{amssymb} % ensure this is loaded before newtxmath
-\usepackage[bigdelims,baskervaldx]{newtxmath} 
+% 使用配套的 New Computer Modern 正文与数学字体，避免原西文字体缺少中文
+% 字形。先加载本书宏所需的 AMS 命令，再由 fontsetup 设置 New CM 字形。
+\RequirePackage{amssymb}
+\RequirePackage[default]{fontsetup}
+
+% 中文正文中的粗体强调改用黑体；数学模式仍沿用原来的 \textbf。
+\setCJKfamilyfont{zhemph}{FandolSong-Regular}[
+  Extension = .otf,
+  BoldFont = FandolHei-Regular,
+  ItalicFont = FandolKai-Regular,
+  BoldItalicFont = FandolKai-Regular,
+  BoldItalicFeatures = {FakeBold=2.5},
+]
+\let\forallxoriginaltextbf\textbf
+\renewcommand{\textbf}[1]{%
+  \ifmmode
+    \forallxoriginaltextbf{#1}%
+  \else
+    {\CJKfamily{zhemph}\bfseries #1}%
+  \fi}
 
 %RZ: Make sure we have a copyright symbol
 
@@ -55,7 +82,10 @@
   \renewcommand*{\chapnumfont}{\fontsize{14pt}{0pt}\selectfont\sffamily\bfseries}
   \renewcommand*{\chaptitlefont}{\normalfont\fontsize{48pt}{48pt}\selectfont\bfseries\itshape\color{leadbeater}}
   \renewcommand*{\printchaptername}{%
-    \chapnamefont\MakeUppercase{\@chapapp}}
+    \chapnamefont\ifthenelse{\equal{\@chapapp}{\appendixname}}{附录}{第}}
+  \renewcommand*{\afterchapternum}{%
+    \ifthenelse{\equal{\@chapapp}{\appendixname}}{}{\chapnamefont 章}%
+    \par\nobreak\vskip 0pt}
   \renewcommand*{\printchaptertitle}[1]{%
     \chaptitlefont ##1\\[-\baselineskip]%
     \hspace*{-20pt}%
@@ -66,13 +96,24 @@
 \renewcommand*{\partnumfont}{\fontsize{24pt}{0pt}\selectfont\sffamily\bfseries}
 \renewcommand*{\parttitlefont}{\normalfont\fontsize{48pt}{48pt}\selectfont\bfseries\itshape\color{leadbeater}}
 \renewcommand*{\printpartname}{%
-  \partnamefont PART}
+  \partnamefont 第}
+\renewcommand*{\printpartnum}{%
+  \partnumfont\thepart\partnamefont 部分}
 
-\newcommand{\trailingperiod}[1]{#1.}
+\newcommand{\trailingperiod}[1]{#1。}
 \setparaheadstyle{\normalsize\bfseries\trailingperiod}
 \copypagestyle{leadbeater}{headings}
 
 \chapterstyle{leadbeater}
+
+% memoir 会在启用页式时运行 \makepsmarks，故须在页式本身定义中文标记；
+% 仅在此处重定义 \chaptermark 会被 headings 页式复制来的定义覆盖。
+\makepsmarks{leadbeater}{%
+  \renewcommand*{\chaptermark}[1]{%
+    \ifthenelse{\equal{\@chapapp}{\appendixname}}%
+      {\markboth{附录~\thechapter\quad ##1}{附录~\thechapter\quad ##1}}%
+      {\markboth{第~\thechapter~章\quad ##1}{第~\thechapter~章\quad ##1}}}%
+  \createmark{section}{right}{shownumber}{}{.\ }}
 
 \makeoddhead{leadbeater}{\small\sffamily\color{leadbeater}\rightmark}{}
     {\color{leadbeater}\sffamily\bfseries\thepage}
@@ -98,7 +139,7 @@
 \newcommand{\factoidbox}[1]{\begin{factoidboxe}#1\end{factoidboxe}}
 
 % TB: information originally in the main body; but it is style information, so I have included it here.
-\hypersetup{pdfinfo={Title={forall x: Calgary}, Author={P.D. Magnus, Tim Button, J. Rob Loftis, Rob Trueman, Aaron Thomas-Bolduc, Richard Zach}, Subject={An open access introductory textbook in formal logic}, Keywords={truth-functional logic, propositional logic, predicate logic, first-order logic, natural deduction, Fitch}}, %
+\hypersetup{pdfinfo={Title={forall x：卡尔加里}, Author={P.D. Magnus, Tim Button, J. Rob Loftis, Rob Trueman, Aaron Thomas-Bolduc, Richard Zach}, Subject={开放获取的形式逻辑导论教材}, Keywords={真值函项逻辑, 命题逻辑, 谓词逻辑, 一阶逻辑, 自然演绎, Fitch}}, %
   % bookmarks={true}, %
   bookmarksopen = true,
 	colorlinks={true}, %

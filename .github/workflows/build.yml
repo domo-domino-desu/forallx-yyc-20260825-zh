@@ -1,0 +1,45 @@
+name: Build and release PDF
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+  pull_request:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pdf-build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: texlive/texlive:latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Build Chinese edition with LuaLaTeX
+        run: latexmk -interaction=nonstopmode -file-line-error -halt-on-error forallxyyc.tex
+
+      - name: Package PDF
+        run: |
+          mkdir -p dist
+          cp forallxyyc.pdf dist/forallx-calgary-zh.pdf
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: forallx-calgary-zh
+          path: dist/forallx-calgary-zh.pdf
+
+      - name: Release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: build-${{ github.run_number }}
+          name: Build ${{ github.run_number }}
+          files: dist/forallx-calgary-zh.pdf
+          generate_release_notes: true

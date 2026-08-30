@@ -1,7 +1,7 @@
 %!TEX root = forallxyyc.tex
-\chapter[Quick reference]{Quick reference}
+\chapter[快速参考]{快速参考}
 %\pagestyle{plain}
-\section{Characteristic truth tables}
+\section{特征真值表}
 \label{app.CharacteristicTTs}
 
 \begin{tabular}{c|c}
@@ -12,7 +12,11 @@ F & T \\
 \phantom{.}\\
 \phantom{.}
 \end{tabular}
+
+
 \hfill
+
+
 \begin{tabular}{c c|c|c|c|c}
 \metav{A} & \metav{B} & $\metav{A}\eand\metav{B}$ & $\metav{A}\eor\metav{B}$ & $\metav{A}\eif\metav{B}$ & $\metav{A}\eiff\metav{B}$\\
 \hline
@@ -22,150 +26,164 @@ F & T & F & T & T & F\\
 F & F & F & F & T & T
 \end{tabular}
 
-
 \vfill
 
-\section{Symbolization}
+\section{符号化}
+
+
 \begin{center}
 \label{app.symbolization}
 \begin{tabular*}{\textwidth}{rl}
-\multicolumn{2}{c}{\textsc{Sentential Connectives}}\\ \\
-It is not the case that $P$ & $\enot P$\\
-Either $P$ or $Q$ & $(P \eor Q)$\\
-Neither $P$ nor $Q$ & $\enot(P \eor Q)$\ or \ $(\enot P \eand \enot Q)$\\
-Both $P$ and $Q$ & $(P \eand Q)$\\
-If $P$ then $Q$ & $(P \eif Q)$\\
-$P$ only if $Q$ & $(P \eif Q)$\\
-$P$ if and only if $Q$ & $(P \eiff Q)$\\
-$P$ unless $Q$ & $(\enot Q \eif P)$ or $(P \eor Q)$\\
+\multicolumn{2}{c}{\textsc{语句联结词}}\\ \\
+并非 $P$ & $\enot P$\\
+$P$ 或 $Q$ & $(P \eor Q)$\\
+既非 $P$ 也非 $Q$ & $\enot(P \eor Q)$\ 或 \ $(\enot P \eand \enot Q)$\\
+$P$ 且 $Q$ & $(P \eand Q)$\\
+如果 $P$ 那么 $Q$ & $(P \eif Q)$\\
+$P$ 仅当 $Q$ & $(P \eif Q)$\\
+$P$ 当且仅当 $Q$ & $(P \eiff Q)$\\
+$P$，除非 $Q$ & $(\enot Q \eif P)$ 或 $(P \eor Q)$\\
 \\
-\multicolumn{2}{c}{\label{SymbolizingPredicates}\textsc{Predicates}}\\ \\
-All $F$s are $G$s & $\forall x(\atom{F}{x} \eif \atom{G}{x})$\\
-Some $F$s are $G$s & $\exists x(\atom{F}{x} \eand \atom{G}{x})$\\
-Not all $F$s are $G$s & $\enot\forall x(\atom{F}{x} \eif \atom{G}{x})$\ or\\
+\multicolumn{2}{c}{\label{SymbolizingPredicates}\textsc{谓词}}\\ \\
+所有 $F$ 是 $G$ & $\forall x(\atom{F}{x} \eif \atom{G}{x})$\\
+有些 $F$ 是 $G$ & $\exists x(\atom{F}{x} \eand \atom{G}{x})$\\
+并非所有 $F$ 都是 $G$ & $\enot\forall x(\atom{F}{x} \eif \atom{G}{x})$\ 或\\
 & $\exists x(\atom{F}{x} \eand \enot \atom{G}{x})$\\
-No $F$s are $G$s & $\forall x(\atom{F}{x} \eif\enot \atom{G}{x})$\ or\\
+没有 $F$ 是 $G$ & $\forall x(\atom{F}{x} \eif\enot \atom{G}{x})$\ 或\\
 & $\enot\exists x(\atom{F}{x} \eand \atom{G}{x})$\\
-Only $F$s are $G$s & $\forall x(\atom{G}{x} \eif \atom{F}{x})$\\
+只有 $F$ 才是 $G$ & $\forall x(\atom{G}{x} \eif \atom{F}{x})$\\
 & $\enot\exists x(\enot\atom{F}{x} \eand \atom{G}{x})$\\
 \\
-\multicolumn{2}{c}{\textsc{Identity}}\\ \\
-Only $c$ is $G$ & $\forall x(\atom{G}{x} \eiff x=c)$\\
-Everything other &\\ than $c$ 
-is $G$ & $\forall x(\enot\, {x = c} \eif \atom{G}{x} )$\\
-Everything \\except $c$ 
- is $G$ & $\forall x(\enot\, {x = c} \eiff \atom{G}{x} )$\\
+\multicolumn{2}{c}{\textsc{等同}}\\ \\
+只有 $c$ 是 $G$ & $\forall x(\atom{G}{x} \eiff x=c)$\\
+除 $c$ 之外的一切\\都是 $G$ & $\forall x(\enot\, {x = c} \eif \atom{G}{x} )$\\
+除 $c$ 之外的一切\\都是 $G$ & $\forall x(\enot\, {x = c} \eiff \atom{G}{x} )$\\
 %$j$ is more $R$ than anyone else. & $\forall x(x\neq j \eif Rjx)$\\
-The $F$ is $G$ & $\exists x(\atom{F}{x} \eand \forall y(\atom{F}{y} \eif x=y) \eand \atom{G}{x} )$\\
-It is not the case \\ that
- the $F$ is $G$ & $\enot\exists x(\atom{F}{x} \eand \forall y(\atom{F}{y} \eif x=y) \eand \atom{G}{x} )$\\
-The $F$ is non-$G$ & $\exists x(\atom{F}{x} \eand \forall y(\atom{F}{y} \eif x=y) \eand \enot \atom{G}{x} )$
+那个 $F$ 是 $G$ & $\exists x(\atom{F}{x} \eand \forall y(\atom{F}{y} \eif x=y) \eand \atom{G}{x} )$\\
+并非那个 $F$\\是 $G$ & $\enot\exists x(\atom{F}{x} \eand \forall y(\atom{F}{y} \eif x=y) \eand \atom{G}{x} )$\\
+那个 $F$ 是非 $G$ & $\exists x(\atom{F}{x} \eand \forall y(\atom{F}{y} \eif x=y) \eand \enot \atom{G}{x} )$
 \end{tabular*}
 \end{center}
-
-
-
-
-
 
 % BEGIN: symbolizing cardinality
 
 \newpage
-\section{Using identity to symbolize quantities}
+\section{使用等同来符号化数量}
 
-\subsection*{There are at least \blank\ $F$s.}
+\subsection*{至少有 \blank\ 个 $F$。}
 \label{summary.atleast}
 
-
 \ifHTMLtarget
+
+
 \begin{tabular*}{\textwidth}{rl}
-	one & $\exists x\,\atom{F}{x}$\\
-	two & $\exists x_1\exists x_2(\atom{F}{x_1} \eand \atom{F}{x_2}
+	一 & $\exists x\,\atom{F}{x}$\\
+	二 & $\exists x_1\exists x_2(\atom{F}{x_1} \eand \atom{F}{x_2}
 	\eand \enot x_1  = x_2)$\\
-	three & $\exists x_1\exists x_2\exists x_3(\atom{F}{x_1} \eand \atom{F}{x_2} \eand \atom{F}{x_3} \eand \enot x_1 = x_2 \eand\enot x_1 = x_3 \eand \enot x_2 = x_3)$\\
-	four & $\exists x_1\exists x_2\exists x_3\exists x_4 (\atom{F}{x_1} \eand \atom{F}{x_2} \eand \atom{F}{x_3} \eand \atom{F}{x_4} \eand \enot x_1 = x_2 \eand \enot x_1 = x_3 \eand \enot x_1 = x_4 \eand \enot x_2 = x_3 \eand \enot x_2 = x_4 \eand \enot x_3 = x_4)$\\
-	$n$ & $\exists x_1\ldots\exists x_n(\atom{F}{x_1} \eand \ldots \eand \atom{F}{x_n} \eand \enot x_1 = x_2 \eand\ldots\eand \enot x_{n-1} = x_n)$ 
+	三 & $\exists x_1\exists x_2\exists x_3(\atom{F}{x_1} \eand \atom{F}{x_2} \eand \atom{F}{x_3} \eand \enot x_1 = x_2 \eand\enot x_1 = x_3 \eand \enot x_2 = x_3)$\\
+	四 & $\exists x_1\exists x_2\exists x_3\exists x_4 (\atom{F}{x_1} \eand \atom{F}{x_2} \eand \atom{F}{x_3} \eand \atom{F}{x_4} \eand \enot x_1 = x_2 \eand \enot x_1 = x_3 \eand \enot x_1 = x_4 \eand \enot x_2 = x_3 \eand \enot x_2 = x_4 \eand \enot x_3 = x_4)$\\
+	$n$ & $\exists x_1\ldots\exists x_n(\atom{F}{x_1} \eand \ldots \eand \atom{F}{x_n} \eand \enot x_1 = x_2 \eand\ldots\eand \enot x_{n-1} = x_n)$
 \end{tabular*}
+
+
 \else
+
+
 \begin{tabular*}{\textwidth}{rl}
-	one & $\exists x\,\atom{F}{x}$\\
-	two & $\exists x_1\exists x_2(\atom{F}{x_1} \eand \atom{F}{x_2}
+	一 & $\exists x\,\atom{F}{x}$\\
+	二 & $\exists x_1\exists x_2(\atom{F}{x_1} \eand \atom{F}{x_2}
 	\eand \enot x_1  = x_2)$\\
-	three & $\exists x_1\exists x_2\exists x_3(\atom{F}{x_1} \eand \atom{F}{x_2} \eand \atom{F}{x_3} \eand {}$\\
+	三 & $\exists x_1\exists x_2\exists x_3(\atom{F}{x_1} \eand \atom{F}{x_2} \eand \atom{F}{x_3} \eand {}$\\
 	& \quad$\enot x_1 = x_2 \eand\enot x_1 = x_3 \eand \enot x_2 = x_3)$\\
-	four & $\exists x_1\exists x_2\exists x_3\exists x_4 (\atom{F}{x_1} \eand \atom{F}{x_2} \eand \atom{F}{x_3} \eand \atom{F}{x_4} \eand {}$\\
+	四 & $\exists x_1\exists x_2\exists x_3\exists x_4 (\atom{F}{x_1} \eand \atom{F}{x_2} \eand \atom{F}{x_3} \eand \atom{F}{x_4} \eand {}$\\
 	& \quad $\enot x_1 = x_2 \eand \enot x_1 = x_3 \eand \enot x_1 = x_4 \eand {}$\\
 	& \qquad$ \enot x_2 = x_3 \eand \enot x_2 = x_4 \eand \enot x_3 = x_4)$\\
 	$n$ & $\exists x_1\ldots\exists x_n(\atom{F}{x_1} \eand \ldots \eand \atom{F}{x_n} \eand {}$\\
-	& \quad$\enot x_1 = x_2 \eand\ldots\eand \enot x_{n-1} = x_n)$ 
+	& \quad$\enot x_1 = x_2 \eand\ldots\eand \enot x_{n-1} = x_n)$
 \end{tabular*}
+
+
 \fi
 
-\subsection*{There are at most \blank\ $F$s.}
+\subsection*{至多有 \blank\ 个 $F$。}
 \label{summary.atmost}
 
-One way to say `there are at most $n$ $F$s' is to put a negation sign in front of the symbolization for `there are at least $n+1$ $F$s'. Equivalently, we can offer:
+表达“至多有 $n$ 个 $F$”的方式之一，是在“至少有 $n+1$ 个 $F$”的符号化前加上否定号。等价地，我们可以给出：
 
 \noindent
 \ifHTMLtarget
+
+
 \begin{tabular*}{\textwidth}{rl}
-	one & $\forall x_1\forall x_2\bigl[(\atom{F}{x_1} \eand
+	一 & $\forall x_1\forall x_2\bigl[(\atom{F}{x_1} \eand
 	\atom{F}{x_2}) \eif x_1=x_2\bigr]$\\
-	two & $\forall x_1\forall x_2\forall x_3\bigl[(\atom{F}{x_1} \eand \atom{F}{x_2} \eand \atom{F}{x_3}) \eif (x_1=x_2 \eor x_1=x_3 \eor x_2=x_3)\bigr]$\\
-	three & $\forall x_1\forall x_2\forall x_3\forall x_4\bigl[(\atom{F}{x_1} \eand \atom{F}{x_2} \eand \atom{F}{x_3} \eand \atom{F}{x_4}) \eif (x_1=x_2 \eor x_1=x_3 \eor x_1=x_4 \eor x_2=x_3 \eor x_2=x_4 \eor x_3=x_4)\bigr]$\\
-	$n$ & $\forall x_1\ldots\forall x_{n+1} \bigl[(\atom{F}{x_1} \eand \ldots \eand \atom{F}{x_{n+1}}) \eif (x_1=x_2 \eor \ldots \eor x_n=x_{n+1})\bigr]$ 
+	二 & $\forall x_1\forall x_2\forall x_3\bigl[(\atom{F}{x_1} \eand \atom{F}{x_2} \eand \atom{F}{x_3}) \eif (x_1=x_2 \eor x_1=x_3 \eor x_2=x_3)\bigr]$\\
+	三 & $\forall x_1\forall x_2\forall x_3\forall x_4\bigl[(\atom{F}{x_1} \eand \atom{F}{x_2} \eand \atom{F}{x_3} \eand \atom{F}{x_4}) \eif (x_1=x_2 \eor x_1=x_3 \eor x_1=x_4 \eor x_2=x_3 \eor x_2=x_4 \eor x_3=x_4)\bigr]$\\
+	$n$ & $\forall x_1\ldots\forall x_{n+1} \bigl[(\atom{F}{x_1} \eand \ldots \eand \atom{F}{x_{n+1}}) \eif (x_1=x_2 \eor \ldots \eor x_n=x_{n+1})\bigr]$
 \end{tabular*}
+
+
 \else
+
+
 \begin{tabular*}{\textwidth}{rl}
-	one & $\forall x_1\forall x_2\bigl[(\atom{F}{x_1} \eand
+	一 & $\forall x_1\forall x_2\bigl[(\atom{F}{x_1} \eand
 	\atom{F}{x_2}) \eif x_1=x_2\bigr]$\\
-	two & $\forall x_1\forall x_2\forall x_3\bigl[(\atom{F}{x_1} \eand \atom{F}{x_2} \eand \atom{F}{x_3}) \eif {}$\\ & \quad$(x_1=x_2 \eor x_1=x_3 \eor x_2=x_3)\bigr]$\\
-	three & $\forall x_1\forall x_2\forall x_3\forall x_4\bigl[(\atom{F}{x_1} \eand \atom{F}{x_2} \eand \atom{F}{x_3} \eand \atom{F}{x_4}) \eif {}$\\
+	二 & $\forall x_1\forall x_2\forall x_3\bigl[(\atom{F}{x_1} \eand \atom{F}{x_2} \eand \atom{F}{x_3}) \eif {}$\\ & \quad$(x_1=x_2 \eor x_1=x_3 \eor x_2=x_3)\bigr]$\\
+	三 & $\forall x_1\forall x_2\forall x_3\forall x_4\bigl[(\atom{F}{x_1} \eand \atom{F}{x_2} \eand \atom{F}{x_3} \eand \atom{F}{x_4}) \eif {}$\\
 	& \quad$(x_1=x_2 \eor x_1=x_3 \eor x_1=x_4 \eor {}$\\
 	& \qquad$x_2=x_3 \eor x_2=x_4 \eor x_3=x_4)\bigr]$\\
 	$n$ & $\forall x_1\ldots\forall x_{n+1}
 	\bigl[(\atom{F}{x_1} \eand \ldots \eand \atom{F}{x_{n+1}}) \eif {}$\\
-	& \quad$(x_1=x_2 \eor \ldots \eor x_n=x_{n+1})\bigr]$ 
+	& \quad$(x_1=x_2 \eor \ldots \eor x_n=x_{n+1})\bigr]$
 \end{tabular*}
+
+
 \fi
 
-
-\subsection*{There are exactly \blank\ $F$s.}
+\subsection*{恰好有 \blank\ 个 $F$。}
 \label{summary.exactly}
 
-One way to say `there are exactly $n$ $F$s' is to conjoin two of the symbolizations above and say `there are at least $n$ $F$s and there are at most $n$ $F$s.' The following equivalent formulas are shorter:
+表达“恰好有 $n$ 个 $F$”的一种方法是，将上述两种符号化用合取联结起来，说“至少有 $n$ 个 $F$ 且至多有 $n$ 个 $F$”。下列等价公式更为简短：
 
 \noindent
 \ifHTMLtarget
+
+
 \begin{tabular*}{\textwidth}{rl}
-	zero & $\forall x\,\enot \atom{F}{x}$\\
-	one & $\exists x\bigl[\atom{F}{x} \eand \forall y(\atom{F}{y} \eif x = y)\bigr]$\\
-	two & $\exists x_1\exists x_2\bigl[\atom{F}{x_1} \eand \atom{F}{x_2} \eand \enot x_1 = x_2 \eand \forall y\bigl(\atom{F}{y} \eif (y= x_1 \eor y = x_2)\bigr) \bigr]$\\
-	three & $\exists x_1\exists x_2\exists x_3\bigl[\atom{F}{x_1} \eand \atom{F}{x_2} \eand \atom{F}{x_3} \eand \enot x_1 =  x_2 \eand \enot  x_1 = x_3 \eand \enot x_2 = x_3 \eand \forall y\bigl(\atom{F}{y} \eif (y = x_1 \eor y = x_2 \eor y =  x_3)\bigr) \bigr]$\\
-	$n$ & $\exists x_1\ldots\exists x_n\bigl[\atom{F}{x_1} \eand\ldots\eand \atom{F}{x_n}  \eand \enot x_1 = x_2 \eand\ldots\eand \enot x_{n-1}= x_n \eand \forall y\bigl(\atom{F}{y} \eif (y= x_1 \eor \ldots \eor y= x_n)\bigr)\bigr]$ 
+	零 & $\forall x\,\enot \atom{F}{x}$\\
+	一 & $\exists x\bigl[\atom{F}{x} \eand \forall y(\atom{F}{y} \eif x = y)\bigr]$\\
+	二 & $\exists x_1\exists x_2\bigl[\atom{F}{x_1} \eand \atom{F}{x_2} \eand \enot x_1 = x_2 \eand \forall y\bigl(\atom{F}{y} \eif (y= x_1 \eor y = x_2)\bigr) \bigr]$\\
+	三 & $\exists x_1\exists x_2\exists x_3\bigl[\atom{F}{x_1} \eand \atom{F}{x_2} \eand \atom{F}{x_3} \eand \enot x_1 =  x_2 \eand \enot  x_1 = x_3 \eand \enot x_2 = x_3 \eand \forall y\bigl(\atom{F}{y} \eif (y = x_1 \eor y = x_2 \eor y =  x_3)\bigr) \bigr]$\\
+	$n$ & $\exists x_1\ldots\exists x_n\bigl[\atom{F}{x_1} \eand\ldots\eand \atom{F}{x_n}  \eand \enot x_1 = x_2 \eand\ldots\eand \enot x_{n-1}= x_n \eand \forall y\bigl(\atom{F}{y} \eif (y= x_1 \eor \ldots \eor y= x_n)\bigr)\bigr]$
 \end{tabular*}
+
+
 \else
+
+
 \begin{tabular*}{\textwidth}{rl}
-	zero & $\forall x\,\enot \atom{F}{x}$\\
-	one & $\exists x\bigl[\atom{F}{x} \eand \forall y(\atom{F}{y} \eif x = y)\bigr]$\\
-	two & $\exists x_1\exists x_2\bigl[\atom{F}{x_1} \eand \atom{F}{x_2} \eand {}$\\
+	零 & $\forall x\,\enot \atom{F}{x}$\\
+	一 & $\exists x\bigl[\atom{F}{x} \eand \forall y(\atom{F}{y} \eif x = y)\bigr]$\\
+	二 & $\exists x_1\exists x_2\bigl[\atom{F}{x_1} \eand \atom{F}{x_2} \eand {}$\\
 	& \quad$\enot x_1 = x_2 \eand \forall y\bigl(\atom{F}{y} \eif (y= x_1 \eor y = x_2)\bigr) \bigr]$\\
-	three & $\exists x_1\exists x_2\exists x_3\bigl[\atom{F}{x_1} \eand \atom{F}{x_2} \eand \atom{F}{x_3} \eand {}$\\
+	三 & $\exists x_1\exists x_2\exists x_3\bigl[\atom{F}{x_1} \eand \atom{F}{x_2} \eand \atom{F}{x_3} \eand {}$\\
 	& \quad$\enot x_1 =  x_2 \eand \enot  x_1 = x_3 \eand \enot x_2 = x_3 \eand {}$\\
 	& \qquad$\forall y\bigl(\atom{F}{y} \eif (y = x_1 \eor y = x_2 \eor y =  x_3)\bigr) \bigr]$\\
 	$n$ & $\exists x_1\ldots\exists x_n\bigl[\atom{F}{x_1} \eand\ldots\eand \atom{F}{x_n}  \eand {}$\\
 	& \quad$\enot x_1 = x_2 \eand\ldots\eand \enot x_{n-1}= x_n \eand {}$\\
-	& \qquad$\forall y\bigl(\atom{F}{y} \eif (y= x_1 \eor \ldots \eor y= x_n)\bigr)\bigr]$ 
+	& \qquad$\forall y\bigl(\atom{F}{y} \eif (y= x_1 \eor \ldots \eor y= x_n)\bigr)\bigr]$
 \end{tabular*}
+
+
 \fi
 %\item[one] $\exists x\forall y\bigl[\atom{F}{x} \eand (\atom{F}{y} \eif y = x)\bigr]$
 %\item[two] $\exists x\exists y\forall z\Bigl(\atom{F}{x} \eand \atom{F}{y} \eand \bigl[\atom{F}{z} \eif (z=x \eor z=y)\bigr] \eand x \neq y\Bigr)$
 %\item[three] $\exists x_1\exists x_2\exists x_3\forall y\Bigl(\atom{F}{x_1} \eand \atom{F}{x_2} \eand \atom{F}{x_3} \eand [\atom{F}{y} \eif (y=x_1 \eor y=x_2 \eor y=x_3)] \eand x_1 \neq x_2 \eand x_1 \neq x_3 \eand x_2 \neq x_3\Bigr)$
-%\item[n] $\exists x_1\cdots\exists x_n\forall y\Bigl(\atom{F}{x_1} \eand \cdots \eand \atom{F}{x_n} \eand \bigl[\atom{F}{y} \eif (y=x_1 \eor \cdots \eor y=x_n)\bigr] \eand x_1 \neq x_2 \eand\cdots\eand x_{n-1}\neq x_n\Bigr)$ 
-
+%\item[n] $\exists x_1\cdots\exists x_n\forall y\Bigl(\atom{F}{x_1} \eand \cdots \eand \atom{F}{x_n} \eand \bigl[\atom{F}{y} \eif (y=x_1 \eor \cdots \eor y=x_n)\bigr] \eand x_1 \neq x_2 \eand\cdots\eand x_{n-1}\neq x_n\Bigr)$
 
 \label{ProofRules}
-\newpage\section{Basic deduction rules for TFL}
+\newpage\section{真值函项逻辑基本推导规则}
 
 % \mathem is an empty box the same width as $m$; used to align rules
 % properly
@@ -181,15 +199,16 @@ One way to say `there are exactly $n$ $F$s' is to conjoin two of the symbolizati
 \fi
 
 %{\LARGE \textbf{Basic Rules of Proof}}
+
 \begin{multicols}{2}
-\subsection*{Reiteration}
+\subsection*{重述}
 
 \begin{fitchproof}
 	\have[m]{a}{\metav{A}}
 	\have[\ ]{c}{\metav{A}} \by{R}{a}
 \end{fitchproof}
 
-\subsection*{Conjunction}
+\subsection*{合取}
 
 \begin{fitchproof}
 	\have[m]{a}{\metav{A}}
@@ -205,7 +224,7 @@ One way to say `there are exactly $n$ $F$s' is to conjoin two of the symbolizati
 	\have[\ ]{b}{\metav{B}} \ae{ab}
 \end{fitchproof}
 
-\subsection*{Conditional}
+\subsection*{条件}
 
 \begin{fitchproof}
 	\open
@@ -220,7 +239,7 @@ One way to say `there are exactly $n$ $F$s' is to conjoin two of the symbolizati
 	\have[\ ]{b}{\metav{B}} \ce{ab,a}
 \end{fitchproof}
 
-\subsection*{Negation}
+\subsection*{否定}
 
 \begin{fitchproof}
 \open
@@ -235,7 +254,7 @@ One way to say `there are exactly $n$ $F$s' is to conjoin two of the symbolizati
 	\have[ ]{bot}{\ered}\ri{na, a}
 \end{fitchproof}
 
-\subsection*{Indirect proof}
+\subsection*{间接证明}
 
 \begin{fitchproof}
 \open
@@ -246,14 +265,14 @@ One way to say `there are exactly $n$ $F$s' is to conjoin two of the symbolizati
 \end{fitchproof}
 
 
-\subsection*{Explosion}
+\subsection*{爆炸}
 
 \begin{fitchproof}
 \have[m]{bot}{\ered}
 \have[ ]{}{\metav{A}}\re{bot}
 \end{fitchproof}
 
-\subsection*{Disjunction}
+\subsection*{析取}
 
 \begin{fitchproof}
 	\have[m]{a}{\metav{A}}
@@ -276,7 +295,7 @@ One way to say `there are exactly $n$ $F$s' is to conjoin two of the symbolizati
 	\have[\mathem]{c}{\metav{C}} \oe{ab,a-c1, b-c2}
 \end{fitchproof}
 
-\subsection*{Biconditional}
+\subsection*{双条件}
 
 \begin{fitchproof}
 	\open
@@ -302,9 +321,11 @@ One way to say `there are exactly $n$ $F$s' is to conjoin two of the symbolizati
 
 \end{multicols}
 
-\section{Derived rules for TFL}
+\section{真值函项逻辑的派生规则}
+
+
 \begin{multicols}{2}
-\subsection*{Disjunctive syllogism}
+\subsection*{析取三段论}
 \begin{fitchproof}
 	\have[m]{ab}{\metav{A} \eor \metav{B}}
 	\have[n]{nb}{\enot \metav{A}}
@@ -316,7 +337,7 @@ One way to say `there are exactly $n$ $F$s' is to conjoin two of the symbolizati
 	\have[\ ]{con}{\metav{A}}\by{DS}{ab, nb}
 \end{fitchproof}
 
-\subsection*{Modus Tollens}
+\subsection*{否定后件}
 
 \begin{fitchproof}
 	\have[m]{ab}{\metav{A}\eif\metav{B}}
@@ -324,14 +345,14 @@ One way to say `there are exactly $n$ $F$s' is to conjoin two of the symbolizati
 	\have[\ ]{b}{\enot\metav{A}} \by{MT}{ab,a}
 \end{fitchproof}
 
-\subsection*{Double-negation elimination}
+\subsection*{双重否定消去}
 	\begin{fitchproof}
 		\have[m]{dna}{\enot \enot \metav{A}}
 		\have[ ]{a}{\metav{A}}\dne{dna}
 	\end{fitchproof}
 
 
-\subsection*{Excluded middle}
+\subsection*{排中律}
 	\begin{fitchproof}
 		\open
 			\hypo[i]{a}{\metav{A}}\AS
@@ -353,7 +374,7 @@ One way to say `there are exactly $n$ $F$s' is to conjoin two of the symbolizati
 %	\have[\ ]{ac}{\metav{A}\eif\metav{C}}\by{HS}{ab,bc}
 %\end{fitchproof}
 
-\subsection*{De Morgan Rules}
+\subsection*{德摩根规则}
 \begin{fitchproof}
 	\have[m]{ab}{\enot (\metav{A} \eor \metav{B})}
 	\have[\ ]{dm}{\enot \metav{A} \eand \enot \metav{B}}\dem{ab}
@@ -374,29 +395,29 @@ One way to say `there are exactly $n$ $F$s' is to conjoin two of the symbolizati
 
 %\newpage
 
-\section{Basic deduction rules for FOL}
+\section{一阶逻辑的基本推导规则}
 
 \begin{multicols}{2}
-\subsection*{Universal elimination}
+\subsection*{全称消去}
 
 \begin{fitchproof}
 	\have[m]{a}{\forall \metav{x}\,\metav{A}(\ldots \metav{x} \ldots \metav{x}\ldots)}
 	\have[\ ]{c}{\metav{A}(\ldots \metav{c} \ldots \metav{c}\ldots)} \Ae{a}
 \end{fitchproof}
 
-\subsection*{Universal introduction}
+\subsection*{全称引入}
 
 \begin{fitchproof}
 	\have[m]{a}{\metav{A}(\ldots \metav{c} \ldots \metav{c}\ldots)}
 	\have[\ ]{c}{\forall \metav{x}\,\metav{A}(\ldots \metav{x} \ldots \metav{x}\ldots)} \Ai{a}
 \end{fitchproof}
 \begin{raggedright}
-\metav{c} must not occur in any undischarged assumption
+\metav{c} 不得出现在任何未撤销的假设中
 \end{raggedright}
 \end{multicols}
 
 \begin{multicols}{2}
-\subsection*{Existential introduction}
+\subsection*{存在引入}
 
 \begin{fitchproof}
 	\have[m]{a}{\metav{A}(\ldots \metav{c} \ldots \metav{c}\ldots)}
@@ -405,28 +426,28 @@ One way to say `there are exactly $n$ $F$s' is to conjoin two of the symbolizati
 
 \vfill\null\columnbreak
 
-\subsection*{Existential elimination}
+\subsection*{存在消去}
 
 \begin{fitchproof}
 	\have[m]{a}{\exists \metav{x}\,\metav{A}(\ldots \metav{x} \ldots \metav{x}\ldots)}
-	\open	
+	\open
 		\hypo[i]{b}{\metav{A}(\ldots \metav{c} \ldots \metav{c}\ldots)}\AS
 		\have[j]{c}{\metav{B}}
 	\close
 	\have[\ ]{d}{\metav{B}}\Ee{a,b-c}
 \end{fitchproof}
 \begin{raggedright}
-\noindent \metav{c} must not occur in any undischarged assumption, in $\exists \metav{x}\,\metav{A}(\ldots \metav{x} \ldots \metav{x}\ldots)$, or in \metav{B}\end{raggedright}
+\noindent \metav{c} 不得出现在任何未解除的假设、$\exists \metav{x}\,\metav{A}(\ldots \metav{x} \ldots \metav{x}\ldots)$ 或 \metav{B} 中。
+\end{raggedright}
 \end{multicols}
 
-\subsection*{Identity introduction}
+\subsection*{同一性引入}
 
 \begin{fitchproof}
 	\have[\mathem]{x}{\metav{c}=\metav{c}} \by{=I}{}
 \end{fitchproof}
 
-
-\subsection*{Identity elimination}
+\subsection*{同一性消去}
 
 \begin{multicols}{2}
 \begin{fitchproof}
@@ -442,7 +463,7 @@ One way to say `there are exactly $n$ $F$s' is to conjoin two of the symbolizati
 \end{multicols}
 
 %\begin{minipage}{\textwidth} % hack to keep section header with table
-\section{Derived rules for FOL}
+\section{一阶逻辑的派生规则}
 
 \begin{multicols}{2}
 \begin{fitchproof}
@@ -462,23 +483,28 @@ One way to say `there are exactly $n$ $F$s' is to conjoin two of the symbolizati
 	\have[\ ]{ac}{\exists \metav{x}\enot \metav{A}}\cq{m}
 \end{fitchproof}
 \end{multicols}
+
+
 %\end{minipage}
 
-\section{Rules for the use of subproofs and citations}
+\section{子证明与引用的使用规则}
 
-To cite an individual line when applying a rule:
+在应用规则时，若要引用单独一行：
+
 \begin{compactlist}
-\item the line must come before the line where the rule is applied, but 
-\item not occur within a subproof that has been closed before the line where the rule is applied.
-\end{compactlist}
-To cite a subproof when applying a rule:
-\begin{compactlist} 
-\item the cited subproof must come entirely before the application of the rule where it is cited,
-\item the cited subproof must not lie within some other closed subproof which is closed at the line it is cited, and 
-\item the last line of the cited subproof must not occur inside a nested subproof.
+\item 该行必须出现在规则应用行之前，并且
+\item 不得出现在一个于规则应用行之前就已闭合的子证明之内。
 \end{compactlist}
 
-\section{Rules for chains of equivalences}
+在应用规则时，若要引用一个子证明：
+
+\begin{compactlist}
+\item 被引用的子证明必须完全出现在引用它的规则应用之前，
+\item 被引用的子证明不得位于某个在引用行处已经闭合的其他已闭合子证明之内，并且
+\item 被引用子证明的最后一行不得位于一个嵌套子证明的内部。
+\end{compactlist}
+
+\section{等价链规则}
 
 \ifHTMLtarget
 \begin{align*}

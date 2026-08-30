@@ -1,32 +1,34 @@
 %!TEX root = forallxyyc.tex
-\part{Truth tables}
+\part{真值表}
 \label{ch.TruthTables}
 \addtocontents{toc}{\protect\mbox{}\protect\hrulefill\par}
 
-\chapter{Characteristic truth tables}
+\chapter{特征真值表}
 \label{s:CharacteristicTruthTables}
 
-Any sentence of TFL is composed of sentence letters, possibly combined using sentential connectives. The truth value of the compound sentence depends only on the truth value of the sentence letters that comprise it. In order to know the truth value of `$(D \eand E)$', for instance, you only need to know the truth value of `$D$' and the truth value of `$E$'.
+任何一个真值函项逻辑语句都由语句字母构成，并可能通过使用语句联结词组合而成。复合语句的真值完全取决于构成它的那些语句字母的真值。例如，要知道“$(D \eand E)$”的真值，只需知道“$D$”的真值和“$E$”的真值。
 
-We introduced five connectives in \cref{s:TFLConnectives}. So we just need to explain how they map between truth values. For convenience, we abbreviate `True' with `T' and `False' with `F'. (But, to be clear, the two truth values are True and False; the truth values are not \emph{letters}!)
+我们在\cref{s:TFLConnectives}中介绍了五个联结词。因此，我们只需说明它们如何依据真值进行运算。为方便起见，我们用“T”来代表“真”，用“F”来代表“假”。（但需明确，两个真值是“真”和“假”；真值本身并不是\emph{字母}！）
 
 \newglossaryentry{truth value}
                  {
-                   name = truth value,
-                   description = {One of the two logical values sentences can have: True and False}
+                   name = 真值,
+                   description = {语句可以具有的两个逻辑值之一：真与假}
                    }
 
-\paragraph{Negation} For any sentence \metav{A}: If \metav{A} is true, then \enot\metav{A} is false; and if \enot\metav{A} is true, then \metav{A} is false. We can summarize this in the \emph{characteristic truth table} for negation:
+\paragraph{否定} 对于任意语句 \metav{A}：如果 \metav{A} 为真，则 \enot\metav{A} 为假；并且如果 \enot\metav{A} 为真，则 \metav{A} 为假。我们可以在否定的\emph{特征真值表}中总结这一点：
+
 \begin{center}
 \begin{tabular}{c|c}
 \metav{A} & \enot\metav{A}\\
 \hline
 T & F\\
-F & T 
+F & T
 \end{tabular}
 \end{center}
 
-\paragraph{Conjunction} For any sentences \metav{A} and \metav{B}, \metav{A}\eand\metav{B} is true if and only if both \metav{A} and \metav{B} are true. We can summarize this in the {characteristic truth table} for conjunction:
+\paragraph{合取} 对于任意语句 \metav{A} 和 \metav{B}，\metav{A}\eand\metav{B} 为真 \ifeff{} \metav{A} 和 \metav{B} 都为真。我们可以在合取的特征真值表中总结这一点：
+
 \begin{center}
 \begin{tabular}{c c |c}
 \metav{A} & \metav{B} & $\metav{A}\eand\metav{B}$\\
@@ -37,11 +39,11 @@ F & T & F\\
 F & F & F
 \end{tabular}
 \end{center}
-Note that the truth value for $\metav{A} \eand \metav{B}$ is always
-the same as the truth value for $\metav{B} \eand \metav{A}$.
-Connectives that have this property are called \emph{commutative}.
 
-\paragraph{Disjunction} Recall that `$\eor$' always represents inclusive or. So, for any sentences \metav{A} and \metav{B}, $\metav{A}\eor \metav{B}$ is true if and only if either \metav{A} or \metav{B} is true. We can summarize this in the {characteristic truth table} for disjunction:
+注意，$\metav{A} \eand \metav{B}$ 的真值总是与 $\metav{B} \eand \metav{A}$ 的真值相同。具有这种性质的联结词称为\emph{交换的}。
+
+\paragraph{析取} 回想一下，“$\eor$”总是代表相容或。因此，对于任意语句 \metav{A} 和 \metav{B}，$\metav{A}\eor \metav{B}$ 为真 \ifeff{} \metav{A} 或 \metav{B} 为真。我们可以在析取的特征真值表中总结这一点：
+
 \begin{center}
 \begin{tabular}{c c|c}
 \metav{A} & \metav{B} & $\metav{A}\eor\metav{B}$ \\
@@ -52,19 +54,13 @@ F & T & T\\
 F & F & F
 \end{tabular}
 \end{center}
-Like conjunction, disjunction is commutative.
 
-\paragraph{Conditional} We're just going to come clean and admit it:
-Conditionals are a mess. Exactly how much of a
-mess they are is \emph{philosophically} contentious. We'll discuss a
-few of the subtleties in
-\cref{s:IndicativeSubjunctive,s:ParadoxesOfMaterialConditional}. For
-now, we are going to stipulate the following: $\metav{A}\eif\metav{B}$
-is false if and only if \metav{A} is true and \metav{B} is false.
-The connective with these stipulated truth conditions is called the
-\define{material conditional}. We
-can summarize this with a characteristic truth table for the
-conditional.
+与合取一样，析取也是交换的。
+
+\paragraph{条件} 我们不妨坦白承认：条件句是一团乱麻。它们究竟有多混乱，在\emph{哲学上}尚有争议。我们将在
+\cref{s:IndicativeSubjunctive,s:ParadoxesOfMaterialConditional} 中讨论其中的一些微妙之处。目前，我们先做如下规定：$\metav{A}\eif\metav{B}$ 为假 \ifeff{} \metav{A} 为真且 \metav{B} 为假。具有这些规定性真值条件的联结词称为
+\define{实质条件句（material conditional）}。我们可以用条件句的特征真值表来总结这一点。
+
 \begin{center}
 \begin{tabular}{c c|c}
 \metav{A} & \metav{B} & $\metav{A}\eif\metav{B}$\\
@@ -75,9 +71,11 @@ F & T & T\\
 F & F & T
 \end{tabular}
 \end{center}
-The conditional is \emph{not commutative}. You cannot swap the antecedent and consequent without changing the meaning of the sentence; $\metav{A}\eif\metav{B}$ and $\metav{B} \eif \metav{A}$ have different truth tables.
 
-\paragraph{Biconditional} Since a biconditional is to be the same as the conjunction of the conditionals running in both directions, we will want the truth table for the biconditional to be:
+条件联结词\emph{不是}交换的。你不能在不改变句子意思的情况下交换前件和后件；$\metav{A}\eif\metav{B}$ 和 $\metav{B} \eif \metav{A}$ 具有不同的真值表。
+
+\paragraph{双条件} 由于一个双条件句应等价于双向的条件句的合取，我们规定双条件联结词的真值表如下：
+
 \begin{center}
 \begin{tabular}{c c|c}
 \metav{A} & \metav{B} & $\metav{A}\eiff\metav{B}$\\
@@ -88,77 +86,84 @@ F & T & F\\
 F & F & T
 \end{tabular}
 \end{center}
-The connective with this truth table is also often called the
-\define{material biconditional}. Unsurprisingly, the biconditional is
-commutative.
 
-\chapter{Truth-functional connectives}
+具有这种真值表的联结词也常被称为
+\define{实质双条件句（material biconditional）}。不出所料，双条件联结词是交换的。
+
+\chapter{真值函项联结词}
 \label{s:TruthFunctionality}
 
-\section{The idea of truth-functionality}
-Let's introduce an important idea.
+\section{真值函项性的概念}
+让我们来引入一个重要概念。
 	\factoidbox{
-		A connective is \define{truth-functional} \ifeff{} the truth value of a sentence with that connective as its main logical operator is uniquely determined by the truth value(s) of the constituent sentence(s).
+		一个联结词是 \define{真值函项的（truth-functional）} \ifeff{} 以该联结词为主逻辑算子的语句的真值，完全由构成它的子语句的真值唯一决定。
 	}
 \newglossaryentry{truth-functional connective}
 {
-name=truth-functional connective,
-description={An operator that builds larger sentences out of smaller ones and fixes the \gls{truth value} of the resulting sentence based only on the truth value of the component sentences}
+name=真值函项联结词,
+description={一种算子，它由较小的语句构造出较大的语句，并且仅根据组份语句的真值来确定结果语句的\gls{truth value}}
 }
-        
-Every connective in TFL is truth-functional. The truth value of a negation is uniquely determined by the truth value of the unnegated sentence. The truth value of a conjunction is uniquely determined by the truth value of both conjuncts. The truth value of a disjunction is uniquely determined by the truth value of both disjuncts, and so on. To determine the truth value of some TFL sentence, we only need to know the truth value of its components.
 
-This is what gives TFL its name: it is \emph{truth-functional logic}.
+真值函项逻辑中的每一个联结词都是真值函项的。一个否定式的真值由被否定的语句的真值唯一决定。一个合取式的真值由它的两个合取支的真值唯一决定。一个析取式的真值由它的两个析取支的真值唯一决定，依此类推。要确定某个真值函项逻辑语句的真值，我们只需要知道其构成部分（子语句）的真值。
 
-Many languages use connectives that are not truth-functional. In English, for example, we can form a new sentence from any simpler sentence by prefixing it with `It is necessarily the case that\ldots'. The truth value of this new sentence is not fixed solely by the truth value of the original sentence. For consider two true sentences:
-	\begin{compactlist}
+这正是它得名“真值函项逻辑”的原因：它是一种\emph{真值函项}逻辑。
+
+然而，许多语言中使用的联结词并非真值函项的。例如，在英语中，我们可以在任何较简单的句子前加上“情况必然是……”，从而构成一个新句子。这个新句子的真值并非仅由原句的真值决定。考虑下面两个真句子：
+
+
+\begin{compactlist}
 		\item $2 + 2 = 4$
-		\item Shostakovich wrote fifteen string quartets.
+		\item 肖斯塔科维奇写了十五部弦乐四重奏。
 	\end{compactlist}
-Whereas it is necessarily the case that $2 + 2 = 4$, it is not \emph{necessarily} the case that Shostakovich wrote fifteen string quartets. If Shostakovich had died earlier, he would have failed to finish Quartet no.~15; if he had lived longer, he might have written a few more. So `It is necessarily the case that\ldots' is not \emph{truth-functional}.
 
 
-\section{Symbolizing versus translating}
-All of the connectives of TFL are truth-functional, but more than that: they really do nothing \emph{but} map us between truth values.  
+情况必然是 $2 + 2 = 4$，但肖斯塔科维奇写了十五部弦乐四重奏却并非\emph{必然}情况。如果肖斯塔科维奇去世得更早，他可能就未能完成第15号四重奏；如果他活得更久，他或许还会多写几部。因此，“情况必然是……”这个说法不是\emph{真值函项的}。
 
-When we symbolize a sentence or an argument in TFL, we ignore everything \emph{besides} the contribution that the truth values of a component might make to the truth value of the whole. There are subtleties to our ordinary claims that far outstrip their mere truth values. Sarcasm; poetry; snide implicature; emphasis; these are important parts of everyday discourse, but none of this is retained in TFL. As remarked in \cref{s:TFLConnectives}, TFL cannot capture the subtle differences between the following English sentences:
-	\begin{compactlist}
-		\item Dana is a logician and Dana is a nice person
-		\item Although Dana is a logician, Dana is a nice person
-		\item Dana is a logician despite being a nice person
-		\item Dana is a nice person, but also a logician
-		\item Dana's being a logician notwithstanding, he is a nice person
+\section{符号化与翻译}
+真值函项逻辑的所有联结词不仅是真值函项的，而且实际上其\emph{唯一}功能就是在真值之间进行映射。
+
+当我们用真值函项逻辑对一个句子或论证进行符号化时，我们只关注子语句的真值如何决定整个语句的真值，而忽略其他所有方面。我们日常断言包含着远超出其单纯真值的精微之处。反讽、诗意、挖苦的暗示、强调，这些都是日常话语的重要部分，但在真值函项逻辑中，这些全都无法保留。正如在 \cref{s:TFLConnectives} 中所指出的，真值函项逻辑无法捕捉下列英语句子之间的细微差别：
+
+
+\begin{compactlist}
+		\item Dana 是逻辑学家，且 Dana 是友善的人
+		\item 尽管 Dana 是逻辑学家，但他是友善的人
+		\item Dana 是逻辑学家，尽管他为人友善
+		\item Dana 是友善的人，同时也是逻辑学家
+		\item 即便考虑到 Dana 是逻辑学家这一点，他仍是友善的人
 	\end{compactlist}
-All of the above sentences will be symbolized with the same TFL sentence, perhaps `$L \eand N$'.
 
-Now, we keep saying that we use TFL sentences to \emph{symbolize} English sentences. Many other textbooks talk about \emph{translating} English sentences into TFL. However, a good translation should preserve certain facets of meaning, and---as we just saw---TFL just cannot do that. This is why we will speak of \emph{symbolizing} English sentences, rather than of \emph{translating} them.
 
-This affects how we should understand our symbolization keys. Consider a key like:
-	\begin{ekey}
-		\item[L] Dana is a logician.
-		\item[N] Dana is a nice person.
+以上所有句子都将用同一个真值函项逻辑语句来符号化，或许是 “$L \eand N$”。
+
+我们一直说我们用真值函项逻辑语句来\emph{符号化}英语句子。许多其他教科书则谈论将英语句子\emph{翻译}成真值函项逻辑。然而，好的翻译应当保留意义的某些方面，而——正如我们刚才所见——真值函项逻辑恰恰做不到这一点。这就是为什么我们坚持使用\emph{符号化}这一说法，而非\emph{翻译}。
+
+这也影响着我们应如何理解符号化约定。考虑这样一个约定：
+
+
+\begin{ekey}
+		\item[L] Dana 是逻辑学家。
+		\item[N] Dana 是友善的人。
 	\end{ekey}
-Other textbooks will understand this as a stipulation that the TFL sentence `$L$' should \emph{mean} that Dana is a logician, and that the TFL sentence `$N$' should \emph{mean} that Dana is a nice person. But TFL just is totally unequipped to deal with \emph{meaning}. The preceding symbolization key is doing no more and no less than stipulating that the TFL sentence `$L$' should take the same truth value as the English sentence `Dana is a logician' (whatever that might be), and that the TFL sentence `$N$' should take the same truth value as the English sentence `Dana is a nice person' (whatever that might be).
+
+
+其他教科书可能会将其理解为一项规定：真值函项逻辑语句“$L$”应该\emph{意指} Dana 是逻辑学家，而“$N$”应该\emph{意指} Dana 是友善的人。但真值函项逻辑根本无力处理\emph{意义}。上述符号化约定所做的，不过是规定：真值函项逻辑语句“$L$”应当与英语句子“Dana 是逻辑学家”取相同的真值（无论那是什么），而真值函项逻辑语句“$N$”应当与英语句子“Dana 是友善的人”取相同的真值（无论那是什么）。
 	\factoidbox{
-		When we treat a TFL sentence as \emph{symbolizing} an English sentence, we are stipulating that the TFL sentence is to take the same truth value as that English sentence.
+		当我们把一个真值函项逻辑语句视为\emph{符号化}一个英语句子时，我们是在规定该真值函项逻辑语句要与那个英语句子取相同的真值。
 	}
 
+\section{直陈条件句与虚拟条件句}\label{s:IndicativeSubjunctive}
+我们想借条件句这一案例来阐明一点：真值函项逻辑\emph{只能}处理真值函项。
+在\cref{s:CharacteristicTruthTables}中引入实质条件句的特征真值表时，我们并未提供任何理由。现在，让我们给出一个说明，其论证遵循多萝西·埃金顿的思路。\footnote{多萝西·埃金顿，“条件句”，《斯坦福哲学百科全书》（2020年秋季版）（\url{https://plato.stanford.edu/archives/fall2020/entries/conditionals/}）。}
 
-\section{Indicative versus subjunctive conditionals}\label{s:IndicativeSubjunctive}
-We want to bring home the point that TFL can \emph{only} deal with
-truth functions by considering the case of the conditional. When we
-introduced the characteristic truth table for the material conditional
-in \cref{s:CharacteristicTruthTables}, we did not say anything to
-justify it. Let's now offer a justification, which follows Dorothy
-Edgington.\footnote{Dorothy Edgington, ``Conditionals'',
-\textit{Stanford Encyclopedia of Philosophy} (Fall 2020)
-(\url{https://plato.stanford.edu/archives/fall2020/entries/conditionals/}).} 
+假设 Lara 在一张纸上画了一些图形，并给其中一些涂了颜色。我们没看到这些图形，却声称：
 
-Suppose that Lara has drawn some shapes on a piece of paper, and coloured some of them in. We have not seen them, but nevertheless claim:
-	\begin{quote}
-		If any shape is grey, then that shape is also circular.
-	\end{quote}
-As it happens, Lara has drawn the following:
+\begin{quote}
+    如果任何一个图形是灰色的，那么该图形也是圆形的。
+\end{quote}
+
+结果，Lara 画的是：
+
 \begin{center}
 \begin{tikzpicture}
 	\node[circle, grey_shape] (cat1) {A};
@@ -166,21 +171,22 @@ As it happens, Lara has drawn the following:
 	\node[right=10pt of cat2, circle, white_shape] (cat3)  {C} ;
 	\node[right=10pt of cat3, white_shape] (cat4)  {D};
 \end{tikzpicture}
-\bmlDescription{There are three shapes: the first shape is a grey circle labelled A, some empty space, the second shape is a white circle labelled C, and the fourth a white square labelled D.}
+\bmlDescription{有三个图形：第一个图形是标记为 A 的灰色圆形，一些空白，第二个图形是标记为 C 的白色圆形，第四个是标记为 D 的白色方形。}
 \end{center}
-In this case, our claim is surely true.  Shapes C and D are not grey, and so can hardly present \emph{counterexamples} to our claim. Shape A \emph{is} grey, but fortunately it is also circular. So our claim has no counterexamples. It must be true. That means that each of the following \emph{instances} of our claim must be true too:
-	\begin{itemize}
-		\item If A is grey, then it is circular
 
-		\qquad (true antecedent, true consequent)
-		\item If C is grey, then it is circular
+在这种情况下，我们的主张显然是真的。图形 C 和 D 不是灰色的，因此几乎不可能成为我们主张的\emph{反例}。图形 A\emph{的确}是灰色的，但它正好也是圆形的。所以我们的主张没有反例，它必定为真。这意味着我们主张的下列\emph{实例}也必定为真：
 
-		\qquad (false antecedent, true consequent)
-		\item If D is grey, then it is circular
+\begin{itemize}
+        \item 如果 A 是灰色的，那么它是圆形的
+        \qquad（前件真，后件真）
+        \item 如果 C 是灰色的，那么它是圆形的
+        \qquad（前件假，后件真）
+        \item 如果 D 是灰色的，那么它是圆形的
+        \qquad（前件假，后件假）
+\end{itemize}
 
-		\qquad (false antecedent, false consequent)
-	\end{itemize}
-However, if Lara had drawn a fourth shape, thus:
+然而，如果 Lara 画了第四个图形，变成这样：
+
 \begin{center}
 \begin{tikzpicture}
 	\node[circle, grey_shape] (cat1) {A};
@@ -188,49 +194,48 @@ However, if Lara had drawn a fourth shape, thus:
 	\node[right=10pt of cat2, circle, white_shape] (cat3)  {C};
 	\node[right=10pt of cat3, white_shape] (cat4)  {D};
 \end{tikzpicture}
-\bmlDescription{There are four shapes: the first shape is
-a grey circle labelled A, the second a grey square labelled B, the
-third a white circle labelled C, and the fourth a white square
-labelled D.}
+\bmlDescription{有四个图形：第一个图形是标记为 A 的灰色圆形，第二个是标记为 B 的灰色方形，第三个是标记为 C 的白色圆形，第四个是标记为 D 的白色方形。}
 \end{center}
-then our claim would have been false. So this claim must also be false:
-	\begin{itemize}
-		\item If B is grey, then it is circular
 
-		\qquad (true antecedent, false consequent)
-	\end{itemize}
-Now, recall that every connective of TFL has to be truth-functional. This means that the truth values of the antecedent and consequent alone must uniquely determine the truth value of the conditional as a whole. Thus, from the truth values of our four claims---which provide us with all possible combinations of truth and falsity in antecedent and consequent---we can read off the truth table for the material conditional.
+那么我们的主张就是假的。因此，下面这个主张也必定是假的：
+\begin{itemize}
+        \item 如果 B 是灰色的，那么它是圆形的
+        \qquad（前件真，后件假）
+\end{itemize}
 
-What this argument shows is that `$\eif$' is the \emph{best} candidate for a truth-functional conditional. Otherwise put, \emph{it is the best conditional that TFL can provide}. But is it any good, as a surrogate for the conditionals we use in everyday language? Consider two sentences:
-	\begin{enumerate}
-		\item\label{brownwins1} If Hillary Clinton had won the 2016 election, then she would have been the first woman president of the USA.
-		\item\label{brownwins2} If Hillary Clinton had won the 2016 election, then she would have turned into a helium-filled balloon and floated away into the night sky.
-	\end{enumerate}
-\Cref*{brownwins1} is true; \cref*{brownwins2} is false, but both have false antecedents and false consequents. (Hillary did not win; she did not become the first woman president of the US; and she did not fill with helium and float away.) So the truth value of the whole sentence is not uniquely determined by the truth value of the parts.
+现在回想一下，真值函项逻辑的每一个联结词都必须是真值函项的。这意味着，仅凭前件和后件的真值，就必须能唯一确定整个条件句的真值。因此，从我们这四个主张的真值中——它们穷尽了前件与后件真假的所有可能组合——我们便可以读出实质条件句的真值表。
 
-The crucial point is that \cref*{brownwins1,brownwins2} employ \emph{subjunctive} conditionals, rather than \emph{indicative} conditionals. They ask us to imagine something contrary to fact---after all, Hillary Clinton lost the 2016 election---and then ask us to evaluate what \emph{would} have happened in that case. Such considerations simply cannot be tackled using~`$\eif$'.
+这一论证表明，“$\eif$”是真值函项条件句的\emph{最佳}候选。换句话说，\emph{它是真值函项逻辑能提供的最佳条件句}。但是，作为我们日常语言中所用条件句的替代品，它足够好吗？考虑下面两个句子：
+\begin{enumerate}
+        \item\label{brownwins1} 如果希拉里·克林顿赢得了2016年大选，那么她就会成为美国第一位女总统。
+        \item\label{brownwins2} 如果希拉里·克林顿赢得了2016年大选，那么她就会变成一个充满氦气的气球，飘入夜空。
+\end{enumerate}
 
-We will say more about the difficulties with conditionals in \cref{s:ParadoxesOfMaterialConditional}. For now, we will content ourselves with the observation that `$\eif$' is the only candidate for a truth-functional conditional for TFL, but that many English conditionals cannot be represented adequately using `$\eif$'. TFL is an intrinsically limited language.
+\Cref*{brownwins1}是真的；\cref*{brownwins2}是假的，但两者的前件和后件都是假的。（希拉里没有赢；她没有成为美国第一位女总统；她也没有充满氦气飘走。）所以整个句子的真值并非由其各部分的真值唯一决定。
 
+关键在于，\cref*{brownwins1,brownwins2} 使用的是\emph{虚拟}条件句，而非\emph{直陈}条件句。它们要求我们想象与事实相反的情况——毕竟希拉里·克林顿输掉了2016年大选——并要求我们评估在那种情况下\emph{会}发生什么。这类考虑根本无法用“$\eif$”来处理。
 
-\chapter{Complete truth tables}
+关于条件句的困难，我们将在\cref{s:ParadoxesOfMaterialConditional}中进一步讨论。目前，我们满足于这样一个观察：“$\eif$”是真值函项逻辑中真值函项条件句的唯一候选，但许多英语条件句无法用“$\eif$”来充分刻画。真值函项逻辑是一种本质上有限的语言。
+
+\chapter{完整真值表}
 \label{s:CompleteTruthTables}
 
-So far, we have used symbolization keys to assign truth values to TFL sentences \emph{indirectly}. For example, we might say that the TFL sentence `$B$' is to be true \ifeff{} Big Ben is in London. Since Big Ben \emph{is} in London, this symbolisation would make `$B$' true. But we can also assign truth values \emph{directly}. We can simply stipulate that `$B$' is to be true, or stipulate that it is to be false. Such stipulations are called \emph{valuations}: 
+到目前为止，我们都通过符号化约定\emph{间接地}为真值函项逻辑语句指派真值。例如，我们规定真值函项逻辑语句“$B$”为真\emph{当且仅当}大本钟在伦敦。由于大本钟\emph{确实}在伦敦，这种符号化方式使“$B$”为真。但我们也可以\emph{直接}指派真值：直接规定“$B$”为真，或规定它为假。这种直接的指派称为\emph{赋值}：
 	\factoidbox{
-		A \define{valuation} is any assignment of truth values to particular sentence letters of TFL.
+		\define{赋值}是将真值指派给真值函项逻辑中特定语句字母的任意一种方式。
 	}
 
 \newglossaryentry{valuation}
 {
-name=valuation,
-description={An assignment of \glspl{truth value} to particular \glspl{sentence letter}}
+name=赋值,
+description={将\glspl{truth value}指派给特定\glspl{sentence letter}}
 }
 
-The power of truth tables lies in the following. Each row of a truth table represents a possible valuation. The complete truth table represents all possible valuations. And the truth table provides us with a means to calculate the truth value of complex sentences, on each possible valuation. But all of this is easiest to explain by example.
+真值表的威力在于以下几点。真值表的每一行对应一种可能的赋值。完整的真值表则囊括了所有可能的赋值。并且，真值表为我们提供了一种方法，用以计算复杂语句在每一种可能赋值下的真值。不过，这一切通过例子最易阐明。
 
-\section{A worked example}
-Consider the sentence `$(H\eand I)\eif H$'. There are four possible ways to assign True and False to the sentence letter `$H$' and `$I$'---four valuations---which we can represent as follows:
+\section{一个计算示例}
+考虑语句“$(H\eand I)\eif H$”。给语句字母“$H$”和“$I$”指派真与假共有四种可能的方式——即四种赋值——我们可以表示如下：
+
 \begin{center}
 \begin{tabular}{c c|d e e e f}
 $H$&$I$&$(H$&\eand&$I)$&\eif&$H$\\
@@ -241,7 +246,9 @@ $H$&$I$&$(H$&\eand&$I)$&\eif&$H$\\
  F & F
 \end{tabular}
 \end{center}
-To calculate the truth value of the entire sentence `$(H \eand I) \eif H$', we first copy the truth values for the sentence letters and write them underneath the letters in the sentence:
+
+为了计算整个语句“$(H \eand I) \eif H$”的真值，我们首先复制语句字母的真值，把它们写在语句中对应字母的下方：
+
 \begin{center}
 \begin{tabular}{c c|d e e e f}
 $H$&$I$&$(H$&\eand&$I)$&\eif&$H$\\
@@ -252,7 +259,9 @@ $H$&$I$&$(H$&\eand&$I)$&\eif&$H$\\
  F & F & {F} & & {F} & & {F}
 \end{tabular}
 \end{center}
-Now consider the subsentence `$(H\eand I)$'. This is a conjunction, $(\metav{A}\eand\metav{B})$, with `$H$' as \metav{A} and with `$I$' as \metav{B}. The characteristic truth table for conjunction gives the truth conditions for \emph{any} sentence of the form $(\metav{A}\eand\metav{B})$, whatever $\metav{A}$ and $\metav{B}$ might be. It represents the point that a conjunction is true \ifeff{} both conjuncts are true. In this case, our conjuncts are just `$H$' and `$I$'. They are both true on (and only on) the first line of the truth table. Accordingly, we can calculate the truth value of the conjunction on all four rows.
+
+现在考虑其中的“$(H\eand I)$”部分。这是一个合取式，$(\metav{A}\eand\metav{B})$，其中“$H$”对应\metav{A}，“$I$”对应\metav{B}。合取的特征真值表给出了\emph{任何}形如$(\metav{A}\eand\metav{B})$的语句的真值条件，无论$\metav{A}$和$\metav{B}$是什么。它体现的要点是：一个合取式为真\emph{当且仅当}它的两个合取支都为真。在这个例子中，合取支就是“$H$”和“$I$”。它们在第一行（并且只在第一行）上同时为真。相应地，我们可以计算这个合取式在所有四行上的真值：
+
 \begin{center}
 \begin{tabular}{c c|d e e e f}
  & & \metav{A} & \eand & \metav{B} & & \\
@@ -264,7 +273,9 @@ $H$&$I$&$(H$&\eand&$I)$&\eif&$H$\\
  F & F & F & {F} & F & & F
 \end{tabular}
 \end{center}
-Now, the entire sentence that we are dealing with is a conditional, $\metav{A}\eif\metav{B}$, with `$(H \eand I)$' as \metav{A} and with `$H$' as \metav{B}. On the second row, for example, `$(H\eand I)$' is false and `$H$' is true. Since a conditional is true when the antecedent is false, we write a `T' in the second row underneath the conditional symbol. We continue for the other three rows and get this:
+
+现在，我们处理的整个语句是一个条件式，$\metav{A}\eif\metav{B}$，其中“$(H \eand I)$”对应\metav{A}，“$H$”对应\metav{B}。例如，在第二行，“$(H\eand I)$”为假而“$H$”为真。由于条件式在前件为假时为真，我们在第二行条件符号下方写一个“T”。继续处理其他三行，得到：
+
 \begin{center}
 \begin{tabular}{c c| d e e e f}
  & &  & \metav{A} &  &\eif &\metav{B} \\
@@ -276,9 +287,11 @@ $H$&$I$&$(H$&\eand&$I)$&\eif&$H$\\
  F & F &  & {F} &  &{T} & F
 \end{tabular}
 \end{center}
-The conditional is the main logical operator of the sentence, so the column of `T's underneath the conditional tells us that the sentence `$(H \eand I)\eif H$' is true regardless of the truth values of `$H$' and `$I$'. They can be true or false in any combination, and the compound sentence still comes out true. Since we have considered all four possible assignments of truth and falsity to `$H$' and `$I$'---since, that is, we have considered all the different \emph{valuations}---we can say that `$(H \eand I)\eif H$' is true on every valuation.
 
-In this example, we have not repeated all of the entries in every column in every successive table. When actually writing truth tables on paper, however, it is impractical to erase whole columns or rewrite the whole table for every step. Although it is more crowded, the truth table can be written in this way:
+条件联结词是这个语句的主逻辑算子，因此条件符号下的那一列“T”告诉我们，语句“$(H \eand I)\eif H$”为真，与“$H$”和“$I$”的真值无关。无论两者的真值如何组合，这个复合语句都为真。由于我们已经考虑了给“$H$”和“$I$”指派真与假的所有四种可能方式——即考虑了所有不同的\emph{赋值}——我们可以说“$(H \eand I)\eif H$”在每一种赋值下都为真。
+
+在这个示例中，我们并未在每一步的新表格中重复所有列的条目。然而，实际在纸上画真值表时，每步都擦除整列或重画整个表格是不现实的。尽管会拥挤一些，但真值表也可以写成下面这样：
+
 \begin{center}
 \begin{tabular}{c c| d e e e f}
 $H$&$I$&$(H$&\eand&$I)$&\eif&$H$\\
@@ -289,20 +302,22 @@ $H$&$I$&$(H$&\eand&$I)$&\eif&$H$\\
  F & F & F & {F} & F & \TTbf{T} & F
 \end{tabular}
 \end{center}
-Most of the columns underneath the sentence are only there for bookkeeping purposes. The column that matters most is the column underneath the \emph{main logical operator} for the sentence, since this tells you the truth value of the entire sentence. We have emphasized this, by putting this column in bold. When you work through truth tables yourself, you should similarly emphasize it (perhaps by highlighting).
 
-\section{Building complete truth tables}
-A \define{complete truth table} has a line for every possible assignment of True and False to the relevant sentence letters. Each line represents a \emph{valuation}, and a complete truth table has a line for all the different valuations.
+真值表中，语句下方的各列大多只有辅助记录的作用。最重要的一列是语句\emph{主逻辑算子}下方的列，因为它给出了整个语句的真值。我们已通过加粗的方式强调了这一列。当你自己构造真值表时，也应以类似方式强调它（例如使用高亮）。
+
+\section{构建完整真值表}
+一个\define{完整真值表（complete truth table）}为相关语句字母的每一种可能的真或假赋值都有一行。每一行代表一个\emph{赋值}，完整的真值表包含了所有不同赋值的行。
 
 \newglossaryentry{complete truth table}
 {
-name=complete truth table,
-description={A table that gives all the possible \glspl{truth value} for a \gls{sentence of TFL} or sentences in TFL, with a line for every possible \gls{valuation} of all sentence letters}
+name=完整真值表,
+description={一种为真值函项逻辑语句或真值函项逻辑中的一组语句列出所有可能\glspl{truth value}的表格，它为所有语句字母的每一种可能\gls{valuation}都有一行}
 }
 
-The size of the complete truth table depends on the number of different sentence letters in the table. A sentence that contains only one sentence letter requires only two rows, as in the characteristic truth table for negation. This is true even if the same letter is repeated many times, as in the sentence
-`$[(C\eiff C) \eif C] \eand \enot(C \eif C)$'.
-The complete truth table requires only two lines because there are only two possibilities: `$C$' can be true or it can be false. The truth table for this sentence looks like this:
+完整真值表的规模取决于表中不同语句字母的数量。仅包含一个语句字母的语句只需要两行，如同否定式的特征真值表。即使同一字母重复多次，这一结论仍然成立，例如语句
+“$[(C\eiff C) \eif C] \eand \enot(C \eif C)$”。
+其完整真值表仅需两行，因为只有两种可能性：“$C$”为真或为假。该语句的真值表如下：
+
 \begin{center}
 \begin{tabular}{c| d e e e e e e e e e e e e e e f}
 $C$&$[($&$C$&\eiff&$C$&$)$&\eif&$C$&$]$&\eand&\enot&$($&$C$&\eif&$C$&$)$\\
@@ -311,11 +326,13 @@ $C$&$[($&$C$&\eiff&$C$&$)$&\eif&$C$&$]$&\eand&\enot&$($&$C$&\eif&$C$&$)$\\
  F &    & F &  T  & F &   & F  & F & &\TTbf{F}&  F& &   F &  T  & F &   \\
 \end{tabular}
 \end{center}
-Looking at the column underneath the main logical operator, we see that the sentence is false on both rows of the table; i.e., the sentence is false regardless of whether `$C$' is true or false. It is false on every valuation.
 
-There will be four lines in the complete truth table for a sentence containing two sentence letters, as in the characteristic truth tables, or the truth table for `$(H \eand I)\eif H$'.
+观察主逻辑算子下方的列，可见该语句在真值表的两行中都是假的；换言之，无论“$C$”为真为假，该语句均为假。它在每一个赋值下都为假。
 
-There will be eight lines in the complete truth table for a sentence containing three sentence letters, e.g.: 
+对于包含两个语句字母的语句，其完整真值表将有四行，如同特征真值表，或如同“$(H \eand I)\eif H$”的真值表。
+
+对于包含三个语句字母的语句，其完整真值表将有八行，例如：
+
 \begin{center}
 \begin{tabular}{c c c|d e e e f}
 $M$&$N$&$P$&$M$&\eand&$(N$&\eor&$P)$\\
@@ -331,60 +348,57 @@ F & F & T & F & \TTbf{F} & F & T & T\\
 F & F & F & F & \TTbf{F} & F & F & F
 \end{tabular}
 \end{center}
-From this table, we know that the sentence `$M\eand(N\eor P)$' can be true or false, depending on the truth values of `$M$', `$N$', and `$P$'.
 
-A complete truth table for a sentence that contains four different sentence letters requires 16 lines. Five letters, 32 lines. Six letters, 64 lines. And so on. To be perfectly general: If a complete truth table has $n$ different sentence letters, then it must have $2^n$ lines.
+由此表可知，语句“$M\eand(N\eor P)$”可真可假，取决于“$M$”、“$N$”和“$P$”的真值。
 
-In order to fill in the columns of a complete truth table, begin with the right-most sentence letter and alternate between `T' and `F'. In the next column to the left, write two `T's, write two `F's, and repeat. For the third sentence letter, write four `T's followed by four `F's. This yields an eight line truth table like the one above. For a 16 line truth table, the next column of sentence letters should have eight `T's followed by eight `F's. For a 32 line table, the next column would have 16 `T's followed by 16 `F's, and so on.
+包含四个不同语句字母的语句，其完整真值表需要 16 行。五个字母需 32 行，六个字母需 64 行，依此类推。一般地：若一个完整真值表有 $n$ 个不同的语句字母，则它必有 $2^n$ 行。
 
+要填写完整真值表的各列，需从最右边的语句字母开始，交替填入“T”和“F”。在其左边一列，先写入两个“T”，再写入两个“F”，并重复此模式。对于第三个语句字母，先写入四个“T”，再写入四个“F”。这样就得到了如上所示的八行真值表。对于十六行的真值表，语句字母的下一列应有八个“T” followed by 八个“F”。对于三十二行的表，再下一列应有十六个“T” followed by 十六个“F”，以此类推。
 
-\section{More about brackets}\label{s:MoreBracketingConventions}
-Consider these two sentences:
+\section{关于括号的更多内容}\label{s:MoreBracketingConventions}
+考虑以下两个语句：
 	\begin{align*}
 		((A \eand B) \eand C)\\
 		(A \eand (B \eand C))
 	\end{align*}
-These are truth functionally equivalent. Consequently, it will never make any difference from the perspective of truth value---which is all that TFL cares about (see \cref{s:TruthFunctionality})---which of the two sentences we assert (or deny). Even though the order of the brackets does not matter as to their truth, we should not just drop them. The expression
+它们是真值函项等价的。因此，从真值的角度来看——这（参见\cref{s:TruthFunctionality}）也是真值函项逻辑所关心的全部——我们断言（或否定）这两个语句中的哪一个并无差别。尽管括号的顺序不影响真值，我们也不应直接省去它们。表达式
 	\begin{align*}
 		A \eand B \eand C
 	\end{align*}
-is ambiguous between the two sentences above.  The same observation holds for disjunctions. The following sentences are logically equivalent:
+对于上述两个语句而言是有歧义的。同样的观察也适用于析取式。以下语句是逻辑等价的：
 	\begin{align*}
 		((A \eor B) \eor C)\\
 		(A \eor (B \eor C))
 	\end{align*}
-But we should not simply write:
+但我们不应简单地写作：
 	\begin{align*}
 		A \eor B \eor C
 	\end{align*}
-In fact, it is a specific fact about the characteristic truth table of
-$\eor$ and $\eand$ that guarantees that any two conjunctions (or
-disjunctions) of the same sentences are truth functionally equivalent,
-however you place the brackets. \emph{This is only true of
-conjunctions, disjunctions, and biconditionals}, however. The following two sentences
-have \emph{different} truth tables:
+事实上，$\eor$ 和 $\eand$ 的特征真值表有一个特定性质：无论括号如何放置，由同一组语句构成的任意两个合取式（或析取式）都是真值函项等价的。\emph{然而，这仅对合取式、析取式和双条件式成立}。以下两个语句具有\emph{不同的}真值表：
 	\begin{align*}
 		((A \eif B) \eif C)\\
 		(A \eif (B \eif C))
 	\end{align*}
-So if we were to write:
+因此，如果我们写作：
 	\begin{align*}
 		A \eif B \eif C
 	\end{align*}
-it would be dangerously ambiguous. Leaving out brackets in this case would be disastrous. Equally, these sentences have different truth tables:
+将是危险的歧义表达。在这种情况下省略括号会导致错误。同样，以下语句也具有不同的真值表：
 	\begin{align*}
 		((A \eor B) \eand C)\\
 		(A \eor (B \eand C))
 	\end{align*}
-So if we were to write:
+因此，如果我们写作：
 	\begin{align*}
 		A \eor B \eand C
 	\end{align*}
-it would be dangerously ambiguous. \emph{Never write this.} The moral is: never drop brackets (except the outermost ones).
+也将是危险的歧义表达。\emph{绝不要这样写。} 教训是：永远不要省去括号（最外层的括号除外）。
 
 \practiceproblems\label{pr.TT.TTorC}
 \problempart
-Offer complete truth tables for each of the following:
+为下列每个语句提供完整的真值表：
+
+
 \begin{compactlist}
 \item $A \eif A$ %taut
 \item $C \eif\enot C$ %contingent
@@ -396,21 +410,29 @@ Offer complete truth tables for each of the following:
 \item $[(A \eand B) \eand C] \eif B$ %taut
 \item $\enot\bigl[(C\eor A) \eor B\bigr]$ %contingent
 \end{compactlist}
+
+
 \problempart
-Check all the claims made in \cref{s:MoreBracketingConventions}, i.e., show that:
+验证\cref{s:MoreBracketingConventions}中提出的所有主张，即证明：
+
+
 \begin{compactlist}
-	\item `$((A \eand B) \eand C)$' and `$(A \eand (B \eand C))$' have the same truth table
-	\item `$((A \eor B) \eor C)$' and `$(A \eor (B \eor C))$' have the same truth table
-	\item `$((A \eor B) \eand C)$' and `$(A \eor (B \eand C))$' do not have the same truth table
-	\item `$((A \eif B) \eif C)$' and `$(A \eif (B \eif C))$' do not have the same truth table
+	\item “$((A \eand B) \eand C)$” 和 “$(A \eand (B \eand C))$” 有相同的真值表
+	\item “$((A \eor B) \eor C)$” 和 “$(A \eor (B \eor C))$” 有相同的真值表
+	\item “$((A \eor B) \eand C)$” 和 “$(A \eor (B \eand C))$” 没有相同的真值表
+	\item “$((A \eif B) \eif C)$” 和 “$(A \eif (B \eif C))$” 没有相同的真值表
 \end{compactlist}
-Also, check whether:
+
+
+同时，验证：
+
+
 \begin{compactlist}
-	\item[5.] `$((A \eiff B) \eiff C)$' and `$(A \eiff (B \eiff C))$' have the same truth table
+	\item[5.] “$((A \eiff B) \eiff C)$” 和 “$(A \eiff (B \eiff C))$” 是否有相同的真值表
 \end{compactlist}
 
 \problempart
-Write complete truth tables for the following sentences and mark the column that represents the possible truth values for the whole sentence.
+为下列语句写出完整的真值表，并标记出代表整个语句可能真值的那一列。
 
 \begin{compactlist}
 
@@ -418,7 +440,7 @@ Write complete truth tables for the following sentences and mark the column that
 
 %\begin{tabular}{c|c|ccccc}
 %\cline{2-2}
-%1.	&	\enot 	&	(S 	&	\eiff	&	(P 	&	\eif	&	S))	\\ 
+%1.	&	\enot 	&	(S 	&	\eiff	&	(P 	&	\eif	&	S))	\\
 %\cline{2-7}
 %	& 	F 		&	T	&	T	&	T	&	T	&	T	\\
 %	& 	F 		&	T	&	T	&	F	&	T	&	T	\\
@@ -432,7 +454,7 @@ Write complete truth tables for the following sentences and mark the column that
 
 %\begin{tabular}{c|c|ccccccc}
 %\cline{2-2}
-%2.	&	\enot	&	 [(X 	&	\eand& 	Y) 	&	\eor 	&	(X 	&	\eor 	&	Y)] \\
+%\cline{5-5}
 %\cline{2-9}
 %	&	F	&	T	&	T	&	T	&	T	&	T	&	T	&	T	\\
 %	&	F	&	T	&	F	&	F	&	T	&	T	&	T	&	F	\\
@@ -444,10 +466,10 @@ Write complete truth tables for the following sentences and mark the column that
 
 \item $(A \eif B) \eiff (\enot B\eiff \enot A)$
 %\begin{tabular}{cccc|c|ccccc}
-%\cline{5-5}
+%2.	&	\enot	&	 [(X 	&	\eand& 	Y) 	&	\eor 	&	(X 	&	\eor 	&	Y)] \\
 %3.	&	(A 	&	\eif	&	B)	&	 \eiff 	&	(\enot&	B 	&	\eiff 	&	 \enot 	& 	 A) \\
 %\cline{2-10}
-%	&	T	&	T	&	T	&	T		&	F	 &	T	&	T	&	F		&	T	\\	
+%	&	T	&	T	&	T	&	T		&	F	 &	T	&	T	&	F		&	T	\\
 %	&	T	&	F	&	F	&	T		&	T	 &	F	&	F	&	F		&	T	\\
 %	&	F	&	T	&	T	&	F		&	F	 &	T	&	F	&	T		&	F	\\
 %	&	F	&	T	&	F	&	T		&	T	 &	F	&	T	&	T		&	F	\\
@@ -478,7 +500,7 @@ Write complete truth tables for the following sentences and mark the column that
 %5.	&\enot&	(G 	&\eand &	(B 	&	 \eand 	&	 H))	&	\eiff 	&	(G 	& \eor 	& (B 	& \eor	& H))	\\
 %\cline{2-13}
 %	&F	   &	T	&	  T &	T	&	T		&	T	&	F	&	T	&	T	&	T	&	T	&	T	\\
-%	&T	   &	T	&	  F &	T	&	F		&	F	&	T	&	T	&	T	&	T	&	T	&	F	\\	
+%	&T	   &	T	&	  F &	T	&	F		&	F	&	T	&	T	&	T	&	T	&	T	&	F	\\
 %	&T	   &	T	&	 F  &	F	&	F		&	T	&	T	&	T	&	T	&	F	&	T	&	T	\\
 %	&T	   &	T	&	 F  &	F	&	F		&	F	&	T	&	T	&	T	&	F	&	F	&	F	\\
 %	&T	   &	F	&	F   &	T	&	T		&	T	&	T	&	F	&	T	&	T	&	T	&	T	\\
@@ -493,7 +515,7 @@ Write complete truth tables for the following sentences and mark the column that
 \end{compactlist}
 
 \problempart
-Write complete truth tables for the following sentences and mark the column that represents the possible truth values for the whole sentence.
+为下列语句写出完整的真值表，并标记出代表整个语句可能真值的那一列。
 
 \begin{compactlist}
 
@@ -558,7 +580,7 @@ Write complete truth tables for the following sentences and mark the column that
 %	&	F	&	F		&	F	&	T	&	F	&	T	&	T		&	F	&	F		&F	\\
 %\cline{7-7}
 %\end{tabular}
-%	
+%
 %\vspace{1em}
 
 
@@ -566,7 +588,7 @@ Write complete truth tables for the following sentences and mark the column that
 
 %\begin{tabular}{ccccccc|c|cccc}
 %\cline{8-8}
-%5.	&	\enot 	&	[(D 	&	\eiff 	&	O) 	&	\eiff 	&	 A]	& 	\eif 	 &	(\enot 	& 	D 	 & 	 \eand &O) \\ 
+%5.	&	\enot 	&	[(D 	&	\eiff 	&	O) 	&	\eiff 	&	 A]	& 	\eif 	 &	(\enot 	& 	D 	 & 	 \eand &O) \\
 %	&	F		&	T	&	T	&	T	&	T	&	T	&	T	&	F		&	T	&	F	&T	\\
 %	&	T		&	T	&	T	&	T	&	F	&	F	&	F	&	F		&	T	&	F	&T	\\
 %	&	T		&	T	&	F	&	F	&	F	&	T	&	F	&	F		&	T	&	F	&F	\\
@@ -580,58 +602,57 @@ Write complete truth tables for the following sentences and mark the column that
 %\vspace{1em}
 \end{compactlist}
 
+如果你想进行额外练习，可以为上一章练习中的任何语句和论证构造真值表。
 
-If you want additional practice, you can construct truth tables for any of the sentences and arguments in the exercises for the previous chapter.
-
-
-\chapter{Semantic concepts}
+\chapter{语义概念}
 \label{s:SemanticConcepts}
 
-In the previous chapter, we introduced the idea of a valuation and showed how to determine the truth value of any TFL sentence, on any valuation, using a truth table. In this chapter, we will introduce some related ideas, and show how to use truth tables to test whether or not they apply.
+在上一章中，我们介绍了赋值的概念，并展示了如何使用真值表在任意赋值下确定任意真值函项逻辑语句的真值。本章我们将引入一些相关概念，并展示如何使用真值表检验这些概念是否适用。
 
-
-\section{Tautologies and contradictions}
-In \cref{s:BasicNotions}, we explained \emph{necessary truth} and \emph{necessary falsity}. Both notions have surrogates in TFL. We will start with a surrogate for necessary truth.
+\section{重言式与矛盾}
+在\cref{s:BasicNotions}中，我们解释了\emph{必然真}与\emph{必然假}。这两个概念在真值函项逻辑中均有对应物。我们将从必然真的对应物开始。
 	\factoidbox{
-		$\metav{A}$ is a \define{tautology} \ifeff{} it is true on every valuation.
+		$\metav{A}$ 是 \define{重言式（tautology）} \ifeff{} 它在每个赋值下都为真。
 	}
 
 \newglossaryentry{tautology}
 {
-name=tautology,
-description={A sentence that has only Ts in the column under the main logical operator of its \gls{complete truth table}; a sentence that is true on every \gls{valuation}}
+name=重言式,
+description={一个语句在其\gls{complete truth table}的主逻辑算子下方的列中全是 T；即，它在每一个\gls{valuation}下都为真的语句}
 }
 
-We can use truth tables to decide whether a sentence is a tautology. If the sentence is true on every line of its complete truth table, then it is true on every valuation, so it is a tautology. In the example of \cref{s:CompleteTruthTables}, `$(H \eand I) \eif H$' is a tautology.
+我们可以使用真值表来判断一个语句是否是重言式。如果一个语句在其完整真值表的每一行都为真，那么它在每一个赋值下都为真，因此它是重言式。在\cref{s:CompleteTruthTables}的例子中，“$(H \eand I) \eif H$”就是一个重言式。
 
-This is only, though, a \emph{surrogate} for necessary truth. There are some necessary truths that we cannot adequately symbolize in TFL. One example is `$2 + 2 = 4$'. This \emph{must} be true, but if we try to symbolize it in TFL, the best we can offer is a sentence letter, and no sentence letter is a tautology. Still, if we can adequately symbolize some English sentence using a TFL sentence which is a tautology, then that English sentence expresses a necessary truth.
+不过，这只是必要真理的一个\emph{替代概念}。有些必要真理我们无法在真值函项逻辑中充分地符号化。一个例子是“$2 + 2 = 4$”。这\emph{必然}为真，但如果我们试图在真值函项逻辑中符号化它，最多只能用一个语句字母来表示，而没有任何语句字母是重言式。尽管如此，如果我们能够用一个本身是重言式的真值函项逻辑语句来充分地符号化某个英语句子，那么该英语句子表达的就是一个必要真理。
 
-We have a similar surrogate for necessary falsity:
+对于必然谬误，我们也有一个类似的替代概念：
 	\factoidbox{
-		$\metav{A}$ is a \define{contradiction} (in TFL) \ifeff{} it is false on every valuation.
+		$\metav{A}$是一个\define{矛盾式}（在真值函项逻辑中）\ifeff{} 它在每一个赋值下都为假。
 	}
 \newglossaryentry{contradiction of TFL}
 {
-  name=contradiction (of TFL),
-  text = contradiction,
-description={A sentence that has only Fs in the column under the main logical operator of its \gls{complete truth table}; a sentence that is false on every \gls{valuation}}
+  name=矛盾式（真值函项逻辑）,
+  text = 矛盾式,
+description={一个语句在其\gls{complete truth table}的主逻辑算子下方的列中全是 F；即，它在每一个\gls{valuation}下都为假的语句}
 }
 
-We can use truth tables to decide whether a sentence is a contradiction. If the sentence is false on every line of its complete truth table, then it is false on every valuation, so it is a contradiction. In the example of \cref{s:CompleteTruthTables}, `$[(C\eiff C) \eif C] \eand \enot(C \eif C)$' is a contradiction.
+我们可以使用真值表来判断一个语句是否是矛盾式。如果一个语句在其完整真值表的每一行都为假，那么它在每一个赋值下都为假，因此它是一个矛盾式。在\cref{s:CompleteTruthTables}的例子中，“$[(C\eiff C) \eif C] \eand \enot(C \eif C)$”是一个矛盾式。
 
-\section{Equivalence}\label{sec:equivalent}
-Here is a similar useful notion:
+\section{等价性}\label{sec:equivalent}
+这是一个类似的有用概念：
 	\factoidbox{
-		$\metav{A}$ and $\metav{B}$ are \define{equivalent} (in TFL) iff, for every valuation, their truth values agree, i.e., if there is no valuation in which they have opposite truth values.
+		$\metav{A}$和$\metav{B}$是\define{等价的}（在真值函项逻辑中），当且仅当对于每一个赋值，它们的真值都相同，也就是说，不存在一个赋值使得它们具有相反的真值。
 	}
 \newglossaryentry{equivalent}
 {
-  name=equivalence (in TFL),
-  text = equivalent,
-description={A property held by pairs of sentences if and only if the \gls{complete truth table} for those sentences has identical columns under the two main logical operators, i.e., if the sentences have the same truth value on every valuation}
+  name=等值性（真值函项逻辑）,
+  text = 等值,
+description={语句对具有的一个性质，当且仅当这些语句的\gls{complete truth table}在两个主逻辑算子下方的列完全相同，即，这些语句在每一个赋值下都具有相同的真值}
 }
 
-We have already made use of this notion, in effect, in \cref{s:MoreBracketingConventions}; the point was that `$(A \eand B) \eand C$' and  `$A \eand (B \eand C)$' are equivalent. Again, it is easy to test for equivalence using truth tables. Consider the sentences `$\enot(P \eor Q)$' and `$\enot P \eand \enot Q$'. Are they equivalent? To find out, we construct a truth table.
+实际上，我们在\cref{s:MoreBracketingConventions}中已经用到了这个概念；关键在于“$(A \eand B) \eand C$”和“$A \eand (B \eand C)$”是等价的。同样，使用真值表也很容易检验等价性。考虑语句“$\enot(P \eor Q)$”和“$\enot P \eand \enot Q$”。它们等价吗？为了回答这个问题，我们构造一个真值表。
+
+
 \begin{center}
 \begin{tabular}{c c|d e e f |d e e e f}
 $P$&$Q$&\enot&$(P$&\eor&$Q)$&\enot&$P$&\eand&\enot&$Q$\\
@@ -642,40 +663,39 @@ $P$&$Q$&\enot&$(P$&\eor&$Q)$&\enot&$P$&\eand&\enot&$Q$\\
  F & F & \TTbf{T} & F & F & F & T & F & \TTbf{T} & T & F
 \end{tabular}
 \end{center}
-Look at the columns for the main logical operators; negation for the first sentence, conjunction for the second. Go through the rows in the table one by one and compare the truth values in the columns for the main logical operators. On the first three rows, both are false. On the final row, both are true. Since they match on every row, the two sentences are equivalent.
 
 
-\section{Satisfiability}
-In \cref{s:BasicNotions}, we said that sentences are jointly possible \ifeff{} it is possible for all of them to be true at once. We can offer a surrogate for this notion too:
+观察主逻辑算子下方的列：第一个语句是否定，第二个语句是合取。逐行检查表格，比较主逻辑算子下方列中的真值。在前三行，两者都为假。在最后一行，两者都为真。由于它们在每一行都匹配，所以这两个语句是等价的。
+
+\section{可满足性}
+在\cref{s:BasicNotions}中我们说过，一组语句是共同可能的当且仅当它们全部同时为真是可能的。我们也可以为这个概念提供一个替代定义：
 	\factoidbox{
-		$\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n$ are \define{jointly satisfiable} (in TFL) \ifeff{} there is some valuation which makes them all true.
+		$\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n$是\define{共同可满足的}（在真值函项逻辑中）\ifeff{} 存在某个赋值使得它们全部为真。
 	}
 
         \newglossaryentry{satisfiability in TFL}
 {
-  name=satisfiability (in TFL),
-  text=jointly satisfiable,
-  description={A property held by \glspl{sentence of TFL} if and only if the
-  \gls{complete truth table} for all those sentences together contains one line
-  on which all the sentences are true, i.e., if some \gls{valuation}
-  makes all the sentences true}
+  name=可满足性（真值函项逻辑）,
+  text=共同可满足,
+  description={一组\glspl{sentence of TFL}具有的性质，当且仅当所有这些语句的\gls{complete truth table}包含一行，在该行上所有语句都为真，即，存在某个\gls{valuation}使得所有语句为真}
 }
 
-Derivatively, sentences are \define{jointly unsatisfiable} \ifeff{} no valuation makes them all true. Again, it is easy to test for joint satisfiability using truth tables.
+作为一个派生概念，一组语句是\define{共同不可满足的}，当且仅当没有赋值能使它们全部为真。同样，使用真值表很容易检验共同可满足性。
 
-\section{Entailment and validity}
-The following idea is closely related to that of joint satisfiability:
+\section{蕴涵与有效性}
+下面这个概念与共同可满足性密切相关：
 	\factoidbox{
-		The sentences $\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n$ \define{entail} (in TFL) the sentence $\metav{C}$ \ifeff{} no valuation of the relevant sentence letters makes all of $\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n$ true and $\metav{C}$ false.
+		语句 $\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n$ \define{蕴涵}（在真值函项逻辑中）语句 $\metav{C}$ \ifeff{} 不存在任何对相关语句字母的赋值，使 $\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n$ 中的所有语句都真而 $\metav{C}$ 为假。
 	}
        \newglossaryentry{valid in TFL}
 {
-  name= validity of arguments (in TFL),
-  text = valid,
-description={A property held by arguments if and only if the \gls{complete truth table} for the argument contains no rows where the \glspl{premise} are all true and the \gls{conclusion} false, i.e., if no \gls{valuation} makes all premises true and the conclusion false}
+  name= 论证的有效性（在真值函项逻辑中）,
+  text = 有效的,
+description={当且仅当论证的\gls{complete truth table}中不存在所有\glspl{premise}为真而\gls{conclusion}为假的行，即不存在使所有前提为真而结论为假的\gls{valuation}时，论证所具有的性质}
 }
- 
-Again, it is easy to test this with a truth table. To check whether `$\enot L \eif (J \eor L)$' and `$\enot L$' entail `$J$', we simply need to check whether there is any valuation which makes both `$\enot L \eif (J \eor L)$' and `$\enot L$' true whilst making `$J$' false. So we use a truth table: 
+
+同样，用真值表很容易检验这一点。要检查“$\enot L \eif (J \eor L)$”和“$\enot L$”是否蕴涵“$J$”，我们只需检查是否存在某个赋值，使得“$\enot L \eif (J \eor L)$”和“$\enot L$”都为真，同时“$J$”为假。所以我们使用真值表：
+
 \begin{center}
 \begin{tabular}{c c|d e e e e f|d f| c}
 $J$&$L$&\enot&$L$&\eif&$(J$&\eor&$L)$&\enot&$L$&$J$\\
@@ -687,7 +707,8 @@ $J$&$L$&\enot&$L$&\eif&$(J$&\eor&$L)$&\enot&$L$&$J$\\
  F & F & T & F & \TTbf{F} & F & F & F & \TTbf{T} & F & \TTbf{F}
 \end{tabular}
 \end{center}
-The only row on which both`$\enot L \eif (J \eor L)$' and `$\enot L$' are true is the second row, and that is a row on which `$J$' is also true. So `$\enot L \eif (J \eor L)$' and `$\enot L$' entail `$J$'.
+
+使“$\enot L \eif (J \eor L)$”和“$\enot L$”都真的唯一一行是第二行，而这一行上“$J$”也为真。所以“$\enot L \eif (J \eor L)$”和“$\enot L$”蕴涵“$J$”。
 
 % We now make an important observation:
 % 	\factoidbox{
@@ -719,82 +740,69 @@ The only row on which both`$\enot L \eif (J \eor L)$' and `$\enot L$' are true i
 
 % In short, we have a way to test for the validity of English arguments. First, we symbolize them in TFL; then we test for entailment in TFL using truth tables.
 
-
-
-\section{The double turnstile}
-In what follow, we will use the notion of entailment rather a lot in this book. It will help us, then, to introduce a symbol that abbreviates it. Rather than saying that the TFL sentences $\metav{A}_1$, $\metav{A}_2$, \dots{} and $\metav{A}_n$ together entail $\metav{C}$, we will abbreviate this by:
+\section{双十字转门}
+在本书接下来的部分，我们将频繁使用蕴涵这一概念。因此，引入一个缩写它的符号会很有帮助。我们不用再说真值函项逻辑语句 $\metav{A}_1$, $\metav{A}_2$, \dots{} 和 $\metav{A}_n$ 共同蕴涵 $\metav{C}$，而是用以下方式缩写：
 	$$\metav{A}_1, \metav{A}_2, \dots, \metav{A}_n \entails \metav{C}$$
-The symbol `$\entails$' is known as \emph{the double turnstile}, since it looks like a turnstile with two horizontal beams.
+符号“$\entails$”被称为\emph{双十字转门}，因为它看起来像一个带有两条水平横杆的十字转门。
 
-Let's be clear. `$\entails$' is not a symbol of TFL. Rather, it is a symbol of our metalanguage, augmented English (recall the difference between object language and metalanguage from \cref{s:UseMention}). So the metalanguage sentence:
+需要明确的是，“$\entails$”不是真值函项逻辑的符号。相反，它是我们元语言（扩充了的英语）的符号（回想对象语言与元语言的区别，见\cref{s:UseMention}）。所以，元语言语句：
 	\[\metav{A}, \metav{A} \eif \metav{B} \entails \metav{B}\]
-is \emph{just} an abbreviation for this metalanguage sentence: 
-	\begin{center}
-		The TFL sentences $\metav{A}$ and $\metav{A} \eif \metav{B}$ entail $\metav{B}$
-	\end{center}
-Note that there is no limit on the number of TFL sentences that can be mentioned before the symbol~`$\entails$'. Indeed, we can even consider the limiting case:
-	$$\entails \metav{C}$$
-This says that there is no valuation which makes all the sentences
-mentioned on the left side of `$\entails$' true whilst making all
-sentences on the right side (in this case, $\metav{C}$) false. Since \emph{no} sentences are mentioned on the left
-side of `$\entails$' in this case, this just means that there is no
-valuation which makes $\metav{C}$ false. Otherwise put, it says that
-every valuation makes $\metav{C}$ true. Otherwise put, it says that
-$\metav{C}$ is a tautology. Equally, to say that $\metav{A}$ is a
-contradiction, we could write:
-	$$\metav{A} \entails\phantom{\metav{C}}$$
-to mean that no valuation makes $\metav{A}$ true.
+\emph{仅}是以下元语言语句的缩写：
 
-Sometimes, we will want to deny that there is a tautological entailment, and say something of this shape: 
 \begin{center}
-	it is \emph{not} the case that $\metav{A}_1, \ldots, \metav{A}_n \entails \metav{C}$
+		真值函项逻辑语句 $\metav{A}$ 和 $\metav{A} \eif \metav{B}$ 蕴涵 $\metav{B}$
+	\end{center}
+
+注意，在符号“$\entails$”之前提到的真值函项逻辑语句的数量没有限制。实际上，我们甚至可以考虑极限情况：
+	$$\entails \metav{C}$$
+这表明不存在任何赋值，使得“$\entails$”左边提到的所有语句都为真，而右边的所有语句（在这个例子中，即 $\metav{C}$）为假。由于在这种情况下，“$\entails$”左边没有提到任何语句，这仅仅意味着不存在使 $\metav{C}$ 为假的赋值。换句话说，它表示每个赋值都使 $\metav{C}$ 为真。再换句话说，它表示 $\metav{C}$ 是一个重言式。同样地，要说 $\metav{A}$ 是一个矛盾式，我们可以写：
+	$$\metav{A} \entails\phantom{\metav{C}}$$
+以表示没有赋值使 $\metav{A}$ 为真。
+
+有时，我们会想要否认存在重言蕴涵关系，并说出这样的意思：
+\begin{center}
+	情况\emph{并非}如此：$\metav{A}_1, \ldots, \metav{A}_n \entails \metav{C}$
 \end{center}
-In that case, we can just slash the turnstile through, and write: 
+此时，我们可以在十字转门上划一条斜线，写作：
 $$\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n \nentails\metav{C}$$
-This means that \emph{some} valuation makes all of $\metav{A}_1,
-\ldots, \metav{A}_n$ true whilst making $\metav{C}$ false. Note that
-it does \emph{not} follow that $\metav{A}_1,\ldots, \metav{A}_n
-\entails \enot \metav{C}$, for it is possible that some \emph{other}
-valuation makes all of $\metav{A}_1, \ldots, \metav{A}_n$ true and
-makes $\metav{C}$ \emph{true}. For instance, $P \nentails Q$ but also
-$P \nentails \enot Q$.
+这表明\emph{存在某个}赋值，使得 $\metav{A}_1,
+\ldots, \metav{A}_n$ 中的所有语句为真，同时使 $\metav{C}$ 为假。注意，这并\emph{不}意味着 $\metav{A}_1,\ldots, \metav{A}_n
+\entails \enot \metav{C}$，因为可能存在\emph{其他}赋值，使得 $\metav{A}_1, \ldots, \metav{A}_n$ 中的所有语句为真，并且使 $\metav{C}$\emph{为真}。例如，$P \nentails Q$，但同样 $P \nentails \enot Q$。
 
-\section{`$\entails$' versus `$\eif$'}\label{entails-v-iff}
-We now want to compare and contrast `$\entails$' and `$\eif$'.
+\section{“$\entails$”与“$\eif$”}\label{entails-v-iff}
+我们现在想要比较和对比“$\entails$”和“$\eif$”。
 
-Observe: $\metav{A} \entails \metav{C}$ \ifeff{} no valuation of the sentence letters makes $\metav{A}$ true and $\metav{C}$ false.
+注意：$\metav{A} \entails \metav{C}$ \ifeff{} 不存在任何对语句字母的赋值使得 $\metav{A}$ 为真而 $\metav{C}$ 为假。
 
-Observe: $\metav{A} \eif \metav{C}$ is a tautology \ifeff{} no valuation of the sentence letters makes $\metav{A} \eif \metav{C}$ false. Since a conditional is true except when its antecedent is true and its consequent false, $\metav{A} \eif \metav{C}$ is a tautology \ifeff{} no valuation makes $\metav{A}$ true and $\metav{C}$ false.
+注意：$\metav{A} \eif \metav{C}$ 是重言式 \ifeff{} 不存在任何对语句字母的赋值使得 $\metav{A} \eif \metav{C}$ 为假。由于一个条件句仅在它的前件为真且后件为假时才为假，$\metav{A} \eif \metav{C}$ 是重言式 \ifeff{} 不存在任何赋值使得 $\metav{A}$ 为真而 $\metav{C}$ 为假。
 
-Combining these two observations, we see that $\metav{A} \eif \metav{C}$  is a tautology \ifeff{}  $\metav{A} \entails \metav{C}$. But there is a really, really important difference between `$\entails$' and `$\eif$':
+结合这两个观察，我们看到 $\metav{A} \eif \metav{C}$ 是重言式 \ifeff{} $\metav{A} \entails \metav{C}$。但是，“$\entails$” 和 “$\eif$” 之间有一个非常重要区别：
 	\factoidbox{
-		\begin{itemize}
-			\item `$\eif$' is a sentential connective of TFL.
-			\item `$\entails$' is a symbol of augmented English.
+
+
+\begin{itemize}
+			\item “$\eif$” 是真值函项逻辑的语句联结词。
+			\item “$\entails$” 是元语言符号。
 		\end{itemize}
+
+
 	}
-Indeed, when `$\eif$' is flanked with two TFL sentences, the result is a longer TFL sentence. By contrast, when we use `$\entails$', we form a metalinguistic sentence that \emph{mentions} the surrounding TFL sentences.
+事实上，当 “$\eif$” 两侧是真值函项逻辑语句时，结果是一个更长的真值函项逻辑语句。相比之下，当我们使用 “$\entails$” 时，我们构成了一个\emph{提及}周围真值函项逻辑语句的元语言句子。
 
-The English word `implies' is often used as a synonym for `entails',
-i.e.,~`$\entails$'. Some logicians \emph{also} use it for the
-conditional, i.e.,~`$\eif$'. Since this is liable to commit the
-confusion warned about above, we avoid the use of `implies' as much as
-possible. (Whenever it is used, it means `entails'.)
-
+英文单词“implies”常被用作“entails”（即 “$\entails$”）的同义词。有些逻辑学家\emph{也}用它表示条件句（即 “$\eif$”）。因为这容易导致前面提到的混淆，我们尽可能避免使用“implies”。（凡使用处，均意为“entails”。）
 
 \practiceproblems
 \problempart
-Revisit your answers to
-\hyperref[pr.TT.TTorC]{exercise~\ref*{s:CompleteTruthTables}A}. Determine which
-sentences were tautologies, which were contradictions, and which were
-neither tautologies nor contradictions.
+回顾你在\hyperref[pr.TT.TTorC]{练习~\ref*{s:CompleteTruthTables}A}中的答案。确定哪些语句是重言式，哪些是矛盾式，哪些两者都不是。
 \solutions
 
 \
 
 \problempart
 \label{pr.TT.satisfiable}
-Use truth tables to determine whether these sentences are jointly satisfiable, or jointly unsatisfiable:
+使用真值表判断下列语句是共同可满足的还是共同不可满足的：
+
+
 \begin{compactlist}
 \item $A\eif A$, $\enot A \eif \enot A$, $A\eand A$, $A\eor A$ %satisfiable
 \item $A\eor B$, $A\eif C$, $B\eif C$ %satisfiable
@@ -802,11 +810,12 @@ Use truth tables to determine whether these sentences are jointly satisfiable, o
 \item $A\eiff(B\eor C)$, $C\eif \enot A$, $A\eif \enot B$ %satisfiable
 \end{compactlist}
 
-
 \solutions
 \problempart
 \label{pr.TT.valid}
-Use truth tables to determine whether each argument is valid or invalid.
+使用真值表判断下列每个论证是有效的还是无效的：
+
+
 \begin{compactlist}
 \item $A\eif A \therefore A$ %invalid
 \item $A\eif(A\eand\enot A) \therefore \enot A$ %valid
@@ -815,7 +824,10 @@ Use truth tables to determine whether each argument is valid or invalid.
 \item $(B\eand A)\eif C, (C\eand A)\eif B \therefore (C\eand B)\eif A$ %invalid
 \end{compactlist}
 
-\problempart Determine whether each sentence is a tautology, a contradiction, or a contingent sentence, using a complete truth table.
+\problempart
+使用完整真值表判断下列每个语句是重言式、矛盾式还是偶然式：
+
+
 \begin{compactlist}
 \item $\enot B \eand B$ \vspace{.5ex}%contra
 
@@ -836,74 +848,76 @@ Use truth tables to determine whether each argument is valid or invalid.
 
 \end{compactlist}
 
-
-
 \noindent\problempart
 \label{pr.TT.equiv}
-Determine whether each the following sentences are logically equivalent using complete truth tables. If the two sentences really are logically equivalent, write ``equivalent.'' Otherwise write, ``Not equivalent.'' 
-\begin{compactlist}
-\item $A$ and $\enot A$
-\item $A \eand \enot A$ and $\enot B \eiff B$
-\item $[(A \eor B) \eor C]$ and $[A \eor (B \eor C)]$
-\item $A \eor (B \eand C)$ and $(A \eor B) \eand (A \eor C)$
-\item $[A \eand (A \eor B)] \eif B$ and $A \eif B$\end{compactlist}
+使用完整真值表判断下列每对语句是否逻辑等价。若等价，写“equivalent.”；否则写“Not equivalent.”。
 
+
+\begin{compactlist}
+\item $A$ 和 $\enot A$
+\item $A \eand \enot A$ 和 $\enot B \eiff B$
+\item $[(A \eor B) \eor C]$ 和 $[A \eor (B \eor C)]$
+\item $A \eor (B \eand C)$ 和 $(A \eor B) \eand (A \eor C)$
+\item $[A \eand (A \eor B)] \eif B$ 和 $A \eif B$\end{compactlist}
 
 \problempart
 \label{pr.TT.equiv2}
-Determine whether each the following sentences are logically equivalent using complete truth tables. If the two sentences really are equivalent, write ``equivalent.'' Otherwise write, ``not equivalent.''
-\begin{compactlist}
-\item $A\eif A$ and $A \eiff A$
-\item $\enot(A \eif B)$ and $\enot A \eif \enot B$
-\item $A \eor B$ and $\enot A \eif B$
-\item$(A \eif B) \eif C$ and $A \eif (B \eif C)$
-\item $A \eiff (B \eiff C)$ and $A \eand (B \eand C)$
-\end{compactlist}
+使用完整真值表判断下列每对语句是否逻辑等价。若等价，写“equivalent.”；否则写“not equivalent.”。
 
+
+\begin{compactlist}
+\item $A\eif A$ 和 $A \eiff A$
+\item $\enot(A \eif B)$ 和 $\enot A \eif \enot B$
+\item $A \eor B$ 和 $\enot A \eif B$
+\item$(A \eif B) \eif C$ 和 $A \eif (B \eif C)$
+\item $A \eiff (B \eiff C)$ 和 $A \eand (B \eand C)$
+\end{compactlist}
 
 \problempart
 \label{pr.TT.satisfiable2}
-Determine whether each collection of sentences is jointly satisfiable or jointly unsatisfiable using a complete truth table.
+使用完整真值表判断下列各组语句是共同可满足的还是共同不可满足的。
+
+
 \begin{compactlist}
 \item $A \eand \enot B$, $\enot(A \eif B)$, $B \eif A$\vspace{.5ex} %Consistent
 
-%\begin{tabular}{ccccccccccccccc} 
-%1. 	&	A 					 & \eand 		&  \enot & B & & \enot  		& 	 (A	  & 	 \eif	 	 & 	 B)		 & 	 & 	 B	 	 & 	\eif 	 	 & 	A 	 	 & 	 Consistent \\ 
-%\cline{2-5} \cline{7-10}\cline{12-14} 
-%	& 	T 					 & 	 F	 		&  F	 & T & & F	 		& 	 T	  & 	 T	 	 & 	T 	 	 & 	 & 	 T	 	 & 	 T	 	 & T	 	 	&	  \\ 
+%\begin{tabular}{ccccccccccccccc}
+%1. 	&	A 					 & \eand 		&  \enot & B & & \enot  		& 	 (A	  & 	 \eif	 	 & 	 B)		 & 	 & 	 B	 	 & 	\eif 	 	 & 	A 	 	 & 	 Consistent \\
+%\cline{2-5} \cline{7-10}\cline{12-14}
+%	& 	T 					 & 	 F	 		&  F	 & T & & F	 		& 	 T	  & 	 T	 	 & 	T 	 	 & 	 & 	 T	 	 & 	 T	 	 & T	 	 	&	  \\
 %\cline{2-14}
-%	& \multicolumn{1}{|r}{T}& 	\textbf{T}	 & T	 & F & & \textbf{T}	 & 	 T	 & 	 F	 	 & 	 F	 	 & 	 & 	 F	 	 & 	 \textbf{T}	 	 & 	 \multicolumn{1}{r|}{T}	 	 & 	  \\ 
+%	& \multicolumn{1}{|r}{T}& 	\textbf{T}	 & T	 & F & & \textbf{T}	 & 	 T	 & 	 F	 	 & 	 F	 	 & 	 & 	 F	 	 & 	 \textbf{T}	 	 & 	 \multicolumn{1}{r|}{T}	 	 & 	  \\
 %\cline{2-14}
-%	& 	 F	 				 & 	 F	 & 	 F	 & T & 	& 	 F	 & 	 F	 & 	 T	 	 & 	 T	 	 & 	  & 	 T	 	 & 	 F	 	 & 	 F	 	 & 	  \\ 
-%	& 	 F	  				& 	 F	 & 	 T	 & 	F&  & 	 F	 & 	 F	 & 	 T	 	 & 	 F	 	 & 	  & 	 F	 	 & 	 T	 	 & 	 F	 	 & 	  \\ 
+%	& 	 F	 				 & 	 F	 & 	 F	 & T & 	& 	 F	 & 	 F	 & 	 T	 	 & 	 T	 	 & 	  & 	 T	 	 & 	 F	 	 & 	 F	 	 & 	  \\
+%	& 	 F	  				& 	 F	 & 	 T	 & 	F&  & 	 F	 & 	 F	 & 	 T	 	 & 	 F	 	 & 	  & 	 F	 	 & 	 T	 	 & 	 F	 	 & 	  \\
 %\end{tabular}
 
 \item $A \eor B$, $A \eif \enot A$, $B \eif \enot B$ \vspace{.5ex}%unsatisfiable.
 
-%\begin{tabular}{ccccccccccccccc} 
-%2. &A	 & \eor 	 & B 	 & 	 	 & A 	 & \eif 	 & 	\enot & A 	 & 	 	 & B 	 & \eif 	 & \enot	 & 	B 	 & 	Insatisfiable \\ 
+%\begin{tabular}{ccccccccccccccc}
+%2. &A	 & \eor 	 & B 	 & 	 	 & A 	 & \eif 	 & 	\enot & A 	 & 	 	 & B 	 & \eif 	 & \enot	 & 	B 	 & 	Insatisfiable \\
 %\cline{2-4}\cline{6- 9} \cline{11-14}
-%   &	T	 & 	 T	 &T  	 & 	 	 & T	 & 	 F	 & 	F 	 & T 	 & 	 	 & 	T 	 & 	F 	 & 	 F	 & 	T 	 & 	 \\ 
-%   &	 T	& 	 T	 & F 	 & 	 	 & 	T 	 & 	 F	 & 	 F	 & 	 T	 & 	 	 & 	F 	 & 	 T	 & 	 T	 & 	 F	 & 	 \\ 
-%   &	 F	& 	 T	 & 	 T	 & 	 	 & 	F 	 & 	 T	 & 	 T	 & 	F 	 & 	 	 & 	 T	 & 	 F	 & 	 F	 & 	 T	 & 	 \\ 
-%   &	 F	& 	 F	 & 	 F	 & 	 	 & 	 F	 & 	 T	 & 	 T	 & 	 F	 & 	 	 & 	 F	 & 	 T	 & 	 T	 & 	 F	 & 	 \\ 
+%   &	T	 & 	 T	 &T  	 & 	 	 & T	 & 	 F	 & 	F 	 & T 	 & 	 	 & 	T 	 & 	F 	 & 	 F	 & 	T 	 & 	 \\
+%   &	 T	& 	 T	 & F 	 & 	 	 & 	T 	 & 	 F	 & 	 F	 & 	 T	 & 	 	 & 	F 	 & 	 T	 & 	 T	 & 	 F	 & 	 \\
+%   &	 F	& 	 T	 & 	 T	 & 	 	 & 	F 	 & 	 T	 & 	 T	 & 	F 	 & 	 	 & 	 T	 & 	 F	 & 	 F	 & 	 T	 & 	 \\
+%   &	 F	& 	 F	 & 	 F	 & 	 	 & 	 F	 & 	 T	 & 	 T	 & 	 F	 & 	 	 & 	 F	 & 	 T	 & 	 T	 & 	 F	 & 	 \\
 %\end{tabular}
 
 \item $\enot(\enot A \eor B) $, $A \eif \enot C$, $A \eif (B \eif C)$\vspace{.5ex} %Insatisfiable
 
-%3. &\enot & (\enot & A & \eor &B) &  &A  & \eif 	 &\enot 	 &C & 	 & A &\eif 	& (B 	 &\eif 	& C)	 &Consistent \\ 
-%\cline{2-6}\cline{8-11} \cline{13-17} 
-%   &	F 	& 	F	 & 	T & T	 & T & 	  & T & F	 & 	 F&T 	 & 	 &T & T	 & T	 &T 	 &T 	 & \\ 
-%   &	 F	& 	F	 & 	T & T	 & T & 	  & T & T	 & 	 T& F	 & 	 &T & F	 & T	 & F	 &F 	 & \\ 
-% 
-%  &	 T & 	F 	& 	T & F	 & F & 	  & T & F	 & 	 F& T	 & 	 &T & T	 & F	 & T	 &T 	 & \\ 
+%3. &\enot & (\enot & A & \eor &B) &  &A  & \eif 	 &\enot 	 &C & 	 & A &\eif 	& (B 	 &\eif 	& C)	 &Consistent \\
+%\cline{2-6}\cline{8-11} \cline{13-17}
+%   &	F 	& 	F	 & 	T & T	 & T & 	  & T & F	 & 	 F&T 	 & 	 &T & T	 & T	 &T 	 &T 	 & \\
+%   &	 F	& 	F	 & 	T & T	 & T & 	  & T & T	 & 	 T& F	 & 	 &T & F	 & T	 & F	 &F 	 & \\
+%
+%  &	 T & 	F 	& 	T & F	 & F & 	  & T & F	 & 	 F& T	 & 	 &T & T	 & F	 & T	 &T 	 & \\
 %\cline{2-17}
-%   &	 \multicolumn{1}{|r}{{\color{red}T}}		&  F	 & 	T & F	 & 	F &  & 	T & {\color{red}T}	 & 	 T&F 	& 	 &T & {\color{red}T}	 & F	 & T	 &\multicolumn{1}{r|}{F} 	 & \\ 
+%   &	 \multicolumn{1}{|r}{{\color{red}T}}		&  F	 & 	T & F	 & 	F &  & 	T & {\color{red}T}	 & 	 T&F 	& 	 &T & {\color{red}T}	 & F	 & T	 &\multicolumn{1}{r|}{F} 	 & \\
 %\cline{2-17}
-%   &	 F	& 	T	 & 	F & T	 & 	T &  & 	F & T	 & 	 F& T	 & 	 &F	 & F	 & T	 & T	 &T 	 & \\ 
-%   &	 F	& 	 T	& 	F & T	 & 	T &  & 	F & T	 & 	T & F 	& 	 &F	 & T	 & T	 &F 	 &F 	 & \\ 
-%   &	 F	& 	 T	& 	F & T	 & 	F &  & 	F & T	 & 	F & T	 & 	 &F	 & T	 & F	 & T	 &T 	 & \\ 
-%   &	 F	& 	 T	& 	F & T	 & 	F &  & 	F & T	 & 	T & F	 & 	 &F	 & T	 & F	 & T	 &F 	 & \\ 
+%   &	 F	& 	T	 & 	F & T	 & 	T &  & 	F & T	 & 	 F& T	 & 	 &F	 & F	 & T	 & T	 &T 	 & \\
+%   &	 F	& 	 T	& 	F & T	 & 	T &  & 	F & T	 & 	T & F 	& 	 &F	 & T	 & T	 &F 	 &F 	 & \\
+%   &	 F	& 	 T	& 	F & T	 & 	F &  & 	F & T	 & 	F & T	 & 	 &F	 & T	 & F	 & T	 &T 	 & \\
+%   &	 F	& 	 T	& 	F & T	 & 	F &  & 	F & T	 & 	T & F	 & 	 &F	 & T	 & F	 & T	 &F 	 & \\
 %\end{tabular}
 %
 
@@ -916,7 +930,9 @@ Determine whether each collection of sentences is jointly satisfiable or jointly
 
 \noindent\problempart
 \label{pr.TT.satisfiable3}
-Determine whether each collection of sentences is jointly satisfiable or jointly unsatisfiable, using a complete truth table.
+使用完整真值表判断下列各组语句是共同可满足的还是共同不可满足的。
+
+
 \begin{compactlist}
 \item $\enot B$, $A \eif B$, $A$ \vspace{.5ex}%unsatisfiable.
 \item $\enot(A \eor B)$, $A \eiff B$, $B \eif A$\vspace{.5ex} %Consistent
@@ -925,12 +941,11 @@ Determine whether each collection of sentences is jointly satisfiable or jointly
 \item $(A \eor B) \eor C$, $\enot A \eor \enot B$, $\enot C \eor \enot B$\vspace{.5ex} %satisfiable
 \end{compactlist}
 
-
-
-
 \noindent\problempart
 \label{pr.TT.valid2}
-Determine whether each argument is valid or invalid, using a complete truth table.
+使用完整真值表判断下列各论证是有效的还是无效的。
+
+
 \begin{compactlist}
 \item $A\eif B$, $B \therefore  A$ %invalid
 
@@ -944,134 +959,110 @@ Determine whether each argument is valid or invalid, using a complete truth tabl
 
 \noindent\problempart
 \label{pr.TT.valid3}
-Determine whether each argument is valid or invalid, using a complete truth table.
+使用完整真值表判断下列每个论证是有效的还是无效的。
+
+
 \begin{compactlist}
 \item $A\eor\bigl[A\eif(A\eiff A)\bigr] \therefore  A $\vspace{.5ex}%invalid
 \item $A\eor B$, $B\eor C$, $\enot B \therefore A \eand C$\vspace{.5ex} %valid
 \item $A \eif B$, $\enot A\therefore \enot B$ \vspace{.5ex}%invalid
 \item $A$, $B\therefore \enot(A\eif \enot B)$ \vspace{.5ex}%valid
-\item $\enot(A \eand B)$, $A \eor B$, $A \eiff B\therefore C$ \vspace{.5ex}%valid 
+\item $\enot(A \eand B)$, $A \eor B$, $A \eiff B\therefore C$ \vspace{.5ex}%valid
 \end{compactlist}
 
 \solutions
 \problempart
 \label{pr.TT.concepts}
-Answer each of the questions below and justify your answer.
+回答下列每个问题并说明理由。
+
+
 \begin{compactlist}
-\item Suppose that \metav{A} and \metav{B} are logically equivalent. What can you say about $\metav{A}\eiff\metav{B}$?
+\item 假设 \metav{A} 和 \metav{B} 逻辑等价。关于 $\metav{A}\eiff\metav{B}$，你能说什么？
 %\metav{A} and \metav{B} have the same truth value on every line of a complete truth table, so $\metav{A}\eiff\metav{B}$ is true on every line. It is a tautology.
-\item Suppose that $(\metav{A}\eand\metav{B})\eif\metav{C}$ is neither a tautology nor a contradiction. What can you say about whether $\metav{A}, \metav{B} \therefore\metav{C}$ is valid?
+\item 假设 $(\metav{A}\eand\metav{B})\eif\metav{C}$ 既不是重言式也不是矛盾式。关于 $\metav{A}, \metav{B} \therefore\metav{C}$ 是否有效，你能说什么？
 %The sentence is false on some line of a complete truth table. On that line, \metav{A} and \metav{B} are true and \metav{C} is false. So the argument is invalid.
-\item Suppose that $\metav{A}$, $\metav{B}$ and $\metav{C}$  are jointly unsatisfiable. What can you say about $(\metav{A}\eand\metav{B}\eand\metav{C})$?
-\item Suppose that \metav{A} is a contradiction. What can you say about whether $\metav{A}, \metav{B} \entails \metav{C}$?
+\item 假设 $\metav{A}$、$\metav{B}$ 和 $\metav{C}$ 共同不可满足。关于 $(\metav{A}\eand\metav{B}\eand\metav{C})$，你能说什么？
+\item 假设 \metav{A} 是矛盾式。关于 $\metav{A}, \metav{B} \entails \metav{C}$，你能说什么？
 %Since \metav{A} is false on every line of a complete truth table, there is no line on which \metav{A} and \metav{B} are true and \metav{C} is false. So the argument is valid.
-\item Suppose that \metav{C} is a tautology. What can you say about whether $\metav{A}, \metav{B}\entails \metav{C}$?
+\item 假设 \metav{C} 是重言式。关于 $\metav{A}, \metav{B}\entails \metav{C}$，你能说什么？
 %Since \metav{C} is true on every line of a complete truth table, there is no line on which \metav{A} and \metav{B} are true and \metav{C} is false. So the argument is valid.
-\item Suppose that \metav{A} and \metav{B} are logically equivalent. What can you say about $(\metav{A}\eor\metav{B})$?
+\item 假设 \metav{A} 和 \metav{B} 逻辑等价。关于 $(\metav{A}\eor\metav{B})$，你能说什么？
 %Not much. $(\metav{A}\eor\metav{B})$ is a tautology if \metav{A} and \metav{B} are tautologies; it is a contradiction if they are contradictions; it is contingent if they are contingent.
-\item Suppose that \metav{A} and \metav{B} are \emph{not} logically equivalent. What can you say about $(\metav{A}\eor\metav{B})$?
+\item 假设 \metav{A} 和 \metav{B} \emph{不}逻辑等价。关于 $(\metav{A}\eor\metav{B})$，你能说什么？
 %\metav{A} and \metav{B} have different truth values on at least one line of a complete truth table, and $(\metav{A}\eor\metav{B})$ will be true on that line. On other lines, it might be true or false. So $(\metav{A}\eor\metav{B})$ is either a tautology or it is contingent; it is \emph{not} a contradiction.
 \end{compactlist}
-\problempart 
-Consider the following principle:
-	\begin{quote}
-		Suppose $\metav{A}$ and $\metav{B}$ are logically equivalent. Suppose an argument contains $\metav{A}$ (either as a premise, or as the conclusion). The validity of the argument would be unaffected, if we replaced $\metav{A}$ with $\metav{B}$.
+
+
+\problempart
+考虑以下原则：
+
+
+\begin{quote}
+		假设 $\metav{A}$ 和 $\metav{B}$ 逻辑等价。假设一个论证包含 $\metav{A}$（作为前提或结论）。如果我们用 $\metav{B}$ 替换 $\metav{A}$，论证的有效性将不受影响。
 	\end{quote}
-Is this principle correct? Explain your answer.
 
-\chapter{Limitations of TFL}\label{s:ParadoxesOfMaterialConditional}
 
-We have reached an important milestone: a test for the validity of
-arguments! However, we should not get carried away just yet. It is
-important to understand the \emph{limits} of our achievement. We will
-illustrate these limits with four examples.
+这个原则正确吗？解释你的答案。
 
-First, consider the argument: 
-	\begin{earg}
-		\item Daisy has four legs.
-		\item[\texttherefore] Daisy has more than two legs.
+\chapter{真值函项逻辑的局限性}\label{s:ParadoxesOfMaterialConditional}
+
+我们达成了一个重要的里程碑：一种检验论证有效性的方法！然而，我们还不应过于激动。理解我们成就的\emph{局限性}非常重要。我们将用四个例子来说明这些局限性。
+
+首先，考虑这个论证：
+
+
+\begin{earg}
+		\item 黛西有四条腿。
+		\item[\texttherefore] 黛西有两条以上的腿。
 	\end{earg}
-To symbolize this argument in TFL, we would have to use two different sentence letters---perhaps `$F$'  and `$T$'---for the premise and the conclusion respectively. Now, it is obvious that `$F$' does not entail~`$T$'. But the English argument is surely valid!
 
-Second, consider the sentence:
-	\begin{enumerate}
-		\item\label{n:JanBald} Jan is neither bald nor not bald.
+
+要在真值函项逻辑中符号化这个论证，我们必须使用两个不同的语句字母——例如用“$F$”和“$T$”——分别表示前提和结论。显然，“$F$”并不蕴涵“$T$”。但这个英语论证无疑是有效的！
+
+其次，考虑这个句子：
+
+
+\begin{enumerate}
+		\item\label{n:JanBald} 简既不秃头也不是不秃头。
 	\end{enumerate}
-To symbolize this sentence in TFL, we would offer something like
-`$\enot J \eand \enot \enot J$'. This a contradiction (check this with
-a truth-table), but \cref*{n:JanBald} does not itself seem like a
-contradiction: we might have happily added `Jan is on the borderline
-of baldness'!
 
-Third, consider the following sentence:
-	\begin{enumerate}
-	\item\label{n:GodParadox} It's not the case that, if God exists, She answers malevolent prayers.
+
+要在真值函项逻辑中符号化这个句子，我们可能会给出类似“$\enot J \eand \enot \enot J$”的公式。这是一个矛盾式（请用真值表验证），但 \cref*{n:JanBald} 本身似乎并不矛盾：我们或许可以欣然附加上“简处于秃头的边界”！
+
+第三，考虑下面的句子：
+
+
+\begin{enumerate}
+	\item\label{n:GodParadox} 并非“如果上帝存在，她会回应恶毒的祈祷”。
 	\end{enumerate}
-Symbolizing this in TFL, we would offer something like `$\enot (G \eif M)$'. Now, `$\enot (G \eif M)$' entails `$G$' (again, check this with a truth table). So if we symbolize \cref*{n:GodParadox} in TFL, it seems to entail that God exists. But that's strange: surely even an atheist can accept \cref*{n:GodParadox}, without contradicting herself!
 
-One lesson of this is that the symbolization of \cref*{n:GodParadox} as `$\enot(G \eif M)$' does not express what we intend. Perhaps we should rephrase \cref*{n:GodParadox} as
-	\begin{enumerate}
-	\item\label{n:GodParadox2} If God exists, She does not answer malevolent prayers.
+
+用真值函项逻辑符号化这个句子，我们会给出类似“$\enot (G \eif M)$”的公式。而“$\enot (G \eif M)$”蕴涵“$G$”（同样，请用真值表验证）。因此，如果我们用真值函项逻辑符号化 \cref*{n:GodParadox}，它似乎就蕴涵着上帝存在。但这很奇怪：显然，即使是无神论者也能接受 \cref*{n:GodParadox} 而不自相矛盾！
+
+这里的一个启示是，将 \cref*{n:GodParadox} 符号化为“$\enot(G \eif M)$”并不能表达我们想要的意思。也许我们应该将 \cref*{n:GodParadox} 改述为：
+
+
+\begin{enumerate}
+	\item\label{n:GodParadox2} 如果上帝存在，她不会回应恶毒的祈祷。
 	\end{enumerate}
-and symbolize \cref*{n:GodParadox2} as `$G \eif \enot M$'.  Now, if atheists are right, and there is no God, then `$G$' is false and so `$G \eif \enot M$' is true, and the puzzle disappears. However, if `$G$' is false, `$G \eif M$', i.e., `If God exists, She answers malevolent prayers', is \emph{also} true!
 
-In different ways, these four examples highlight some of the limits of
-TFL, symbolization of English in TFL, and the tests based on truth
-tables we've devised. Our first example showed that TFL is not
-expressive enough to symbolize everything we might want to in a way
-that allows us to apply our logical toolkit to even the best possible
-symbolization. We will see later (\cref{sec.identity}) that we
-\emph{can} properly symbolize `Daisy has four legs' in the more
-expressive language FOL, and then the test we will devise for FOL will
-apply (and give the correct answer).
 
-In \cref{n:JanBald} we similarly had an example where the
-straightforward symbolization in TFL does not quite work. The best we
-can do in TFL is to symbolize `Jan is not bald' using its own sentence
-letter, say,~`$N$' (contrary to our standing practice). But this also
-does not work. For instance, we would then symbolize `Jan is both bald
-and isn't' as `$J \eand N$'. But `Jan is both bald and isn't' arguably
-is a self-contradiction, yet the alternate symbolization `$J \eand N$'
-is not. Some logicians have proposed that in cases of sentences like
-`Jan is bald' which allow borderline cases, we have to adjust our
-semantics and allow that the sentence letter~`$J$' that symbolizes it
-should be allowed to take truth values other than T and~F. But this is
-by no means universally accepted.
+并将 \cref*{n:GodParadox2} 符号化为“$G \eif \enot M$”。现在，如果无神论者是对的，没有上帝，那么“$G$”为假，因此“$G \eif \enot M$”为真，难题就消失了。然而，如果“$G$”为假，“$G \eif M$”，即“如果上帝存在，她会回应恶毒的祈祷”，也\emph{同样}为真！
 
-\Cref{n:GodParadox} also showed that symbolization is often tricky,
-and that the straightforward symbolization of an English sentence
-sometimes does not capture its intended truth conditions. But even our
-improvement, \cref{n:GodParadox2}, and its symbolization `$G \eif
-\enot M$' turned out to not be good enough. The phenomenon we
-encountered here is one of the so-called paradoxes of the material
-conditional. The paradox is that material conditionals like
-`$G \eif M$' and `$G \eif \enot M$' are true whenever their
-antecedent~`$G$' is false, even though intuitively the two sentences
-`If God exists, She answers malevolent prayers' and `If God exists,
-She does \emph{not} answer malevolent prayers' should not both be true. This
-indicates that the `if \dots then' in these two examples is not
-properly captured by the TFL connective~`\eif'. The
-truth-functionality of TFL here is a real limitation. The solution
-would be to treat `if \dots then' in this case as a subjunctive
-conditional (see \cref{s:IndicativeSubjunctive}), but TFL cannot
-capture those.\footnote{Logicians have devised logics that deal with
-subjunctive conditionals better. They are called `conditional logics'
-or `logics of counterfactuals'.}
+以不同的方式，这四个例子突显了真值函项逻辑、用真值函项逻辑对英语进行符号化，以及我们基于真值表设计的检验方法的一些局限性。我们的第一个例子表明，真值函项逻辑的表达力不足以符号化我们想要表达的一切，即使是对可能的最佳符号化，我们也无法应用我们的逻辑工具。我们稍后会看到（\cref{sec.identity}），在表达力更强的一阶逻辑语言中，我们\emph{可以}恰当地符号化“黛西有四条腿”，届时我们为一阶逻辑设计的检验方法就会适用（并给出正确答案）。
 
-The case of Jan's baldness (or otherwise) raises the general question
-of what logic we should use when dealing with \emph{vague} discourse.
-The case of the atheist raises the question of how to deal with the
-(so-called) \emph{paradoxes of the material conditional}. Part of the
-purpose of this book is to equip you with the tools to explore these
-questions of \emph{philosophical logic}. But we have to walk before we
-can run; we have to become proficient in using TFL, before we can
-adequately discuss its limits, and consider alternatives.
+在 \cref{n:JanBald} 中，我们同样遇到了一个例子，表明在真值函项逻辑中直接的符号化方式并不完全适用。在真值函项逻辑中我们能做到的最好方案，是用它自己的语句字母，比如 “$N$”（这与我们的一贯做法不同），来符号化“Jan is not bald”。但这同样行不通。例如，我们就会把“Jan is both bald and isn't”符号化为 “$J \eand N$”。但“Jan is both bald and isn't”是一个自相矛盾，而我们改写的符号式 “$J \eand N$” 却并非如此。有些逻辑学家提出，对于像“Jan is bald”这样存在边界情况的句子，我们必须调整语义，并允许符号化它的语句字母 “$J$” 可以取真和假之外的其他真值。但这远非普遍接受的观点。
 
-\chapter{Truth table shortcuts}
-With practice, you will quickly become adept at filling out truth tables. In this chapter, we consider (and justify) some shortcuts which will help you along the way.
+\Cref{n:GodParadox} 同样表明，符号化常常是微妙的，对英语句子的直接符号化有时并不能捕捉到其预期的真值条件。但即使是我们改进后的 \cref{n:GodParadox2} 及其符号式“$G \eif \enot M$”，结果也不够好。我们在这里遇到的现象，是所谓的\emph{实质条件句悖论}之一。这个悖论在于，像“$G \eif M$”和“$G \eif \enot M$”这样的实质条件句，只要它们的前件“$G$”为假，它们就为真，尽管直觉上，“If God exists, She answers malevolent prayers”和“If God exists, She does \emph{not} answer malevolent prayers”这两句话不应该同时为真。这表明，在这两个例子中，“if \dots then”没有被真值函项逻辑的联结词“$\eif$”恰当地刻画。真值函项逻辑在此处的真值函项特性确实是一个局限。解决之道是将此处的“if \dots then”视为虚拟条件句（参见 \cref{s:IndicativeSubjunctive}），但这超出了真值函项逻辑的处理能力。\footnote{逻辑学家已经设计出能更好地处理虚拟条件句的逻辑系统。它们被称为“条件句逻辑”或“反事实逻辑”。}
 
-\section{Working through truth tables}
-You will quickly find that you do not need to copy the truth value of each sentence letter, but can simply refer back to them. So you can speed things up by writing:
+关于Jan是否秃头的例子，引发了一个普遍性问题：当我们处理\emph{模糊}话语时，应该使用什么逻辑。无神论者的例子则提出了如何应对（所谓的）\emph{实质条件句悖论}的问题。本书的部分目的，正是为你装备探索这些\emph{哲学逻辑}问题的工具。但我们必须先学会走才能跑；我们必须先熟练掌握使用真值函项逻辑，然后才能充分讨论它的局限，并考虑其他选择。
+
+\chapter{真值表的快捷方法}
+通过练习，你将很快就能熟练地填写真值表。在本章中，我们将探讨（并证明）一些能帮助你更快填表的快捷方法。
+
+\section{逐步完成真值表}
+你很快就会发现，你不需要复制每个语句字母的真值，而只需回头参考它们。从而你可以这样写来加快速度：
+
 \begin{center}
 \begin{tabular}{c c|d e e e e f}
 $P$&$Q$&$(P$&\eor&$Q)$&\eiff&\enot&$P$\\
@@ -1082,7 +1073,9 @@ $P$&$Q$&$(P$&\eor&$Q)$&\eiff&\enot&$P$\\
  F & F &  & F &  & \TTbf{F} & T
 \end{tabular}
 \end{center}
-You also know for sure that a disjunction is true whenever one of the disjuncts is true. So if you find a true disjunct, there is no need to work out the truth value of the other disjunct. Thus you might offer:
+
+你还知道，只要有一个析取支为真，析取式就为真。所以，如果你找到一个为真的析取支，就无需确定另一个析取支的真值。因此你可以这样处理：
+
 \begin{center}
 \begin{tabular}{c c|d e e e e e e f}
 $P$&$Q$& $(\enot$ & $P$&\eor&\enot&$Q)$&\eor&\enot&$P$\\
@@ -1093,7 +1086,9 @@ $P$&$Q$& $(\enot$ & $P$&\eor&\enot&$Q)$&\eor&\enot&$P$\\
  F & F & & & & & &\TTbf{T} & T
 \end{tabular}
 \end{center}
-Equally, you know for sure that a conjunction is false whenever one of the conjuncts is false. So if you find a false conjunct, there is no need to work out the truth value of the other conjunct. Thus you might offer:
+
+同样地，你知道只要有一个合取支为假，合取式就为假。所以，如果你找到一个为假的合取支，就无需确定另一个合取支的真值。因此你可以这样处理：
+
 \begin{center}
 \begin{tabular}{c c|d e e e e e e f}
 $P$&$Q$&\enot &$(P$&\eand&\enot&$Q)$&\eand&\enot&$P$\\
@@ -1104,7 +1099,9 @@ $P$&$Q$&\enot &$(P$&\eand&\enot&$Q)$&\eand&\enot&$P$\\
  F & F & T &  & F & & & \TTbf{T} & T
 \end{tabular}
 \end{center}
-A similar short cut is available for conditionals. You immediately know that a conditional is true if either its consequent is true, or its antecedent is false. Thus you might present:
+
+对于条件句也有一个类似的快捷方法。你可以立即知道，只要其后件为真，或者其前件为假，一个条件句就是真的。因此你也可以这样呈现：
+
 \begin{center}
 \begin{tabular}{c c|d e e e e e f}
 $P$&$Q$& $((P$&\eif&$Q$)&\eif&$P)$&\eif&$P$\\
@@ -1112,22 +1109,26 @@ $P$&$Q$& $((P$&\eif&$Q$)&\eif&$P)$&\eif&$P$\\
  T & T & &  & & & & \TTbf{T} & \\
  T & F &  &  & && & \TTbf{T} & \\
  F & T & & T & & F & & \TTbf{T} & \\
- F & F & & T & & F & &\TTbf{T} & 
+ F & F & & T & & F & &\TTbf{T} &
 \end{tabular}
 \end{center}
-So `$((P \eif Q) \eif P) \eif P$' is a tautology. In fact, it is an instance of \emph{Peirce's Law}, named after Charles Sanders Peirce.
 
-\section{Testing for validity and entailment}
-In \cref{s:SemanticConcepts}, we saw how to use truth tables to test for validity. In that test, we look for \emph{bad} lines: lines where the premises are all true and the conclusion is false. Now:
+因此，“$((P \eif Q) \eif P) \eif P$” 是一个重言式。事实上，它是\emph{皮尔士定律}的一个实例，以查尔斯·桑德斯·皮尔士命名。
+
+\section{检验有效性与蕴涵}
+在 \cref{s:SemanticConcepts} 中，我们看到了如何用真值表来检验有效性。在那种检验中，我们寻找\emph{坏行}：即所有前提都为真而结论为假的行。现在：
+
 \begin{itemize}
-	\item If the conclusion is true on a line, then that line is not bad. (And we don't need to evaluate anything \emph{else} on that line to confirm this.)
-	\item If any premise is false on a line, then that line is not bad. (And we don't need to evaluate anything \emph{else} on that line to confirm this.)
+	\item 如果结论在某一行上为真，那么这一行就不是坏行。（并且我们不需要评估该行上的任何\emph{其他}内容来确认这一点。）
+	\item 如果任一前提在某一行上为假，那么这一行就不是坏行。（并且我们不需要评估该行上的任何\emph{其他}内容来确认这一点。）
 \end{itemize}
-With this in mind, we can speed up our tests for validity quite considerably.
 
-Let's consider how we might test the following:
+基于上述观察，我们可以大大加速有效性检验的过程。
+
+让我们考虑如何检验下面这个论证：
 $$\enot L \eif (J \eor L), \enot L \therefore J$$
-The \emph{first} thing we should do is evaluate the conclusion. If we find that the conclusion is \emph{true} on some line, then that is not a bad line. So we can simply ignore the rest of the line. So, after our first stage, we are left with something like this:
+我们应该做的\emph{第一}件事是评估结论。如果我们发现结论在某一行上为\emph{真}，那么它就不是坏行。因此，我们可以直接忽略该行的其余部分。所以，在第一阶段之后，我们得到的结果大致如下：
+
 \begin{center}
 	\begin{tabular}{c c|d e e e e f |d f|c}
 		$J$&$L$&\enot&$L$&\eif&$(J$&\eor&$L)$&\enot&$L$&$J$\\
@@ -1139,9 +1140,11 @@ The \emph{first} thing we should do is evaluate the conclusion. If we find that 
 		F & F & &&?&&&&?&& {F}
 	\end{tabular}
 \end{center}
-where the blanks indicate that we won't bother with any more investigation (since the line is not bad), and the question marks indicate that we need to keep digging.
 
-The easiest premise to evaluate is the second, so we do that next, and get:
+其中，空白表示我们无需再费心考察（因为该行不是坏行），而问号表示我们需要继续深究。
+
+最容易评估的前提是第二个，所以我们接下来评估它，得到：
+
 \begin{center}
 	\begin{tabular}{c c|d e e e e f |d f|c}
 		$J$&$L$&\enot&$L$&\eif&$(J$&\eor&$L)$&\enot&$L$&$J$\\
@@ -1153,7 +1156,9 @@ The easiest premise to evaluate is the second, so we do that next, and get:
 		F & F & &&?&&&&{T}&& {F}
 	\end{tabular}
 \end{center}
-Note that we no longer need to consider the third line on the table: it is certainly not bad, because some premise is false on that line. And finally, we complete the truth table:
+
+注意，我们不再需要考虑表格的第三行：它肯定不是坏行，因为该行上至少有一个前提为假。最后，我们完成这个真值表：
+
 \begin{center}
 	\begin{tabular}{c c|d e e e e f |d f|c}
 		$J$&$L$&\enot&$L$&\eif&$(J$&\eor&$L)$&\enot&$L$&$J$\\
@@ -1165,11 +1170,13 @@ Note that we no longer need to consider the third line on the table: it is certa
 		F & F & T &  & \TTbf{F} &  & F & & {T} & & {F}
 	\end{tabular}
 \end{center}
-The truth table has no bad lines, so the argument is valid. Any valuation which makes every premise true makes the conclusion true.
 
-It's probably worth illustrating the tactic again. Consider this argument:
+该真值表没有坏行，因此论证是有效的。任何使所有前提为真的赋值，都会使结论为真。
+
+值得再次说明一下这个技巧。考虑这个论证：
 $$A\eor B, \enot (B\eand C) \therefore (A \eor \enot C)$$
-Again, we start by evaluating the conclusion. Since this is a disjunction, it is true whenever either disjunct is true, so we can speed things along a bit.
+同样，我们首先评估结论。由于这是一个析取式，只要有一个析取支为真它就为真，因此我们可以稍稍加快进度。
+
 \begin{center}
 \begin{tabular}[t]{c c c| c|c|d e e f }
 $A$ & $B$ & $C$ & $A\eor B$ & $\enot (B \eand C)$ & $(A$ &$\eor $& $\enot $ & $C)$\\
@@ -1184,7 +1191,9 @@ F & F & T & ? & ? && \TTbf{F} & F& \\
 F & F & F &  &  & & \TTbf{T} & T& \\
 \end{tabular}
 \end{center}
-We can now ignore all but the two lines where the sentence after the turnstile is false. Evaluating the two sentences on the left of the turnstile, we get:
+
+现在，除了杠后语句为假的那两行，我们可以忽略所有其他行。评估杠前的两个语句，我们得到：
+
 \begin{center}
 	\begin{tabular}[t]{c c c| c|d e e f |d e e f }
 		$A$ & $B$ & $C$ & $A\eor B$ & $\enot ($&$B$&$ \eand$&$ C)$ & $(A$ &$\eor $& $\enot $ & $C)$\\
@@ -1199,13 +1208,15 @@ We can now ignore all but the two lines where the sentence after the turnstile i
 		F & F & F & &&&& && \TTbf{T} & T& \\
 	\end{tabular}
 \end{center}
-So the entailment holds! And our shortcuts saved us a \emph{lot} of work.
- 
-We have been discussing shortcuts in testing for validity. But exactly the same shortcuts can be used in testing for entailment. By employing a similar notion of bad lines, you can save yourself a huge amount of work.
- 
+
+所以蕴涵成立！我们的捷径节省了大量工作。
+
+我们一直在讨论检验有效性时的捷径。但完全相同的捷径亦可用于检验蕴涵。通过运用类似的“坏行”概念，你可以节省大量的工作。
+
 \practiceproblems
 \problempart
-Using shortcuts, check whether each sentence is a tautology, a contradiction, or neither.
+使用捷径，判断以下每个语句是重言式、矛盾式，还是两者都不是。
+
 \begin{compactlist}
 	\item $\enot B \eand B$ %contra
 	\item $\enot D \eor D$ %taut
@@ -1218,55 +1229,64 @@ Using shortcuts, check whether each sentence is a tautology, a contradiction, or
 	\item $(B\eand D) \eiff [A \eiff(A \eor C)]$%contingent
 \end{compactlist}
 
-\chapter{Partial truth tables}\label{s:PartialTruthTable}
+\chapter{部分真值表}\label{s:PartialTruthTable}
 
-Sometimes, we do not need to know what happens on every line of a truth table. Sometimes, just a line or two will do.
+有时候，我们不需要知道真值表每一行的情况。有时候，只需要一两行就够了。
 
-\paragraph{Tautology} 
-In order to show that a sentence is a tautology, we need to show that it is true on every valuation. That is to say, we need to know that it comes out true on every line of the truth table. So we need a complete truth table.
+\paragraph{重言式}
+要证明一个语句是重言式，我们需要证明它在每个赋值下都为真。也就是说，我们需要知道它在真值表的每一行都为真。因此我们需要完整真值表。
 
-To show that a sentence is \emph{not} a tautology, however, we only need one line: a line on which the sentence is false. Therefore, in order to show that some sentence is not a tautology, it is enough to provide a single valuation---a single line of the truth table---which makes the sentence false.
+然而，要证明一个语句\emph{不是}重言式，我们只需要一行：使该语句为假的一行。因此，要证明某个语句不是重言式，我们只需提供一个使其为假的赋值---即真值表中的一行---就够了。
 
-Suppose that we want to show that the sentence `$(U \eand T) \eif (S \eand W)$' is \emph{not} a tautology. We set up a \define{partial truth table}:
+假设我们想证明语句“$(U \eand T) \eif (S \eand W)$”\emph{不是}一个重言式。我们建立一个\define{部分真值表}：
+
 \begin{center}
 \begin{tabular}{c c c c |d e e e e e f}
 $S$&$T$&$U$&$W$&$(U$&\eand&$T)$&\eif    &$(S$&\eand&$W)$\\
 \hline
-   &   &   &   &    &   &    &\TTbf{F}&    &   &   
+   &   &   &   &    &   &    &\TTbf{F}&    &   &
 \end{tabular}
 \end{center}
-We have only left space for one line, rather than 16, since we are only looking for one line, on which the sentence is false (hence, also, the `F').
 
-The main logical operator of the sentence is a conditional. In order for the conditional to be false, the antecedent must be true and the consequent must be false. So we fill these in on the table:
+我们只留出了一行的空间，而不是十六行，因为我们只在寻找使该语句为假的一行（因此，表头也标上了“F”）。
+
+这个语句的主逻辑算子是一个条件。为了让这个条件式为假，前件必须为真，而后件必须为假。于是我们将这些信息填入表中：
+
 \begin{center}
 \begin{tabular}{c c c c |d e e e e e f}
 $S$&$T$&$U$&$W$&$(U$&\eand&$T)$&\eif    &$(S$&\eand&$W)$\\
 \hline
-   &   &   &   &    &  T  &    &\TTbf{F}&    &   F &   
+   &   &   &   &    &  T  &    &\TTbf{F}&    &   F &
 \end{tabular}
 \end{center}
-In order for the `$(U\eand T)$' to be true, both `$U$' and `$T$' must be true.
+
+为了让“$(U\eand T)$”为真，“$U$”和“$T$”必须都为真。
+
 \begin{center}
 \begin{tabular}{c c c c|d e e e e e f}
 $S$&$T$&$U$&$W$&$(U$&\eand&$T)$&\eif    &$(S$&\eand&$W)$\\
 \hline
-   & T & T &   &  T &  T  & T  &\TTbf{F}&    &   F &   
+   & T & T &   &  T &  T  & T  &\TTbf{F}&    &   F &
 \end{tabular}
 \end{center}
-Now we just need to make `$(S\eand W)$' false. To do this, we need to make at least one of `$S$' and `$W$' false. We can make both `$S$' and `$W$' false if we want. All that matters is that the whole sentence turns out false on this line. Making an arbitrary decision, we finish the table in this way:
+
+现在，我们只需要让“$(S\eand W)$”为假。要做到这一点，我们需要让“$S$”和“$W$”中至少一个为假。如果我们愿意，也可以让两者都为假。关键在于，整个语句在这一行必须为假。任意做出一个决定，我们按以下方式完成这个表格：
+
 \begin{center}
 \begin{tabular}{c c c c|d e e e e e f}
 $S$&$T$&$U$&$W$&$(U$&\eand&$T)$&\eif    &$(S$&\eand&$W)$\\
 \hline
- F & T & T & F &  T &  T  & T  &\TTbf{F}&  F &   F & F  
+ F & T & T & F &  T &  T  & T  &\TTbf{F}&  F &   F & F
 \end{tabular}
 \end{center}
-We now have a partial truth table, which shows that `$(U \eand T) \eif (S \eand W)$' is not a tautology. Put otherwise, we have shown that there is a valuation which makes `$(U \eand T) \eif (S \eand W)$' false, namely, the valuation which makes `$S$' false, `$T$' true, `$U$' true and `$W$' false.
 
-\paragraph{Contradictions}
-Showing that something is a contradiction in TFL requires a complete truth table: we need to show that there is no valuation which makes the sentence true; that is, we need to show that the sentence is false on every line of the truth table.
+现在我们有了一个部分真值表，它表明“$(U \eand T) \eif (S \eand W)$”不是一个重言式。换一种说法，我们已经展示了存在一个使“$(U \eand T) \eif (S \eand W)$”为假的赋值，即那个使“$S$”为假、“$T$”为真、“$U$”为真且“$W$”为假的赋值。
 
-However, to show that something is \emph{not} a contradiction, all we need to do is find a valuation which makes the sentence true, and a single line of a truth table will suffice. We can illustrate this with the same example.
+\paragraph{矛盾式}
+在真值函项逻辑中，要证明某个语句是矛盾式，需要一个完整真值表：我们需要证明不存在使该语句为真的赋值；也就是说，我们需要证明该语句在真值表的每一行都为假。
+
+然而，要证明某个语句\emph{不是}矛盾式，我们只需要找到一个使该语句为真的赋值，而真值表中的一行就足够了。我们可以用同一个例子来说明。
+
 \begin{center}
 \begin{tabular}{c c c c|d e e e e e f}
 $S$&$T$&$U$&$W$&$(U$&\eand&$T)$&\eif    &$(S$&\eand&$W)$\\
@@ -1274,7 +1294,9 @@ $S$&$T$&$U$&$W$&$(U$&\eand&$T)$&\eif    &$(S$&\eand&$W)$\\
   &  &  &  &   &   &   &\TTbf{T}&  &  &
 \end{tabular}
 \end{center}
-To make the sentence true, it will suffice to ensure that the antecedent is false. Since the antecedent is a conjunction, we can just make one of them false. Making an arbitrary choice, let's make `$U$' false; we can then assign any truth value we like to the other sentence letters.
+
+要让这个语句为真，只需确保其前件为假就够了。因为前件是一个合取式，我们可以只让其中一支为假。任意做一个选择，我们令“$U$”为假；然后我们可以任意给其他语句字母赋值。
+
 \begin{center}
 \begin{tabular}{c c c c|d e e e e e f}
 $S$&$T$&$U$&$W$&$(U$&\eand&$T)$&\eif    &$(S$&\eand&$W)$\\
@@ -1283,48 +1305,49 @@ $S$&$T$&$U$&$W$&$(U$&\eand&$T)$&\eif    &$(S$&\eand&$W)$\\
 \end{tabular}
 \end{center}
 
-\paragraph{Equivalence}
-To show that two sentences are equivalent, we must show that the sentences have the same truth value on every valuation. So this requires a  complete truth table.
+\paragraph{逻辑等价}
+要证明两个语句是逻辑等价的，我们必须证明这两个语句在每个赋值下都具有相同的真值。所以这需要一个完整真值表。
 
-To show that two sentences are \emph{not} equivalent, we only need to show that there is a valuation on which they have different truth values. So this requires only a one-line partial truth table: make the table so that one sentence is true and the other false.
+要证明两个语句\emph{不是}逻辑等价的，我们只需要证明存在一个赋值，使得它们在此赋值下真值不同。所以这只需要一个单行的部分真值表：构造这个表，使得其中一个语句为真，另一个为假。
 
-\paragraph{Joint satisfiability}
-To show that some sentences are jointly satisfiable, we must show that
-there is a valuation which makes all of the sentences true, so this
-requires only a partial truth table with a single line.
+\paragraph{共同可满足性}
+要证明一些语句是共同可满足的，我们必须证明存在一个赋值使得所有这些语句都为真，因此这只需要一个单行的部分真值表。
 
-To show that some sentences are jointly unsatisfiable, we must show that there is no valuation which makes all of the sentence true. So this requires a complete truth table: You must show that on every row of the table at least one of the sentences is false.
+要证明一些语句是共同不可满足的，我们必须证明不存在一个赋值使得所有这些语句都为真。所以这需要一个完整真值表：你必须证明在表的每一行上，至少有一个语句为假。
 
-\paragraph{Validity and entailment}
-To show that an argument is valid, we must show that there is no valuation which makes all of the premises true and the conclusion false. So this  requires a complete truth table.  (Likewise for entailment.)
+\paragraph{有效性与蕴涵}
+要证明一个论证是有效的，我们必须证明不存在任何一个赋值使得其所有前提为真而结论为假。因此，这需要一个完整真值表。（对于蕴涵也同样如此。）
 
-To show that an argument is \emph{invalid}, we must show that there is a valuation which makes all of the premises true and the conclusion false. So this requires only a one-line partial truth table on which all of the premises are true and the conclusion is false. (Likewise for a failure of entailment.)
+要证明一个论证是\emph{无效的}，我们必须证明存在一个赋值使得其所有前提为真且结论为假。因此，这只需要一个单行的部分真值表，在该行上所有前提为真且结论为假。（对于蕴涵不成立的情况也同样如此。）
 
-This table summarizes what is required:
+下表总结了所需的条件：
 
 \begin{center}
 \begin{tabular}{l l l}
 %\cline{2-3}
- & \textbf{Yes} & \textbf{No}\\
+ & \textbf{是} & \textbf{否}\\
  \hline
 %\cline{2-3}
-tautology? & complete & one-line partial \\
-contradiction? &  complete & one-line partial \\
+重言式？ & 完整 & 单行部分 \\
+矛盾式？ & 完整 & 单行部分 \\
 %contingent? & two-line partial truth table & complete truth table\\
-equivalent? & complete  & one-line partial \\
-satisfiable? & one-line partial & complete \\
-valid? & complete & one-line partial \\
-entailment? & complete & one-line partial\\
+逻辑等价？ & 完整  & 单行部分 \\
+可满足的？ & 单行部分 & 完整 \\
+有效？ & 完整 & 单行部分 \\
+蕴涵？ & 完整 & 单行部分\\
 \end{tabular}
 \end{center}
-\label{table.CompleteVsPartial}
 
+
+\label{table.CompleteVsPartial}
 
 \practiceproblems
 
 \problempart
 \label{pr.TT.equiv3}
-Use complete or partial truth tables (as appropriate) to determine whether these pairs of sentences are logically equivalent:
+使用完整或部分真值表（根据情况），确定下列每对语句是否逻辑等价：
+
+
 \begin{compactlist}
 \item $A$, $\enot A$ %No
 \item $A$, $A \eor A$ %Yes
@@ -1338,7 +1361,9 @@ Use complete or partial truth tables (as appropriate) to determine whether these
 
 \problempart
 \label{pr.TT.satisfiable4}
-Use complete or partial truth tables (as appropriate) to determine whether these sentences are jointly satisfiable, or jointly unsatisfiable:
+使用完整或部分真值表（根据情况），确定下列每组语句是共同可满足的，还是共同不可满足的：
+
+
 \begin{compactlist}
 \item $A \eand B$, $C\eif \enot B$, $C$ %unsatisfiable
 \item $A\eif B$, $B\eif C$, $A$, $\enot C$ %unsatisfiable
@@ -1350,7 +1375,9 @@ Use complete or partial truth tables (as appropriate) to determine whether these
 
 \problempart
 \label{pr.TT.valid4}
-Use complete or partial truth tables (as appropriate) to determine whether each argument is valid or invalid:
+使用完整或部分真值表（根据情况），确定下列每个论证是有效的还是无效的：
+
+
 \begin{compactlist}
 \item $A\eor\bigl[A\eif(A\eiff A)\bigr] \therefore A$ %invalid
 \item $A\eiff\enot(B\eiff A) \therefore A$ %invalid
@@ -1361,12 +1388,12 @@ Use complete or partial truth tables (as appropriate) to determine whether each 
 
 \problempart
 \label{pr.TT.TTorC3}
-Determine whether each sentence is a tautology, a contradiction, or a contingent sentence. Justify your answer with a complete or partial truth table as appropriate.
+判断下列每个句子是重言式、矛盾式还是偶然的。并使用完整或部分真值表来说明你的答案。
 
 % truth tables in LaTeX generated by http://www.curtisbright.com/logic/. Be sure to give him a shout out.
 
 \begin{compactlist}
-\item  $A \eif \enot A$ \vspace{.5ex}							
+\item  $A \eif \enot A$ \vspace{.5ex}
 
 %{\color{red}
 %$
@@ -1375,12 +1402,12 @@ Determine whether each sentence is a tautology, a contradiction, or a contingent
 %T&T&\mathbf{F}&F&T\\
 %F&F&\mathbf{T}&T&F
 %\end{array}
-%$ 
+%$
 %
 %Contingent	 \vspace{6pt}
 %}
 %	T letter, 2 connectives
-\item $A \eif (A \eand (A \eor B))$ \vspace{.5ex}	
+\item $A \eif (A \eand (A \eor B))$ \vspace{.5ex}
 
 %{\color{red}
 %$
@@ -1415,7 +1442,7 @@ Determine whether each sentence is a tautology, a contradiction, or a contingent
 %}
 %		2 letters, 3 connectives
 
-\item $A \eif \enot(A \eand (A \eor B)) $	\vspace{.5ex}	
+\item $A \eif \enot(A \eand (A \eor B)) $	\vspace{.5ex}
 
 %{\color{red}
 %$
@@ -1434,7 +1461,7 @@ Determine whether each sentence is a tautology, a contradiction, or a contingent
 %
 % 2 letters, 4 connectives
 
-\item $\enot B \eif [(\enot A \eand A) \eor B]$\vspace{.5ex} 
+\item $\enot B \eif [(\enot A \eand A) \eor B]$\vspace{.5ex}
 
 %{\color{red}
 %$
@@ -1468,7 +1495,7 @@ Determine whether each sentence is a tautology, a contradiction, or a contingent
 %}
 %2 letters, 6 connectives
 
-\item $[(A \eand B) \eand C] \eif B$\vspace{.5ex}							
+\item $[(A \eand B) \eand C] \eif B$\vspace{.5ex}
 %
 %{\color{red}
 %$
@@ -1490,7 +1517,7 @@ Determine whether each sentence is a tautology, a contradiction, or a contingent
 %
 %3 letters, 3 connectives
 
-\item $\enot\bigl[(C\eor A) \eor B\bigr]$\vspace{.5ex} 						
+\item $\enot\bigl[(C\eor A) \eor B\bigr]$\vspace{.5ex}
 %
 %{\color{red}
 %$
@@ -1512,7 +1539,7 @@ Determine whether each sentence is a tautology, a contradiction, or a contingent
 %}
 %	 	3 letters, 3 connectives
 
-\item $\bigl[(A\eand B) \eand\enot(A\eand B)\bigr] \eand C$ \vspace{.5ex}	
+\item $\bigl[(A\eand B) \eand\enot(A\eand B)\bigr] \eand C$ \vspace{.5ex}
 %
 %{\color{red}
 %$
@@ -1535,7 +1562,7 @@ Determine whether each sentence is a tautology, a contradiction, or a contingent
 %
 %% 	3 letters, 5 connectives
 %
-\item $(A \eand B) ]\eif[(A \eand C) \eor (B \eand D)]$ \vspace{.5ex}		
+\item $(A \eand B) ]\eif[(A \eand C) \eor (B \eand D)]$ \vspace{.5ex}
 %
 %{\color{red}
 %$
@@ -1554,7 +1581,8 @@ Determine whether each sentence is a tautology, a contradiction, or a contingent
 
 \noindent\problempart
 \label{pr.TT.TTorC4}
-Determine whether each sentence is a tautology, a contradiction, or a contingent sentence. Justify your answer with a complete or partial truth table as appropriate.
+判断下列每个句子是重言式、矛盾式还是偶然的。并使用完整或部分真值表来说明你的答案。
+
 \begin{compactlist}
 \item  $\enot (A \eor A)$\vspace{.5ex}							%	Contradiction		1 letter, 2 connectives
 \item $(A \eif B) \eor (B \eif A)$\vspace{.5ex}					%	Tautology			2 letters, 2 connectives
@@ -1563,31 +1591,30 @@ Determine whether each sentence is a tautology, a contradiction, or a contingent
 \item $(A \eand B) \eor (A \eor B)$\vspace{.5ex} 				%	Contingent		2 letters, 5 connectives
 \item $\enot(A\eand B) \eiff A$\vspace{.5ex} 					%contingent			2 letters, 3 connectives
 \item $A\eif(B\eor C)$\vspace{.5ex} 							%contingent			3 letters, 2 connectives
-\item $(A \eand\enot A) \eif (B \eor C)$\vspace{.5ex} 			%tautology			3 letters, 4 connectives 
+\item $(A \eand\enot A) \eif (B \eor C)$\vspace{.5ex} 			%tautology			3 letters, 4 connectives
 \item $(B\eand D) \eiff [A \eiff(A \eor C)]$\vspace{.5ex}			%contingent			4 letters, 4 connectives
 \item $\enot[(A \eif B) \eor (C \eif D)]$\vspace{.5ex} 			% Contingent. 		4 letters, 4 connectives
 \end{compactlist}
 
-
-
 \noindent\problempart
-Determine whether each the following pairs of sentences are logically equivalent using complete truth tables. Justify your answer with a complete or partial truth table as appropriate.
-\begin{compactlist}
-\item $A$ and $A \eor A$
-\item $A$ and $A \eand A$
-\item $A \eor \enot B$ and $A\eif B$
-\item $(A \eif B)$ and $(\enot B \eif \enot A)$
-\item $\enot(A \eand B)$ and $\enot A \eor \enot B$
-\item $ ((U \eif (X \eor X)) \eor U)$ and $\enot (X \eand (X \eand U))$
-\item $ ((C \eand (N \eiff C)) \eiff C)$ and $(\enot \enot \enot N \eif C)$
-\item $[(A \eor B) \eand C]$ and $[A \eor (B \eand C)]$
-\item $((L \eand C) \eand I)$ and $L \eor C$
-\end{compactlist}
+使用完整真值表判断下列各对语句是否逻辑等价。视情况使用完整或部分真值表论证你的回答。
 
+\begin{compactlist}
+\item $A$ 和 $A \eor A$
+\item $A$ 和 $A \eand A$
+\item $A \eor \enot B$ 和 $A\eif B$
+\item $(A \eif B)$ 和 $(\enot B \eif \enot A)$
+\item $\enot(A \eand B)$ 和 $\enot A \eor \enot B$
+\item $ ((U \eif (X \eor X)) \eor U)$ 和 $\enot (X \eand (X \eand U))$
+\item $ ((C \eand (N \eiff C)) \eiff C)$ 和 $(\enot \enot \enot N \eif C)$
+\item $[(A \eor B) \eand C]$ 和 $[A \eor (B \eand C)]$
+\item $((L \eand C) \eand I)$ 和 $L \eor C$
+\end{compactlist}
 
 \noindent\problempart
 \label{pr.TT.satisfiable5}
-Determine whether each collection of sentences is jointly satisfiable or jointly unsatisfiable. Justify your answer with a complete or partial truth table as appropriate.
+判断下列各组语句是共同可满足的还是共同不可满足的。视情况使用完整或部分真值表论证你的回答。
+
 \begin{compactlist}
 \item $A\eif A$, $\enot A \eif \enot A$, $A\eand A$, $A\eor A$ %satisfiable
 \item $A \eif \enot A$, $\enot A \eif A$%unsatisfiable.
@@ -1601,8 +1628,10 @@ Determine whether each collection of sentences is jointly satisfiable or jointly
 \item $\enot (A \eand \enot B)$,  $B \eif \enot A$, $\enot B$   %Consistent
 \end{compactlist}
 
-\noindent\problempart Determine whether each argument is valid or invalid. Justify your answer with a complete or partial truth table as appropriate.
-\label{pr.TT.valid5} 
+\noindent\problempart
+判断下列各论证是有效的还是无效的。视情况使用完整或部分真值表论证你的回答。
+\label{pr.TT.valid5}
+
 \begin{compactlist}
 \item $A\eif(A\eand\enot A)\therefore \enot A$% valid
 \item $A \eor B$, $A \eif B$, $B \eif A \therefore  A \eiff B$  % Valid
@@ -1614,11 +1643,12 @@ Determine whether each collection of sentences is jointly satisfiable or jointly
 \item $A \eand B$, $\enot A \eif \enot C$, $B \eif \enot D \therefore  A \eor B$ % Invalid
 \item $A \eif B\therefore (A \eand B) \eor (\enot A \eand \enot B)$ % invalid
 \item $\enot A \eif B$,$ \enot B \eif C $,$ \enot C \eif A \therefore  \enot A \eif (\enot B \eor \enot C) $% Invalid
-
 \end{compactlist}
 
-\noindent\problempart Determine whether each argument is valid or invalid. Justify your answer with a complete or partial truth table as appropriate.
-\label{pr.TT.valid6} 
+\noindent\problempart
+判断下列各论证是有效的还是无效的。视情况使用完整或部分真值表论证你的回答。
+\label{pr.TT.valid6}
+
 \begin{compactlist}
 \item $A\eiff\enot(B\eiff A)\therefore A$ % invalid
 \item $A\eor B$, $B\eor C$, $\enot A\therefore B \eand C$ % invalid
@@ -1626,4 +1656,3 @@ Determine whether each collection of sentences is jointly satisfiable or jointly
 \item $A \eor B$, $C \eif A$, $C \eif B\therefore A \eif (B \eif C)$ % invalid
 \item $A \eif B$, $\enot B \eor A\therefore A \eiff B$ % valid
 \end{compactlist}
-
