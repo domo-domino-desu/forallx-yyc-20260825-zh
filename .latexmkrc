@@ -7,4 +7,3 @@ add_cus_dep('glo', 'gls', 0, 'run_makeglossaries');
 sub run_makeglossaries {
     return system "makeglossaries \"$_[0]\"";
 }
-
