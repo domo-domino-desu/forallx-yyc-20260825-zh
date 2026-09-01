@@ -68,9 +68,9 @@
 
 
 \section{替代的量词规则}
-处理量词的另一种方式，是把 \cref{s:BasicFOL} 中 $\forall$I 和 $\forall$E 的规则，以及两条允许我们从 $\forall \metav{x}\, \enot \metav{A}$ 推出 $\enot \exists \metav{x}\, \metav{A}$ 及反之亦然的 CQ 规则，都当作基本的。\footnote{Warren Goldfarb 在 \textit{Deductive Logic}（2003, Hackett Publishing Co.）中采用了这一思路。}
+处理量词的另一种方式，是把\cref{s:BasicFOL}中 $\forall$I 和 $\forall$E 的规则，以及两条允许我们从 $\forall \metav{x}\, \enot \metav{A}$ 推出 $\enot \exists \metav{x}\, \metav{A}$ 及反之亦然的 CQ 规则，都当作基本的。\footnote{Warren Goldfarb 在 \textit{Deductive Logic}（2003, Hackett Publishing Co.）中采用了这一思路。}
 
-如果只把这些规则作为基本规则，我们就可以推导出 \cref{s:BasicFOL} 所提供的 $\exists$I 和 $\exists$E 规则。推导 $\exists$I 规则相当简单。假设 $\metav{A}$ 包含名称 $\metav{c}$ 且不包含变元 $\metav{x}$ 的实例，而我们想要进行如下推导：
+如果只把这些规则作为基本规则，我们就可以推导出\cref{s:BasicFOL}所提供的 $\exists$I 和 $\exists$E 规则。推导 $\exists$I 规则相当简单。假设 $\metav{A}$ 包含名称 $\metav{c}$ 且不包含变元 $\metav{x}$ 的实例，而我们想要进行如下推导：
 \begin{fitchproof}
 	\have[m]{a}{\metav{A}(\ldots \metav{c} \ldots \metav{c}\ldots)}
 	\have[k]{c}{\exists \metav{x}\, \metav{A}(\ldots \metav{x} \ldots \metav{c}\ldots)}
@@ -115,7 +115,7 @@
 \end{fitchproof}\noindent
 我们之所以可以在第 $k+3$ 行使用 $\forall$I，是因为 $\metav{c}$ 不出现在任何未解除的假设或 $\metav{B}$ 中。第 $k+4$ 行和第 $k+1$ 行相互矛盾，因为 $\metav{c}$ 不出现在 $\exists \metav{x}\, \metav{A}(\ldots \metav{x} \ldots \metav{x} \ldots)$ 中。
 
-有了这些派生规则之后，我们现在就可以像 \cref{s:DerivedFOL} 中那样，继续推导出剩下的两条 CQ 规则。
+有了这些派生规则之后，我们现在就可以像\cref{s:DerivedFOL}中那样，继续推导出剩下的两条 CQ 规则。
 
 那么，为什么我们一开始要把所有量词规则都作为基本规则，然后再推导出 CQ 规则呢？
 

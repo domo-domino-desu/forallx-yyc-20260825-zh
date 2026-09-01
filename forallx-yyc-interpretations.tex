@@ -159,14 +159,14 @@
 假设“$A$”是一个一元谓词；那么“$\atom{A}{a}$”为假且“$\atom{A}{b}$”为假，所以“$\atom{A}{a} \eiff \atom{A}{b}$”为真。类似地，如果“$R$”是一个二元谓词，那么“$\atom{R}{a,a}$”为假且“$\atom{R}{a,b}$”为假，所以“$\atom{R}{a,a} \eiff \atom{R}{a,b}$”为真。如此类推：每个不涉及“$=$”的原子语句都为假，因此由这些语句构成的双条件式都为真。尽管如此，Tim Button 和 P.~D.\ Magnus 是两个不同的人，而不是同一个人！
 
 \section{解释}
-我们在真值函项逻辑中将\define{赋值}定义为对语句字母的任意真值指派。在一阶逻辑中，我们将把\define{解释}定义为由四部分组成：\footnote{解释也常被称为“模型”或“结构”。}
+我们在真值函项逻辑中将\define{赋值（valuation）}定义为对语句字母的任意真值指派。在一阶逻辑中，我们将把\define{解释（interpretation）}定义为由四部分组成：\footnote{解释也常被称为“模型”或“结构”。}
 
 
 \begin{compactlist}
 		\item 规定一个非空的论域；
 		\item 为我们关心的每个语句字母指派一个真值；
-		\item 为我们关心的每个名称指派论域中恰好一个对象（即其\define{所指}）；
-		\item 为我们关心的每个谓词（“$=$”除外）规定该谓词对哪些对象（按何种顺序）为真（即其\define{外延}）。
+		\item 为我们关心的每个名称指派论域中恰好一个对象（即其\define{所指（referent）}）；
+		\item 为我们关心的每个谓词（“$=$”除外）规定该谓词对哪些对象（按何种顺序）为真（即其\define{外延（extension）}）。
 	\end{compactlist}
 
 
@@ -376,7 +376,7 @@
 $$\metav{A}(\ldots \metav{x} \ldots \metav{x} \ldots)$$ 来表明
 \metav{A} 包含变元~\metav{x} 的若干次自由出现（通常是一次或多次，但我们不排除 \metav{x} 根本没有自由出现的情况）。再假设 \metav{c} 是一个名称。那么我们将用：
 $$\metav{A}(\ldots \metav{c} \ldots \metav{c} \ldots)$$
-表示将 \metav{A} 中 $\metav{x}$ 的\emph{每一次}自由出现替换为~$\metav{c}$ 后得到的公式。得到的公式称为 $\forall \metav{x}\metav{A}$ 和 $\exists\metav{x}\metav{A}$ 的一个 \define{代入实例（substitution instance）}。同时，$\metav{c}$ 被称为 \define{实例化名称（instantiating name）}。（如果 \metav{A} 碰巧不包含~\metav{x} 的自由出现，那么该代入实例就与~\metav{A} 相同。所以，例如，
+表示将 \metav{A} 中 $\metav{x}$ 的\emph{每一次}自由出现替换为~$\metav{c}$ 后得到的公式。得到的公式称为 $\forall \metav{x}\metav{A}$ 和 $\exists\metav{x}\metav{A}$ 的一个\define{代入实例（substitution instance）}。同时，$\metav{c}$ 被称为\define{实例化名称（instantiating name）}。（如果 \metav{A} 碰巧不包含~\metav{x} 的自由出现，那么该代入实例就与~\metav{A} 相同。所以，例如，
 	$$\exists x (\atom{R}{e,x} \eiff \atom{F}{x})$$
 就是
 	$$\forall y \exists x (\atom{R}{y,x} \eiff \atom{F}{x})$$
@@ -389,9 +389,9 @@ $$\metav{A}(\ldots \metav{c} \ldots \metav{c} \ldots)$$
 
 简短插一句：在用名称替换变元时，我们只允许替换\emph{自由}变元。这是必要的，因为我们允许像 `$\exists x(\forall x\,\atom{F}{x} \eif
 \atom{G}{x})$' 这样的公式，其中不同的量词可以约束相同的变元。我们只将 `$\forall x\,\atom{F}{x} \eif \atom{G}{e}$' 视为该公式的代入实例，而不将 `$\atom{F}{e} \eif
-\atom{G}{e}$' 视为代入实例，因为`$\atom{F}{x}$'中的 `$x$' 不是自由的——它被 `$\forall x$' 约束着。（关于这一点，你可能想回顾一下 \cref{s:FreeVars}。）
+\atom{G}{e}$' 视为代入实例，因为`$\atom{F}{x}$'中的 `$x$' 不是自由的——它被 `$\forall x$' 约束着。（关于这一点，你可能想回顾一下\cref{s:FreeVars}。）
 
-我们的解释将包含一项规定，指明哪些名称对应论域中的哪些对象。取论域中的任意对象（比如 d），以及一个解释尚未指派的名称 $\metav{c}$。如果我们的解释是 $\mathbf{I}$，那么我们可以考虑解释 $\mathbf{I}[\text{d}/\metav{c}]$，它除了额外将对象~d 指派给名称 $\metav{c}$ 之外，与 $\mathbf{I}$ 完全相同。那么，我们就可以说，对象 d 在解释~$\mathbf{I}$ 下 \define{满足（satisfies）}公式 $\metav{A}(\dots\metav{x}\dots\metav{x}\dots)$，当且仅当，$\metav{A}(\dots\metav{c}\dots\metav{c}\dots)$ 在 $\mathbf{I}[\text{d}/\metav{c}]$ 下为真。（我们假设名称 $\metav{c}$ 尚未在 $\metav{A}(\dots\metav{x}\dots\metav{x}\dots)$ 中出现。）如果 d 满足 $\metav{A}(\dots\metav{x}\dots\metav{x}\dots)$，我们也说 $\metav{A}(\dots\metav{x}\dots\metav{x}\dots)$ 对 d \emph{为真}。
+我们的解释将包含一项规定，指明哪些名称对应论域中的哪些对象。取论域中的任意对象（比如 d），以及一个解释尚未指派的名称 $\metav{c}$。如果我们的解释是 $\mathbf{I}$，那么我们可以考虑解释 $\mathbf{I}[\text{d}/\metav{c}]$，它除了额外将对象~d 指派给名称 $\metav{c}$ 之外，与 $\mathbf{I}$ 完全相同。那么，我们就可以说，对象 d 在解释~$\mathbf{I}$ 下\define{满足（satisfies）}公式 $\metav{A}(\dots\metav{x}\dots\metav{x}\dots)$，当且仅当，$\metav{A}(\dots\metav{c}\dots\metav{c}\dots)$ 在 $\mathbf{I}[\text{d}/\metav{c}]$ 下为真。（我们假设名称 $\metav{c}$ 尚未在 $\metav{A}(\dots\metav{x}\dots\metav{x}\dots)$ 中出现。）如果 d 满足 $\metav{A}(\dots\metav{x}\dots\metav{x}\dots)$，我们也说 $\metav{A}(\dots\metav{x}\dots\metav{x}\dots)$ 对 d\emph{为真}。
 
 \factoidbox{
 
@@ -399,7 +399,7 @@ $$\metav{A}(\ldots \metav{c} \ldots \metav{c} \ldots)$$
 \begin{factoiditems}
 		\item 解释 $\mathbf{I}[\text{d}/\metav{c}]$ 除了额外将对象~d 指派给名称 $\metav{c}$ 之外，与解释 $\mathbf{I}$ 完全相同。
 
-		\item 一个对象 d 在解释~$\mathbf{I}$ 下 \define{满足}
+		\item 一个对象 d 在解释~$\mathbf{I}$ 下\define{满足（satisfies）}
 		$\metav{A}(\dots\metav{x}\dots\metav{x}\dots)$ ，\textbf{\ifeff}
 		$\metav{A}(\dots\metav{c}\dots\metav{c}\dots)$ 在
 		$\mathbf{I}[\text{d}/\metav{c}]$ 下为真（其中名称 $\metav{c}$ 没有在 $\metav{A}(\dots\metav{x}\dots\metav{x}\dots)$ 中出现）。
@@ -561,7 +561,7 @@ $$\metav{A}(\ldots \metav{c} \ldots \metav{c} \ldots)$$
 
 我们将像在真值函项逻辑中那样，在一阶逻辑中也使用符号“$\entails$”。因此
 语句 $\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n$
-\define{蕴涵} 语句 $\metav{C}$，
+\define{蕴涵（entail）}语句 $\metav{C}$，
 	$$\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n \entails\metav{C},$$
 \ifeff{} 不存在一个解释，在其中所有 $\metav{A}_1$, $\metav{A}_2$, \dots, $\metav{A}_n$ 都为真且 $\metav{C}$ 为假。派生地，
 	$$\entails\metav{A}$$
@@ -573,7 +573,7 @@ $$\metav{A}(\ldots \metav{c} \ldots \metav{c} \ldots)$$
 
 
 \begin{factoiditems}
-		\item 一个一阶逻辑语句 $\metav{A}$ 是\define{有效式} \ifeff{}
+		\item 一个一阶逻辑语句 $\metav{A}$ 是\define{有效式（validity）}\ifeff{}
 		$\metav{A}$ 在每一个解释中均为真；即，
 		$\entails\metav{A}$。
 \newglossaryentry{validity}
@@ -582,7 +582,7 @@ name=有效式,
 description={一个在每一个\gls{interpretation}下都为真的\gls{sentence of FOL}}
 }
 
-		\item $\metav{A}$ 是\define{矛盾式} \ifeff{} $\metav{A}$
+		\item $\metav{A}$ 是\define{矛盾式（contradiction）}\ifeff{} $\metav{A}$
 		在每一个解释中均为假；即，$\entails\enot\metav{A}$。
 \newglossaryentry{contradiction of FOL}
 {
@@ -592,10 +592,10 @@ description={一个在每一个\gls{interpretation}下都为假的\gls{sentence 
 }
 
 		\item $\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n \therefore
-		\metav{C}$ 是\define{一阶逻辑中有效的} \ifeff{} 不存在
+		\metav{C}$ 是\define{一阶逻辑中有效的（valid in FOL）}\ifeff{} 不存在
 		一个解释，使得所有前提为真且
 		结论为假；即，$\metav{A}_1,\metav{A}_2,\ldots,
-		\metav{A}_n \entails\metav{C}$。否则它是\define{一阶逻辑中无效的}。
+		\metav{A}_n \entails\metav{C}$。否则它是\define{一阶逻辑中无效的（invalid in FOL）}。
 \newglossaryentry{valid in FOL}
 {
   name=论证的有效性（一阶逻辑中）,
@@ -604,7 +604,7 @@ description={论证所具有的性质；一个论证是有效的当且仅当没�
 }
 
 		\item 两个一阶逻辑语句 \metav{A} 和 \metav{B} 是
-		\define{等值的} \ifeff{} 它们在完全相同的解释下为真；即，$\metav{A}\entails\metav{B}$ 且 $\metav{B}\entails\metav{A}$。
+\define{等值的（equivalent）}\ifeff{} 它们在完全相同的解释下为真；即，$\metav{A}\entails\metav{B}$ 且 $\metav{B}\entails\metav{A}$。
 
 \newglossaryentry{equivalent in FOL}
 {
@@ -614,8 +614,8 @@ description={成对的\glspl{sentence of FOL}所具有的性质，当且仅当�
 }
 
 		\item 一阶逻辑语句 $\metav{A}_1$, $\metav{A}_2$, \dots,
-		$\metav{A}_n$ 是\define{共同可满足的} \ifeff{} 存在某个
-		解释使它们全部为真。它们是\define{共同不可满足的} \ifeff{} 不存在这样的解释。
+		$\metav{A}_n$ 是\define{共同可满足的（jointly satisfiable）}\ifeff{} 存在某个
+		解释使它们全部为真。它们是\define{共同不可满足的（jointly unsatisfiable）}\ifeff{} 不存在这样的解释。
 \newglossaryentry{satisfiable in FOL}
 {
   name=可满足性（一阶逻辑中）,
@@ -651,7 +651,7 @@ $\atom{R}{x,y}$，因为在以下解释中 $\atom{R}{c,d}$ 为真：
 
 对于原子公式，满足它们的对象、对象对等等，恰是解释中给出的谓词的外延。但“满足”这一概念也适用于非原子公式，例如，公式 $\atom{P}{x} \land \atom{R}{x,b}$ 被所有在 Beyonc\'e 之前出生的哲学家所满足。它甚至适用于包含量词的公式，例如，$\atom{P}{x} \eand \lnot\exists y(\atom{P}{y} \land \atom{R}{y,x})$ 被所有本身是哲学家且没有别的哲学家出生于他们之前的人所满足——换句话说，它对于第一位哲学家为真。
 
-通过考虑带有两个自由变元的公式（可能包含量词），我们可以表达那些在我们的解释或符号化约定中没有专门的谓词符号的关系。考虑公式 $\atom{R}{x,y}$。它表达了“\gap{x} 出生于 \gap{y} 之前”这一关系，因为我们正是这样规定其外延的。如果我们交换变元，也就是考虑“$\atom{R}{y,x}$”，会发生什么？论域中的一个对象对 \ntuple{$\text{y}, \text{x}$}（即一对人）满足 $\atom{R}{y,x}$ 当且仅当，逆序的对象对 \ntuple{$\text{x}, \text{y}$} 满足 $\atom{R}{x,y}$。换句话说，$\atom{R}{y,x}$ 表达的是“\gap{x} 出生于 \gap{y} \emph{之后}”这一关系。或者假设我们在解释中添加一个表示“……是……的老师”的谓词。
+通过考虑带有两个自由变元的公式（可能包含量词），我们可以表达那些在我们的解释或符号化约定中没有专门的谓词符号的关系。考虑公式 $\atom{R}{x,y}$。它表达了“\gap{x} 出生于 \gap{y} 之前”这一关系，因为我们正是这样规定其外延的。如果我们交换变元，也就是考虑“$\atom{R}{y,x}$”，会发生什么？论域中的一个对象对 \ntuple{$\text{y}, \text{x}$}（即一对人）满足 $\atom{R}{y,x}$ 当且仅当，逆序的对象对 \ntuple{$\text{x}, \text{y}$} 满足 $\atom{R}{x,y}$。换句话说，$\atom{R}{y,x}$ 表达的是“\gap{x} 出生于 \gap{y}\emph{之后}”这一关系。或者假设我们在解释中添加一个表示“……是……的老师”的谓词。
 
 
 \begin{ekey}
@@ -820,7 +820,7 @@ $$\forall x \exists y\, \atom{L}{x,y} \therefore \exists y \forall x\, \atom{L}{
 
 在这一解释下，前提显然为真。论域中的每个人都是加拿大公民，且与另一位加拿大公民处于国内伴侣关系中。那么那位其他公民也会在论域中。因此，对于论域中的每个人，都存在论域中的某个（其他）人与他处于国内伴侣关系中。所以 `$\forall x \exists y\, \atom{L}{x,y}$' 为真。然而，结论显然为假，因为这要求存在一个单独的人，他与论域中的每个人都处于国内伴侣关系中，而并不存在这样的人，所以该论证是无效的。我们立即观察到，语句 `$\forall x \exists y\, \atom{L}{x,y}$' 和 `$\enot\exists y \forall x\, \atom{L}{x,y}$' 是共同可满足的，并且 `$\forall x \exists y\, \atom{L}{x,y}$' 不蕴涵 `$\exists y \forall x\, \atom{L}{x,y}$'。
 
-作为第三个例子，我们换种方式。在 \cref{s:Interpretations} 中，我们描述了如何使用图示来展现某些解释。例如：
+作为第三个例子，我们换种方式。在\cref{s:Interpretations}中，我们描述了如何使用图示来展现某些解释。例如：
 
 \begin{center}
 	\begin{arialabel}{数字1、2和3由箭头连接。有从1指向2、3和它自身的箭头，以及从2指向3的箭头。没有从3指出的箭头。}
@@ -837,7 +837,7 @@ $$\forall x \exists y\, \atom{L}{x,y} \therefore \exists y \forall x\, \atom{L}{
 \end{center}
 
 
-采用 \cref{s:Interpretations} 中使用的约定，这一解释的论域是前三个正整数，并且当且仅当在我们的图中有从 x 指向 y 的箭头时，`$\atom{R}{x,y}$' 对 x 和 y 为真。以下是该解释使其为真的一些语句：
+采用\cref{s:Interpretations}中使用的约定，这一解释的论域是前三个正整数，并且当且仅当在我们的图中有从 x 指向 y 的箭头时，`$\atom{R}{x,y}$' 对 x 和 y 为真。以下是该解释使其为真的一些语句：
 
 \begin{itemize}
 	\item `$\forall x \exists y\, \atom{R}{y,x}$'
@@ -1033,7 +1033,7 @@ x(\atom{H}{x} \eand \atom{J}{x})$ 为真的每一个解释中什么必须为真�
 
 \label{table.ModelOrArgument}
 
-你可以将此表与 \cref{s:PartialTruthTable} 末尾的表格进行比较。关键区别在于，真值函项逻辑处理的是真值表，而一阶逻辑处理的是解释。这个区别至关重要，因为每个真值表只有有限多行，所以一个完整的真值表是一个相对容易处理的对象。相比之下，对于任何给定的语句（集），都有无穷多个解释，因此对所有解释进行推理可能是一件非常棘手的事情。
+你可以将此表与\cref{s:PartialTruthTable}末尾的表格进行比较。关键区别在于，真值函项逻辑处理的是真值表，而一阶逻辑处理的是解释。这个区别至关重要，因为每个真值表只有有限多行，所以一个完整的真值表是一个相对容易处理的对象。相比之下，对于任何给定的语句（集），都有无穷多个解释，因此对所有解释进行推理可能是一件非常棘手的事情。
 
 \chapter{关系的性质}\label{ch:PropRelations}
 
@@ -1057,7 +1057,7 @@ x(\atom{H}{x} \eand \atom{J}{x})$ 为真的每一个解释中什么必须为真�
 \end{earg}
 
 
-却并非有效。这是因为该论证的有效性依赖于“$x$ 比 $y$ 年长”这一关系的某个性质，即：如果某人 $x$ 比某人 $y$ 年长，并且 $y$ 也比 $z$ 年长，那么 $x$ 必定比 $z$ 年长。“年长于”关系的这个性质被称为\define{传递性}。我们可以在一阶逻辑中将这个性质\emph{本身}符号化为：
+却并非有效。这是因为该论证的有效性依赖于“$x$ 比 $y$ 年长”这一关系的某个性质，即：如果某人 $x$ 比某人 $y$ 年长，并且 $y$ 也比 $z$ 年长，那么 $x$ 必定比 $z$ 年长。“年长于”关系的这个性质被称为\define{传递性（transitivity）}。我们可以在一阶逻辑中将这个性质\emph{本身}符号化为：
 \[
 	\forall x\forall y\forall z((\atom{R}{x,y} \eand \atom{R}{y,z}) \eif
 	\atom{R}{x,z})
@@ -1081,10 +1081,10 @@ x(\atom{H}{x} \eand \atom{J}{x})$ 为真的每一个解释中什么必须为真�
 
 
 \begin{factoiditems}
-		\item 关系 $R$ 是\define{传递的} \ifeff{} 只要 $\atom{R}{x,y}$ 和 $\atom{R}{y,z}$ 成立，$\atom{R}{x,z}$ 也成立。
-		\item 关系 $R$ 是\define{自反的} \ifeff{} 对任意~$x$，$\atom{R}{x,x}$ 成立。
-		\item 关系 $R$ 是\define{对称的} \ifeff{} 只要 $\atom{R}{x,y}$ 成立，$\atom{R}{y,x}$ 也成立。
-		\item 关系 $R$ 是\define{反对称的} \ifeff{} 不存在两个\emph{不同的} $x$ 和 $y$，使得 $\atom{R}{x,y}$ 和 $\atom{R}{y,x}$ 同时成立。
+		\item 关系 $R$ 是\define{传递的（transitive）}\ifeff{} 只要 $\atom{R}{x,y}$ 和 $\atom{R}{y,z}$ 成立，$\atom{R}{x,z}$ 也成立。
+		\item 关系 $R$ 是\define{自反的（reflexive）}\ifeff{} 对任意~$x$，$\atom{R}{x,x}$ 成立。
+		\item 关系 $R$ 是\define{对称的（symmetric）}\ifeff{} 只要 $\atom{R}{x,y}$ 成立，$\atom{R}{y,x}$ 也成立。
+		\item 关系 $R$ 是\define{反对称的（anti-symmetric）}\ifeff{} 不存在两个\emph{不同的}$x$ 和 $y$，使得 $\atom{R}{x,y}$ 和 $\atom{R}{y,x}$ 同时成立。
 	\end{factoiditems}
 
 }
@@ -1111,7 +1111,7 @@ x(\atom{H}{x} \eand \atom{J}{x})$ 为真的每一个解释中什么必须为真�
 {
   name=反对称性,
   text = 反对称的,
-  description={一个关系~$R$ 所具有的性质 \ifeff{} 不存在两个\emph{不同的} $x$ 和 $y$，使得 $\atom{R}{x,y}$ 和 $\atom{R}{y,x}$ 同时成立}
+  description={一个关系~$R$ 所具有的性质 \ifeff{} 不存在两个\emph{不同的}$x$ 和 $y$，使得 $\atom{R}{x,y}$ 和 $\atom{R}{y,x}$ 同时成立}
 }
 
 我们已经看到，传递性可以在一阶逻辑中被符号化。其他性质也可以：
@@ -1124,11 +1124,11 @@ x(\atom{H}{x} \eand \atom{J}{x})$ 为真的每一个解释中什么必须为真�
 	\eand \atom{R}{y,x}) \eif x=y)\]
 \end{itemize}
 
-表达在某方面等价的关系是自反的，例如“与……同龄”、“与……一样高”，以及其中最严格的等价关系——同一性~$=$。它们也是对称的：例如，只要 $x$ 和 $y$ 一样高，$y$ 也和 $x$ 一样高。事实上，同时具有自反性、对称性和传递性的关系被称为 \define{等价关系}。
+表达在某方面等价的关系是自反的，例如“与……同龄”、“与……一样高”，以及其中最严格的等价关系——同一性~$=$。它们也是对称的：例如，只要 $x$ 和 $y$ 一样高，$y$ 也和 $x$ 一样高。事实上，同时具有自反性、对称性和传递性的关系被称为\define{等价关系（equivalence relations）}。
 
 等价关系并非唯一的对称关系。例如，“是……的兄弟姐妹”是对称的，但它不是自反的（因为没有人是自己的兄弟姐妹）。
 
-同时具有自反性、传递性和反对称性的关系被称为 \define{偏序}。例如，$\le$ 和 $\ge$ 都是偏序。相比之下，“不比……年长”这一关系是自反且传递的，但不是反对称的。（两个不同的人可能同岁，因此谁也不比谁年长。）
+同时具有自反性、传递性和反对称性的关系被称为\define{偏序（partial orders）}。例如，$\le$ 和 $\ge$ 都是偏序。相比之下，“不比……年长”这一关系是自反且传递的，但不是反对称的。（两个不同的人可能同岁，因此谁也不比谁年长。）
 
 \practiceproblems
 

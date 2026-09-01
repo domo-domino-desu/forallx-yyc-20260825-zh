@@ -5,7 +5,7 @@
 
 \chapter{一阶逻辑的基本规则}\label{s:BasicFOL}
 
-一阶逻辑的语言使用了真值函项逻辑的所有联结词。因此，一阶逻辑中的证明也将使用 \cref{ch.NDTFL} 中的所有基本规则和派生规则。我们也将沿用那里引入的证明论概念（特别是符号“$\proves$”）。不过，我们还需要一些新的基本规则来支配量词以及等号。
+一阶逻辑的语言使用了真值函项逻辑的所有联结词。因此，一阶逻辑中的证明也将使用\cref{ch.NDTFL}中的所有基本规则和派生规则。我们也将沿用那里引入的证明论概念（特别是符号“$\proves$”）。不过，我们还需要一些新的基本规则来支配量词以及等号。
 
 \section{全称消去}\label{s:forallElim}
 
@@ -41,7 +41,7 @@
 
 }
 
-这里的记法在 \cref{s:TruthFOL} 中介绍过。关键在于，你可以得到全称量化公式的任何\emph{代入实例}：把被量化变元的每一个自由出现都替换为你喜欢的任何名称。
+这里的记法在\cref{s:TruthFOL}中介绍过。关键在于，你可以得到全称量化公式的任何\emph{代入实例}：把被量化变元的每一个自由出现都替换为你喜欢的任何名称。
 
 我们应该强调，（与所有消去规则一样）只有当全称量词是主逻辑算子时，你才能应用 $\forall$E 规则。因此下面的推导是\emph{被禁止的}：
 
@@ -52,7 +52,7 @@
 \end{fitchproof}
 
 
-这是不合法的，因为“$\forall x$”不是第~$1$行的主逻辑算子。（如果你需要提醒为何这类推理应该被禁止，请重读 \cref{s:MoreMonadic}。）
+这是不合法的，因为“$\forall x$”不是第~$1$行的主逻辑算子。（如果你需要提醒为何这类推理应该被禁止，请重读\cref{s:MoreMonadic}。）
 
 \section{存在引入}\label{s:existsIntro}
 
@@ -125,7 +125,7 @@
 	\end{fitchproof}
 
 
-这会是一个糟糕的证明吗？如果确实存在任何东西，那么我们当然可以从“所有东西都是$F$”这个事实，推断出“有东西是$F$”。但如果 \emph{根本没有} 东西存在呢？那么，“所有东西都是$F$”显然就是\emph{空真}的；然而，这并不能推出“有东西是$F$”，因为没有什么东西可以去 \emph{成为} $F$。所以，如果我们声称，单凭逻辑，“$\exists x\,\atom{F}{x}$”就从“$\forall x\,\atom{F}{x}$”得出，那么我们就是在声称，单凭\emph{逻辑}，就存在某物而非无。这可能会让我们觉得有点奇怪。
+这会是一个糟糕的证明吗？如果确实存在任何东西，那么我们当然可以从“所有东西都是$F$”这个事实，推断出“有东西是$F$”。但如果\emph{根本没有}东西存在呢？那么，“所有东西都是$F$”显然就是\emph{空真}的；然而，这并不能推出“有东西是$F$”，因为没有什么东西可以去\emph{成为}$F$。所以，如果我们声称，单凭逻辑，“$\exists x\,\atom{F}{x}$”就从“$\forall x\,\atom{F}{x}$”得出，那么我们就是在声称，单凭\emph{逻辑}，就存在某物而非无。这可能会让我们觉得有点奇怪。
 
 事实上，我们已经接受了这种怪异之处。在\cref{s:FOLBuildingBlocks}中，我们规定，一阶逻辑中的论域必须至少有一个成员。然后，我们把（一阶逻辑的）有效性定义为一个在所有解释下都为真的语句。由于“$\exists x\, x=x$”将在每个解释下都为真，这\emph{同样}起到了规定作用：逻辑本身决定了存在某物而非无。
 
@@ -185,11 +185,11 @@ $$\forall x\,\atom{F}{x} \therefore \forall y\,\atom{F}{y}$$
 %\metav{c}\ldots)$
 }
 
-在\cref{s:MainLogicalOperatorQuantifier}中，我们引入了一个用于指示\emph{代入实例}的约定：我们说，如果$\metav{A}(\ldots \metav{x} \ldots \metav{x}\ldots)$是一个公式，那么$\metav{A}(\ldots \metav{c} \ldots \metav{c}\ldots)$就是将 $\metav{A}$ 中\emph{每一个} $\metav{x}$ 的自由出现替换为~$\metav{c}$ 的结果。为了陈述我们的 $\forall$I 规则，我们使用了同一约定，只是方向相反：如果$\metav{A}(\ldots \metav{c} \ldots \metav{c}\ldots)$是一个公式，那么$\metav{A}(\ldots \metav{x} \ldots \metav{x}\ldots)$就是将其中\emph{每一个}~$\metav{c}$ 的出现替换为~$\metav{x}$ 的结果。（仅当 $\metav{c}$ 在 $\metav{A}$ 中未出现在约束~$\metav{x}$ 的量词的辖域内时，才允许这样做。）
+在\cref{s:MainLogicalOperatorQuantifier}中，我们引入了一个用于指示\emph{代入实例}的约定：我们说，如果$\metav{A}(\ldots \metav{x} \ldots \metav{x}\ldots)$是一个公式，那么$\metav{A}(\ldots \metav{c} \ldots \metav{c}\ldots)$就是将 $\metav{A}$ 中\emph{每一个}$\metav{x}$ 的自由出现替换为~$\metav{c}$ 的结果。为了陈述我们的 $\forall$I 规则，我们使用了同一约定，只是方向相反：如果$\metav{A}(\ldots \metav{c} \ldots \metav{c}\ldots)$是一个公式，那么$\metav{A}(\ldots \metav{x} \ldots \metav{x}\ldots)$就是将其中\emph{每一个}~$\metav{c}$ 的出现替换为~$\metav{x}$ 的结果。（仅当 $\metav{c}$ 在 $\metav{A}$ 中未出现在约束~$\metav{x}$ 的量词的辖域内时，才允许这样做。）
 
 在应用 $\forall$I 规则时，有两点需要特别注意。如果我们在选择名称~$\metav{c}$ 并将其替换为~$\metav{x}$ 时不小心，就有可能做出不正确的推理。
 
-$\forall$I 规则的限制条件要求 \metav{c} 不得出现在前提或未解除的假设中。这个限制确保了我们始终在足够一般的层面上进行推理。%\footnote{Recall from \cref{s:BasicTFL} that we are treating `$\ered$' as a canonical contradiction. But if it were the canonical contradiction as involving some \emph{constant}, it might interfere with the constraint mentioned here. To avoid such problems, we will treat `$\ered$' as a canonical contradiction \emph{that involves no particular names}.}
+$\forall$I 规则的限制条件要求 \metav{c} 不得出现在前提或未解除的假设中。这个限制确保了我们始终在足够一般的层面上进行推理。%\footnote{Recall from\cref{s:BasicTFL}that we are treating `$\ered$' as a canonical contradiction. But if it were the canonical contradiction as involving some \emph{constant}, it might interfere with the constraint mentioned here. To avoid such problems, we will treat `$\ered$' as a canonical contradiction \emph{that involves no particular names}.}
 为了看看这个限制是如何起作用的，考虑下面这个糟糕的论证：
 
 \begin{earg}
@@ -359,8 +359,8 @@ $$\atom{L}{b}, \exists x\, \enot\atom{L}{x} \therefore \atom{L}{b} \eand \enot \
 
 \section{量词规则与空量化}
 
-我们的量词规则中有一个微妙之处，这与我们语法规则的一个方面有关，即\emph{空量化}的可能性（见 \cref{s:FreeVars} 末尾）。在 \cref{s:forallElim,s:existsElim} 中，我们使用了 \cref{s:TruthFOL} 的替换记号：$\metav{A}(\ldots
-\metav{c} \ldots \metav{c} \ldots)$ 是将 $\metav{A}$ 中\emph{每一个} $\metav{x}$ 的\emph{自由}出现替换为~$\metav{c}$ 后得到的公式。这里，我们强调“自由”是有原因的。这意味着你不能总是替换\emph{每一个}~$\metav{x}$ 的出现。例如，下面这样做就是错误的：
+我们的量词规则中有一个微妙之处，这与我们语法规则的一个方面有关，即\emph{空量化}的可能性（见\cref{s:FreeVars}末尾）。在\cref{s:forallElim,s:existsElim}中，我们使用了\cref{s:TruthFOL}的替换记号：$\metav{A}(\ldots
+\metav{c} \ldots \metav{c} \ldots)$ 是将 $\metav{A}$ 中\emph{每一个}$\metav{x}$ 的\emph{自由}出现替换为~$\metav{c}$ 后得到的公式。这里，我们强调“自由”是有原因的。这意味着你不能总是替换\emph{每一个}~$\metav{x}$ 的出现。例如，下面这样做就是错误的：
 
 \begin{fitchproof}
 	\hypo{a}{\forall x(\atom{F}{x} \land \exists x\,\atom{G}{x})}\PR
@@ -378,10 +378,10 @@ $$\atom{L}{b}, \exists x\, \enot\atom{L}{x} \therefore \atom{L}{b} \eand \enot \
 \atom{G}{a}$'。你不太可能遇到这样的情况（除非你的老师很刁钻）：你的练习题很可能只涉及像 `$\forall x(\atom{F}{x} \land \exists
 y\,\atom{G}{y})$' 这样的语句，其中的变元都被清晰地分开了。
 
-在 \cref{s:existsIntro} 中，我们说过，我们用 `$\metav{A}(\ldots
+在\cref{s:existsIntro}中，我们说过，我们用 `$\metav{A}(\ldots
 \metav{x} \ldots \metav{c}\ldots)$' 来表示任何通过如下方式获得的公式：将名称 \metav{c} 的部分或全部出现替换为变元~\metav{x}，\emph{但条件是：$\metav{c}$ 在每次被替换时，都不出现在约束 $\metav{x}$ 的量词的辖域内}。这一强调的限制在某些情况下禁止替换 $\metav{c}$，这一点有些微妙。在实践中，你可能永远不会发现自己处于可能违反它的境地。但为了让规则正确，这个限制是必要的。例如，由于我们允许空量化，`$\exists
 x\forall x\,\atom{L}{x,x}$' 是一阶逻辑的合法语句。只不过，其中的第一个 `$\exists x$' 不起作用，该语句等价于 `$\forall x\,\atom{L}{x,x}$'。现在，如果我们不够小心，忽略了 `$a$' 确实出现在 `$\forall x$' 的辖域内这一事实，那么 `$\forall
-x\,\atom{L}{x,x}$' \emph{可以} 通过将名称~`$a$' 替换为变元~`$x$' 从 `$\forall
+x\,\atom{L}{x,x}$'\emph{可以}通过将名称~`$a$' 替换为变元~`$x$' 从 `$\forall
 x\,\atom{L}{a,x}$' 得到。如果没有上述限制，那么下面的推导就会被允许：
 
 
@@ -397,7 +397,7 @@ x\,\atom{L}{a,x}$' 得到。如果没有上述限制，那么下面的推导就�
 
 但是，由于 `$\exists x\, \forall x\, \atom{L}{x,x}$' 等价于 `$\forall x\, \atom{L}{x,x}$'，这将是一个无效的推理。为了明白为什么，不妨把 `$L$' 理解为“喜欢”：从“Alex 喜欢每个人”并不能推出“每个人都喜欢每个人”。
 
-类似地，在 \cref{s:forallIntro} 中，我们说过，$\metav{A}(\ldots
+类似地，在\cref{s:forallIntro}中，我们说过，$\metav{A}(\ldots
 \metav{x} \ldots \metav{x}\ldots)$ 是将 $\metav{A}(\ldots \metav{c}
 \ldots \metav{c}\ldots)$ 中 $\metav{c}$ 的每一次出现替换为 $\metav{x}$ 的结果，但\emph{仅当 $\metav{c}$ 在 $\metav{A}$ 中不处于约束 $\metav{x}$ 的量词的辖域内时才允许这样做}。正如 $\exists$I 规则陈述中涉及的约束那样，在实践中你很少会面临违反它的风险。但这就说明了它为何重要。同样，由于我们允许空量化，`$\forall
 x\exists x\,\atom{L}{x,x}$' 是一阶逻辑的合法语句。然而，`$\forall x\exists x\,\atom{L}{x,x}$' 可以通过将名称~`$a$' 全部替换为变元~`$x$' 从 `$\forall
@@ -856,7 +856,7 @@ $\therefore \forall x\,\forall y[\atom{R}{x,y} \eif \forall z(\atom{R}{y,z} \eif
 \end{compactlist}
 
 \problempart
-在 \cref{s:MoreMonadic} 中，我们考虑了将量词“移过”各种逻辑算子会发生什么。证明下列每对句子是可互推的：
+在\cref{s:MoreMonadic}中，我们考虑了将量词“移过”各种逻辑算子会发生什么。证明下列每对句子是可互推的：
 
 \begin{compactlist}
 \item $\forall x(\atom{F}{x} \eand \atom{G}{a}), \forall x\,\atom{F}{x} \eand \atom{G}{a}$
@@ -867,10 +867,10 @@ $\therefore \forall x\,\forall y[\atom{R}{x,y} \eif \forall z(\atom{R}{y,z} \eif
 \item $\exists x(\atom{F}{x} \eif \atom{G}{a}), \forall x\,\atom{F}{x} \eif \atom{G}{a}$
 \end{compactlist}
 
-注意：变元 $x$ 在 $\atom{G}{a}$ 中不出现。当一个句子的所有量词都出现在句首时，这个句子被称为处于 \emph{前束范式}。这些等价式有时也被称为 \emph{前束化规则}，因为它们为我们提供了将任何句子化为前束范式的方法。
+注意：变元 $x$ 在 $\atom{G}{a}$ 中不出现。当一个句子的所有量词都出现在句首时，这个句子被称为处于\emph{前束范式}。这些等价式有时也被称为\emph{前束化规则}，因为它们为我们提供了将任何句子化为前束范式的方法。
 
 \chapter{同一性规则}
-在 \cref{s:Interpretations} 中，我们提到了一个在哲学上有争议的论点，即\emph{不可分辨者的同一性}。这个论点声称，在所有方面都不可分辨的对象实际上是彼此同一的。我们也提到，我们不会采纳这个论点。因此，无论你了解到关于两个对象的多少信息，我们都不能证明它们是同一的。当然，除非你本来就已知道这两个对象实际上是同一的，但那样的话，证明也就没什么启发性了。
+在\cref{s:Interpretations}中，我们提到了一个在哲学上有争议的论点，即\emph{不可分辨者的同一性}。这个论点声称，在所有方面都不可分辨的对象实际上是彼此同一的。我们也提到，我们不会采纳这个论点。因此，无论你了解到关于两个对象的多少信息，我们都不能证明它们是同一的。当然，除非你本来就已知道这两个对象实际上是同一的，但那样的话，证明也就没什么启发性了。
 
 不过，总的要点是，\emph{没有任何}不包含同一性谓词的句子能够为推断出 $a=b$ 提供理据。所以，我们的同一性引入规则不能允许我们推断出一个包含两个\emph{不同}名称的同一性陈述。
 
@@ -905,7 +905,7 @@ $\therefore \forall x\,\forall y[\atom{R}{x,y} \eif \forall z(\atom{R}{y,z} \eif
 \end{fitchproof}
 
 }
-这条规则有时被称为 \emph{莱布尼茨律}，以戈特弗里德·莱布尼茨命名。
+这条规则有时被称为\emph{莱布尼茨律}，以戈特弗里德·莱布尼茨命名。
 
 为了展示这些规则的作用，我们将证明一些简单的结果。首先，我们证明同一性是\emph{对称的}：
 
@@ -1054,10 +1054,10 @@ $$\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n \entails \metav{C}$$
 	\factoidbox{
 
 \begin{factoiditems}
-		\item 一个论证是\emph{有效的} \ifeff{} \emph{结论可以从前提证明出来}。
-		\item 一个语句是\emph{有效式} \ifeff{} 它是一个\emph{定理}。
-		\item 两个语句是\emph{等价的} \ifeff{} 它们是\emph{可互推的}。
-		\item 一组语句是\emph{共同可满足的} \ifeff{} 它们是\emph{共同一致的}。
+		\item 一个论证是\emph{有效的}\ifeff{}\emph{结论可以从前提证明出来}。
+		\item 一个语句是\emph{有效式}\ifeff{} 它是一个\emph{定理}。
+		\item 两个语句是\emph{等价的}\ifeff{} 它们是\emph{可互推的}。
+		\item 一组语句是\emph{共同可满足的}\ifeff{} 它们是\emph{共同一致的}。
 	\end{factoiditems}
 
 }

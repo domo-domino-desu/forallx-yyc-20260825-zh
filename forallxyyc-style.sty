@@ -54,7 +54,11 @@
 
 % 中文长引文通常使用楷体。这里只切换 CJK 字族；引文中的西文与数学
 % 仍沿用正文的 New Computer Modern 设置。
-\AtBeginEnvironment{quote}{\kaishu}
+\AtBeginEnvironment{quote}{%
+  \kaishu
+  \setlength{\leftmargin}{1em}%
+  \setlength{\rightmargin}{1em}%
+}
 \AtBeginEnvironment{quotation}{\kaishu}
 
 %RZ: Make sure we have a copyright symbol
