@@ -20,10 +20,20 @@
 \RequirePackage[nameinlink]{cleveref}
 \crefname{enumi}{语句}{语句}
 \Crefname{enumi}{语句}{语句}
-\crefname{part}{部分}{部分}
-\Crefname{part}{部分}{部分}
-\crefname{chapter}{章}{章}
-\Crefname{chapter}{章}{章}
+% 中文编号把类别词分置于编号两侧，而不是沿用 cleveref 默认的
+% “类别词 + 编号”顺序。
+\crefformat{part}{第#2#1#3部分}
+\Crefformat{part}{第#2#1#3部分}
+\crefrangeformat{part}{第#3#1#4部分至第#5#2#6部分}
+\Crefrangeformat{part}{第#3#1#4部分至第#5#2#6部分}
+\crefmultiformat{part}{第#2#1#3部分}{和第#2#1#3部分}{、第#2#1#3部分}{和第#2#1#3部分}
+\Crefmultiformat{part}{第#2#1#3部分}{和第#2#1#3部分}{、第#2#1#3部分}{和第#2#1#3部分}
+\crefformat{chapter}{第#2#1#3章}
+\Crefformat{chapter}{第#2#1#3章}
+\crefrangeformat{chapter}{第#3#1#4章至第#5#2#6章}
+\Crefrangeformat{chapter}{第#3#1#4章至第#5#2#6章}
+\crefmultiformat{chapter}{第#2#1#3章}{和第#2#1#3章}{、第#2#1#3章}{和第#2#1#3章}
+\Crefmultiformat{chapter}{第#2#1#3章}{和第#2#1#3章}{、第#2#1#3章}{和第#2#1#3章}
 \crefname{section}{节}{节}
 \Crefname{section}{节}{节}
 \crefname{page}{页}{页}
