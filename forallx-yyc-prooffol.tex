@@ -5,7 +5,7 @@
 
 \chapter{一阶逻辑的基本规则}\label{s:BasicFOL}
 
-一阶逻辑的语言使用了真值函项逻辑的所有联结词。因此，一阶逻辑中的证明也将使用\cref{ch.NDTFL}中的所有基本规则和派生规则。我们也将沿用那里引入的证明论概念（特别是符号“$\proves$”）。不过，我们还需要一些新的基本规则来支配量词以及等号。
+一阶逻辑的语言使用了真值函项逻辑的所有联结词。因此，一阶逻辑中的证明也将使用\cref{ch.NDTFL}中的所有基本规则和派生规则。我们也将沿用那里引入的证明论概念（特别是符号$\proves$）。不过，我们还需要一些新的基本规则来支配量词以及等号。
 
 \section{全称消去}\label{s:forallElim}
 
@@ -18,7 +18,7 @@
 \end{fitchproof}
 
 
-我们通过去掉全称量词并把所有“$x$”的出现都替换为“$a$”得到了第~$2$行。同样地，下面的推导也应该被允许：
+我们通过去掉全称量词并把所有$x$的出现都替换为$a$得到了第~$2$行。同样地，下面的推导也应该被允许：
 
 
 \begin{fitchproof}
@@ -27,7 +27,7 @@
 \end{fitchproof}
 
 
-我们这里通过去掉全称量词并把所有“$x$”的出现都替换为“$d$”得到了第~$2$行。我们也可以用任何其他我们想用的名称来做同样的事。
+我们这里通过去掉全称量词并把所有$x$的出现都替换为$d$得到了第~$2$行。我们也可以用任何其他我们想用的名称来做同样的事。
 
 这就引出了全称消去规则（$\forall$E）：
 
@@ -52,7 +52,7 @@
 \end{fitchproof}
 
 
-这是不合法的，因为“$\forall x$”不是第~$1$行的主逻辑算子。（如果你需要提醒为何这类推理应该被禁止，请重读\cref{s:MoreMonadic}。）
+这是不合法的，因为$\forall x$不是第~$1$行的主逻辑算子。（如果你需要提醒为何这类推理应该被禁止，请重读\cref{s:MoreMonadic}。）
 
 \section{存在引入}\label{s:existsIntro}
 
@@ -65,7 +65,7 @@
 \end{fitchproof}
 
 
-这里，我们把名称“$d$”替换为变元“$x$”，然后对其存在量化。同样地，我们也会允许：
+这里，我们把名称$d$替换为变元$x$，然后对其存在量化。同样地，我们也会允许：
 
 
 \begin{fitchproof}
@@ -74,7 +74,7 @@
 \end{fitchproof}
 
 
-这里我们把名称“$a$”的两次出现都替换为变元，然后进行了存在概括。但我们并不需要把名称的\emph{两次}出现都替换为变元：如果那喀索斯爱自己，那么就存在某个爱那喀索斯的人。所以我们也允许：
+这里我们把名称$a$的两次出现都替换为变元，然后进行了存在概括。但我们并不需要把名称的\emph{两次}出现都替换为变元：如果那喀索斯爱自己，那么就存在某个爱那喀索斯的人。所以我们也允许：
 
 
 \begin{fitchproof}
@@ -83,11 +83,11 @@
 \end{fitchproof}
 
 
-这里我们先把名称“$a$”的\emph{一个}出现替换为变元，然后进行了存在概括。这些观察引出了我们的引入规则，不过为了解释它，我们需要引入一些新的记法。
+这里我们先把名称$a$的\emph{一个}出现替换为变元，然后进行了存在概括。这些观察引出了我们的引入规则，不过为了解释它，我们需要引入一些新的记法。
 
-当句子 $\metav{A}$ 包含名称 $\metav{c}$ 时，我们可以通过写作“$\metav{A}(\ldots \metav{c} \ldots
-\metav{c}\ldots)$”来强调这一点。我们将用“$\metav{A}(\ldots \metav{x} \ldots
-\metav{c}\ldots)$”来表示通过将名称 \metav{c} 的\emph{部分或全部}出现替换为变元~\metav{x} 而得到的任何公式（前提是，无论在何处替换，$\metav{c}$ 都不出现在约束~$\metav{x}$ 的量词的辖域内）。有了这些准备，我们的引入规则 $\exists$I 是：
+当句子 $\metav{A}$ 包含名称 $\metav{c}$ 时，我们可以通过写作$\metav{A}(\ldots \metav{c} \ldots
+\metav{c}\ldots)$来强调这一点。我们将用$\metav{A}(\ldots \metav{x} \ldots
+\metav{c}\ldots)$来表示通过将名称 \metav{c} 的\emph{部分或全部}出现替换为变元~\metav{x} 而得到的任何公式（前提是，无论在何处替换，$\metav{c}$ 都不出现在约束~$\metav{x}$ 的量词的辖域内）。有了这些准备，我们的引入规则 $\exists$I 是：
 \factoidbox{
 
 
@@ -125,9 +125,9 @@
 	\end{fitchproof}
 
 
-这会是一个糟糕的证明吗？如果确实存在任何东西，那么我们当然可以从“所有东西都是$F$”这个事实，推断出“有东西是$F$”。但如果\emph{根本没有}东西存在呢？那么，“所有东西都是$F$”显然就是\emph{空真}的；然而，这并不能推出“有东西是$F$”，因为没有什么东西可以去\emph{成为}$F$。所以，如果我们声称，单凭逻辑，“$\exists x\,\atom{F}{x}$”就从“$\forall x\,\atom{F}{x}$”得出，那么我们就是在声称，单凭\emph{逻辑}，就存在某物而非无。这可能会让我们觉得有点奇怪。
+这会是一个糟糕的证明吗？如果确实存在任何东西，那么我们当然可以从“所有东西都是$F$”这个事实，推断出“有东西是$F$”。但如果\emph{根本没有}东西存在呢？那么，“所有东西都是$F$”显然就是\emph{空真}的；然而，这并不能推出“有东西是$F$”，因为没有什么东西可以去\emph{成为}$F$。所以，如果我们声称，单凭逻辑，$\exists x\,\atom{F}{x}$就从$\forall x\,\atom{F}{x}$得出，那么我们就是在声称，单凭\emph{逻辑}，就存在某物而非无。这可能会让我们觉得有点奇怪。
 
-事实上，我们已经接受了这种怪异之处。在\cref{s:FOLBuildingBlocks}中，我们规定，一阶逻辑中的论域必须至少有一个成员。然后，我们把（一阶逻辑的）有效性定义为一个在所有解释下都为真的语句。由于“$\exists x\, x=x$”将在每个解释下都为真，这\emph{同样}起到了规定作用：逻辑本身决定了存在某物而非无。
+事实上，我们已经接受了这种怪异之处。在\cref{s:FOLBuildingBlocks}中，我们规定，一阶逻辑中的论域必须至少有一个成员。然后，我们把（一阶逻辑的）有效性定义为一个在所有解释下都为真的语句。由于$\exists x\, x=x$将在每个解释下都为真，这\emph{同样}起到了规定作用：逻辑本身决定了存在某物而非无。
 
 既然逻辑是否应该告诉我们“必须有某物而非无”这一点远非显而易见，我们在这里可能确实有点作弊的嫌疑。
 
@@ -147,9 +147,9 @@
 
 \section{全称引入}\label{s:forallIntro}
 
-假设你已经证明了每一个特定的东西都是 F（并且没有其他东西需要考虑）。那么，你就有理由声称所有东西都是 F。这会启发我们得到以下证明规则。如果你已经确立了“$\forall x\,\atom{F}{x}$”的每一个代入实例，那么你就可以推断出“$\forall x\,\atom{F}{x}$”。
+假设你已经证明了每一个特定的东西都是 F（并且没有其他东西需要考虑）。那么，你就有理由声称所有东西都是 F。这会启发我们得到以下证明规则。如果你已经确立了$\forall x\,\atom{F}{x}$的每一个代入实例，那么你就可以推断出$\forall x\,\atom{F}{x}$。
 
-不幸的是，这条规则将完全无法使用。要确立每一个单独的代入实例，就需要证明“$\atom{F}{a}$”、“$\atom{F}{b}$”、……、“$\atom{F}{j_2}$”、……、“$\atom{F}{r_{79002}}$”、……，如此等等。事实上，由于一阶逻辑中有无穷多个名称，这个过程永无止境。所以我们永远无法应用那条规则。我们需要更巧妙一点，来制定我们的全称引入规则。
+不幸的是，这条规则将完全无法使用。要确立每一个单独的代入实例，就需要证明$\atom{F}{a}$、$\atom{F}{b}$、……、$\atom{F}{j_2}$、……、$\atom{F}{r_{79002}}$、……，如此等等。事实上，由于一阶逻辑中有无穷多个名称，这个过程永无止境。所以我们永远无法应用那条规则。我们需要更巧妙一点，来制定我们的全称引入规则。
 
 考虑以下论证会带来启发：
 $$\forall x\,\atom{F}{x} \therefore \forall y\,\atom{F}{y}$$
@@ -162,7 +162,7 @@ $$\forall x\,\atom{F}{x} \therefore \forall y\,\atom{F}{y}$$
 \end{fitchproof}
 
 
-我们已经证明了“$\atom{F}{a}$”。当然，没有什么能阻止我们用同样的证明依据去证明“$\atom{F}{b}$”、“$\atom{F}{c}$”、……、“$\atom{F}{j_2}$”、……、“$\atom{F}{r_{79002}}$”……直到我们耗尽空间、时间或耐心。但仔细想想，我们发现，对于任何名称~\metav{c}，我们都有办法证明 $\atom{F}{\metav{c}}$。如果我们能对\emph{任何}东西做到这一点，我们当然应该说“$F$”对\emph{所有}东西都成立。因此，这为我们如下推出“$\forall y\,\atom{F}{y}$”提供了正当理由：
+我们已经证明了$\atom{F}{a}$。当然，没有什么能阻止我们用同样的证明依据去证明$\atom{F}{b}$、$\atom{F}{c}$、……、$\atom{F}{j_2}$、……、$\atom{F}{r_{79002}}$……直到我们耗尽空间、时间或耐心。但仔细想想，我们发现，对于任何名称~\metav{c}，我们都有办法证明 $\atom{F}{\metav{c}}$。如果我们能对\emph{任何}东西做到这一点，我们当然应该说$F$对\emph{所有}东西都成立。因此，这为我们如下推出$\forall y\,\atom{F}{y}$提供了正当理由：
 
 
 \begin{fitchproof}
@@ -172,7 +172,7 @@ $$\forall x\,\atom{F}{x} \therefore \forall y\,\atom{F}{y}$$
 \end{fitchproof}
 
 
-这里的关键想法是，“$a$”只是一个\emph{任意}的名称。它没有什么特别的——我们本可以选择任何其他名称——而且证明依然成立。而这个关键想法启发了全称引入规则（$\forall$I）：
+这里的关键想法是，$a$只是一个\emph{任意}的名称。它没有什么特别的——我们本可以选择任何其他名称——而且证明依然成立。而这个关键想法启发了全称引入规则（$\forall$I）：
 \factoidbox{
 
 \begin{fitchproof}
@@ -193,7 +193,7 @@ $\forall$I 规则的限制条件要求 \metav{c} 不得出现在前提或未解�
 为了看看这个限制是如何起作用的，考虑下面这个糟糕的论证：
 
 \begin{earg}
-		\item 人人都爱凯莉·米洛。
+		\item 人人都爱 Kylie Minogue。
 		\item[\texttherefore] 人人都爱自己。
 	\end{earg}
 
@@ -207,7 +207,7 @@ $$\forall x\,\atom{L}{x,k} \therefore \forall x\,\atom{L}{x,x}$$
 	\have{y}{\forall x\, \atom{L}{x,x}} \by{试图违规调用 $\forall$I}{a}
 \end{fitchproof}
 
-这是不允许的，因为‘$k$’已经出现在一个前提中，即第 $1$ 行。关键在于，如果我们对正在处理的对象做出了任何假设，那么我们的推理就不够一般，从而无法允许使用 $\forall$I。
+这是不允许的，因为$k$已经出现在一个前提中，即第 $1$ 行。关键在于，如果我们对正在处理的对象做出了任何假设，那么我们的推理就不够一般，从而无法允许使用 $\forall$I。
 
 不过，虽然名称不得出现在任何\emph{未解除的}假设中，但它可以出现在\emph{已解除的}假设中。也就是说，它可以出现在我们已经关闭的子证明里。例如，下面这样是完全没问题的：
 
@@ -220,13 +220,13 @@ $$\forall x\,\atom{L}{x,k} \therefore \forall x\,\atom{L}{x,x}$$
 	\have{zz}{\forall z(\atom{G}{z} \eif \atom{G}{z})}\Ai{ff}
 \end{fitchproof}
 
-这告诉我们，‘$\forall z (\atom{G}{z} \eif \atom{G}{z})$’ 是一个\emph{定理}。理应如此。
+这告诉我们，$\forall z (\atom{G}{z} \eif \atom{G}{z})$是一个\emph{定理}。理应如此。
 
 如果我们只替换\emph{某些}名称而不替换其他的，就会“证明”出一些荒谬的事情。例如，考虑这个论证：
 
 \begin{earg}
 	\item 每个人都和自己一样老。
-	\item[\texttherefore] 每个人都和朱迪·丹奇一样老。
+	\item[\texttherefore] 每个人都和 Judi Dench 一样老。
 	\end{earg}
 
 我们可能会这样符号化：
@@ -239,11 +239,11 @@ $$\forall x\,\atom{O}{x,x} \therefore \forall x\,\atom{O}{x,d}$$
 	\have{y}{\forall x\, \atom{O}{x,d}}\by{试图违规调用 $\forall$I}{a}
 \end{fitchproof}
 
-幸运的是，我们的规则不允许我们这样做：这个尝试的证明被禁止了，因为它并没有将第 $2$ 行中\emph{每一个}‘$d$’的出现都替换为‘$x$’。
+幸运的是，我们的规则不允许我们这样做：这个尝试的证明被禁止了，因为它并没有将第 $2$ 行中\emph{每一个}$d$的出现都替换为$x$。
 
 \section{存在量词消去}\label{s:existsElim}
 
-假设我们知道\emph{某物}是~$F$。问题在于，仅仅知道这一点并不能告诉我们哪个东西是~$F$。所以，看起来从‘$\exists x\,\atom{F}{x}$’出发，我们不能直接得出‘$\atom{F}{a}$’、‘$\atom{F}{e_{23}}$’或该语句的任何其他代入实例。我们能做什么呢？
+假设我们知道\emph{某物}是~$F$。问题在于，仅仅知道这一点并不能告诉我们哪个东西是~$F$。所以，看起来从$\exists x\,\atom{F}{x}$出发，我们不能直接得出$\atom{F}{a}$、$\atom{F}{e_{23}}$或该语句的任何其他代入实例。我们能做什么呢？
 
 假设我们知道有某物是~$F$，并且所有是~$F$ 的东西也都是~$G$。用（近似）自然的英语，我们可能会这样推理：
 
@@ -266,7 +266,7 @@ $$\forall x\,\atom{O}{x,x} \therefore \forall x\,\atom{O}{x,d}$$
 \end{fitchproof}
 
 \noindent
-拆解一下这个过程：我们先写下了前提。在第 $3$ 行，我们增加了一个额外的假设：‘$\atom{F}{b}$’。这只是‘$\exists x\,\atom{F}{x}$’的一个代入实例。基于这个假设，我们得出了‘$\exists x\,\atom{G}{x}$’。注意，对于名称‘$b$’所指的对象，我们并没有做任何\emph{特殊}假设；我们\emph{只}假设了它满足‘$\atom{F}{x}$’。因此，推理过程不依赖于它具体是哪个对象。而第 $1$ 行告诉我们\emph{有东西}满足‘$\atom{F}{x}$’，所以我们的推理模式是完全一般的。我们可以解除这个具体的假设‘$\atom{F}{b}$’，只单独推出‘$\exists x\,\atom{G}{x}$’。
+拆解一下这个过程：我们先写下了前提。在第 $3$ 行，我们增加了一个额外的假设：$\atom{F}{b}$。这只是$\exists x\,\atom{F}{x}$的一个代入实例。基于这个假设，我们得出了$\exists x\,\atom{G}{x}$。注意，对于名称$b$所指的对象，我们并没有做任何\emph{特殊}假设；我们\emph{只}假设了它满足$\atom{F}{x}$。因此，推理过程不依赖于它具体是哪个对象。而第 $1$ 行告诉我们\emph{有东西}满足$\atom{F}{x}$，所以我们的推理模式是完全一般的。我们可以解除这个具体的假设$\atom{F}{b}$，只单独推出$\exists x\,\atom{G}{x}$。
 
 综上所述，我们得到了存在量词消去规则（$\exists$E）：
 \factoidbox{
@@ -314,7 +314,7 @@ $$\atom{L}{b}, \exists x\, \enot\atom{L}{x} \therefore \atom{L}{b} \eand \enot \
 \end{fitchproof}
 
 
-这个证明的最后一行是不允许的。我们在第 $3$ 行用作‘$\exists x\, \enot \atom{L}{x}$’的代入实例中的名称，即‘$b$’，出现在了第 $4$ 行中。下面这样也好不到哪去：
+这个证明的最后一行是不允许的。我们在第 $3$ 行用作$\exists x\, \enot \atom{L}{x}$的代入实例中的名称，即$b$，出现在了第 $4$ 行中。下面这样也好不到哪去：
 
 \begin{fitchproof}
 	\hypo{f}{\atom{L}{b}}\PR
@@ -334,7 +334,7 @@ $$\atom{L}{b}, \exists x\, \enot\atom{L}{x} \therefore \atom{L}{b} \eand \enot \
 \end{fitchproof}
 
 
-最后一行仍然是不允许的。因为用于‘$\exists x\, \enot \atom{L}{x}$’的代入实例中的名称，即‘$b$’，出现在了一个未解除的假设中，即第 $1$ 行。
+最后一行仍然是不允许的。因为用于$\exists x\, \enot \atom{L}{x}$的代入实例中的名称，即$b$，出现在了一个未解除的假设中，即第 $1$ 行。
 
 最后，看看这个“证明”：
 
@@ -353,7 +353,7 @@ $$\atom{L}{b}, \exists x\, \enot\atom{L}{x} \therefore \atom{L}{b} \eand \enot \
 \end{fitchproof}
 
 
-这里的名称‘$a$’违反了 $\exists$E 规则的第二个条件：它出现在了‘$\exists x\, \atom{L}{a, x}$’中，即第 $1$ 行。我们必须阻止它成为证明，因为它是无效的：‘有人喜欢自己’并不能从‘Alex 喜欢某人’推出。
+这里的名称$a$违反了 $\exists$E 规则的第二个条件：它出现在了$\exists x\, \atom{L}{a, x}$中，即第 $1$ 行。我们必须阻止它成为证明，因为它是无效的：“有人喜欢自己”并不能从“Alex 喜欢某人”推出。
 
 这个故事给我们的教训是：\emph{如果你想从存在量词中提取信息，请为你的代入实例选择一个新的名称。}这样你就能保证满足 $\exists$E 规则的所有约束条件。
 
@@ -373,16 +373,16 @@ $$\atom{L}{b}, \exists x\, \enot\atom{L}{x} \therefore \atom{L}{b} \eand \enot \
 \end{fitchproof}
 
 
-在第 $2$ 行，我们错误地构造了代入实例：我们把 `$\atom{F}{x}$' 和 `$\atom{G}{x}$' 中的 `$x$' 都替换成了 `$a$'，但只有前一个 `$x$' 是自由出现——后一个被 `$\exists x$' 约束了。这不仅会违反替换规则的限制，还会让我们能够“证明”一个无效的论证。由于 `$\exists x\,\atom{G}{a}$' 是空量化的情况，它等价于 `$\atom{G}{a}$'。此外，第 $1$ 行等价于 `$\forall x(\atom{F}{x} \land \exists y\,\atom{G}{y})$'。
-不难看出，这并不蕴涵 `$\atom{F}{a} \land
-\atom{G}{a}$'。你不太可能遇到这样的情况（除非你的老师很刁钻）：你的练习题很可能只涉及像 `$\forall x(\atom{F}{x} \land \exists
-y\,\atom{G}{y})$' 这样的语句，其中的变元都被清晰地分开了。
+在第 $2$ 行，我们错误地构造了代入实例：我们把 $\atom{F}{x}$ 和 $\atom{G}{x}$ 中的 $x$ 都替换成了 $a$，但只有前一个 $x$ 是自由出现——后一个被 $\exists x$ 约束了。这不仅会违反替换规则的限制，还会让我们能够“证明”一个无效的论证。由于 $\exists x\,\atom{G}{a}$ 是空量化的情况，它等价于 $\atom{G}{a}$。此外，第 $1$ 行等价于 $\forall x(\atom{F}{x} \land \exists y\,\atom{G}{y})$。
+不难看出，这并不蕴涵 $\atom{F}{a} \land
+\atom{G}{a}$。你不太可能遇到这样的情况（除非你的老师很刁钻）：你的练习题很可能只涉及像 $\forall x(\atom{F}{x} \land \exists
+y\,\atom{G}{y})$ 这样的语句，其中的变元都被清晰地分开了。
 
-在\cref{s:existsIntro}中，我们说过，我们用 `$\metav{A}(\ldots
-\metav{x} \ldots \metav{c}\ldots)$' 来表示任何通过如下方式获得的公式：将名称 \metav{c} 的部分或全部出现替换为变元~\metav{x}，\emph{但条件是：$\metav{c}$ 在每次被替换时，都不出现在约束 $\metav{x}$ 的量词的辖域内}。这一强调的限制在某些情况下禁止替换 $\metav{c}$，这一点有些微妙。在实践中，你可能永远不会发现自己处于可能违反它的境地。但为了让规则正确，这个限制是必要的。例如，由于我们允许空量化，`$\exists
-x\forall x\,\atom{L}{x,x}$' 是一阶逻辑的合法语句。只不过，其中的第一个 `$\exists x$' 不起作用，该语句等价于 `$\forall x\,\atom{L}{x,x}$'。现在，如果我们不够小心，忽略了 `$a$' 确实出现在 `$\forall x$' 的辖域内这一事实，那么 `$\forall
-x\,\atom{L}{x,x}$'\emph{可以}通过将名称~`$a$' 替换为变元~`$x$' 从 `$\forall
-x\,\atom{L}{a,x}$' 得到。如果没有上述限制，那么下面的推导就会被允许：
+在\cref{s:existsIntro}中，我们说过，我们用 $\metav{A}(\ldots
+\metav{x} \ldots \metav{c}\ldots)$ 来表示任何通过如下方式获得的公式：将名称 \metav{c} 的部分或全部出现替换为变元~\metav{x}，\emph{但条件是：$\metav{c}$ 在每次被替换时，都不出现在约束 $\metav{x}$ 的量词的辖域内}。这一强调的限制在某些情况下禁止替换 $\metav{c}$，这一点有些微妙。在实践中，你可能永远不会发现自己处于可能违反它的境地。但为了让规则正确，这个限制是必要的。例如，由于我们允许空量化，$\exists
+x\forall x\,\atom{L}{x,x}$ 是一阶逻辑的合法语句。只不过，其中的第一个 $\exists x$ 不起作用，该语句等价于 $\forall x\,\atom{L}{x,x}$。现在，如果我们不够小心，忽略了 $a$ 确实出现在 $\forall x$ 的辖域内这一事实，那么 $\forall
+x\,\atom{L}{x,x}$\emph{可以}通过将名称~$a$ 替换为变元~$x$ 从 $\forall
+x\,\atom{L}{a,x}$ 得到。如果没有上述限制，那么下面的推导就会被允许：
 
 
 \begin{fitchproof}
@@ -395,13 +395,13 @@ x\,\atom{L}{a,x}$' 得到。如果没有上述限制，那么下面的推导就�
 	\fi\end{fitchproof}
 
 
-但是，由于 `$\exists x\, \forall x\, \atom{L}{x,x}$' 等价于 `$\forall x\, \atom{L}{x,x}$'，这将是一个无效的推理。为了明白为什么，不妨把 `$L$' 理解为“喜欢”：从“Alex 喜欢每个人”并不能推出“每个人都喜欢每个人”。
+但是，由于 $\exists x\, \forall x\, \atom{L}{x,x}$ 等价于 $\forall x\, \atom{L}{x,x}$，这将是一个无效的推理。为了明白为什么，不妨把 $L$ 理解为“喜欢”：从“Alex 喜欢每个人”并不能推出“每个人都喜欢每个人”。
 
 类似地，在\cref{s:forallIntro}中，我们说过，$\metav{A}(\ldots
 \metav{x} \ldots \metav{x}\ldots)$ 是将 $\metav{A}(\ldots \metav{c}
-\ldots \metav{c}\ldots)$ 中 $\metav{c}$ 的每一次出现替换为 $\metav{x}$ 的结果，但\emph{仅当 $\metav{c}$ 在 $\metav{A}$ 中不处于约束 $\metav{x}$ 的量词的辖域内时才允许这样做}。正如 $\exists$I 规则陈述中涉及的约束那样，在实践中你很少会面临违反它的风险。但这就说明了它为何重要。同样，由于我们允许空量化，`$\forall
-x\exists x\,\atom{L}{x,x}$' 是一阶逻辑的合法语句。然而，`$\forall x\exists x\,\atom{L}{x,x}$' 可以通过将名称~`$a$' 全部替换为变元~`$x$' 从 `$\forall
-x\,\atom{L}{a,x}$' 得到。这违反了我们设定的限制：在这个例子中，`$a$' 确实出现在 `$\forall x$' 的辖域内。如果没有这个限制，下面的推导就会被允许：
+\ldots \metav{c}\ldots)$ 中 $\metav{c}$ 的每一次出现替换为 $\metav{x}$ 的结果，但\emph{仅当 $\metav{c}$ 在 $\metav{A}$ 中不处于约束 $\metav{x}$ 的量词的辖域内时才允许这样做}。正如 $\exists$I 规则陈述中涉及的约束那样，在实践中你很少会面临违反它的风险。但这就说明了它为何重要。同样，由于我们允许空量化，$\forall
+x\exists x\,\atom{L}{x,x}$ 是一阶逻辑的合法语句。然而，$\forall x\exists x\,\atom{L}{x,x}$ 可以通过将名称~$a$ 全部替换为变元~$x$ 从 $\forall
+x\,\atom{L}{a,x}$ 得到。这违反了我们设定的限制：在这个例子中，$a$ 确实出现在 $\forall x$ 的辖域内。如果没有这个限制，下面的推导就会被允许：
 
 
 \begin{fitchproof}
@@ -416,7 +416,7 @@ x\,\atom{L}{a,x}$' 得到。这违反了我们设定的限制：在这个例子�
 \end{fitchproof}
 
 
-但是，由于 `$\forall x\, \exists x\, \atom{L}{x,x}$' 等价于 `$\exists x\, \atom{L}{x,x}$'，这将是一个无效的推理：“某人喜欢自己”不能从“每个人都喜欢某个人”推出。
+但是，由于 $\forall x\, \exists x\, \atom{L}{x,x}$ 等价于 $\exists x\, \atom{L}{x,x}$，这将是一个无效的推理：“某人喜欢自己”不能从“每个人都喜欢某个人”推出。
 
 \practiceproblems
 \problempart
@@ -493,13 +493,13 @@ x\,\atom{L}{a,x}$' 得到。这违反了我们设定的限制：在这个例子�
 
 \problempart
 \label{pr.BarbaraEtc.proof1}
-在\hyperref[pr.BarbaraEtc]{练习 \ref*{s:MoreMonadic}A}中，我们考察了亚里士多德逻辑的十五个三段论形式。请为每一种论证形式提供证明。注意：如果你将（例如）“没有F是G”符号化为“$\forall x (\atom{F}{x} \eif \enot \atom{G}{x})$”，你会发现证明要容易\emph{得多}。
+在\hyperref[pr.BarbaraEtc]{练习 \ref*{s:MoreMonadic}A}中，我们考察了 Aristotle 逻辑的十五个三段论形式。请为每一种论证形式提供证明。注意：如果你将（例如）“没有F是G”符号化为$\forall x (\atom{F}{x} \eif \enot \atom{G}{x})$，你会发现证明要容易\emph{得多}。
 
 \
 
 \problempart
 \label{pr.BarbaraEtc.proof2}
-亚里士多德及其后继者们还识别出其他一些依赖于“存在涵义”的三段论形式。请用一阶逻辑符号化下述每一种论证形式，并给出证明。
+Aristotle 及其后继者们还识别出其他一些依赖于“存在涵义”的三段论形式。请用一阶逻辑符号化下述每一种论证形式，并给出证明。
 
 
 \begin{compactlist}
@@ -659,7 +659,7 @@ $\atom{\metav{A}}{\metav{c}}$是通过将$\atom{\metav{A}}{\metav{x}}$中$\metav
 \end{fitchproof}
 
 
-我们接下来的步骤应该从第$2$行的$\exists x\,\atom{A}{x}$正向推理。为此，我们必须选择一个尚未出现在证明中的名称。既然还没有任何名称出现，我们可以选任意一个名称，比方说‘$d$’：
+我们接下来的步骤应该从第$2$行的$\exists x\,\atom{A}{x}$正向推理。为此，我们必须选择一个尚未出现在证明中的名称。既然还没有任何名称出现，我们可以选任意一个名称，比方说$d$：
 
 
 \begin{fitchproof}
@@ -905,7 +905,7 @@ $\therefore \forall x\,\forall y[\atom{R}{x,y} \eif \forall z(\atom{R}{y,z} \eif
 \end{fitchproof}
 
 }
-这条规则有时被称为\emph{莱布尼茨律}，以戈特弗里德·莱布尼茨命名。
+这条规则有时被称为\emph{Leibniz 律}，以 Gottfried Leibniz 命名。
 
 为了展示这些规则的作用，我们将证明一些简单的结果。首先，我们证明同一性是\emph{对称的}：
 
@@ -1048,22 +1048,22 @@ $$\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n \entails \metav{C}$$
 
 更一般地说，我们有以下强有力的结果：
 \factoidbox{$\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n
-\proves\metav{B}$ \textbf{\ifeff} $\metav{A}_1, \metav{A}_2, \ldots,
+\proves\metav{B}$ \textbf{当且仅当} $\metav{A}_1, \metav{A}_2, \ldots,
 \metav{A}_n \entails\metav{B}$}
 这表明，尽管可证性和语义后承是\emph{不同的}概念，但它们在外延上是等价的。因此：
 	\factoidbox{
 
 \begin{factoiditems}
-		\item 一个论证是\emph{有效的}\ifeff{}\emph{结论可以从前提证明出来}。
-		\item 一个语句是\emph{有效式}\ifeff{} 它是一个\emph{定理}。
-		\item 两个语句是\emph{等价的}\ifeff{} 它们是\emph{可互推的}。
-		\item 一组语句是\emph{共同可满足的}\ifeff{} 它们是\emph{共同一致的}。
+		\item 一个论证是\emph{有效的}当且仅当\emph{结论可以从前提证明出来}。
+		\item 一个语句是\emph{有效式}当且仅当它是一个\emph{定理}。
+		\item 两个语句是\emph{等价的}当且仅当它们是\emph{可互推的}。
+		\item 一组语句是\emph{共同可满足的}当且仅当它们是\emph{共同一致的}。
 	\end{factoiditems}
 
 }
 基于这个原因，你可以根据需要选择何时从证明的角度思考，何时从赋值/解释的角度思考，选择对给定任务更容易的角度。下一页的表格总结了哪种方法（通常）更容易。
 
-可证性和语义后承应该一致，这在直觉上是合理的。但是——让我们再强调一遍——不要被符号“$\entails$”和“$\proves$”的相似性所蒙蔽。这两个符号的含义非常不同。可证性和语义后承一致这一事实并非唾手可得的结果。
+可证性和语义后承应该一致，这在直觉上是合理的。但是——让我们再强调一遍——不要被符号$\entails$和$\proves$的相似性所蒙蔽。这两个符号的含义非常不同。可证性和语义后承一致这一事实并非唾手可得的结果。
 
 事实上，证明可证性与语义后承一致，恰恰是入门逻辑转变为中级逻辑的决定性标志。
 

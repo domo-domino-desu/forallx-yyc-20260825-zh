@@ -8,7 +8,7 @@
 
 真值函项逻辑的任何语句都由语句字母构成，也可能使用语句联结词组合而成。复合语句的真值完全取决于构成它的那些语句字母的真值。例如，要知道 $(D \eand E)$ 的真值，你只需要知道 $D$ 的真值和 $E$ 的真值。
 
-在\cref{s:TFLConnectives}中，我们介绍了五个联结词。因此，我们只需要解释它们如何在真值之间进行映射。为了方便，我们用‘T’缩写‘真’，用‘F’缩写‘假’。（但要明确，两个真值是真和假；真值本身并不是\emph{字母}！）
+在\cref{s:TFLConnectives}中，我们介绍了五个联结词。因此，我们只需要解释它们如何在真值之间进行映射。为了方便，我们用“T”缩写“真”，用“F”缩写“假”。（但要明确，两个真值是真和假；真值本身并不是\emph{字母}！）
 
 \newglossaryentry{truth value}
                  {
@@ -28,7 +28,7 @@ F & T
 \end{tabular}
 \end{center}
 
-\paragraph{合取} 对于任意语句 \metav{A} 和 \metav{B}，\metav{A}\eand\metav{B} 为真 \ifeff{} \metav{A} 和 \metav{B} 都为真。我们可以在合取的特征真值表中总结这一点：
+\paragraph{合取} 对于任意语句 \metav{A} 和 \metav{B}，\metav{A}\eand\metav{B} 为真当且仅当\metav{A} 和 \metav{B} 都为真。我们可以在合取的特征真值表中总结这一点：
 
 
 \begin{center}
@@ -45,7 +45,7 @@ F & F & F
 
 注意，$\metav{A} \eand \metav{B}$ 的真值总是与 $\metav{B} \eand \metav{A}$ 的真值相同。具有这种性质的联结词称为\emph{可交换的}。
 
-\paragraph{析取} 回想一下，$\eor$ 总是代表相容或。因此，对于任意语句 \metav{A} 和 \metav{B}，$\metav{A}\eor \metav{B}$ 为真 \ifeff{} \metav{A} 或 \metav{B} 为真。我们可以在析取的特征真值表中总结这一点：
+\paragraph{析取} 回想一下，$\eor$ 总是代表相容或。因此，对于任意语句 \metav{A} 和 \metav{B}，$\metav{A}\eor \metav{B}$ 为真当且仅当\metav{A} 或 \metav{B} 为真。我们可以在析取的特征真值表中总结这一点：
 
 
 \begin{center}
@@ -63,7 +63,7 @@ F & F & F
 与合取一样，析取也是可交换的。
 
 \paragraph{条件} 我们干脆坦白承认：条件句是一团糟。它们到底有多糟，在\emph{哲学上}是有争议的。我们将在
-\cref{s:IndicativeSubjunctive,s:ParadoxesOfMaterialConditional}中讨论一些精微之处。就现在而言，我们规定如下：$\metav{A}\eif\metav{B}$ 为假 \ifeff{} \metav{A} 为真且 \metav{B} 为假。具有这些规定性真值条件的联结词称为
+\cref{s:IndicativeSubjunctive,s:ParadoxesOfMaterialConditional}中讨论一些精微之处。就现在而言，我们规定如下：$\metav{A}\eif\metav{B}$ 为假当且仅当\metav{A} 为真且 \metav{B} 为假。具有这些规定性真值条件的联结词称为
 \define{实质条件（material conditional）}。我们可以用条件联结词的特征真值表来总结这一点。
 
 
@@ -105,7 +105,7 @@ F & F & T
 \section{真值函项性的概念}
 让我们来引入一个重要概念。
 	\factoidbox{
-		一个联结词是\define{真值函项的（truth-functional）}\ifeff{} 以该联结词为主逻辑算子的语句的真值，完全由构成它的成分语句的真值唯一决定。
+		一个联结词是\define{真值函项的（truth-functional）}当且仅当以该联结词为主逻辑算子的语句的真值，完全由构成它的成分语句的真值唯一决定。
 	}
 \newglossaryentry{truth-functional connective}
 {
@@ -122,11 +122,11 @@ description={一种算子，它由较小的语句构造出较大的语句，并�
 
 \begin{compactlist}
 		\item $2 + 2 = 4$
-		\item 肖斯塔科维奇写了十五部弦乐四重奏。
+		\item Shostakovich（肖斯塔科维奇）写了十五部弦乐四重奏。
 	\end{compactlist}
 
 
-虽然 $2 + 2 = 4$ 是必然情况，但肖斯塔科维奇写了十五部弦乐四重奏却并非\emph{必然}情况。如果肖斯塔科维奇去世得更早，他可能就无法完成第15号四重奏；如果他活得更久，他或许还会多写几部。因此，“情况必然是……”这个说法不是\emph{真值函项的}。
+虽然 $2 + 2 = 4$ 是必然情况，但Shostakovich写了十五部弦乐四重奏却并非\emph{必然}情况。如果Shostakovich去世得更早，他可能就无法完成第15号四重奏；如果他活得更久，他或许还会多写几部。因此，“情况必然是……”这个说法不是\emph{真值函项的}。
 
 \section{符号化与翻译}
 真值函项逻辑的所有联结词都是真值函项的，但不仅如此：它们实际上\emph{只做}一件事，即在真值之间进行映射。
@@ -163,7 +163,7 @@ description={一种算子，它由较小的语句构造出较大的语句，并�
 
 \section{直陈条件句与虚拟条件句}\label{s:IndicativeSubjunctive}
 我们想通过条件句的案例来强调这样一个观点：真值函项逻辑只\emph{能}处理真值函项。
-在\cref{s:CharacteristicTruthTables}中介绍实质条件句的特征真值表时，我们并没有给出任何理由来为其辩护。现在，让我们提供一个辩护，其思路遵循多萝西·埃金顿。\footnote{多萝西·埃金顿，“条件句”，《斯坦福哲学百科全书》（2020年秋季版）（\url{https://plato.stanford.edu/archives/fall2020/entries/conditionals/}）。}
+在\cref{s:CharacteristicTruthTables}中介绍实质条件句的特征真值表时，我们并没有给出任何理由来为其辩护。现在，让我们提供一个辩护，其思路遵循 Dorothy Edgington。\footnote{Dorothy Edgington，“条件句”，《斯坦福哲学百科全书》（2020年秋季版）（\url{https://plato.stanford.edu/archives/fall2020/entries/conditionals/}）。}
 
 假设 Lara 在一张纸上画了一些图形，并给其中一些涂了颜色。我们没有看到这些图形，但却声称：
 
@@ -219,23 +219,23 @@ description={一种算子，它由较小的语句构造出较大的语句，并�
 
 现在请回想，真值函项逻辑的每一个联结词都必须是真值函项的。这意味着，仅凭前件和后件的真值，就必须能唯一地决定整个条件句的真值。因此，从我们这四个主张的真值中——它们为我们提供了前件与后件真假所有可能的组合——我们就可以读出实质条件句的真值表。
 
-这个论证表明，“$\eif$”是真值函项条件句的\emph{最佳}候选。换句话说，\emph{它是真值函项逻辑能提供的最佳条件句}。但是，作为日常语言中条件句的替代，它足够好吗？考虑两个语句：
+这个论证表明，$\eif$是真值函项条件句的\emph{最佳}候选。换句话说，\emph{它是真值函项逻辑能提供的最佳条件句}。但是，作为日常语言中条件句的替代，它足够好吗？考虑两个语句：
 
 \begin{enumerate}
-        \item\label{brownwins1} 如果希拉里·克林顿赢得了2016年大选，那么她就会成为美国第一位女总统。
-        \item\label{brownwins2} 如果希拉里·克林顿赢得了2016年大选，那么她就会变成一个充满氦气的气球，飘入夜空。
+        \item\label{brownwins1} 假使 Hillary Clinton 赢得了2016年大选，那么她早就成为美国第一位女总统了。
+        \item\label{brownwins2} 假使 Hillary Clinton 赢得了2016年大选，那么她早就变成一个充满氦气的气球，飘入夜空了。
 \end{enumerate}
 
-\Cref*{brownwins1}是真的；\cref*{brownwins2}是假的，但两者的前件和后件都是假的。（希拉里没有赢；她没有成为美国第一位女总统；她也没有充满氦气飘走。）所以整个语句的真值并非由其各部分的真值唯一决定。
+\Cref*{brownwins1}是真的；\cref*{brownwins2}是假的，但两者的前件和后件都是假的。（Hillary 没有赢；她没有成为美国第一位女总统；她也没有充满氦气飘走。）所以整个语句的真值并非由其各部分的真值唯一决定。
 
-关键在于，\cref*{brownwins1,brownwins2}使用的是\emph{虚拟}条件句，而非\emph{直陈}条件句。它们让我们设想与事实相反的情况——毕竟希拉里·克林顿输掉了2016年大选——进而让我们评估在那种情况下\emph{会}发生什么。这类考虑根本无法用“$\eif$”来处理。
+关键在于，\cref*{brownwins1,brownwins2}使用的是\emph{虚拟}条件句，而非\emph{直陈}条件句。它们让我们设想与事实相反的情况——毕竟 Hillary Clinton 输掉了2016年大选——进而让我们评估在那种情况下\emph{会}发生什么。这类考虑根本无法用$\eif$来处理。
 
-关于条件句带来的困难，我们将在\cref{s:ParadoxesOfMaterialConditional}进一步讨论。目前，我们只需指出这样一个观察结论：“$\eif$”是真值函项逻辑中真值函项条件句的唯一候选，但许多英语条件句无法用“$\eif$”来充分刻画。真值函项逻辑是一种本质上有限的语言。
+关于条件句带来的困难，我们将在\cref{s:ParadoxesOfMaterialConditional}进一步讨论。目前，我们只需指出这样一个观察结论：$\eif$是真值函项逻辑中真值函项条件句的唯一候选，但许多英语条件句无法用$\eif$来充分刻画。真值函项逻辑是一种本质上有限的语言。
 
 \chapter{完整真值表}
 \label{s:CompleteTruthTables}
 
-到目前为止，我们都是通过符号化约定\emph{间接地}为真值函项逻辑语句赋予真值。例如，我们可能会说，真值函项逻辑语句 “$B$” 为真 \ifeff{} 大本钟在伦敦。既然大本钟\emph{确实}在伦敦，这种符号化方式就会使 “$B$” 为真。但我们也可以\emph{直接地}指定真值。我们可以直接规定 “$B$” 为真，或者规定它为假。这类规定就称为\emph{赋值}：
+到目前为止，我们都是通过符号化约定\emph{间接地}为真值函项逻辑语句赋予真值。例如，我们可能会说，真值函项逻辑语句$B$为真当且仅当大本钟在伦敦。既然大本钟\emph{确实}在伦敦，这种符号化方式就会使$B$为真。但我们也可以\emph{直接地}指定真值。我们可以直接规定$B$为真，或者规定它为假。这类规定就称为\emph{赋值}：
 	\factoidbox{
 \define{赋值（valuation）}是将真值指派给真值函项逻辑特定语句字母的任意一种方式。
 	}
@@ -249,7 +249,7 @@ description={将\glspl{truth value}指派给特定\glspl{sentence letter}}
 真值表的威力体现在以下几个方面。真值表的每一行代表一个可能的赋值。完整的真值表则代表了所有可能的赋值。并且，真值表为我们提供了一种方法，用以计算复杂语句在每一种可能赋值下的真值。不过，这一切通过例子最容易解释清楚。
 
 \section{一个计算示例}
-考虑语句 “$(H\eand I)\eif H$”。给语句字母 “$H$” 和 “$I$” 指派真与假有四种可能的方式——四种赋值——我们可以表示如下：
+考虑语句$(H\eand I)\eif H$。给语句字母$H$和$I$指派真与假有四种可能的方式——四种赋值——我们可以表示如下：
 
 \begin{center}
 \begin{tabular}{c c|d e e e f}
@@ -262,7 +262,7 @@ $H$&$I$&$(H$&\eand&$I)$&\eif&$H$\\
 \end{tabular}
 \end{center}
 
-为了计算整个语句 “$(H \eand I) \eif H$” 的真值，我们首先复制语句字母的真值，并把它们写在语句中对应字母的下方：
+为了计算整个语句$(H \eand I) \eif H$的真值，我们首先复制语句字母的真值，并把它们写在语句中对应字母的下方：
 
 \begin{center}
 \begin{tabular}{c c|d e e e f}
@@ -275,7 +275,7 @@ $H$&$I$&$(H$&\eand&$I)$&\eif&$H$\\
 \end{tabular}
 \end{center}
 
-现在考虑子句 “$(H\eand I)$”。这是一个合取式，$(\metav{A}\eand\metav{B})$，其中 “$H$” 对应 \metav{A}，“$I$” 对应 \metav{B}。合取的特征真值表给出了\emph{任何}形如 $(\metav{A}\eand\metav{B})$ 的语句的真值条件，无论 $\metav{A}$ 和 $\metav{B}$ 是什么。它体现的要点是：一个合取式为真 \ifeff{} 它的两个合取支都为真。在这个例子里，我们的合取支就是 “$H$” 和 “$I$”。它们在真值表的第一行（且仅在第一行）同时为真。相应地，我们可以计算这个合取式在所有四行上的真值：
+现在考虑子句$(H\eand I)$。这是一个合取式，$(\metav{A}\eand\metav{B})$，其中$H$对应 \metav{A}，$I$对应 \metav{B}。合取的特征真值表给出了\emph{任何}形如 $(\metav{A}\eand\metav{B})$ 的语句的真值条件，无论 $\metav{A}$ 和 $\metav{B}$ 是什么。它体现的要点是：一个合取式为真当且仅当它的两个合取支都为真。在这个例子里，我们的合取支就是$H$和$I$。它们在真值表的第一行（且仅在第一行）同时为真。相应地，我们可以计算这个合取式在所有四行上的真值：
 
 \begin{center}
 \begin{tabular}{c c|d e e e f}
@@ -289,7 +289,7 @@ $H$&$I$&$(H$&\eand&$I)$&\eif&$H$\\
 \end{tabular}
 \end{center}
 
-现在，我们正在处理的整个语句是一个条件式，$\metav{A}\eif\metav{B}$，其中 “$(H \eand I)$” 对应 \metav{A}，“$H$” 对应 \metav{B}。例如，在第二行上，“$(H\eand I)$” 为假而 “$H$” 为真。由于条件式在前件为假时为真，我们在第二行条件符号的下方写一个 “T”。我们继续处理其他三行，得到如下结果：
+现在，我们正在处理的整个语句是一个条件式，$\metav{A}\eif\metav{B}$，其中$(H \eand I)$对应 \metav{A}，$H$对应 \metav{B}。例如，在第二行上，$(H\eand I)$为假而$H$为真。由于条件式在前件为假时为真，我们在第二行条件符号的下方写一个“T”。我们继续处理其他三行，得到如下结果：
 
 \begin{center}
 \begin{tabular}{c c| d e e e f}
@@ -303,7 +303,7 @@ $H$&$I$&$(H$&\eand&$I)$&\eif&$H$\\
 \end{tabular}
 \end{center}
 
-条件联结词是这个语句的主逻辑算子，因此条件符号下方的那一列 “T” 告诉我们，语句 “$(H \eand I)\eif H$” 为真，与 “$H$” 和 “$I$” 的真值无关。它们无论以哪种真假组合出现，这个复合语句始终为真。由于我们已经考虑了对 “$H$” 和 “$I$” 的真与假的所有四种可能指派——也就是说，我们已经考虑了所有不同的\emph{赋值}——我们可以说，“$(H \eand I)\eif H$” 在每一种赋值下都为真。
+条件联结词是这个语句的主逻辑算子，因此条件符号下方的那一列“T”告诉我们，语句$(H \eand I)\eif H$为真，与$H$和$I$的真值无关。它们无论以哪种真假组合出现，这个复合语句始终为真。由于我们已经考虑了对$H$和$I$的真与假的所有四种可能指派——也就是说，我们已经考虑了所有不同的\emph{赋值}——我们可以说，$(H \eand I)\eif H$在每一种赋值下都为真。
 
 在这个例子中，我们没有在每个后续表格中重复所有列的所有条目。但是，在纸上实际书写真值表时，每一步都擦除整列或重写整个表格是不现实的。虽然这样会更拥挤一些，但真值表也可以这样来写：
 
@@ -330,8 +330,8 @@ description={一种为真值函项逻辑的某个或某些语句给出所有可�
 }
 
 完整真值表的规模取决于表中不同语句字母的数量。只包含一个语句字母的语句只需要两行，就像否定的特征真值表那样。即使同一个字母重复出现很多次，这一点依然成立，例如语句
-`$[(C\eiff C) \eif C] \eand \enot(C \eif C)$'。
-完整真值表只需要两行，因为只有两种可能性：“$C$”可以为真，也可以为假。这个语句的真值表如下所示：
+$[(C\eiff C) \eif C] \eand \enot(C \eif C)$。
+完整真值表只需要两行，因为只有两种可能性：$C$可以为真，也可以为假。这个语句的真值表如下所示：
 
 \begin{center}
 \begin{tabular}{c| d e e e e e e e e e e e e e e f}
@@ -342,9 +342,9 @@ $C$&$[($&$C$&\eiff&$C$&$)$&\eif&$C$&$]$&\eand&\enot&$($&$C$&\eif&$C$&$)$\\
 \end{tabular}
 \end{center}
 
-观察主逻辑算子下方的列，我们看到该语句在真值表的两行中均为假；也就是说，无论“$C$”是真还是假，该语句都是假的。它在每一个赋值下都为假。
+观察主逻辑算子下方的列，我们看到该语句在真值表的两行中均为假；也就是说，无论$C$是真还是假，该语句都是假的。它在每一个赋值下都为假。
 
-对于包含两个语句字母的语句，其完整真值表将有四行，就像特征真值表或“$(H \eand I)\eif H$”的真值表那样。
+对于包含两个语句字母的语句，其完整真值表将有四行，就像特征真值表或$(H \eand I)\eif H$的真值表那样。
 
 对于包含三个语句字母的语句，其完整真值表将有八行，例如：
 
@@ -364,7 +364,7 @@ F & F & F & F & \TTbf{F} & F & F & F
 \end{tabular}
 \end{center}
 
-从这个表格中，我们知道语句“$M\eand(N\eor P)$”可以为真也可以为假，这取决于“$M$”、“$N$”和“$P$”的真值。
+从这个表格中，我们知道语句$M\eand(N\eor P)$可以为真也可以为假，这取决于$M$、$N$和$P$的真值。
 
 包含四个不同语句字母的语句，其完整真值表需要 16 行。五个字母，32 行。六个字母，64 行。以此类推。概括地说：如果一个完整真值表有 $n$ 个不同的语句字母，那么它必须有 $2^n$ 行。
 
@@ -432,10 +432,10 @@ F & F & F & F & \TTbf{F} & F & F & F
 
 
 \begin{compactlist}
-	\item `$((A \eand B) \eand C)$' 和 `$(A \eand (B \eand C))$' 有相同的真值表
-	\item `$((A \eor B) \eor C)$' 和 `$(A \eor (B \eor C))$' 有相同的真值表
-	\item `$((A \eor B) \eand C)$' 和 `$(A \eor (B \eand C))$' 没有相同的真值表
-	\item `$((A \eif B) \eif C)$' 和 `$(A \eif (B \eif C))$' 没有相同的真值表
+	\item $((A \eand B) \eand C)$ 和 $(A \eand (B \eand C))$ 有相同的真值表
+	\item $((A \eor B) \eor C)$ 和 $(A \eor (B \eor C))$ 有相同的真值表
+	\item $((A \eor B) \eand C)$ 和 $(A \eor (B \eand C))$ 没有相同的真值表
+	\item $((A \eif B) \eif C)$ 和 $(A \eif (B \eif C))$ 没有相同的真值表
 \end{compactlist}
 
 
@@ -443,7 +443,7 @@ F & F & F & F & \TTbf{F} & F & F & F
 
 
 \begin{compactlist}
-	\item[5.] `$((A \eiff B) \eiff C)$' 和 `$(A \eiff (B \eiff C))$' 是否有相同的真值表
+	\item[5.] $((A \eiff B) \eiff C)$ 和 $(A \eiff (B \eiff C))$ 是否有相同的真值表
 \end{compactlist}
 
 \problempart
@@ -627,7 +627,7 @@ F & F & F & F & \TTbf{F} & F & F & F
 \section{重言式与矛盾式}
 在\cref{s:BasicNotions}中，我们解释了\emph{必然真}与\emph{必然谬误}。这两个概念在真值函项逻辑中都有替代物。我们将从必然真的替代物开始。
 	\factoidbox{
-		$\metav{A}$ 是\define{重言式（tautology）}\ifeff{} 它在每个赋值下都为真。
+		$\metav{A}$ 是\define{重言式（tautology）}当且仅当它在每个赋值下都为真。
 	}
 
 \newglossaryentry{tautology}
@@ -636,13 +636,13 @@ name=tautology,
 description={一个语句在其\gls{complete truth table}的主逻辑算子下方的列中全是 T；即，它在每一个\gls{valuation}下都为真的语句}
 }
 
-我们可以使用真值表来判断一个语句是否是重言式。如果一个语句在其完整真值表的每一行都为真，那么它在每一个赋值下都为真，因此它是重言式。在\cref{s:CompleteTruthTables}的例子中，“$(H \eand I) \eif H$”就是一个重言式。
+我们可以使用真值表来判断一个语句是否是重言式。如果一个语句在其完整真值表的每一行都为真，那么它在每一个赋值下都为真，因此它是重言式。在\cref{s:CompleteTruthTables}的例子中，$(H \eand I) \eif H$就是一个重言式。
 
-不过，这只是必然真理的一个\emph{替代品}。有些必然真理我们无法在真值函项逻辑中充分地符号化。一个例子是“$2 + 2 = 4$”。这\emph{必然}为真，但如果我们试图在真值函项逻辑中符号化它，最多只能用一个语句字母来表示，而没有任何语句字母是重言式。尽管如此，如果我们能够用一个本身是重言式的真值函项逻辑语句来充分地符号化某个英语句子，那么该英语句子表达的就是一个必然真理。
+不过，这只是必然真理的一个\emph{替代品}。有些必然真理我们无法在真值函项逻辑中充分地符号化。一个例子是$2 + 2 = 4$。这\emph{必然}为真，但如果我们试图在真值函项逻辑中符号化它，最多只能用一个语句字母来表示，而没有任何语句字母是重言式。尽管如此，如果我们能够用一个本身是重言式的真值函项逻辑语句来充分地符号化某个英语句子，那么该英语句子表达的就是一个必然真理。
 
 对于必然为假，我们也有一个类似的替代品：
 	\factoidbox{
-		$\metav{A}$是一个\define{矛盾式（contradiction）}（在真值函项逻辑中）\ifeff{} 它在每一个赋值下都为假。
+		$\metav{A}$是一个\define{矛盾式（contradiction）}（在真值函项逻辑中）当且仅当它在每一个赋值下都为假。
 	}
 \newglossaryentry{contradiction of TFL}
 {
@@ -651,7 +651,7 @@ description={一个语句在其\gls{complete truth table}的主逻辑算子下�
 description={一个语句在其\gls{complete truth table}的主逻辑算子下方的列中全是 F；即，它在每一个\gls{valuation}下都为假的语句}
 }
 
-我们可以使用真值表来判断一个语句是否是矛盾式。如果一个语句在其完整真值表的每一行都为假，那么它在每一个赋值下都为假，因此它是一个矛盾式。在\cref{s:CompleteTruthTables}的例子中，“$[(C\eiff C) \eif C] \eand \enot(C \eif C)$”是一个矛盾式。
+我们可以使用真值表来判断一个语句是否是矛盾式。如果一个语句在其完整真值表的每一行都为假，那么它在每一个赋值下都为假，因此它是一个矛盾式。在\cref{s:CompleteTruthTables}的例子中，$[(C\eiff C) \eif C] \eand \enot(C \eif C)$是一个矛盾式。
 
 \section{等价性}\label{sec:equivalent}
 这里有一个类似的有用概念：
@@ -665,7 +665,7 @@ description={一个语句在其\gls{complete truth table}的主逻辑算子下�
 description={语句对具有的一个性质，当且仅当这些语句的\gls{complete truth table}在两个主逻辑算子下方的列完全相同，即，这些语句在每一个赋值下都具有相同的真值}
 }
 
-实际上，我们在\cref{s:MoreBracketingConventions}中已经用到了这个概念；关键在于“$(A \eand B) \eand C$”和“$A \eand (B \eand C)$”是等价的。同样，使用真值表也很容易检验等价性。考虑语句“$\enot(P \eor Q)$”和“$\enot P \eand \enot Q$”。它们等价吗？为了找到答案，我们构造一个真值表。
+实际上，我们在\cref{s:MoreBracketingConventions}中已经用到了这个概念；关键在于$(A \eand B) \eand C$和$A \eand (B \eand C)$是等价的。同样，使用真值表也很容易检验等价性。考虑语句$\enot(P \eor Q)$和$\enot P \eand \enot Q$。它们等价吗？为了找到答案，我们构造一个真值表。
 
 
 \begin{center}
@@ -685,7 +685,7 @@ $P$&$Q$&\enot&$(P$&\eor&$Q)$&\enot&$P$&\eand&\enot&$Q$\\
 \section{可满足性}
 在\cref{s:BasicNotions}中我们说过，一组语句是共同可能的，当且仅当它们全部同时为真是可能的。我们也可以为这个概念提供一个替代品：
 	\factoidbox{
-		$\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n$是\define{共同可满足的（jointly satisfiable）}（在真值函项逻辑中）\ifeff{} 存在某个赋值使得它们全部为真。
+		$\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n$是\define{共同可满足的（jointly satisfiable）}（在真值函项逻辑中）当且仅当存在某个赋值使得它们全部为真。
 	}
 
         \newglossaryentry{satisfiability in TFL}
@@ -700,7 +700,7 @@ $P$&$Q$&\enot&$(P$&\eor&$Q)$&\enot&$P$&\eand&\enot&$Q$\\
 \section{蕴涵与有效性}
 下面这个概念与共同可满足性密切相关：
 	\factoidbox{
-		语句 $\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n$\define{蕴涵（entail）}（在真值函项逻辑中）语句 $\metav{C}$ \ifeff{} 不存在任何对相关语句字母的赋值，使 $\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n$ 中的所有语句都真而 $\metav{C}$ 为假。
+		语句 $\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n$\define{蕴涵（entail）}（在真值函项逻辑中）语句 $\metav{C}$当且仅当不存在任何对相关语句字母的赋值，使 $\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n$ 中的所有语句都真而 $\metav{C}$ 为假。
 	}
        \newglossaryentry{valid in TFL}
 {
@@ -709,7 +709,7 @@ $P$&$Q$&\enot&$(P$&\eor&$Q)$&\enot&$P$&\eand&\enot&$Q$\\
 description={当且仅当论证的\gls{complete truth table}中不存在所有\glspl{premise}为真而\gls{conclusion}为假的行，即不存在使所有前提为真而结论为假的\gls{valuation}时，论证所具有的性质}
 }
 
-同样，用真值表很容易检验这一点。要检查 “$\enot L \eif (J \eor L)$” 和 “$\enot L$” 是否蕴涵 “$J$”，我们只需检查是否存在某个赋值，使得 “$\enot L \eif (J \eor L)$” 和 “$\enot L$” 都为真，同时 “$J$” 为假。所以我们使用真值表：
+同样，用真值表很容易检验这一点。要检查$\enot L \eif (J \eor L)$和$\enot L$是否蕴涵$J$，我们只需检查是否存在某个赋值，使得$\enot L \eif (J \eor L)$和$\enot L$都为真，同时$J$为假。所以我们使用真值表：
 
 
 \begin{center}
@@ -725,7 +725,7 @@ $J$&$L$&\enot&$L$&\eif&$(J$&\eor&$L)$&\enot&$L$&$J$\\
 \end{center}
 
 
-使 “$\enot L \eif (J \eor L)$” 和 “$\enot L$” 都真的唯一一行是第二行，而这一行上 “$J$” 也为真。所以 “$\enot L \eif (J \eor L)$” 和 “$\enot L$” 蕴涵 “$J$”。
+使$\enot L \eif (J \eor L)$和$\enot L$都真的唯一一行是第二行，而这一行上$J$也为真。所以$\enot L \eif (J \eor L)$和$\enot L$蕴涵$J$。
 
 % We now make an important observation:
 % 	\factoidbox{
@@ -760,9 +760,9 @@ $J$&$L$&\enot&$L$&\eif&$(J$&\eor&$L)$&\enot&$L$&$J$\\
 \section{双十字转门}
 在本书接下来的部分，我们将频繁使用蕴涵这一概念。因此，引入一个缩写它的符号会很有帮助。我们不用再说真值函项逻辑语句 $\metav{A}_1$, $\metav{A}_2$, \dots{} 和 $\metav{A}_n$ 共同蕴涵 $\metav{C}$，而是用以下方式缩写：
 	$$\metav{A}_1, \metav{A}_2, \dots, \metav{A}_n \entails \metav{C}$$
-符号 “$\entails$” 被称为\emph{双十字转门}，因为它看起来像一个带有两条水平横杆的十字转门。
+符号$\entails$被称为\emph{双十字转门}，因为它看起来像一个带有两条水平横杆的十字转门。
 
-需要明确的是，“$\entails$” 不是真值函项逻辑的符号。相反，它是我们元语言（扩充的英语）的符号（回想一下对象语言与元语言的区别，见\cref{s:UseMention}）。所以，元语言语句：
+需要明确的是，$\entails$不是真值函项逻辑的符号。相反，它是我们元语言（扩充的英语）的符号（回想一下对象语言与元语言的区别，见\cref{s:UseMention}）。所以，元语言语句：
 	\[\metav{A}, \metav{A} \eif \metav{B} \entails \metav{B}\]
 \emph{仅}是以下元语言语句的缩写：
 
@@ -771,9 +771,9 @@ $J$&$L$&\enot&$L$&\eif&$(J$&\eor&$L)$&\enot&$L$&$J$\\
 	\end{center}
 
 
-注意，在符号 “$\entails$” 之前提到的真值函项逻辑语句的数量没有限制。实际上，我们甚至可以考虑极限情况：
+注意，在符号$\entails$之前提到的真值函项逻辑语句的数量没有限制。实际上，我们甚至可以考虑极限情况：
 	$$\entails \metav{C}$$
-这表明不存在任何赋值，使得 “$\entails$” 左边提到的所有语句都为真，而右边的所有语句（在这个例子中，即 $\metav{C}$）为假。由于在这种情况下，“$\entails$” 左边没有提到任何语句，这仅仅意味着不存在使 $\metav{C}$ 为假的赋值。换句话说，它表示每个赋值都使 $\metav{C}$ 为真。再换句话说，它表示 $\metav{C}$ 是一个重言式。同样地，要说 $\metav{A}$ 是一个矛盾式，我们可以写：
+这表明不存在任何赋值，使得$\entails$左边提到的所有语句都为真，而右边的所有语句（在这个例子中，即 $\metav{C}$）为假。由于在这种情况下，$\entails$左边没有提到任何语句，这仅仅意味着不存在使 $\metav{C}$ 为假的赋值。换句话说，它表示每个赋值都使 $\metav{C}$ 为真。再换句话说，它表示 $\metav{C}$ 是一个重言式。同样地，要说 $\metav{A}$ 是一个矛盾式，我们可以写：
 	$$\metav{A} \entails\phantom{\metav{C}}$$
 以表示没有赋值使 $\metav{A}$ 为真。
 
@@ -791,27 +791,27 @@ $$\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n \nentails\metav{C}$$
 \ldots, \metav{A}_n$ 中的所有语句为真，同时使 $\metav{C}$ 为假。注意，这并\emph{不}意味着 $\metav{A}_1,\ldots, \metav{A}_n
 \entails \enot \metav{C}$，因为可能存在\emph{其他}赋值，使得 $\metav{A}_1, \ldots, \metav{A}_n$ 中的所有语句为真，并且使 $\metav{C}$\emph{为真}。例如，$P \nentails Q$ 但同样 $P \nentails \enot Q$。
 
-\section{“$\entails$” 与 “$\eif$”}\label{entails-v-iff}
-我们现在想要比较和对比 “$\entails$” 和 “$\eif$”。
+\section{$\entails$与$\eif$}\label{entails-v-iff}
+我们现在想要比较和对比$\entails$和$\eif$。
 
-注意：$\metav{A} \entails \metav{C}$ \ifeff{} 不存在任何对语句字母的赋值使得 $\metav{A}$ 为真而 $\metav{C}$ 为假。
+注意：$\metav{A} \entails \metav{C}$当且仅当不存在任何对语句字母的赋值使得 $\metav{A}$ 为真而 $\metav{C}$ 为假。
 
-注意：$\metav{A} \eif \metav{C}$ 是重言式 \ifeff{} 不存在任何对语句字母的赋值使得 $\metav{A} \eif \metav{C}$ 为假。由于条件仅在前件为真且后件为假时才为假，$\metav{A} \eif \metav{C}$ 是重言式 \ifeff{} 不存在任何赋值使得 $\metav{A}$ 为真而 $\metav{C}$ 为假。
+注意：$\metav{A} \eif \metav{C}$ 是重言式当且仅当不存在任何对语句字母的赋值使得 $\metav{A} \eif \metav{C}$ 为假。由于条件仅在前件为真且后件为假时才为假，$\metav{A} \eif \metav{C}$ 是重言式当且仅当不存在任何赋值使得 $\metav{A}$ 为真而 $\metav{C}$ 为假。
 
-结合这两个观察，我们看到 $\metav{A} \eif \metav{C}$ 是重言式 \ifeff{} $\metav{A} \entails \metav{C}$。但是，``$\entails$'' 和 ``$\eif$'' 之间有一个非常非常重要的区别：
+结合这两个观察，我们看到 $\metav{A} \eif \metav{C}$ 是重言式当且仅当$\metav{A} \entails \metav{C}$。但是，$\entails$ 和 $\eif$ 之间有一个非常非常重要的区别：
 	\factoidbox{
 
 
 \begin{itemize}
-			\item ``$\eif$'' 是真值函项逻辑的联结词。
-			\item ``$\entails$'' 是扩展英语的符号。
+			\item $\eif$ 是真值函项逻辑的联结词。
+			\item $\entails$ 是元语言（扩展了的英语）的符号。
 		\end{itemize}
 
 
 	}
-确实，当 ``$\eif$'' 两侧是真值函项逻辑语句时，结果是一个更长的真值函项逻辑语句。相比之下，当我们使用 ``$\entails$'' 时，我们形成了一个元语言句子，它\emph{提到}了周围的真值函项逻辑语句。
+确实，当 $\eif$ 两侧是真值函项逻辑语句时，结果是一个更长的真值函项逻辑语句。相比之下，当我们使用 $\entails$ 时，我们形成了一个元语言句子，它\emph{提到}了周围的真值函项逻辑语句。
 
-英语单词 ``implies'' 常被用作 ``entails'' 的同义词，即 ``$\entails$''。有些逻辑学家\emph{也}用它表示条件，即 ``$\eif$''。由于这容易导致上文警告过的混淆，我们尽可能避免使用 ``implies''。（每当使用时，它的意思都是 ``entails''。）
+英语单词“implies”常被用作“entails”的同义词，即 $\entails$。有些逻辑学家\emph{也}用它表示条件，即 $\eif$。由于这容易导致上文警告过的混淆，我们尽可能避免使用“implies”。（每当使用时，它的意思都是“entails”。）
 
 \practiceproblems
 \problempart
@@ -1037,7 +1037,7 @@ $$\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n \nentails\metav{C}$$
 	\end{earg}
 
 
-要在真值函项逻辑中符号化这个论证，我们可能需要用两个不同的语句字母——也许 ``$F$'' 和 ``$T$''——分别表示前提和结论。显然，``$F$'' 并不蕴涵 ``$T$''。但这个自然语言论证显然是有效的！
+要在真值函项逻辑中符号化这个论证，我们可能需要用两个不同的语句字母——也许 $F$ 和 $T$——分别表示前提和结论。显然，$F$ 并不蕴涵 $T$。但这个自然语言论证显然是有效的！
 
 其次，考虑这个句子：
 
@@ -1047,19 +1047,19 @@ $$\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n \nentails\metav{C}$$
 	\end{enumerate}
 
 
-要在真值函项逻辑中符号化这个句子，我们可能会给出类似 ``$\enot J \eand \enot \enot J$'' 的结果。这是一个矛盾式（可以用真值表验证这一点），但\cref*{n:JanBald}本身似乎并不矛盾：我们或许可以欣然补充“Jan 处于秃头的边界状态”！
+要在真值函项逻辑中符号化这个句子，我们可能会给出类似 $\enot J \eand \enot \enot J$ 的结果。这是一个矛盾式（可以用真值表验证这一点），但\cref*{n:JanBald}本身似乎并不矛盾：我们或许可以欣然补充“Jan 处于秃头的边界状态”！
 
 第三，考虑下面的句子：
 
 
 \begin{enumerate}
-	\item\label{n:GodParadox} 并非如果上帝存在，上帝就会回应恶意的祈祷。
+	\item\label{n:GodParadox} 事实并不是如果上帝存在，上帝就会回应恶意的祈祷。
 \end{enumerate}
 
 
-在真值函项逻辑中符号化这个句子，我们会给出类似 ``$\enot (G \eif M)$'' 的结果。而 ``$\enot (G \eif M)$'' 蕴涵 ``$G$''（同样可以用真值表验证）。因此，如果我们用真值函项逻辑来符号化\cref*{n:GodParadox}，它似乎就蕴涵着上帝存在。但这很奇怪：哪怕是无神论者，显然也可以接受\cref*{n:GodParadox}而不自相矛盾！
+在真值函项逻辑中符号化这个句子，我们会给出类似 $\enot (G \eif M)$ 的结果。而 $\enot (G \eif M)$ 蕴涵 $G$（同样可以用真值表验证）。因此，如果我们用真值函项逻辑来符号化\cref*{n:GodParadox}，它似乎就蕴涵着上帝存在。但这很奇怪：哪怕是无神论者，显然也可以接受\cref*{n:GodParadox}而不自相矛盾！
 
-这里的一个启示是，将\cref*{n:GodParadox}符号化为 ``$\enot(G \eif M)$'' 并不能表达我们想要的意思。也许我们应该把\cref*{n:GodParadox}改述为：
+这里的一个启示是，将\cref*{n:GodParadox}符号化为 $\enot(G \eif M)$ 并不能表达我们想要的意思。也许我们应该把\cref*{n:GodParadox}改述为：
 
 
 \begin{enumerate}
@@ -1067,13 +1067,13 @@ $$\metav{A}_1, \metav{A}_2, \ldots, \metav{A}_n \nentails\metav{C}$$
 \end{enumerate}
 
 
-并把\cref*{n:GodParadox2}符号化为 ``$G \eif \enot M$''。现在，如果无神论者是对的，世上没有上帝，那么 ``$G$'' 为假，因此 ``$G \eif \enot M$'' 为真，难题就消失了。然而，如果 ``$G$'' 为假，``$G \eif M$''，即“如果上帝存在，上帝会回应恶意的祈祷”，也\emph{是}真的！
+并把\cref*{n:GodParadox2}符号化为 $G \eif \enot M$。现在，如果无神论者是对的，世上没有上帝，那么 $G$ 为假，因此 $G \eif \enot M$ 为真，难题就消失了。然而，如果 $G$ 为假，$G \eif M$，即“如果上帝存在，上帝会回应恶意的祈祷”，也\emph{是}真的！
 
 这四个例子以不同的方式突显了真值函项逻辑、用真值函项逻辑对自然语言进行符号化，以及我们基于真值表设计的检验方法的一些局限。我们的第一个例子表明，真值函项逻辑的表达力不足以符号化我们可能想要表达的所有内容，即使对尽可能好的符号化，也无法对其应用我们的逻辑工具。我们稍后将看到（\cref{sec.identity}），在表达力更强的一阶逻辑语言中，我们\emph{可以}恰当地符号化“Daisy 有四条腿”，届时我们为一阶逻辑设计的检验方法就会适用（并给出正确答案）。
 
-在\cref{n:JanBald}中，我们同样遇到了一个例子，表明在真值函项逻辑中，直接的符号化并不完全适用。在真值函项逻辑中我们能做到的最好方案，是用它自己的语句字母，比如~`$N$'（这与我们的一贯做法相悖），来符号化 “Jan is not bald”。但这同样行不通。例如，我们就会把 “Jan is both bald and isn't” 符号化为 `$J \eand N$'。但 “Jan is both bald and isn't” 可以说是一个自相矛盾，而我们改写的符号 `$J \eand N$' 却并非如此。有些逻辑学家提出，对于像 “Jan is bald” 这样存在边界情况的句子，我们必须调整语义，并允许符号化它的语句字母~`$J$' 可以取真和假之外的其他真值。但这远未被普遍接受。
+在\cref{n:JanBald}中，我们同样遇到了一个例子，表明在真值函项逻辑中，直接的符号化并不完全适用。在真值函项逻辑中我们能做到的最好方案，是用它自己的语句字母，比如~$N$（这与我们的一贯做法相悖），来符号化“Jan 不是秃头”。但这同样行不通。例如，我们就会把“Jan 既非秃头也非不秃头”符号化为 $J \eand N$。但“Jan 既非秃头也非不秃头”可以说是一个自相矛盾，而我们改写的符号 $J \eand N$ 却并非如此。有些逻辑学家提出，对于像“Jan 是秃头”这样存在边界情况的句子，我们必须调整语义，并允许符号化它的语句字母~$J$ 可以取真和假之外的其他真值。但这远未被普遍接受。
 
-\Cref{n:GodParadox}同样表明，符号化常常是棘手的，对英语句子的直接符号化有时并不能捕捉到其预期的真值条件。但即使是我们改进后的\cref{n:GodParadox2}及其符号化 `$G \eif \enot M$'，结果也不够好。我们在这里遇到的现象，就是所谓的\emph{实质条件句悖论}之一。这个悖论在于，像 `$G \eif M$' 和 `$G \eif \enot M$' 这样的实质条件句，只要它们的前件~`$G$' 为假，它们就为真，尽管直觉上，“If God exists, She answers malevolent prayers”和“If God exists, She does\emph{not}answer malevolent prayers”这两句话不应同时为真。这表明，真值函项逻辑的联结词~`\eif' 并没有恰当地捕捉到这两个例子中的 “if \dots then”。真值函项逻辑的真值函项性在此处确实是一个局限。解决办法是将此处的 “if \dots then” 视为虚拟条件句（参见\cref{s:IndicativeSubjunctive}），但真值函项逻辑无法捕捉它们。\footnote{逻辑学家已经设计出能更好地处理虚拟条件句的逻辑系统。它们被称为“条件句逻辑”或“反事实逻辑”。}
+\Cref{n:GodParadox}同样表明，符号化常常是棘手的，对英语句子的直接符号化有时并不能捕捉到其预期的真值条件。但即使是我们改进后的\cref{n:GodParadox2}及其符号化 $G \eif \enot M$，结果也不够好。我们在这里遇到的现象，就是所谓的\emph{实质条件句悖论}之一。这个悖论在于，像 $G \eif M$ 和 $G \eif \enot M$ 这样的实质条件句，只要它们的前件~$G$ 为假，它们就为真，尽管直觉上，“如果上帝存在，上帝不会回应恶意的祈祷”和“如果上帝存在，上帝\textbf{不}会回应恶意的祈祷”这两句话不应同时为真。这表明，真值函项逻辑的联结词~“\eif”并没有恰当地捕捉到这两个例子中的“如果 \dots 就”。真值函项逻辑的真值函项性在此处确实是一个局限。解决办法是将此处的“如果 \dots 就”视为虚拟条件句（参见\cref{s:IndicativeSubjunctive}），但真值函项逻辑无法捕捉它们。\footnote{逻辑学家已经设计出能更好地处理虚拟条件句的逻辑系统。它们被称为“条件句逻辑”或“反事实逻辑”。}
 
 Jan 是否秃头的例子，引发了一个普遍性问题：当我们处理\emph{模糊}话语时，应该使用什么逻辑。无神论者的例子则提出了如何应对（所谓的）\emph{实质条件句悖论}的问题。本书的部分目的，正是为你提供探索这些\emph{哲学逻辑}问题的工具。但我们必须先学会走才能跑；我们必须先熟练使用真值函项逻辑，然后才能充分讨论它的局限，并考虑其他选择。
 
@@ -1140,7 +1140,7 @@ $P$&$Q$& $((P$&\eif&$Q$)&\eif&$P)$&\eif&$P$\\
 \end{center}
 
 
-因此，`$((P \eif Q) \eif P) \eif P$' 是一个重言式。事实上，它是\emph{皮尔士定律}的一个实例，以查尔斯·桑德斯·皮尔士命名。
+因此，$((P \eif Q) \eif P) \eif P$ 是一个重言式。事实上，它是\emph{Peirce 定律}的一个实例，以 Charles Sanders Peirce 命名。
 
 \section{检验有效性与蕴涵}
 在\cref{s:SemanticConcepts}中，我们看到了如何用真值表来检验有效性。在那种检验中，我们寻找的是\emph{坏行}：即所有前提都为真而结论为假的行。须知：
@@ -1277,7 +1277,7 @@ F & F & F &  &  & & \TTbf{T} & T& \\
 
 然而，要证明一个语句\emph{不是}重言式，我们只需要一行：使该语句为假的一行。因此，要证明某个语句不是重言式，我们只需提供一个使其为假的赋值——即真值表中的一行——就够了。
 
-假设我们想证明语句“$(U \eand T) \eif (S \eand W)$”\emph{不是}一个重言式。我们建立一个\define{部分真值表（partial truth table）}：
+假设我们想证明语句$(U \eand T) \eif (S \eand W)$\emph{不是}一个重言式。我们建立一个\define{部分真值表（partial truth table）}：
 
 
 \begin{center}
@@ -1303,7 +1303,7 @@ $S$&$T$&$U$&$W$&$(U$&\eand&$T)$&\eif    &$(S$&\eand&$W)$\\
 \end{center}
 
 
-为了让“$(U\eand T)$”为真，“$U$”和“$T$”必须都为真。
+为了让$(U\eand T)$为真，$U$和$T$必须都为真。
 
 
 \begin{center}
@@ -1315,7 +1315,7 @@ $S$&$T$&$U$&$W$&$(U$&\eand&$T)$&\eif    &$(S$&\eand&$W)$\\
 \end{center}
 
 
-现在，我们只需要让“$(S\eand W)$”为假。要做到这一点，我们需要让“$S$”和“$W$”中至少一个为假。如果我们愿意，也可以让两者都为假。关键在于，整个语句在这一行必须为假。任意做出一个决定，我们按以下方式完成这个表格：
+现在，我们只需要让$(S\eand W)$为假。要做到这一点，我们需要让$S$和$W$中至少一个为假。如果我们愿意，也可以让两者都为假。关键在于，整个语句在这一行必须为假。任意做出一个决定，我们按以下方式完成这个表格：
 
 
 \begin{center}
@@ -1327,7 +1327,7 @@ $S$&$T$&$U$&$W$&$(U$&\eand&$T)$&\eif    &$(S$&\eand&$W)$\\
 \end{center}
 
 
-现在我们有了一个部分真值表，它表明“$(U \eand T) \eif (S \eand W)$”不是一个重言式。换一种说法，我们已经展示了存在一个使“$(U \eand T) \eif (S \eand W)$”为假的赋值，即那个使“$S$”为假、“$T$”为真、“$U$”为真且“$W$”为假的赋值。
+现在我们有了一个部分真值表，它表明$(U \eand T) \eif (S \eand W)$不是一个重言式。换一种说法，我们已经展示了存在一个使$(U \eand T) \eif (S \eand W)$为假的赋值，即那个使$S$为假、$T$为真、$U$为真且$W$为假的赋值。
 
 \paragraph{矛盾式}
 在真值函项逻辑中，要证明某个语句是矛盾式，需要一个完整的真值表：我们需要证明不存在使该语句为真的赋值；也就是说，我们需要证明该语句在真值表的每一行都为假。
@@ -1344,7 +1344,7 @@ $S$&$T$&$U$&$W$&$(U$&\eand&$T)$&\eif    &$(S$&\eand&$W)$\\
 \end{center}
 
 
-要让这个语句为真，只需确保其前件为假就够了。因为前件是一个合取，我们可以只让其中一个合取支为假。任意做一个选择，我们令“$U$”为假；然后我们可以给其他语句字母赋任意真值。
+要让这个语句为真，只需确保其前件为假就够了。因为前件是一个合取，我们可以只让其中一个合取支为假。任意做一个选择，我们令$U$为假；然后我们可以给其他语句字母赋任意真值。
 
 
 \begin{center}

@@ -48,7 +48,7 @@ Symbolize each argument in FOL.
 \label{pr.FOLvegetarians}
 Using the following symbolization key:
 \begin{ekey}
-\item[\text{domain}] people
+\item[\text{论域}] people
 \item[\atom{K}{x}] \gap{x} knows the combination to the safe
 \item[\atom{S}{x}] \gap{x} is a spy
 \item[\atom{V}{x}] \gap{x} is a vegetarian
@@ -79,7 +79,7 @@ symbolize the following sentences in FOL:
 \problempart\label{pr.FOLalligators}
 Using this symbolization key:
 \begin{ekey}
-\item[\text{domain}] all animals
+\item[\text{论域}] all animals
 \item[\atom{A}{x}] \gap{x} is an alligator
 \item[\atom{M}{x}] \gap{x} is a monkey
 \item[\atom{R}{x}] \gap{x} is a reptile
@@ -122,7 +122,7 @@ For each argument, write a symbolization key and symbolize the argument in FOL.
 \item Willard is a logician. All logicians wear funny hats. So Willard wears a funny hat
 \myanswer{
 \begin{ekey}
-\item[\text{domain}] people
+\item[\text{论域}] people
 \item[\atom{L}{x}] \gap{x} is a logician
 \item[\atom{H}{x}] \gap{x} wears a funny hat
 \item[i] Willard
@@ -131,7 +131,7 @@ $\atom{L}{i}, \forall x (\atom{L}{x} \eif \atom{H}{x}) \therefore \atom{H}{i}$}
 \item Nothing on my desk escapes my attention. There is a computer on my desk. As such, there is a computer that does not escape my attention.
 \myanswer{
 \begin{ekey}
-\item[\text{domain}] physical things
+\item[\text{论域}] physical things
 \item[\atom{D}{x}] \gap{x} is on my desk
 \item[\atom{E}{x}] \gap{x} escapes my attention
 \item[\atom{C}{x}] \gap{x} is a computer
@@ -140,7 +140,7 @@ $\forall x (\atom{D}{x} \eif \enot \atom{E}{x}), \exists x(\atom{D}{x} \eand \at
 \item All my dreams are black and white. Old TV shows are in black and white. Therefore, some of my dreams are old TV shows.
 \myanswer{
 \begin{ekey}
-\item[\text{domain}] episodes (psychological and televised)
+\item[\text{论域}] episodes (psychological and televised)
 \item[\atom{D}{x}] \gap{x} is one of my dreams
 \item[\atom{B}{x}] \gap{x} is in black and white
 \item[\atom{O}{x}] \gap{x} is an old TV show
@@ -149,7 +149,7 @@ $\forall x (\atom{D}{x} \eif \atom{B}{x}), \forall x (\atom{O}{x} \eif \atom{B}{
 \item Neither Holmes nor Watson has been to Australia. A person could see a kangaroo only if they had been to Australia or to a zoo. Although Watson has not seen a kangaroo, Holmes has. Therefore, Holmes has been to a zoo.
 \myanswer{
 \begin{ekey}
-\item[\text{domain}] people
+\item[\text{论域}] people
 \item[\atom{A}{x}] \gap{x} has been to Australia
 \item[\atom{K}{x}] \gap{x} has seen a kangaroo
 \item[\atom{Z}{x}] \gap{x} has been to a zoo
@@ -160,14 +160,14 @@ $\enot \atom{A}{h} \eand \enot \atom{A}{a}, \forall x(\atom{K}{x} \eif (\atom{A}
 \item No one expects the Spanish Inquisition. No one knows the troubles I've seen. Therefore, anyone who expects the Spanish Inquisition knows the troubles I've seen.
 \myanswer{
 \begin{ekey}
-\item[\text{domain}] people
+\item[\text{论域}] people
 \item[\atom{S}{x}] \gap{x} expects the Spanish Inquisition
 \item[\atom{T}{x}] \gap{x} knows the troubles I've seen
 \end{ekey}
 $\forall x\enot \atom{S}{x}, \forall x \enot \atom{T}{x} \therefore \forall x (\atom{S}{x} \eif \atom{T}{x})$}
 \item All babies are illogical. Nobody who is illogical can manage a crocodile. Berthold is a baby. Therefore, Berthold is unable to manage a crocodile.
 \myanswer{\begin{ekey}
-\item[\text{domain}] people
+\item[\text{论域}] people
 \item[\atom{B}{x}] \gap{x} is a baby
 \item[\atom{I}{x}] \gap{x} is illogical
 \item[\atom{C}{x}] \gap{x} can manage a crocodile
@@ -180,7 +180,7 @@ $\forall x (\atom{B}{x} \eif \atom{I}{x}), \forall x (\atom{I}{x} \eif \enot \at
 \problempart
 Using this symbolization key:
 \begin{ekey}
-\item[\text{domain}] all animals
+\item[\text{论域}] all animals
 \item[\atom{A}{x}] \gap{x} is an alligator
 \item[\atom{M}{x}] \gap{x} is a monkey
 \item[\atom{R}{x}] \gap{x} is a reptile
@@ -216,7 +216,7 @@ symbolize each of the following sentences in FOL:
 \problempart 
 Using the following symbolization key:
 \begin{ekey}
-\item[\text{domain}] all animals
+\item[\text{论域}] all animals
 \item[\atom{D}{x}] \gap{x} is a dog
 \item[\atom{S}{x}] \gap{x} likes samurai movies
 \item[\atom{L}{x,y}] \gap{x} is larger than \gap{y}
@@ -268,7 +268,7 @@ Comment: I have assumed that `larger than any dog' here means `larger than every
 \label{pr.QLcandies}
 Using the symbolization key given, translate each English-language sentence into FOL.
 \begin{ekey}
-\item[\text{domain}] candies
+\item[\text{论域}] candies
 \item[\atom{C}{x}] \gap{x} has chocolate in it
 \item[\atom{M}{x}] \gap{x} has marzipan in it
 \item[\atom{S}{x}] \gap{x} has sugar in it
@@ -291,7 +291,7 @@ Using the symbolization key given, translate each English-language sentence into
 \problempart
 Using the following symbolization key:
 \begin{ekey}
-\item[\text{domain}] people and dishes at a potluck
+\item[\text{论域}] people and dishes at a potluck
 \item[\atom{R}{x}] \gap{x} has run out
 \item[\atom{T}{x}] \gap{x} is on the table
 \item[\atom{F}{x}] \gap{x} is food
@@ -327,7 +327,7 @@ symbolize the following English sentences in FOL:
 \label{pr.FOLballet}
 Using the following symbolization key:
 \begin{ekey}
-\item[\text{domain}] people
+\item[\text{论域}] people
 \item[\atom{D}{x}] \gap{x} dances ballet
 \item[\atom{F}{x}] \gap{x} is female
 \item[\atom{M}{x}] \gap{x} is male
@@ -371,7 +371,7 @@ symbolize the following sentences in FOL:
 %\label{pr.FOLcandies}
 %Using the following symbolization key:
 %\begin{ekey}
-%\item[\text{domain}] candies
+%\item[\text{论域}] candies
 %\item[\atom{C}{x}] \gap{x} has chocolate in it
 %\item[\atom{M}{x}] \gap{x} has marzipan in it
 %\item[\atom{S}{x}] \gap{x} has sugar in it
@@ -449,7 +449,7 @@ Identify which variables are bound and which are free.
 \problempart
 Using the following symbolization key:
 \begin{ekey}
-\item[\text{domain}] people
+\item[\text{论域}] people
 \item[\atom{K}{x}] \gap{x} knows the combination to the safe
 \item[\atom{S}{x}] \gap{x} is a spy
 \item[\atom{V}{x}] \gap{x} is a vegetarian
@@ -482,7 +482,7 @@ Comment: the scope of negation is potentially ambiguous here; I have read it as 
 \label{pr.FOLcards}
 Using the following symbolization key:
 \begin{ekey}
-\item[\text{domain}] cards in a standard deck
+\item[\text{论域}] cards in a standard deck
 \item[\atom{B}{x}] \gap{x} is black
 \item[\atom{C}{x}] \gap{x} is a club
 \item[\atom{D}{x}] \gap{x} is a deuce
@@ -530,7 +530,7 @@ Comment: if there is not exactly one deuce of clubs, then the above sentence is 
 
 \problempart Using the following symbolization key:
 \begin{ekey}
-\item[\text{domain}] animals in the world
+\item[\text{论域}] animals in the world
 \item[\atom{B}{x}] \gap{x} is in Farmer Brown's field
 \item[\atom{H}{x}] \gap{x} is a horse
 \item[\atom{P}{x}] \gap{x} is a Pegasus
@@ -575,7 +575,7 @@ Each of the following sentences is ambiguous. Provide a symbolization key for ea
 \begin{compactlist}
 	\item No one likes a quitter.
 	\myanswer{\begin{ekey}
-		\item[\text{domain}] people
+		\item[\text{论域}] people
 		\item[\atom{Q}{x}] \gap{x} is a quitter
 		\item[\atom{L}{x,y}] \gap{x} likes \gap{y}
 	\end{ekey}}
@@ -585,7 +585,7 @@ Each of the following sentences is ambiguous. Provide a symbolization key for ea
 	specific quitter is disliked by everyone)}
 	\item CSI found only red hair at the scene.
 	\myanswer{\begin{ekey}
-		\item[\text{domain}] items of evidence
+		\item[\text{论域}] items of evidence
 		\item[\atom{R}{x}] \gap{x} is red
 		\item[\atom{H}{x}] \gap{x} is hair
 		\item[\atom{F}{x,y}] \gap{x} found \gap{y} (at the scene)
@@ -598,7 +598,7 @@ Each of the following sentences is ambiguous. Provide a symbolization key for ea
 	aren't hair)}
 	\item Smith's murderer hasn't been arrested.
 	\myanswer{\begin{ekey}
-		\item[\text{domain}] people
+		\item[\text{论域}] people
 		\item[\atom{A}{x}] \gap{x} has been arrested
 		\item[\atom{M}{x,y}] \gap{x} murdered \gap{y}
 		\item[m] Smith

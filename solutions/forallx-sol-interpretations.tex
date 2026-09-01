@@ -101,7 +101,7 @@ Determine whether each of the following sentences is true or false in that inter
 \problempart
 Given the following interpretation:
 \begin{ekey}
-	\item[\text{domain}] people
+	\item[\text{论域}] people
 	\item[\atom{W}{x}] \gap{x} is a woman (or girl)
 	\item[\atom{M}{x}] \gap{x} is a man (or boy)
 	\item[\atom{Y}{x,y}] \gap{x} is younger than \gap{y}
@@ -146,14 +146,14 @@ Show that each of the following is neither a validity nor a contradiction:
 
 \myanswer{The sentence is true in this model:
 \begin{ekey}
-	\item[\text{domain}] Stan
+	\item[\text{论域}] Stan
 	\item[D(x)] Stan
 	\item[a] Stan
 	\item[b] Stan
 \end{ekey}
 And it is false in this model:
 \begin{ekey}
-	\item[\text{domain}] Stan
+	\item[\text{论域}] Stan
 	\item[D(x)] % $\emptyset$
 	\item[a] Stan
 	\item[b] Stan
@@ -162,13 +162,13 @@ And it is false in this model:
 
 \myanswer{The sentence is true in this model:
 \begin{ekey}
-	\item[\text{domain}] Stan
+	\item[\text{论域}] Stan
 	\item[T(x,y)] \ntuple{Stan, Stan}
 	\item[h] Stan
 \end{ekey}
 And it is false in this model:
 \begin{ekey}
-	\item[\text{domain}] Stan
+	\item[\text{论域}] Stan
 	\item[T(x,y)] % $\emptyset$
 	\item[h] Stan
 \end{ekey}}
@@ -177,13 +177,13 @@ And it is false in this model:
 
 \myanswer{	The sentence is true in this model:
 \begin{ekey}
-	\item[\text{domain}] Stan, Ollie
+	\item[\text{论域}] Stan, Ollie
 	\item[P(x)] Stan
 	\item[m] Stan
 \end{ekey}
 And it is false in this model:
 \begin{ekey}
-	\item[\text{domain}] Stan
+	\item[\text{论域}] Stan
 	\item[P(x)] % $\emptyset$
 	\item[m] Stan
 \end{ekey}}
@@ -202,7 +202,7 @@ Show that the following pairs of sentences are not logically equivalent.
 
 \myanswer{Making the first sentence true and the second false:
 \begin{ekey}
-	\item[\text{domain}] $0$
+	\item[\text{论域}] $0$
 	\item[J(x)] $0$
 	\item[K(x)] % $\emptyset$
 	\item[a] $0$
@@ -211,7 +211,7 @@ Show that the following pairs of sentences are not logically equivalent.
 
 \myanswer{Making the first sentence true and the second false:
 \begin{ekey}
-	\item[\text{domain}] $0$, $1$
+	\item[\text{论域}] $0$, $1$
 	\item[J(x)] $0$
 	\item[m] $1$
 \end{ekey}}
@@ -219,14 +219,14 @@ Show that the following pairs of sentences are not logically equivalent.
 
 \myanswer{Making the first sentence false and the second true:
 \begin{ekey}
-	\item[\text{domain}] $0$, $1$
+	\item[\text{论域}] $0$, $1$
 	\item[R(x,y)] \ntuple{$0$,$0$}
 \end{ekey}}
 \item $\exists x\,\atom{P}{x} \eif \atom{Q}{c}$, $\exists x (\atom{P}{x} \eif \atom{Q}{c})$
 
 \myanswer{Making the first sentence false and the second true:
 \begin{ekey}
-	\item[\text{domain}] $0$, $1$
+	\item[\text{论域}] $0$, $1$
 	\item[P(x)] $0$
 	\item[Q(x)] % $\emptyset$
 	\item[c] $0$
@@ -235,7 +235,7 @@ Show that the following pairs of sentences are not logically equivalent.
 
 \myanswer{Making the first sentence true and the second false:
 \begin{ekey}
-	\item[\text{domain}] $0$
+	\item[\text{论域}] $0$
 	\item[P(x)] % $\emptyset$
 	\item[Q(x)] % $\emptyset$
 \end{ekey}}
@@ -243,7 +243,7 @@ Show that the following pairs of sentences are not logically equivalent.
 
 \myanswer{Making the first sentence false and the second true:
 \begin{ekey}
-	\item[\text{domain}] $0$
+	\item[\text{论域}] $0$
 	\item[P(x)] % $\emptyset$
 	\item[Q(x)] $0$
 \end{ekey}}
@@ -251,7 +251,7 @@ Show that the following pairs of sentences are not logically equivalent.
 
 \myanswer{Making the first sentence true and the second false:
 \begin{ekey}
-	\item[\text{domain}] $0$
+	\item[\text{论域}] $0$
 	\item[P(x)] % $\emptyset$
 	\item[Q(x)] $0$
 \end{ekey}}
@@ -259,14 +259,14 @@ Show that the following pairs of sentences are not logically equivalent.
 
 \myanswer{Making the first sentence true and the second false:
 \begin{ekey}
-	\item[\text{domain}] $0$, $1$
+	\item[\text{论域}] $0$, $1$
 	\item[R(x,y)] \ntuple{$0$, $1$}, \ntuple{$1$, $0$}
 \end{ekey}}
 \item $\forall x\exists y\,\atom{R}{x,y}$, $\forall x\exists y\,\atom{R}{y,x}$
 
 \myanswer{Making the first sentence false and the second true:
 \begin{ekey}
-	\item[\text{domain}] $0$, $1$
+	\item[\text{论域}] $0$, $1$
 	\item[R(x,y)] \ntuple{$0$, $0$}, \ntuple{$0$, $1$}
 \end{ekey}}
 \end{compactlist}
@@ -289,7 +289,7 @@ Show that the following sentences are jointly satisfiable:
 
 \myanswer{The sentences are both true in this interpretation:
 \begin{ekey}
-	\item[\text{domain}] Harry, Sally
+	\item[\text{论域}] Harry, Sally
 	\item[R(x,y)]\ntuple{Sally, Harry}
 	\item[a] Harry
 	\end{ekey}}
@@ -341,6 +341,6 @@ true:
 	& \forall x\forall y((\atom{R}{x,y} \eand \atom{R}{y,x}) \eif x=y)
 \end{align*}
 \myanswer{\begin{ekey}
-	\item[\text{domain}] $0$
+	\item[\text{论域}] $0$
 	\item[\atom{R}{x,y}] \ntuple{$0$, $0$}
 \end{ekey}}

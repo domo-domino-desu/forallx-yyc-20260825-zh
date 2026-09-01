@@ -36,11 +36,11 @@ $$L, A \therefore F$$
 
 一阶逻辑的细节将在本章中逐步解释，但以下是分裂原子的基本思路。
 
-首先是\emph{名称}。在一阶逻辑中，我们用小写斜体字母来表示名称。例如，我们可以让“$b$”代表 Bertie，或者让“$i$”代表 Willard。
+首先是\emph{名称}。在一阶逻辑中，我们用小写斜体字母来表示名称。例如，我们可以让$b$代表 Bertie，或者让$i$代表 Willard。
 
-其次是\emph{谓词}。英语谓词是像“\blank\ 是一条狗”或“\blank\ 是逻辑学家”这样的表达式。它们本身不是完整的句子。要形成一个完整的句子，我们需要把这个空填上。我们需要说一些诸如“Bertie 是一条狗”或“Willard 是逻辑学家”的话。在一阶逻辑中，我们用大写斜体字母来表示谓词。例如，我们可以让一阶逻辑谓词“$D$”符号化英语谓词“\blank\ 是一条狗”。那么表达式“$\atom{D}{b}$”就是一阶逻辑中的一个语句，它符号化了英语句子“Bertie 是一条狗”。同样，我们可以让一阶逻辑谓词“$L$”符号化英语谓词“\blank\ 是逻辑学家”。那么表达式“$\atom{L}{i}$”就会符号化英语句子“Willard 是逻辑学家”。
+其次是\emph{谓词}。英语谓词是像“\blank\ 是一条狗”或“\blank\ 是逻辑学家”这样的表达式。它们本身不是完整的句子。要形成一个完整的句子，我们需要把这个空填上。我们需要说一些诸如“Bertie 是一条狗”或“Willard 是逻辑学家”的话。在一阶逻辑中，我们用大写斜体字母来表示谓词。例如，我们可以让一阶逻辑谓词$D$符号化英语谓词“\blank\ 是一条狗”。那么表达式$\atom{D}{b}$就是一阶逻辑中的一个语句，它符号化了英语句子“Bertie 是一条狗”。同样，我们可以让一阶逻辑谓词$L$符号化英语谓词“\blank\ 是逻辑学家”。那么表达式$\atom{L}{i}$就会符号化英语句子“Willard 是逻辑学家”。
 
-第三是\emph{量词}。例如，“$\exists$”将大致表达“至少存在一个……”。因此，我们可以用一阶逻辑语句“$\exists x\, \atom{D}{x}$”来符号化英语句子“存在一条狗”，这个一阶逻辑语句我们可以读作“至少存在一个事物 $x$，使得 $x$ 是一条狗”。
+第三是\emph{量词}。例如，$\exists$将大致表达“至少存在一个……”。因此，我们可以用一阶逻辑语句$\exists x\, \atom{D}{x}$来符号化英语句子“存在一条狗”，这个一阶逻辑语句我们可以读作“至少存在一个事物 $x$，使得 $x$ 是一条狗”。
 
 以上是总体思路，但一阶逻辑比真值函项逻辑精细得多，所以我们要慢慢来。
 
@@ -49,7 +49,7 @@ $$L, A \therefore F$$
 
 \emph{专名}是一种特别重要的单称词项。这些是直接指称个体而不对其进行描述的表达式。名称“Emerson”是一个专名，单凭这个名称你不会了解关于 Emerson 的任何信息。当然，有些名字传统上用于男孩，有些传统上用于女孩。如果“Hilary”被用作一个单称词项，你可能会猜测它指称一位女性。不过，你也可能猜错。事实上，仅从这个名称并不能必然意味着被指称的对象甚至是一个人：对于 Hilary 而言，仅仅从名称看，它也有可能是一只长颈鹿。
 
-在一阶逻辑中，我们的\define{名称（names）}是小写字母“$a$”到“$r$”。如果需要多次使用某个字母，我们可以加上下标。所以下面是一些一阶逻辑中的单称词项：
+在一阶逻辑中，我们的\define{名称（names）}是小写字母$a$到$r$。如果需要多次使用某个字母，我们可以加上下标。所以下面是一些一阶逻辑中的单称词项：
 	$$a,b,c,\ldots, r, a_1, f_{32}, j_{390}, m_{12}$$ 这些应该被理解为类似于英语中的专名，但有一个区别。“Tim Button”是一个专名，但有不止一个人叫这个名字。在英语中，我们容忍这种歧义，依靠语境来辨别“Tim Button”指的是本书作者，而不是其他某个 Tim 的事实。在一阶逻辑中，我们不能容忍任何此类歧义。每个名称必须指称\emph{恰好}一个对象。然而，与英语一样，在一阶逻辑中，不同的名称可以指称同一个对象，也可能存在没有名称指称的对象。
 
 \newglossaryentry{name}{
@@ -72,7 +72,7 @@ $$L, A \therefore F$$
 
 \begin{itemize}
 		\item \blank\ 是一条狗
-		\item \blank\ 是 Monty Python 的成员
+		\item \blank\ 是巨蟒剧团的成员
 		\item 一架钢琴砸在 \blank\ 身上
 	\end{itemize}
 
@@ -87,7 +87,7 @@ $$L, A \therefore F$$
 	\end{itemize}
 
 
-在一阶逻辑中，\define{谓词（predicates）}是大写字母“$A$”到“$Z$”，可以带下标也可以不带。我们可以像这样为谓词写一个符号化约定：
+在一阶逻辑中，\define{谓词（predicates）}是大写字母$A$到$Z$，可以带下标也可以不带。我们可以像这样为谓词写一个符号化约定：
 
 
 \begin{ekey}
@@ -116,11 +116,11 @@ $$L, A \therefore F$$
 	\end{enumerate}
 
 
-\Cref*{terms1}很直接：我们用“$\atom{A}{e}$”来符号化它。
+\Cref*{terms1}很直接：我们用$\atom{A}{e}$来符号化它。
 
-\Cref*{terms2a}是两个更简单语句的合取。这两个简单语句可以分别用“$\atom{A}{g}$”和“$\atom{A}{m}$”来符号化。然后我们借助真值函项逻辑的资源，用“$\atom{A}{g} \eand \atom{A}{m}$”来符号化整个句子。这说明了重要的一点：一阶逻辑具有真值函项逻辑的所有真值函项联结词。
+\Cref*{terms2a}是两个更简单语句的合取。这两个简单语句可以分别用$\atom{A}{g}$和$\atom{A}{m}$来符号化。然后我们借助真值函项逻辑的资源，用$\atom{A}{g} \eand \atom{A}{m}$来符号化整个句子。这说明了重要的一点：一阶逻辑具有真值函项逻辑的所有真值函项联结词。
 
-\Cref*{terms2}是一个条件句，其前件是\cref*{terms1}，其后件是\cref*{terms2a}。因此，我们可以用“$\atom{A}{e} \eif (\atom{A}{g} \eand \atom{A}{m})$”来符号化它。
+\Cref*{terms2}是一个条件句，其前件是\cref*{terms1}，其后件是\cref*{terms2a}。因此，我们可以用$\atom{A}{e} \eif (\atom{A}{g} \eand \atom{A}{m})$来符号化它。
 
 \section{量词}
 我们现在准备引入量词。考虑这些句子：
@@ -133,32 +133,32 @@ $$L, A \therefore F$$
 	\end{enumerate}
 
 
-人们可能会想把\cref*{q.a}符号化为“$\atom{H}{e} \eand \atom{H}{g} \eand \atom{H}{m}$”。但这仅仅表示 Elsa、Gregor 和 Marybeth 都很高兴。我们想要说的是\emph{每个人}都很高兴，甚至包括那些没有被命名的。为了做到这一点，我们引入“$\forall$”符号。这被称为\define{全称量词（universal quantifier）}。
+人们可能会想把\cref*{q.a}符号化为$\atom{H}{e} \eand \atom{H}{g} \eand \atom{H}{m}$。但这仅仅表示 Elsa、Gregor 和 Marybeth 都很高兴。我们想要说的是\emph{每个人}都很高兴，甚至包括那些没有被命名的。为了做到这一点，我们引入$\forall$符号。这被称为\define{全称量词（universal quantifier）}。
 
 \newglossaryentry{universal quantifier}{
   name = 全称量词,
-  description = {一阶逻辑中用于表示一般性的符号 $\forall$；$\forall x\, \atom{F}{x}$为真 \ifeff{} 论域中的每个成员都是~$F$}
+  description = {一阶逻辑中用于表示一般性的符号 $\forall$；$\forall x\, \atom{F}{x}$为真当且仅当论域中的每个成员都是~$F$}
 }
 
-一个量词后面必须紧跟一个\define{变元（variable）}。在一阶逻辑中，变元是斜体小写字母“$s$”到“$z$”，可以带下标也可以不带。因此，我们可以把\cref*{q.a}符号化为“$\forall x\, \atom{H}{x}$”。变元“$x$”在这里充当一种占位符。表达式“$\forall x$”直观上意味着你可以选择任何人并将其放入“$x$”的位置。随后的“$\atom{H}{x}$”则表明，你选出的那个对象是高兴的。
+一个量词后面必须紧跟一个\define{变元（variable）}。在一阶逻辑中，变元是斜体小写字母$s$到$z$，可以带下标也可以不带。因此，我们可以把\cref*{q.a}符号化为$\forall x\, \atom{H}{x}$。变元$x$在这里充当一种占位符。表达式$\forall x$直观上意味着你可以选择任何人并将其放入$x$的位置。随后的$\atom{H}{x}$则表明，你选出的那个对象是高兴的。
 
 \newglossaryentry{variable}{
   name = 变元,
   description = {一阶逻辑中用于接在量词后面以及在原子公式中充当占位符的符号；$s$ 到~$z$ 之间的小写字母}
 }
 
-应当指出，使用“$x$”而不是其他变元并没有特殊的原因。句子“$\forall x\,
-\atom{H}{x}$”、“$\forall y\, \atom{H}{y}$”、“$\forall z\,
-\atom{H}{z}$”和“$\forall x_5\, \atom{H}{x_5}$”使用了不同的变元，但它们在逻辑上是等价的。
+应当指出，使用$x$而不是其他变元并没有特殊的原因。句子$\forall x\,
+\atom{H}{x}$、$\forall y\, \atom{H}{y}$、$\forall z\,
+\atom{H}{z}$和$\forall x_5\, \atom{H}{x_5}$使用了不同的变元，但它们在逻辑上是等价的。
 
-为了符号化\cref{q.e}，我们引入另一个新符号：\define{存在量词（existential quantifier）}“$\exists$”。和全称量词一样，存在量词也需要一个变元。
-\Cref*{q.e}可以符号化为“$\exists x\,\atom{A}{x}$”。而
-“$\forall x\,\atom{A}{x}$”自然地读作“对所有 $x$，$x$ 在生气”，“$\exists x\,\atom{A}{x}$”则自然地读作“存在某个事物 $x$，使得 $x$ 在生气”。同样地，变元只是一种占位符；我们同样可以用“$\exists z\, \atom{A}{z}$”、“$\exists w_{256}\,
-\atom{A}{w_{256}}$”或其他任何变元来符号化\cref*{q.e}。
+为了符号化\cref{q.e}，我们引入另一个新符号：\define{存在量词（existential quantifier）}$\exists$。和全称量词一样，存在量词也需要一个变元。
+\Cref*{q.e}可以符号化为$\exists x\,\atom{A}{x}$。而
+$\forall x\,\atom{A}{x}$自然地读作“对所有 $x$，$x$ 在生气”，$\exists x\,\atom{A}{x}$则自然地读作“存在某个事物 $x$，使得 $x$ 在生气”。同样地，变元只是一种占位符；我们同样可以用$\exists z\, \atom{A}{z}$、$\exists w_{256}\,
+\atom{A}{w_{256}}$或其他任何变元来符号化\cref*{q.e}。
 
 \newglossaryentry{existential quantifier}{
   name = {存在量词},
-  description = {一阶逻辑中用于符号化存在性的符号 $\exists$；公式 $\exists x\, \atom{F}{x}$ 为真 \ifeff{} 论域中至少有一个成员是~$F$}
+  description = {一阶逻辑中用于符号化存在性的符号 $\exists$；公式 $\exists x\, \atom{F}{x}$ 为真当且仅当论域中至少有一个成员是~$F$}
 }
 
 再看几个例子会有帮助。考虑下面这些句子：
@@ -169,12 +169,12 @@ $$L, A \therefore F$$
 		\item\label{q.na} 并非每个人都快乐。
 	\end{enumerate}
 
-\Cref*{q.ne}可以改述为“并非存在一个人，他是愤怒的”。这样，我们就可以用否定和一个存在量词来将其符号化：“$\enot \exists x\,\atom{A}{x}$”。然而，\cref*{q.ne}也可以改述为“每个人都不是愤怒的”。考虑到这一点，我们可以用否定和一个全称量词来将其符号化：“$\forall x\, \enot \atom{A}{x}$”。这两种符号化方式都是可以接受的。事实上，我们将会发现，一般而言，$\forall x\, \enot\metav{A}$ 与 $\enot\exists x\,\metav{A}$ 是逻辑等价的。（注意，我们这里又回到了从\cref{s:UseMention}开始的做法，即用“$\metav{A}$”作为元变元。）在特定语境下，用这种方式而非另一种方式来符号化一个句子可能看起来更“自然”，但这很大程度上只是品味问题。
+\Cref*{q.ne}可以改述为“并非存在一个人，他是愤怒的”。这样，我们就可以用否定和一个存在量词来将其符号化：$\enot \exists x\,\atom{A}{x}$。然而，\cref*{q.ne}也可以改述为“每个人都不是愤怒的”。考虑到这一点，我们可以用否定和一个全称量词来将其符号化：$\forall x\, \enot \atom{A}{x}$。这两种符号化方式都是可以接受的。事实上，我们将会发现，一般而言，$\forall x\, \enot\metav{A}$ 与 $\enot\exists x\,\metav{A}$ 是逻辑等价的。（注意，我们这里又回到了从\cref{s:UseMention}开始的做法，即用$\metav{A}$作为元变元。）在特定语境下，用这种方式而非另一种方式来符号化一个句子可能看起来更“自然”，但这很大程度上只是品味问题。
 
-\Cref*{q.en}最自然的改述是：“存在某个~$x$，使得 $x$ 不快乐”。这就变成了“$\exists x\, \enot \atom{H}{x}$”。当然，我们同样可以写成“$\enot\forall x\,\atom{H}{x}$”，我们会很自然地将它读作“并非每个人都是快乐的”。这也是对\cref*{q.na}的一个完全恰当的符号化。
+\Cref*{q.en}最自然的改述是：“存在某个~$x$，使得 $x$ 不快乐”。这就变成了$\exists x\, \enot \atom{H}{x}$。当然，我们同样可以写成$\enot\forall x\,\atom{H}{x}$，我们会很自然地将它读作“并非每个人都是快乐的”。这也是对\cref*{q.na}的一个完全恰当的符号化。
 
 \section{论域}
-根据我们一直在使用的符号化约定，“$\forall x\,\atom{H}{x}$” 符号化的是“每个人都是快乐的”。这个\emph{每个人}包括了谁？当我们用英语说这样的句子时，我们通常不是指地球上现在活着的每一个人。我们当然也不是指曾经活着或将要活着的每一个人。我们通常指的是更有限的某个范围：比如现在这栋楼里的每个人，芭蕾舞班的所有学员，诸如此类。
+根据我们一直在使用的符号化约定，$\forall x\,\atom{H}{x}$符号化的是“每个人都是快乐的”。这个\emph{每个人}包括了谁？当我们用英语说这样的句子时，我们通常不是指地球上现在活着的每一个人。我们当然也不是指曾经活着或将要活着的每一个人。我们通常指的是更有限的某个范围：比如现在这栋楼里的每个人，芭蕾舞班的所有学员，诸如此类。
 
 为了消除这种歧义，我们需要明确一个\define{论域（domain）}。论域就是我们正在谈论的那些对象的集合。所以，如果我们想谈论芝加哥的人，我们就将论域定义为芝加哥的人。我们把它写在符号化约定的开头，像这样：
 
@@ -182,14 +182,14 @@ $$L, A \therefore F$$
 		\item[\text{论域}] 芝加哥的人
 	\end{ekey}
 
-量词\emph{遍历}论域。给定这个论域，“$\forall x$” 应大致读作“芝加哥的每个人都是这样的……”，“$\exists x$” 应大致读作“芝加哥的某个人是这样的……”。
+量词\emph{遍历}论域。给定这个论域，$\forall x$应大致读作“芝加哥的每个人都是这样的……”，$\exists x$应大致读作“芝加哥的某个人是这样的……”。
 
 \newglossaryentry{domain}{
   name = {论域},
   description = {为一阶逻辑符号化假定的对象集合，或是给出一个\gls{interpretation}中量词遍历范围的集合}
 }
 
-在一阶逻辑中，论域必须始终包含至少一个对象。此外，在英语中，我们可以从“格雷戈尔是愤怒的”合理推出“有东西是愤怒的”。那么在一阶逻辑中，我们也希望能够从“$\atom{A}{g}$”推出“$\exists x\,\atom{A}{x}$”。因此，我们将坚持规定：每个名称必须恰好指称论域中的一个对象。如果我们想给芝加哥以外地方的人命名，那么我们就需要把那些人包括在论域中。
+在一阶逻辑中，论域必须始终包含至少一个对象。此外，在英语中，我们可以从“Gregor 是愤怒的”合理推出“有东西是愤怒的”。那么在一阶逻辑中，我们也希望能够从$\atom{A}{g}$推出$\exists x\,\atom{A}{x}$。因此，我们将坚持规定：每个名称必须恰好指称论域中的一个对象。如果我们想给芝加哥以外地方的人命名，那么我们就需要把那些人包括在论域中。
 	\factoidbox{
 		论域必须包含\emph{至少}一个成员。每个名称必须指称\emph{恰好}一个论域成员，但一个论域成员可以被一个名称、多个名称指称，或者不被任何名称指称。
 	}
@@ -229,7 +229,7 @@ $$L, A \therefore F$$
 
 既然我们不能说两者都为假，我们该怎么办？另一种选择是，说\cref*{chimera1}是\emph{无意义的}，因为它谈论了一个不存在的东西。于是，$\atom{A}{c}$ 在一阶逻辑中对某些解释来说会是有意义的表达式，对另一些解释却不是。但这会使我们的形式语言受制于特定的解释。由于我们关心的是逻辑形式，我们希望考虑像 $\atom{A}{c}$ 这样的句子独立于任何特定解释的逻辑效力。如果 $\atom{A}{c}$ 有时有意义有时无意义，我们就做不到这一点。
 
-这就是\emph{非指称词项问题}，我们稍后还会回到这个问题（参见\cref{subsec.defdesc}）。目前重要的是，一阶逻辑的每个名称\emph{必须}指称论域中的某个东西，尽管论域可以包含任何我们喜欢的东西。如果我们想要符号化关于神话生物的论证，那么我们就必须定义一个包含这些生物的论域。如果我们想考虑故事的逻辑，这个选项就很重要。通过将虚构人物（如福尔摩斯）包含在我们的论域中，我们就可以符号化像“福尔摩斯住在贝克街 221B”这样的句子。
+这就是\emph{非指称词项问题}，我们稍后还会回到这个问题（参见\cref{subsec.defdesc}）。目前重要的是，一阶逻辑的每个名称\emph{必须}指称论域中的某个东西，尽管论域可以包含任何我们喜欢的东西。如果我们想要符号化关于神话生物的论证，那么我们就必须定义一个包含这些生物的论域。如果我们想考虑故事的逻辑，这个选项就很重要。通过将虚构人物（如Sherlock Holmes）包含在我们的论域中，我们就可以符号化像“Sherlock Holmes住在贝克街 221B”这样的句子。
 
 \chapter{带单个量词的句子}
 \label{s:MoreMonadic}
@@ -284,21 +284,21 @@ $$L, A \therefore F$$
 		\item[\atom{D}{x}] \gap{x} 是 10 美分硬币
 	\end{ekey}
 
-\Cref*{quan1}最自然地用全称量词符号化。全称量词谈论的是论域中的所有对象，而不只是我口袋里的那些硬币。\Cref{quan1}可以改述为“对任意一枚硬币，\emph{如果}它在我口袋里，\emph{那么}它就是一枚 25 美分硬币”。所以我们可以把它符号化为“$\forall x(\atom{P}{x} \eif \atom{Q}{x})$”。
+\Cref*{quan1}最自然地用全称量词符号化。全称量词谈论的是论域中的所有对象，而不只是我口袋里的那些硬币。\Cref{quan1}可以改述为“对任意一枚硬币，\emph{如果}它在我口袋里，\emph{那么}它就是一枚 25 美分硬币”。所以我们可以把它符号化为$\forall x(\atom{P}{x} \eif \atom{Q}{x})$。
 
-由于\cref*{quan1}谈的是那些既在我口袋里\emph{又}是 25 美分硬币的硬币，我们很容易想到用合取来符号化它。然而，句子“$\forall x(\atom{P}{x} \eand \atom{Q}{x})$”所符号化的却是：“每一枚硬币既是 25 美分硬币，又在我口袋里。”这显然和\cref*{quan1}的意思大不相同。于是我们得到：
+由于\cref*{quan1}谈的是那些既在我口袋里\emph{又}是 25 美分硬币的硬币，我们很容易想到用合取来符号化它。然而，句子$\forall x(\atom{P}{x} \eand \atom{Q}{x})$所符号化的却是：“每一枚硬币既是 25 美分硬币，又在我口袋里。”这显然和\cref*{quan1}的意思大不相同。于是我们得到：
 	\factoidbox{
 		如果一个句子可以用自然语言改述为“每个 $F$ 都是 $G$”，那么它可以符号化为 $\forall x (\atom{\metav{F}}{x} \eif \atom{\metav{G}}{x})$。
 	}
-\Cref*{quan2}最自然地用存在量词符号化。它可以改述为：“存在一枚硬币，它既在桌上，又是一枚 10 美分硬币。”所以我们可以把它符号化为“$\exists x(\atom{T}{x} \eand \atom{D}{x})$”。
+\Cref*{quan2}最自然地用存在量词符号化。它可以改述为：“存在一枚硬币，它既在桌上，又是一枚 10 美分硬币。”所以我们可以把它符号化为$\exists x(\atom{T}{x} \eand \atom{D}{x})$。
 
-注意，对全称量词我们需要使用条件式，但对存在量词使用的是合取式。假设我们改写成 `$\exists x(\atom{T}{x} \eif \atom{D}{x})$`。这意味着论域中存在某个对象，使得 `$(\atom{T}{x} \eif \atom{D}{x})$` 对这个对象为真。回想一下，在真值函项逻辑中，$\metav{A} \eif \metav{B}$ 与 $\enot\metav{A} \eor \metav{B}$（在真值函项逻辑中）逻辑等价。这个等价关系在一阶逻辑中同样成立。因此，如果论域中存在某个对象，使得 `$(\enot \atom{T}{x} \eor \atom{D}{x})$` 对它为真，`$\exists x(\atom{T}{x} \eif \atom{D}{x})$` 就为真。换句话说，如果某枚硬币\emph{要么}不在桌上，\emph{要么}是10美分硬币，那么 `$\exists x (\atom{T}{x} \eif \atom{D}{x})$` 就为真。当然，总有硬币不在桌上：硬币还可以在许许多多别的地方。因此，要让 `$\exists x(\atom{T}{x} \eif \atom{D}{x})$` 为真其实\emph{非常容易}。对全称量词使用条件式通常是最自然的联结词选择，但存在量词辖域内的条件式往往只表达一个非常弱的断言。作为一条经验法则，除非你确定确实需要，否则不要把条件式放在存在量词的辖域内。
+注意，对全称量词我们需要使用条件式，但对存在量词使用的是合取式。假设我们改写成 $\exists x(\atom{T}{x} \eif \atom{D}{x})$。这意味着论域中存在某个对象，使得 $(\atom{T}{x} \eif \atom{D}{x})$ 对这个对象为真。回想一下，在真值函项逻辑中，$\metav{A} \eif \metav{B}$ 与 $\enot\metav{A} \eor \metav{B}$（在真值函项逻辑中）逻辑等价。这个等价关系在一阶逻辑中同样成立。因此，如果论域中存在某个对象，使得 $(\enot \atom{T}{x} \eor \atom{D}{x})$ 对它为真，$\exists x(\atom{T}{x} \eif \atom{D}{x})$ 就为真。换句话说，如果某枚硬币\emph{要么}不在桌上，\emph{要么}是10美分硬币，那么 $\exists x (\atom{T}{x} \eif \atom{D}{x})$ 就为真。当然，总有硬币不在桌上：硬币还可以在许许多多别的地方。因此，要让 $\exists x(\atom{T}{x} \eif \atom{D}{x})$ 为真其实\emph{非常容易}。对全称量词使用条件式通常是最自然的联结词选择，但存在量词辖域内的条件式往往只表达一个非常弱的断言。作为一条经验法则，除非你确定确实需要，否则不要把条件式放在存在量词的辖域内。
 	\factoidbox{
 		如果一个句子可以用英语改述为“some $F$ is~$G$（有些 $F$ 是~$G$）”，那么它可以符号化为 $\exists x (\atom{\metav{F}}{x} \eand \atom{\metav{G}}{x})$。
 	}
-\Cref{quan3}可以改述为“并非桌上的每一枚硬币都是10美分硬币”。所以我们可以用 `$\enot \forall x(\atom{T}{x} \eif \atom{D}{x})$` 来符号化它。你可能会看着\cref*{quan3}，把它改述为“桌上有些硬币不是10美分硬币”。那么你就会用 `$\exists x(\atom{T}{x} \eand \enot \atom{D}{x})$` 来符号化它。尽管现在可能还不那么显然，这两个句子是逻辑等价的。（这源于\cref{s:FOLBuildingBlocks}中提到的 $\enot\forall x\,\metav{A}$ 与 $\exists x\,\enot\metav{A}$ 之间的逻辑等价，以及 $\enot(\metav{A}\eif\metav{B})$ 与 $\metav{A}\eand\enot\metav{B}$ 之间的等价。）
+\Cref{quan3}可以改述为“并非桌上的每一枚硬币都是10美分硬币”。所以我们可以用 $\enot \forall x(\atom{T}{x} \eif \atom{D}{x})$ 来符号化它。你可能会看着\cref*{quan3}，把它改述为“桌上有些硬币不是10美分硬币”。那么你就会用 $\exists x(\atom{T}{x} \eand \enot \atom{D}{x})$ 来符号化它。尽管现在可能还不那么显然，这两个句子是逻辑等价的。（这源于\cref{s:FOLBuildingBlocks}中提到的 $\enot\forall x\,\metav{A}$ 与 $\exists x\,\enot\metav{A}$ 之间的逻辑等价，以及 $\enot(\metav{A}\eif\metav{B})$ 与 $\metav{A}\eand\enot\metav{B}$ 之间的等价。）
 
-\Cref{quan4}可以改述为“我口袋里没有10美分硬币”。这可以用 `$\enot\exists x(\atom{P}{x} \eand \atom{D}{x})$` 来符号化。它也可以改述为“我口袋里的所有东西都是非10美分硬币”，从而用 `$\forall x(\atom{P}{x} \eif \enot \atom{D}{x})$` 来符号化。同样，这两种符号化是逻辑等价的；它们都是\cref*{quan4}的正确符号化。
+\Cref{quan4}可以改述为“我口袋里没有10美分硬币”。这可以用 $\enot\exists x(\atom{P}{x} \eand \atom{D}{x})$ 来符号化。它也可以改述为“我口袋里的所有东西都是非10美分硬币”，从而用 $\forall x(\atom{P}{x} \eif \enot \atom{D}{x})$ 来符号化。同样，这两种符号化是逻辑等价的；它们都是\cref*{quan4}的正确符号化。
 
 \factoidbox{
 	如果一个句子可以改述为“没有 $F$ 是 $G$”，那么它可以符号化为 $\enot\exists x (\atom{\metav{F}}{x} \eand \atom{\metav{G}}{x})$，也可以符号化为 $\forall x (\atom{\metav{F}}{x} \eif \enot\atom{\metav{G}}{x})$。
@@ -312,10 +312,10 @@ $$L, A \therefore F$$
 \end{enumerate}
 
 
-我们该如何符号化这个句子？一个好的策略是考虑它在什么情况下为假。如果说只有10美分硬币在桌上，我们就排除了所有桌上的东西是非10美分硬币的情况。因此，我们可以用符号化“没有非10美分硬币在桌上”的方式来符号化这个句子。记住我们刚刚学到的内容，并用“$\enot \atom{D}{x}$”来符号化“$x$ 是非10美分硬币”，可能的符号化是：`$\enot\exists x(\atom{T}{x} \eand \enot \atom{D}{x})$`，或者：`$\forall x(\atom{T}{x} \eif \enot\enot \atom{D}{x})$`。由于双重否定可以消去，第二种就等同于 `$\forall x(\atom{T}{x} \eif \atom{D}{x})$`。换句话说，“只有10美分硬币在桌上”和“桌上所有东西都是10美分硬币”的符号化方式相同。
+我们该如何符号化这个句子？一个好的策略是考虑它在什么情况下为假。如果说只有10美分硬币在桌上，我们就排除了所有桌上的东西是非10美分硬币的情况。因此，我们可以用符号化“没有非10美分硬币在桌上”的方式来符号化这个句子。记住我们刚刚学到的内容，并用$\enot \atom{D}{x}$来符号化$x$ 是非10美分硬币”，可能的符号化是：$\enot\exists x(\atom{T}{x} \eand \enot \atom{D}{x})$，或者：$\forall x(\atom{T}{x} \eif \enot\enot \atom{D}{x})$。由于双重否定可以消去，第二种就等同于 $\forall x(\atom{T}{x} \eif \atom{D}{x})$。换句话说，“只有10美分硬币在桌上”和“桌上所有东西都是10美分硬币”的符号化方式相同。
 
 \factoidbox{
-	如果一个句子可以改述为“只有 $F$ 是 $G$”，那么它可以符号化为 $\enot\exists x (\atom{\metav{G}}{x} \eand \enot\atom{\metav{F}}{x})$，也可以符号化为 $\forall x (\atom{\metav{G}}{x} \eif \atom{\metav{F}}{x})$。
+	如果一个句子可以改述为“只有 $F$ 是 $G$，那么它可以符号化为 $\enot\exists x (\atom{\metav{G}}{x} \eand \enot\atom{\metav{F}}{x})$，也可以符号化为 $\forall x (\atom{\metav{G}}{x} \eif \atom{\metav{F}}{x})$。
 }
 
 \section{空谓词}
@@ -340,19 +340,19 @@ $$L, A \therefore F$$
 
 
 \begin{ekey}
-		\item[\text{domain}] 动物
+		\item[\text{论域}] 动物
 		\item[\atom{M}{x}] \gap{x} 是猴子。
 		\item[\atom{S}{x}] \gap{x} 懂手语。
 	\end{ekey}
 
 
-现在，\Cref*{monkey1}可以用 `$\forall x(\atom{M}{x} \eif
-\atom{S}{x})$` 来符号化。\Cref*{monkey2}可以用 `$\exists
-x(\atom{M}{x} \eand \atom{S}{x})$` 来符号化。
+现在，\Cref*{monkey1}可以用 $\forall x(\atom{M}{x} \eif
+\atom{S}{x})$ 来符号化。\Cref*{monkey2}可以用 $\exists
+x(\atom{M}{x} \eand \atom{S}{x})$ 来符号化。
 
-人们很容易认为\cref*{monkey1}\emph{蕴涵}\cref*{monkey2}。也就是说，我们可能会想：除非有些猴子懂手语，否则不可能每只猴子都懂手语。但这是一个错误。即使句子 `$\exists x(\atom{M}{x} \eand \atom{S}{x})$` 为假，句子 `$\forall x(\atom{M}{x} \eif \atom{S}{x})$` 仍可能为真。
+人们很容易认为\cref*{monkey1}\emph{蕴涵}\cref*{monkey2}。也就是说，我们可能会想：除非有些猴子懂手语，否则不可能每只猴子都懂手语。但这是一个错误。即使句子 $\exists x(\atom{M}{x} \eand \atom{S}{x})$ 为假，句子 $\forall x(\atom{M}{x} \eif \atom{S}{x})$ 仍可能为真。
 
-这怎么可能呢？答案在于考虑\emph{如果没有猴子}，这些句子会是真是假。如果（论域中）根本没有猴子，那么“$\forall x(\atom{M}{x} \eif \atom{S}{x})$”就是\emph{空真}的：任取一只你喜欢的猴子——它都会手语！但如果（论域中）根本没有猴子，那么“$\exists x(\atom{M}{x} \eand \atom{S}{x})$”就是假的。
+这怎么可能呢？答案在于考虑\emph{如果没有猴子}，这些句子会是真是假。如果（论域中）根本没有猴子，那么$\forall x(\atom{M}{x} \eif \atom{S}{x})$就是\emph{空真}的：任取一只你喜欢的猴子——它都会手语！但如果（论域中）根本没有猴子，那么$\exists x(\atom{M}{x} \eand \atom{S}{x})$就是假的。
 
 另一个例子能帮助我们更清楚地理解这一点。假设我们扩展上面的符号化约定，增加：
 
@@ -362,9 +362,9 @@ x(\atom{M}{x} \eand \atom{S}{x})$` 来符号化。
 	\end{ekey}
 
 
-现在考虑句子“$\forall x(\atom{R}{x} \eif \atom{M}{x})$”。它符号化了“每个冰箱都是猴子”。根据我们的符号化约定，这个句子是真的，但这有悖直觉，因为我们（大概）并不想说存在一大堆冰箱猴子。不过，重要的是记住，“$\forall x(\atom{R}{x} \eif \atom{M}{x})$”为真 \ifeff{} 论域中任何是冰箱的成员都是猴子。由于论域是\emph{动物}，论域中并没有冰箱。所以，这个句子再次\emph{空真}。
+现在考虑句子$\forall x(\atom{R}{x} \eif \atom{M}{x})$。它符号化了“每个冰箱都是猴子”。根据我们的符号化约定，这个句子是真的，但这有悖直觉，因为我们（大概）并不想说存在一大堆冰箱猴子。不过，重要的是记住，$\forall x(\atom{R}{x} \eif \atom{M}{x})$为真当且仅当论域中任何是冰箱的成员都是猴子。由于论域是\emph{动物}，论域中并没有冰箱。所以，这个句子再次\emph{空真}。
 
-如果你实际处理的是“所有冰箱都是猴子”这个句子，那么你很可能想把厨房电器也包含在论域中。那样谓词“$R$”就不会是空的，而句子“$\forall x(\atom{R}{x} \eif \atom{M}{x})$”也就会是假的。
+如果你实际处理的是“所有冰箱都是猴子”这个句子，那么你很可能想把厨房电器也包含在论域中。那样谓词$R$就不会是空的，而句子$\forall x(\atom{R}{x} \eif \atom{M}{x})$也就会是假的。
 	\factoidbox{
 		当 $\metav{F}$ 是一个空谓词时，任何形如 $\forall x (\atom{\metav{F}}{x} \eif \ldots)$ 的句子都是空真的。
 	}
@@ -387,9 +387,9 @@ x(\atom{M}{x} \eand \atom{S}{x})$` 来符号化。
 	\end{ekey}
 
 
-我们很容易会说\cref*{pickdomainrose}应该符号化为“$\forall x(\atom{R}{x} \eif \atom{T}{x})$”，但我们还没有选定论域。如果论域包含所有玫瑰，这将是一个恰当的符号化。然而，如果论域仅仅是\emph{我厨房桌子上的东西}，那么“$\forall x(\atom{R}{x} \eif \atom{T}{x})$”就只能勉强涵盖“我厨房桌子上的每朵玫瑰”都有刺这一事实。如果我厨房桌子上没有玫瑰，这个句子就会平凡地为真。这不是我们想要的。要恰当地符号化\cref*{pickdomainrose}，我们需要把所有玫瑰都包含在论域中，但现在我们有两个选择。
+我们很容易会说\cref*{pickdomainrose}应该符号化为$\forall x(\atom{R}{x} \eif \atom{T}{x})$，但我们还没有选定论域。如果论域包含所有玫瑰，这将是一个恰当的符号化。然而，如果论域仅仅是\emph{我厨房桌子上的东西}，那么$\forall x(\atom{R}{x} \eif \atom{T}{x})$就只能勉强涵盖“我厨房桌子上的每朵玫瑰”都有刺这一事实。如果我厨房桌子上没有玫瑰，这个句子就会平凡地为真。这不是我们想要的。要恰当地符号化\cref*{pickdomainrose}，我们需要把所有玫瑰都包含在论域中，但现在我们有两个选择。
 
-第一，我们可以将论域限制为包含所有玫瑰，但\emph{只}包含玫瑰。那么，如果我们愿意，\cref*{pickdomainrose}就可以用“$\forall x\,\atom{T}{x}$”来符号化。它为真 \ifeff{} 论域中的每个东西都有刺；由于论域仅仅是玫瑰，这就等价于每朵玫瑰都有刺。通过限制论域，我们得以用一个很短的一阶逻辑句子来符号化我们的英语句子。因此，如果我们想处理的每个句子都是关于玫瑰的，这种方法可以节省我们的精力。
+第一，我们可以将论域限制为包含所有玫瑰，但\emph{只}包含玫瑰。那么，如果我们愿意，\cref*{pickdomainrose}就可以用$\forall x\,\atom{T}{x}$来符号化。它为真当且仅当论域中的每个东西都有刺；由于论域仅仅是玫瑰，这就等价于每朵玫瑰都有刺。通过限制论域，我们得以用一个很短的一阶逻辑句子来符号化我们的英语句子。因此，如果我们想处理的每个句子都是关于玫瑰的，这种方法可以节省我们的精力。
 
 第二，我们可以让论域包含玫瑰以外的东西：杜鹃花、老鼠、步枪以及其他任何东西；如果我们同时还想符号化像下面这样的句子，我们肯定需要一个更宽泛的论域：
 
@@ -403,7 +403,7 @@ x(\atom{M}{x} \eand \atom{S}{x})$` 来符号化。
 
 
 \begin{ekey}
-		\item[\text{domain}] 人与植物
+		\item[\text{论域}] 人与植物
 		\item[\atom{C}{x}] \gap{x}是牛仔
 		\item[\atom{S}{x}] \gap{x}唱一首悲伤、悲伤的歌
 		\item[\atom{R}{x}] \gap{x}是玫瑰
@@ -411,9 +411,9 @@ x(\atom{M}{x} \eand \atom{S}{x})$` 来符号化。
 	\end{ekey}
 
 
-这样，我们将不得不把\cref*{pickdomainrose}符号化为“$\forall x (\atom{R}{x} \eif \atom{T}{x})$”，因为“$\forall x\, \atom{T}{x}$”会符号化句子“每个人或植物都有刺”。同样，我们将不得不把\cref*{pickdomaincowboy}符号化为“$\forall x (\atom{C}{x} \eif \atom{S}{x})$”。
+这样，我们将不得不把\cref*{pickdomainrose}符号化为$\forall x (\atom{R}{x} \eif \atom{T}{x})$，因为$\forall x\, \atom{T}{x}$会符号化句子“每个人或植物都有刺”。同样，我们将不得不把\cref*{pickdomaincowboy}符号化为$\forall x (\atom{C}{x} \eif \atom{S}{x})$。
 
-一般而言，如果论域只包含人，全称量词可以用来符号化英语表达“everyone（每个人）”。如果论域里有人也有其他事物，那么“everyone”就必须处理为“every person（每个人）”。
+一般而言，如果论域只包含人，全称量词可以用来符号化英语表达“everyone（每个人）”。如果论域里有人也有其他事物，那么“everyone”就必须处理为“every person”。
 
 \section{改述的效用}
 在用一阶逻辑符号化英语句子时，理解你想要符号化的句子的结构非常重要。关键是一阶逻辑中的最终符号化结果，有时你可以直接从英语句子得到一阶逻辑句子。其他时候，将句子改述一次或多次会有所帮助。每一次进一步的改述，都应该使原句更接近你能轻易用一阶逻辑直接符号化的形式。
@@ -421,7 +421,7 @@ x(\atom{M}{x} \eand \atom{S}{x})$` 来符号化。
 在接下来的几个例子中，我们将使用这套符号化约定：
 
 \begin{ekey}
-		\item[\text{domain}] 人
+		\item[\text{论域}] 人
 		\item[\atom{B}{x}] \gap{x} 是一名贝斯手
 		\item[\atom{R}{x}] \gap{x} 是一名摇滚明星
 		\item[k] Kim Deal
@@ -437,11 +437,11 @@ x(\atom{M}{x} \eand \atom{S}{x})$` 来符号化。
 	\end{enumerate}
 
 
-在\cref*{pronoun1,pronoun2}中，相同的词语（`$\ldots$她是一名摇滚明星'）作为条件式的后件出现，但它们的意思却大不相同。为了弄清这一点，对原句进行改述、去掉代词通常会很有帮助。
+在\cref*{pronoun1,pronoun2}中，相同的词语（$\ldots$她是一名摇滚明星”）作为条件式的后件出现，但它们的意思却大不相同。为了弄清这一点，对原句进行改述、去掉代词通常会很有帮助。
 
-\Cref*{pronoun1}可以改述为，`如果 Kim Deal 是一名贝斯手，那么\emph{Kim Deal}是一名摇滚明星'。这显然可以符号化为 `$\atom{B}{k} \eif \atom{R}{k}$'。
+\Cref*{pronoun1}可以改述为，“如果 Kim Deal 是一名贝斯手，那么\emph{Kim Deal}是一名摇滚明星”。这显然可以符号化为 $\atom{B}{k} \eif \atom{R}{k}$。
 
-\Cref*{pronoun2}必须以不同的方式改述：`如果一个人是贝斯手，那么\emph{那个人}是一名摇滚明星'。这个句子不是关于任何特定个人的，所以我们需要一个变元。作为中间步骤，我们可以把它改述为，`对任何人 x，如果 x 是贝斯手，那么 x 是摇滚明星'。现在这就可以符号化为 `$\forall x (\atom{B}{x} \eif \atom{R}{x})$'。这和我们将用来符号化 `每个是贝斯手的人都是摇滚明星' 的句子是一样的。细想一下，这无疑为真当且仅当\cref*{pronoun2}为真，正如我们所期望的那样。
+\Cref*{pronoun2}必须以不同的方式改述：“如果一个人是贝斯手，那么\emph{那个人}是一名摇滚明星”。这个句子不是关于任何特定个人的，所以我们需要一个变元。作为中间步骤，我们可以把它改述为，“对任何人 x，如果 x 是贝斯手，那么 x 是摇滚明星”。现在这就可以符号化为 $\forall x (\atom{B}{x} \eif \atom{R}{x})$。这和我们将用来符号化“每个是贝斯手的人都是摇滚明星”的句子是一样的。细想一下，这无疑为真当且仅当\cref*{pronoun2}为真，正如我们所期望的那样。
 
 再考虑下面这些句子：
 
@@ -452,13 +452,13 @@ x(\atom{M}{x} \eand \atom{S}{x})$` 来符号化。
 	\end{enumerate}
 
 
-相同的词语（`如果有人是贝斯手$\ldots$'）作为\cref*{anyone1,anyone2}中条件式的前件出现，但要弄清楚如何符号化这两种用法可能有点棘手。同样，改述可以帮助我们。
+相同的词语（“如果有人是贝斯手$\ldots$）作为\cref*{anyone1,anyone2}中条件式的前件出现，但要弄清楚如何符号化这两种用法可能有点棘手。同样，改述可以帮助我们。
 
-\Cref*{anyone1}可以改述为，`如果至少存在一名贝斯手，那么 Kim Deal 是摇滚明星'。现在很清楚，这是一个条件式，其前件是一个量化表达式；所以我们用一个条件式作为主逻辑算子来符号化整个句子：`$\exists x \atom{B}{x} \eif \atom{R}{k}$'。
+\Cref*{anyone1}可以改述为，“如果至少存在一名贝斯手，那么 Kim Deal 是摇滚明星”。现在很清楚，这是一个条件式，其前件是一个量化表达式；所以我们用一个条件式作为主逻辑算子来符号化整个句子：$\exists x \atom{B}{x} \eif \atom{R}{k}$。
 
-\Cref*{anyone2}可以改述为，`对所有人 $x$，如果 $x$ 是贝斯手，那么 $x$ 是摇滚明星'。或者，用更自然的英语来说，它可以改述为 `所有贝斯手都是摇滚明星'。它最好被符号化为 `$\forall x(\atom{B}{x} \eif \atom{R}{x})$'，就像\cref*{pronoun2}一样。
+\Cref*{anyone2}可以改述为，“对所有人 $x$，如果 $x$ 是贝斯手，那么 $x$ 是摇滚明星”。或者，用更自然的英语来说，它可以改述为“所有贝斯手都是摇滚明星”。它最好被符号化为 $\forall x(\atom{B}{x} \eif \atom{R}{x})$，就像\cref*{pronoun2}一样。
 
-由此得到的经验是：英语单词 `any' 和 `anyone' 通常应该用量词来符号化，如果你很难决定使用存在量词还是全称量词，试着用不使用 `any' 或 `anyone' 的英语句子来改述原句。
+由此得到的经验是：英语单词“any”和“anyone”通常应该用量词来符号化，如果你很难决定使用存在量词还是全称量词，试着用不使用“any”或“anyone”的英语句子来改述原句。
 
 \section{量词与辖域}
 继续这个例子，假设我们想符号化下面这些句子：
@@ -478,17 +478,17 @@ x(\atom{M}{x} \eand \atom{S}{x})$` 来符号化。
 	\end{ekey}
 
 
-\Cref*{qscope1}是一个条件式，其前件是 `每个人都是贝斯手'，所以我们把它符号化为 `$\forall x\, \atom{B}{x} \eif \atom{B}{l}$'。这个句子是\emph{必然}为真的：如果\emph{每个人}确实都是贝斯手，那么任取一个人——例如 Lars——他都会是贝斯手。
+\Cref*{qscope1}是一个条件式，其前件是“每个人都是贝斯手”，所以我们把它符号化为 $\forall x\, \atom{B}{x} \eif \atom{B}{l}$。这个句子是\emph{必然}为真的：如果\emph{每个人}确实都是贝斯手，那么任取一个人——例如 Lars——他都会是贝斯手。
 
-相比之下，\Cref*{qscope2}最好改述为 `每个人 $x$ 都是这样的：如果 $x$ 是贝斯手，那么 Lars 是贝斯手'。这被符号化为 `$\forall x (\atom{B}{x} \eif \atom{B}{l})$'。
-这个句子完全可能为假。例如，Kim Deal 是一名贝斯手。所以 `$\atom{B}{k}$' 为真。假设 Lars 不是贝斯手（比如说，他是一名鼓手），那么 `$\atom{B}{l}$' 为假。因此，`$\atom{B}{k} \eif \atom{B}{l}$' 将为假，于是 `$\forall x
-(\atom{B}{x} \eif \atom{B}{l})$' 也将为假。这个例子还说明了另一件事：`$\forall x (\atom{B}{x} \eif \atom{B}{l})$' 为假当且仅当 $\exists x\,\atom{B}{x} \eif \atom{B}{l}$ 为假；它们是等价的。回顾上一节关于如何符号化\cref{anyone1}中 `any' 的经验，我们可以得出结论：\cref*{qscope2}只不过是 `如果有人是贝斯手，那么 Lars 就是贝斯手' 的一种迂回说法。
+相比之下，\Cref*{qscope2}最好改述为“每个人 $x$ 都是这样的：如果 $x$ 是贝斯手，那么 Lars 是贝斯手”。这被符号化为 $\forall x (\atom{B}{x} \eif \atom{B}{l})$。
+这个句子完全可能为假。例如，Kim Deal 是一名贝斯手。所以 $\atom{B}{k}$ 为真。假设 Lars 不是贝斯手（比如说，他是一名鼓手），那么 $\atom{B}{l}$ 为假。因此，$\atom{B}{k} \eif \atom{B}{l}$ 将为假，于是 $\forall x
+(\atom{B}{x} \eif \atom{B}{l})$ 也将为假。这个例子还说明了另一件事：$\forall x (\atom{B}{x} \eif \atom{B}{l})$ 为假当且仅当 $\exists x\,\atom{B}{x} \eif \atom{B}{l}$ 为假；它们是等价的。回顾上一节关于如何符号化\cref{anyone1}中“any”的经验，我们可以得出结论：\cref*{qscope2}只不过是“如果有人是贝斯手，那么 Lars 就是贝斯手”的一种迂回说法。
 
-简而言之，`$\forall x \atom{B}{x} \eif \atom{B}{l}$' 和 `$\forall x (\atom{B}{x} \eif \atom{B}{l})$' 是非常不同的句子。我们可以用量词的\emph{辖域}来解释这种差异。量化的辖域非常像我们在讨论真值函项逻辑时考虑过的否定辖域，以这种方式来解释会很有帮助。
+简而言之，$\forall x \atom{B}{x} \eif \atom{B}{l}$ 和 $\forall x (\atom{B}{x} \eif \atom{B}{l})$ 是非常不同的句子。我们可以用量词的\emph{辖域}来解释这种差异。量化的辖域非常像我们在讨论真值函项逻辑时考虑过的否定辖域，以这种方式来解释会很有帮助。
 
-在句子 `$\enot \atom{B}{k} \eif \atom{B}{l}$' 中，`$\enot$' 的辖域仅仅是条件式的前件。我们大致是在说：如果 `$\atom{B}{k}$' 为假，那么 `$\atom{B}{l}$' 为真。类似地，在句子 `$\forall x \atom{B}{x} \eif \atom{B}{l}$' 中，`$\forall x$' 的辖域仅仅是条件式的前件。我们大致是在说：如果 `$\atom{B}{x}$' 对\emph{任何事物}都成立，那么 `$\atom{B}{l}$' 也为真。
+在句子 $\enot \atom{B}{k} \eif \atom{B}{l}$ 中，$\enot$ 的辖域仅仅是条件式的前件。我们大致是在说：如果 $\atom{B}{k}$ 为假，那么 $\atom{B}{l}$ 为真。类似地，在句子 $\forall x \atom{B}{x} \eif \atom{B}{l}$ 中，$\forall x$ 的辖域仅仅是条件式的前件。我们大致是在说：如果 $\atom{B}{x}$ 对\emph{任何事物}都成立，那么 $\atom{B}{l}$ 也为真。
 
-在句子 `$\enot(\atom{B}{k} \eif \atom{B}{l})$' 中，`$\enot$' 的辖域是整个句子。我们大致是在说：`$(\atom{B}{k} \eif \atom{B}{l})$' 是假的。类似地，在句子 `$\forall x (\atom{B}{x} \eif \atom{B}{l})$' 中，`$\forall x$' 的辖域是整个句子。我们大致是在说：`$(\atom{B}{x} \eif \atom{B}{l})$' 对\emph{任何事物}都为真。
+在句子 $\enot(\atom{B}{k} \eif \atom{B}{l})$ 中，$\enot$ 的辖域是整个句子。我们大致是在说：$(\atom{B}{k} \eif \atom{B}{l})$ 是假的。类似地，在句子 $\forall x (\atom{B}{x} \eif \atom{B}{l})$ 中，$\forall x$ 的辖域是整个句子。我们大致是在说：$(\atom{B}{x} \eif \atom{B}{l})$ 对\emph{任何事物}都为真。
 
 这里的教训很简单：当你使用条件式时，一定要非常小心，确保你已经正确地划定了辖域。
 
@@ -502,7 +502,7 @@ x(\atom{M}{x} \eand \atom{S}{x})$` 来符号化。
 \end{enumerate}
 
 
-令论域是人，令 $\atom{K}{x}$ 表示 `$x$ 是一名技术精湛的外科医生'，并令 $a$ 表示 Adina。\Cref{surgeon1}就是 $\atom{K}{a}$。
+令论域是人，令 $\atom{K}{x}$ 表示“$x$ 是一名技术精湛的外科医生”，并令 $a$ 表示 Adina。\Cref{surgeon1}就是 $\atom{K}{a}$。
 
 假设我们想符号化的是下面这个论证：
 
@@ -519,7 +519,7 @@ x(\atom{M}{x} \eand \atom{S}{x})$` 来符号化。
 
 
 \begin{ekey}
-\item[\text{domain}] 人
+\item[\text{论域}] 人
 \item[\atom{G}{x}] \gap{x} 是贪婪的
 \item[\atom{H}{x}] 医院将雇用 \gap{x}
 \item[\atom{R}{x}] \gap{x} 是一名外科医生
@@ -548,7 +548,7 @@ x(\atom{M}{x} \eand \atom{S}{x})$` 来符号化。
 \end{earg}
 
 
-如果我们使用上面那个论证的符号化约定作为起点，可以增加一个谓词（令 $\atom{T}{x}$ 表示 `$x$ 是一名网球运动员'）和一个名称（令 `$c$' 作为 Carol 的名称）。那么这个论证就变成：
+如果我们使用上面那个论证的符号化约定作为起点，可以增加一个谓词（令 $\atom{T}{x}$ 表示“$x$ 是一名网球运动员”）和一个名称（令 $c$ 作为 Carol 的名称）。那么这个论证就变成：
 
 
 \begin{earg}
@@ -557,7 +557,7 @@ x(\atom{M}{x} \eand \atom{S}{x})$` 来符号化。
 \end{earg}
 
 
-这种符号化方案是一场灾难！它把一个糟糕的英语论证符号化成了一个在一阶逻辑中有效的论证。问题在于，作为外科医生的技术精湛和作为网球运动员的技术精湛是不同的。要正确符号化这个论证，需要两个独立的谓词，分别对应每种技能。如果我们令 $\atom{K_1}{x}$ 表示 `$x$ 作为外科医生是技术精湛的'，令 $\atom{K_2}{x}$ 表示 `$x$ 作为网球运动员是技术精湛的'，那么我们可以这样符号化该论证：
+这种符号化方案是一场灾难！它把一个糟糕的英语论证符号化成了一个在一阶逻辑中有效的论证。问题在于，作为外科医生的技术精湛和作为网球运动员的技术精湛是不同的。要正确符号化这个论证，需要两个独立的谓词，分别对应每种技能。如果我们令 $\atom{K_1}{x}$ 表示“$x$ 作为外科医生是技术精湛的”，令 $\atom{K_2}{x}$ 表示“$x$ 作为网球运动员是技术精湛的”，那么我们可以这样符号化该论证：
 
 
 \begin{earg}
@@ -571,17 +571,17 @@ x(\atom{M}{x} \eand \atom{S}{x})$` 来符号化。
 
 这些例子的教训是，你需要小心，不要以歧义的方式符号化谓词。类似的问题也可能出现在像\emph{好的}、\emph{坏的}、\emph{大的}、\emph{小的}这类谓词上。正如技术精湛的外科医生和技术精湛的网球运动员拥有不同的技能一样，大狗、大老鼠和大问题在不同意义上是大的。
 
-用一个谓词表示 `$x$ 是一名技术精湛的外科医生'，而不是用两个谓词 `$x$ 是技术精湛的' 和 `$x$ 是外科医生'，这样够吗？有时是够的。如\cref{surgeon1}所表明的，有时我们不需要区分技术精湛的外科医生和其他外科医生。
+用一个谓词表示“$x$ 是一名技术精湛的外科医生”，而不是用两个谓词“$x$ 是技术精湛的”和“$x$ 是外科医生”，这样够吗？有时是够的。如\cref{surgeon1}所表明的，有时我们不需要区分技术精湛的外科医生和其他外科医生。
 
-我们是否总是需要区分 `技术精湛'、`好'、`坏'、`大' 的不同方式？不。正如关于 Billy 的那个论证所显示的，有时我们只需要讨论一种技能。如果你要符号化的论证只涉及狗，那么定义一个表示 `$x$ 是大的' 的谓词是可以的。然而，如果论域包含了狗和老鼠，那么最好让这个谓词表示 `$x$ 作为一只狗来说是大的'。
+我们是否总是需要区分“技术精湛”、“好”、“坏”、“大”的不同方式？不。正如关于 Billy 的那个论证所显示的，有时我们只需要讨论一种技能。如果你要符号化的论证只涉及狗，那么定义一个表示“$x$ 是大的”的谓词是可以的。然而，如果论域包含了狗和老鼠，那么最好让这个谓词表示“$x$ 作为一只狗来说是大的”。
 
 \practiceproblems
 \problempart
 \phantomsection\label{pr.BarbaraEtc}
-以下是亚里士多德及其后继者所辨识出的三段论格式，以及它们在中世纪的名字：
+以下是 Aristotle 及其后继者所辨识出的三段论格式，以及它们在中世纪的名字：
 
 \begin{compactlist}
-	\item \textbf{Barbara式。} 所有 G 是 F。所有 H 是 G。所以：所有 H 是 F。
+	\item \textbf{Barbara 式。} 所有 G 是 F。所有 H 是 G。所以：所有 H 是 F。
 	\item \textbf{Celarent式。} 没有 G 是 F。所有 H 是 G。所以：没有 H 是 F。
 	\item \textbf{Ferio式。} 没有 G 是 F。有的 H 是 G。所以：有的 H 不是 F。
 	\item \textbf{Darii式。} 所有 G 是 F。有的 H 是 G。所以：有的 H 是 F。
@@ -607,7 +607,7 @@ x(\atom{M}{x} \eand \atom{S}{x})$` 来符号化。
 使用下列符号化约定：
 
 \begin{ekey}
-\item[\text{domain}] 人
+\item[\text{论域}] 人
 \item[\atom{K}{x}] \gap{x} 知道保险箱的密码
 \item[\atom{S}{x}] \gap{x} 是间谍
 \item[\atom{V}{x}] \gap{x} 是素食者
@@ -630,7 +630,7 @@ x(\atom{M}{x} \eand \atom{S}{x})$` 来符号化。
 使用此符号化约定：
 
 \begin{ekey}
-\item[\text{domain}] 所有动物
+\item[\text{论域}] 所有动物
 \item[\atom{A}{x}] \gap{x} 是鳄鱼
 \item[\atom{M}{x}] \gap{x} 是猴子
 \item[\atom{R}{x}] \gap{x} 是爬行动物
@@ -728,13 +728,13 @@ x(\atom{M}{x} \eand \atom{S}{x})$` 来符号化。
 关键在于，我们需要追踪谓词中的空位，这样才能追踪我们是如何填充它们的。为了追踪空位，我们给它们分配变元。假设我们想要符号化前面的句子。那么我可能会从下面这个符号化约定开始：
 
 \begin{ekey}
-		\item[\text{domain}] 人
+		\item[\text{论域}] 人
 		\item[i] Imre
 		\item[k] Karl
 		\item[\atom{L}{x,y}] \gap{x} 爱 \gap{y}
 	\end{ekey}
 
-\Cref*{terms3}将被符号化为“$\atom{L}{k,i}$”，\cref*{terms3b}将被符号化为“$\atom{L}{i,k}$”，而\cref*{terms3a}将被符号化为“$\atom{L}{k,k}$”。还有几个句子可以用同一个符号化约定来符号化：
+\Cref*{terms3}将被符号化为$\atom{L}{k,i}$，\cref*{terms3b}将被符号化为$\atom{L}{i,k}$，而\cref*{terms3a}将被符号化为$\atom{L}{k,k}$。还有几个句子可以用同一个符号化约定来符号化：
 
 \begin{enumerate}
 	\item\label{terms4} Imre 爱他自己。
@@ -742,8 +742,8 @@ x(\atom{M}{x} \eand \atom{S}{x})$` 来符号化。
 	\item\label{terms6} Karl 被 Imre 爱。
 \end{enumerate}
 
-\Cref*{terms4}可以改述为“Imre 爱 Imre”，因此符号化为“$\atom{L}{i,i}$”。\Cref*{terms5}是一个合取式。我们可以把它改述为“Karl 爱 Imre，并且 Imre 不爱 Karl”，因此符号化为“$\atom{L}{k,i} \eand \enot \atom{L}{i,k}$”。
-\Cref*{terms6}可以改述为“Imre 爱 Karl”，因此符号化为“$\atom{L}{i,k}$”。当然，在这最后一种情况中，我们丢失了主动语态和被动语态在\emph{语气}上的差异；但至少我们保留了真值条件。
+\Cref*{terms4}可以改述为“Imre 爱 Imre”，因此符号化为$\atom{L}{i,i}$。\Cref*{terms5}是一个合取式。我们可以把它改述为“Karl 爱 Imre，并且 Imre 不爱 Karl”，因此符号化为$\atom{L}{k,i} \eand \enot \atom{L}{i,k}$。
+\Cref*{terms6}可以改述为“Imre 爱 Karl”，因此符号化为$\atom{L}{i,k}$。当然，在这最后一种情况中，我们丢失了主动语态和被动语态在\emph{语气}上的差异；但至少我们保留了真值条件。
 
 但“Imre 爱 Karl”和“Karl 被 Imre 爱”之间的关系凸显了某个重要之处。为了看清这一点，假设我们在符号化约定中增加另一个条目：
 
@@ -751,11 +751,11 @@ x(\atom{M}{x} \eand \atom{S}{x})$` 来符号化。
 	\item[\atom{M}{x,y}] \gap{y} 爱 \gap{x}
 \end{ekey}
 
-“$M$” 的条目使用了和 “$L$” 的条目完全相同的自然语言词——“爱”。\emph{但是空位被交换了！}（仔细看下标就会发现。）而这一点\emph{很重要}。
+$M$的条目使用了和$L$的条目完全相同的自然语言词——“爱”。\emph{但是空位被交换了！}（仔细看下标就会发现。）而这一点\emph{很重要}。
 
-解释如下：当我们看到像“$\atom{L}{k,i}$”这样的语句时，我们被告知要将\emph{第一个}名称（即“$k$”）对应的所指（即 Karl）与标为“$x$”的空位关联，然后将\emph{第二个}名称（即“$i$”）对应的所指（即 Imre）与标为“$y$”的空位关联，从而得到：\emph{Karl 爱 Imre}。语句“$\atom{M}{i,k}$”同样告诉我们，将\emph{第一个}名称（即“$i$”）对应的所指填入标为“$x$”的空位，将\emph{第二个}名称（即“$k$”）对应的所指填入标为“$y$”的空位，从而也得到：\emph{Karl 爱 Imre}。
+解释如下：当我们看到像$\atom{L}{k,i}$这样的语句时，我们被告知要将\emph{第一个}名称（即$k$）对应的所指（即 Karl）与标为$x$的空位关联，然后将\emph{第二个}名称（即$i$）对应的所指（即 Imre）与标为$y$的空位关联，从而得到：\emph{Karl 爱 Imre}。语句$\atom{M}{i,k}$同样告诉我们，将\emph{第一个}名称（即$i$）对应的所指填入标为$x$的空位，将\emph{第二个}名称（即$k$）对应的所指填入标为$y$的空位，从而也得到：\emph{Karl 爱 Imre}。
 
-因此，“$\atom{L}{i,k}$”和“$\atom{M}{k,i}$”都符号化了“Imre 爱 Karl”，而“$\atom{L}{k,i}$”和“$\atom{M}{i,k}$”都符号化了“Karl 爱 Imre”。由于爱可以是单相思的，所以这是不同的断言。
+因此，$\atom{L}{i,k}$和$\atom{M}{k,i}$都符号化了“Imre 爱 Karl”，而$\atom{L}{k,i}$和$\atom{M}{i,k}$都符号化了“Karl 爱 Imre”。由于爱可以是单相思的，所以这是不同的断言。
 
 最后再举一个例子可能会有帮助。假设我们在符号化约定中增加：
 
@@ -763,7 +763,7 @@ x(\atom{M}{x} \eand \atom{S}{x})$` 来符号化。
 	\item[\atom{P}{x,y}] \gap{x} 比起 \gap{y} 更偏爱 \gap{x}
 \end{ekey}
 
-现在，语句“$\atom{P}{i,k}$”符号化了“Imre 比起 Karl 更偏爱 Imre”，而“$\atom{P}{k,i}$”符号化了“Karl 比起 Imre 更偏爱 Karl”。需要注意的是，如果我们改为这样指定，可以达到同样的效果：
+现在，语句$\atom{P}{i,k}$符号化了“Imre 比起 Karl 更偏爱 Imre”，而$\atom{P}{k,i}$符号化了“Karl 比起 Imre 更偏爱 Karl”。需要注意的是，如果我们改为这样指定，可以达到同样的效果：
 
 \begin{ekey}
 	\item[\atom{P}{x,y}] \gap{x} 比起 \gap{y} 更偏爱自己
@@ -779,7 +779,7 @@ x(\atom{M}{x} \eand \atom{S}{x})$` 来符号化。
 		\item\label{loveconverge} 存在某个特定的人，每个人都爱他。
 	\end{enumerate}
 
-\Cref*{lovecycle}可以用“$\forall x \exists y\, \atom{L}{x,y}$”来符号化。假设我们的论域仅限于 Imre、Juan 和 Karl。再假设 Karl 爱 Imre 但不爱 Juan，Imre 爱 Juan 但不爱 Karl，而 Juan 爱 Karl 但不爱 Imre。那么\cref*{lovecycle}为真。
+\Cref*{lovecycle}可以用$\forall x \exists y\, \atom{L}{x,y}$来符号化。假设我们的论域仅限于 Imre、Juan 和 Karl。再假设 Karl 爱 Imre 但不爱 Juan，Imre 爱 Juan 但不爱 Karl，而 Juan 爱 Karl 但不爱 Imre。那么\cref*{lovecycle}为真。
 
 \Cref*{loveconverge}则用“$\exists y \forall x\,
 \atom{L}{x,y}$”来符号化。\Cref{loveconverge}在上述描述的情形下\emph{不}为真，因为没有哪一个人是被所有人爱的。Juan、Imre 和 Karl 三人必须（至少）都爱同一个对象。
@@ -817,7 +817,7 @@ x(\atom{M}{x} \eand \atom{S}{x})$` 来符号化。
 正如我们开始看到的，一阶逻辑中的符号化可能变得有点棘手。因此，在符号化复杂语句时，你应该铺设几块“垫脚石”。和往常一样，这个想法最好用例子来说明。考虑下面这套符号化约定：
 
 \begin{ekey}
-\item[\text{domain}] 人和狗
+\item[\text{论域}] 人和狗
 \item[\atom{D}{x}] \gap{x} 是一条狗
 \item[\atom{F}{x,y}] \gap{x} 是 \gap{y} 的朋友
 \item[\atom{O}{x,y}] \gap{x} 拥有 \gap{y}
@@ -834,18 +834,18 @@ x(\atom{M}{x} \eand \atom{S}{x})$` 来符号化。
 \item\label{dog6} 每个狗主人的朋友都拥有一条某位朋友的狗。
 \end{enumerate}
 
-\Cref*{dog2}可以改述为“存在一条 Geraldo 拥有的狗”。这可以符号化为“$\exists x(\atom{D}{x} \eand \atom{O}{g,x})$”。
+\Cref*{dog2}可以改述为“存在一条 Geraldo 拥有的狗”。这可以符号化为$\exists x(\atom{D}{x} \eand \atom{O}{g,x})$。
 
-\Cref*{dog3}可以改述为“存在某个 $y$，使得 $y$ 是一个狗主人”。处理其中一部分，我们可以先写下“$\exists y(y\text{ is a dog owner})$”。现在我们剩下的片段“$y$ 是一个狗主人”与\cref*{dog2}非常相似，只是它并不特指 Geraldo。因此，我们可以将\cref*{dog3}符号化为：
+\Cref*{dog3}可以改述为“存在某个 $y$，使得 $y$ 是一个狗主人”。处理其中一部分，我们可以先写下$\exists y(y\text{ is a dog owner})$。现在我们剩下的片段“$y$ 是一个狗主人”与\cref*{dog2}非常相似，只是它并不特指 Geraldo。因此，我们可以将\cref*{dog3}符号化为：
 $$\exists y \exists x(\atom{D}{x} \eand \atom{O}{y,x})$$
 这里我们应该停下来澄清一点。在推敲如何符号化最后一个语句时，我们写下了“$\exists y(y\text{ is a
-dog owner})$”。要非常清楚：这\emph{既非}一阶逻辑语句\emph{也非}英语句子：它混合使用了一阶逻辑的片段（“$\exists$”、“$y$”）和英语的片段（“dog owner”）。它实际上只是通往用一个一阶逻辑语句来符号化整个英语句子路上的\emph{一块垫脚石}。你应该把它看作是和你在全神贯注思考某个问题时，可能心不在焉地在这本书页边空白处画的涂鸦同类的\emph{草稿}。
+dog owner})$”。要非常清楚：这\emph{既非}一阶逻辑语句\emph{也非}英语句子：它混合使用了一阶逻辑的片段（$\exists$、$y$）和英语的片段（“狗主人（dog owner）”）。它实际上只是通往用一个一阶逻辑语句来符号化整个英语句子路上的\emph{一块垫脚石}。你应该把它看作是和你在全神贯注思考某个问题时，可能心不在焉地在这本书页边空白处画的涂鸦同类的\emph{草稿}。
 
 \Cref*{dog4}可以改述为“每个是 Geraldo 朋友的 $x$ 都是狗主人”。使用我们的垫脚石策略，我们可能会写：
 $$\forall x \bigl[\atom{F}{x,g} \eif x \text{ is a dog owner}\bigr]$$
 现在，我们还要处理的这个片段“$x$ 是狗主人”，在结构上和\cref*{dog2}完全一样。然而，如果我们简单地写成下面这样就会犯错：
 $$\forall x \bigl[\atom{F}{x,g} \eif \exists x(\atom{D}{x} \eand \atom{O}{x,x})\bigr]$$
-因为这里我们将面临\emph{变元冲突}。全称量词“$\forall x$”的辖域是整个条件式，因此“$\atom{D}{x}$”中的“$x$”应该受其管辖，但是“$\atom{D}{x}$”同时也落在存在量词“$\exists x$”的辖域内，所以“$\atom{D}{x}$”中的“$x$”又应该受存在量词管辖。混乱随之而来：我们谈论的究竟是哪个“$x$”？这个语句突然变得模糊不清（如果它还有意义的话），而逻辑学家讨厌歧义。一个总的教训是：一个单独的变元不能同时服务于两个量词“主人”。
+因为这里我们将面临\emph{变元冲突}。全称量词$\forall x$的辖域是整个条件式，因此$\atom{D}{x}$中的$x$应该受其管辖，但是$\atom{D}{x}$同时也落在存在量词$\exists x$的辖域内，所以$\atom{D}{x}$中的$x$又应该受存在量词管辖。混乱随之而来：我们谈论的究竟是哪个$x$？这个语句突然变得模糊不清（如果它还有意义的话），而逻辑学家讨厌歧义。一个总的教训是：一个单独的变元不能同时服务于两个量词“主人”。
 
 那么，要继续我们的符号化工作，就必须为存在量词选择某个不同的变元。我们想要的是像下面这样的形式：
 $$\forall x\bigl[\atom{F}{x,g} \eif\exists z(\atom{D}{z} \eand \atom{O}{x,z})\bigr]$$
@@ -855,8 +855,8 @@ $$\forall x\bigl[\atom{F}{x,g} \eif\exists z(\atom{D}{z} \eand \atom{O}{x,z})\bi
 $$\forall x\bigl[\mbox{$x$ is a dog owner}\eif\exists y(\mbox{$y$ is a dog owner}\eand \atom{F}{x,y})\bigr]$$
 完成符号化后，我们最终得到：
 $$\forall x\bigl[\exists z(\atom{D}{z} \eand \atom{O}{x,z})\eif\exists y\bigl(\exists z(\atom{D}{z} \eand \atom{O}{y,z})\eand \atom{F}{x,y}\bigr)\bigr]$$
-注意，我们在条件式的前件和后件中都使用了相同的字母“$z$”，但它们分别受两个不同的量词管辖。这是可以的：这里没有冲突，因为变元具体属于哪个量词的辖域是一清二楚的。我们可以这样图示量词的辖域：
-$$\overbrace{\forall x\bigl[\overbrace{\exists z(\atom{D}{z} \eand \atom{O}{x,z})}^{\text{scope of 1st `}\exists z\text{'}}\eif \overbrace{\exists y(\overbrace{\exists z(\atom{D}{z} \eand \atom{O}{y,z})}^{\text{scope of 2nd `}\exists z\text{'}}\eand \atom{F}{x,y})\bigr]}^{\text{scope of `}\exists y\text{'}}}^{\text{scope of `}\forall x\text{'}}$$
+注意，我们在条件式的前件和后件中都使用了相同的字母$z$，但它们分别受两个不同的量词管辖。这是可以的：这里没有冲突，因为变元具体属于哪个量词的辖域是一清二楚的。我们可以这样图示量词的辖域：
+$$\overbrace{\forall x\bigl[\overbrace{\exists z(\atom{D}{z} \eand \atom{O}{x,z})}^{\text{scope of 1st }\exists z}\eif \overbrace{\exists y(\overbrace{\exists z(\atom{D}{z} \eand \atom{O}{y,z})}^{\text{scope of 2nd }\exists z}\eand \atom{F}{x,y})\bigr]}^{\text{scope of }\exists y}}^{\text{scope of }\forall x}$$
 这表明没有变元被迫同时服务于两个主人。
 
 \Cref{dog6}是迄今为止最棘手的。我们首先把它改述为：“对于任何是某个狗主人朋友的 $x$，$x$ 拥有一条狗，并且这条狗也被 $x$ 的某个朋友所拥有”。使用我们的垫脚石策略，这变成：
@@ -909,18 +909,18 @@ $$\exists y (\atom{P}{y} \eand \exists x(\atom{D}{x} \eand
 
 \section{隐含的量词}\label{ss:SuppQuant}
 
-逻辑常常能帮助我们厘清英语陈述的含义，尤其是在量词被隐含、或它们的顺序存在歧义、不够明确的时候。一阶逻辑赋予表达和思考的清晰性，能使你在论证中占据显著优势。这一点，我们可以从英国政治哲学家玛丽·阿斯特尔（Mary Astell, 1666--1731）对其同时代神学家威廉·尼科尔斯的批驳中看到。尼科尔斯的著作《下级对上级的责任——五篇实践论述》（伦敦，1701）中，第四篇《妻子对丈夫的责任》论证了女性天生劣于男性。阿斯特尔在其论著《关于婚姻的若干思考——由马扎林公爵与公爵夫人的案例所引发的思考；该案例亦纳入考虑》第三版序言中，做出了如下回应：
+逻辑常常能帮助我们厘清英语陈述的含义，尤其是在量词被隐含、或它们的顺序存在歧义、不够明确的时候。一阶逻辑赋予表达和思考的清晰性，能使你在论证中占据显著优势。这一点，我们可以从英国政治哲学家 Mary Astell（1666--1731）对其同时代神学家 William Nicholls 的批驳中看到。Nicholls 的著作《下级对上级的责任——五篇实践论述》（伦敦，1701）中，第四篇《妻子对丈夫的责任》论证了女性天生劣于男性。Astell 在其论著《关于婚姻的若干思考——由Mazarine公爵与公爵夫人的案例所引发的思考；该案例亦纳入考虑》第三版序言中，做出了如下回应：
 
 \begin{quotation}
-确实，由于缺乏学问，也缺乏男人们作为男人所宣称拥有的那种卓越天资，她（阿斯特尔）不了解我们性别的\textit{天生低劣}，而我们的主人却将此作为一条不证自明且根本的真理加以确立。从事物的理性中，她看不出有任何理由将此作为一个原则或结论，反而看到许多相反的证据；在当今统治下，断言这一点即使不算叛国，至少也是煽动叛乱。
+确实，由于缺乏学问，也缺乏男人们作为男人所宣称拥有的那种卓越天资，她（Astell）不了解我们性别的\textit{天生低劣}，而我们的主人却将此作为一条不证自明且根本的真理加以确立。从事物的理性中，她看不出有任何理由将此作为一个原则或结论，反而看到许多相反的证据；在当今统治下，断言这一点即使不算叛国，至少也是煽动叛乱。
 
 因为，如果他们所说的男性\textit{天生优越}是指\textit{每一个}男人天生优于\textit{每一个}女人，这是其最明显的含义，也是他们若要言之成理就必须坚持的含义，那么，\textit{任何}女人统治\textit{任何}男人都是罪过，即便最伟大的女王也不应命令而应服从她的男仆，因为没有任何成文法能够凌驾或改变自然法；因此，如果男性的统治权真是如此，那么\textit{萨利克法}\footnote{萨利克法是法国的普通法，禁止将王位传给女性继承人。}——尽管\textit{英国人}一直认为它不公正——就应该适用于全世界，而\textit{英国、丹麦、卡斯蒂利亚}及其他编年史中所记载的那些最辉煌的统治，便都是对自然法的邪恶践踏！
 
-如果他们是指\textit{有些}男人优于\textit{有些}女人，那这算不得什么了不起的发现；如果他们互换立场，就会发现\textit{有些}女人也优于\textit{有些}男人。或者，如果他们愿意回想一下自己的效忠宣誓和至高权力宣誓，他们就会知道，在这些国家中，\textit{一位}女人优于\textit{所有}男人，否则他们的宣誓就毫无意义了。\footnote{1706年，英格兰由安妮女王统治。}不能认为，他们的理性和宗教会容许他们立下违背自然法和事物理性的誓言。\footnote{玛丽·阿斯特尔，《关于婚姻的思考》1706年版序言，iii--iv；玛丽·阿斯特尔，《政治著作》，帕特里夏·斯普林堡编，剑桥大学出版社，1996年，第9--10页。}
+如果他们是指\textit{有些}男人优于\textit{有些}女人，那这算不得什么了不起的发现；如果他们互换立场，就会发现\textit{有些}女人也优于\textit{有些}男人。或者，如果他们愿意回想一下自己的效忠宣誓和至高权力宣誓，他们就会知道，在这些国家中，\textit{一位}女人优于\textit{所有}男人，否则他们的宣誓就毫无意义了。\footnote{1706年，英格兰由 Queen Anne 统治。}不能认为，他们的理性和宗教会容许他们立下违背自然法和事物理性的誓言。\footnote{Mary Astell，《关于婚姻的思考》1706年版序言，iii--iv；Mary Astell，《政治著作》，Patricia Springborg 编，剑桥大学出版社，1996年，第9--10页。}
 \end{quotation}
 
 
-我们可以将阿斯特尔为尼科尔斯的“男性优于女性”之主张所提供的不同解释加以符号化：
+我们可以将 Astell 为 Nicholls 的“男性优于女性”之主张所提供的不同解释加以符号化：
 他要么是指每一个男人都优于每一个女人，即：
 \[
 \forall x(\atom{M}{x} \eif \forall y(\atom{W}{y} \eif \atom{S}{x,y}))
@@ -937,7 +937,7 @@ $$\exists y (\atom{P}{y} \eand \exists x(\atom{D}{x} \eand
 \[
 \exists y(\atom{W}{y} \land \forall x(\atom{M}{x} \eif \atom{S}{y,x})).
 \]
-但这与尼科尔斯主张的“最明显不过的含义”——即第一种解读——是不相容的。因此，尼科尔斯的断言等同于对女王不忠！
+但这与 Nicholls 主张的“最明显不过的含义”——即第一种解读——是不相容的。因此，Nicholls 的断言等同于对女王不忠！
 
 \practiceproblems
 \solutions
@@ -1131,7 +1131,7 @@ $$\exists y (\atom{P}{y} \eand \exists x(\atom{D}{x} \eand
 		\item[p] Pavel
 	\end{ekey}
 
-我们可以将\cref*{else1}符号化为“$\forall x\, \atom{O}{p,x}$”。但这会有一个（也许）奇怪的后果。它要求 Pavel 欠论域中每个成员的钱（无论论域是什么）。论域肯定包括 Pavel。因此，这蕴涵 Pavel 欠他自己的钱。而我们可能并不想表达这一点。也许我们本意是保留 Pavel 是否欠自己钱的开放性，要想更精确地表达这一点，我们可以使用下面两种说法之一：
+我们可以将\cref*{else1}符号化为$\forall x\, \atom{O}{p,x}$。但这会有一个（也许）奇怪的后果。它要求 Pavel 欠论域中每个成员的钱（无论论域是什么）。论域肯定包括 Pavel。因此，这蕴涵 Pavel 欠他自己的钱。而我们可能并不想表达这一点。也许我们本意是保留 Pavel 是否欠自己钱的开放性，要想更精确地表达这一点，我们可以使用下面两种说法之一：
 
 \begin{enumerate}
 		\item\label{else1b} Pavel 欠\emph{其他}每个人钱。
@@ -1142,31 +1142,31 @@ $$\exists y (\atom{P}{y} \eand \exists x(\atom{D}{x} \eand
 
 \section{增加同一性}
 
-符号“$=$”将是一个二元谓词。由于它具有特殊的意义，我们写它的方式会略有不同：我们把它写在两个项\emph{之间}，而不是放在最前面。（这应该是大家熟悉的；考虑像 $\frac{1}{2} = 0.5$ 这样的数学方程。）而“$=$”的特殊意义来源于我们\emph{总是}采用以下符号化约定：
+符号$=$将是一个二元谓词。由于它具有特殊的意义，我们写它的方式会略有不同：我们把它写在两个项\emph{之间}，而不是放在最前面。（这应该是大家熟悉的；考虑像 $\frac{1}{2} = 0.5$ 这样的数学方程。）而$=$的特殊意义来源于我们\emph{总是}采用以下符号化约定：
 
 \begin{ekey}
 		\item[x=y] \gap{x} 等同于 \gap{y}
 	\end{ekey}
 
-这并\emph{不仅仅}意味着“$=$”左边和右边的项指称了不可区分的对象，或者所有相同的事情对它们都成立。相反，它意味着“$=$”左边和右边的项指称的是\emph{同一个对象}。
+这并\emph{不仅仅}意味着$=$左边和右边的项指称了不可区分的对象，或者所有相同的事情对它们都成立。相反，它意味着$=$左边和右边的项指称的是\emph{同一个对象}。
 
 为了应用这一点，假设我们想符号化下面这个句子：
 
 \begin{enumerate}
-\item\label{else2} Pavel 是契诃夫先生。
+\item\label{else2} Pavel 是 Mister Chekhov。
 \end{enumerate}
 
 让我们向符号化约定中添加：
 
 \begin{ekey}
-		\item[c] 契诃夫先生
+		\item[c] Mister Chekhov
 	\end{ekey}
 
-现在，\cref*{else2}可以符号化为“$p=c$”。这告诉我们名称“$p$”和“$c$”指称的是同一个东西。
+现在，\cref*{else2}可以符号化为$p=c$。这告诉我们名称$p$和$c$指称的是同一个东西。
 
-我们现在也可以处理\cref{else1b,else1c}了。这两个句子都可以改述为“每个不是 Pavel 的人，Pavel 都欠他钱”。进一步改述，我们得到：“对所有 $x$，如果 $x$ 不是 Pavel，那么 $x$ 被 Pavel 欠钱”。既然我们现在掌握了新的同一性符号，我们可以将其符号化为“$\forall x (\enot\, {x = p} \eif \atom{O}{p,x})$”。
+我们现在也可以处理\cref{else1b,else1c}了。这两个句子都可以改述为“每个不是 Pavel 的人，Pavel 都欠他钱”。进一步改述，我们得到：“对所有 $x$，如果 $x$ 不是 Pavel，那么 $x$ 被 Pavel 欠钱”。既然我们现在掌握了新的同一性符号，我们可以将其符号化为$\forall x (\enot\, {x = p} \eif \atom{O}{p,x})$。
 
-最后这个句子包含公式“$\enot\, {x = p}$”。这可能看起来有点奇怪，因为紧跟在“$\enot$”之后的符号是一个变元，而不是谓词，但这并不是问题。我们只是对整个公式“$x = p$”进行了否定。
+最后这个句子包含公式$\enot\, {x = p}$。这可能看起来有点奇怪，因为紧跟在$\enot$之后的符号是一个变元，而不是谓词，但这并不是问题。我们只是对整个公式$x = p$进行了否定。
 
 \section{“只有”与“除了”}
 
@@ -1176,7 +1176,7 @@ $$\exists y (\atom{P}{y} \eand \exists x(\atom{D}{x} \eand
 \item\label{only1} 只有 Pavel 欠 Hikaru 钱。
 \end{enumerate}
 
-用“$h$”指称 Hikaru。合理地说，当且仅当以下两个条件均成立时，\cref*{only1}才为真：
+用$h$指称 Hikaru。合理地说，当且仅当以下两个条件均成立时，\cref*{only1}才为真：
 
 \begin{enumerate}
 	\item\label{only2} Pavel 欠 Hikaru 钱。
@@ -1189,15 +1189,15 @@ $$\exists y (\atom{P}{y} \eand \exists x(\atom{D}{x} \eand
 	& \forall x(\enot\, {x = p} \eif \enot\atom{O}{x,h}),\\
 	& \forall x(\atom{O}{x,h} \eif x = p).
 \end{align*}
-因此，我们可以将\cref*{only1}符号化为上述之一与\cref*{only2}的符号化形式（即“$\atom{O}{p,h}$”）的合取，或者更简洁地，使用“$\eiff$”将其符号化为“$\forall x(\atom{O}{x,h} \eiff x = p)$”。
+因此，我们可以将\cref*{only1}符号化为上述之一与\cref*{only2}的符号化形式（即$\atom{O}{p,h}$）的合取，或者更简洁地，使用$\eiff$将其符号化为$\forall x(\atom{O}{x,h} \eiff x = p)$。
 
 \begin{enumerate}
 	\item\label{except} 除了 Pavel，每个人都欠 Hikaru 钱。
 	\end{enumerate}
 
-\Cref*{except}可以用类似的方式处理，尽管此时 Pavel 显然\emph{不}欠 Hikaru 钱。我们可以把它改述为“每个不是 Pavel 的人都欠 Hikaru 钱，而 Pavel 不欠”。因此，它可以符号化为“$\forall x(\enot\, {x = p} \eif \atom{O}{x,h}) \eand \enot \atom{O}{p,h}$”，或者更简洁地，“$\forall x(\enot\, {x = p} \eiff \atom{O}{x,h})$”。与“除了”类似的其他措辞，例如用在“no one but Pavel”或“someone besides Hikaru”中的“but”或“besides”，也可以用类似的方式处理。
+\Cref*{except}可以用类似的方式处理，尽管此时 Pavel 显然\emph{不}欠 Hikaru 钱。我们可以把它改述为“每个不是 Pavel 的人都欠 Hikaru 钱，而 Pavel 不欠”。因此，它可以符号化为$\forall x(\enot\, {x = p} \eif \atom{O}{x,h}) \eand \enot \atom{O}{p,h}$，或者更简洁地，$\forall x(\enot\, {x = p} \eiff \atom{O}{x,h})$。与“除了”类似的其他措辞，例如用在“除 Pavel 外没有人（no one but Pavel）”或“除 Hikaru 之外的某人（someone besides Hikaru）”中的“but”或“besides”，也可以用类似的方式处理。
 
-上述对所谓“排他词”的处理并非没有争议。一些语言学家认为\cref*{except}并不蕴涵 Pavel 不欠 Hikaru 钱，因此其符号化应该仅仅是“$\forall x(\enot\, {x = p} \eif \atom{O}{x,h})$”。“except”也确有一些用法显然不具有那种蕴涵关系，尤其是在数学写作中。例如，你可能会在微积分教科书中看到“函数 $f$ 处处有定义，唯独 $a$ 点可能除外”。这仅仅意味着对于每一个 $a$ 以外的点 $x$，$f$ 在 $x$ 处有定义。它并不要求 $f$ 在 $a$ 处无定义；$f$ 在 $a$ 处是否有定义是留作开放的。
+上述对所谓“排他词”的处理并非没有争议。一些语言学家认为\cref*{except}并不蕴涵 Pavel 不欠 Hikaru 钱，因此其符号化应该仅仅是$\forall x(\enot\, {x = p} \eif \atom{O}{x,h})$。“除外（except）”也确有一些用法显然不具有那种蕴涵关系，尤其是在数学写作中。例如，你可能会在微积分教科书中看到“函数 $f$ 处处有定义，唯独 $a$ 点可能除外”。这仅仅意味着对于每一个 $a$ 以外的点 $x$，$f$ 在 $x$ 处有定义。它并不要求 $f$ 在 $a$ 处无定义；$f$ 在 $a$ 处是否有定义是留作开放的。
 
 \section{至少有……个}
 我们也可以用同一性来谈论某类事物有多少个。例如，看这些句子：
@@ -1215,18 +1215,18 @@ $$\exists y (\atom{P}{y} \eand \exists x(\atom{D}{x} \eand
 	\end{ekey}
 
 
-\Cref*{atleast1}不需要同一性。它可以由“$\exists x\, \atom{A}{x}$”充分地符号化：存在一个苹果；可能有很多，但至少一个。
+\Cref*{atleast1}不需要同一性。它可以由$\exists x\, \atom{A}{x}$充分地符号化：存在一个苹果；可能有很多，但至少一个。
 
 人们可能也想不用同一性来符号化\cref*{atleast2}，即符号化为“$\exists x \exists y(\atom{A}{x} \eand
 \atom{A}{y})$”。粗略地说，这表示论域中存在某个苹果 $x$ 和某个苹果 $y$。由于没有任何东西阻止它们是同一个苹果，所以即使只有一个苹果，它也会是真的。为了确保我们处理的是\emph{不同}的苹果，我们需要同一性谓词。
-\Cref*{atleast2}需要说存在的这两个苹果不是同一个，因此可以符号化为“$\exists x \exists
-y((\atom{A}{x} \eand \atom{A}{y}) \eand \enot\, {x = y})$”。
+\Cref*{atleast2}需要说存在的这两个苹果不是同一个，因此可以符号化为$\exists x \exists
+y((\atom{A}{x} \eand \atom{A}{y}) \eand \enot\, {x = y})$。
 
 \Cref*{atleast3}需要谈论三个不同的苹果。现在我们需要三个存在量词，并且需要确保每个量词挑出的是不同的东西：
 \[
 	\exists x \exists y\exists z[((\atom{A}{x} \eand \atom{A}{y}) \eand \atom{A}{z}) \eand ((\enot\, {x = y} \eand \enot\, {y = z}) \eand \enot\, {x = z})].
 \]
-注意，用“$\enot\, {x = y} \eand \enot\, {y = z}$”来符号化“$x$、$y$ 和 $z$ 全都不同”是\emph{不够}的。因为如果 $x$ 和 $y$ 不同，但 $x = z$，该公式也会为真。一般来说，要说 $x_1$、……、$x_n$ 全都不同，我们必须对每一对不同的 $i$ 和 $j$ 都有 $\enot\, {x_i = x_j}$ 的合取。
+注意，用$\enot\, {x = y} \eand \enot\, {y = z}$来符号化“$x$、$y$ 和 $z$ 全都不同”是\emph{不够}的。因为如果 $x$ 和 $y$ 不同，但 $x = z$，该公式也会为真。一般来说，要说 $x_1$、……、$x_n$ 全都不同，我们必须对每一对不同的 $i$ 和 $j$ 都有 $\enot\, {x_i = x_j}$ 的合取。
 
 \section{至多有……个}
 现在考虑以下语句：
@@ -1313,7 +1313,7 @@ $$\exists x\exists y\bigl[((\atom{A}{x} \eand \atom{A}{y}) \eand \enot\, {x = y}
 %\label{pr.FOLcandies}
 %Using the following symbolization key:
 %\begin{ekey}
-%\item[\text{domain}] candies
+%\item[\text{论域}] candies
 %\item[\atom{C}{x}] \gap{x} has chocolate in it.
 %\item[\atom{M}{x}] \gap{x} has marzipan in it.
 %\item[\atom{S}{x}] \gap{x} has sugar in it.
@@ -1343,15 +1343,15 @@ $$\exists x\exists y\bigl[((\atom{A}{x} \eand \atom{A}{y}) \eand \enot\, {x = y}
 \end{enumerate}
 
 
-用“$\atom{F}{x}$”表示“\gap{x} 是官员”来符号化这个语句。你是否确信你的符号化当且仅当\cref*{except2}为真时才为真？如果每个官员都欠 Hikaru 钱，Pavel 不欠，但 Pavel 不是官员，会发生什么？
+用$\atom{F}{x}$表示“\gap{x} 是官员”来符号化这个语句。你是否确信你的符号化当且仅当\cref*{except2}为真时才为真？如果每个官员都欠 Hikaru 钱，Pavel 不欠，但 Pavel 不是官员，会发生什么？
 
 \problempart
 解释为什么：
 
 
 \begin{compactlist}
-		\item “$\exists x \forall y(\atom{A}{y} \eiff x= y)$”是“恰好有一个苹果”的一个好的符号化。
-		\item “$\exists x \exists y \bigl[\enot\, {x = y} \eand \forall
+		\item$\exists x \forall y(\atom{A}{y} \eiff x= y)$是“恰好有一个苹果”的一个好的符号化。
+		\item“$\exists x \exists y \bigl[\enot\, {x = y} \eand \forall
 		z(\atom{A}{z} \eiff (x= z \eor y = z))\bigr]$”是“恰好有两个苹果”的一个好的符号化。
 	\end{compactlist}
 
@@ -1364,7 +1364,7 @@ $$\exists x\exists y\bigl[((\atom{A}{x} \eand \atom{A}{y}) \eand \enot\, {x = y}
 \begin{compactlist}
 \item \textbf{谓词：} $A$, $B$, $C$, \dots, $Z$，或者根据需要添加下标：$A_1$, $B_1$, $Z_1$, $A_2$, $A_{25}$, $J_{375}$, \dots
 
-等号“$=$”视为一个特殊的谓词。
+等号$=$视为一个特殊的谓词。
 \item \textbf{名称：} $a$, $b$, $c$, \dots, $r$，或者根据需要添加下标：$a_1$, $b_{224}$, $h_7$, $m_{32}$, \dots
 \item \textbf{变元：} $s$, $t$, $u$, $v$, $w$, $x$, $y$, $z$，或者根据需要添加下标：$x_1$, $y_1$, $z_1$, $x_2$, \dots
 \item \textbf{联结词：}  $\enot$, $\eand$, $\eor$, $\eif$, $\eiff$
@@ -1398,7 +1398,7 @@ $$\exists x\exists y\bigl[((\atom{A}{x} \eand \atom{A}{y}) \eand \enot\, {x = y}
 
 
 	}
-注意，我们将语句字母也视为一阶逻辑的公式，因此每个真值函项逻辑的语句也都是一阶逻辑的公式。在\cref{ch.NDFOL}中，我们将再次允许矛盾符号~“$\ered$”作为一个原子公式。
+注意，我们将语句字母也视为一阶逻辑的公式，因此每个真值函项逻辑的语句也都是一阶逻辑的公式。在\cref{ch.NDFOL}中，我们将再次允许矛盾符号~$\ered$作为一个原子公式。
 
 \newglossaryentry{term}{
   name = 项,
@@ -1410,7 +1410,7 @@ $$\exists x\exists y\bigl[((\atom{A}{x} \eand \atom{A}{y}) \eand \enot\, {x = y}
   description = {按照\cref{s:TermsFormulas}中的归纳规则构造出来的一阶逻辑表达式}
 }
 
-这里使用花体字母遵循了\cref{s:UseMention}中建立的约定。因此，“$\metav{R}$”本身并不是一阶逻辑的谓词。相反，它是我们（扩充了的自然语言的）元语言中的一个符号，用来指代任意一个一阶逻辑谓词。类似地，“$\metav{t}_1$”也不是一阶逻辑的项，而是我们用来指代任意一个项的元语言符号。那么，假设“$F$”是一个一元谓词，“$G$”是一个三元谓词，“$S$”是一个六元谓词，下面是一些原子公式：
+这里使用花体字母遵循了\cref{s:UseMention}中建立的约定。因此，$\metav{R}$本身并不是一阶逻辑的谓词。相反，它是我们（扩充了的自然语言的）元语言中的一个符号，用来指代任意一个一阶逻辑谓词。类似地，$\metav{t}_1$也不是一阶逻辑的项，而是我们用来指代任意一个项的元语言符号。那么，假设$F$是一个一元谓词，$G$是一个三元谓词，$S$是一个六元谓词，下面是一些原子公式：
 
 
 \begin{center}
@@ -1441,7 +1441,7 @@ $$\exists x\exists y\bigl[((\atom{A}{x} \eand \atom{A}{y}) \eand \enot\, {x = y}
 		\item 除此之外没有其他的公式。
 	\end {compactlist}
 	}
-那么，再次假设“$F$”是一个一元谓词，“$G$”是一个三元谓词，“$S$”是一个六元谓词，下面是一些你可以通过这种方式构造出来的公式：
+那么，再次假设$F$是一个一元谓词，$G$是一个三元谓词，$S$是一个六元谓词，下面是一些你可以通过这种方式构造出来的公式：
 	\begin{align*}
 		& \atom{F}{x}\\
 		& \atom{G}{a,y,z}\\
@@ -1468,9 +1468,9 @@ $$\exists x\exists y\bigl[((\atom{A}{x} \eand \atom{A}{y}) \eand \enot\, {x = y}
 因此，对于前面例子中的量词，其辖域可以用图形直观地展示如下：
 $$\overbrace{\forall x \overbrace{\exists y (\atom{F}{x} \eiff
 \overbrace{\forall z (\atom{G}{a,y,z} \eif
-\atom{S}{y,z,y,a,y,x})}^{\text{scope of `}\forall
-z\text{'}}}^{\text{scope of `}\exists y\text{'}})}^{\text{scope of
-`$\forall x$'}}$$
+\atom{S}{y,z,y,a,y,x})}^{\text{scope of }\forall
+z}}^{\text{scope of }\exists y})}^{\text{scope of
+$\forall x$}}$$
 
 \newglossaryentry{main logical operator}{
   name = 主逻辑算子,
@@ -1486,17 +1486,17 @@ z\text{'}}}^{\text{scope of `}\exists y\text{'}})}^{\text{scope of
 
 回想一下，逻辑学主要关注的是陈述句：可以为真或为假的句子。许多公式并不是语句。考虑下面的符号化约定：
 	\begin{ekey}
-		\item[\text{domain}] 人
+		\item[\text{论域}] 人
 		\item[\atom{L}{x,y}] \gap{x} 爱 \gap{y}
 		\item[b] Boris
 	\end{ekey}
-考虑原子公式 `$\atom{L}{z,z}$'。所有原子公式都是公式，所以 `$\atom{L}{z,z}$' 是一个公式，但它能是真或假的吗？你可能会认为，它成立的条件是：被 `$z$' 所指的那个人爱他们自己。这类似于 `$\atom{L}{b,b}$' 成立的条件是：Boris（被名称 `$b$' 所指的那个人）爱他自己。\emph{然而，`$z$' 是一个变元，它并不指称任何人或任何事物。}
+考虑原子公式 $\atom{L}{z,z}$。所有原子公式都是公式，所以 $\atom{L}{z,z}$ 是一个公式，但它能是真或假的吗？你可能会认为，它成立的条件是：被 $z$ 所指的那个人爱他们自己。这类似于 $\atom{L}{b,b}$ 成立的条件是：Boris（被名称 $b$ 所指的那个人）爱他自己。\emph{然而，$z$ 是一个变元，它并不指称任何人或任何事物。}
 
-当然，如果我们在前面加上一个存在量词，得到 `$\exists z\,\atom{L}{z,z}$'，那么这个公式将成立 \ifeff{} 有人爱自己。同样，如果我们写下 `$\forall z\, \atom{L}{z,z}$'，这个公式将成立 \ifeff{} 每个人都爱自己。关键在于，我们需要一个量词来告诉我们如何处理一个变元。
+当然，如果我们在前面加上一个存在量词，得到 $\exists z\,\atom{L}{z,z}$，那么这个公式将成立当且仅当有人爱自己。同样，如果我们写下 $\forall z\, \atom{L}{z,z}$，这个公式将成立当且仅当每个人都爱自己。关键在于，我们需要一个量词来告诉我们如何处理一个变元。
 
 让我们把这个想法精确化。
 	\factoidbox{
-		一个变元 \metav{x} 的出现是\define{约束的（bound）}\ifeff{} 它落在 $\forall\metav{x}$ 或~$\exists\metav{x}$ 的辖域内。一个变元的出现如果不是约束的，就是\define{自由的（free）}。}
+		一个变元 \metav{x} 的出现是\define{约束的（bound）}当且仅当它落在 $\forall\metav{x}$ 或~$\exists\metav{x}$ 的辖域内。一个变元的出现如果不是约束的，就是\define{自由的（free）}。}
 
 \newglossaryentry{bound variable}{
   name = 约束变元,
@@ -1510,7 +1510,7 @@ z\text{'}}}^{\text{scope of `}\exists y\text{'}})}^{\text{scope of
 
 例如，考虑公式
 	$$(\forall x(\atom{E}{x} \eor \atom{D}{y}) \eif \exists z(\atom{E}{x} \eif \atom{L}{z,x}))$$
-全称量词 `$\forall x$' 的辖域是 `$\forall x (\atom{E}{x} \eor \atom{D}{y})$'，所以第一个 `$x$' 被这个全称量词约束。然而，第二个和第三个 `$x$' 的出现是自由的。同样，`$y$' 也是自由的。存在量词 `$\exists z$' 的辖域是 `$\exists z(\atom{E}{x} \eif \atom{L}{z,x})$'，所以 `$z$' 被约束。
+全称量词 $\forall x$ 的辖域是 $\forall x (\atom{E}{x} \eor \atom{D}{y})$，所以第一个 $x$ 被这个全称量词约束。然而，第二个和第三个 $x$ 的出现是自由的。同样，$y$ 也是自由的。存在量词 $\exists z$ 的辖域是 $\exists z(\atom{E}{x} \eif \atom{L}{z,x})$，所以 $z$ 被约束。
 
 不含自由变元的公式，即每个变元都被约束的公式，称为\define{语句（sentences）}。只有语句才能为真或为假。
 \factoidbox{
@@ -1525,16 +1525,16 @@ z\text{'}}}^{\text{scope of `}\exists y\text{'}})}^{\text{scope of
 }
 
 注意，在\cref{s:TermsFormulas}给出的形成规则中，特别是在 $\forall$ 和~$\exists$ 的条款里，我们并没有要求 $\forall\metav{x}\,
-\metav{A}$ 和 $\exists\metav{x}\,\metav{A}$ 中的变元~$\metav{x}$ 不能\emph{已经}在~$\metav{A}$ 中作为约束变元出现。因此，我们允许例如 `$\exists x(\forall x\,\atom{F}{x} \eif \atom{G}{x})$' 作为一个语句。我们不会经常遇到这种特殊情况，因为我们总可以通过重命名约束变元来获得一个等价的、避免此类奇怪情况的语句；在这个例子中，比如 `$\exists x(\forall y\,\atom{F}{y} \eif
-\atom{G}{x})$'。但既然允许这种情况发生，我们就应该澄清哪个量词绑定哪个变元：一个约束变元的出现总是被与它匹配的（即相同变元的）、离它最近的那个量词绑定。所谓“最近”是指：它是包含该变元出现的最小子公式的\gls{main logical operator}。所以在先前的例子中，`$\forall x$' 绑定 `$\atom{F}{x}$' 中的~`$x$'，因为它是 `$\forall x\,\atom{F}{x}$' 的主逻辑算子。然而，`$\forall x$' 并不绑定 `$\atom{G}{x}$' 中的~`$x$'。`$\exists x$' 不绑定 `$\atom{F}{x}$' 中的~`$x$'，但它确实绑定 `$\atom{G}{x}$' 中的~`$x$'。
+\metav{A}$ 和 $\exists\metav{x}\,\metav{A}$ 中的变元~$\metav{x}$ 不能\emph{已经}在~$\metav{A}$ 中作为约束变元出现。因此，我们允许例如 $\exists x(\forall x\,\atom{F}{x} \eif \atom{G}{x})$ 作为一个语句。我们不会经常遇到这种特殊情况，因为我们总可以通过重命名约束变元来获得一个等价的、避免此类奇怪情况的语句；在这个例子中，比如 $\exists x(\forall y\,\atom{F}{y} \eif
+\atom{G}{x})$。但既然允许这种情况发生，我们就应该澄清哪个量词绑定哪个变元：一个约束变元的出现总是被与它匹配的（即相同变元的）、离它最近的那个量词绑定。所谓“最近”是指：它是包含该变元出现的最小子公式的\gls{main logical operator}。所以在先前的例子中，$\forall x$ 绑定 $\atom{F}{x}$ 中的~$x$，因为它是 $\forall x\,\atom{F}{x}$ 的主逻辑算子。然而，$\forall x$ 并不绑定 $\atom{G}{x}$ 中的~$x$。$\exists x$ 不绑定 $\atom{F}{x}$ 中的~$x$，但它确实绑定 $\atom{G}{x}$ 中的~$x$。
 
-规则也不要求约束变元~$\metav{x}$必须在$\metav{A}$中\emph{实际自由出现}（甚至根本不出现）。因此，我们的规则也允许 `$\exists x\,\atom{F}{a}$' 和 `$\exists x\forall
-x\,\atom{G}{x}$' 作为公式。在这两种情况下，`$\exists x$' 都没有约束~`$x$'，因为 `$x$' 在 `$\atom{F}{a}$' 或 `$\forall x\,\atom{G}{x}$' 中并非自由出现。在前一种情况下，`$x$' 根本没出现；在后一种情况下，它已经被~`$\forall x$' 约束了。这被称为\define{空量化（vacuous quantification）}。它在实践中很少出现，并且并无害处。这两个语句等价于不带 `$\exists x$' 的语句，即等价于 `$\atom{F}{a}$' 和~`$\forall
-x\,\atom{G}{x}$'。
+规则也不要求约束变元~$\metav{x}$必须在$\metav{A}$中\emph{实际自由出现}（甚至根本不出现）。因此，我们的规则也允许 $\exists x\,\atom{F}{a}$ 和 $\exists x\forall
+x\,\atom{G}{x}$ 作为公式。在这两种情况下，$\exists x$ 都没有约束~$x$，因为 $x$ 在 $\atom{F}{a}$ 或 $\forall x\,\atom{G}{x}$ 中并非自由出现。在前一种情况下，$x$ 根本没出现；在后一种情况下，它已经被~$\forall x$ 约束了。这被称为\define{空量化（vacuous quantification）}。它在实践中很少出现，并且并无害处。这两个语句等价于不带 $\exists x$ 的语句，即等价于 $\atom{F}{a}$ 和~$\forall
+x\,\atom{G}{x}$。
 
 \section{括号约定}
 
-我们将采用与真值函项逻辑相同的关于括号的记法约定（参见\cref{s:TFLSentences,s:MoreBracketingConventions}）。首先，我们可以省略公式最外层的括号。其次，我们可以使用方括号 `[' 和 `]' 来代替圆括号，以增加公式的可读性。
+我们将采用与真值函项逻辑相同的关于括号的记法约定（参见\cref{s:TFLSentences,s:MoreBracketingConventions}）。首先，我们可以省略公式最外层的括号。其次，我们可以使用方括号“[”和“]”来代替圆括号，以增加公式的可读性。
 
 我们例子中使用的一阶逻辑语句可能会变得相当繁琐，因此我们也引入一个约定来处理多于两个语句的合取与析取。我们规定 $A_1 \land A_2 \land \dots \land A_n$ 和 $A_1 \lor A_2 \lor \dots \lor A_n$ 应分别解释为：
 \begin{earg}
@@ -1548,9 +1548,9 @@ x\,\atom{G}{x}$'。
 \end{earg}
 
 \section{谓词的上标}
-前面我们说过，一个 $n$ 元谓词后接 $n$ 个项构成一个原子公式。但这个定义有一个小问题：我们用于谓词的符号本身并不标示该谓词是几元的。实际上，在本书的某些地方，我们曾将字母 `$G$' 用作一元谓词；在另一些地方，我们又将其用作三元谓词。因此，除非我们明确说明是要将 `$G$' 用作一元谓词还是三元谓词，否则 `$\atom{G}{a}$' 是否是原子公式是\emph{不确定的}。
+前面我们说过，一个 $n$ 元谓词后接 $n$ 个项构成一个原子公式。但这个定义有一个小问题：我们用于谓词的符号本身并不标示该谓词是几元的。实际上，在本书的某些地方，我们曾将字母 $G$ 用作一元谓词；在另一些地方，我们又将其用作三元谓词。因此，除非我们明确说明是要将 $G$ 用作一元谓词还是三元谓词，否则 $\atom{G}{a}$ 是否是原子公式是\emph{不确定的}。
 
-有一个避免这种情况的简单方法，许多教材都采用它。我们可以不把谓词仅仅规定为大写字母（必要时带数字下标），而是规定为\emph{带数字上标}的大写字母（必要时也带数字下标）。上标的目的是明确说明谓词是几元的。按照这种方法，`$G^1$' 将是一个一元谓词，而 `$G^3$' 将是一个（完全不同的）三元谓词。它们在任意符号化约定中都需要有不同的条目。并且 `$\atom{G^1}{a}$' 将是原子公式，而 `$\atom{G^3}{a}$' 则不是；类似地，`$\atom{G^3}{a,b,c}$' 将是原子公式，而 `$\atom{G^1}{a,b,c}$' 则不是。
+有一个避免这种情况的简单方法，许多教材都采用它。我们可以不把谓词仅仅规定为大写字母（必要时带数字下标），而是规定为\emph{带数字上标}的大写字母（必要时也带数字下标）。上标的目的是明确说明谓词是几元的。按照这种方法，$G^1$ 将是一个一元谓词，而 $G^3$ 将是一个（完全不同的）三元谓词。它们在任意符号化约定中都需要有不同的条目。并且 $\atom{G^1}{a}$ 将是原子公式，而 $\atom{G^3}{a}$ 则不是；类似地，$\atom{G^3}{a,b,c}$ 将是原子公式，而 $\atom{G^1}{a,b,c}$ 则不是。
 
 因此，我们\emph{可以}给所有谓词加上上标。这样做的好处是能让某些事情完全明确。然而，缺点是我们的公式会变得难读得多；上标会分散注意力。所以，我们就不做此改动了。我们的谓词将保持\emph{不带}上标。（而且，实际上，任何包含上标的书几乎立刻就会放弃使用它们！）
 
@@ -1580,36 +1580,36 @@ x\,\atom{G}{x}$'。
 \section{将定摹状词视为项}
 一种方案是，每当我们遇到一个定摹状词，就引入一个新的名称。这可能不是个好主意。我们知道无论他是谁，\emph{那个}叛徒确实是\emph{一个}叛徒。我们希望在我们的符号化中保留这一信息。
 
-第二种方案是使用一个\emph{新的}定摹状词算子，比如“$\maththe$”。其思想是将“the $F$”符号化为“$\maththe x\,\atom{F}{x}$”（可以理解为“那个使得 $\atom{F}{x}$ 成立的 $x$”）；或者将“the $G$”符号化为“$\maththe x\,\atom{G}{x}$”，等等。这样一来，形如 $\maththe \metav{x}\, \atom{\metav{A}}{\metav{x}}$ 的表达式就会像名称一样运作。如果我们采用这条路径，就能使用如下的符号化约定：
+第二种方案是使用一个\emph{新的}定摹状词算子，比如$\maththe$。其思想是将“那个 $F$（the $F$）”符号化为$\maththe x\,\atom{F}{x}$（可以理解为“那个使得 $\atom{F}{x}$ 成立的 $x$”）；或者将“那个 $G$（the $G$）”符号化为$\maththe x\,\atom{G}{x}$，等等。这样一来，形如 $\maththe \metav{x}\, \atom{\metav{A}}{\metav{x}}$ 的表达式就会像名称一样运作。如果我们采用这条路径，就能使用如下的符号化约定：
 	\begin{ekey}
-		\item[\text{domain}] 人
+		\item[\text{论域}] 人
 		\item[\atom{T}{x}] \gap{x} 是叛徒
 		\item[\atom{D}{x}] \gap{x} 是副官
 		\item[\atom{C}{x}] \gap{x} 去了剑桥大学
-		\item[n] 尼克
+		\item[n] Nick
 	\end{ekey}
-那么，我们就可以用“$n = \maththe x\, \atom{T}{x}$”来符号化\cref{traitor1}，用“$\atom{C}{\maththe x\,\atom{T}{x}}$”来符号化\cref{traitor2}，并用“$\maththe x\, \atom{T}{x} = \maththe x\, \atom{D}{x}$”来符号化\cref{traitor3}。
+那么，我们就可以用$n = \maththe x\, \atom{T}{x}$来符号化\cref{traitor1}，用$\atom{C}{\maththe x\,\atom{T}{x}}$来符号化\cref{traitor2}，并用$\maththe x\, \atom{T}{x} = \maththe x\, \atom{D}{x}$来符号化\cref{traitor3}。
 
 然而，如果我们不必向一阶逻辑添加新符号，那会更好。也许我们设法不用新符号也能行。
 
-\section{罗素的分析}
-伯特兰·罗素提出了一种对定摹状词的分析。简而言之，他指出，当我们在定摹状词的语境中说“the $F$”时，我们的目的是挑出那个（在适当语境中）是 $F$ 的\emph{唯一}东西。因此，罗素对定摹状词的概念分析如下：\footnote{伯特兰·罗素，《论指称》，《心灵》14 (1905), pp.\ 479--93；亦见罗素，《数理哲学导论》，1919，伦敦：艾伦和昂温出版社，第16章。}
+\section{Russell 的分析}
+Bertrand Russell 提出了一种对定摹状词的分析。简而言之，他指出，当我们在定摹状词的语境中说“那个 $F$（the $F$）”时，我们的目的是挑出那个（在适当语境中）是 $F$ 的\emph{唯一}东西。因此，Russell 对定摹状词的概念分析如下：\footnote{Bertrand Russell，《论指称》，《心灵》14 (1905), pp.\ 479--93；亦见 Russell，《数理哲学导论》，1919，伦敦：艾伦和昂温出版社，第16章。}
 	\factoidbox{
-		The $F$ is $G$ \textbf{\ifeff}
+		那个 $F$ 是 $G$（The $F$ is $G$）\textbf{当且仅当}
 		\begin{itemize}
 			\item 至少有一个 $F$，\emph{并且}
 			\item 至多有一个 $F$，\emph{并且}
 			\item 每个 $F$ 都是 $G$。
 \end{itemize}}
-注意此分析的一个非常重要的特征：\emph{“the”没有出现在等价式的右侧。}罗素旨在提供一种对定摹状词的理解，这种理解所使用的术语并不预设定摹状词本身。
+注意此分析的一个非常重要的特征：\emph{“定冠词 the”没有出现在等价式的右侧。}Russell 旨在提供一种对定摹状词的理解，这种理解所使用的术语并不预设定摹状词本身。
 
-有人可能会担心，我们说“那张桌子是棕色的”时，并不暗示宇宙中有一张且仅有一张桌子。但这（目前）并非对罗素分析的一个有力反例。论域很可能受语境限制（例如，限制在我附近那些显著的对象）。
+有人可能会担心，我们说“那张桌子是棕色的”时，并不暗示宇宙中有一张且仅有一张桌子。但这（目前）并非对 Russell 分析的一个有力反例。论域很可能受语境限制（例如，限制在我附近那些显著的对象）。
 
-如果我们接受罗素对定摹状词的分析，那么我们就可以运用一阶逻辑中处理数量量化的策略，来符号化“the $F$ is $G$”这种形式的句子。毕竟，我们可以这样处理罗素分析右侧的那三个合取支：
+如果我们接受 Russell 对定摹状词的分析，那么我们就可以运用一阶逻辑中处理数量量化的策略，来符号化“那个 $F$ 是 $G$（the $F$ is $G$）”这种形式的句子。毕竟，我们可以这样处理 Russell 分析右侧的那三个合取支：
 	$$\exists x \atom{F}{x} \eand \forall x \forall y ((\atom{F}{x} \eand \atom{F}{y}) \eif x = y) \eand \forall x (\atom{F}{x} \eif \atom{G}{x})$$
 事实上，只要认识到前两个合取支就等同于断言存在\emph{恰好}一个 $F$，而最后一个合取支告诉我们该对象是 $G$，我们就可以更简洁地表达同样的观点。所以，等价地，我们可以给出：
 	$$\exists x \bigl[(\atom{F}{x} \eand \forall y (\atom{F}{y} \eif x = y)) \eand \atom{G}{x}\bigr]$$
-运用这类技巧，我们现在就可以符号化\crefrange{traitor1}{traitor3}，而无需使用任何像“$\maththe$”这样的新奇花哨的算子。
+运用这类技巧，我们现在就可以符号化\crefrange{traitor1}{traitor3}，而无需使用任何像$\maththe$这样的新奇花哨的算子。
 
 \Cref*{traitor1}与我们刚刚考虑过的例子完全一样。因此我们将其符号化为：
 \begin{align*}
@@ -1617,7 +1617,7 @@ x\,\atom{G}{x}$'。
 \intertext{\Cref*{traitor2}也不构成问题：}
 \exists x \bigl[\atom{T}{x} \eand \forall y(\atom{T}{y} \eif x = y) & \eand \atom{C}{x}\bigr].
 \end{align*}
-\Cref*{traitor3}稍微棘手一些，因为它连接了两个定摹状词。但运用罗素的分析，它可以被改述为“存在恰好一个叛徒 $x$，并且存在恰好一个副官 $y$，并且 $x = y$”。所以我们可以将其符号化为：
+\Cref*{traitor3}稍微棘手一些，因为它连接了两个定摹状词。但运用 Russell 的分析，它可以被改述为“存在恰好一个叛徒 $x$，并且存在恰好一个副官 $y$，并且 $x = y$”。所以我们可以将其符号化为：
 \ifHTMLtarget
 \[
 	\exists x \exists y \bigl(\bigl[\atom{T}{x} \eand
@@ -1633,53 +1633,53 @@ x\,\atom{G}{x}$'。
 	\forall z(\atom{D}{z} \eif y = z)\bigr] \eand x = y\bigr)
 \end{multline*}
 \fi
-注意，公式“$x = y$”必须同时落在两个量词的辖域之内！
+注意，公式$x = y$必须同时落在两个量词的辖域之内！
 
 \section{空定摹状词}
-罗素分析的一个优点在于，它能让我们妥善处理\emph{空}定摹状词。
+Russell 分析的一个优点在于，它能让我们妥善处理\emph{空}定摹状词。
 
-法国目前没有国王。现在，如果我们引入一个名称“$k$”来命名现任法国国王，那么一切都会出问题：请记住，根据\cref{s:FOLBuildingBlocks}，一个名称必须总是指称论域中的某个对象，而无论我们选择什么作为论域，它都不会包含任何现任的法国国王。
+法国目前没有国王。现在，如果我们引入一个名称$k$来命名现任法国国王，那么一切都会出问题：请记住，根据\cref{s:FOLBuildingBlocks}，一个名称必须总是指称论域中的某个对象，而无论我们选择什么作为论域，它都不会包含任何现任的法国国王。
 
-罗素的分析巧妙地避开了这个问题。罗素告诉我们要用谓词和量词，而不是名称，来处理定摹状词。由于谓词可以是空的（参见\cref{s:MoreMonadic}），这意味着当定摹状词为空时，就不会再产生困难了。
+Russell 的分析巧妙地避开了这个问题。Russell 告诉我们要用谓词和量词，而不是名称，来处理定摹状词。由于谓词可以是空的（参见\cref{s:MoreMonadic}），这意味着当定摹状词为空时，就不会再产生困难了。
 
-事实上，罗素的分析很有帮助地揭示了包含限定摹状词的论断可能出错的两种方式。借用斯蒂芬·尼尔\footnote{斯蒂芬·尼尔，《摹状词》，麻省理工学院出版社，1990年。}的一个例子，假设亚历克斯断言：
+事实上，Russell 的分析很有帮助地揭示了包含限定摹状词的论断可能出错的两种方式。借用 Stephen Neale\footnote{Stephen Neale，《摹状词》，麻省理工学院出版社，1990年。}的一个例子，假设 Alex 断言：
 	\begin{enumerate}
 		\item\label{kingdate} 我正和法国现任国王约会。
 	\end{enumerate}
 使用如下符号化约定：
 	\begin{ekey}
-		\item[a] 亚历克斯
+		\item[a] Alex
 		\item[\atom{K}{x}] \gap{x} 是法国现任国王
 		\item[\atom{D}{x,y}] \gap{x} 正和 \gap{y} 约会
 	\end{ekey}
-	（请注意，符号化约定谈的是\emph{一位}法国现任国王，而不是\emph{那位}法国现任国王；即，它使用的是不定摹状词，而非限定摹状词。）那么，\Cref{kingdate}将被符号化为 `$\exists x \bigl[(\atom{K}{x} \eand \forall y(\atom{K}{y} \eif  x = y)) \eand \atom{D}{a,x}\bigr]$`。这可能在（至少）两种情况下为假，分别对应以下两个不同的句子：
+	（请注意，符号化约定谈的是\emph{一位}法国现任国王，而不是\emph{那位}法国现任国王；即，它使用的是不定摹状词，而非限定摹状词。）那么，\Cref{kingdate}将被符号化为 $\exists x \bigl[(\atom{K}{x} \eand \forall y(\atom{K}{y} \eif  x = y)) \eand \atom{D}{a,x}\bigr]$。这可能在（至少）两种情况下为假，分别对应以下两个不同的句子：
 	\begin{enumerate}
-		\item\label{outernegation} 不存在这样一个人：他既是法国现任国王，并且他和亚历克斯正在约会。
-		\item\label{innernegation} 存在唯一的法国现任国王，但亚历克斯没有和他约会。
+		\item\label{outernegation} 不存在这样一个人：他既是法国现任国王，并且他和 Alex 正在约会。
+		\item\label{innernegation} 存在唯一的法国现任国王，但 Alex 没有和他约会。
 	\end{enumerate}
-\Cref*{outernegation}可以改述为“并非：法国现任国王和亚历克斯正在约会”。它将被符号化为 `$\enot \exists x\bigl[(\atom{K}{x} \eand \forall y(\atom{K}{y} \eif  x = y)) \eand \atom{D}{a,x} \bigr]$`。我们可以称之为\emph{外部否定}，因为否定的辖域涵盖整个句子。请注意，如果不存在法国现任国王，这个句子为真。
+\Cref*{outernegation}可以改述为“并非：法国现任国王和 Alex 正在约会”。它将被符号化为 $\enot \exists x\bigl[(\atom{K}{x} \eand \forall y(\atom{K}{y} \eif  x = y)) \eand \atom{D}{a,x} \bigr]$。我们可以称之为\emph{外部否定}，因为否定的辖域涵盖整个句子。请注意，如果不存在法国现任国王，这个句子为真。
 
-\Cref*{innernegation}可以符号化为 `$\exists x \bigl[(\atom{K}{x} \eand \forall y(\atom{K}{y} \eif x = y)) \eand \enot \atom{D}{a,x}\bigr]$`。我们可以称之为\emph{内部否定}，因为否定出现在限定摹状词的辖域之内。请注意，它为真要求存在一位法国现任国王，尽管这位国王没有和亚历克斯约会。
+\Cref*{innernegation}可以符号化为 $\exists x \bigl[(\atom{K}{x} \eand \forall y(\atom{K}{y} \eif x = y)) \eand \enot \atom{D}{a,x}\bigr]$。我们可以称之为\emph{内部否定}，因为否定出现在限定摹状词的辖域之内。请注意，它为真要求存在一位法国现任国王，尽管这位国王没有和 Alex 约会。
 \Cref*{innernegation}蕴涵\cref*{outernegation}（它们的符号化也一样），反之则不成立。
 
-\section{所有格、“both”、“neither”}
+\section{所有格、“两者都（both）”、“两者都不（neither）”}
 
-我们也可以用罗素对限定摹状词的分析来处理英语中的单数所有格结构。例如，“史密斯的凶手”意指类似“谋杀史密斯的那个人”，也就是说，它是一种伪装的限定摹状词。根据罗素的分析，句子
+我们也可以用 Russell 对限定摹状词的分析来处理英语中的单数所有格结构。例如，“Smith 的凶手”意指类似“谋杀 Smith 的那个人”，也就是说，它是一种伪装的限定摹状词。根据 Russell 的分析，句子
 \begin{enumerate}
-	\item\label{smithsmurder} 史密斯的凶手是疯子。
+	\item\label{smithsmurder} Smith 的凶手是疯子。
 \end{enumerate}
-可能在三种情况下为假。它可能为假，是因为那个唯一谋杀史密斯的人事实上并非疯子。但如果限定摹状词是空的，它也可能为假，即要么没有人谋杀史密斯（例如，史密斯遭遇了不幸的意外），要么不止一人谋杀史密斯。
+可能在三种情况下为假。它可能为假，是因为那个唯一谋杀 Smith 的人事实上并非疯子。但如果限定摹状词是空的，它也可能为假，即要么没有人谋杀 Smith（例如，Smith 遭遇了不幸的意外），要么不止一人谋杀 Smith。
 
-要符号化包含单数所有格（如“史密斯的凶手”）的句子，应先使用显式的限定摹状词对其改述，例如“谋杀史密斯的那个人是疯子”，然后再根据罗素的分析进行符号化。在我们的例子中，可以使用如下符号化约定：
+要符号化包含单数所有格（如“Smith 的凶手”）的句子，应先使用显式的限定摹状词对其改述，例如“谋杀 Smith 的那个人是疯子”，然后再根据 Russell 的分析进行符号化。在我们的例子中，可以使用如下符号化约定：
 \begin{ekey}
-	\item[$Domain$] 人
+	\item[\text{论域}] 人
 	\item[\atom{I}{x}] \gap{x} 是疯子
 	\item[\atom{M}{x,y}] \gap{x} 谋杀了 \gap{y}
-	\item[m] 史密斯
+	\item[m] Smith
 \end{ekey}
-那么我们的符号化式就是 `$\exists x\bigl[\atom{M}{x,m} \eand \forall y(\atom{M}{y,m} \eif x=y) \eand \atom{I}{x}\bigr]$`。
+那么我们的符号化式就是 $\exists x\bigl[\atom{M}{x,m} \eand \forall y(\atom{M}{y,m} \eif x=y) \eand \atom{I}{x}\bigr]$。
 
-我们还可以将罗素的分析扩展到另外两个限定词：“both”和“neither”。说“both $F$s are~$G$”意思是：存在恰好两个 $F$，并且它们每一个都是 $G$。说“neither $F$ is~$G$”，意思是同样存在恰好两个 $F$，并且它们每一个都不是 $G$。在一阶逻辑中，两者的符号化式分别为：
+我们还可以将 Russell 的分析扩展到另外两个限定词：“两者都（both）”和“两者都不（neither）”。说“两个 $F$ 都是 $G$（both $F$s are~$G$）”意思是：存在恰好两个 $F$，并且它们每一个都是 $G$。说“两个 $F$ 都不是 $G$（neither $F$ is~$G$）”，意思是同样存在恰好两个 $F$，并且它们每一个都不是 $G$。在一阶逻辑中，两者的符号化式分别为：
 \ifHTMLtarget
 \begin{align*}
 	& \exists x\exists y\bigl[\atom{F}{x} \eand \atom{F}{y} \eand \enot\, {x=y} \eand
@@ -1709,28 +1709,28 @@ x\,\atom{G}{x}$'。
 \fi
 它的符号化式与“both $F$s are~$G$s”的符号化式之间的区别在于条件的前件。对于“恰好有两个 $F$ 是 $G$”，我们只要求除 $x$ 和 $y$ 之外不存在\emph{同时也是}$G$ 的 $F$；而对于“both $F$s are~$G$s”，除 $x$ 和 $y$ 之外根本不能存在任何 $F$，无论它们是不是 $G$。换句话说，“both $F$s are~$G$s”蕴涵“恰好有两个 $F$ 是 $G$”。然而，“恰好有两个 $F$ 是 $G$”并不蕴涵“both $F$s are~$G$s”（可能存在第三个 $F$，它不是 $G$）。
 
-\section{罗素分析的恰当性}
-罗素对限定摹状词的分析有多恰当？这个问题催生了大量的哲学文献，但我们只限于两点观察。
+\section{Russell 分析的恰当性}
+Russell 对限定摹状词的分析有多恰当？这个问题催生了大量的哲学文献，但我们只限于两点观察。
 
-一种担心集中在罗素对空限定摹状词的处理上。如果没有 $F$，那么在罗素的分析下，“那个 $F$ 是 $G$”和“那个 $F$ 不是 $G$”都是假的。P.~F.\ 斯特劳森（Strawson）提出，这样的句子不应该被确切地视为假，而是涉及\emph{预设失败}，因此应当被当作\emph{既不}真\emph{也不}假来处理。\footnote{P.~F.\ Strawson, ``On referring'', \textit{Mind}~59 (1950), pp.\ 320--34.}
+一种担心集中在 Russell 对空限定摹状词的处理上。如果没有 $F$，那么在 Russell 的分析下，“那个 $F$ 是 $G$”和“那个 $F$ 不是 $G$”都是假的。P.~F.\ Strawson 提出，这样的句子不应该被确切地视为假，而是涉及\emph{预设失败}，因此应当被当作\emph{既不}真\emph{也不}假来处理。\footnote{P.~F.\ Strawson,“On referring”, \textit{Mind}~59 (1950), pp.\ 320--34.}
 
-如果我们在这里同意斯特劳森，我们就需要修正我们的逻辑。因为，在我们的逻辑中，只有两个真值（真和假），而每个句子都被赋予其中恰好一个真值。
+如果我们在这里同意 Strawson，我们就需要修正我们的逻辑。因为，在我们的逻辑中，只有两个真值（真和假），而每个句子都被赋予其中恰好一个真值。
 
-但我们有理由不同意斯特劳森。斯特劳森诉诸的是一些语言学直觉，但这些直觉未必很可靠。例如：蒂姆正在和法国现任国王约会，这不就是\emph{假的}，而不是什么“有真值间隙”吗？
+但我们有理由不同意 Strawson。Strawson 诉诸的是一些语言学直觉，但这些直觉未必很可靠。例如：Tim 正在和法国现任国王约会，这不就是\emph{假的}，而不是什么“有真值间隙”吗？
 
-基思·唐纳兰（Keith Donnellan）提出了第二种担心，（大致）可以通过考虑一个错误认同的例子来阐明。\footnote{Keith Donnellan, ``Reference and definite descriptions'', \textit{Philosophical Review}~77 (1966), pp.\ 281--304.}角落里站着两个人：一个非常高的男人，喝着看起来像杜松子马提尼的酒；一个非常矮的男人，喝着看起来像一品脱水的东西。看到他们，马利卡说：
+Keith Donnellan提出了第二种担心，（大致）可以通过考虑一个错误认同的例子来阐明。\footnote{Keith Donnellan,“Reference and definite descriptions”, \textit{Philosophical Review}~77 (1966), pp.\ 281--304.}角落里站着两个人：一个非常高的男人，喝着看起来像杜松子马天尼的酒；一个非常矮的男人，喝着看起来像一品脱水的东西。看到他们，Malika 说：
 	\begin{enumerate}
 		\item\label{gindrinker} 那个喝杜松子酒的人很高！
 	\end{enumerate}
-罗素的分析会让我们将马利卡的句子符号化为：
+Russell 的分析会让我们将 Malika 的句子符号化为：
 	\begin{compactlist}
 		\item[\ref*{gindrinker}$'$.] 恰好有一个人喝杜松子酒[在角落里]，并且任何喝杜松子酒的人[在角落里]都很高。
 	\end{compactlist}
-现在假设那个非常高的男人实际上是用马提尼杯喝\emph{水}；而那个非常矮的男人在喝一品脱（纯的）杜松子酒。根据罗素的分析，马利卡说了些假话，但我们难道不想说马利卡说了些\emph{真话}吗？
+现在假设那个非常高的男人实际上是用马天尼杯喝\emph{水}；而那个非常矮的男人在喝一品脱（纯的）杜松子酒。根据 Russell 的分析，Malika 说了些假话，但我们难道不想说 Malika 说了些\emph{真话}吗？
 
-同样，人们可能会怀疑我们对这个例子的直觉有多清晰。我们都同意马利卡的意图是挑出某个特定的人，并说出关于他的一些真话（即他很高）。根据罗素的分析，她实际上挑出了另一个人（那个矮个子），因而说了关于这个人的假话。但也许罗素分析的支持者只需要解释\emph{为什么}马利卡的意图会落空，以及为什么她说了假话。这很容易做到：马利卡说了假话，是因为她对这两个人喝的东西有错误的信念；如果马利卡关于那些饮料的信念是真的，那么她就会说真话。\footnote{感兴趣的人可以阅读 Saul Kripke, ``Speaker reference and semantic reference'', in: French et al.\ (eds.), \textit{Contemporary Perspectives in the Philosophy of Language}, University of Minnesota Press, 1977, pp.\ 6--27.}
+同样，人们可能会怀疑我们对这个例子的直觉有多清晰。我们都同意 Malika 的意图是挑出某个特定的人，并说出关于他的一些真话（即他很高）。根据 Russell 的分析，她实际上挑出了另一个人（那个矮个子），因而说了关于这个人的假话。但也许 Russell 分析的支持者只需要解释\emph{为什么}Malika 的意图会落空，以及为什么她说了假话。这很容易做到：Malika 说了假话，是因为她对这两个人喝的东西有错误的信念；如果 Malika 关于那些饮料的信念是真的，那么她就会说真话。\footnote{感兴趣的人可以阅读 Saul Kripke,“Speaker reference and semantic reference”, in: French et al.\ (eds.), \textit{Contemporary Perspectives in the Philosophy of Language}, University of Minnesota Press, 1977, pp.\ 6--27.}
 
-在此过多讨论将把我们带入深邃的哲学水域。这并非坏事，但就目前而言，它会分散我们学习形式逻辑这一直接目标的注意力。因此，就目前而言，在将事物符号化为一阶逻辑时，我们将坚持罗素对限定摹状词的分析。在不显著修改我们逻辑的前提下，这无疑是我们所能提供的最佳方案，并且作为一种分析也是相当站得住脚的。
+在此过多讨论将把我们带入深邃的哲学水域。这并非坏事，但就目前而言，它会分散我们学习形式逻辑这一直接目标的注意力。因此，就目前而言，在将事物符号化为一阶逻辑时，我们将坚持 Russell 对限定摹状词的分析。在不显著修改我们逻辑的前提下，这无疑是我们所能提供的最佳方案，并且作为一种分析也是相当站得住脚的。
 
 \practiceproblems
 
@@ -1761,7 +1761,7 @@ x\,\atom{G}{x}$'。
 \label{pr.FOLcards}
 使用以下符号化约定：
 \begin{ekey}
-\item[\text{domain}] 标准扑克牌中的牌
+\item[\text{论域}] 标准扑克牌中的牌
 \item[\atom{B}{x}] \gap{x} 是黑色的
 \item[\atom{C}{x}] \gap{x} 是梅花
 \item[\atom{D}{x}] \gap{x} 是两点
@@ -1790,8 +1790,8 @@ x\,\atom{G}{x}$'。
 
 \problempart 使用以下符号化约定：
 \begin{ekey}
-\item[\text{domain}] 世界上的动物
-\item[\atom{B}{x}] \gap{x} 在农夫布朗的田地里
+\item[\text{论域}] 世界上的动物
+\item[\atom{B}{x}] \gap{x} 在农夫 Brown的田地里
 \item[\atom{H}{x}] \gap{x} 是马
 \item[\atom{P}{x}] \gap{x} 是珀伽索斯
 \item[\atom{W}{x}] \gap{x} 有翅膀
@@ -1800,16 +1800,16 @@ x\,\atom{G}{x}$'。
 \begin{compactlist}
 \item 世界上至少有三匹马。
 \item 世界上至少有三只动物。
-\item 农夫布朗的田地里不止有一匹马。
-\item 农夫布朗的田地里有三匹马。
-\item 农夫布朗的田地里有且仅有一只有翅膀的生物；田地里任何其他生物都必须没有翅膀。
+\item 农夫 Brown的田地里不止有一匹马。
+\item 农夫 Brown的田地里有三匹马。
+\item 农夫 Brown的田地里有且仅有一只有翅膀的生物；田地里任何其他生物都必须没有翅膀。
 \item 珀伽索斯是一匹有翅膀的马。
-\item 农夫布朗田地里的动物不是马。
-\item 农夫布朗田地里的马没有翅膀。
+\item 农夫 Brown田地里的动物不是马。
+\item 农夫 Brown田地里的马没有翅膀。
 \end{compactlist}
 
 \problempart
-在本章中，我们用“$\exists x (\atom{T}{x} \eand \forall y(\atom{T}{y} \eif x = y) \eand x = n)$”来符号化“Nick is the traitor”。解释为什么以下符号化方式同样好：
+在本章中，我们用$\exists x (\atom{T}{x} \eand \forall y(\atom{T}{y} \eif x = y) \eand x = n)$来符号化“Nick 是那个叛徒（Nick is the traitor）”。解释为什么以下符号化方式同样好：
 	\begin{itemize}
 		\item $\atom{T}{n} \eand \forall y(\atom{T}{y} \eif n = y)$
 		\item $\forall y(\atom{T}{y} \eiff y = n)$
@@ -1822,13 +1822,13 @@ x\,\atom{G}{x}$'。
 例如，考虑这个英语习语：
 \begin{enumerate}
 	\item\label{glitters}
-	Everything that glitters is not gold.
+	并非所有闪光的都是金子（Everything that glitters is not gold.）
 \end{enumerate}
-如果我们把这个句子看作“每个 $F$ 不是~$G$”的形式，其中 $\atom{F}{x}$ 符号化“\gap{x} glitters”，$\atom{G}{x}$ 是“\gap{x} is gold”，我们会将其符号化为：
+如果我们把这个句子看作“每个 $F$ 不是~$G$”的形式，其中 $\atom{F}{x}$ 符号化“\gap{x} 在闪光（\gap{x} glitters）”，$\atom{G}{x}$ 符号化“\gap{x} 是金子（\gap{x} is gold）”，我们会将其符号化为：
 \[\forall x(\atom{F}{x} \eif \enot \atom{G}{x})\]
-换句话说，我们像符号化“Nothing that glitters is gold”那样符号化它。但这个习语并非此意！它的意思是，人们不应仅仅因为某物闪闪发光就假定它是金子；并非所有看起来有价值的东西实际上都有价值。为了捕捉该习语的实际含义，我们必须换一种方式来符号化它，就像符号化“Not everything that glitters is gold”那样，即以下方式：
+换句话说，我们像符号化“所有闪光的都不是金子（Nothing that glitters is gold）”那样符号化它。但这个习语并非此意！它的意思是，人们不应仅仅因为某物闪闪发光就假定它是金子；并非所有看起来有价值的东西实际上都有价值。为了捕捉该习语的实际含义，我们必须换一种方式来符号化它，就像符号化“并非所有闪光的都是金子（Not everything that glitters is gold）”那样，即以下方式：
 \[\enot\forall x(\atom{F}{x} \eif \atom{G}{x})\]
-将此与前面的符号化比较：我们再次看到，这个歧义句的两种不同含义之间的区别，在于“\enot”处于“$\forall$”的辖域内（在第一种符号化中），还是“$\forall$”处于“\enot”的辖域内（在第二种符号化中）。
+将此与前面的符号化比较：我们再次看到，这个歧义句的两种不同含义之间的区别，在于“\enot”处于$\forall$的辖域内（在第一种符号化中），还是$\forall$处于“\enot”的辖域内（在第二种符号化中）。
 
 当然，我们也可以使用存在量词来符号化这两种解读：
 \begin{align*}
@@ -1871,11 +1871,11 @@ x\,\atom{G}{x}$'。
 \end{ekey}
 在第一种解读中，我们说存在量词具有\emph{宽辖域}（并且其辖域包含了具有\emph{窄辖域}的全称量词），而在第二种解读中情况则相反。
 
-在\cref{subsec.defdesc}，我们遇到了另一种辖域歧义，它源于定摹状词与否定之间的相互作用。考虑罗素自己的例子：
+在\cref{subsec.defdesc}，我们遇到了另一种辖域歧义，它源于定摹状词与否定之间的相互作用。考虑 Russell 自己的例子：
 \begin{enumerate}
 	\item\label{thenot} 法国国王不秃头。
 \end{enumerate}
-如果定摹状词具有宽辖域，并且我们将“不”解释为“内部”否定（如我们之前所说），那么\cref*{thenot}就被解释为断言存在一个唯一的法国国王，并且我们将非秃头这一属性归于他。在这种解读下，它被符号化为“$\exists x\bigl[\atom{K}{x} \eand \forall y(\atom{K}{y} \eif x=y)) \eand \enot \atom{B}{x}\bigr]$”。在另一种解读中，“不”否定的是“法国国王是秃头”这个句子，我们将把它符号化为：“$\enot\exists x\bigl[\atom{K}{x} \eand \forall y(\atom{K}{y} \eif x=y)) \eand \atom{B}{x}\bigr]$”。在第一种情况下，我们说定摹状词有宽辖域，在第二种情况下它有窄辖域。
+如果定摹状词具有宽辖域，并且我们将“不”解释为“内部”否定（如我们之前所说），那么\cref*{thenot}就被解释为断言存在一个唯一的法国国王，并且我们将非秃头这一属性归于他。在这种解读下，它被符号化为$\exists x\bigl[\atom{K}{x} \eand \forall y(\atom{K}{y} \eif x=y)) \eand \enot \atom{B}{x}\bigr]$。在另一种解读中，“不”否定的是“法国国王是秃头”这个句子，我们将把它符号化为：$\enot\exists x\bigl[\atom{K}{x} \eand \forall y(\atom{K}{y} \eif x=y)) \eand \atom{B}{x}\bigr]$。在第一种情况下，我们说定摹状词有宽辖域，在第二种情况下它有窄辖域。
 
 \practiceproblems
 \problempart
@@ -1883,11 +1883,11 @@ x\,\atom{G}{x}$'。
 \begin{compactlist}
 	\item 没人喜欢轻言放弃的人。
 	\item CSI在现场只发现了红头发。
-	\item 谋杀史密斯的人尚未被捕。
+	\item 谋杀 Smith 的人尚未被捕。
 \end{compactlist}
 
 \problempart
-罗素在其论文《论指称》中给出了以下例子：
+Russell 在其论文《论指称》中给出了以下例子：
 \begin{quote}
 	我曾听说过一位敏感的游艇主人，一位客人在初次见到他的游艇时评价道：“我原以为你的游艇比它实际的更大”；而主人回答说：“不，我的游艇不比它实际的更大”。
 \end{quote}

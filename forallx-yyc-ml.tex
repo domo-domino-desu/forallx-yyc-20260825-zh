@@ -301,7 +301,7 @@ $\ediamond\metav{A}=_{df} \enot \ebox\enot \metav{A}$
 注意，只有满足以下条件时才能应用规则 R$\mathbf{4}$：第 $m$ 行（包含 $\ebox A$）位于第 $n$ 行所在的严格子证明之外，并且该严格子证明本身不能是某个不包含第 $m$ 行的严格子证明的一部分。
 }
 
-规则 R$\mathbf{4}$ 看起来和 {\ebox}E 规则很像，区别在于它不是从 $\ebox\metav{A}$ 推出 $\metav{A}$，而是在一个严格子证明内推出 $\ebox\metav{A}$。但是，它的限制条件是相同的：R$\mathbf{4}$ 允许我们将 $\ebox \metav{A}$ “导入”一个严格子证明，但不能导入到一个自身嵌套在另一个严格子证明内的严格子证明中。不过，如果确实需要这样做，额外应用一次 R$\mathbf{4}$ 规则也能达到同样的效果。
+规则 R$\mathbf{4}$ 看起来和 {\ebox}E 规则很像，区别在于它不是从 $\ebox\metav{A}$ 推出 $\metav{A}$，而是在一个严格子证明内推出 $\ebox\metav{A}$。但是，它的限制条件是相同的：R$\mathbf{4}$ 允许我们将 $\ebox \metav{A}$“导入”一个严格子证明，但不能导入到一个自身嵌套在另一个严格子证明内的严格子证明中。不过，如果确实需要这样做，额外应用一次 R$\mathbf{4}$ 规则也能达到同样的效果。
 
 现在我们能证明更多结论了。例如：
 
@@ -454,7 +454,7 @@ $\ediamond\metav{A}=_{df} \enot \ebox\enot \metav{A}$
 
 \section{模态逻辑的解释}
 
-模态逻辑语义学背后的核心思想是这样的。在模态逻辑中，语句并非简单地非真即假。一个语句是\emph{在一个给定的可能世界中}真或假，而且同一个语句完全可以在一些世界中为真，在另一些世界中为假。然后我们说，$\ebox \metav{A}$ 为真 \ifeff{} $\metav{A}$ 在\emph{所有}世界中为真；$\ediamond\metav{A}$ 为真 \ifeff{} $\metav{A}$ 在\emph{某个}世界中为真。
+模态逻辑语义学背后的核心思想是这样的。在模态逻辑中，语句并非简单地非真即假。一个语句是\emph{在一个给定的可能世界中}真或假，而且同一个语句完全可以在一些世界中为真，在另一些世界中为假。然后我们说，$\ebox \metav{A}$ 为真当且仅当$\metav{A}$ 在\emph{所有}世界中为真；$\ediamond\metav{A}$ 为真当且仅当$\metav{A}$ 在\emph{某个}世界中为真。
 
 这就是核心思想，但我们需要完善它，使之更精确。为此，我们需要引入模态逻辑\emph{解释}的概念。构建一个解释时，你首先需要包含一个\emph{可能世界}的集合。现在，说到这里你可能很想问：究竟什么是可能世界？直观的想法是，可能世界是这个世界本可以是的另一种样子。但这到底是什么意思呢？这是一个极好的哲学问题，我们稍后会详细探讨它。但眼下我们不需要为此过分担心。就形式逻辑而言，可能世界可以是你喜欢的任何东西。唯一重要的是，你给每个解释都提供一个非空的集合，其中的元素被标记为\define{可能世界（possible worlds）}。
 
@@ -465,11 +465,11 @@ $\ediamond\metav{A}=_{df} \enot \ebox\enot \metav{A}$
 这些赋值函数允许将任何\emph{原子}语句在任何世界中映射到任何真值。但是，更复杂的语句在一个世界中被指派什么真值是有规则的。以下是关于真值函项逻辑中联结词的规则：
 
 \begin{compactlist}
-	\item $\nu_w(\enot\metav{A})=T$ \ifeff{} $\nu_w(\metav{A})=F$
-	\item $\nu_w(\metav{A}\eand\metav{B})=T$ \ifeff{} $\nu_w(\metav{A})=T$ 并且 $\nu_w(\metav{B})=T$
-	\item $\nu_w(\metav{A}\eor\metav{B})=T$ \ifeff{} $\nu_w(\metav{A})=T$ 或者 $\nu_w(\metav{B})=T$，或者两者都成立
-	\item $\nu_w(\metav{A}\eif\metav{B})=T$ \ifeff{} $\nu_w(\metav{A})=F$ 或者 $\nu_w(\metav{B})=T$，或者两者都成立
-	\item $\nu_w(\metav{A}\eiff\metav{B})=T$ \ifeff{} $\nu_w(\metav{A})=T$ 并且 $\nu_w(\metav{B})=T$，或者 $\nu_w(\metav{A})=F$ 并且 $\nu_w(\metav{B})=F$
+	\item $\nu_w(\enot\metav{A})=T$当且仅当$\nu_w(\metav{A})=F$
+	\item $\nu_w(\metav{A}\eand\metav{B})=T$当且仅当$\nu_w(\metav{A})=T$ 并且 $\nu_w(\metav{B})=T$
+	\item $\nu_w(\metav{A}\eor\metav{B})=T$当且仅当$\nu_w(\metav{A})=T$ 或者 $\nu_w(\metav{B})=T$，或者两者都成立
+	\item $\nu_w(\metav{A}\eif\metav{B})=T$当且仅当$\nu_w(\metav{A})=F$ 或者 $\nu_w(\metav{B})=T$，或者两者都成立
+	\item $\nu_w(\metav{A}\eiff\metav{B})=T$当且仅当$\nu_w(\metav{A})=T$ 并且 $\nu_w(\metav{B})=T$，或者 $\nu_w(\metav{A})=F$ 并且 $\nu_w(\metav{B})=F$
 \end{compactlist}
 
 到目前为止，这些规则看起来应该都很熟悉。本质上，它们的工作方式完全类似于真值函项逻辑的真值表。唯一的区别是，这些真值表规则必须被反复应用，且每次只应用于一个世界。
@@ -477,8 +477,8 @@ $\ediamond\metav{A}=_{df} \enot \ebox\enot \metav{A}$
 但是，新模态算子 $\ebox$ 和 $\ediamond$ 的规则是什么呢？最显而易见的想法是给出如下规则：
 
 \begin{itemize}
-	\item $\nu_w(\ebox \metav{A})=T$ \ifeff{} $\forall w' (\nu_{w'}(\metav{A})=T)$
-	\item $\nu_w(\ediamond \metav{A})=T$ \ifeff{} $\exists w' (\nu_{w'}(\metav{A})=T)$
+	\item $\nu_w(\ebox \metav{A})=T$当且仅当$\forall w' (\nu_{w'}(\metav{A})=T)$
+	\item $\nu_w(\ediamond \metav{A})=T$当且仅当$\exists w' (\nu_{w'}(\metav{A})=T)$
 \end{itemize}
 
 这只是用一种精巧的形式化方式写出了以下想法：$\ebox\metav{A}$ 在世界 $w$ 中为真，当且仅当 $\metav{A}$ 在\emph{每个}世界中为真；而 $\ediamond\metav{A}$ 在世界 $w$ 中为真，当且仅当 $\metav{A}$ 在\emph{某个}世界中为真。
@@ -488,11 +488,11 @@ $\ediamond\metav{A}=_{df} \enot \ebox\enot \metav{A}$
 可及关系 $R$ 是可能世界之间的一种关系。粗略地说，$Rw_1w_2$（用自然语言说就是：世界 $w_1$\emph{可及}世界 $w_2$）意味着 $w_2$ 相对于 $w_1$ 是可能的。换句话说，引入可及关系后，我们开启了这样一种观念：某个给定的世界可能相对于某些世界是可能的，但相对于另一些世界则不是。在研究模态系统时，这被证明是一个\emph{非常}富有成效的想法。现在我们可以为 $\ebox$ 和 $\ediamond$ 给出如下语义规则：
 
 \begin{compactlist}[resume]
-	\item $\nu_{w_1}(\ebox \metav{A})=T$ \ifeff{} $\forall w_2 (Rw_1w_2\eif \nu_{w_2}(\metav{A})=T)$
-	\item $\nu_{w_1}(\ediamond \metav{A})=T$ \ifeff{} $\exists w_2 (Rw_1w_2\eand \nu_{w_2}(\metav{A})=T)$
+	\item $\nu_{w_1}(\ebox \metav{A})=T$当且仅当$\forall w_2 (Rw_1w_2\eif \nu_{w_2}(\metav{A})=T)$
+	\item $\nu_{w_1}(\ediamond \metav{A})=T$当且仅当$\exists w_2 (Rw_1w_2\eand \nu_{w_2}(\metav{A})=T)$
 \end{compactlist}
 
-或者用平实的话说：$\ebox\metav{A}$ 在世界 $w_1$ 中为真 \ifeff{} $\metav{A}$ 在每一个相对于 $w_1$ 可能的世界中都为真；而 $\ediamond\metav{A}$ 在世界 $w_1$ 中为真 \ifeff{} $\metav{A}$ 在某个相对于 $w_1$ 可能的世界中为真。
+或者用平实的话说：$\ebox\metav{A}$ 在世界 $w_1$ 中为真当且仅当$\metav{A}$ 在每一个相对于 $w_1$ 可能的世界中都为真；而 $\ediamond\metav{A}$ 在世界 $w_1$ 中为真当且仅当$\metav{A}$ 在某个相对于 $w_1$ 可能的世界中为真。
 
 如此一来，模态逻辑的一个解释便由三部分组成：一个可能世界的集合 $W$；一个可及关系 $R$；以及一个赋值函数 $\nu$。“可能世界”的集合实际上可以是任何你喜欢的集合。只要 $W$ 非空，它具体是什么其实并不重要。（为了许多目的，只需取一组数字作为你的世界集合就会很有帮助。）并且至少就目前而言，$R$ 可以是 $W$ 中世界之间任意你喜欢的关系。它可以是一个 $W$ 中每个世界都与 $W$ 中每个世界都具有的关系，也可以是一个没有世界与任何世界具有的关系，或者介于两者之间的任何关系。最后，$\nu$ 可以将模态逻辑的任何原子语句在任何世界中映射为任何真值。重要的是，在处理更复杂的语句时，它须遵循规则 (1)--(7)。
 
@@ -539,18 +539,18 @@ A\eand\enot B,\qquad B\eif A,\qquad \ediamond A,\qquad \ebox\enot B
 
 \begin{factoiditems}
 		\item $\metav{A}_1,\metav{A}_2, \dots
-		\metav{A}_n\therefore\metav{C}$ 是\define{模态有效的（modally valid）}\ifeff{}
+		\metav{A}_n\therefore\metav{C}$ 是\define{模态有效的（modally valid）}当且仅当
 		在所有解释的所有世界中，不存在
 		$\metav{A}_1,\metav{A}_2, \dots \metav{A}_n$ 全部为真而
 		$\metav{C}$ 为假的情况。
 
-		\item $\metav{A}$ 是\define{模态永真式（modal truth）}\ifeff{} $\metav{A}$
+		\item $\metav{A}$ 是\define{模态永真式（modal truth）}当且仅当$\metav{A}$
 		在所有解释的所有世界中都为真。
 
-		\item $\metav{A}$ 是\define{模态矛盾式（modal contradiction）}\ifeff{}
+		\item $\metav{A}$ 是\define{模态矛盾式（modal contradiction）}当且仅当
 		$\metav{A}$ 在所有解释的所有世界中都为假。
 
-		\item $\metav{A}$ 是\define{模态可满足的（modally satisfiable）}\ifeff{}
+		\item $\metav{A}$ 是\define{模态可满足的（modally satisfiable）}当且仅当
 		$\metav{A}$ 在某个解释的某个世界中为真。
 	\end{factoiditems}
 
@@ -608,7 +608,7 @@ A\eand\enot B,\qquad B\eif A,\qquad \ediamond A,\qquad \ebox\enot B
 \[\forall w\, Rww\]
 用自然语言说：每个世界都可及自身。或者用相对可能性来说：每个世界相对于自身都是可能的。如果我们施加这个限制，就可以引入一个新的后承关系 $\entails_\mlT$，定义如下：
 \factoidbox{
-	$\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlT \metav{C}$ \ifeff{} 在任何\emph{具有自反可及关系的}解释中，都不存在一个世界，使得 $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n$ 都为真而 $\metav{C}$ 为假
+	$\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlT \metav{C}$当且仅当在任何\emph{具有自反可及关系的}解释中，都不存在一个世界，使得 $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n$ 都为真而 $\metav{C}$ 为假
 }
 我们在 $\entails$ 上附加了 \mlT{} 下标，因为系统 \mlT{} 相对于这个新的有效性定义是可靠且完备的：
 
@@ -643,7 +643,7 @@ A\eand\enot B,\qquad B\eif A,\qquad \ediamond A,\qquad \ebox\enot B
 \[\forall w_1\forall w_2\forall w_3 ((Rw_1w_2 \eand Rw_2w_3)\eif Rw_1w_3)\]
 用自然语言说：如果 $w_1$ 可及 $w_2$，且 $w_2$ 可及 $w_3$，那么 $w_1$ 可及 $w_3$。或者用相对可能性来说：如果 $w_3$ 相对于 $w_2$ 是可能的，且 $w_2$ 相对于 $w_1$ 是可能的，那么 $w_3$ 相对于 $w_1$ 就是可能的。如果我们在可及关系上加上这个限制，我们就可以引入一个新的后承关系 $\entails_\mlSfour$，定义如下：
 \factoidbox{
-	$\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlSfour \metav{C}$ \ifeff{} 在任何\emph{具有自反且传递的可及关系的}解释中，都不存在一个世界，使得 $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n$ 都为真而 $\metav{C}$ 为假
+	$\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlSfour \metav{C}$当且仅当在任何\emph{具有自反且传递的可及关系的}解释中，都不存在一个世界，使得 $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n$ 都为真而 $\metav{C}$ 为假
 }
 我们在 $\entails$ 上附加了 \mlSfour{} 下标，因为系统 \mlSfour{} 相对于这个新的有效性定义是可靠且完备的：
 
@@ -680,7 +680,7 @@ A\eand\enot B,\qquad B\eif A,\qquad \ediamond A,\qquad \ebox\enot B
 \[\forall w_1\forall w_2(Rw_1w_2 \eif Rw_2w_1)\]
 用自然语言说：如果 $w_1$ 可及 $w_2$，那么 $w_2$ 可及 $w_1$。或者用相对可能性来说：如果 $w_2$ 相对于 $w_1$ 是可能的，那么 $w_1$ 相对于 $w_2$ 也是可能的。逻辑学家将自反、对称且传递的关系称为\emph{等价关系}。我们现在可以定义一个新的后承关系 $\entails_\mlSfive $，如下所示：
 \factoidbox{
-	$\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlSfive  \metav{C}$ \ifeff{} 在任何\emph{可及关系是等价关系的}解释中，都不存在一个世界，使得 $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n$ 全部为真而 $\metav{C}$ 为假
+	$\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlSfive  \metav{C}$当且仅当在任何\emph{可及关系是等价关系的}解释中，都不存在一个世界，使得 $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n$ 全部为真而 $\metav{C}$ 为假
 }
 我们在 $\entails$ 上附加了 \mlSfive{} 下标，因为系统 \mlSfive{} 相对于这个新的有效性定义是可靠且完备的：
 
@@ -717,7 +717,7 @@ A\eand\enot B,\qquad B\eif A,\qquad \ediamond A,\qquad \ebox\enot B
 \[\forall w_1\forall w_2\, Rw_1w_2\]
 用自然语言说：每个世界可及每个世界。或者用相对可能性来说：每个世界相对于每个世界都是可能的。使用这种对可及关系的限制，我们可以像下面这样定义 $\entails_\mlSfive $：
 \factoidbox{
-	$\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlSfive  \metav{C}$ \ifeff{} 在任何\emph{具有全通可及关系}的解释中，都不存在一个世界，使得 $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n$ 全部为真而 $\metav{C}$ 为假。
+	$\metav{A}_1,\metav{A}_2, \dots \metav{A}_n\entails_\mlSfive  \metav{C}$当且仅当在任何\emph{具有全通可及关系}的解释中，都不存在一个世界，使得 $\metav{A}_1,\metav{A}_2, \dots \metav{A}_n$ 全部为真而 $\metav{C}$ 为假。
 }
 如果我们这样定义 $\entails_\mlSfive $，对于 \mlSfive 我们仍然会得到相同的可靠性和完备性结果。这告诉我们什么？嗯，这意味着，如果我们要处理的必然性概念认为\emph{每一个}世界都相对于\emph{每一个}世界是可能的，那么我们就应该使用 \mlSfive。更进一步，大多数哲学家都假定，他们最关心的那些必然性概念，比如\emph{逻辑必然性}和\emph{形而上学必然性}，恰恰就是这种类型。因此 \mlSfive{} 是大多数哲学家大多数时候使用的模态逻辑系统。
 
