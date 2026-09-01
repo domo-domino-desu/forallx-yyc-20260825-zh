@@ -12,14 +12,14 @@
 \selectfont
   \textbf{forall
   {\fontsize{37pt}{24pt}\selectfont\rmfamily\textit{x}}:
-  卡尔加里}
+  Calgary}
 
 \medskip\fontsize{18pt}{20pt}\selectfont
 
 \textbf{形式逻辑导论}
 
 \vfill
-\fontsize{12pt}{16pt}\selectfont \textit{作者： } \textbf{P.~D. Magnus}\\
+\fontsize{12pt}{16pt}\selectfont \textit{作者：} \textbf{P.~D. Magnus}\\
 \textbf{Tim Button}\\
 \textbf{Robert Trueman}\\
 \textbf{Richard Zach}\\
@@ -35,8 +35,23 @@
 
 \noindent\small%
 \fi
-本书基于 Tim Button（伦敦大学学院）所著 \href{https://www.homepages.ucl.ac.uk/~uctytbu/OERs.html}{\forallx: \textit{Cambridge}}（依据 \href{https://creativecommons.org/licenses/by/4.0/}{CC BY 4.0} 许可使用）。后者又基于 P.~D. Magnus（纽约州立大学奥尔巴尼分校）所著 \href{https://www.fecundity.com/logic/}{\forallx}（依据 \href{https://creativecommons.org/licenses/by/4.0/}{CC BY 4.0} 许可使用），并由 Aaron Thomas-Bolduc 与 Richard Zach（卡尔加里大学）混编、修订和扩充。
-本书还收录了下列材料：P.~D. Magnus 所著 \forallx{} 及 Tim Button 所著 \href{https://www.homepages.ucl.ac.uk/~uctytbu/OERs.html}{\textit{Metatheory}} 中的内容（依据 \href{https://creativecommons.org/licenses/by/4.0/}{CC BY 4.0} 许可使用）；\href{https://github.com/rob-helpy-chalk/openintroduction}{\forallx: \textit{Lorain County Remix}}（由 Cathal Woods 和 J. Robert Loftis 编写）中的内容；以及 Robert Trueman 所著 \href{http://www.rtrueman.com/uploads/7/0/3/2/70324387/modal_logic_primer.pdf}{\textit{A Modal Logic Primer}} 中的内容（经授权使用）。
+本书基于
+\href{https://www.homepages.ucl.ac.uk/~uctytbu/OERs.html}{\forallx:
+\textit{Cambridge}}（由伦敦大学学院的
+\href{https://www.homepages.ucl.ac.uk/~uctytbu/}{Tim Button} 编著），
+依据 \href{https://creativecommons.org/licenses/by/4.0/}{CC BY
+4.0} 许可协议使用。该书本身又基于纽约州立大学奥尔巴尼分校的
+\href{https://www.fecundity.com/logic/}{\forallx}（由
+\href{https://www.fecundity.com/job/}{P.D.\ Magnus} 编著），
+依据 \href{https://creativecommons.org/licenses/by/4.0/}{CC BY
+4.0} 许可协议使用。
+本书由卡尔加里大学的 Aaron Thomas-Bolduc 与 \href{https://richardzach.org/}{Richard Zach} 进行混编、修订及扩充。
+书中还包含了来自 P.~D. Magnus 所著 \forallx{} 以及 Tim Button 所著
+\href{https://www.homepages.ucl.ac.uk/~uctytbu/OERs.html}{\textit{Metatheory}}（《元理论》）的补充材料，均依据
+\href{https://creativecommons.org/licenses/by/4.0/}{CC BY 4.0} 许可协议使用；
+以及来自 \href{https://github.com/rob-helpy-chalk/openintroduction}{\forallx: \textit{Lorain
+County Remix}}（由 \href{https://sites.google.com/site/cathalwoods/}{Cathal Woods} 和
+J. Robert Loftis 编著）和 \href{http://www.rtrueman.com/uploads/7/0/3/2/70324387/modal_logic_primer.pdf}{《模态逻辑入门》（\textit{A Modal Logic Primer}）}（由 \href{http://www.rtrueman.com/}{Robert Trueman} 编著，经授权使用）的补充材料。
 
 \ifHTMLtarget\else
   \bigskip
@@ -44,17 +59,20 @@
   \noindent\footnotesize
 \fi
 本作品采用 \href{https://creativecommons.org/licenses/by/4.0/}{知识共享署名 4.0 国际许可协议} 进行许可。
-在遵守下列条款的前提下，您可以自由地以任何媒介或格式复制、发行本作品，以及对本作品进行混编、转换和基于本作品的创作，甚至用于商业目的：
+在遵守以下条款的前提下，您可以自由地以任何媒介或格式复制、发行本作品，以及混编、转换和基于本作品进行创作，甚至用于商业目的：
 \begin{itemize}
-\item 您必须给出适当的署名，提供指向本许可协议的链接，并指出是否对原作品作了修改。您可以用任何合理的方式署名，但不得以任何方式暗示许可方认可您或您的使用方式。
-\item 您不得增设任何法律或技术上的限制，用以约束他人行使本许可协议所允许的权利。
+\item 您必须给出适当的署名，提供指向本许可协议的链接，并指出是否对原作作了修改。您可以用任何合理的方式来署名，但不得以任何方式暗示许可方认可您或您的使用。
+\item 您不得增设法律条款或技术措施来限制他人从事本许可协议所允许的任何事情。
 \end{itemize}
 
 \ifHTMLtarget\else
 \vfil\normalsize\noindent
 \fi
-本书的 \LaTeX{} 源代码可在 GitHub 获取：\href{https://github.com/rzach/forallx-yyc/}{github.com/rzach/forallx-yyc/}。PDF 与 HTML 格式版本可在 \href{https://forallx.openlogicproject.org}{forallx.openlogicproject.org} 获取。
-当前版本为修订版 \gitAbbrevHash{} (\gitCommitterDate)。
+本书的 \LaTeX{} 源代码可在 Github 上获取：
+\href{https://github.com/rzach/forallx-yyc/}{github.com/rzach/forallx-yyc/}，PDF 和 HTML 格式版本可在
+\href{https://forallx.openlogicproject.org}{forallx.openlogicproject.org} 获取。
+当前版本为修订版 \gitAbbrevHash{}
+(\gitCommitterDate)。
 
 \bigskip
 \noindent
@@ -71,7 +89,12 @@
   \fi}
 
 \ifHTMLtarget
-HTML 格式版本由 \href{https://vlmantova.github.io/bookml/}{BookML}（Vincenzo Mantova 开发）与 \href{https://dlmf.nist.gov/LaTeXML/}{\LaTeX{}ML}（Bruce Miller 与 Deyan Ginev 开发）生成。
+HTML 版本由
+\href{https://eps.leeds.ac.uk/maths/staff/4058/dr-vincenzo-l-mantova}{Vincenzo Mantova} 的
+\href{https://vlmantova.github.io/bookml/}{BookML} 和
+\href{https://www.nist.gov/people/bruce-r-miller}{Bruce Miller} 与
+\href{https://prodg.org/}{Deyan Ginev} 的
+\href{https://dlmf.nist.gov/LaTeXML/}{\LaTeX{}ML} 生成。
 \else
 \bigskip
 \noindent 封面设计：Mark Lyall。

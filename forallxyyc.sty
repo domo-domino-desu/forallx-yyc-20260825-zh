@@ -69,15 +69,19 @@
 % are given below.
 %
 \let\oldtherefore\therefore
-\def\therefore{\ensuremath{\oldtherefore}}
+% unicode-math/fontsetup 会在 \begin{document} 时再次把 \therefore 改成
+% 直接输出 U+2234。New CM 的正文字体没有这个字符，但数学字体中的
+% 原始 mathchar 完整可用，因此要在其延迟钩子运行后恢复数学命令。
+\AtBeginDocument{%
+  \DeclareRobustCommand{\therefore}{\ensuremath{\mathrel{\oldtherefore}}}%
+}
 \iflatexml
 \def\texttherefore{∴}
 \else
 % 列表标签会在文本模式下展开。直接使用 unicode-math 的 \therefore
 % 会在部分列表页被文本字体接管而报告 U+2234 缺字；用三个数学点构造
 % 同形标签，避免把逻辑符号送入正文 New CM 字体。
-\DeclareRobustCommand{\texttherefore}{%
-  \ensuremath{\mathrel{\substack{\cdot\ \cdot\\[-.7ex]\cdot}}}}
+\DeclareRobustCommand{\texttherefore}{\ensuremath{\mathrel{\oldtherefore}}}
 \fi
 % disjunction
 \def\eor{\ensuremath{\vee}}

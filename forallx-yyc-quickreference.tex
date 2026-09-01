@@ -45,7 +45,7 @@ $P$ 当且仅当 $Q$ & $(P \eiff Q)$\\
 $P$，除非 $Q$ & $(\enot Q \eif P)$ 或 $(P \eor Q)$\\
 \\
 \multicolumn{2}{c}{\label{SymbolizingPredicates}\textsc{谓词}}\\ \\
-所有 $F$ 是 $G$ & $\forall x(\atom{F}{x} \eif \atom{G}{x})$\\
+所有 $F$ 都是 $G$ & $\forall x(\atom{F}{x} \eif \atom{G}{x})$\\
 有些 $F$ 是 $G$ & $\exists x(\atom{F}{x} \eand \atom{G}{x})$\\
 并非所有 $F$ 都是 $G$ & $\enot\forall x(\atom{F}{x} \eif \atom{G}{x})$\ 或\\
 & $\exists x(\atom{F}{x} \eand \enot \atom{G}{x})$\\
@@ -54,10 +54,10 @@ $P$，除非 $Q$ & $(\enot Q \eif P)$ 或 $(P \eor Q)$\\
 只有 $F$ 才是 $G$ & $\forall x(\atom{G}{x} \eif \atom{F}{x})$\\
 & $\enot\exists x(\enot\atom{F}{x} \eand \atom{G}{x})$\\
 \\
-\multicolumn{2}{c}{\textsc{等同}}\\ \\
+\multicolumn{2}{c}{\textsc{等词}}\\ \\
 只有 $c$ 是 $G$ & $\forall x(\atom{G}{x} \eiff x=c)$\\
-除 $c$ 之外的一切\\都是 $G$ & $\forall x(\enot\, {x = c} \eif \atom{G}{x} )$\\
-除 $c$ 之外的一切\\都是 $G$ & $\forall x(\enot\, {x = c} \eiff \atom{G}{x} )$\\
+除 $c$ 之外的其他\\都是 $G$ & $\forall x(\enot\, {x = c} \eif \atom{G}{x} )$\\
+除 $c$ 以外的一切\\都是 $G$ & $\forall x(\enot\, {x = c} \eiff \atom{G}{x} )$\\
 %$j$ is more $R$ than anyone else. & $\forall x(x\neq j \eif Rjx)$\\
 那个 $F$ 是 $G$ & $\exists x(\atom{F}{x} \eand \forall y(\atom{F}{y} \eif x=y) \eand \atom{G}{x} )$\\
 并非那个 $F$\\是 $G$ & $\enot\exists x(\atom{F}{x} \eand \forall y(\atom{F}{y} \eif x=y) \eand \atom{G}{x} )$\\
@@ -68,7 +68,7 @@ $P$，除非 $Q$ & $(\enot Q \eif P)$ 或 $(P \eor Q)$\\
 % BEGIN: symbolizing cardinality
 
 \newpage
-\section{使用等同来符号化数量}
+\section{使用等词来符号化数量}
 
 \subsection*{至少有 \blank\ 个 $F$。}
 \label{summary.atleast}
@@ -108,7 +108,7 @@ $P$，除非 $Q$ & $(\enot Q \eif P)$ 或 $(P \eor Q)$\\
 \subsection*{至多有 \blank\ 个 $F$。}
 \label{summary.atmost}
 
-表达“至多有 $n$ 个 $F$”的方式之一，是在“至少有 $n+1$ 个 $F$”的符号化前加上否定号。等价地，我们可以给出：
+一种表达“至多有 $n$ 个 $F$”的方法，是在“至少有 $n+1$ 个 $F$”的符号化前面加一个否定号。等价地，我们可以给出：
 
 \noindent
 \ifHTMLtarget
@@ -144,7 +144,7 @@ $P$，除非 $Q$ & $(\enot Q \eif P)$ 或 $(P \eor Q)$\\
 \subsection*{恰好有 \blank\ 个 $F$。}
 \label{summary.exactly}
 
-表达“恰好有 $n$ 个 $F$”的一种方法是，将上述两种符号化用合取联结起来，说“至少有 $n$ 个 $F$ 且至多有 $n$ 个 $F$”。下列等价公式更为简短：
+一种表达“恰好有 $n$ 个 $F$”的方法是，把上面的两种符号化合取起来，说“至少有 $n$ 个 $F$ 且至多有 $n$ 个 $F$”。以下等价公式更简短：
 
 \noindent
 \ifHTMLtarget
@@ -199,6 +199,7 @@ $P$，除非 $Q$ & $(\enot Q \eif P)$ 或 $(P \eor Q)$\\
 \fi
 
 %{\LARGE \textbf{Basic Rules of Proof}}
+
 
 \begin{multicols}{2}
 \subsection*{重述}
@@ -337,7 +338,7 @@ $P$，除非 $Q$ & $(\enot Q \eif P)$ 或 $(P \eor Q)$\\
 	\have[\ ]{con}{\metav{A}}\by{DS}{ab, nb}
 \end{fitchproof}
 
-\subsection*{否定后件}
+\subsection*{否定后件式}
 
 \begin{fitchproof}
 	\have[m]{ab}{\metav{A}\eif\metav{B}}
@@ -398,14 +399,14 @@ $P$，除非 $Q$ & $(\enot Q \eif P)$ 或 $(P \eor Q)$\\
 \section{一阶逻辑的基本推导规则}
 
 \begin{multicols}{2}
-\subsection*{全称消去}
+\subsection*{全称量词消去}
 
 \begin{fitchproof}
 	\have[m]{a}{\forall \metav{x}\,\metav{A}(\ldots \metav{x} \ldots \metav{x}\ldots)}
 	\have[\ ]{c}{\metav{A}(\ldots \metav{c} \ldots \metav{c}\ldots)} \Ae{a}
 \end{fitchproof}
 
-\subsection*{全称引入}
+\subsection*{全称量词引入}
 
 \begin{fitchproof}
 	\have[m]{a}{\metav{A}(\ldots \metav{c} \ldots \metav{c}\ldots)}
@@ -437,8 +438,7 @@ $P$，除非 $Q$ & $(\enot Q \eif P)$ 或 $(P \eor Q)$\\
 	\have[\ ]{d}{\metav{B}}\Ee{a,b-c}
 \end{fitchproof}
 \begin{raggedright}
-\noindent \metav{c} 不得出现在任何未解除的假设、$\exists \metav{x}\,\metav{A}(\ldots \metav{x} \ldots \metav{x}\ldots)$ 或 \metav{B} 中。
-\end{raggedright}
+\noindent \metav{c} 不得出现在任何未解除的假设、$\exists \metav{x}\,\metav{A}(\ldots \metav{x} \ldots \metav{x}\ldots)$ 或 \metav{B} 中。\end{raggedright}
 \end{multicols}
 
 \subsection*{同一性引入}
@@ -492,16 +492,17 @@ $P$，除非 $Q$ & $(\enot Q \eif P)$ 或 $(P \eor Q)$\\
 在应用规则时，若要引用单独一行：
 
 \begin{compactlist}
-\item 该行必须出现在规则应用行之前，并且
-\item 不得出现在一个于规则应用行之前就已闭合的子证明之内。
+\item 该行必须出现在应用规则的那一行之前，但
+\item 不得出现在应用规则行之前已经闭合的子证明内。
 \end{compactlist}
+
 
 在应用规则时，若要引用一个子证明：
 
 \begin{compactlist}
 \item 被引用的子证明必须完全出现在引用它的规则应用之前，
-\item 被引用的子证明不得位于某个在引用行处已经闭合的其他已闭合子证明之内，并且
-\item 被引用子证明的最后一行不得位于一个嵌套子证明的内部。
+\item 被引用的子证明不得位于某个在引用行处已经闭合的其他子证明内，并且
+\item 被引用子证明的最后一行不得位于嵌套子证明内部。
 \end{compactlist}
 
 \section{等价链规则}
